@@ -53,8 +53,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Reception.xaml.cs">
-      <DependentUpon>Reception.xaml</DependentUpon>
+    <Compile Include="Recherche_client.xaml.cs">
+      <DependentUpon>Recherche_client.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RestitutionArticle.xaml.cs">
+      <DependentUpon>RestitutionArticle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Statistiques.xaml.cs">
+      <DependentUpon>Statistiques.xaml</DependentUpon>
     </Compile>
     <Page Include="InterfaceAccueil.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -68,7 +74,15 @@
       <DependentUpon>InterfaceAccueil.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Reception.xaml">
+    <Page Include="Recherche_client.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RestitutionArticle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Statistiques.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -98,7 +112,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\home-logo.png" />

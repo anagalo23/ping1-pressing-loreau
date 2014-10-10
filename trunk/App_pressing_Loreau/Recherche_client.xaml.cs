@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace App_pressing_Loreau
 {
     /// <summary>
-    /// Logique d'interaction pour Reception.xaml
+    /// Logique d'interaction pour Recherche_client.xaml
     /// </summary>
-    public partial class Reception : Window
+    public partial class Recherche_client : Window
     {
-        public Reception()
+        public Recherche_client()
         {
             InitializeComponent();
         }
