@@ -53,16 +53,42 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Recherche_client.xaml.cs">
+    <Compile Include="Interfaces\Fiche_client.xaml.cs">
+      <DependentUpon>Fiche_client.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Identification_client.xaml.cs">
+      <DependentUpon>Identification_client.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Lectures.xaml.cs">
+      <DependentUpon>Lectures.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Paiement.xaml.cs">
+      <DependentUpon>Paiement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Parametre_affichage.xaml.cs">
+      <DependentUpon>Parametre_affichage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Parametre_impression.xaml.cs">
+      <DependentUpon>Parametre_impression.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Recherche_client.xaml.cs">
       <DependentUpon>Recherche_client.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RestitutionArticle.xaml.cs">
+    <Compile Include="Interfaces\RestitutionArticle.xaml.cs">
       <DependentUpon>RestitutionArticle.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Statistiques.xaml.cs">
+    <Compile Include="Interfaces\Statistiques.xaml.cs">
       <DependentUpon>Statistiques.xaml</DependentUpon>
     </Compile>
-    <Page Include="InterfaceAccueil.xaml">
+    <Page Include="Interfaces\Fiche_client.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Interfaces\Identification_client.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Interfaces\InterfaceAccueil.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -70,19 +96,35 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Interfaces\MainWindow.xaml.cs">
       <DependentUpon>InterfaceAccueil.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Recherche_client.xaml">
+    <Page Include="Interfaces\Lectures.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RestitutionArticle.xaml">
+    <Page Include="Interfaces\Paiement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Statistiques.xaml">
+    <Page Include="Interfaces\Parametre_affichage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Interfaces\Parametre_impression.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Interfaces\Recherche_client.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Interfaces\RestitutionArticle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Interfaces\Statistiques.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

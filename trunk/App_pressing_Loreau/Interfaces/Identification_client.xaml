@@ -1,0 +1,48 @@
+﻿<Window x:Class="App_pressing_Loreau.Identification_client"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    
+        
+        Width="Auto" Height="Auto"
+        Title="Identification client" Background="Brown" >
+    <Grid>
+        <StackPanel Margin="64,29,238,83">
+            <Label Background="AntiqueWhite" Content="Identification d'un client"/>
+            <Border BorderBrush="AntiqueWhite" BorderThickness="1" Height="161" RenderTransformOrigin="0.503,0.889" >
+                <Canvas>
+                    <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="31" Canvas.Left="10" Canvas.Top="26">
+                        <ComboBoxItem IsSelected="True" x:Name="cbb_id_client">Id client</ComboBoxItem>
+                        <ComboBoxItem x:Name="cbb_nom">Nom</ComboBoxItem>
+                        <ComboBoxItem x:Name="cbb_prenom">Prénom</ComboBoxItem>
+                        <ComboBoxItem x:Name="cbb_tel_port">Télephone Portable</ComboBoxItem>
+                    </ComboBox>
+                    <TextBox Canvas.Left="145" Canvas.Top="26" Height="31" Width="100"/>
+                    <TextBox Canvas.Left="145" Canvas.Top="98" Height="31" Width="100"/>
+                    <TextBox Canvas.Left="145" Canvas.Top="62" Height="31" Width="100"/>
+                    <Button Content="Recherche" Canvas.Left="297" Canvas.Top="62" Width="93" Height="31"/>
+
+                    <Label Background="AntiqueWhite" Content="Résultat de la recherche " Canvas.Top="155" Width="423"/>
+                </Canvas>
+                
+            </Border>
+            <Rectangle Height="120" Stroke="AntiqueWhite" />
+        </StackPanel>
+        <StackPanel Margin="544,246,20,136">
+            <Button Content="Inscription du client" Height="44"/>
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Left"  Height="83" VerticalAlignment="Bottom" Width="717" Grid.ColumnSpan="2" >
+            <Canvas Width="717" Height="79"  VerticalAlignment="top" HorizontalAlignment="Left" >
+                <Button x:Name="btn_user1" Content="USER 1" Width="88" Height="33" Canvas.Bottom="1" Canvas.Top="40" Canvas.Left="10" />
+                <Button x:Name="btn_user2" Content="USER 2" Width="88" Height="33" Canvas.Bottom="1" Canvas.Top="40" Canvas.Left="119"/>
+                <Button x:Name="btn_user3" Content="USER 3" Width="88" Height="33" Canvas.Bottom="1" Canvas.Top="40" Canvas.Left="225"/>
+                <Button x:Name="btn_user4" Content="USER 4" Width="88" Height="33" Canvas.Bottom="1" Canvas.Top="40" Canvas.Left="334"/>
+                <Button x:Name="btn_user5" Content="USER 5" Width="88" Height="33" Canvas.Bottom="1" Canvas.Top="40" Canvas.Left="442"/>
+                <Button x:Name="btn_user6" Content="USER 6" Width="88" Height="33" Canvas.Bottom="1" Canvas.Top="40" Canvas.Left="552" RenderTransformOrigin="1.048,0.763"/>
+                <Image Source="/Image/home-logo.png" Canvas.Left="663" Canvas.Top="30" Height="49" RenderTransformOrigin="1.412,0.461" Width="44"/>
+            </Canvas>
+        </StackPanel>
+        
+
+    </Grid>
+</Window>
