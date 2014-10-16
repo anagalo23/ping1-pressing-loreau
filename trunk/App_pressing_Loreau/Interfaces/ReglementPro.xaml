@@ -1,0 +1,60 @@
+﻿<Window x:Class="App_pressing_Loreau.Interfaces.ReglementPro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ReglementPro" Height="500" Width="750" Background="Brown" AllowDrop="True"  MouseLeftButtonDown="huguette">
+
+    <Grid>
+
+        <Grid Margin="25,20,0,114">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="365*"/>
+                <ColumnDefinition Width="377*"/>
+            </Grid.ColumnDefinitions>
+            <Label Margin="17,0,242,30" Grid.Column="1" Content="Total à payer :" VerticalAlignment="Bottom" FontFamily="Arial" FontSize="14"/>
+            <Button Grid.Column="1" Content="règlement"  Margin="0,0,17,25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="35" Width="120" Click="Button_Click"/>
+            <Border  HorizontalAlignment="Stretch" BorderBrush="AntiqueWhite" BorderThickness="1" Margin="10" Grid.Row="0" Grid.Column="0">
+
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="52*"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Liste des differents clients Pro" Background="AntiqueWhite" FontFamily="Arial" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                </Grid>
+            </Border>
+
+            <Border   HorizontalAlignment="Stretch" BorderBrush="AntiqueWhite" BorderThickness="1" Margin="10,10,10,80" Grid.Row="0" Grid.Column="1">
+                <Grid Margin="-1,-1,1,1" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="9*"/>
+                        <RowDefinition Height="52*"/>
+                    </Grid.RowDefinitions>
+                    <Label Margin="0" Content="Détails des commandes du client" Background="AntiqueWhite" FontFamily="Arial" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                </Grid>
+            </Border>
+        </Grid>
+        <DockPanel HorizontalAlignment="Stretch"  Height="83" VerticalAlignment="Bottom"   Margin="23,30,20,9"  >
+            <Grid >
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <Button x:Name="btn_user1" Content="USER 1" Grid.Row="0" Grid.Column="0" Margin="5" Grid.RowSpan="3" />
+                <Button x:Name="btn_user2" Content="USER 2" Grid.Row="0" Grid.Column="1" Margin="5" Grid.RowSpan="3" />
+                <Button x:Name="btn_user3" Content="USER 3" Grid.Row="1" Grid.Column="2" Margin="5" Grid.RowSpan="2" />
+                <Button x:Name="btn_user4" Content="USER 4" Grid.Row="1" Grid.Column="3" Margin="5" Grid.RowSpan="2" />
+                <Button x:Name="btn_user5" Content="USER 5" Grid.Row="1" Grid.Column="4" Margin="5" Grid.RowSpan="2" />
+                <Button x:Name="btn_user6" Content="USER 6" Grid.Row="1" Grid.Column="5" Margin="5" Grid.RowSpan="2" />
+                <Image Source="/Image/home-logo.png" Grid.Row="0" Grid.Column="6"  Margin="5" Grid.RowSpan="3"  />
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>

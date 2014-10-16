@@ -16,23 +16,36 @@
 
         </StackPanel>
 
-        <StackPanel HorizontalAlignment="Left"  Height="83" VerticalAlignment="Bottom" Width="717" Grid.ColumnSpan="2" >
-            <Canvas Width="717" Height="79"  VerticalAlignment="top" HorizontalAlignment="Left" >
-                <Button x:Name="btn_user1" Content="USER 1" Width="88" Height="33" Canvas.Bottom="1" Canvas.Top="40" Canvas.Left="10" />
-                <Button x:Name="btn_user2" Content="USER 2" Width="88" Height="33" Canvas.Bottom="1" Canvas.Top="40" Canvas.Left="119"/>
-                <Button x:Name="btn_user3" Content="USER 3" Width="88" Height="33" Canvas.Bottom="1" Canvas.Top="40" Canvas.Left="225"/>
-                <Button x:Name="btn_user4" Content="USER 4" Width="88" Height="33" Canvas.Bottom="1" Canvas.Top="40" Canvas.Left="334"/>
-                <Button x:Name="btn_user5" Content="USER 5" Width="88" Height="33" Canvas.Bottom="1" Canvas.Top="40" Canvas.Left="442"/>
-                <Button x:Name="btn_user6" Content="USER 6" Width="88" Height="33" Canvas.Bottom="1" Canvas.Top="40" Canvas.Left="552" RenderTransformOrigin="1.048,0.763"/>
-                <Image Source="/Image/home-logo.png" Canvas.Left="663" Canvas.Top="30" Height="49" RenderTransformOrigin="1.412,0.461" Width="44"/>
-            </Canvas>
-        </StackPanel>
-        <Border BorderBrush="Azure" BorderThickness="1" HorizontalAlignment="Left" Height="323" Margin="380,31,0,0" VerticalAlignment="Top" Width="313">
+       
+        <Border BorderBrush="Azure" BorderThickness="1" HorizontalAlignment="Left" Height="269" Margin="380,31,0,0" VerticalAlignment="Top" Width="313">
             <Border BorderBrush="Azure" Background="Azure" BorderThickness="1" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="312" Margin="0,0,-1,0">
                 <Label Content="Commandes terminées"/>
             </Border>
 
         </Border>
+        <DockPanel HorizontalAlignment="Stretch"  Height="83" VerticalAlignment="Bottom"   Margin="23,30,20,9"  >
+            <Grid >
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <Button x:Name="btn_user1" Content="USER 1" Grid.Row="0" Grid.Column="0" Margin="5" Grid.RowSpan="3" />
+                <Button x:Name="btn_user2" Content="USER 2" Grid.Row="0" Grid.Column="1" Margin="5" Grid.RowSpan="3" />
+                <Button x:Name="btn_user3" Content="USER 3" Grid.Row="1" Grid.Column="2" Margin="5" Grid.RowSpan="2" />
+                <Button x:Name="btn_user4" Content="USER 4" Grid.Row="1" Grid.Column="3" Margin="5" Grid.RowSpan="2" />
+                <Button x:Name="btn_user5" Content="USER 5" Grid.Row="1" Grid.Column="4" Margin="5" Grid.RowSpan="2" />
+                <Button x:Name="btn_user6" Content="USER 6" Grid.Row="1" Grid.Column="5" Margin="5" Grid.RowSpan="2" />
+                <Image Source="/Image/home-logo.png" Grid.Row="0" Grid.Column="6"  Margin="5" Grid.RowSpan="3"  />
+            </Grid>
+        </DockPanel>
 
     </Grid>
 </Window>

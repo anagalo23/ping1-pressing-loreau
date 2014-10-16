@@ -45,6 +45,11 @@ namespace App_pressing_Loreau
 
         }
 
+        private void btn_administration_Click(object sender, RoutedEventArgs e)
+        {
+           // new Administration().show();
+        }
+
 
 
     }
