@@ -27,8 +27,8 @@ namespace LoreauApplication.Class.DAO
         {
             this.nom = nom;
             this.prenom = prenom;
-            this.fix = fix;
-            this.mob = mob;
+            this.telfix = fix;
+            this.telmob = mob;
             this.adresse = adresse;
             this.dateNaissance = dateNaissance;
             this.email = email;
