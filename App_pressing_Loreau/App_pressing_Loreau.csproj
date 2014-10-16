@@ -40,6 +40,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -82,6 +84,9 @@
     <Compile Include="Class\DTO\PrixDTO.cs" />
     <Compile Include="Class\DTO\TypeDTO.cs" />
     <Compile Include="Class\DTO\TypePayementDTO.cs" />
+    <Compile Include="Interfaces\Administration.xaml.cs">
+      <DependentUpon>Administration.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\Fiche_client.xaml.cs">
       <DependentUpon>Fiche_client.xaml</DependentUpon>
     </Compile>
@@ -103,12 +108,25 @@
     <Compile Include="Interfaces\Recherche_client.xaml.cs">
       <DependentUpon>Recherche_client.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\ReglementPro.xaml.cs">
+      <DependentUpon>ReglementPro.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\RestitutionArticle.xaml.cs">
       <DependentUpon>RestitutionArticle.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\Statistiques.xaml.cs">
       <DependentUpon>Statistiques.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\Page1.xaml.cs">
+      <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\page_principal.xaml.cs">
+      <DependentUpon>page_principal.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Interfaces\Administration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Interfaces\Fiche_client.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -149,11 +167,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Interfaces\ReglementPro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Interfaces\RestitutionArticle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Interfaces\Statistiques.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\Page1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\page_principal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
