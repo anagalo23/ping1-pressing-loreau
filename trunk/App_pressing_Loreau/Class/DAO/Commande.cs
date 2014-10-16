@@ -14,7 +14,7 @@ namespace LoreauApplication.Class.DAO
         public bool payee { get; set; }
         public Client client { get; set; }
         public ClientPro clientpro { get; set; }
-        public List<Tuple<Prix, Article>> listArticles { get; set; }
+        public List<Article> listArticles { get; set; }
         #endregion
 
         #region classes
