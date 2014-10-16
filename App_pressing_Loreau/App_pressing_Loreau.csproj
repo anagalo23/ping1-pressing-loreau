@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 6.8.3\Assemblies\v4.5\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -53,6 +57,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Class\Bdd.cs" />
+    <Compile Include="Class\DAO\Article.cs" />
+    <Compile Include="Class\DAO\Client.cs" />
+    <Compile Include="Class\DAO\ClientPro.cs" />
+    <Compile Include="Class\DAO\Commande.cs" />
+    <Compile Include="Class\DAO\Departement.cs" />
+    <Compile Include="Class\DAO\Employe.cs" />
+    <Compile Include="Class\DAO\Log.cs" />
+    <Compile Include="Class\DAO\Payement.cs" />
+    <Compile Include="Class\DAO\PlaceConvoyeur.cs" />
+    <Compile Include="Class\DAO\Prix.cs" />
+    <Compile Include="Class\DAO\Type.cs" />
+    <Compile Include="Class\DAO\TypePayement.cs" />
+    <Compile Include="Class\DTO\ArticleDTO.cs" />
+    <Compile Include="Class\DTO\ClientDTO.cs" />
+    <Compile Include="Class\DTO\ClientProDTO.cs" />
+    <Compile Include="Class\DTO\CommandeDTO.cs" />
+    <Compile Include="Class\DTO\DepartementDTO.cs" />
+    <Compile Include="Class\DTO\EmployeDTO.cs" />
+    <Compile Include="Class\DTO\LogDTO.cs" />
+    <Compile Include="Class\DTO\PayementDTO.cs" />
+    <Compile Include="Class\DTO\PlaceConvoyeurDTO.cs" />
+    <Compile Include="Class\DTO\PrixDTO.cs" />
+    <Compile Include="Class\DTO\TypeDTO.cs" />
+    <Compile Include="Class\DTO\TypePayementDTO.cs" />
     <Compile Include="Interfaces\Fiche_client.xaml.cs">
       <DependentUpon>Fiche_client.xaml</DependentUpon>
     </Compile>
