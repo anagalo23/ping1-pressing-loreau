@@ -12,8 +12,8 @@ namespace LoreauApplication.Class.DAO
         //public int id {get; set;}
         public string nom {get; set;}
         public string prenom { get; set; }
-        public string fix { get; set; }
-        public string mob { get; set; }
+        public string telfix { get; set; }
+        public string telmob { get; set; }
         public string adresse { get; set; }
         public DateTime dateNaissance { get; set; }
         public string email { get; set; }
