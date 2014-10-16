@@ -69,7 +69,6 @@
     <Compile Include="Class\DAO\Log.cs" />
     <Compile Include="Class\DAO\Payement.cs" />
     <Compile Include="Class\DAO\PlaceConvoyeur.cs" />
-    <Compile Include="Class\DAO\Prix.cs" />
     <Compile Include="Class\DAO\Type.cs" />
     <Compile Include="Class\DAO\TypePayement.cs" />
     <Compile Include="Class\DTO\ArticleDTO.cs" />

@@ -10,7 +10,7 @@ namespace LoreauApplication.Class.DTO
 {
     class ClientProDTO
     {
-        public static List<ClientPro> allClientPro(String nom, String prenom, String tel)
+        public static List<ClientPro> allClientPro()
         {
 
             List<ClientPro> retour = new List<ClientPro>();
