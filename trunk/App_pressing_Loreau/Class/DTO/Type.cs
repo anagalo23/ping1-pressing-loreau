@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoreauApplication.Class.DAO
+namespace LoreauApplication.Class.DTO
 {
-    class Departement
+    class Type
     {
         #region attributs
         //public int id {get; set;}
@@ -14,10 +14,16 @@ namespace LoreauApplication.Class.DAO
         #endregion
 
         #region classes
-        public Departement(string nom)
+        public Type(string nom)
         {
             this.nom = nom;
         }
         #endregion
+
+        public void test()
+        {
+            Bdd.connexion();
+
+        }
     }
 }

@@ -60,29 +60,28 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Class\Bdd.cs" />
-    <Compile Include="Class\DAO\Article.cs" />
-    <Compile Include="Class\DAO\Client.cs" />
-    <Compile Include="Class\DAO\ClientPro.cs" />
-    <Compile Include="Class\DAO\Commande.cs" />
-    <Compile Include="Class\DAO\Departement.cs" />
-    <Compile Include="Class\DAO\Employe.cs" />
-    <Compile Include="Class\DAO\Log.cs" />
-    <Compile Include="Class\DAO\Payement.cs" />
-    <Compile Include="Class\DAO\PlaceConvoyeur.cs" />
-    <Compile Include="Class\DAO\Type.cs" />
-    <Compile Include="Class\DAO\TypePayement.cs" />
-    <Compile Include="Class\DTO\ArticleDTO.cs" />
-    <Compile Include="Class\DTO\ClientDTO.cs" />
-    <Compile Include="Class\DTO\ClientProDTO.cs" />
-    <Compile Include="Class\DTO\CommandeDTO.cs" />
-    <Compile Include="Class\DTO\DepartementDTO.cs" />
-    <Compile Include="Class\DTO\EmployeDTO.cs" />
-    <Compile Include="Class\DTO\LogDTO.cs" />
-    <Compile Include="Class\DTO\PayementDTO.cs" />
-    <Compile Include="Class\DTO\PlaceConvoyeurDTO.cs" />
-    <Compile Include="Class\DTO\PrixDTO.cs" />
-    <Compile Include="Class\DTO\TypeDTO.cs" />
-    <Compile Include="Class\DTO\TypePayementDTO.cs" />
+    <Compile Include="Class\DAO\ArticleDAO.cs" />
+    <Compile Include="Class\DAO\ClientDAO.cs" />
+    <Compile Include="Class\DTO\ClientPro.cs" />
+    <Compile Include="Class\DAO\ClientProDAO.cs" />
+    <Compile Include="Class\DTO\Commande.cs" />
+    <Compile Include="Class\DTO\Departement.cs" />
+    <Compile Include="Class\DTO\Employe.cs" />
+    <Compile Include="Class\DTO\Log.cs" />
+    <Compile Include="Class\DTO\Payement.cs" />
+    <Compile Include="Class\DTO\PlaceConvoyeur.cs" />
+    <Compile Include="Class\DTO\Type.cs" />
+    <Compile Include="Class\DTO\TypePayement.cs" />
+    <Compile Include="Class\DTO\Article.cs" />
+    <Compile Include="Class\DTO\Client.cs" />
+    <Compile Include="Class\DAO\CommandeDAO.cs" />
+    <Compile Include="Class\DAO\DepartementDAO.cs" />
+    <Compile Include="Class\DAO\EmployeDAO.cs" />
+    <Compile Include="Class\DAO\LogDAO.cs" />
+    <Compile Include="Class\DAO\PayementDAO.cs" />
+    <Compile Include="Class\DAO\PlaceConvoyeurDAO.cs" />
+    <Compile Include="Class\DAO\TypeDAO.cs" />
+    <Compile Include="Class\DAO\TypePayementDAO.cs" />
     <Compile Include="Interfaces\Administration.xaml.cs">
       <DependentUpon>Administration.xaml</DependentUpon>
     </Compile>

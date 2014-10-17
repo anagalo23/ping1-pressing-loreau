@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoreauApplication.Class.DAO
+namespace LoreauApplication.Class.DTO
 {
-    class PlaceConvoyeur
+    class TypePayement
     {
-        #region attributs
+                #region attributs
         //public int id {get; set;}
-        public int emplacement { get; set; }
+        public string nom {get; set;}
         #endregion
 
         #region classes
-        public PlaceConvoyeur(int emplacement)
+        public TypePayement(string nom)
         {
-            this.emplacement = emplacement;
+            this.nom = nom;
         }
         #endregion
     }
