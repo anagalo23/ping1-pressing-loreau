@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoreauApplication.Class.DTO
+namespace LoreauApplication.Class.DAO
 {
-    class PayementDTO
+    class PlaceConvoyeurDAO
     {
     }
 }

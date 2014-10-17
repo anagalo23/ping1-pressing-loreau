@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoreauApplication.Class.DAO
+namespace LoreauApplication.Class.DTO
 {
     class Client
     {
         #region attributs
         //public int id {get; set;}
-        public string nom {get; set;}
+        public string nom { get; set; }
         public string prenom { get; set; }
         public string telfix { get; set; }
         public string telmob { get; set; }
@@ -37,7 +37,7 @@ namespace LoreauApplication.Class.DAO
         }
 
         #endregion
-        
+
 
     }
 }

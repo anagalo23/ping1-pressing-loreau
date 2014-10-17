@@ -1,4 +1,4 @@
-﻿using LoreauApplication.Class.DAO;
+﻿using LoreauApplication.Class.DTO;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoreauApplication.Class.DTO
+namespace LoreauApplication.Class.DAO
 {
-    class ClientDTO
+    class ClientDAO
     {
         public static int insertClient(Client client)
         {
@@ -86,14 +86,14 @@ namespace LoreauApplication.Class.DTO
                 MySqlDataReader msdr = cmd.ExecuteReader();
                 while (msdr.Read())
                 {
-                    retour.Add(new Client(msdr["clt_nom"].ToString(), 
-                        msdr["clt_prenom"].ToString(), 
-                        msdr["clt_fix"].ToString(), 
-                        msdr["clt_mob"].ToString(), 
-                        msdr["clt_adresse"].ToString(), 
-                        DateTime.Parse(msdr["clt_dateNaissance"].ToString()), 
-                        msdr["clt_email"].ToString(), 
-                        DateTime.Parse(msdr["clt_dateInscription"].ToString()), 
+                    retour.Add(new Client(msdr["clt_nom"].ToString(),
+                        msdr["clt_prenom"].ToString(),
+                        msdr["clt_fix"].ToString(),
+                        msdr["clt_mob"].ToString(),
+                        msdr["clt_adresse"].ToString(),
+                        DateTime.Parse(msdr["clt_dateNaissance"].ToString()),
+                        msdr["clt_email"].ToString(),
+                        DateTime.Parse(msdr["clt_dateInscription"].ToString()),
                         Int32.Parse(msdr["clt_idCleanway"].ToString())));
                 }
                 msdr.Dispose();

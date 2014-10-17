@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoreauApplication.Class.DTO
+namespace LoreauApplication.Class.DAO
 {
-    class TypePayementDTO
+    class TypePayementDAO
     {
         /*
          * Table de base de donnée fixe. Ajout uniquement par l'intermédiaire de la section Administration.

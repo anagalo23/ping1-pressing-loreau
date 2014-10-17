@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoreauApplication.Class.DAO
+namespace LoreauApplication.Class.DTO
 {
-    class Employe
+    class Departement
     {
         #region attributs
         //public int id {get; set;}
-        public string nom {get; set;}
+        public string nom { get; set; }
         #endregion
 
         #region classes
-        public Employe(string nom)
+        public Departement(string nom)
         {
             this.nom = nom;
         }

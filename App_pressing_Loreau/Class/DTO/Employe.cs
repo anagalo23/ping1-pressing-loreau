@@ -4,21 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoreauApplication.Class.DAO
+namespace LoreauApplication.Class.DTO
 {
-    class Payement
+    class Employe
     {
         #region attributs
         //public int id {get; set;}
-        public DateTime date { get; set; }
-        public float montant {get; set;}
+        public string nom {get; set;}
         #endregion
 
         #region classes
-        public Payement(DateTime date, float montant)
+        public Employe(string nom)
         {
-            this.date = date;
-            this.montant = montant;
+            this.nom = nom;
         }
         #endregion
     }

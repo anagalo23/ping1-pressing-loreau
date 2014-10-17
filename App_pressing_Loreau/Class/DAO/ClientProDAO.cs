@@ -1,4 +1,4 @@
-﻿using LoreauApplication.Class.DAO;
+﻿using LoreauApplication.Class.DTO;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoreauApplication.Class.DTO
+namespace LoreauApplication.Class.DAO
 {
-    class ClientProDTO
+    class ClientProDAO
     {
         public static List<ClientPro> allClientPro()
         {
@@ -16,7 +16,7 @@ namespace LoreauApplication.Class.DTO
             List<ClientPro> retour = new List<ClientPro>();
 
             String sql = "SELECT cltp_id, cltp_noment, cltp_fix, cltp_mob, cltp_adresse, cltp_email, cltp_dateinscription FROM clientpro ORDER BY cltp_noment ASC";
-            
+
             //connection à la base de données   
             MySqlConnection connection = Bdd.connexion();
             MySqlCommand cmd = new MySqlCommand(sql, connection);
