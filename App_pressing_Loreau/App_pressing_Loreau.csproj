@@ -85,11 +85,23 @@
     <Compile Include="Interfaces\Administration.xaml.cs">
       <DependentUpon>Administration.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\DetailDeLaCommande.xaml.cs">
+      <DependentUpon>DetailDeLaCommande.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\Fiche_client.xaml.cs">
       <DependentUpon>Fiche_client.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\GestionDeCommandes.xaml.cs">
+      <DependentUpon>GestionDeCommandes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\GestionDuConvoyeur.xaml.cs">
+      <DependentUpon>GestionDuConvoyeur.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\Identification_client.xaml.cs">
       <DependentUpon>Identification_client.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Inscription.xaml.cs">
+      <DependentUpon>Inscription.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\Lectures.xaml.cs">
       <DependentUpon>Lectures.xaml</DependentUpon>
@@ -115,6 +127,9 @@
     <Compile Include="Interfaces\Statistiques.xaml.cs">
       <DependentUpon>Statistiques.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\EditionDeFactures.xaml.cs">
+      <DependentUpon>EditionDeFactures.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
@@ -125,11 +140,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Interfaces\DetailDeLaCommande.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Interfaces\Fiche_client.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Interfaces\GestionDeCommandes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Interfaces\GestionDuConvoyeur.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Interfaces\Identification_client.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Interfaces\Inscription.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -174,6 +205,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Interfaces\Statistiques.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Interfaces\EditionDeFactures.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
