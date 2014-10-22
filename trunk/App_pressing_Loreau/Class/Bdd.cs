@@ -27,7 +27,7 @@ namespace LoreauApplication.Class
 
         public static void deconnexion()
         {
-            MSConnexion.Close();
+            //MSConnexion.Close();
         }
     }
 }
