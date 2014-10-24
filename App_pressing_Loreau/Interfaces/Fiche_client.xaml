@@ -67,7 +67,7 @@
                     <Label Content="Les commandes en cours " Background="AntiqueWhite" Margin="0" FontFamily="Arial"
                        FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                     <Button Content="Commande 1" Background="Khaki" Grid.Column="0" Grid.Row="1" Margin="10,5,263,228"
-                        FontFamily="Arial" FontSize="16" Height="80" Width="200" VerticalAlignment="Top"/>
+                        FontFamily="Arial" FontSize="16" Height="80" Width="200" VerticalAlignment="Top" Click="Button_Click"/>
                     <Button Content="Commande 2" Background="Khaki" Grid.Column="0" Grid.Row="1" Margin="266,5,10,228"
                         FontFamily="Arial" FontSize="16" Height="80" Width="200" VerticalAlignment="Top"/>
                 </Grid>
