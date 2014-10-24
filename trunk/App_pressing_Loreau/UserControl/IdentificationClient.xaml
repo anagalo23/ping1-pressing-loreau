@@ -5,65 +5,85 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="730">
-    <Grid Margin="0,0,28,0">
-        <Grid.ColumnDefinitions>
+    <DockPanel x:Name="dp">
+        <Grid Margin="0,0,1,0">
+            <Grid.ColumnDefinitions>
 
-            <ColumnDefinition Width="257*"/>
-            <ColumnDefinition Width="222*"/>
-            <ColumnDefinition Width="271*"/>
+                <ColumnDefinition Width="365*"/>
+                <ColumnDefinition Width="364*"/>
 
-        </Grid.ColumnDefinitions>
+            </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="0" Margin="10" BorderBrush="Aqua" BorderThickness="2">
-            <Grid Margin="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="9*"/>
-                    <RowDefinition Height="65*"/>
-                </Grid.RowDefinitions>
-                <Label  Content="Champs de recherche désirés" Grid.Row="0" Background="AliceBlue"/>
-                <Canvas Grid.Row="1">
-                    <Label  Content="Nom"/>
-                    <TextBox Canvas.Right="23" Canvas.Bottom="12" Canvas.Left="76" Canvas.Top="10" Width="126" />
-                    <Label  Content="Prenom" Canvas.Top="37"/>
-                    <TextBox Canvas.Left="76" Canvas.Top="45" Width="126" />
-                    <Label  Content="Portable" Canvas.Top="76"/>
-                    <TextBox Width="126" RenderTransformOrigin="2.259,5.427" Canvas.Left="76" Canvas.Top="84" />
-                    <Label  Content="Adresse" Canvas.Left="2" Canvas.Top="111"/>
-                    <TextBox Canvas.Left="76" Canvas.Top="119" Width="126" />
+            <Border Grid.Column="0" Margin="10" BorderBrush="Aqua" BorderThickness="2">
+                <Grid Margin="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="31*"/>
+                        <RowDefinition Height="190*"/>
+                        <RowDefinition Height="50*"/>
 
-                    <Label   Canvas.Top="160">
-                        <TextBlock>
-                            Date de <LineBreak/> naissance
-                        </TextBlock>
-                    </Label>
-                    <TextBox Canvas.Left="76" Canvas.Top="172" Width="126" />
+                    </Grid.RowDefinitions>
+                    <Label  Content="Champs de recherche désirés" FontSize="18" HorizontalContentAlignment="Center" FontFamily="ArialBlack" Grid.Row="0" Background="AliceBlue"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="116*"/>
+                            <ColumnDefinition Width="233*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
+                            <RowDefinition Height="35*"/>
 
-                </Canvas>
+                        </Grid.RowDefinitions>
 
-            </Grid>
+                        <Label  Content="Nom"  Grid.Row="0" Grid.Column="0" />
+                        <TextBox Grid.Row="0" Grid.Column="1" Margin="10,4,13,4" />
+                        <Label  Content="Prenom" Grid.Row="1" Grid.Column="0"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Margin="10,4,13,4"/>
+                        <Label  Content="Portable" Grid.Row="2" Grid.Column="0"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Margin="10,4,13,4" />
+                        <Label  Content="Adresse" Grid.Row="3" Grid.Column="0"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Margin="10,4,13,4"/>
+
+                        <Label Content="Date de  naissance" Grid.Row="4" Grid.Column="0"/>
+
+                        <TextBox Grid.Row="4" Grid.Column="1" Margin="10,4,13,4"/>
+
+                    </Grid>
+                    <Button x:Name="btn_identClient_nouveau_client" Content="Nouveau client" Grid.Row="2" Margin="10,10,10,5" Click="btn_identClient_nouveau_client_Click" />
 
 
-        </Border>
-        <Border Grid.Column="1">
-            <Canvas>
-                <TextBox Canvas.Left="42" Canvas.Top="53" Width="149"/>
-                <TextBox Canvas.Left="42" Canvas.Top="112" Width="149"/>
-                <Button Content="Rechercher" Canvas.Left="69" Canvas.Top="174"/>
+                </Grid>
 
 
-            </Canvas>
-        </Border>
+            </Border>
 
-        <Border Margin="10" BorderBrush="Aqua" BorderThickness="2" Grid.Column="2">
-            <Grid Margin="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="31*"/>
-                    <RowDefinition Height="245*"/>
-                </Grid.RowDefinitions>
+            <Border Margin="10,10,10,10" BorderBrush="Aqua" BorderThickness="2" Grid.Column="1">
+                <Grid Margin="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="31*"/>
+                        <RowDefinition Height="241*"/>
 
-                <Label Content="Resultat de la recherche"  Background="AliceBlue" Grid.Row="0" />
+                    </Grid.RowDefinitions>
 
-            </Grid>
-        </Border>
-    </Grid>
+                    <Label Content="Résultat de la recherche" FontSize="18" HorizontalContentAlignment="Center" Background="AliceBlue" Grid.Row="0" />
+
+
+                    <Grid Margin="5" Grid.Row="1" x:Name="grid_identClient_restRech">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="86*"/>
+                            <ColumnDefinition Width="145*"/>
+                            <ColumnDefinition Width="95*"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                    
+
+
+                    
+
+                </Grid>
+            </Border>
+        </Grid>
+    </DockPanel>
 </UserControl>

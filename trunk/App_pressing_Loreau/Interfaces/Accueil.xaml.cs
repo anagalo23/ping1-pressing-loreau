@@ -24,6 +24,7 @@ namespace App_pressing_Loreau.Interfaces
         {
             InitializeComponent();
         }
+     
 
         private void btn_accueil_reception_Click(object sender, RoutedEventArgs e)
         {
@@ -34,16 +35,20 @@ namespace App_pressing_Loreau.Interfaces
 
         private void btn_accueil_rendu_Click(object sender, RoutedEventArgs e)
         {
+            dp.Children.Clear();
+
 
         }
 
         private void btn_accueil_facture_Click(object sender, RoutedEventArgs e)
         {
+            dp.Children.Clear();
 
         }
 
         private void btn_accueil_commandes_Click(object sender, RoutedEventArgs e)
         {
+            dp.Children.Clear();
 
         }
 
