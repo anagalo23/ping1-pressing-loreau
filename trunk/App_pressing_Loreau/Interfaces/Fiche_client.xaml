@@ -1,7 +1,7 @@
 ﻿<Window x:Class="App_pressing_Loreau.Interfaces.Fiche_client"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Fiche_client" Height="608.134" Width="1021.731" Background="Brown">
+        Title="Fiche_client" Height="608.134" Width="1021" Background="Brown">
     <Grid Margin="5,5,4,8">
         <Button Margin="257,0,548,94" Content="Modifier info" FontFamily="Arial" FontSize="18" VerticalAlignment="Bottom" Height="80" Width="200"/>
         <DockPanel >
