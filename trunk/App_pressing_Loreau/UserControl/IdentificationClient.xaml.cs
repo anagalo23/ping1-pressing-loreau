@@ -10,22 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace App_pressing_Loreau.Interfaces
+namespace App_pressing_Loreau
 {
     /// <summary>
-    /// Logique d'interaction pour Fiche_client.xaml
+    /// Logique d'interaction pour IndentificationClient.xaml
     /// </summary>
-    public partial class Fiche_client : Window
+    public partial class IdentificationClient
     {
-        public Fiche_client()
+        public IdentificationClient()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
 
         }
     }

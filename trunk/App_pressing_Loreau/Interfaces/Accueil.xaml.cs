@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace App_pressing_Loreau
+namespace App_pressing_Loreau.Interfaces
 {
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
@@ -25,29 +25,41 @@ namespace App_pressing_Loreau
             InitializeComponent();
         }
 
-        private void btn_reception_Click(object sender, RoutedEventArgs e)
+        private void btn_accueil_reception_Click(object sender, RoutedEventArgs e)
         {
-            new Recherche_client().Show();
+            IdentificationClient identificationClient = new IdentificationClient();
+            dp.Children.Clear();
+            dp.Children.Add(identificationClient);
         }
 
-        private void btn_rendu_Click(object sender, RoutedEventArgs e)
-        {
-            new RestitutionArticle().Show();
-        }
-
-        private void btn_retour_client_Click(object sender, RoutedEventArgs e)
-        {
-            new Identification_client().Show();
-        }
-
-        private void btn_derniere_commande_Click(object sender, RoutedEventArgs e)
+        private void btn_accueil_rendu_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void btn_administration_Click(object sender, RoutedEventArgs e)
+        private void btn_accueil_facture_Click(object sender, RoutedEventArgs e)
         {
-           // new Administration().show();
+
+        }
+
+        private void btn_accueil_commandes_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_accueil_client_pro_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_accueil_administrateur_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_accueil_convoyeur_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
 
