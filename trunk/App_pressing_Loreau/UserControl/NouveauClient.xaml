@@ -5,113 +5,122 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="740">
-
-    <Grid  Margin="5">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="37*"/>
-            <ColumnDefinition Width="36*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="97*"/>
-            <RowDefinition Height="97*"/>
-        </Grid.RowDefinitions>
-        <Border  HorizontalAlignment="Stretch" BorderBrush="AliceBlue"  BorderThickness="1" Margin="10" Grid.Row="0" Grid.Column="0">
-            <Grid >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="34*"/>
-                    <RowDefinition Height="189*"/>
-                </Grid.RowDefinitions>
-                <Label Grid.Row="0" Content="Informations de base" Background="AliceBlue"  FontFamily="Arial" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  />
-                <Grid Grid.Row="1" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="164*"/>
-                        <ColumnDefinition Width="173*"/>
-                    </Grid.ColumnDefinitions>
+    <DockPanel x:Name="dp">
+        <Grid  Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="37*"/>
+                <ColumnDefinition Width="36*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="97*"/>
+                <RowDefinition Height="97*"/>
+            </Grid.RowDefinitions>
+            <Border  HorizontalAlignment="Stretch" BorderBrush="AliceBlue"  BorderThickness="1" Margin="10" Grid.Row="0" Grid.Column="0">
+                <Grid >
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="25*"/>
-                        <RowDefinition Height="25*"/>
-                        <RowDefinition Height="25*"/>
-
-                    </Grid.RowDefinitions>
-
-                    <Label Content="Nom :" Grid.Row="0" Grid.Column="0"  VerticalAlignment="Center"/>
-                    <TextBox Grid.Row="0" Grid.Column="1" Margin="10"/>
-                    <Label Content="Prénom :" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
-                    <TextBox  Grid.Row="1" Grid.Column="1" Margin="10"/>
-                    <Label Content="Date de naissance :" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
-                    <TextBox Grid.Row="2"  Grid.Column="1" Margin="10"/>
-
-                </Grid>
-            </Grid>
-        </Border>
-
-        <Border  HorizontalAlignment="Stretch" BorderBrush="AliceBlue"  BorderThickness="1" Margin="10" Grid.Row="1" Grid.Column="0">
-            <Grid >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="34*"/>
-                    <RowDefinition Height="189*"/>
-                </Grid.RowDefinitions>
-                <Label Grid.Row="0" Content="Adresses" Background="AliceBlue"  FontFamily="Arial" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  />
-                <Grid Grid.Row="1" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="164*"/>
-                        <ColumnDefinition Width="173*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="43*"/>
-                        <RowDefinition Height="43*"/>
-                        <RowDefinition Height="29*"/>
                         <RowDefinition Height="34*"/>
-
+                        <RowDefinition Height="189*"/>
                     </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Content="Informations de base" Background="AliceBlue"  FontFamily="Arial" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  />
+                    <Grid Grid.Row="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="164*"/>
+                            <ColumnDefinition Width="173*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25*"/>
+                            <RowDefinition Height="25*"/>
+                            <RowDefinition Height="25*"/>
 
-                    <Label Content="Numéro :" Grid.Row="0" Grid.Column="0"  VerticalAlignment="Center" />
-                    <TextBox Grid.Row="0" Grid.Column="1" Margin="10"/>
-                    <Label Content="Rue, voie :" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" />
-                    <TextBox  Grid.Row="1" Grid.Column="1" Margin="10"/>
-                    <Label Content="BP :" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" />
-                    <TextBox Grid.Row="2"  Grid.Column="1" Margin="10" />
-                    <Label Content="Ville" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"/>
-                    <TextBox  Grid.Row="3" Grid.Column="1" Margin="10"/>
+                        </Grid.RowDefinitions>
 
+                        <Label Content="Nom :" Grid.Row="0" Grid.Column="0"  VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Margin="10"/>
+                        <Label Content="Prénom :" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
+                        <TextBox  Grid.Row="1" Grid.Column="1" Margin="10"/>
+                        <Label Content="Date de naissance :" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="2"  Grid.Column="1" Margin="10"/>
+
+                    </Grid>
                 </Grid>
-            </Grid>
+            </Border>
 
-        </Border>
-
-        <Border  HorizontalAlignment="Stretch" BorderBrush="AliceBlue"  BorderThickness="1" Margin="10" Grid.Row="0" Grid.Column="1">
-            <Grid >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="34*"/>
-                    <RowDefinition Height="189*"/>
-                </Grid.RowDefinitions>
-                <Label Grid.Row="0" Content="Informations de base" Background="AliceBlue"  FontFamily="Arial" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  />
-                <Grid Grid.Row="1" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="164*"/>
-                        <ColumnDefinition Width="173*"/>
-                    </Grid.ColumnDefinitions>
+            <Border  HorizontalAlignment="Stretch" BorderBrush="AliceBlue"  BorderThickness="1" Margin="10" Grid.Row="1" Grid.Column="0">
+                <Grid >
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="25*"/>
-                        <RowDefinition Height="25*"/>
-                        <RowDefinition Height="25*"/>
-
+                        <RowDefinition Height="34*"/>
+                        <RowDefinition Height="189*"/>
                     </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Content="Adresses" Background="AliceBlue"  FontFamily="Arial" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  />
+                    <Grid Grid.Row="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="164*"/>
+                            <ColumnDefinition Width="173*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="43*"/>
+                            <RowDefinition Height="43*"/>
+                            <RowDefinition Height="29*"/>
+                            <RowDefinition Height="34*"/>
 
-                    <Label Content="Nom :" Grid.Row="0" Grid.Column="0"  VerticalAlignment="Center"/>
-                    <TextBox Grid.Row="0" Grid.Column="1" Margin="10"/>
-                    <Label Content="Prénom :" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
-                    <TextBox  Grid.Row="1" Grid.Column="1" Margin="10"/>
-                    <Label Content="Date de naissance :" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
-                    <TextBox Grid.Row="2"  Grid.Column="1" Margin="10"/>
+                        </Grid.RowDefinitions>
 
+                        <Label Content="Numéro :" Grid.Row="0" Grid.Column="0"  VerticalAlignment="Center" />
+                        <TextBox Grid.Row="0" Grid.Column="1" Margin="10"/>
+                        <Label Content="Rue, voie :" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" />
+                        <TextBox  Grid.Row="1" Grid.Column="1" Margin="10"/>
+                        <Label Content="BP :" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" />
+                        <TextBox Grid.Row="2"  Grid.Column="1" Margin="10" />
+                        <Label Content="Ville" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"/>
+                        <TextBox  Grid.Row="3" Grid.Column="1" Margin="10"/>
+
+                    </Grid>
                 </Grid>
-            </Grid>
+
+            </Border>
+
+            <Border  HorizontalAlignment="Stretch" BorderBrush="AliceBlue"  BorderThickness="1" Margin="10" Grid.Row="0" Grid.Column="1">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="34*"/>
+                        <RowDefinition Height="189*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Content="Communication avec le client " Background="AliceBlue"  FontFamily="Arial" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  />
+                    <Grid Grid.Row="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="107*"/>
+                            <ColumnDefinition Width="62*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50*"/>
+                            <RowDefinition Height="50*"/>
+                            <RowDefinition Height="50*"/>
+                            <RowDefinition Height="50*"/>
+
+                        </Grid.RowDefinitions>
+
+                        <Label  Grid.Row="0" Grid.Column="0"   VerticalContentAlignment="Center" >
+                            <TextBlock > Souhaitez vous recevoir des  informations <LineBreak/> par SMS?</TextBlock>
+                        </Label>
+                        <CheckBox  VerticalContentAlignment="Center" Margin="5" Grid.Row="0" Grid.Column="1"/>
+                        <Label Content="Portable :" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" />
+                        <TextBox  Grid.Row="1" Grid.Column="1" Margin="5"/>
+                        <Label  Grid.Row="2" Grid.Column="0" >
+                            <TextBlock> Souhaitez vous recevoir des  informations <LineBreak/> par Mail?</TextBlock>
+                        </Label>
+                        <CheckBox Grid.Row="2" Margin="5"  Grid.Column="1" VerticalContentAlignment="Center" />
+                        <Label Content="Mail:" Grid.Row="3" Grid.Column="0"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Margin="5"/>
+
+                    </Grid>
+                </Grid>
 
 
-        </Border>
+            </Border>
 
-    </Grid>
+            <Button x:Name="btn_nouveauClient_valider_inscription" Content="Valider l'inscription" Grid.Row="1" Grid.Column="1" Margin="110,150,55,55" Click="btn_nouveauClient_valider_inscription_Click"/>
 
+        </Grid>
+    </DockPanel>
 
 </UserControl>

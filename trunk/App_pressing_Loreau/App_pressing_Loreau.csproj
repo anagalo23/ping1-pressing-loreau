@@ -136,11 +136,17 @@
     <Compile Include="UserControl\NouveauClient.xaml.cs">
       <DependentUpon>NouveauClient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\NouvelleCommande.xaml.cs">
+      <DependentUpon>NouvelleCommande.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControl\page_principal.xaml.cs">
       <DependentUpon>page_principal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\Paiement.xaml.cs">
+      <DependentUpon>Paiement.xaml</DependentUpon>
     </Compile>
     <Page Include="Interfaces\Administration.xaml">
       <SubType>Designer</SubType>
@@ -226,11 +232,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControl\NouvelleCommande.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControl\Page1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControl\page_principal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\Paiement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

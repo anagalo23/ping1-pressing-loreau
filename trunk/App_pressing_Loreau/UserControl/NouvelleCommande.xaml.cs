@@ -16,20 +16,19 @@ using System.Windows.Shapes;
 namespace App_pressing_Loreau
 {
     /// <summary>
-    /// Logique d'interaction pour NouveauClient.xaml
+    /// Logique d'interaction pour NouvelleCommande.xaml
     /// </summary>
-    public partial class NouveauClient
+    public partial class NouvelleCommande 
     {
-        public NouveauClient()
+        public NouvelleCommande()
         {
             InitializeComponent();
         }
 
-        private void btn_nouveauClient_valider_inscription_Click(object sender, RoutedEventArgs e)
+        private void btn_nouvelleCommande_paiement_immediat_Click(object sender, RoutedEventArgs e)
         {
             dp.Children.Clear();
-            dp.Children.Add(new NouvelleCommande());
+            dp.Children.Add(new Paiement());
         }
-
     }
 }

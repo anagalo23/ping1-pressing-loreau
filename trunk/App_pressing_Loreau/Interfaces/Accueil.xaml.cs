@@ -67,6 +67,16 @@ namespace App_pressing_Loreau.Interfaces
 
         }
 
+        private void btn_accueil_image_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void btn_user6_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
 
 
     }
