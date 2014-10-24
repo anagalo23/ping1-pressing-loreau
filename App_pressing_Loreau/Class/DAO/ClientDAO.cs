@@ -12,7 +12,7 @@ namespace LoreauApplication.Class.DAO
     {
         public static int insertClient(Client client)
         {
-            String sql = "INSERT INTO client(clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway) VALUES (\"@nom\",\"@prenom\",\"@telfix\",\"@telport\",\"@adresse\",\"@dateNaissance\",\"@email\",\"@dateInsc\",\"@idCleanWay\");";
+            String sql = "INSERT INTO client(clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway, clt_contactmail, clt_contactsms) VALUES (\"@nom\",\"@prenom\",\"@telfix\",\"@telport\",\"@adresse\",\"@dateNaissance\",\"@email\",\"@dateInsc\",\"@idCleanWay\",\"@contactMail\",\"@contactSms\");";
 
             //connection à la base de données   
             MySqlConnection connection = Bdd.connexion();
@@ -28,6 +28,8 @@ namespace LoreauApplication.Class.DAO
             cmd.Parameters.AddWithValue("email", client.email);
             cmd.Parameters.AddWithValue("dateInsc", String.Format("{0:YYYYMMddHHmmss}", client.dateInscription)); //parametre date sous format annee + mois + jour + heure + minute + seconde
             cmd.Parameters.AddWithValue("idCleanWay", client.idCleanWay);
+            cmd.Parameters.AddWithValue("contactMail", client.contactMail);
+            cmd.Parameters.AddWithValue("contactSms", client.contactSms);
 
             //Execute la commande
             try
@@ -41,16 +43,16 @@ namespace LoreauApplication.Class.DAO
             }
         }
 
-        public static List<Client> seekClient(String nom, String prenom, String tel)
+        public static List<Client> seekClients(String nom, String prenom, String tel)
         {
 
             List<Client> retour = new List<Client>();
 
             bool ifPreviousElementSearch = false; //variable servant a verifier si un élément de recheche a déja été inséré. Sert notament au AND de la requete.
 
-            String sql = "SELECT clt_id, clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway FROM client WHERE ";
+            String sql = "SELECT clt_id, clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway, clt_contactmail, clt_contactsms FROM client WHERE ";
 
-            #region complete la requete en fonction de la recherche voulu
+            #region complete la requete en fonction de la recherche voulue
             if (nom != null)
             {
                 String.Format("{0}{1}", sql, "clt_nom=\"@nom\"");
@@ -68,6 +70,7 @@ namespace LoreauApplication.Class.DAO
                 String.Format("{0}{1}", sql, "(clt_fix=\"@tel\" OR clt_mob = \"@tel\")");
                 ifPreviousElementSearch = true;
             }
+            if (!ifPreviousElementSearch) String.Format("{0}{1}", sql, "1=1");
             String.Format("{0}{1}", sql, " ORDER BY clt_nom ASC;");
             #endregion
 
@@ -84,9 +87,10 @@ namespace LoreauApplication.Class.DAO
             try
             {
                 MySqlDataReader msdr = cmd.ExecuteReader();
+                Client client;
                 while (msdr.Read())
                 {
-                    retour.Add(new Client(msdr["clt_nom"].ToString(),
+                    client = new Client(msdr["clt_nom"].ToString(),
                         msdr["clt_prenom"].ToString(),
                         msdr["clt_fix"].ToString(),
                         msdr["clt_mob"].ToString(),
@@ -94,7 +98,10 @@ namespace LoreauApplication.Class.DAO
                         DateTime.Parse(msdr["clt_dateNaissance"].ToString()),
                         msdr["clt_email"].ToString(),
                         DateTime.Parse(msdr["clt_dateInscription"].ToString()),
-                        Int32.Parse(msdr["clt_idCleanway"].ToString())));
+                        Int32.Parse(msdr["clt_idCleanway"].ToString()));
+                    client.setContactMail(Int32.Parse(msdr["clt_contactmail"].ToString()));
+                    client.setContactSms(Int32.Parse(msdr["clt_contactsms"].ToString()));
+                    retour.Add(client);
                 }
                 msdr.Dispose();
                 return retour;

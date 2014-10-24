@@ -19,8 +19,8 @@ namespace LoreauApplication.Class.DTO
         public string email { get; set; }
         public DateTime dateInscription { get; set; }
         public int idCleanWay { get; set; }
-
-
+        public bool contactMail { get; set; }
+        public bool contactSms { get; set; }
 
         
         #endregion
@@ -40,6 +40,37 @@ namespace LoreauApplication.Class.DTO
             this.idCleanWay = idCleanWay;
         }
 
+        public void setContactMail(int contactInt)
+        {
+            switch (contactInt)
+            {
+                case 0:
+                    contactMail = false;
+                    break;
+                case 1:
+                    contactMail = true;
+                    break;
+                default:
+                    //EERRRRRRRRRRRRROOOOOOOOOORRRRRRRR
+                    break;
+            }
+        }
+
+        public void setContactSms(int contactInt)
+        {
+            switch (contactInt)
+            {
+                case 0:
+                    contactSms = false;
+                    break;
+                case 1:
+                    contactSms = true;
+                    break;
+                default:
+                    //EERRRRRRRRRRRRROOOOOOOOOORRRRRRRR
+                    break;
+            }
+        }
         #endregion
 
 
