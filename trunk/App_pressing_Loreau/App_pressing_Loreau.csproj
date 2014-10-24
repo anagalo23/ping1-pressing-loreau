@@ -164,7 +164,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Interfaces\InterfaceAccueil.xaml">
+    <Page Include="Interfaces\Accueil.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -172,8 +172,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Interfaces\MainWindow.xaml.cs">
-      <DependentUpon>InterfaceAccueil.xaml</DependentUpon>
+    <Compile Include="Interfaces\Accueil.xaml.cs">
+      <DependentUpon>Accueil.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Interfaces\Lectures.xaml">
