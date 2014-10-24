@@ -133,6 +133,9 @@
     <Compile Include="UserControl\IdentificationClient.xaml.cs">
       <DependentUpon>IdentificationClient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\NouveauClient.xaml.cs">
+      <DependentUpon>NouveauClient.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
@@ -216,6 +219,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControl\IdentificationClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\NouveauClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

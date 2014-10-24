@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using App_pressing_Loreau.Interfaces;
+
 namespace App_pressing_Loreau
 {
     /// <summary>
@@ -23,7 +25,24 @@ namespace App_pressing_Loreau
         public IdentificationClient()
         {
             InitializeComponent();
+            
 
         }
+
+        private void btn_identClient_valider_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_identClient_nouveau_client_Click(object sender, RoutedEventArgs e)
+        {
+            NouveauClient nouveauClient = new NouveauClient();
+            dp.Children.Clear();
+            dp.Children.Add(nouveauClient);
+
+           
+            
+        }
+
     }
 }
