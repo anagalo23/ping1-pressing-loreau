@@ -19,6 +19,10 @@ namespace LoreauApplication.Class.DTO
         public string email { get; set; }
         public DateTime dateInscription { get; set; }
         public int idCleanWay { get; set; }
+
+
+
+        
         #endregion
 
         #region classes
