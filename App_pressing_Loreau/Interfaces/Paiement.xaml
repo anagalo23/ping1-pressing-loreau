@@ -26,7 +26,7 @@
         <StackPanel  Margin="284,10,25,71">
             <Canvas Height="360" HorizontalAlignment="Left" Width="446">
                 <Label Content="Mode de paiement" Canvas.Left="46" Canvas.Top="30" Width="115"/>
-                <ComboBox Canvas.Left="111" Canvas.Top="60" Width="130" Height="30">
+                <ComboBox Canvas.Left="111" Canvas.Top="60" Width="130" Height="30" >
                     <ComboBoxItem Content="CB"/>
                     <ComboBoxItem Content="America Express"/>
                     <ComboBoxItem Content="Especes"/>
