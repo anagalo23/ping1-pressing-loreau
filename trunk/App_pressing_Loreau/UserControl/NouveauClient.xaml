@@ -34,12 +34,12 @@
 
                         </Grid.RowDefinitions>
 
-                        <Label Content="Nom :" Grid.Row="0" Grid.Column="0"  VerticalAlignment="Center"/>
-                        <TextBox Grid.Row="0" Grid.Column="1" Margin="10"/>
+                        <Label Content="Nom :"  Grid.Row="0" Grid.Column="0"  VerticalAlignment="Center"/>
+                        <TextBox x:Name="txb_nouveauClient_nom" Grid.Row="0" Grid.Column="1" Margin="10" />
                         <Label Content="Prénom :" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
-                        <TextBox  Grid.Row="1" Grid.Column="1" Margin="10"/>
+                        <TextBox x:Name="txb_nouveauClient_prenom" Grid.Row="1" Grid.Column="1" Margin="10"/>
                         <Label Content="Date de naissance :" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
-                        <TextBox Grid.Row="2"  Grid.Column="1" Margin="10"/>
+                        <TextBox x:Name="txb_nouveauClient_date_naissance" Grid.Row="2"  Grid.Column="1" Margin="10"/>
 
                     </Grid>
                 </Grid>
@@ -58,21 +58,21 @@
                             <ColumnDefinition Width="173*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="43*"/>
-                            <RowDefinition Height="43*"/>
-                            <RowDefinition Height="29*"/>
-                            <RowDefinition Height="34*"/>
+                            <RowDefinition Height="45*"/>
+                            <RowDefinition Height="45*"/>
+                            <RowDefinition Height="45*"/>
+                            <RowDefinition Height="45*"/>
 
                         </Grid.RowDefinitions>
 
-                        <Label Content="Numéro :" Grid.Row="0" Grid.Column="0"  VerticalAlignment="Center" />
-                        <TextBox Grid.Row="0" Grid.Column="1" Margin="10"/>
-                        <Label Content="Rue, voie :" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" />
-                        <TextBox  Grid.Row="1" Grid.Column="1" Margin="10"/>
-                        <Label Content="BP :" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" />
-                        <TextBox Grid.Row="2"  Grid.Column="1" Margin="10" />
-                        <Label Content="Ville" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"/>
-                        <TextBox  Grid.Row="3" Grid.Column="1" Margin="10"/>
+                        <Label Content="Numéro :"  Grid.Row="0" Grid.Column="0"  VerticalAlignment="Center" Height="26" Margin="0,12" />
+                        <TextBox x:Name="txb_nouveauClient_numero" Grid.Row="0" Grid.Column="1" Margin="10"/>
+                        <Label  Content="Rue, voie :" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Height="26" Margin="0,12" />
+                        <TextBox x:Name="txb_nouveauClient_rue_voie" Grid.Row="1" Grid.Column="1" Margin="10"/>
+                        <Label Content="BP :" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Height="26" Margin="0,10" />
+                        <TextBox x:Name="txb_nouveauClient_bp" Grid.Row="2"  Grid.Column="1" Margin="10" />
+                        <Label Content="Ville" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Height="26" Margin="0,8,0,9"/>
+                        <TextBox x:Name="txb_nouveauClient_ville" Grid.Row="3" Grid.Column="1" Margin="10"/>
 
                     </Grid>
                 </Grid>
@@ -102,15 +102,15 @@
                         <Label  Grid.Row="0" Grid.Column="0"   VerticalContentAlignment="Center" >
                             <TextBlock > Souhaitez vous recevoir des  informations <LineBreak/> par SMS?</TextBlock>
                         </Label>
-                        <CheckBox  VerticalContentAlignment="Center" Margin="5" Grid.Row="0" Grid.Column="1"/>
+                        <CheckBox x:Name="ckb_nouveauClient_sms"  VerticalContentAlignment="Center" Margin="5" Grid.Row="0" Grid.Column="1" />
                         <Label Content="Portable :" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" />
-                        <TextBox  Grid.Row="1" Grid.Column="1" Margin="5"/>
+                        <TextBox x:Name="txb_nouveauClient_portable"  Grid.Row="1" Grid.Column="1" Margin="5"/>
                         <Label  Grid.Row="2" Grid.Column="0" >
                             <TextBlock> Souhaitez vous recevoir des  informations <LineBreak/> par Mail?</TextBlock>
                         </Label>
-                        <CheckBox Grid.Row="2" Margin="5"  Grid.Column="1" VerticalContentAlignment="Center" />
+                        <CheckBox x:Name="ckb_nouveauClient_mail" Grid.Row="2" Margin="5"  Grid.Column="1" VerticalContentAlignment="Center" />
                         <Label Content="Mail:" Grid.Row="3" Grid.Column="0"/>
-                        <TextBox Grid.Row="3" Grid.Column="1" Margin="5"/>
+                        <TextBox x:Name="txb_nouveauClient_mail"  Grid.Row="3" Grid.Column="1" Margin="5"/>
 
                     </Grid>
                 </Grid>
@@ -118,7 +118,7 @@
 
             </Border>
 
-            <Button x:Name="btn_nouveauClient_valider_inscription" Content="Valider l'inscription" Grid.Row="1" Grid.Column="1" Margin="110,150,55,55" Click="btn_nouveauClient_valider_inscription_Click"/>
+            <Button x:Name="btn_nouveauClient_valider_inscription" Content="Valider l'inscription" Grid.Row="1" Grid.Column="1" Margin="80,75" Click="btn_nouveauClient_valider_inscription_Click"/>
 
         </Grid>
     </DockPanel>
