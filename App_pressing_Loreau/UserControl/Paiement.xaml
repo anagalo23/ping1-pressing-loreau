@@ -26,8 +26,12 @@
                 </Grid.RowDefinitions>
 
                 <Label Content="Prix HT :"  VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="0"/>
+                <Label x:Name="label_paiement_prix_ht" Grid.Row="0" Grid.Column="1" Margin="5" Content="X €" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="Azure"/>
+                
                 <Label Content="Remise :" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="0"/>
+                <Label x:Name="label_paiement_remise" Grid.Row="1" Grid.Column="1" Background="Azure" Content="X €" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="5"/>
                 <Label Content="Prix TTC :" VerticalContentAlignment="Center" Grid.Row="2" Grid.Column="0"/>
+                <Label x:Name="label_paiement_prix_ttc" Grid.Row="2" Grid.Column="1" Background="Azure" Margin="5" Content="X €" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                 <Button x:Name="btn_paiement_RRR" Grid.Row="3" Grid.Column="1"  Margin="15" Click="btn_paiement_RRR_Click">
                     <TextBlock FontSize="20">
                         Rabais <LineBreak/> Remise <LineBreak/> Ristourne
@@ -48,16 +52,16 @@
                     <RowDefinition Height="27*"/>
                 </Grid.RowDefinitions>
                 <Label Content="Mode de paiement" Grid.Row="0" VerticalContentAlignment="Center"/>
-                <ComboBox  x:Name="conbobox_paimeent_choixPaiement" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" Grid.Row="0" Grid.Column="1" Margin="10">
+                <ComboBox  x:Name="conbobox_paimeent_choixPaiement" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" Grid.Row="0" Grid.Column="1" Margin="10" Foreground="red"  Background="Azure">
                     <ComboBoxItem x:Name="cbi_paiment_choixCB" Content="CB"/>
                     <ComboBoxItem x:Name="cbi_paiement_choixAmericaExpress" Content="America Express"/>
                     <ComboBoxItem x:Name="cbi_paiement_choixEspèces" Content="Especes"/>
                 </ComboBox>
                 <Label Content="Montant" Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center"/>
-                <Label x:Name="label_paiement_montant" Content="xy €" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Label x:Name="label_paiement_montant" Content="xy €" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="Azure" Margin="5"/>
                 
                 <Label Content="Reste dû" Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center"/>
-                <Label x:Name="label_paiement_reste_du" Content="x €" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Label x:Name="label_paiement_reste_du" Content="x €" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="5,30" Background="Azure"/>
      
             </Grid>
             

@@ -20,6 +20,7 @@ namespace App_pressing_Loreau.Interfaces
     /// </summary>
     public partial class Accueil : Window
     {
+
         public Accueil()
         {
             InitializeComponent();
