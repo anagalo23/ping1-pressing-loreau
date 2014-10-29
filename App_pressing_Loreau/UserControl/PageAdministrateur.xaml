@@ -21,7 +21,7 @@
             <Button x:Name="btn_pageAdministrateur_administration_clients" Content="Administration clients" Grid.Column="1" Grid.Row="0" Margin="10,10,10,10"/>
             <Button x:Name="btn_pageAdministrateur_administration_commandes" Content="Administration commandes" Grid.Column="2" Grid.Row="0" Margin="10,10,10,10"/>
             <Button x:Name="btn_pageAdministrateur_gestion_utilisateur" Content="Gestion des utilisateurs" Grid.Column="0" Grid.Row="1" Margin="10,10,10,10"/>
-            <Button  x:Name="btn_pageAdministrateur_statistiques" Content="Statistiques" Grid.Column="1" Grid.Row="1" Margin="10,10,10,10" />
+            <Button  x:Name="btn_pageAdministrateur_statistiques" Content="Statistiques" Grid.Column="1" Grid.Row="1" Margin="10,10,10,10" Click="btn_pageAdministrateur_statistiques_Click" />
             <Button  x:Name="btn_pageAdministrateur_journal_utilisation" Content="Journal d'utilisation" Grid.Column="2" Grid.Row="1" Margin="10,10,10,10"/>
             <Button  x:Name="btn_pageAdministrateur_parametre_utilisation" Content="Paramètre d'utilisation" Grid.Column="0" Grid.Row="2" Margin="10,10,10,10" />
             <Button  x:Name="btn_pageAdministrateur_parametre_impression" Content="Paramètre d'impression" Grid.Column="1" Grid.Row="2" Margin="10,10,10,10"/>
