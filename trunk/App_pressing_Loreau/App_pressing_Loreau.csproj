@@ -154,6 +154,9 @@
     <Compile Include="UserControl\RestitutionArticles.xaml.cs">
       <DependentUpon>RestitutionArticles.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\Statistiques.xaml.cs">
+      <DependentUpon>Statistiques.xaml</DependentUpon>
+    </Compile>
     <Page Include="Interfaces\Administration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -259,6 +262,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControl\RestitutionArticles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\Statistiques.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

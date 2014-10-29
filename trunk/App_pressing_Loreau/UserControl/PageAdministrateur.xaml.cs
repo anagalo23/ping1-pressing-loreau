@@ -16,13 +16,19 @@ using System.Windows.Shapes;
 namespace App_pressing_Loreau
 {
     /// <summary>
-    /// Logique d'interaction pour Page1.xaml
+    /// Logique d'interaction pour PageAdministrateur.xaml
     /// </summary>
     public partial class PageAdministrateur
     {
         public PageAdministrateur()
         {
             InitializeComponent();
+        }
+
+        private void btn_pageAdministrateur_statistiques_Click(object sender, RoutedEventArgs e)
+        {
+            dp.Children.Clear();
+            dp.Children.Add(new Statistiques());
         }
     }
 }
