@@ -30,5 +30,10 @@ namespace App_pressing_Loreau
             dp.Children.Clear();
             dp.Children.Add(new Paiement());
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

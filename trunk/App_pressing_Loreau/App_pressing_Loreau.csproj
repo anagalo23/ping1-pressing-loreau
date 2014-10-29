@@ -106,8 +106,8 @@
     <Compile Include="Interfaces\Lectures.xaml.cs">
       <DependentUpon>Lectures.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\Paiement.xaml.cs">
-      <DependentUpon>Paiement.xaml</DependentUpon>
+    <Compile Include="Interfaces\PaiementFini.xaml.cs">
+      <DependentUpon>PaiementFini.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\Parametre_affichage.xaml.cs">
       <DependentUpon>Parametre_affichage.xaml</DependentUpon>
@@ -130,6 +130,9 @@
     <Compile Include="Interfaces\EditionDeFactures.xaml.cs">
       <DependentUpon>EditionDeFactures.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\IdentificationAdmin.xaml.cs">
+      <DependentUpon>IdentificationAdmin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\IdentificationClient.xaml.cs">
       <DependentUpon>IdentificationClient.xaml</DependentUpon>
     </Compile>
@@ -139,14 +142,17 @@
     <Compile Include="UserControl\NouvelleCommande.xaml.cs">
       <DependentUpon>NouvelleCommande.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\Page1.xaml.cs">
-      <DependentUpon>Page1.xaml</DependentUpon>
+    <Compile Include="UserControl\PageAdministrateur.xaml.cs">
+      <DependentUpon>PageAdministrateur.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControl\page_principal.xaml.cs">
       <DependentUpon>page_principal.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControl\Paiement.xaml.cs">
       <DependentUpon>Paiement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\RestitutionArticles.xaml.cs">
+      <DependentUpon>RestitutionArticles.xaml</DependentUpon>
     </Compile>
     <Page Include="Interfaces\Administration.xaml">
       <SubType>Designer</SubType>
@@ -192,7 +198,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Interfaces\Paiement.xaml">
+    <Page Include="Interfaces\PaiementFini.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -224,6 +230,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControl\IdentificationAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControl\IdentificationClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -236,7 +246,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControl\Page1.xaml">
+    <Page Include="UserControl\PageAdministrateur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -245,6 +255,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControl\Paiement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\RestitutionArticles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

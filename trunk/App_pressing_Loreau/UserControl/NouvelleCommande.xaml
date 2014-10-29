@@ -65,9 +65,9 @@
                             <RowDefinition Height="9*"/>
                             <RowDefinition Height="9*"/>
                         </Grid.RowDefinitions>
-                        <TextBox Grid.Row="0" Margin="8,10,13,10"/>
-                        <TextBox Grid.Row="1" Margin="8,10"/>
-                        <TextBox Grid.Row="2" Margin="8,10"/>
+                        <TextBox Grid.Row="0" Margin="8,10,13,10"  VerticalContentAlignment="Center"/>
+                        <TextBox Grid.Row="1" Margin="8,10"  VerticalContentAlignment="Center"/>
+                        <TextBox Grid.Row="2" Margin="8,10"  VerticalContentAlignment="Center"/>
                     </Grid>
 
                     <Grid Grid.Row="2">

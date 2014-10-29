@@ -16,7 +16,7 @@
                        FontFamily="Arial" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="8,-3,0,0"/>
 
                     <ComboBox HorizontalAlignment="Left" Margin ="15,14,0,106" Width="147" Grid.Column="0" Grid.Row="1"
-                              FontFamily="Arial" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="50">
+                              FontFamily="Arial" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="50" SelectionChanged="ComboBox_SelectionChanged">
 
                         <ComboBoxItem IsSelected="True" x:Name="cbb_id_client">Id client</ComboBoxItem>
                         <ComboBoxItem x:Name="cbb_nom">Nom</ComboBoxItem>
