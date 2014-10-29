@@ -10,23 +10,28 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace App_pressing_Loreau
 {
     /// <summary>
-    /// Logique d'interaction pour Identification_client.xaml
+    /// Logique d'interaction pour RestitutionClient.xaml
     /// </summary>
-    public partial class Identification_client : Window
+    public partial class RestitutionArticles
     {
-        public Identification_client()
+        public RestitutionArticles()
         {
             InitializeComponent();
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void btn_restitutionArticles_suivant_Click(object sender, RoutedEventArgs e)
         {
-
+            dp.Children.Clear();
+            dp.Children.Add(new Paiement());
         }
+
+
+       
     }
 }

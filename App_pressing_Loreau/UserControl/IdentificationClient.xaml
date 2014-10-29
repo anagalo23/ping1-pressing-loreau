@@ -37,18 +37,16 @@
 
                         </Grid.RowDefinitions>
 
-                        <Label  Content="Nom"  Grid.Row="0" Grid.Column="0" />
-                        <TextBox x:Name="txb_identificationClient_nom" Grid.Row="0" Grid.Column="1" Margin="10,4,13,4" />
-                        <Label  Content="Prenom" Grid.Row="1" Grid.Column="0"/>
-                        <TextBox x:Name="txb_identificationClient_prenom" Grid.Row="1" Grid.Column="1" Margin="10,4,13,4"/>
-                        <Label  Content="Portable" Grid.Row="2" Grid.Column="0"/>
-                        <TextBox x:Name="txb_identificationClient_portable" Grid.Row="2" Grid.Column="1" Margin="10,4,13,4" />
-                        <Label  Content="Adresse" Grid.Row="3" Grid.Column="0"/>
-                        <TextBox x:Name="txb_identificationClient_adresse" Grid.Row="3" Grid.Column="1" Margin="10,4,13,4"/>
-
-                        <Label Content="Date de  naissance" Grid.Row="4" Grid.Column="0"/>
-
-                        <TextBox x:Name="txb_identificationClient_date_naissance" Grid.Row="4" Grid.Column="1" Margin="10,4,13,4"/>
+                        <Label  Content="Nom"  Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center" />
+                        <TextBox x:Name="txb_identificationClient_nom" Grid.Row="0" Grid.Column="1" Margin="10,4,13,4"  VerticalContentAlignment="Center" />
+                        <Label  Content="Prenom" Grid.Row="1" Grid.Column="0"  VerticalContentAlignment="Center"/>
+                        <TextBox x:Name="txb_identificationClient_prenom" Grid.Row="1" Grid.Column="1" Margin="10,4,13,4"  VerticalContentAlignment="Center"/>
+                        <Label  Content="Portable" Grid.Row="2" Grid.Column="0"  VerticalContentAlignment="Center"/>
+                        <TextBox x:Name="txb_identificationClient_portable" Grid.Row="2" Grid.Column="1" Margin="10,4,13,4"   VerticalContentAlignment="Center"/>
+                        <Label  Content="Adresse" Grid.Row="3" Grid.Column="0"  VerticalContentAlignment="Center"/>
+                        <TextBox x:Name="txb_identificationClient_adresse" Grid.Row="3" Grid.Column="1" Margin="10,4,13,4"  VerticalContentAlignment="Center"/>
+                        <Label Content="Date de  naissance" Grid.Row="4" Grid.Column="0"  VerticalContentAlignment="Center"/>
+                        <TextBox x:Name="txb_identificationClient_date_naissance" Grid.Row="4" Grid.Column="1" Margin="10,4,13,4"  VerticalContentAlignment="Center"/>
 
                     </Grid>
                     <Button x:Name="btn_identClient_nouveau_client" Content="Nouveau client" Grid.Row="2" Margin="10,10,10,5" Click="btn_identClient_nouveau_client_Click" />

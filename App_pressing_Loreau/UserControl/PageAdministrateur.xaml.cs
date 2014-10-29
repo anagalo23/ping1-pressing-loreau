@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace App_pressing_Loreau.UserControl
+namespace App_pressing_Loreau
 {
     /// <summary>
     /// Logique d'interaction pour Page1.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class PageAdministrateur
     {
-        public Page1()
+        public PageAdministrateur()
         {
             InitializeComponent();
         }
