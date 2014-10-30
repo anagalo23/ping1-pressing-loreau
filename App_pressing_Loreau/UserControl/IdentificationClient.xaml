@@ -57,7 +57,7 @@
 
             </Border>
 
-            <Border Margin="10,10,10,10" BorderBrush="Aqua" BorderThickness="2" Grid.Column="1">
+            <Border Margin="10" BorderBrush="Aqua" BorderThickness="2" Grid.Column="1">
                 <Grid Margin="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="31*"/>
@@ -70,15 +70,15 @@
 
                     <Grid Margin="5" Grid.Row="1" x:Name="grid_identClient_restRech">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="86*"/>
-                            <ColumnDefinition Width="145*"/>
-                            <ColumnDefinition Width="95*"/>
+                            <ColumnDefinition Width="87"/>
+                            <ColumnDefinition Width="147*"/>
+                            <ColumnDefinition Width="97*"/>
                         </Grid.ColumnDefinitions>
                     </Grid>
-                    
 
 
-                    
+
+
 
                 </Grid>
             </Border>
