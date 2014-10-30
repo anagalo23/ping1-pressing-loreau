@@ -27,9 +27,7 @@
                 <Button x:Name="btn_accueil_client_pro" Content="client Pro" Grid.Column="4" Margin="5" Click="btn_accueil_client_pro_Click"/>
                 <Button x:Name="btn_accueil_impression" Content="Impressions" Grid.Column="5" Margin="5" Click="btn_accueil_impression_Click"/>
                 <Button x:Name="btn_accueil_administrateur" Content="Administrateur" Grid.Column="6" Margin="5" Click="btn_accueil_administrateur_Click"/>
-                <Button x:Name="btn_accueil_convoyeur" Content="Convoyeur" Grid.Column="3" Margin="5" Click="btn_accueil_convoyeur_Click"/>
-
-
+                <Button x:Name="btn_accueil_articles" Content="Articles" Grid.Column="3" Margin="5"/>
 
             </Grid>
         </DockPanel>
@@ -52,12 +50,12 @@
                 </Grid.ColumnDefinitions>
 
 
-                <Button x:Name="btn_user1" Content="USER 1" Grid.Row="0" Grid.Column="0" Margin="5" Click="btn_user1_Click" />
-                <Button x:Name="btn_user2" Content="USER 2" Grid.Row="0" Grid.Column="1" Margin="5" />
-                <Button x:Name="btn_user3" Content="USER 3" Grid.Row="1" Grid.Column="2" Margin="5" />
-                <Button x:Name="btn_user4" Content="USER 4" Grid.Row="1" Grid.Column="3" Margin="5"  />
-                <Button x:Name="btn_user5" Content="USER 5" Grid.Row="1" Grid.Column="4" Margin="5"  />
-                <Button x:Name="btn_user6" Content="USER 6" Grid.Row="1" Grid.Column="5" Margin="5" Click="btn_user6_Click"  />
+                <Button x:Name="btn_user1"  Content="USER 1"  Grid.Row="0" Grid.Column="0" Margin="5" Click="btn_user1_Click" />
+                <Button x:Name="btn_user2"  Content="USER 2" Grid.Row="0" Grid.Column="1" Margin="5" Click="btn_user1_Click" />
+                <Button x:Name="btn_user3"  Content="USER 3" Grid.Row="1" Grid.Column="2" Margin="5" Click="btn_user1_Click"/>
+                <Button x:Name="btn_user4"  Content="USER 4" Grid.Row="1" Grid.Column="3" Margin="5" Click="btn_user1_Click" />
+                <Button x:Name="btn_user5"  Content="USER 5" Grid.Row="1" Grid.Column="4" Margin="5" Click="btn_user1_Click" />
+                <Button x:Name="btn_user6" Content="USER 6" Grid.Row="1" Grid.Column="5" Margin="5" Click="btn_user1_Click"  />
                 <Button x:Name="btn_accueil_image" BorderBrush="White" Background="White" Grid.Row="0" Grid.Column="6"  Margin="5" 
                      Click="btn_accueil_image_Click">
                     <Image Source="/Image/home-logo.png"/>
