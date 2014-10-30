@@ -38,7 +38,7 @@
                         </Grid.ColumnDefinitions>
                         <Label Content="Dernières commandes     :" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="0"/>
                         <Canvas Grid.Column="1">
-                            <Label Background="White"   VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Canvas.Left="10" Canvas.Top="61" Height="38" Width="72"/>
+                            <Label Background="Bisque"   VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Canvas.Left="10" Canvas.Top="61" Height="38" Width="72"/>
                         </Canvas>
                         <Label Content="commande(s)"  VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Grid.Column="2" />
                     </Grid>
