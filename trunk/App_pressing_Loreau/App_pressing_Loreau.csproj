@@ -155,11 +155,17 @@
     <Compile Include="UserControl\Paiement.xaml.cs">
       <DependentUpon>Paiement.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\ParametresImpression.xaml.cs">
+      <DependentUpon>ParametresImpression.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\RestitutionArticles.xaml.cs">
       <DependentUpon>RestitutionArticles.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControl\Statistiques.xaml.cs">
       <DependentUpon>Statistiques.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\GestionUtilisateurs.xaml.cs">
+      <DependentUpon>GestionUtilisateurs.xaml</DependentUpon>
     </Compile>
     <Page Include="Interfaces\Administration.xaml">
       <SubType>Designer</SubType>
@@ -269,11 +275,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControl\ParametresImpression.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControl\RestitutionArticles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControl\Statistiques.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\GestionUtilisateurs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -309,6 +323,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\home-logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\logo_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\logo_exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\logo_edit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -30,5 +30,17 @@ namespace App_pressing_Loreau
             dp.Children.Clear();
             dp.Children.Add(new Statistiques());
         }
+
+        private void btn_pageAdministrateur_parametre_impression_Click(object sender, RoutedEventArgs e)
+        {
+            dp.Children.Clear();
+            dp.Children.Add(new ParametresImpression());
+        }
+
+        private void btn_pageAdministrateur_gestion_utilisateur_Click(object sender, RoutedEventArgs e)
+        {
+            dp.Children.Clear();
+            dp.Children.Add(new GestionUtilisateurs());
+        }
     }
 }
