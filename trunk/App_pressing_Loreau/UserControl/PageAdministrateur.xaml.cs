@@ -42,5 +42,11 @@ namespace App_pressing_Loreau
             dp.Children.Clear();
             dp.Children.Add(new GestionUtilisateurs());
         }
+
+        private void btn_pageAdministrateur_administration_commandes_Click(object sender, RoutedEventArgs e)
+        {
+            dp.Children.Clear();
+            dp.Children.Add(new AdministrationCommandes());
+        }
     }
 }

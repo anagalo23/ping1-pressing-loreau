@@ -10,25 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace App_pressing_Loreau
 {
     /// <summary>
-    /// Logique d'interaction pour Statistiques.xaml
+    /// Logique d'interaction pour AdministrationCommandes.xaml
     /// </summary>
-    public partial class Statistiques
+    public partial class AdministrationCommandes 
     {
-        public Statistiques()
+        public AdministrationCommandes()
         {
             InitializeComponent();
-        }
-
-     
-
-        private void btn_statistique_du_jour_Click_1(object sender, RoutedEventArgs e)
-        {
-       
         }
     }
 }

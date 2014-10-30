@@ -131,6 +131,9 @@
     <Compile Include="Interfaces\EditionDeFactures.xaml.cs">
       <DependentUpon>EditionDeFactures.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\AdministrationCommandes.xaml.cs">
+      <DependentUpon>AdministrationCommandes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\DetailCommande.xaml.cs">
       <DependentUpon>DetailCommande.xaml</DependentUpon>
     </Compile>
@@ -240,6 +243,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Interfaces\EditionDeFactures.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\AdministrationCommandes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
