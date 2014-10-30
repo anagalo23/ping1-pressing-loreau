@@ -18,7 +18,7 @@
                         <RowDefinition Height="241*"/>
                     </Grid.RowDefinitions>
                     <Label Content="Commandes en cours" FontSize="18" HorizontalContentAlignment="Center" Background="AliceBlue" Grid.Row="0" />
-                    <Border Grid.Row="1"  Background="Aquamarine" >
+                    <Border Grid.Row="1"  Background="Beige" >
 
                     </Border>
                 </Grid>
@@ -38,7 +38,7 @@
                         </Grid.ColumnDefinitions>
                         <Label Content="Dernières commandes     :" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="0"/>
                         <Canvas Grid.Column="1">
-                            <Label Background="Aquamarine"   VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Canvas.Left="10" Canvas.Top="61" Height="38" Width="72"/>
+                            <Label Background="White"   VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Canvas.Left="10" Canvas.Top="61" Height="38" Width="72"/>
                         </Canvas>
                         <Label Content="commande(s)"  VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Grid.Column="2" />
                     </Grid>
