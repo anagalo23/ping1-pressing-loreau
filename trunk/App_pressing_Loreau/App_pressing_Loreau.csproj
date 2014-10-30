@@ -82,6 +82,7 @@
     <Compile Include="Class\DAO\PlaceConvoyeurDAO.cs" />
     <Compile Include="Class\DAO\TypeDAO.cs" />
     <Compile Include="Class\DAO\TypePayementDAO.cs" />
+    <Compile Include="Controler\Controler.cs" />
     <Compile Include="Interfaces\Administration.xaml.cs">
       <DependentUpon>Administration.xaml</DependentUpon>
     </Compile>
