@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace App_pressing_Loreau.Interfaces
 {
     /// <summary>
@@ -20,10 +21,37 @@ namespace App_pressing_Loreau.Interfaces
     /// </summary>
     public partial class Accueil : Window
     {
-
+        Button user1, user2, user3, user4, user5, user6 ;
         public Accueil()
         {
             InitializeComponent();
+
+        }
+
+         void CommandBtn_Click(Object sender, RoutedEventArgs e) {   
+            switch (1)
+            {
+
+                //case "btn_user1":
+                //    btn_user1.Background = Brushes.Red;
+                //    break;
+                //case "btn_user2":
+                //    btn_user1.Background = Brushes.Red;
+                //    break;
+                //case "btn_user3":
+                //    btn_user1.Background = Brushes.Red;
+                //    break;
+                //case "btn_user4":
+                //    btn_user1.Background = Brushes.Red;
+                //    break;
+                //case "btn_user5":
+                //    btn_user1.Background = Brushes.Red;
+                //    break;
+                //case "btn_user6":
+                //    btn_user1.Background = Brushes.Red;
+                //    break;
+            }
+
         }
      
 
@@ -66,7 +94,7 @@ namespace App_pressing_Loreau.Interfaces
 
         private void btn_accueil_image_Click(object sender, RoutedEventArgs e)
         {
-           
+            dp.Children.Clear();
         }
 
         private void btn_user6_Click(object sender, RoutedEventArgs e)
@@ -77,6 +105,11 @@ namespace App_pressing_Loreau.Interfaces
         private void btn_accueil_impression_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btn_user1_Click(object sender, RoutedEventArgs e)
+        {
+            btn_user1.Background = Brushes.Red; 
         }
 
 

@@ -24,26 +24,13 @@ namespace App_pressing_Loreau
             InitializeComponent();
         }
 
-        private void btn_Statistique_Du_Jour_Click(object sender, RoutedEventArgs e)
+     
+
+        private void btn_statistique_du_jour_Click_1(object sender, RoutedEventArgs e)
         {
             NouveauClient nouveauClient = new NouveauClient();
             dp.Children.Clear();
             dp.Children.Add(nouveauClient);
-        }
-
-        private void btn_Statistique_De_La_Semaine_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btn_Statistique_Du_Mois_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btn_Statistique_Des_14_Derniers_Mois_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

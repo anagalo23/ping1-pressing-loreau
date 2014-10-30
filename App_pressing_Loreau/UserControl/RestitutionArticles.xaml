@@ -45,15 +45,15 @@
                                     <ColumnDefinition Width="16*"/>
                                     <ColumnDefinition Width="17*"/>
                                 </Grid.ColumnDefinitions>
-                                <ComboBox x:Name="cbb_restitutionClient_choix_theme" Grid.Column="0" FontFamily="Arial" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,30,0,45" RenderTransformOrigin="0.5,0.125" >
+                                <ComboBox x:Name="cbb_restitutionClient_choix_theme" Grid.Column="0" FontFamily="Arial" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,30,0,50" RenderTransformOrigin="0.5,0.125" >
 
                                     <ComboBoxItem IsSelected="True" x:Name="cbbi_restitutionArticles_nom">Nom</ComboBoxItem>
                                     <ComboBoxItem x:Name="cbbi_restitutionArticles_prenom">Prénom</ComboBoxItem>
                                     <ComboBoxItem x:Name="cbbi_restitutionArticles_tel_port">Télephone Portable</ComboBoxItem>
                                 </ComboBox>
 
-                                <TextBox x:Name="txb_restitutionArticles_choix"  Grid.Column="1" Margin="5,10,5,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="45"/>
-                                <Button x:Name="btn_restitutionArticles_valider" Content="valider" Grid.Column="1" Margin="5,0" VerticalAlignment="Bottom" Height="45"/>
+                                <TextBox x:Name="txb_restitutionArticles_choix"  Grid.Column="1" Margin="5,10,5,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="40"/>
+                                <Button x:Name="btn_restitutionArticles_valider" Content="valider" Grid.Column="1" Margin="5,0" VerticalAlignment="Bottom" Height="40"/>
 
                             </Grid>
                         </Border>

@@ -44,5 +44,6 @@
                 <Image Source="/Image/home-logo.png" Grid.Row="0" Grid.Column="6"  Margin="5" Grid.RowSpan="3"  />
             </Grid>
         </DockPanel>
+
     </Grid>
 </Window>
