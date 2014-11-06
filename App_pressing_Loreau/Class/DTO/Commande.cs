@@ -9,7 +9,7 @@ namespace App_pressing_Loreau.Class.DTO
     class Commande
     {
         #region attributs
-        //public int cltP_id;
+        public int cmd_id;
         public DateTime date { get; set; }
         public bool payee { get; set; }
         public Client client { get; set; }

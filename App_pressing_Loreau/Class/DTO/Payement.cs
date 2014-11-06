@@ -9,7 +9,7 @@ namespace App_pressing_Loreau.Class.DTO
     class Payement
     {
         #region attributs
-        //public int id {get; set;}
+        public int id {get; set;}
         public DateTime date { get; set; }
         public float montant {get; set;}
         #endregion

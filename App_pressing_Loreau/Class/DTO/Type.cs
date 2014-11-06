@@ -9,7 +9,7 @@ namespace App_pressing_Loreau.Class.DTO
     class Type
     {
         #region attributs
-        //public int id {get; set;}
+        public int id {get; set;}
         public string nom { get; set; }
         #endregion
 

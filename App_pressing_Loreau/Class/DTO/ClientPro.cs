@@ -10,7 +10,7 @@ namespace App_pressing_Loreau.Class.DTO
     class ClientPro
     {
         #region attributs
-        //public int id {get; set;}
+        public int id {get; set;}
         public string nomEnt { get; set; }
         public string fix { get; set; }
         public string mob { get; set; }

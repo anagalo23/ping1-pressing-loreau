@@ -9,7 +9,7 @@ namespace App_pressing_Loreau.Class.DTO
     class PlaceConvoyeur
     {
         #region attributs
-        //public int id {get; set;}
+        public int id {get; set;}
         public int emplacement { get; set; }
         #endregion
 
