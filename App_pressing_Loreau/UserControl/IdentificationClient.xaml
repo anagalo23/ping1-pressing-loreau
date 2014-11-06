@@ -68,13 +68,13 @@
                     <Label Content="Résultat de la recherche" FontSize="18" HorizontalContentAlignment="Center" Background="AliceBlue" Grid.Row="0" />
 
 
-                    <Grid Margin="5" Grid.Row="1" x:Name="grid_identClient_restRech">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="87"/>
-                            <ColumnDefinition Width="147*"/>
-                            <ColumnDefinition Width="97*"/>
-                        </Grid.ColumnDefinitions>
-                    </Grid>
+                    <DataGrid Grid.Row="1" ItemsSource="{Binding retour}" x:Name="datagridClient" AutoGenerateColumns="False" Margin="5,5,5,6"  >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Nom" Width="45*" Binding="{Binding GameName}" />
+                            <DataGridTextColumn Header="Prénom" Width="45*" Binding="{Binding Creator}" />
+                            <DataGridTextColumn Header="Date de naissance" Width="45*" Binding="{Binding Publisher}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
 
 
 

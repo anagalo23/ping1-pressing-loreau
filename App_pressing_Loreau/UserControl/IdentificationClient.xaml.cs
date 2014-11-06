@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Documents;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -14,18 +14,32 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using App_pressing_Loreau.Interfaces;
+using App_pressing_Loreau.Class.DAO;
+using App_pressing_Loreau.Class.DTO;
+
 
 namespace App_pressing_Loreau
 {
+ 
+
     /// <summary>
     /// Logique d'interaction pour IndentificationClient.xaml
+    /// 
     /// </summary>
     public partial class IdentificationClient
     {
+       
+
         public IdentificationClient()
         {
             InitializeComponent();
-            
+
+            //List<Client> retour = ClientDAO.seekClients("", null, "");
+            List<Client> retour = ClientDAO.seekClients("Faye", null, null);
+            Console.Write(retour.Count);
+            //List<String> data = new List<String>{retour[0].nom, retour[0].prenom, retour[0].telmob};
+
+           // datagridClient.Items.Add(data);
 
         }
 

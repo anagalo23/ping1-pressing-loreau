@@ -155,9 +155,6 @@
     <Compile Include="UserControl\PageAdministrateur.xaml.cs">
       <DependentUpon>PageAdministrateur.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\page_principal.xaml.cs">
-      <DependentUpon>page_principal.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControl\Paiement.xaml.cs">
       <DependentUpon>Paiement.xaml</DependentUpon>
     </Compile>
@@ -278,10 +275,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControl\PageAdministrateur.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControl\page_principal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoreauApplication.Class.DAO
+namespace App_pressing_Loreau.Class.DAO
 {
     class TypeDAO
     {

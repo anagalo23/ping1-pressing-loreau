@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoreauApplication.Class.DTO
+namespace App_pressing_Loreau.Class.DTO
 {
-    class Client
+
+   
+    class  Client
     {
         #region attributs
         //public int id {get; set;}
@@ -38,6 +40,10 @@ namespace LoreauApplication.Class.DTO
             this.email = email;
             this.dateInscription = dateInscription;
             this.idCleanWay = idCleanWay;
+        }
+        public Client()
+        {
+
         }
 
         public void setContactMail(int contactInt)
