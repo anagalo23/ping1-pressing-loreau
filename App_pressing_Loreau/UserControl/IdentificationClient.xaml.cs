@@ -35,8 +35,10 @@ namespace App_pressing_Loreau
             InitializeComponent();
 
             //List<Client> retour = ClientDAO.seekClients("", null, "");
-            List<Client> retour = ClientDAO.seekClients("Faye", null, null);
-            Console.Write(retour.Count);
+            Client cc = new Client("Test1", "prenom", "067890", "0374839", "Rue de la ******", new DateTime(1995, 03, 23), "Babayetu", DateTime.Now, 2);
+            ClientDAO.insertClient(cc);
+            //List<Client> retour = ClientDAO.seekClients("Faye", null, null);
+            //Console.Write(retour.Count);
             //List<String> data = new List<String>{retour[0].nom, retour[0].prenom, retour[0].telmob};
 
            // datagridClient.Items.Add(data);

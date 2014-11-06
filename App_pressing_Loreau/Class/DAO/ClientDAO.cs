@@ -12,29 +12,34 @@ namespace App_pressing_Loreau.Class.DAO
     {
         public static int insertClient(Client client)
         {
-            String sql = "INSERT INTO client(clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway, clt_contactmail, clt_contactsms) VALUES (\"@nom\",\"@prenom\",\"@telfix\",\"@telport\",\"@adresse\",\"@dateNaissance\",\"@email\",\"@dateInsc\",\"@idCleanWay\",\"@contactMail\",\"@contactSms\");";
+            MySqlConnection connection = Bdd.connexion();
+
+            String sql = "INSERT INTO client(clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway, clt_contactmail, clt_contactsms) VALUES (\"@nom\",\"@prenom\",\"@telfix\",\"@telport\",\"@adresse\",\"@dateNaissance\",\"@email\",\"@dateInsc\",\"@idCleanWay\",\"@contactMail\",\"@contactSms\")";
 
             //connection à la base de données   
-            MySqlConnection connection = Bdd.connexion();
+            
             MySqlCommand cmd = new MySqlCommand(sql, connection);
-
+            //cmd.Prepare();
+            cmd.CommandText = sql;
             //ajout des parametres
-            cmd.Parameters.AddWithValue("nom", client.nom);
-            cmd.Parameters.AddWithValue("prenom", client.prenom);
-            cmd.Parameters.AddWithValue("telfixe", client.telfix);
-            cmd.Parameters.AddWithValue("telport", client.telmob);
-            cmd.Parameters.AddWithValue("adresse", client.adresse);
-            cmd.Parameters.AddWithValue("dateNaissance", String.Format("{0:YYYYMMddHHmmss}", client.dateNaissance)); //parametre date sous format annee + mois + jour + heure + minute + seconde
-            cmd.Parameters.AddWithValue("email", client.email);
-            cmd.Parameters.AddWithValue("dateInsc", String.Format("{0:YYYYMMddHHmmss}", client.dateInscription)); //parametre date sous format annee + mois + jour + heure + minute + seconde
-            cmd.Parameters.AddWithValue("idCleanWay", client.idCleanWay);
-            cmd.Parameters.AddWithValue("contactMail", client.contactMail);
-            cmd.Parameters.AddWithValue("contactSms", client.contactSms);
+            cmd.Parameters.AddWithValue("@nom", client.nom);
+            cmd.Parameters.AddWithValue("@prenom", client.prenom);
+            cmd.Parameters.AddWithValue("@telfixe", client.telfix);
+            cmd.Parameters.AddWithValue("@telport", client.telmob);
+            cmd.Parameters.AddWithValue("@adresse", client.adresse);
+            cmd.Parameters.AddWithValue("@dateNaissance", String.Format("{0:YYYYMMddHHmmss}", client.dateNaissance)); //parametre date sous format annee + mois + jour + heure + minute + seconde
+            cmd.Parameters.AddWithValue("@email", client.email);
+            cmd.Parameters.AddWithValue("@dateInsc", String.Format("{0:YYYYMMddHHmmss}", client.dateInscription)); //parametre date sous format annee + mois + jour + heure + minute + seconde
+            cmd.Parameters.AddWithValue("@idCleanWay", client.idCleanWay);
+            cmd.Parameters.AddWithValue("@contactMail", client.contactMail);
+            cmd.Parameters.AddWithValue("@contactSms", client.contactSms);
+            int retour = cmd.ExecuteNonQuery();
+            connection.Close();
 
             //Execute la commande
             try
             {
-                return cmd.ExecuteNonQuery();
+                return retour;
             }
             catch (Exception Ex)
             {
