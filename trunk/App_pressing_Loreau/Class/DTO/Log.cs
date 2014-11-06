@@ -9,7 +9,7 @@ namespace App_pressing_Loreau.Class.DTO
     class Log
     {
         #region attributs
-        //public int id {get; set;}
+        public int id {get; set;}
         public DateTime date { get; set; }
         public String message { get; set; }
         public Employe employe { get; set; }

@@ -11,7 +11,7 @@ namespace App_pressing_Loreau.Class.DTO
     class  Client
     {
         #region attributs
-        //public int id {get; set;}
+        public int id {get; set;}
         public string nom { get; set; }
         public string prenom { get; set; }
         public string telfix { get; set; }

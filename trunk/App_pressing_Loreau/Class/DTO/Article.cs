@@ -9,7 +9,7 @@ namespace App_pressing_Loreau.Class.DTO
     class Article
     {
         #region attributs
-        //public int id {get; set;}
+        public int id {get; set;}
         public string photo { get; set; }
         public string commentaire { get; set; }
         public bool ifRendu { get; set; }
