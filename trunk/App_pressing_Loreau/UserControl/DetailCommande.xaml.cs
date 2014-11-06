@@ -24,5 +24,11 @@ namespace App_pressing_Loreau
         {
             InitializeComponent();
         }
+
+        private void btn_detailCommande_rendre_articles_selectionnes_Click(object sender, RoutedEventArgs e)
+        {
+            dp.Children.Clear();
+            dp.Children.Add(new Paiement());
+        }
     }
 }

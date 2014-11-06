@@ -9,10 +9,11 @@
         <Border>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="22*"/>
-                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="39*"/>
+                    <ColumnDefinition Width="27*"/>
                 </Grid.ColumnDefinitions>
-                <Border Margin="40,10,10,10">
+                <Border Margin="10" BorderBrush="AliceBlue" BorderThickness="2" Grid.Column="1">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="3*"/>
@@ -24,18 +25,31 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <Button Content="Sélectionner tout" Margin="10"/>
-                                <Button Content="Désélectionner tout" Grid.Column="1" Margin="10"/>
+                                <Button x:Name="btn_detailCommande_selectionner_tout" Content="Sélectionner tout" Margin="10"/>
+                                <Button x:Name="btn_detailCommande_deselectionner_tout"  Content="Désélectionner tout" Grid.Column="1" Margin="10"/>
                             </Grid>
-                          
+
                         </Border>
 
+                        <Grid  Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="19*"/>
+                            </Grid.RowDefinitions>
+                            <Label Content="Les commandes en cours" Background="AliceBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+                        </Grid>
                     </Grid>
-                    
+
                 </Border>
 
+                <Border Grid.Column="2">
+
+
+                    <Button x:Name="btn_detailCommande_rendre_articles_selectionnes"  Content="Rendre les articles sélectionnés"  Margin="10,185,95,60" HorizontalAlignment="Right" Grid.ColumnSpan="2" Width="160" Click="btn_detailCommande_rendre_articles_selectionnes_Click"/>
+                </Border >
             </Grid>
         </Border>
-        
+
     </DockPanel>
 </UserControl>

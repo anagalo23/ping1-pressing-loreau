@@ -28,7 +28,7 @@ namespace App_pressing_Loreau
         private void btn_restitutionArticles_suivant_Click(object sender, RoutedEventArgs e)
         {
             dp.Children.Clear();
-            dp.Children.Add(new Paiement());
+            dp.Children.Add(new DetailCommande());
         }
 
 

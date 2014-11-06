@@ -1,4 +1,4 @@
-﻿using LoreauApplication.Class.DTO;
+﻿using App_pressing_Loreau.Class.DTO;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoreauApplication.Class.DAO
+namespace App_pressing_Loreau.Class.DAO
 {
     class LogDAO
     {

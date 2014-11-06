@@ -1,4 +1,4 @@
-﻿using LoreauApplication.Class.DTO;
+﻿using App_pressing_Loreau.Class.DTO;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LoreauApplication.Class.DAO
+namespace App_pressing_Loreau.Class.DAO
 {
     class ClientDAO
     {
@@ -55,23 +55,23 @@ namespace LoreauApplication.Class.DAO
             #region complete la requete en fonction de la recherche voulue
             if (nom != null)
             {
-                String.Format("{0}{1}", sql, "clt_nom=\"@nom\"");
+                sql = String.Format("{0}{1}", sql, "clt_nom=\"@nom\"");
                 ifPreviousElementSearch = true;
             }
             if (prenom != null)
             {
-                if (!ifPreviousElementSearch) String.Format("{0}{1}", sql, " AND ");
-                String.Format("{0}{1}", sql, "clt_nom=\"@prenom\"");
+                if (ifPreviousElementSearch) sql = String.Format("{0}{1}", sql, " AND ");
+                sql = String.Format("{0}{1}", sql, "clt_nom=\"@prenom\"");
                 ifPreviousElementSearch = true;
             }
             if (tel != null)
             {
-                if (!ifPreviousElementSearch) String.Format("{0}{1}", sql, " AND ");
-                String.Format("{0}{1}", sql, "(clt_fix=\"@tel\" OR clt_mob = \"@tel\")");
+                if (ifPreviousElementSearch) sql = String.Format("{0}{1}", sql, " AND ");
+                sql = String.Format("{0}{1}", sql, "(clt_fix=\"@tel\" OR clt_mob = \"@tel\")");
                 ifPreviousElementSearch = true;
             }
-            if (!ifPreviousElementSearch) String.Format("{0}{1}", sql, "1=1");
-            String.Format("{0}{1}", sql, " ORDER BY clt_nom ASC;");
+            if (!ifPreviousElementSearch) sql = String.Format("{0}{1}", sql, "1=1");
+            //sql = String.Format("{0}{1}", sql, " ORDER BY clt_nom ASC;");
             #endregion
 
             //connection à la base de données   
@@ -84,8 +84,8 @@ namespace LoreauApplication.Class.DAO
             cmd.Parameters.AddWithValue("tel", tel);
 
             //Execute la commande
-            try
-            {
+            //try
+            //{
                 MySqlDataReader msdr = cmd.ExecuteReader();
                 Client client;
                 while (msdr.Read())
@@ -105,12 +105,12 @@ namespace LoreauApplication.Class.DAO
                 }
                 msdr.Dispose();
                 return retour;
-            }
-            catch (Exception Ex)
-            {
-                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                return null;
-            }
+            //}
+            //catch (Exception Ex)
+            //{
+            //    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            //    return null;
+            //}
 
 
         }

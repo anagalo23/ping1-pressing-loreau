@@ -21,10 +21,12 @@ namespace App_pressing_Loreau.Interfaces
     /// </summary>
     public partial class Accueil : Window
     {
-        Button user1, user2, user3, user4, user5, user6, btn;
+        Button  btn;
         public Accueil()
         {
             InitializeComponent();
+
+            btn_user1.Content="Alexis NAGALO";
 
         }
 
@@ -130,6 +132,11 @@ namespace App_pressing_Loreau.Interfaces
         }
 
         private void btn_accueil_impression_Click(Object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_accueil_articles_Click(object sender, RoutedEventArgs e)
         {
 
         }

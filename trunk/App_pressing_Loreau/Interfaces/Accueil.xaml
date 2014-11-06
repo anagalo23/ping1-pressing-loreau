@@ -27,7 +27,7 @@
                 <Button x:Name="btn_accueil_client_pro" Content="client Pro" Grid.Column="4" Margin="5" Click="btn_accueil_client_pro_Click"/>
                 <Button x:Name="btn_accueil_impression" Content="Impressions" Grid.Column="5" Margin="5" Click="btn_accueil_impression_Click"/>
                 <Button x:Name="btn_accueil_administrateur" Content="Administrateur" Grid.Column="6" Margin="5" Click="btn_accueil_administrateur_Click"/>
-                <Button x:Name="btn_accueil_articles" Content="Articles" Grid.Column="3" Margin="5"/>
+                <Button x:Name="btn_accueil_convoyeur" Content="Convoyeur" Grid.Column="3" Margin="5" Click="btn_accueil_convoyeur_Click"/>
 
             </Grid>
         </DockPanel>
