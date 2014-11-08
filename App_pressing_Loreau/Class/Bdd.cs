@@ -9,7 +9,7 @@ namespace App_pressing_Loreau.Class
 {
     class Bdd
     {
-        private static MySqlConnection MSConnexion = new MySqlConnection("Server=localhost;Database=pressing;Uid=root;Pwd=;");
+        private static MySqlConnection MSConnexion = new MySqlConnection("Server=localhost;Database=bddping1;Uid=root;Pwd=;");
         private static int ReturnCode = 0;
 
         public static MySqlConnection connexion()

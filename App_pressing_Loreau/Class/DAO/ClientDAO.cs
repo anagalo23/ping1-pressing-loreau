@@ -47,6 +47,7 @@ namespace App_pressing_Loreau.Class.DAO
                 return 0;
             }
         }
+     
 
         public static List<Client> seekClients(String nom, String prenom, String tel)
         {

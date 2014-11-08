@@ -11,7 +11,7 @@ namespace App_pressing_Loreau.Controler
     {
         public void ajoutCommande(Commande commande)
         {
-            int idClt = commande.client.;
+            int idClt = commande.client.id;
 
 
         }

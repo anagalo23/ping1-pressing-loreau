@@ -28,7 +28,7 @@
                         </Grid.ColumnDefinitions>
                         <Label Content="Numéro du ticket"  Grid.Column="0" Margin="5,40,5,35" VerticalContentAlignment="Center"/>
                         <TextBox x:Name="txb_restitutionArticles_nuemro_facture" Grid.Column="1" Margin="10,40" VerticalContentAlignment="Center"/>
-                        <Button x:Name="btn_restitutionArticles_ok" Content="OK" Grid.Column="2" Margin="40,40,35,40"/>
+                        <Button x:Name="btn_restitutionArticles_ok" Content="OK" Grid.Column="2" Margin="40,40,35,40" Click="btn_restitutionArticles_ok_Click"/>
                     </Grid>
 
                     <Label Content="Client sans ticket" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="Beige"/>
@@ -86,7 +86,16 @@
                         <RowDefinition Height="9*"/>
                     </Grid.RowDefinitions>
                     <Label Content="La commande concernant" Background="Beige" Grid.Row="0"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                    <Border Margin="5" Background="BlueViolet" Grid.Row="1"></Border>
+                    <Border Margin="5" Background="BlueViolet" Grid.Row="1">
+                        <DataGrid VerticalContentAlignment="Center" HorizontalContentAlignment="Center" x:Name="dtgrid_restitution_article_affiche" SelectionChanged="DataGrid_SelectionChanged">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Photo"  Width="45*" Binding="{Binding GameName}"  />
+                                <DataGridTextColumn Header="Commentaire" Width="45*" Binding="{Binding Creator}" />
+                                <DataGridTextColumn Header="rendu" Width="45*" Binding="{Binding Publisher}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        
+                    </Border>
                     <Button x:Name="btn_restitutionArticles_suivant" Content="Suivant"  Margin="65,20,60,15" Grid.Row="2" Click="btn_restitutionArticles_suivant_Click"/>
 
                 </Grid>

@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 
-namespace App_pressing_Loreau.Interfaces
+namespace App_pressing_Loreau.View
 {
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
