@@ -1,4 +1,4 @@
-﻿<Window x:Class="App_pressing_Loreau.Interfaces.Accueil"
+﻿<Window x:Class="App_pressing_Loreau.View.Accueil"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Pressing de Loreau" Height="500" Width="750">

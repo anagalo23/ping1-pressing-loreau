@@ -68,7 +68,7 @@
                     <Label Content="Résultat de la recherche" FontSize="18" HorizontalContentAlignment="Center" Background="AliceBlue" Grid.Row="0" />
 
 
-                    <DataGrid Grid.Row="1" ItemsSource="{Binding retour}" x:Name="datagridClient" AutoGenerateColumns="False" Margin="5,5,5,6"  >
+                    <DataGrid Grid.Row="1" ItemsSource="{Binding retour}" x:Name="datagridClient" AutoGenerateColumns="False" Margin="5,5,5,6" SelectionChanged="datagridClient_SelectionChanged"  >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Nom" Width="45*" Binding="{Binding GameName}" />
                             <DataGridTextColumn Header="Prénom" Width="45*" Binding="{Binding Creator}" />
