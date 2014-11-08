@@ -330,16 +330,32 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\home-logo.png" />
+    <Resource Include="Image\Accueil1\logo_home.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\logo_add.png" />
+    <Resource Include="Image\Admin1\logo_exit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\logo_exit.png" />
+    <Resource Include="Image\Admin1\logo_add.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\logo_edit.png" />
+    <Resource Include="Image\Admin1\logo_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Admin1\logo_admin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Articles1\logo_articles.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Image\Impressions\logo_impression.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Factures\logo_facture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Clients1\logo_client.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

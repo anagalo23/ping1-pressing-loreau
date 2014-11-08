@@ -58,7 +58,7 @@
                 <Button x:Name="btn_user6" FontFamily="times new roman" FontSize="28" Content="USER 6" Grid.Row="1" Grid.Column="5" Margin="5" Click="btn_user1_Click"  />
                 <Button x:Name="btn_accueil_image" BorderBrush="White" Background="White" Grid.Row="0" Grid.Column="6"  Margin="5" 
                      Click="btn_accueil_image_Click">
-                    <Image Source="/Image/Accueil/home-logo.png" />
+                    <Image Source="/Image/Accueil1/logo_home.png"/>
                 </Button>
             </Grid>
         </DockPanel>
