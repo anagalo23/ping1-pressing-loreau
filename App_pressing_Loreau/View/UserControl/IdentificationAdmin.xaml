@@ -14,7 +14,7 @@
                         <RowDefinition Height="6*"/>
                         <RowDefinition Height="3*"/>
                     </Grid.RowDefinitions>
-                    <Label Content="Identification de l'administrateur" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <Label FontSize="28" FontFamily="times new roman" Content="Identification de l'administrateur" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
                     
                     <Grid Grid.Row="1" Margin="5">
                         <Grid.RowDefinitions>
@@ -25,14 +25,14 @@
                             <ColumnDefinition Width="23*"/>
                             <ColumnDefinition Width="29*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Content="Identifiant" Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center"/>
+                        <Label FontSize="28" FontFamily="times new roman" Content="Identifiant" Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center"/>
                         <TextBox x:Name="txb_identificationAdmin_identifiant" Grid.Row="0" Grid.Column="1" Margin="5,10" VerticalContentAlignment="Center"/>
-                        <Label Content="Mot de passe" Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center"/>
+                        <Label FontSize="28" FontFamily="times new roman" Content="Mot de passe" Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center"/>
                         <TextBox x:Name="txb_identificationAdmin_mdp"  Grid.Row="1" Grid.Column="1" Margin="5,10" VerticalContentAlignment="Center"/>
 
                     </Grid>
-                    
-                    <Button x:Name="btn_identificationAdmin_connecte" Content="Connecté" Grid.Row="2" Margin="90,15,90,10" Click="btn_identificationAdmin_connecte_Click"/>
+
+                    <Button x:Name="btn_identificationAdmin_connecte" FontFamily="times new roman" FontSize="28" Content="Se connecter" Grid.Row="2" Margin="90,15,90,10" Click="btn_identificationAdmin_connecte_Click"/>
                 </Grid>
             </Border>
         </Grid>

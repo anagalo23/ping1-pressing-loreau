@@ -25,10 +25,10 @@
                 </Grid.ColumnDefinitions>
                 <Label Content="User 1" Margin="1" Grid.Column="0" Background="Aqua" VerticalContentAlignment="Center"/>
                 <Button x:Name="btn_gest_utilisateur_supprimer1" BorderBrush="White" Background="White" Grid.Column="2" Margin="1" Click="btn_gest_utilisateur_editer_Click">
-                    <Image Source="/Image/logo_exit.png"/>
+                    <Image Source="/Image/Admin/logo_exit.png"/>
                 </Button>
                 <Button x:Name="btn_gest_utilisateur_editer1" BorderBrush="White" Background="White" Grid.Column="1" Margin="1" Click="btn_gest_utilisateur_editer_Click">
-                    <Image Source="/Image/logo_edit.png"/>
+                    <Image Source="/Image/Admin/logo_edit.png"/>
                 </Button>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="0">
@@ -39,10 +39,10 @@
                 </Grid.ColumnDefinitions>
                 <Label Content="User 3" Margin="1" Grid.Column="0" Background="Aqua" VerticalContentAlignment="Center"/>
                 <Button x:Name="btn_gest_utilisateur_supprimer3" BorderBrush="White" Background="White" Grid.Column="2" Margin="1" Click="btn_gest_utilisateur_editer_Click">
-                    <Image Source="/Image/logo_exit.png"/>
+                    <Image Source="/Image/Admin/logo_exit.png"/>
                 </Button>
                 <Button x:Name="btn_gest_utilisateur_editer3" BorderBrush="White" Background="White" Grid.Column="1" Margin="1" Click="btn_gest_utilisateur_editer_Click">
-                    <Image Source="/Image/logo_edit.png"/>
+                    <Image Source="/Image/Admin/logo_edit.png"/>
                 </Button>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="0">
@@ -53,10 +53,10 @@
                 </Grid.ColumnDefinitions>
                 <Label Content="User 5" Margin="1" Grid.Column="0" Background="Aqua" VerticalContentAlignment="Center"/>
                 <Button x:Name="btn_gest_utilisateur_supprimer5" BorderBrush="White" Background="White" Grid.Column="2" Margin="1" Click="btn_gest_utilisateur_editer_Click">
-                    <Image Source="/Image/logo_exit.png"/>
+                    <Image Source="/Image/Admin/logo_exit.png"/>
                 </Button>
                 <Button x:Name="btn_gest_utilisateur_editer5" BorderBrush="White" Background="White" Grid.Column="1" Margin="1" Click="btn_gest_utilisateur_editer_Click">
-                    <Image Source="/Image/logo_edit.png"/>
+                    <Image Source="/Image/Admin/logo_edit.png"/>
                 </Button>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="1">
@@ -67,10 +67,10 @@
                 </Grid.ColumnDefinitions>
                 <Label Content="User 2" Margin="1" Grid.Column="0" Background="Aqua" VerticalContentAlignment="Center"/>
                 <Button x:Name="btn_gest_utilisateur_supprimer2" BorderBrush="White" Background="White" Grid.Column="2" Margin="1" Click="btn_gest_utilisateur_editer_Click">
-                    <Image Source="/Image/logo_exit.png"/>
+                    <Image Source="/Image/Admin/logo_exit.png"/>
                 </Button>
                 <Button x:Name="btn_gest_utilisateur_editer2" BorderBrush="White" Background="White" Grid.Column="1" Margin="1" Click="btn_gest_utilisateur_editer_Click">
-                    <Image Source="/Image/logo_edit.png"/>
+                    <Image Source="/Image/Admin/logo_edit.png"/>
                 </Button>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="1">
@@ -81,10 +81,10 @@
                 </Grid.ColumnDefinitions>
                 <Label Content="User 4" Margin="1" Grid.Column="0" Background="Aqua" VerticalContentAlignment="Center"/>
                 <Button x:Name="btn_gest_utilisateur_supprimer4" BorderBrush="White" Background="White" Grid.Column="2" Margin="1" Click="btn_gest_utilisateur_editer_Click">
-                    <Image Source="/Image/logo_exit.png"/>
+                    <Image Source="/Image/Admin/logo_exit.png"/>
                 </Button>
                 <Button x:Name="btn_gest_utilisateur_editer4" BorderBrush="White" Background="White" Grid.Column="1" Margin="1" Click="btn_gest_utilisateur_editer_Click">
-                    <Image Source="/Image/logo_edit.png"/>
+                    <Image Source="/Image/Admin/logo_edit.png"/>
                 </Button>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="1">
@@ -95,10 +95,10 @@
                 </Grid.ColumnDefinitions>
                 <Label Content="User 6" Margin="1" Grid.Column="0" Background="Aqua" VerticalContentAlignment="Center"/>
                 <Button x:Name="btn_gest_utilisateur_supprimer6" BorderBrush="White" Background="White" Grid.Column="2" Margin="1" Click="btn_gest_utilisateur_editer_Click">
-                    <Image Source="/Image/logo_exit.png" />
+                    <Image Source="/Image/Admin/logo_exit.png" />
                 </Button>
                 <Button x:Name="btn_gest_utilisateur_editer6" BorderBrush="White" Background="White" Grid.Column="1" Margin="1" Click="btn_gest_utilisateur_editer_Click">
-                    <Image Source="/Image/logo_edit.png"/>
+                    <Image Source="/Image/Admin/logo_edit.png"/>
                 </Button>
             </Grid>
             <Grid Grid.Row="3" Grid.Column="0">
@@ -107,7 +107,7 @@
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
                 <Button x:Name="btn_gest_utilisateur_ajouter" BorderBrush="White" Background="White" Grid.Column="0" Margin="1" Click="btn_gest_utilisateur_ajouter_Click">
-                    <Image Source="/Image/logo_add.png"/>
+                    <Image Source="/Image/Admin/logo_add.png"/>
                 </Button>
                 <Label Content="Ajouter des utilisateurs" Grid.Column="1" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
 
