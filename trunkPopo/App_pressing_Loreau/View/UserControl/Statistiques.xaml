@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="App_pressing_Loreau.Statistiques"
+          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="740">
+    <DockPanel x:Name="dp">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="17*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="btn_statistique_du_jour" Content="Du jour" Grid.Row="0" Margin="1" BorderBrush="Aqua" BorderThickness="2" Click="btn_statistique_du_jour_Click_1"/>
+                <Button x:Name="btn_statistique_de_la_semaine" Content="De la semaine" Grid.Column="1" Grid.Row="0" Margin="1" BorderBrush="Aqua" BorderThickness="2" />
+                <Button x:Name="btn_statistique_du_mois" Content="Du mois" Grid.Column="2" Grid.Row="0" Margin="1" BorderBrush="Aqua" BorderThickness="2" />
+                <Button x:Name="btn_statistique_des_derniers_mois" Content="Des 14 derniers mois" Grid.Column="3" Grid.Row="0" Margin="1" BorderBrush="Aqua" BorderThickness="2" />
+
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="26*"/>
+                    <RowDefinition Height="25*"/>
+                </Grid.RowDefinitions>
+                <Border Grid.Column="0" Grid.Row="0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100*"/>
+                            <RowDefinition Height="27*"/>
+                        </Grid.RowDefinitions>
+                        <Rectangle Fill="#FFF4F4F5" Margin="35,10"  Stroke="Black" />
+                        <Label Content="Graphes du CA par type d'article" Grid.Row="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                    </Grid>
+                </Border>
+                <Border Grid.Column="0" Grid.Row="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="13*"/>
+                            <RowDefinition Height="5*"/>
+                        </Grid.RowDefinitions>
+
+                        <Rectangle Fill="#FFF4F4F5" Margin="35,10,35,0" Stroke="Black" />
+                        <Label Content="Graphes du CA par département" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    </Grid>
+
+                </Border>
+                <Border Grid.Column="1" Grid.Row="0">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+                        <Rectangle Fill="#FFF4F4F5" Margin="10" Stroke="Black" />
+                        <Label Content="Graphes du CA par ville" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+                    </Grid>
+                </Border>
+            </Grid>
+
+        </Grid>
+    </DockPanel>
+
+</UserControl>
