@@ -33,17 +33,23 @@
                             <ColumnDefinition Width="84*"/>
                             <ColumnDefinition Width="69*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Content="Departement" Grid.Row="0" Grid.Column="0"/>
-                        <Label Content="Nom" Grid.Row="0" Grid.Column="1"/>
-                        <Label Content="Quantité" Grid.Row="0" Grid.Column="2"/>
-                        <Label Content="Commentaire" Grid.Row="0" Grid.Column="3"/>
-                        <Label Content="Photo" Grid.Row="0" Grid.Column="4"/>
+                        <Label Content="Departement" Grid.Row="0" Grid.Column="0"
+                              FontFamily="Arial" FontSize="22" FontWeight="SemiBold"/>
+                        <Label Content="Nom" Grid.Row="0" Grid.Column="1"
+                              FontFamily="Arial" FontSize="22" FontWeight="SemiBold"/>
+                        <Label Content="Quantité" Grid.Row="0" Grid.Column="2"
+                              FontFamily="Arial" FontSize="22" FontWeight="SemiBold"/>
+                        <Label Content="Commentaire" Grid.Row="0" Grid.Column="3"
+                              FontFamily="Arial" FontSize="22" FontWeight="SemiBold"/>
+                        <Label Content="Photo" Grid.Row="0" Grid.Column="4"
+                               FontFamily="Arial" FontSize="22" FontWeight="SemiBold"/>
 
                     </Grid>
 
 
 
-                    <Button x:Name="btn_nouvelleCommande_valider_article" Content="valider l'article" Grid.Row="2" Margin="88,10,73,18"  />
+                    <Button x:Name="btn_nouvelleCommande_valider_article" Content="valider l'article" Grid.Row="2" 
+                            Margin="88,10,73,18" FontFamily="Arial" FontSize="30" FontWeight="SemiBold" />
 
                 </Grid>
 
@@ -57,7 +63,8 @@
                         <RowDefinition Height="40*"/>
                         <RowDefinition Height="17*"/>
                     </Grid.RowDefinitions>
-                    <Label Content="Contenu de la commande" Background="AliceBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="0"/>
+                    <Label Content="Contenu de la commande" Background="AliceBlue" VerticalContentAlignment="Center" 
+                           HorizontalContentAlignment="Center" Grid.Row="0" FontFamily="Arial" FontSize="30" FontWeight="Bold"/>
 
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
@@ -65,9 +72,12 @@
                             <RowDefinition Height="9*"/>
                             <RowDefinition Height="9*"/>
                         </Grid.RowDefinitions>
-                        <TextBox Grid.Row="0" Margin="8,10,13,10"  VerticalContentAlignment="Center"/>
-                        <TextBox Grid.Row="1" Margin="8,10"  VerticalContentAlignment="Center"/>
-                        <TextBox Grid.Row="2" Margin="8,10"  VerticalContentAlignment="Center"/>
+                        <TextBox Grid.Row="0" Margin="8,10,13,10"  VerticalContentAlignment="Center"
+                                 FontFamily="Arial" FontSize="14" FontWeight="Normal"/>
+                        <TextBox Grid.Row="1" Margin="8,10"  VerticalContentAlignment="Center"
+                                 FontFamily="Arial" FontSize="14" FontWeight="Normal"/>
+                        <TextBox Grid.Row="2" Margin="8,10"  VerticalContentAlignment="Center"
+                                 FontFamily="Arial" FontSize="14" FontWeight="Normal"/>
                     </Grid>
 
                     <Grid Grid.Row="2">
@@ -81,8 +91,10 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Background="AliceBlue" Grid.Row="0" Grid.Column="1" Margin="5"/>
-                        <Button x:Name="btn_nouvelleCommande_paiement_immediat" Content="Paiement immédiat" Grid.Row="1" Grid.Column="0" Margin="5" Click="btn_nouvelleCommande_paiement_immediat_Click"/>
-                        <Button x:Name="btn_nouvelleCommande_paiement_differe" Content="Paiement différé" Grid.Row="1" Grid.Column="1" Margin="5"/>
+                        <Button x:Name="btn_nouvelleCommande_paiement_immediat" Content="Paiement immédiat" Grid.Row="1" Grid.Column="0"
+                                Margin="5" Click="btn_nouvelleCommande_paiement_immediat_Click" FontFamily="Arial" FontSize="22" FontWeight="SemiBold"/>
+                        <Button x:Name="btn_nouvelleCommande_paiement_differe" Content="Paiement différé" Grid.Row="1" Grid.Column="1" Margin="5"
+                                FontFamily="Arial" FontSize="22" FontWeight="SemiBold"/>
 
                     </Grid>
 
@@ -97,7 +109,8 @@
                         <RowDefinition Height="43*"/>
                         <RowDefinition Height="233*"/>
                     </Grid.RowDefinitions>
-                    <Label Content="Convoyeur" Grid.Row="0" VerticalContentAlignment="Center" Background="AliceBlue"/>
+                    <Label Content="Convoyeur" Grid.Row="0" VerticalContentAlignment="Center" Background="AliceBlue"
+                           FontFamily="Arial" FontSize="25" FontWeight="Bold"/>
                     <Grid Grid.Row="1" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="45*"/>

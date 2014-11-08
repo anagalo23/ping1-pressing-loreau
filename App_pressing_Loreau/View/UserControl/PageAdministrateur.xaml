@@ -17,15 +17,24 @@
                 <ColumnDefinition Width="23*"/>
                 <ColumnDefinition Width="23*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="btn_pageAdministrateur_administration_caisse" FontFamily="times new roman" FontSize="28" Content="Administration caisse" Grid.Column="0" Grid.Row="0" Margin="10,10,10,10"/>
-            <Button x:Name="btn_pageAdministrateur_administration_clients" FontFamily="times new roman" FontSize="28" Content="Administration clients" Grid.Column="1" Grid.Row="0" Margin="10,10,10,10"/>
-            <Button x:Name="btn_pageAdministrateur_administration_commandes" FontFamily="times new roman" FontSize="28"  Content="Administration commandes" Grid.Column="2" Grid.Row="0" Margin="10,10,10,10" Click="btn_pageAdministrateur_administration_commandes_Click"/>
-            <Button x:Name="btn_pageAdministrateur_gestion_utilisateur" FontFamily="times new roman" FontSize="28" Content="Gestion des utilisateurs" Grid.Column="0" Grid.Row="1" Margin="10,10,10,10" Click="btn_pageAdministrateur_gestion_utilisateur_Click"/>
-            <Button  x:Name="btn_pageAdministrateur_statistiques" FontFamily="times new roman" FontSize="28" Content="Statistiques" Grid.Column="1" Grid.Row="1" Margin="10,10,10,10" Click="btn_pageAdministrateur_statistiques_Click" />
-            <Button  x:Name="btn_pageAdministrateur_journal_utilisation" FontFamily="times new roman" FontSize="28" Content="Journal d'utilisation" Grid.Column="2" Grid.Row="1" Margin="10,10,10,10"/>
-            <Button  x:Name="btn_pageAdministrateur_parametre_utilisation" FontFamily="times new roman" FontSize="28" Content="Paramètre d'utilisation" Grid.Column="0" Grid.Row="2" Margin="10,10,10,10" />
-            <Button  x:Name="btn_pageAdministrateur_parametre_impression" FontFamily="times new roman" FontSize="28" Content="Paramètre d'impression" Grid.Column="1" Grid.Row="2" Margin="10,10,10,10" Click="btn_pageAdministrateur_parametre_impression_Click"/>
-            <Button  x:Name="btn_pageAdministrateur_administration_convoyeur" FontFamily="times new roman" FontSize="28" Content="Administration convoyeur" Grid.Column="2" Grid.Row="2" Margin="10,10,10,10" Click="btn_pageAdministrateur_administration_convoyeur_Click"/>
+            <Button x:Name="btn_pageAdministrateur_administration_caisse" Content="Administration caisse" Grid.Column="0" Grid.Row="0" Margin="10,10,10,10" 
+                    Click="btn_pageAdministrateur_administration_caisse_Click" FontFamily="Arial" FontSize="34" />
+            <Button x:Name="btn_pageAdministrateur_administration_clients" Content="Administration clients" Grid.Column="1" 
+                    Grid.Row="0" Margin="10,10,10,10" FontFamily="Arial" FontSize="34" Click="btn_pageAdministrateur_administration_clients_Click"/>
+            <Button x:Name="btn_pageAdministrateur_administration_commandes" Content="Administration commandes" Grid.Column="2" 
+                   FontFamily="Arial" FontSize="34"  Grid.Row="0" Margin="10,10,10,10" Click="btn_pageAdministrateur_administration_commandes_Click"/>
+            <Button x:Name="btn_pageAdministrateur_gestion_utilisateur" Content="Gestion des utilisateurs" Grid.Column="0" Grid.Row="1" 
+                    FontFamily="Arial" FontSize="34"  Margin="10,10,10,10" Click="btn_pageAdministrateur_gestion_utilisateur_Click"/>
+            <Button  x:Name="btn_pageAdministrateur_statistiques" Content="Statistiques" Grid.Column="1" Grid.Row="1" 
+                     Margin="10,10,10,10" Click="btn_pageAdministrateur_statistiques_Click" FontFamily="Arial" FontSize="34" />
+            <Button  x:Name="btn_pageAdministrateur_journal_utilisation" Content="Journal d'utilisation" Grid.Column="2" Grid.Row="1" 
+                     Margin="10,10,10,10" FontFamily="Arial" FontSize="34"  Click="btn_pageAdministrateur_journal_utilisation_Click"/>
+            <Button  x:Name="btn_pageAdministrateur_parametre_utilisation" Content="Paramètre d'utilisation" Grid.Column="0" 
+                     Grid.Row="2" Margin="10,10,10,10" FontFamily="Arial" FontSize="34"  Click="btn_pageAdministrateur_parametre_utilisation_Click"/>
+            <Button  x:Name="btn_pageAdministrateur_parametre_impression" Content="Paramètre d'impression" Grid.Column="1" Grid.Row="2" 
+                     Margin="10,10,10,10" Click="btn_pageAdministrateur_parametre_impression_Click" FontFamily="Arial" FontSize="34" />
+            <Button  x:Name="btn_pageAdministrateur_administration_convoyeur" Content="Administration convoyeur" Grid.Column="2" Grid.Row="2" 
+                     Margin="10,10,10,10" Click="btn_pageAdministrateur_administration_convoyeur_Click" FontFamily="Arial" FontSize="34" />
         </Grid>
     </DockPanel>
     
