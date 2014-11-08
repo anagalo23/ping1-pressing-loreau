@@ -21,13 +21,13 @@
 
 
                 </Grid.ColumnDefinitions>
-                <Button x:Name="btn_accueil_reception" FontFamily="times new roman" FontSize="28" Content="Reception" Grid.Column="0" Margin="5" Click="btn_accueil_reception_Click"  />
-                <Button x:Name="btn_accueil_rendu" FontFamily="times new roman" FontSize="28" Content="Rendu" Grid.Column="1" Margin="5" Click="btn_accueil_rendu_Click" />
-                <Button x:Name="btn_accueil_facture" FontFamily="times new roman" FontSize="28" Content="Factures" Grid.Column="2" Margin="5" Click="btn_accueil_facture_Click" />
-                <Button x:Name="btn_accueil_client_pro" FontFamily="times new roman" FontSize="28" Content="client Pro" Grid.Column="4" Margin="5" Click="btn_accueil_client_pro_Click"/>
-                <Button x:Name="btn_accueil_impression" FontFamily="times new roman" FontSize="28" Content="Impressions" Grid.Column="5" Margin="5" Click="btn_accueil_impression_Click"/>
-                <Button x:Name="btn_accueil_administrateur" FontFamily="times new roman" FontSize="28" Content="Administrateur" Grid.Column="6" Margin="5" Click="btn_accueil_administrateur_Click"/>
-                <Button x:Name="btn_accueil_convoyeur" FontFamily="times new roman" FontSize="28" Content="Convoyeur" Grid.Column="3" Margin="5" Click="btn_accueil_convoyeur_Click"/>
+                <Button x:Name="btn_accueil_reception"  FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Reception" Grid.Column="0" Margin="5" Click="btn_accueil_reception_Click"  />
+                <Button x:Name="btn_accueil_rendu"  FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Rendu" Grid.Column="1" Margin="5" Click="btn_accueil_rendu_Click" />
+                <Button x:Name="btn_accueil_facture" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Factures" Grid.Column="2" Margin="5" Click="btn_accueil_facture_Click" />
+                <Button x:Name="btn_accueil_client_pro" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="client Pro" Grid.Column="4" Margin="5" Click="btn_accueil_client_pro_Click"/>
+                <Button x:Name="btn_accueil_impression" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Impressions" Grid.Column="5" Margin="5" Click="btn_accueil_impression_Click"/>
+                <Button x:Name="btn_accueil_administrateur" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Administrateur" Grid.Column="6" Margin="5" Click="btn_accueil_administrateur_Click"/>
+                <Button x:Name="btn_accueil_convoyeur" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Convoyeur" Grid.Column="3" Margin="5" Click="btn_accueil_convoyeur_Click"/>
 
             </Grid>
         </DockPanel>
@@ -50,12 +50,12 @@
                 </Grid.ColumnDefinitions>
 
 
-                <Button x:Name="btn_user1" FontFamily="times new roman" FontSize="28" Content="USER 1"  Grid.Row="0" Grid.Column="0" Margin="5" Click="btn_user1_Click" />
-                <Button x:Name="btn_user2" FontFamily="times new roman" FontSize="28" Content="USER 2" Grid.Row="0" Grid.Column="1" Margin="5" Click="btn_user1_Click" />
-                <Button x:Name="btn_user3" FontFamily="times new roman" FontSize="28" Content="USER 3" Grid.Row="1" Grid.Column="2" Margin="5" Click="btn_user1_Click"/>
-                <Button x:Name="btn_user4" FontFamily="times new roman" FontSize="28" Content="USER 4" Grid.Row="1" Grid.Column="3" Margin="5" Click="btn_user1_Click" />
-                <Button x:Name="btn_user5" FontFamily="times new roman" FontSize="28" Content="USER 5" Grid.Row="1" Grid.Column="4" Margin="5" Click="btn_user1_Click" />
-                <Button x:Name="btn_user6" FontFamily="times new roman" FontSize="28" Content="USER 6" Grid.Row="1" Grid.Column="5" Margin="5" Click="btn_user1_Click"  />
+                <Button x:Name="btn_user1" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="USER 1"  Grid.Row="0" Grid.Column="0" Margin="5" Click="btn_user1_Click" />
+                <Button x:Name="btn_user2" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="USER 2" Grid.Row="0" Grid.Column="1" Margin="5" Click="btn_user1_Click" />
+                <Button x:Name="btn_user3" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="USER 3" Grid.Row="1" Grid.Column="2" Margin="5" Click="btn_user1_Click"/>
+                <Button x:Name="btn_user4" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="USER 4" Grid.Row="1" Grid.Column="3" Margin="5" Click="btn_user1_Click" />
+                <Button x:Name="btn_user5" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="USER 5" Grid.Row="1" Grid.Column="4" Margin="5" Click="btn_user1_Click" />
+                <Button x:Name="btn_user6" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="USER 6" Grid.Row="1" Grid.Column="5" Margin="5" Click="btn_user1_Click"  />
                 <Button x:Name="btn_accueil_image" BorderBrush="White" Background="White" Grid.Row="0" Grid.Column="6"  Margin="5" 
                      Click="btn_accueil_image_Click">
                     <Image Source="/Image/Accueil1/logo_home.png"/>

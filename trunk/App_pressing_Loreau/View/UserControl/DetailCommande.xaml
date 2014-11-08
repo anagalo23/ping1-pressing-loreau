@@ -25,8 +25,10 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <Button x:Name="btn_detailCommande_selectionner_tout" Content="Sélectionner tout" Margin="10"/>
-                                <Button x:Name="btn_detailCommande_deselectionner_tout"  Content="Désélectionner tout" Grid.Column="1" Margin="10"/>
+                                <Button x:Name="btn_detailCommande_selectionner_tout" Content="Sélectionner tout" Margin="10"
+                                        FontFamily="Arial" FontSize="22" FontWeight="Bold"/>
+                                <Button x:Name="btn_detailCommande_deselectionner_tout"  Content="Désélectionner tout" Grid.Column="1" Margin="10"
+                                        FontFamily="Arial" FontSize="22" FontWeight="Bold"/>
                             </Grid>
 
                         </Border>
@@ -36,7 +38,8 @@
                                 <RowDefinition Height="3*"/>
                                 <RowDefinition Height="19*"/>
                             </Grid.RowDefinitions>
-                            <Label Content="Les commandes en cours" Background="AliceBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <Label Content="Les commandes en cours" Background="AliceBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                                   FontFamily="Arial" FontSize="30" FontWeight="SemiBold"/>
 
                         </Grid>
                     </Grid>
@@ -46,7 +49,8 @@
                 <Border Grid.Column="2">
 
 
-                    <Button x:Name="btn_detailCommande_rendre_articles_selectionnes"  Content="Rendre les articles sélectionnés"  Margin="10,185,95,60" HorizontalAlignment="Right" Grid.ColumnSpan="2" Width="160" Click="btn_detailCommande_rendre_articles_selectionnes_Click"/>
+                    <Button x:Name="btn_detailCommande_rendre_articles_selectionnes"  Content="Rendre les articles sélectionnés"  Margin="10,185,95,60" HorizontalAlignment="Right" Grid.ColumnSpan="2" Width="160" 
+                            Click="btn_detailCommande_rendre_articles_selectionnes_Click" FontFamily="Arial" FontSize="30" FontWeight="SemiBold"/>
                 </Border >
             </Grid>
         </Border>

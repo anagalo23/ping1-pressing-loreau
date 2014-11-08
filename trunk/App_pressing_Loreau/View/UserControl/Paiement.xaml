@@ -25,16 +25,22 @@
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
 
-                <Label Content="Prix HT :"  VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="0"/>
-                <Label x:Name="label_paiement_prix_ht" Grid.Row="0" Grid.Column="1" Margin="5" Content="X €" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="Azure"/>
+                <Label Content="Prix HT :"  VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="0"
+                       FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
+                <Label x:Name="label_paiement_prix_ht" Grid.Row="0" Grid.Column="1" Margin="5" Content="X €" VerticalContentAlignment="Center"
+                       HorizontalContentAlignment="Center" Background="Azure" FontFamily="Arial" FontSize="12" FontWeight="Normal"/>
                 
-                <Label Content="Remise :" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="0"/>
-                <Label x:Name="label_paiement_remise" Grid.Row="1" Grid.Column="1" Background="Azure" Content="X €" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="5"/>
-                <Label Content="Prix TTC :" VerticalContentAlignment="Center" Grid.Row="2" Grid.Column="0"/>
-                <Label x:Name="label_paiement_prix_ttc" Grid.Row="2" Grid.Column="1" Background="Azure" Margin="5" Content="X €" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                <Label Content="Remise :" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="0"
+                       FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
+                <Label x:Name="label_paiement_remise" Grid.Row="1" Grid.Column="1" Background="Azure" Content="X €" VerticalContentAlignment="Center" 
+                       HorizontalContentAlignment="Center" Margin="5" FontFamily="Arial" FontSize="12" FontWeight="Normal"/>
+                <Label Content="Prix TTC :" VerticalContentAlignment="Center" Grid.Row="2" Grid.Column="0"
+                       FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
+                <Label x:Name="label_paiement_prix_ttc" Grid.Row="2" Grid.Column="1" Background="Azure" Margin="5" Content="X €" VerticalContentAlignment="Center" 
+                       HorizontalContentAlignment="Center" FontFamily="Arial" FontSize="12" FontWeight="Normal"/>
                 <Button x:Name="btn_paiement_RRR" Grid.Row="3" Grid.Column="1"  Margin="15" Click="btn_paiement_RRR_Click">
-                    <TextBlock FontSize="20">
-                        Rabais <LineBreak/> Remise <LineBreak/> Ristourne
+                    <TextBlock FontFamily="Arial" FontSize="25" FontWeight="SemiBold">
+                        Rabais <LineBreak /> Remise <LineBreak/> Ristourne
                     </TextBlock>
                 </Button>
 
@@ -51,17 +57,23 @@
                     <RowDefinition Height="17*"/>
                     <RowDefinition Height="27*"/>
                 </Grid.RowDefinitions>
-                <Label Content="Mode de paiement" Grid.Row="0" VerticalContentAlignment="Center"/>
-                <ComboBox  x:Name="conbobox_paimeent_choixPaiement" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" Grid.Row="0" Grid.Column="1" Margin="10" Foreground="red"  Background="Azure">
+                <Label Content="Mode de paiement" Grid.Row="0" VerticalContentAlignment="Center"
+                       FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
+                <ComboBox  x:Name="conbobox_paimeent_choixPaiement" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                           Grid.Row="0" Grid.Column="1" Margin="10" Foreground="red"  Background="Azure" FontFamily="Arial" FontSize="14" FontWeight="SemiBold">
                     <ComboBoxItem x:Name="cbi_paiment_choixCB" Content="CB"/>
                     <ComboBoxItem x:Name="cbi_paiement_choixAmericaExpress" Content="America Express"/>
                     <ComboBoxItem x:Name="cbi_paiement_choixEspèces" Content="Especes"/>
                 </ComboBox>
-                <Label Content="Montant" Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center"/>
-                <Label x:Name="label_paiement_montant" Content="xy €" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="Azure" Margin="5"/>
+                <Label Content="Montant" Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center"
+                       FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
+                <Label x:Name="label_paiement_montant" Content="xy €" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" 
+                       HorizontalContentAlignment="Center" Background="Azure" Margin="5" FontFamily="Arial" FontSize="12" FontWeight="Normal"/>
                 
-                <Label Content="Reste dû" Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center"/>
-                <Label x:Name="label_paiement_reste_du" Content="x €" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="5,30" Background="Azure"/>
+                <Label Content="Reste dû" Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center"
+                       FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
+                <Label x:Name="label_paiement_reste_du" Content="x €" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" 
+                       HorizontalContentAlignment="Center" Margin="5,30" Background="Azure" FontFamily="Arial" FontSize="12" FontWeight="Normal"/>
      
             </Grid>
             
@@ -70,8 +82,10 @@
                     <RowDefinition Height="31*"/>
                     <RowDefinition Height="29*"/>
                 </Grid.RowDefinitions>
-                <Button x:Name="btn_paiement_mode_paiement_supp" Content="mode de paiement supplémentaire" Grid.Row="0" Margin="25,40,20,25" Click="btn_paiement_mode_paiement_supp_Click" />
-                <Button x:Name="btn_paiment_payer" Content="Payer" Grid.Row="1" Margin="45,35,40,20" Click="btn_paiment_payer_Click"/>
+                <Button x:Name="btn_paiement_mode_paiement_supp" Content="mode de paiement supplémentaire" Grid.Row="0"
+                        Margin="25,40,20,25" Click="btn_paiement_mode_paiement_supp_Click" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" />
+                <Button x:Name="btn_paiment_payer" Content="Payer" Grid.Row="1" Margin="45,35,40,20" Click="btn_paiment_payer_Click"
+                        FontFamily="Arial" FontSize="30" FontWeight="SemiBold"/>
 
             </Grid>
 

@@ -21,7 +21,8 @@
                         <RowDefinition Height="34*"/>
                         <RowDefinition Height="189*"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Content="Informations de base" Background="AliceBlue"  FontFamily="Arial" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  />
+                    <Label Grid.Row="0" Content="Informations de base" Background="AliceBlue"   HorizontalContentAlignment="Center" 
+                           VerticalContentAlignment="Center" FontFamily="Arial" FontSize="30" FontWeight="Bold" />
                     <Grid Grid.Row="1" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="164*"/>
@@ -34,12 +35,18 @@
 
                         </Grid.RowDefinitions>
 
-                        <Label Content="Nom :"  Grid.Row="0" Grid.Column="0"   VerticalContentAlignment="Center"/>
-                        <TextBox x:Name="txb_nouveauClient_nom" Grid.Row="0" Grid.Column="1" Margin="10"  VerticalContentAlignment="Center" />
-                        <Label Content="Prénom :" Grid.Row="1" Grid.Column="0"  VerticalContentAlignment="Center"/>
-                        <TextBox x:Name="txb_nouveauClient_prenom" Grid.Row="1" Grid.Column="1" Margin="10"  VerticalContentAlignment="Center"/>
-                        <Label Content="Date de naissance :" Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center"/>
-                        <TextBox x:Name="txb_nouveauClient_date_naissance" Grid.Row="2"  Grid.Column="1" Margin="10"  VerticalContentAlignment="Center"/>
+                        <Label Content="Nom :"  Grid.Row="0" Grid.Column="0"   VerticalContentAlignment="Center"
+                               FontFamily="Arial" FontSize="16" FontWeight="SemiBold"/>
+                        <TextBox x:Name="txb_nouveauClient_nom" Grid.Row="0" Grid.Column="1" Margin="10" 
+                                 VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" FontWeight="Normal"/>
+                        <Label Content="Prénom :" Grid.Row="1" Grid.Column="0"  VerticalContentAlignment="Center"
+                               FontFamily="Arial" FontSize="16" FontWeight="SemiBold"/>
+                        <TextBox x:Name="txb_nouveauClient_prenom" Grid.Row="1" Grid.Column="1" Margin="10" 
+                                 VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" FontWeight="Normal"/>
+                        <Label Content="Date de naissance :" Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center"
+                               FontFamily="Arial" FontSize="16" FontWeight="SemiBold"/>
+                        <TextBox x:Name="txb_nouveauClient_date_naissance" Grid.Row="2"  Grid.Column="1" Margin="10" 
+                                 VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" FontWeight="Normal"/>
 
                     </Grid>
                 </Grid>
@@ -51,7 +58,8 @@
                         <RowDefinition Height="34*"/>
                         <RowDefinition Height="189*"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Content="Adresses" Background="AliceBlue"  FontFamily="Arial" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  />
+                    <Label Grid.Row="0" Content="Adresses" Background="AliceBlue"   HorizontalContentAlignment="Center" 
+                           VerticalContentAlignment="Center" FontFamily="Arial" FontSize="30" FontWeight="Bold" />
                     <Grid Grid.Row="1" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="164*"/>
@@ -65,14 +73,22 @@
 
                         </Grid.RowDefinitions>
 
-                        <Label Content="Numéro :"  Grid.Row="0" Grid.Column="0"  VerticalContentAlignment="Center"/>
-                        <TextBox x:Name="txb_nouveauClient_numero" Grid.Row="0" Grid.Column="1" Margin="10"  VerticalContentAlignment="Center"/>
-                        <Label  Content="Rue, voie :" Grid.Row="1" Grid.Column="0"  VerticalContentAlignment="Center"/>
-                        <TextBox x:Name="txb_nouveauClient_rue_voie" Grid.Row="1" Grid.Column="1" Margin="10"  VerticalContentAlignment="Center"/>
-                        <Label Content="BP :" Grid.Row="2" Grid.Column="0"  VerticalContentAlignment="Center"/>
-                        <TextBox x:Name="txb_nouveauClient_bp" Grid.Row="2"  Grid.Column="1" Margin="10"  VerticalContentAlignment="Center" />
-                        <Label Content="Ville" Grid.Row="3" Grid.Column="0"  VerticalContentAlignment="Center"/>
-                        <TextBox x:Name="txb_nouveauClient_ville" Grid.Row="3" Grid.Column="1" Margin="10"  VerticalContentAlignment="Center"/>
+                        <Label Content="Numéro :"  Grid.Row="0" Grid.Column="0"  VerticalContentAlignment="Center"
+                               FontFamily="Arial" FontSize="16" FontWeight="SemiBold"/>
+                        <TextBox x:Name="txb_nouveauClient_numero" Grid.Row="0" Grid.Column="1" Margin="10"  
+                                 VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" FontWeight="Normal"/>
+                        <Label  Content="Rue, voie :" Grid.Row="1" Grid.Column="0"  VerticalContentAlignment="Center"
+                                FontFamily="Arial" FontSize="16" FontWeight="SemiBold"/>
+                        <TextBox x:Name="txb_nouveauClient_rue_voie" Grid.Row="1" Grid.Column="1" Margin="10"  
+                                 VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" FontWeight="Normal"/>
+                        <Label Content="BP :" Grid.Row="2" Grid.Column="0"  VerticalContentAlignment="Center"
+                               FontFamily="Arial" FontSize="16" FontWeight="SemiBold"/>
+                        <TextBox x:Name="txb_nouveauClient_bp" Grid.Row="2"  Grid.Column="1" Margin="10"  
+                                 VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" FontWeight="Normal"/>
+                        <Label Content="Ville" Grid.Row="3" Grid.Column="0"  VerticalContentAlignment="Center"
+                               FontFamily="Arial" FontSize="16" FontWeight="SemiBold"/>
+                        <TextBox x:Name="txb_nouveauClient_ville" Grid.Row="3" Grid.Column="1" Margin="10" 
+                                 VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" FontWeight="Normal"/>
 
                     </Grid>
                 </Grid>
@@ -85,7 +101,8 @@
                         <RowDefinition Height="34*"/>
                         <RowDefinition Height="189*"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Content="Communication avec le client " Background="AliceBlue"  FontFamily="Arial" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  />
+                    <Label Grid.Row="0" Content="Communication avec le client " Background="AliceBlue"   HorizontalContentAlignment="Center" 
+                           VerticalContentAlignment="Center" FontFamily="Arial" FontSize="30" FontWeight="Bold" />
                     <Grid Grid.Row="1" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="107*"/>
@@ -100,17 +117,21 @@
                         </Grid.RowDefinitions>
 
                         <Label  Grid.Row="0" Grid.Column="0"   VerticalContentAlignment="Center" >
-                            <TextBlock > Souhaitez vous recevoir des  informations <LineBreak/> par SMS?</TextBlock>
+                            <TextBlock FontFamily="Arial" FontSize="16" FontWeight="SemiBold"> Souhaitez vous recevoir des  informations <LineBreak/> par SMS?</TextBlock>
                         </Label>
                         <CheckBox x:Name="ckb_nouveauClient_sms"  VerticalContentAlignment="Center" Margin="5" Grid.Row="0" Grid.Column="1" />
-                        <Label Content="Portable :" Grid.Row="1" Grid.Column="0"  VerticalContentAlignment="Center" />
-                        <TextBox x:Name="txb_nouveauClient_portable"  Grid.Row="1" Grid.Column="1" Margin="5"  VerticalContentAlignment="Center"/>
+                        <Label Content="Portable :" Grid.Row="1" Grid.Column="0"  VerticalContentAlignment="Center" 
+                               FontFamily="Arial" FontSize="16" FontWeight="SemiBold"/>
+                        <TextBox x:Name="txb_nouveauClient_portable"  Grid.Row="1" Grid.Column="1" Margin="5" 
+                                 VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" FontWeight="Normal"/>
                         <Label  Grid.Row="2" Grid.Column="0"  VerticalContentAlignment="Center" >
-                            <TextBlock> Souhaitez vous recevoir des  informations <LineBreak/> par Mail?</TextBlock>
+                            <TextBlock FontFamily="Arial" FontSize="16" FontWeight="SemiBold"> Souhaitez vous recevoir des  informations <LineBreak/> par Mail?</TextBlock>
                         </Label>
                         <CheckBox x:Name="ckb_nouveauClient_mail" Grid.Row="2" Margin="5"  Grid.Column="1" VerticalContentAlignment="Center" />
-                        <Label Content="Mail:" Grid.Row="3" Grid.Column="0"  VerticalContentAlignment="Center"/>
-                        <TextBox x:Name="txb_nouveauClient_mail"  Grid.Row="3" Grid.Column="1" Margin="5"  VerticalContentAlignment="Center"/>
+                        <Label Content="Mail:" Grid.Row="3" Grid.Column="0"  VerticalContentAlignment="Center"
+                               FontFamily="Arial" FontSize="16" FontWeight="SemiBold"/>
+                        <TextBox x:Name="txb_nouveauClient_mail"  Grid.Row="3" Grid.Column="1" Margin="5"  
+                                 VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" FontWeight="Normal"/>
 
                     </Grid>
                 </Grid>
@@ -118,7 +139,8 @@
 
             </Border>
 
-            <Button x:Name="btn_nouveauClient_valider_inscription" Content="Valider l'inscription" Grid.Row="1" Grid.Column="1" Margin="80,75" Click="btn_nouveauClient_valider_inscription_Click"/>
+            <Button x:Name="btn_nouveauClient_valider_inscription" Content="Valider l'inscription" Grid.Row="1" Grid.Column="1" 
+                    Margin="80,75" Click="btn_nouveauClient_valider_inscription_Click" FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
 
         </Grid>
     </DockPanel>

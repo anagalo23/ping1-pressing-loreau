@@ -54,6 +54,26 @@ namespace App_pressing_Loreau
             dp.Children.Clear();
             dp.Children.Add(new AdministrationConvoyeur());
         }
+
+        private void btn_pageAdministrateur_administration_caisse_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_pageAdministrateur_administration_clients_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_pageAdministrateur_journal_utilisation_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_pageAdministrateur_parametre_utilisation_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
  
