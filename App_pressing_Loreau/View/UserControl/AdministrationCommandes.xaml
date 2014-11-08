@@ -45,11 +45,11 @@
                     <Button x:Name="btn_admin_commandes_supprimer" FontFamily="times new roman" FontSize="20" Content="Supprimer la commande" Grid.Row="1" Margin="53,5,161,3" Click="btn_admin_commandes_supprimer_Click" />
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1"/>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="30*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="btn_admin_commandes_modifier" FontFamily="times new roman" FontSize="20" Content="Modifier la commande" Grid.Column="0" Margin="53,2,161,6" Click="btn_admin_commandes_modifier_Click"/>
-                        <Button x:Name="btn_admin_commandes_retour" FontFamily="times new roman" FontSize="20" Content="Retour" Margin="248,2,10,6" Click="btn_admin_commandes_retour_Click_1"/>
+                        <Button x:Name="btn_admin_commandes_modifier" FontFamily="times new roman" FontSize="20" Content="Modifier la commande" Grid.Column="0" Margin="20,10" Click="btn_admin_commandes_modifier_Click"/>
+                        <Button x:Name="btn_admin_commandes_retour" FontFamily="times new roman" Grid.Column="2" FontSize="20" Content="Retour" Margin="20,10" Click="btn_admin_commandes_retour_Click_1"/>
                     </Grid>
                 </Grid>
             </Border>
