@@ -36,6 +36,7 @@
                     <RowDefinition Height="26*"/>
                     <RowDefinition Height="25*"/>
                 </Grid.RowDefinitions>
+                <Button x:Name="btn_statistiques_retour" Content="Retour" Grid.Row="1" Grid.Column="1" Margin="246,38,10,6" Click="btn_statistiques_retour_Click" />
                 <Border Grid.Column="0" Grid.Row="0">
                     <Grid>
                         <Grid.RowDefinitions>
