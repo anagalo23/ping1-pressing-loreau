@@ -9,7 +9,7 @@
     
     <Window.Resources>
     <Style  TargetType="Button">
-        <Setter Property="Background" Value="Gray"/>
+        <Setter Property="Background" Value="Teal"/>
         <Setter Property="Foreground" Value="White" />
         <Setter Property="Template">
             <Setter.Value>
