@@ -141,6 +141,9 @@
     <Compile Include="View\UserControl\UCAdministrateur\AdministrationConvoyeur.xaml.cs">
       <DependentUpon>AdministrationConvoyeur.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControl\UCAdministrateur\ParametreAffichage.xaml.cs">
+      <DependentUpon>ParametreAffichage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControl\UCClientPro\ClientProUC.xaml.cs">
       <DependentUpon>ClientProUC.xaml</DependentUpon>
     </Compile>
@@ -271,6 +274,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControl\UCAdministrateur\AdministrationConvoyeur.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl\UCAdministrateur\ParametreAffichage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

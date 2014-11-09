@@ -75,6 +75,12 @@ namespace App_pressing_Loreau
         {
 
         }
+
+        private void btn_pageAdministrateur_parametre_affichage_Click(object sender, RoutedEventArgs e)
+        {
+            dp.Children.Clear();
+            dp.Children.Add(new ParametreAffichage());
+        }
     }
 }
  

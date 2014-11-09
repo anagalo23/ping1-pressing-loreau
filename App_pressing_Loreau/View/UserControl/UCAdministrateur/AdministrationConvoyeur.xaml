@@ -15,8 +15,8 @@
                    FontFamily="Arial" FontSize="35" FontWeight="Bold"/>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="84*"/>
+                    <ColumnDefinition Width="101*"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
@@ -26,29 +26,29 @@
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="209*"/>
-                            <ColumnDefinition Width="87*"/>
-                            <ColumnDefinition Width="74*"/>
+                            <ColumnDefinition Width="124*"/>
+                            <ColumnDefinition Width="77*"/>
+                            <ColumnDefinition Width="169*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Content="Disponibles         :" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                               FontFamily="Arial" FontSize="20" FontWeight="SemiBold"/>
-                        <Canvas Grid.Column="1" Margin="75,72,5,53" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <Label Background="Bisque"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="46" Width="60" Canvas.Left="-64" Canvas.Top="-33"/>
+                        <Label Content="Disponibles  :" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                               FontFamily="Arial" FontSize="20" FontWeight="SemiBold" Margin="0,10,0,22" Height="94"/>
+                        <Canvas Grid.Column="1" Margin="2,72,144,53" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Label Background="Bisque"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="46" Width="60" Canvas.Left="7" Canvas.Top="-38"/>
                         </Canvas>
                     </Grid>
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="209*"/>
-                            <ColumnDefinition Width="87*"/>
-                            <ColumnDefinition Width="74*"/>
+                            <ColumnDefinition Width="124*"/>
+                            <ColumnDefinition Width="77*"/>
+                            <ColumnDefinition Width="169*"/>
                         </Grid.ColumnDefinitions>
                         <Label Content="Nombre de places :" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                               FontFamily="Arial" FontSize="20" FontWeight="SemiBold"/>
-                        <Canvas Grid.Column="1" Margin="10,60,20,42" VerticalAlignment="Center" HorizontalAlignment="Center">
+                               FontFamily="Arial" FontSize="20" FontWeight="SemiBold" Margin="0,10,0,22"/>
+                        <Canvas Grid.Column="1" Margin="34,72,43,53" VerticalAlignment="Center" HorizontalAlignment="Center" Height="0" Width="0">
                             <Label Background="Bisque"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="46" Width="60" Canvas.Left="-25" Canvas.Top="-30"/>
                         </Canvas>
-                        <Canvas Grid.Column="2" Margin="10,60,20,42" VerticalAlignment="Center" HorizontalAlignment="Center" >
-                            <Button x:Name="btn_admin_commandes_editer" Grid.Column="2" Click="btn_admin_commandes_editer_Click" Canvas.Left="-22" Canvas.Top="-36">
+                        <Canvas Grid.Column="2" Margin="79,72,90,53" VerticalAlignment="Center" HorizontalAlignment="Center" Height="0" Width="0" >
+                            <Button x:Name="btn_admin_commandes_editer" Grid.Column="2" Click="btn_admin_commandes_editer_Click" Canvas.Left="-55" Canvas.Top="-42">
                                 <Image Source="/Image/Admin1/logo_edit.png" Width="54"/>
                             </Button>
                         </Canvas>
@@ -68,7 +68,7 @@
                             <Label Content="Détails des emplacements" HorizontalContentAlignment="Left" Background="AliceBlue" Grid.Row="0"
                                FontFamily="Arial" FontSize="30" FontWeight="SemiBold"/>
                             <Border Grid.Row="1"  Background="Silver"/>
-                           
+
                         </Grid>
                     </Border>
                     <Grid Grid.Row="1">
@@ -79,9 +79,9 @@
                         <Button x:Name="btn_admin_convoyeur_retour"  Content="Retour" Grid.Column="1" Click="btn_admin_convoyeur_retour_Click"
                                 FontFamily="Arial" FontSize="30" FontWeight="SemiBold" Margin="10"/>
                     </Grid>
-                
+
                 </Grid>
-          
+
             </Grid>
         </Grid>
     </DockPanel>
