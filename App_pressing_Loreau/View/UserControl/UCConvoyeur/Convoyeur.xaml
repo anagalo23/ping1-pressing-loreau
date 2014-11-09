@@ -4,8 +4,38 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="730">
     <Grid>
-            
+        <Label x:Name="L_gestionconvoyeur" Content=" Gestion du convoyeur" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   FontFamily="Arial" FontSize="38" FontWeight="Bold" Margin="10,8,5,245"/>
+        <Grid Margin="330,60,10,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="19*"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="L_dtailemplcement" Content="Détail des emplacements" FontFamily="Arial" FontSize="30" FontWeight="Bold" Grid.Column="0" Grid.Row="0"/>
+        </Grid>
+        <Grid Margin="10,97,405,25" RenderTransformOrigin="0.5,0.5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="21*"/>
+                <ColumnDefinition Width="14*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label x:Name="L_nbreplace" Content="Nombre de place   :" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Arial"
+                   FontSize="25" FontWeight="SemiBold" Grid.Column="0" Grid.Row="0" Margin="10,10,10,30"/>
+            <Label x:Name="L_place" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Arial"
+                   FontSize="14" FontWeight="Normal" Grid.Column="1" Grid.Row="0" Margin="10,28,10,30"/>
+            <Label x:Name="L_disponible" Content="Disponible   :" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Aril"
+                   FontSize="25" FontWeight="SemiBold" Grid.Column="0" Grid.Row="1" Margin="10,28,10,10"/>
+            <Label x:Name="L_plcedisponible" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Arial"
+                   FontSize="14" FontWeight="Normal" Grid.Column="1" Grid.Row="1" Margin="10,28,10,30"/>
+
+
+        </Grid>
+
     </Grid>
 </UserControl>
