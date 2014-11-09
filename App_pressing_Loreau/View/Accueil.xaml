@@ -3,8 +3,28 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Pressing de Loreau" Height="500" Width="750"
         WindowState="Maximized"
-        WindowStyle='ToolWindow'>
-        
+        WindowStyle="ToolWindow"
+        ResizeMode="NoResize" 
+        ShowInTaskbar="False" >
+    
+    <Window.Resources>
+    <Style  TargetType="Button">
+        <Setter Property="Background" Value="Gray"/>
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="15" Background="{TemplateBinding Background}"
+                                BorderThickness="1">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                        </ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    </Window.Resources>
     <Grid Margin="10" >
         <Grid.RowDefinitions >
             <RowDefinition Height="50*"/>
@@ -24,7 +44,7 @@
 
 
                 </Grid.ColumnDefinitions>
-                <Button x:Name="btn_accueil_reception"  FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Reception" Grid.Column="0" Margin="5" Click="btn_accueil_reception_Click"  />
+                <Button  x:Name="btn_accueil_reception"  FontFamily="Arial" FontSize="25" FontWeight="SemiBold"  Content="Reception" Grid.Column="0" Margin="5" Click="btn_accueil_reception_Click"  />
                 <Button x:Name="btn_accueil_rendu"  FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Rendu" Grid.Column="1" Margin="5" Click="btn_accueil_rendu_Click" />
                 <Button x:Name="btn_accueil_facture" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Factures" Grid.Column="2" Margin="5" Click="btn_accueil_facture_Click" />
                 <Button x:Name="btn_accueil_client_pro" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="client Pro" Grid.Column="4" Margin="5" Click="btn_accueil_client_pro_Click"/>
@@ -34,7 +54,7 @@
 
             </Grid>
         </DockPanel>
-        <Border x:Name="border1" BorderBrush="Aqua" BorderThickness="2" Grid.Row="1">
+        <Border x:Name="border1" BorderBrush="Aqua" BorderThickness="2" Grid.Row="1" CornerRadius="20">
             <DockPanel x:Name="dp">
 
             </DockPanel>
