@@ -16,17 +16,17 @@
                 <ColumnDefinition Width="50*"/>
                 <ColumnDefinition Width="50*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="btn_impression_ticket_client" Margin="1" Content="Ticket clients" Grid.Row="0" Grid.Column="0" BorderBrush="Aqua" BorderThickness="2" 
+            <Button x:Name="btn_impression_ticket_client" Margin="20" Content="Ticket clients" Grid.Row="0" Grid.Column="0" BorderBrush="Aqua" BorderThickness="2" 
                     Click="btn_impression_ticket_client_Click" FontFamily="Arial" FontSize="38" />
-            <Button x:Name="btn_impression_ticket_waterproof" Margin="1" Content="Ticket watreproof" Grid.Row="0" Grid.Column="1" 
+            <Button x:Name="btn_impression_ticket_waterproof" Margin="20" Content="Ticket watreproof" Grid.Row="0" Grid.Column="1" 
                     BorderBrush="Aqua" BorderThickness="2" Click="btn_impression_ticket_waterproof_Click" FontFamily="Arial" FontSize="38" />
-            <Button x:Name="btn_impression_ticket_de_caisse" Margin="1" Content="Ticket de caisse" Grid.Row="0" Grid.Column="2" BorderBrush="Aqua" 
+            <Button x:Name="btn_impression_ticket_de_caisse" Margin="20" Content="Ticket de caisse" Grid.Row="0" Grid.Column="2" BorderBrush="Aqua" 
                     BorderThickness="2" Click="btn_impression_ticket_de_caisse_Click" FontFamily="Arial" FontSize="38" />
-            <Button x:Name="btn_impression_ticket_facture" Margin="1" Content="Facture" Grid.Row="1" Grid.Column="0" BorderBrush="Aqua" 
+            <Button x:Name="btn_impression_ticket_facture" Margin="20" Content="Facture" Grid.Row="1" Grid.Column="0" BorderBrush="Aqua" 
                     BorderThickness="2" Click="btn_impression_ticket_factures_Click" FontFamily="Arial" FontSize="38" />
-            <Button x:Name="btn_impression_bon_de_livraison" Margin="1" Content="Bon de livraison" Grid.Row="1" Grid.Column="1" BorderBrush="Aqua" 
+            <Button x:Name="btn_impression_bon_de_livraison" Margin="20" Content="Bon de livraison" Grid.Row="1" Grid.Column="1" BorderBrush="Aqua" 
                     BorderThickness="2" Click="btn_impression_bon_de_livraison_Click" FontFamily="Arial" FontSize="38" />
-            <Button x:Name="btn_impression_ticket_z" Margin="1" Content="Ticket Z" Grid.Row="1" Grid.Column="2" BorderBrush="Aqua" BorderThickness="2"
+            <Button x:Name="btn_impression_ticket_z" Margin="20" Content="Ticket Z" Grid.Row="1" Grid.Column="2" BorderBrush="Aqua" BorderThickness="2"
                     Click="btn_impression_ticket_z_Click" FontFamily="Arial" FontSize="38" />
         </Grid>
     </DockPanel>

@@ -132,6 +132,9 @@
     <Compile Include="Interfaces NON UTILISEES\EditionDeFactures.xaml.cs">
       <DependentUpon>EditionDeFactures.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControl\UCAdministrateur\AdministrationCaisse.xaml.cs">
+      <DependentUpon>AdministrationCaisse.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControl\UCAdministrateur\AdministrationCommandes.xaml.cs">
       <DependentUpon>AdministrationCommandes.xaml</DependentUpon>
     </Compile>
@@ -256,6 +259,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Interfaces NON UTILISEES\EditionDeFactures.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl\UCAdministrateur\AdministrationCaisse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

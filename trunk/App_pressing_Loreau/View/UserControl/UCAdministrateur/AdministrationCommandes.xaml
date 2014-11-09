@@ -11,10 +11,10 @@
                 <ColumnDefinition Width="369*"/>
                 <ColumnDefinition Width="370*"/>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0" BorderBrush="Aqua" BorderThickness="2">
+            <Border Grid.Column="0" BorderBrush="Aqua">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="48*"/>
+                        <RowDefinition Height="40*"/>
                         <RowDefinition Height="241*"/>
                     </Grid.RowDefinitions>
                     <Label FontFamily="times new roman" FontSize="38" Content="Commandes en cours"  HorizontalContentAlignment="Center" Background="AliceBlue" Grid.Row="0" />
@@ -37,12 +37,18 @@
                             <ColumnDefinition Width="10*"/>
                         </Grid.ColumnDefinitions>
                         <Label FontFamily="times new roman" FontSize="28" Content="Dernières commandes     :" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="0"/>
-                        <Canvas Grid.Column="1">
-                            <Label Background="Bisque"   VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Canvas.Left="10" Canvas.Top="61" Height="38" Width="60"/>
+                        <Canvas Grid.Column="1" Margin="10,60,20,42" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Label Background="Bisque"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="46" Width="60" Canvas.Left="-25" Canvas.Top="-30"/>
                         </Canvas>
                         <Label FontFamily="times new roman" FontSize="28" Content="commande(s)"  VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Grid.Column="2" />
                     </Grid>
-                    <Button x:Name="btn_admin_commandes_supprimer" FontFamily="times new roman" FontSize="20" Content="Supprimer la commande" Grid.Row="1" Margin="53,5,161,3" Click="btn_admin_commandes_supprimer_Click" />
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btn_admin_commandes_supprimer" FontFamily="times new roman" FontSize="20" Content="Supprimer la commande" Grid.Column="0" Margin="20,10" Click="btn_admin_commandes_supprimer_Click" />
+                    </Grid>
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30*"/>

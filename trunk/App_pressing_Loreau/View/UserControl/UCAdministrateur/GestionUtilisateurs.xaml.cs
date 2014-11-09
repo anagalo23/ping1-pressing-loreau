@@ -44,11 +44,6 @@ namespace App_pressing_Loreau
             dp.Children.Add(new PageAdministrateur());
         }
 
-        private void btn_admin_convoyeur_retour_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
        
 
     }

@@ -25,12 +25,6 @@ namespace App_pressing_Loreau
             InitializeComponent();
         }
 
-        private void btn_admin_commandes_retour_Click(object sender, RoutedEventArgs e)
-        {
-            dp.Children.Clear();
-            dp.Children.Add(new PageAdministrateur());
-        }
-
         private void btn_admin_commandes_modifier_Click(object sender, RoutedEventArgs e)
         {
 
@@ -43,7 +37,8 @@ namespace App_pressing_Loreau
 
         private void btn_admin_commandes_retour_Click_1(object sender, RoutedEventArgs e)
         {
-
+            dp.Children.Clear();
+            dp.Children.Add(new PageAdministrateur());
         }
     }
 }
