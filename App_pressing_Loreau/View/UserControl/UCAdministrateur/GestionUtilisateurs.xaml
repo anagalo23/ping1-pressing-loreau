@@ -18,7 +18,7 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="btn_gest_utilisateur_retour" Content="Retour" Grid.Row="3" Grid.Column="1" Margin="252,2,10,6"
-                    Click="btn_admin_convoyeur_retour_Click" FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
+                    Click="btn_gest_utilisateur_retour_Click" FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"/>

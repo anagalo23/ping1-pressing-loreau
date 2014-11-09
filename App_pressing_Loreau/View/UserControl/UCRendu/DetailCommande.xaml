@@ -9,11 +9,10 @@
         <Border>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="8*"/>
                     <ColumnDefinition Width="39*"/>
                     <ColumnDefinition Width="27*"/>
                 </Grid.ColumnDefinitions>
-                <Border Margin="10" BorderBrush="AliceBlue" BorderThickness="2" Grid.Column="1">
+                <Border Margin="10" BorderBrush="AliceBlue" BorderThickness="2" Grid.Column="0">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="3*"/>
@@ -35,7 +34,7 @@
 
                         <Grid  Grid.Row="1">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="4*"/>
                                 <RowDefinition Height="19*"/>
                             </Grid.RowDefinitions>
                             <Label Content="Les commandes en cours" Background="AliceBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
@@ -46,10 +45,10 @@
 
                 </Border>
 
-                <Border Grid.Column="2">
+                <Border Grid.Column="2" Height="300" VerticalAlignment="Bottom">
 
 
-                    <Button x:Name="btn_detailCommande_rendre_articles_selectionnes"  Content="Rendre les articles sélectionnés"  Margin="10,185,95,60" HorizontalAlignment="Right" Grid.ColumnSpan="2" Width="160" 
+                    <Button x:Name="btn_detailCommande_rendre_articles_selectionnes"  Content="Rendre les articles sélectionnés"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="50,100,50,100" 
                             Click="btn_detailCommande_rendre_articles_selectionnes_Click" FontFamily="Arial" FontSize="30" FontWeight="SemiBold"/>
                 </Border >
             </Grid>

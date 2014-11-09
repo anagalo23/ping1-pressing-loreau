@@ -19,7 +19,7 @@
                         <RowDefinition Height="6*"/>
                         <RowDefinition Height="23*"/>
                     </Grid.RowDefinitions>
-                    <Label Content="Client poccédant un ticket" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                    <Label Content="Client possédant un ticket" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
                            Background="Beige" Grid.Row="0" FontFamily="Arial" FontSize="30" FontWeight="Bold"/>
                     <Grid Grid.Row="1" Margin="5,0,-5,0" >
                         <Grid.ColumnDefinitions>
