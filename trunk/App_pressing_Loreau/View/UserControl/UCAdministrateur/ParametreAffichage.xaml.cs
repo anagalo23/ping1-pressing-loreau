@@ -24,5 +24,11 @@ namespace App_pressing_Loreau
         {
             InitializeComponent();
         }
+
+        private void btn_parametre_affichage_retour_Click(object sender, RoutedEventArgs e)
+        {
+            dp.Children.Clear();
+            dp.Children.Add(new PageAdministrateur());
+        }
     }
 }

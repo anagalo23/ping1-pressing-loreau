@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="740">
-    <DockPanel>
+    <DockPanel x:Name="dp">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="10*"/>
@@ -100,7 +100,9 @@
                     <ColumnDefinition Width="18*"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="Texte" Background="RosyBrown" FontFamily="Arial" FontSize="24" Grid.Column="0" Grid.Row="6" Margin="0,0,63,0"/>
-                <CheckBox  Grid.Column="1" Margin="10"/>
+                <CheckBox  Grid.Column="1" Margin="10,10,122,10"/>
+                <Button x:Name="btn_parametre_affichage_retour" Content="Retour" Grid.Column="1" Margin="68,0,10,10" 
+                        Click="btn_parametre_affichage_retour_Click" FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
             </Grid>
         </Grid>
     </DockPanel>
