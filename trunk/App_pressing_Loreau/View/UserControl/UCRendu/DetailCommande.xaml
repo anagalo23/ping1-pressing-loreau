@@ -48,7 +48,7 @@
                 <Border Grid.Column="2" Height="300" VerticalAlignment="Bottom">
 
 
-                    <Button x:Name="btn_detailCommande_rendre_articles_selectionnes"  Content="Rendre les articles sélectionnés"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="50,100,50,100" 
+                    <Button x:Name="btn_detailCommande_rendre_articles_selectionnes"  Content="Rendre les articles sélectionnés"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="90,190,10,10" 
                             Click="btn_detailCommande_rendre_articles_selectionnes_Click" FontFamily="Arial" FontSize="30" FontWeight="SemiBold"/>
                 </Border >
             </Grid>
