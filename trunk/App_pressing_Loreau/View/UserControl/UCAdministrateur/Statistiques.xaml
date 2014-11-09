@@ -44,14 +44,18 @@
 
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="10*"/>
-                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="63*"/>
+                            <RowDefinition Height="62*"/>
                         </Grid.RowDefinitions>
-                        <Button x:Name="btn_statistiques_retour" Content="Retour" Grid.Row="0" Grid.Column="1" Margin="236,20,10,24" 
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100*"/>
+                            <ColumnDefinition Width="100*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btn_statistiques_retour" Content="Retour" Grid.Row="1" Grid.Column="1" Margin="23,10,10,10" 
                         Click="btn_statistiques_retour_Click" FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
                     </Grid>
                 </Border>
-             
+
                 <Border Grid.Column="0" Grid.Row="0">
                     <Grid>
                         <Grid.RowDefinitions>

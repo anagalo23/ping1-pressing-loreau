@@ -19,7 +19,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="43*"/>
                         <RowDefinition Height="160*"/>
-                        <RowDefinition Height="73*"/>
+                        <RowDefinition Height="50*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <Grid.RowDefinitions>
@@ -45,12 +45,14 @@
                                FontFamily="Arial" FontSize="22" FontWeight="SemiBold"/>
 
                     </Grid>
-
-
-
-                    <Button x:Name="btn_nouvelleCommande_valider_article" Content="valider l'article" Grid.Row="2" 
-                            Margin="88,10,73,18" FontFamily="Arial" FontSize="30" FontWeight="SemiBold" />
-
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="10*"/> 
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btn_nouvelleCommande_valider_article" Content="valider l'article" Grid.Column="1" 
+                            Margin="38,10,8,3" FontFamily="Arial" FontSize="30" FontWeight="SemiBold" />
+                    </Grid>
                 </Grid>
 
             </Border>
