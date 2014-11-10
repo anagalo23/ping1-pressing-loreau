@@ -123,7 +123,6 @@ namespace App_pressing_Loreau.View
             dpanel.Children.Clear();
             dpanel.Children.Add(new RestitutionArticles());
 
-
         }
 
         private void btn_accueil_facture_Click(Object sender, RoutedEventArgs e)

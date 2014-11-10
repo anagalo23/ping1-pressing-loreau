@@ -20,10 +20,10 @@
             <Button Content="Fin de journée" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Arial" FontSize="30"
                    FontWeight="SemiBold"  Grid.Row="0"/>
             <Label  HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontFamily="Arial" FontSize="16"
-                   FontWeight="Normal" Grid.Row="1" Margin="10">
-                <TextBlock> La fin de journée clôture les tâches disponibles <LineBreak/> jusqu'au  nouveau jour ouvrés </TextBlock>
-                    
-                    
+                   FontWeight="Normal" Margin="10,43,10,100" Grid.RowSpan="2">
+                <TextBlock Height="44"> La fin de journée clôture les tâches disponibles <LineBreak/> jusqu'au  nouveau jour ouvrés</TextBlock>
+
+
             </Label>
             <Button Content="Imprimer Ticket X" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Arial"
                     FontSize="25" FontWeight="SemiBold" Grid.Row="2"  Margin="64,10,15,10"/>
