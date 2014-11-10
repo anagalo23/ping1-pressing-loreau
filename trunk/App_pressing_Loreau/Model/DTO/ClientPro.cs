@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace App_pressing_Loreau.Class.DTO
+namespace App_pressing_Loreau.Model.DTO
 {
     class ClientPro
     {

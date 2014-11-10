@@ -17,9 +17,9 @@
             <Border  Grid.Column="0" Margin="10" BorderThickness="2" BorderBrush="AliceBlue">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="43*"/>
-                        <RowDefinition Height="160*"/>
-                        <RowDefinition Height="50*"/>
+                        <RowDefinition Height="29*"/>
+                        <RowDefinition Height="82*"/>
+                        <RowDefinition Height="27*"/>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <Grid.RowDefinitions>
@@ -33,22 +33,35 @@
                             <ColumnDefinition Width="84*"/>
                             <ColumnDefinition Width="69*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Content="Departement" Grid.Row="0" Grid.Column="0"
-                              FontFamily="Arial" FontSize="22" FontWeight="SemiBold"/>
-                        <Label Content="Nom" Grid.Row="0" Grid.Column="1"
-                              FontFamily="Arial" FontSize="22" FontWeight="SemiBold"/>
-                        <Label Content="Quantité" Grid.Row="0" Grid.Column="2"
-                              FontFamily="Arial" FontSize="22" FontWeight="SemiBold"/>
-                        <Label Content="Commentaire" Grid.Row="0" Grid.Column="3"
-                              FontFamily="Arial" FontSize="22" FontWeight="SemiBold"/>
-                        <Label Content="Photo" Grid.Row="0" Grid.Column="4"
-                               FontFamily="Arial" FontSize="22" FontWeight="SemiBold"/>
+                        <Button x:Name="btn_nouvelleCommande_Deppartement" Content="Departement" Grid.Row="0" Grid.Column="0"
+                              FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Margin="2"   Click="btn_nouvelleCommande_Deppartement_Click"/>
+                        <Button x:Name="btn_nouvelleCommande_type" Content="Type" Grid.Row="0" Grid.Column="1"
+                              FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Margin="2"/>
+                        <Button x:Name="btn_nouvelleCommande_quantité" Content="Quantité" Grid.Row="0" Grid.Column="2"
+                              FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Margin="2"/>
+                        <Button x:Name="btn_nouvelleCommande_comm" Content="Commentaire" Grid.Row="0" Grid.Column="3"
+                              FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Margin="2"/>
+                        <Button x:Name="btn_nouvelleCommande_photo" Content="Photo" Grid.Row="0" Grid.Column="4"
+                               FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Margin="2"/>
+                        
+                        <Label Grid.Row="1" Grid.Column="0" Margin="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="Beige"/>
+                        <Label Grid.Row="1" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="Beige"/>
+                        <Label Grid.Row="1" Grid.Column="2" Margin="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="Beige"/>
+                        <Label Grid.Row="1" Grid.Column="3" Margin="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="Beige"/>
+                        <Label Grid.Row="1" Grid.Column="4" Margin="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="Beige"/>
 
                     </Grid>
+                    <Border Grid.Row="1" Margin="2">
+                        <DockPanel x:Name="dp_nouvelleCommande_cmd">
+                            
+                        </DockPanel>
+                        
+                    </Border>
+                    
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/> 
+                            <ColumnDefinition Width="10*"/>
                         </Grid.ColumnDefinitions>
                         <Button x:Name="btn_nouvelleCommande_valider_article" Content="valider l'article" Grid.Column="1" 
                             Margin="38,10,8,3" FontFamily="Arial" FontSize="30" FontWeight="SemiBold" />
