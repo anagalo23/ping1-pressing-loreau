@@ -26,12 +26,18 @@
             <Button x:Name="B_editerfacture" Content="Editer la facture" Grid.Row="2" FontSize="30" FontFamily="Arial" FontWeight="SemiBold" 
                     Grid.ColumnSpan="3" Margin="55,0,57,0"/>
             <Label x:Name="L_idcommande" Content=" Id commande   :" Grid.Row="1" FontSize="20" FontFamily="Arial" FontWeight="Bold" Margin="0,25,22,107"/>
-            <TextBox x:Name="T_entreztexte"  Grid.Row="1" Grid.Column="1" Margin="0,25,0,107" Text="entrez le texte"/>
+            <TextBox x:Name="T_entreztexte"  Grid.Row="1" Grid.Column="1" Margin="0,25,0,127" Text="entrez le texte"/>
+            <Image Source="/Image/Factures/loupederecherche.png" Grid.Column="2" Grid.Row="1" Margin="10,5,10,0" HorizontalAlignment="Center"
+                   VerticalAlignment="Top" Height="52" Width="70"/>
+            <Image Source="/Image/Factures/signe_plus.png" Grid.Column="0" Grid.Row="1" Margin="24,72,58,0" HorizontalAlignment="Center"
+                   VerticalAlignment="Top" Height="45" Width="36"/>
+            <Label Content="Ajouter une commande à l'édition de la facture" Grid.ColumnSpan="3" Grid.Row="1" Margin="65,57,0,97" HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" FontWeight="Normal"/>
         </Grid>
         <Grid Margin="10,10,10,10" Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="51*"/>
-                <RowDefinition Height="229*"/>
+                <RowDefinition Height="47*"/>
+                <RowDefinition Height="233*"/>
             </Grid.RowDefinitions>
             <Label Content="Aperçu de la facture " FontFamily="Arial" FontSize="35" FontWeight="Bold" HorizontalContentAlignment="Center"
                    VerticalContentAlignment="Center" Grid.Column="0"/>

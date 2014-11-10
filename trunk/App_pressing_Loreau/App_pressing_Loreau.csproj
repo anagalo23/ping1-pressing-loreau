@@ -396,7 +396,9 @@
   <ItemGroup>
     <Resource Include="Image\Articles1\logo_articles.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Image\Factures\signe_plus.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\Impressions\logo_impression.png" />
   </ItemGroup>
@@ -405,6 +407,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\Clients1\logo_client.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Factures\loupederecherche.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
