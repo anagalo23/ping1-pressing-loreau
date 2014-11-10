@@ -1,4 +1,4 @@
-﻿using App_pressing_Loreau.Class.DTO;
+﻿using App_pressing_Loreau.Model.DTO;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App_pressing_Loreau.Class.DAO
+namespace App_pressing_Loreau.Model.DAO
 {
     class ClientProDAO
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App_pressing_Loreau.Class.DTO
+namespace App_pressing_Loreau.Model.DTO
 {
     class Departement
     {
@@ -14,8 +14,9 @@ namespace App_pressing_Loreau.Class.DTO
         #endregion
 
         #region classes
-        public Departement(string nom)
+        public Departement(int id, string nom)
         {
+            this.id = id;
             this.nom = nom;
         }
         #endregion

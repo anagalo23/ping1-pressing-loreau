@@ -14,8 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using App_pressing_Loreau.View;
-using App_pressing_Loreau.Class.DAO;
-using App_pressing_Loreau.Class.DTO;
+using App_pressing_Loreau.Model.DAO;
+using App_pressing_Loreau.Model.DTO;
 
 
 namespace App_pressing_Loreau

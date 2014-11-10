@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using App_pressing_Loreau.Model.DTO;
+
 
 
 namespace App_pressing_Loreau.View
@@ -21,16 +23,31 @@ namespace App_pressing_Loreau.View
     /// </summary>
     public partial class Accueil : Window
     {
-        Button  btn;
+        Button btn;
+        Label entete;
+
+        public DockPanel dpanel
+        {
+            get
+            {
+                return this.DP;
+            }
+            set
+            {
+                this.dpanel = this.DP;
+            }
+        }
         public Accueil()
         {
             InitializeComponent();
 
-            btn_user1.Content="Alexis NAGALO";
+            //DPentete.Children.Clear();
+            //DPentete.Children.Add(new BanniereAccueil());
 
         }
 
-         void btn_user1_Click(Object sender, EventArgs e)
+
+        void btn_user1_Click(Object sender, EventArgs e)
         {
             btn = ((Button)(sender));
             switch (btn.Name)
@@ -89,70 +106,63 @@ namespace App_pressing_Loreau.View
         }
 
 
-        private void btn_accueil_reception_Click(Object sender, RoutedEventArgs e)
+        public void btn_accueil_reception_Click(Object sender, RoutedEventArgs e)
         {
-            IdentificationClient identificationClient = new IdentificationClient();
-            dp.Children.Clear();
-            dp.Children.Add(identificationClient);
+            dpanel.Children.Clear();
+            dpanel.Children.Add(new IdentificationClient());
+
+            //entete = new Label();
+            //entete.Content = "Reception";
+            //DPentete.Children.Clear();
+            //DPentete.Children.Add(entete);
+
         }
 
         private void btn_accueil_rendu_Click(Object sender, RoutedEventArgs e)
         {
-            dp.Children.Clear();
-            dp.Children.Add(new RestitutionArticles());
+            dpanel.Children.Clear();
+            dpanel.Children.Add(new RestitutionArticles());
 
 
         }
 
         private void btn_accueil_facture_Click(Object sender, RoutedEventArgs e)
         {
-            dp.Children.Clear();
-
+            dpanel.Children.Clear();
+            dpanel.Children.Add(new Factures());
         }
 
         private void btn_accueil_client_pro_Click(Object sender, RoutedEventArgs e)
         {
-
+            dpanel.Children.Clear();
+            dpanel.Children.Add(new ClientProUC());
         }
 
         private void btn_accueil_administrateur_Click(Object sender, RoutedEventArgs e)
         {
-            dp.Children.Clear();
-            dp.Children.Add(new IdentificationAdmin());
+            dpanel.Children.Clear();
+            dpanel.Children.Add(new IdentificationAdmin());
         }
 
         private void btn_accueil_convoyeur_Click(Object sender, RoutedEventArgs e)
         {
-
+            dpanel.Children.Clear();
+            dpanel.Children.Add(new Convoyeur());
         }
 
         private void btn_accueil_image_Click(Object sender, RoutedEventArgs e)
         {
-            dp.Children.Clear();
+            DPentete.Children.Clear();
+            DPentete.Children.Add(new BanniereAccueil());
+            dpanel.Children.Clear();
         }
 
         private void btn_accueil_impression_Click(Object sender, RoutedEventArgs e)
         {
+            dpanel.Children.Clear();
+            dpanel.Children.Add(new Impression());
 
         }
-
-        private void btn_accueil_articles_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        //private void btn_user1_Click(Object sender, EventArgs e)
-        //{
-
-        //    //if (btn_user1.IsPressed == true)
-        //    //{
-
-        //        btn_user1.Background = Brushes.Red;
-        //    //}
-        //    //else 
-        //    //{
-        //    //    btn_user1.Background = Brushes.Yellow;
-        //    //}
 
     }
 

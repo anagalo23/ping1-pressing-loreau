@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using App_pressing_Loreau.Class.DTO;
+using App_pressing_Loreau.Model.DTO;
 
-namespace App_pressing_Loreau.Class.DAO
+namespace App_pressing_Loreau.Model.DAO
 {
     class ArticleDAO
     {
@@ -16,18 +16,18 @@ namespace App_pressing_Loreau.Class.DAO
 
 
             String sql = "INSERT INTO article (art_photo, art_commentaire, art_rendu, convoyeur_conv_id,"
-                           + "departement_dep_id, type_typ_id) VALUES (@photo,@comm,@rendu,@conv_id,@dep_id,@typ_id)";
+                           + "departement_dep_id, type_typ_id) VALUES (\"@photo\",\"@comm\",\"@rendu\",\"@conv_id\",\"@dep_id\",\"@typ_id\")";
 
             MySqlCommand cmd = new MySqlCommand(sql, connection);
             //cmd.Prepare();
             cmd.CommandText = sql;
             //ajout des parametres
-            cmd.Parameters.Add("@photo", article.photo);
-            cmd.Parameters.Add("@comm", article.commentaire);
-            cmd.Parameters.Add("@rendu", article.ifRendu);
-            cmd.Parameters.Add("@conv_id", article.conv_id);
-            cmd.Parameters.Add("@dep_id", article.dep_id);
-            cmd.Parameters.Add("@typ_id", article.typ_id);
+            cmd.Parameters.AddWithValue("@photo", article.photo);
+            cmd.Parameters.AddWithValue("@comm", article.commentaire);
+            cmd.Parameters.AddWithValue("@rendu", article.ifRendu);
+            cmd.Parameters.AddWithValue("@conv_id", article.conv_id);
+            cmd.Parameters.AddWithValue("@dep_id", article.dep_id);
+            cmd.Parameters.AddWithValue("@typ_id", article.typ_id);
 
             int retour = cmd.ExecuteNonQuery();
             connection.Close();

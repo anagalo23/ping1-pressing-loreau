@@ -25,37 +25,43 @@
         </Setter>
     </Style>
     </Window.Resources>
+    
     <Grid Margin="10" >
         <Grid.RowDefinitions >
             <RowDefinition Height="50*"/>
             <RowDefinition Height="355*"/>
             <RowDefinition Height="44*"/>
         </Grid.RowDefinitions>
-        <DockPanel  Grid.Row="0">
-            <Grid Background="LightSkyBlue">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100*"/>
-                    <ColumnDefinition Width="100*"/>
-                    <ColumnDefinition Width="100*"/>
-                    <ColumnDefinition Width="100*"/>
-                    <ColumnDefinition Width="100*"/>
-                    <ColumnDefinition Width="100*"/>
-                    <ColumnDefinition Width="100*"/>
+        <Border BorderBrush="Aqua" BorderThickness="2" Grid.Row="0" CornerRadius="20" Background="Bisque">
+            <DockPanel x:Name="DPentete" >
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="100*"/>
 
 
-                </Grid.ColumnDefinitions>
-                <Button  x:Name="btn_accueil_reception"  FontFamily="Arial" FontSize="25" FontWeight="SemiBold"  Content="Reception" Grid.Column="0" Margin="5" Click="btn_accueil_reception_Click"  />
-                <Button x:Name="btn_accueil_rendu"  FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Rendu" Grid.Column="1" Margin="5" Click="btn_accueil_rendu_Click" />
-                <Button x:Name="btn_accueil_facture" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Factures" Grid.Column="2" Margin="5" Click="btn_accueil_facture_Click" />
-                <Button x:Name="btn_accueil_client_pro" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="client Pro" Grid.Column="4" Margin="5" Click="btn_accueil_client_pro_Click"/>
-                <Button x:Name="btn_accueil_impression" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Impressions" Grid.Column="5" Margin="5" Click="btn_accueil_impression_Click"/>
-                <Button x:Name="btn_accueil_administrateur" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Administrateur" Grid.Column="6" Margin="5" Click="btn_accueil_administrateur_Click"/>
-                <Button x:Name="btn_accueil_convoyeur" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Convoyeur" Grid.Column="3" Margin="5" Click="btn_accueil_convoyeur_Click"/>
+                    </Grid.ColumnDefinitions>
+                    <Button  x:Name="btn_accueil_reception"  FontFamily="Arial" FontSize="25" FontWeight="SemiBold"  Content="Reception" Grid.Column="0" Margin="5" Click="btn_accueil_reception_Click" />
+                    <Button x:Name="btn_accueil_rendu"  FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Rendu" Grid.Column="1" Margin="5" Click="btn_accueil_rendu_Click"  />
+                    <Button x:Name="btn_accueil_facture" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Factures" Grid.Column="2" Margin="5" Click="btn_accueil_facture_Click" />
+                    <Button x:Name="btn_accueil_client_pro" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="client Pro" Grid.Column="4" Margin="5" Click="btn_accueil_client_pro_Click" />
+                    <Button x:Name="btn_accueil_impression" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Impressions" Grid.Column="5" Margin="5" Click="btn_accueil_impression_Click"/>
+                    <Button x:Name="btn_accueil_administrateur" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Administrateur" Grid.Column="6" Margin="5" Click="btn_accueil_administrateur_Click" />
+                    <Button x:Name="btn_accueil_convoyeur" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Convoyeur" Grid.Column="3" Margin="5" Click="btn_accueil_convoyeur_Click" />
 
-            </Grid>
-        </DockPanel>
+                </Grid>
+            </DockPanel>
+
+        </Border>
+        
         <Border x:Name="border1" BorderBrush="Aqua" BorderThickness="2" Grid.Row="1" CornerRadius="20">
-            <DockPanel x:Name="dp">
+            
+            <DockPanel x:Name="DP">
 
             </DockPanel>
         </Border>
