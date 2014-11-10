@@ -11,7 +11,7 @@
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="17*"/>
             </Grid.RowDefinitions>
-            <Label Content="Liste des clients Pro" FontFamily="Arial" FontSize="30" FontWeight="Bold" HorizontalContentAlignment="Center"
+            <Label Content="Liste des clients Pro" FontFamily="Arial" FontSize="35" FontWeight="Bold" HorizontalContentAlignment="Center"
                    VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="0"/>
         </Grid>    
         <Grid Margin="344,10,10,70">
@@ -20,7 +20,7 @@
                 <RowDefinition Height="89*"/>
             </Grid.RowDefinitions>
             <Label  Content="Détail des commandes par client" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Arial"
-                    FontSize="30" FontWeight="Bold"/>
+                    FontSize="35" FontWeight="Bold"/>
         </Grid>
         <Label Content="Total à payer" Margin="344,235,281,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                FontFamily="Arial" FontSize="25" FontWeight="Bold"/>
