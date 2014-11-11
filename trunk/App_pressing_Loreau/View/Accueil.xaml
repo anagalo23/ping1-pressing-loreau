@@ -24,6 +24,22 @@
             </Setter.Value>
         </Setter>
     </Style>
+        <Style  TargetType="Label">
+            <Setter Property="Foreground" Value="DarkSlateGray" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Label">
+                        <Border CornerRadius="15" Background="{TemplateBinding Background}"
+                                BorderThickness="1">
+                            <ContentPresenter  VerticalAlignment="Center" >
+
+                            </ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
     </Window.Resources>
     
     <Grid Margin="10" >
@@ -58,15 +74,17 @@
             </DockPanel>
 
         </Border>
-        
-        <Border x:Name="border1" BorderBrush="Aqua" BorderThickness="2" Grid.Row="1" CornerRadius="20">
+
+        <Border x:Name="border1" BorderBrush="Aqua" BorderThickness="2" Grid.Row="1" CornerRadius="20" Background="Silver">
             
             <DockPanel x:Name="DP">
 
             </DockPanel>
         </Border>
-        <DockPanel Grid.Row="2">
-            <Grid Background="LightSkyBlue">
+        <Border Grid.Row="2" CornerRadius="20" Background="LightSkyBlue" >
+         
+        <DockPanel >
+            <Grid >
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100*"/>
@@ -92,6 +110,6 @@
             </Grid>
         </DockPanel>
 
-
+        </Border>
     </Grid>
 </Window>

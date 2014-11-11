@@ -12,7 +12,7 @@ namespace App_pressing_Loreau.Model.DTO
         public int id {get; set;}
         public string photo { get; set; }
         public string commentaire { get; set; }
-        public Boolean ifRendu { get; set; }
+        public bool ifRendu { get; set; }
        
         public int typ_id { get; set; }
         public int dep_id { get; set; }
@@ -20,7 +20,7 @@ namespace App_pressing_Loreau.Model.DTO
         #endregion
 
         #region classes
-        public Article(int idArticle, string photo, string commentaire, Boolean ifRendu, int typeid, int departementid, int placeConvoyeurid)
+        public Article(int idArticle, string photo, string commentaire, bool ifRendu, int typeid, int departementid, int placeConvoyeurid)
         {
             this.id = idArticle;
             this.photo = photo;

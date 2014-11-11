@@ -28,17 +28,25 @@
                         </Grid.ColumnDefinitions>
                         <Label  Content="Identifiant" Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center"
                                FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
-                        <TextBox x:Name="txb_identificationAdmin_identifiant" Grid.Row="0" Grid.Column="1" Margin="5,10" VerticalContentAlignment="Center"
+                        <TextBox x:Name="txb_identificationAdmin_identifiant" Grid.Row="0" Grid.Column="1" Margin="5,15" VerticalContentAlignment="Center"
                                  FontFamily="Arial" FontSize="14"/>
                         <Label Content="Mot de passe" Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center"
                                FontFamily="Arial" FontSize="25" FontWeight="SemiBold" />
-                        <TextBox x:Name="txb_identificationAdmin_mdp"  Grid.Row="1" Grid.Column="1" Margin="5,10" VerticalContentAlignment="Center"
+                        <TextBox x:Name="txb_identificationAdmin_mdp"  Grid.Row="1" Grid.Column="1" Margin="5,15" VerticalContentAlignment="Center"
                                  FontFamily="Arial" FontSize="14"/>
 
                     </Grid>
 
-                    <Button x:Name="btn_identificationAdmin_connecte" Content="Se connecter" Grid.Row="2" Margin="90,15,90,10"
+                    <Grid Grid.Row="2" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="7*"/>
+                        </Grid.RowDefinitions>
+                        <Label x:Name="label_identificationAdmin_erreur_affiche" Grid.Row="0" Margin="10" FontWeight="Bold"  />
+                        <Button x:Name="btn_identificationAdmin_connecte" Content="Se connecter" Grid.Row="1" Margin="5"
                             Click="btn_identificationAdmin_connecte_Click" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" />
+                    </Grid>
+                    
                 </Grid>
             </Border>
         </Grid>
