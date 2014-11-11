@@ -29,9 +29,9 @@
                      Margin="10,10,10,10" Click="btn_pageAdministrateur_statistiques_Click" FontFamily="Arial" FontSize="34" />
             <Button  x:Name="btn_pageAdministrateur_journal_utilisation" Content="Journal d'utilisation" Grid.Column="2" Grid.Row="1" 
                      Margin="10,10,10,10" FontFamily="Arial" FontSize="34"  Click="btn_pageAdministrateur_journal_utilisation_Click"/>
-            <Button  x:Name="btn_pageAdministrateur_parametre_affichage" Content="Paramètre d'affichage" Grid.Column="0" 
+            <Button  x:Name="btn_pageAdministrateur_parametre_affichage" Content="Paramètres d'affichage" Grid.Column="0" 
                      Grid.Row="2" Margin="10,10,10,10" FontFamily="Arial" FontSize="34"  Click="btn_pageAdministrateur_parametre_affichage_Click"/>
-            <Button  x:Name="btn_pageAdministrateur_parametre_impression" Content="Paramètre d'impression" Grid.Column="1" Grid.Row="2" 
+            <Button  x:Name="btn_pageAdministrateur_parametre_impression" Content="Paramètres d'impression" Grid.Column="1" Grid.Row="2" 
                      Margin="10,10,10,10" Click="btn_pageAdministrateur_parametre_impression_Click" FontFamily="Arial" FontSize="34" />
             <Button  x:Name="btn_pageAdministrateur_administration_convoyeur" Content="Administration convoyeur" Grid.Column="2" Grid.Row="2" 
                      Margin="10,10,10,10" Click="btn_pageAdministrateur_administration_convoyeur_Click" FontFamily="Arial" FontSize="34" />

@@ -151,8 +151,10 @@ namespace App_pressing_Loreau.View
 
         private void btn_accueil_image_Click(Object sender, RoutedEventArgs e)
         {
-            DPentete.Children.Clear();
-            DPentete.Children.Add(new BanniereAccueil());
+           // DPentete.Children.Clear();
+            //DPentete.Children.Add(new BanniereAccueil());
+            //dpanel.Children.Clear();
+
             dpanel.Children.Clear();
         }
 

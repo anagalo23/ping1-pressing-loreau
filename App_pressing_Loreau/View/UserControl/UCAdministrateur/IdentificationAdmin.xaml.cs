@@ -20,6 +20,7 @@ namespace App_pressing_Loreau
     /// </summary>
     public partial class IdentificationAdmin
     {
+        String label = "Admin = Administrateur et mp = admin";
         public IdentificationAdmin()
         {
             InitializeComponent();
@@ -27,8 +28,17 @@ namespace App_pressing_Loreau
 
         private void btn_identificationAdmin_connecte_Click(object sender, RoutedEventArgs e)
         {
-            dp.Children.Clear();
-            dp.Children.Add(new PageAdministrateur());
+            if (txb_identificationAdmin_identifiant.Text == "Administrateur" && txb_identificationAdmin_mdp.Text == "admin")
+            {
+                dp.Children.Clear();
+                dp.Children.Add(new PageAdministrateur());
+            }
+            else
+            {
+                label_identificationAdmin_erreur_affiche.Content = label;
+            }
+
+           
         }
     }
 }
