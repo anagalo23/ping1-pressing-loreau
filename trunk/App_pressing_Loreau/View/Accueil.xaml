@@ -6,42 +6,9 @@
         WindowStyle="ToolWindow"
         ResizeMode="NoResize" 
         ShowInTaskbar="False" >
-    
-    <Window.Resources>
-    <Style  TargetType="Button">
-        <Setter Property="Background" Value="Teal"/>
-        <Setter Property="Foreground" Value="White" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border CornerRadius="15" Background="{TemplateBinding Background}"
-                                BorderThickness="1">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                        </ContentPresenter>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-        <Style  TargetType="Label">
-            <Setter Property="Foreground" Value="DarkSlateGray" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Label">
-                        <Border CornerRadius="15" Background="{TemplateBinding Background}"
-                                BorderThickness="1">
-                            <ContentPresenter  VerticalAlignment="Center" >
+   
 
-                            </ContentPresenter>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        
-    </Window.Resources>
-    
     <Grid Margin="10" >
         <Grid.RowDefinitions >
             <RowDefinition Height="50*"/>
@@ -76,39 +43,48 @@
         </Border>
 
         <Border x:Name="border1" BorderBrush="Aqua" BorderThickness="2" Grid.Row="1" CornerRadius="20" Background="Silver">
-            
+
             <DockPanel x:Name="DP">
 
             </DockPanel>
         </Border>
         <Border Grid.Row="2" CornerRadius="20" Background="LightSkyBlue" >
-         
-        <DockPanel >
-            <Grid >
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100*"/>
-                    <ColumnDefinition Width="100*"/>
-                    <ColumnDefinition Width="100*"/>
-                    <ColumnDefinition Width="100*"/>
-                    <ColumnDefinition Width="100*"/>
-                    <ColumnDefinition Width="100*"/>
-                    <ColumnDefinition Width="100*"/>
-                </Grid.ColumnDefinitions>
+            <DockPanel >
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="605*"/>
+                        <ColumnDefinition Width="119*"/>
+
+                    </Grid.ColumnDefinitions>
+                    <Grid  Grid.Column="0">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100*"/>
+                            <ColumnDefinition Width="100*"/>
+                            <ColumnDefinition Width="100*"/>
+                            <ColumnDefinition Width="100*"/>
+                            <ColumnDefinition Width="100*"/>
+                            <ColumnDefinition Width="100*"/>
+
+                        </Grid.ColumnDefinitions>
 
 
-                <Button x:Name="btn_user1" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="USER 1"  Grid.Row="0" Grid.Column="0" Margin="5" Click="btn_user1_Click" />
-                <Button x:Name="btn_user2" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="USER 2" Grid.Row="0" Grid.Column="1" Margin="5" Click="btn_user1_Click" />
-                <Button x:Name="btn_user3" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="USER 3" Grid.Row="1" Grid.Column="2" Margin="5" Click="btn_user1_Click"/>
-                <Button x:Name="btn_user4" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="USER 4" Grid.Row="1" Grid.Column="3" Margin="5" Click="btn_user1_Click" />
-                <Button x:Name="btn_user5" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="USER 5" Grid.Row="1" Grid.Column="4" Margin="5" Click="btn_user1_Click" />
-                <Button x:Name="btn_user6" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="USER 6" Grid.Row="1" Grid.Column="5" Margin="5" Click="btn_user1_Click"  />
-                <Button x:Name="btn_accueil_image" BorderBrush="White" Background="White" Grid.Row="0" Grid.Column="6"  Margin="5" 
+                        <Button x:Name="btn_user1" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="USER 1"  Grid.Row="0" Grid.Column="0" Margin="5" Click="btn_user1_Click" />
+                        <Button x:Name="btn_user2" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="USER 2" Grid.Row="0" Grid.Column="1" Margin="5" Click="btn_user1_Click" />
+                        <Button x:Name="btn_user3" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="USER 3" Grid.Row="1" Grid.Column="2" Margin="5" Click="btn_user1_Click"/>
+                        <Button x:Name="btn_user4" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="USER 4" Grid.Row="1" Grid.Column="3" Margin="5" Click="btn_user1_Click" />
+                        <Button x:Name="btn_user5" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="USER 5" Grid.Row="1" Grid.Column="4" Margin="5" Click="btn_user1_Click" />
+                        <Button x:Name="btn_user6" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="USER 6" Grid.Row="1" Grid.Column="5" Margin="5" Click="btn_user1_Click"  />
+
+                    </Grid>
+                    <Button x:Name="btn_accueil_image" BorderBrush="White" Background="White" Grid.Column="1"  Margin="5" 
                      Click="btn_accueil_image_Click">
-                    <Image Source="/Image/Accueil1/logo_home.png"/>
-                </Button>
-            </Grid>
-        </DockPanel>
+                        <Image Source="/Image/Accueil1/logo_home.png"/>
+                    </Button>
+                </Grid>
+            </DockPanel>
 
         </Border>
     </Grid>

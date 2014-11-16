@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Lun 10 Novembre 2014 à 18:14
+-- Généré le: Mer 12 Novembre 2014 à 19:26
 -- Version du serveur: 5.6.12-log
 -- Version de PHP: 5.4.16
 
@@ -91,8 +91,8 @@ CREATE TABLE IF NOT EXISTS `commande` (
   `cmd_id` int(11) NOT NULL AUTO_INCREMENT,
   `cmd_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `cmd_payee` tinyint(1) NOT NULL,
-  `client_clt_id` int(11) NOT NULL,
-  `clientpro_cltp_id` int(11) NOT NULL,
+  `client_clt_id` int(11) DEFAULT NULL,
+  `clientpro_cltp_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`cmd_id`),
   KEY `fk_commande_client1_idx` (`client_clt_id`),
   KEY `fk_commande_clientpro1_idx` (`clientpro_cltp_id`)
@@ -259,33 +259,33 @@ ALTER TABLE `article`
 -- Contraintes pour la table `commande`
 --
 ALTER TABLE `commande`
-  ADD CONSTRAINT `fk_commande_client1` FOREIGN KEY (`client_clt_id`) REFERENCES `bdd_pressing`.`client` (`clt_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_commande_clientpro1` FOREIGN KEY (`clientpro_cltp_id`) REFERENCES `bdd_pressing`.`clientpro` (`cltp_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_commande_clientpro1` FOREIGN KEY (`clientpro_cltp_id`) REFERENCES `clientpro` (`cltp_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_commande_client1` FOREIGN KEY (`client_clt_id`) REFERENCES `client` (`clt_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `log`
 --
 ALTER TABLE `log`
-  ADD CONSTRAINT `fk_log_employe1` FOREIGN KEY (`employe_emp_id`) REFERENCES `bdd_pressing`.`employe` (`emp_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_log_employe1` FOREIGN KEY (`employe_emp_id`) REFERENCES `employe` (`emp_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `paiement`
 --
 ALTER TABLE `paiement`
-  ADD CONSTRAINT `fk_paiement_commande1` FOREIGN KEY (`commande_cmd_id`) REFERENCES `bdd_pressing`.`commande` (`cmd_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_paiement_commande1` FOREIGN KEY (`commande_cmd_id`) REFERENCES `commande` (`cmd_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `prix`
 --
 ALTER TABLE `prix`
-  ADD CONSTRAINT `fk_prix_article1` FOREIGN KEY (`article_art_id`) REFERENCES `bdd_pressing`.`article` (`art_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_prix_commande1` FOREIGN KEY (`commande_cmd_id`) REFERENCES `bdd_pressing`.`commande` (`cmd_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_prix_article1` FOREIGN KEY (`article_art_id`) REFERENCES `article` (`art_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_prix_commande1` FOREIGN KEY (`commande_cmd_id`) REFERENCES `commande` (`cmd_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `typepaiement`
 --
 ALTER TABLE `typepaiement`
-  ADD CONSTRAINT `fk_typepaiement_paiement1` FOREIGN KEY (`paiement_pai_id`) REFERENCES `bdd_pressing`.`paiement` (`pai_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_typepaiement_paiement1` FOREIGN KEY (`paiement_pai_id`) REFERENCES `paiement` (`pai_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

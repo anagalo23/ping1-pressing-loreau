@@ -14,58 +14,24 @@
                 <ColumnDefinition Width="55*"/>
                 <ColumnDefinition Width="19*"/>
             </Grid.ColumnDefinitions>
-            <Border  Grid.Column="0" Margin="10" BorderThickness="2" BorderBrush="AliceBlue">
+            <Border  Grid.Column="0" Margin="10" CornerRadius="15" BorderThickness="2" BorderBrush="AliceBlue">
                 <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="29*"/>
-                        <RowDefinition Height="82*"/>
-                        <RowDefinition Height="27*"/>
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="28*"/>
-                            <RowDefinition Height="15*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="83*"/>
-                            <ColumnDefinition Width="50*"/>
-                            <ColumnDefinition Width="60*"/>
-                            <ColumnDefinition Width="84*"/>
-                            <ColumnDefinition Width="69*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button x:Name="btn_nouvelleCommande_Deppartement" Content="Departement" Grid.Row="0" Grid.Column="0"
-                              FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Margin="2"   Click="btn_nouvelleCommande_Deppartement_Click"/>
-                        <Button x:Name="btn_nouvelleCommande_type" Content="Type" Grid.Row="0" Grid.Column="1"
-                              FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Margin="2"/>
-                        <Button x:Name="btn_nouvelleCommande_quantité" Content="Quantité" Grid.Row="0" Grid.Column="2"
-                              FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Margin="2"/>
-                        <Button x:Name="btn_nouvelleCommande_comm" Content="Commentaire" Grid.Row="0" Grid.Column="3"
-                              FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Margin="2"/>
-                        <Button x:Name="btn_nouvelleCommande_photo" Content="Photo" Grid.Row="0" Grid.Column="4"
-                               FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Margin="2"/>
-                        
-                        <Label Grid.Row="1" Grid.Column="0" Margin="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="Beige"/>
-                        <Label Grid.Row="1" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="Beige"/>
-                        <Label Grid.Row="1" Grid.Column="2" Margin="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="Beige"/>
-                        <Label Grid.Row="1" Grid.Column="3" Margin="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="Beige"/>
-                        <Label Grid.Row="1" Grid.Column="4" Margin="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="Beige"/>
-
-                    </Grid>
-                    <Border Grid.Row="1" Margin="2">
-                        <DockPanel x:Name="dp_nouvelleCommande_cmd">
-                            
-                        </DockPanel>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="19*"/>
+                        <ColumnDefinition Width="130*"/>
+                        <ColumnDefinition Width="19*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button  Background="White">
+                        <Image Source="/Image/precedent.png" Height="25"/>
+                    </Button>
+                    <Border BorderBrush="Aqua" BorderThickness="2" Grid.Column="1" CornerRadius="15">
                         
                     </Border>
-                    
-                    <Grid Grid.Row="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button x:Name="btn_nouvelleCommande_valider_article" Content="valider l'article" Grid.Column="1" 
-                            Margin="38,10,8,3" FontFamily="Arial" FontSize="30" FontWeight="SemiBold" />
-                    </Grid>
+                    <Button Grid.Column="2"  Background="White">
+                        <Image Source="/Image/suivant.png"/>
+                    </Button>
+
+
                 </Grid>
 
             </Border>
@@ -82,17 +48,21 @@
                            HorizontalContentAlignment="Center" Grid.Row="0" FontFamily="Arial" FontSize="30" FontWeight="Bold"/>
 
                     <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="48*"/>
+                            <ColumnDefinition Width="203*"/>
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="9*"/>
                             <RowDefinition Height="9*"/>
                             <RowDefinition Height="9*"/>
                         </Grid.RowDefinitions>
                         <TextBox Grid.Row="0" Margin="8,10,13,10"  VerticalContentAlignment="Center"
-                                 FontFamily="Arial" FontSize="14" FontWeight="Normal"/>
+                                 FontFamily="Arial" FontSize="14" FontWeight="Normal" Grid.ColumnSpan="2"/>
                         <TextBox Grid.Row="1" Margin="8,10"  VerticalContentAlignment="Center"
-                                 FontFamily="Arial" FontSize="14" FontWeight="Normal"/>
+                                 FontFamily="Arial" FontSize="14" FontWeight="Normal" Grid.ColumnSpan="2"/>
                         <TextBox Grid.Row="2" Margin="8,10"  VerticalContentAlignment="Center"
-                                 FontFamily="Arial" FontSize="14" FontWeight="Normal"/>
+                                 FontFamily="Arial" FontSize="14" FontWeight="Normal" Grid.ColumnSpan="2"/>
                     </Grid>
 
                     <Grid Grid.Row="2">

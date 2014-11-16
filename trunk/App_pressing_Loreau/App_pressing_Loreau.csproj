@@ -59,6 +59,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controler\AffichageAccueil.cs" />
+    <Compile Include="Controler\RelayCommand.cs" />
     <Compile Include="Model\Bdd.cs" />
     <Compile Include="Model\DAO\ArticleDAO.cs" />
     <Compile Include="Model\DAO\ClientDAO.cs" />
@@ -413,6 +415,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Base de données a jour\bddping1.sql" />
+    <Resource Include="Image\suivant.png" />
+    <Resource Include="Image\precedent.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

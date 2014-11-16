@@ -31,12 +31,13 @@ namespace App_pressing_Loreau
             InitializeComponent();
         }
 
-        private void btn_banniereaccueil_reception_Click(object sender, RoutedEventArgs e)
+       /* private void btn_banniereaccueil_reception_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("msg");
             accueil = new Accueil();
             accueil.DP.Children.Clear(); 
             accueil.DP.Children.Add(new IdentificationClient());
-        }
+        }*/
 
         private void btn_banniereaccueil_rendu_Click(object sender, RoutedEventArgs e)
         {
