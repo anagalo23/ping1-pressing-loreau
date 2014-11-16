@@ -3,6 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="View\Accueil.xaml">
     <Application.Resources>
-         
+
+            <Style  TargetType="Button">
+                <Setter Property="Background" Value="Teal"/>
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="15" Background="{TemplateBinding Background}"
+                                BorderThickness="1">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                                </ContentPresenter>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style  TargetType="Label">
+                <Setter Property="Foreground" Value="DarkSlateGray" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Label">
+                            <Border CornerRadius="15" Background="{TemplateBinding Background}"
+                                BorderThickness="1">
+                                <ContentPresenter  VerticalAlignment="Center" >
+
+                                </ContentPresenter>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
     </Application.Resources>
 </Application>
