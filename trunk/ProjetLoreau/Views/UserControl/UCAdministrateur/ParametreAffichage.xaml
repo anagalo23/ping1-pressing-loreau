@@ -1,0 +1,109 @@
+﻿<UserControl x:Class="App_pressing_Loreau.ParametreAffichage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="740">
+    <DockPanel x:Name="dp">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Couleurs des utilsateurs : " VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Arial" FontSize="24" Grid.Column="0" Grid.Row="0" />
+            <Label Content="Design des boutons : " VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Arial" FontSize="24" Grid.Column="1" Grid.Row="0"/>
+            <Label Content="User 1   " FontFamily="Arial" FontSize="24" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,0,249,0"/>
+            <Canvas Grid.Row="1" Grid.Column="0" Margin="121,0,144,0" Height="43" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <Label Height="43" Width="105" Background="LightGreen"/>
+            </Canvas>
+            <Label Content="User 2   " FontFamily="Arial" FontSize="24" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,0,249,0"/>
+            <Canvas Grid.Row="2" Grid.Column="0" Margin="121,0,144,0" Height="43" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Label Height="43" Width="105" Background="Ivory"/>
+            </Canvas>
+            <Label Content="User 3   " FontFamily="Arial" FontSize="24" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,0,249,0"/>
+            <Canvas Grid.Row="3" Grid.Column="0" Margin="121,0,144,0" Height="43" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <Label Height="43" Width="105" Background="Fuchsia"/>
+            </Canvas>
+            <Label Content="User 4   " FontFamily="Arial" FontSize="24" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,0,249,0"/>
+            <Canvas Grid.Row="4" Grid.Column="0" Margin="121,0,144,0" Height="43" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <Label Height="43" Width="105" Background="Tan"/>
+            </Canvas>
+            <Label Content="User 5   " FontFamily="Arial" FontSize="24" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,0,249,0"/>
+            <Canvas Grid.Row="5" Grid.Column="0" Margin="121,0,144,0" Height="43" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <Label Height="43" Width="105" Background="Orange"/>
+            </Canvas>
+            <Label Content="User 6   " FontFamily="Arial" FontSize="24" Grid.Column="0" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,0,249,0"/>
+            <Canvas Grid.Row="6" Grid.Column="0" Margin="121,0,144,0" Height="43" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <Label Height="43" Width="105" Background="DarkMagenta"/>
+            </Canvas>
+            <Grid Grid.Column="1" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="18*"/>
+                    <ColumnDefinition Width="18*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Texte" Background="Red" FontFamily="Arial" FontSize="24" Grid.Column="0" Margin="0,0,63,0"/>
+                <CheckBox  Grid.Column="1" Margin="10" Grid.ColumnSpan="2"/>
+            </Grid>
+            <Grid Grid.Column="1" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="18*"/>
+                    <ColumnDefinition Width="18*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Texte" Background="Pink" FontFamily="Arial" FontSize="24" Grid.Column="0" Margin="0,0,63,0"/>
+                <CheckBox  Grid.Column="1" Margin="10"/>
+            </Grid>
+            <Grid Grid.Column="1" Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="18*"/>
+                    <ColumnDefinition Width="18*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Texte" Background="Yellow" FontFamily="Arial" FontSize="24" Grid.Column="0" Margin="0,0,63,0"/>
+                <CheckBox  Grid.Column="1" Margin="10"/>
+            </Grid>
+            <Grid Grid.Column="1" Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="18*"/>
+                    <ColumnDefinition Width="18*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Texte" Background="Gray" FontFamily="Arial" FontSize="24" Grid.Column="0" Grid.Row="4" Margin="0,0,63,0"/>
+                <CheckBox  Grid.Column="1" Margin="10"/>
+            </Grid>
+            <Grid Grid.Column="1" Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="18*"/>
+                    <ColumnDefinition Width="18*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Texte" Background="CadetBlue" FontFamily="Arial" FontSize="24" Grid.Column="0" Grid.Row="5" Margin="0,0,63,0"/>
+                <CheckBox  Grid.Column="1" Margin="10"/>
+            </Grid>
+            <Grid Grid.Column="1" Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="18*"/>
+                    <ColumnDefinition Width="18*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Texte" Background="CadetBlue" FontFamily="Arial" FontSize="24" Grid.Column="0" Grid.Row="5" Margin="0,0,63,0"/>
+                <CheckBox  Grid.Column="1" Margin="10"/>
+            </Grid>
+            <Grid Grid.Column="1" Grid.Row="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="18*"/>
+                    <ColumnDefinition Width="18*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Texte" Background="RosyBrown" FontFamily="Arial" FontSize="24" Grid.Column="0" Grid.Row="6" Margin="0,0,63,0"/>
+                <CheckBox  Grid.Column="1" Margin="10,10,122,10"/>
+                <Button x:Name="btn_parametre_affichage_retour" Content="Retour" Grid.Column="1" Margin="68,0,10,10" 
+                        Click="btn_parametre_affichage_retour_Click" FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
+            </Grid>
+        </Grid>
+    </DockPanel>
+</UserControl>
