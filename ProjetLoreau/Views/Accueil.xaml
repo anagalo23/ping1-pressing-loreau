@@ -81,7 +81,7 @@
                     </Grid>
                     <Button x:Name="btn_accueil_image" BorderBrush="White" Background="White" Grid.Column="1"  Margin="5" 
                      Click="btn_accueil_image_Click">
-                        <Image Source="/Image/Accueil1/logo_home.png"/>
+                        <Image Source="/Resources/pics/Accueil1/logo_home.png"/>
                     </Button>
                 </Grid>
             </DockPanel>

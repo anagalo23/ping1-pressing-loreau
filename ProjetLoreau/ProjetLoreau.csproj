@@ -84,11 +84,9 @@
     <Compile Include="Model\DTO\PlaceConvoyeur.cs" />
     <Compile Include="Model\DTO\Type.cs" />
     <Compile Include="Model\DTO\TypePayement.cs" />
+    <Compile Include="ViewModel\Bannierre.cs" />
     <Compile Include="Views\Accueil.xaml.cs">
       <DependentUpon>Accueil.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UserControl\BanniereAccueil.xaml.cs">
-      <DependentUpon>BanniereAccueil.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControl\Paiement.xaml.cs">
       <DependentUpon>Paiement.xaml</DependentUpon>
@@ -178,14 +176,9 @@
   <ItemGroup>
     <Folder Include="Controler\" />
     <Folder Include="Resources\bdd\" />
-    <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\Accueil.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\UserControl\BanniereAccueil.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
