@@ -176,7 +176,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controleur\" />
+    <Folder Include="Controler\" />
     <Folder Include="Resources\bdd\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>
