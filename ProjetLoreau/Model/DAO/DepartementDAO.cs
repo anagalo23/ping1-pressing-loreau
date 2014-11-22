@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using App_pressing_Loreau.Model.DTO;
+using ProjetLoreau.Model.DTO;
 
-namespace App_pressing_Loreau.Model.DAO
+namespace ProjetLoreau.Model.DAO
 {
     class DepartementDAO
     {

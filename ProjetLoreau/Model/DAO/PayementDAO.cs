@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App_pressing_Loreau.Model.DAO
+namespace ProjetLoreau.Model.DAO
 {
     class PayementDAO
     {

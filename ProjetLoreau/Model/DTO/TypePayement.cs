@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App_pressing_Loreau.Model.DTO
+namespace ProjetLoreau.Model.DTO
 {
     class TypePayement
     {
