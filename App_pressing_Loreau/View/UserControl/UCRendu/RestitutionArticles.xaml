@@ -21,7 +21,7 @@
                     </Grid.RowDefinitions>
                     <Label Content="Client possédant un ticket" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
                            Background="Beige" Grid.Row="0" FontFamily="Arial" FontSize="30" FontWeight="Bold"/>
-                    <Grid Grid.Row="1" Margin="10,40" >
+                    <Grid Grid.Row="1" Margin="10,36,10,44" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="15*"/>
                             <ColumnDefinition Width="26*"/>
@@ -29,9 +29,9 @@
                         </Grid.ColumnDefinitions>
                         <Label Content="Numéro du ticket"  Grid.Column="0" Margin="5,40,119,35" VerticalContentAlignment="Center"
                                FontFamily="Arial" FontSize="20" FontWeight="SemiBold" Grid.ColumnSpan="2"/>
-                        <TextBox x:Name="txb_restitutionArticles_nuemro_facture" Grid.Column="1" Margin="38,40,10,40" VerticalContentAlignment="Center"/>
-                        <Button x:Name="btn_restitutionArticles_ok" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="OK" Grid.Column="2" Margin="26,0,35,30" 
-                                Click="btn_restitutionArticles_ok_Click" FontFamily="Arial" FontSize="20" FontWeight="SemiBold" Height="45" VerticalAlignment="Bottom"/>
+                        <TextBox x:Name="txb_restitutionArticles_numero_facture" Grid.Column="1" Margin="38,40,10,40" VerticalContentAlignment="Center"/>
+                        <Button x:Name="btn_restitutionArticles_ok" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="OK" Grid.Column="2" Margin="27,0,34,7" 
+                                Click="btn_restitutionArticles_ok_Click" FontFamily="Arial" FontSize="20" FontWeight="SemiBold" Height="28" VerticalAlignment="Bottom"/>
                     </Grid>
 
                     <Label Content="Client sans ticket" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"

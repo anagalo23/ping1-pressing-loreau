@@ -37,7 +37,7 @@
                    FontSize="25" FontWeight="SemiBold" Grid.Column="0" Grid.Row="0" Margin="10,10,10,30"/>
             <Label x:Name="L_place" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Arial"
                    FontSize="14" FontWeight="Normal" Grid.Column="1" Grid.Row="0" Margin="10,28,10,30"/>
-            <Image Source="/Image/Admin1/logo_edit.png" Grid.Column="2" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Image Source="/Resources/pics/Admin1/logo_edit.png" Grid.Column="2" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Label x:Name="L_disponible" Content="Disponible   :" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Aril"
                    FontSize="25" FontWeight="SemiBold" Grid.Column="0" Grid.Row="1" Margin="10,28,10,10"/>
             <Label x:Name="L_plcedisponible" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Arial"

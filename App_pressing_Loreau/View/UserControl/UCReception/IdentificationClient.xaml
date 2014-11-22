@@ -50,7 +50,7 @@
                         <Label  Content="Adresse" Grid.Row="3" Grid.Column="0"  VerticalContentAlignment="Center"
                                 FontFamily="Arial" FontSize="20" FontWeight="SemiBold"/>
                         <TextBox x:Name="txb_identificationClient_adresse" Grid.Row="3" Grid.Column="1" Margin="10,4,13,4"  VerticalContentAlignment="Center"/>
-                        <Label Content="Date de  naissance" Grid.Row="4" Grid.Column="0"  VerticalContentAlignment="Center"
+                        <Label Content="Cleanway" Grid.Row="4" Grid.Column="0"  VerticalContentAlignment="Center"
                                FontFamily="Arial" FontSize="20" FontWeight="SemiBold"/>
                         <TextBox x:Name="txb_identificationClient_date_naissance" Grid.Row="4" Grid.Column="1" Margin="10,4,13,4"  VerticalContentAlignment="Center"/>
 
@@ -80,7 +80,7 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Nom" Width="45*" Binding="{Binding GameName}" />
                             <DataGridTextColumn Header="Prénom" Width="45*" Binding="{Binding Creator}" />
-                            <DataGridTextColumn Header="Date de naissance" Width="45*" Binding="{Binding Publisher}" />
+                            <DataGridTextColumn Header="Cleanway" Width="45*" Binding="{Binding Publisher}" />
                         </DataGrid.Columns>
                     </DataGrid>
 

@@ -22,13 +22,13 @@
                         <ColumnDefinition Width="19*"/>
                     </Grid.ColumnDefinitions>
                     <Button  Background="White">
-                        <Image Source="/Image/precedent.png" Height="25"/>
+                        <Image Source="/Resources/pics/precedent.png" Height="25"/>
                     </Button>
                     <Border BorderBrush="Aqua" BorderThickness="2" Grid.Column="1" CornerRadius="15">
                         
                     </Border>
                     <Button Grid.Column="2"  Background="White">
-                        <Image Source="/Image/suivant.png"/>
+                        <Image Source="/Resources/pics/suivant.png"/>
                     </Button>
 
 
@@ -75,7 +75,7 @@
                             <ColumnDefinition Width="133*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Background="AliceBlue" Grid.Row="0" Grid.Column="1" Margin="5"/>
+                        <Label Content="Total à payer : " FontSize="19" Background="AliceBlue" Grid.Row="0" Grid.Column="1" Margin="5,0"/>
                         <Button x:Name="btn_nouvelleCommande_paiement_immediat" Content="Paiement immédiat" Grid.Row="1" Grid.Column="0"
                                 Margin="5" Click="btn_nouvelleCommande_paiement_immediat_Click" FontFamily="Arial" FontSize="22" FontWeight="SemiBold"/>
                         <Button x:Name="btn_nouvelleCommande_paiement_differe" Content="Paiement différé" Grid.Row="1" Grid.Column="1" Margin="5"
