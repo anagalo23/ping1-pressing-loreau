@@ -13,12 +13,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using App_pressing_Loreau.View;
-using App_pressing_Loreau.Model.DAO;
-using App_pressing_Loreau.Model.DTO;
+using ProjetLoreau.View;
+using ProjetLoreau.Model.DAO;
+using ProjetLoreau.Model.DTO;
 
 
-namespace App_pressing_Loreau
+namespace ProjetLoreau
 {
  
 

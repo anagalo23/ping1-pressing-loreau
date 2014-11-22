@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace App_pressing_Loreau
+namespace ProjetLoreau
 {
     /// <summary>
     /// Logique d'interaction pour AdministrationCommandes.xaml

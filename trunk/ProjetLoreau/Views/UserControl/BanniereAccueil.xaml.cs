@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using App_pressing_Loreau.View;
+using ProjetLoreau.View;
 
-namespace App_pressing_Loreau
+namespace ProjetLoreau
 {
 
     

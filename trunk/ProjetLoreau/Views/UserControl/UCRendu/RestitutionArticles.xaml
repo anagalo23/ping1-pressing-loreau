@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="App_pressing_Loreau.RestitutionArticles"
+﻿<UserControl x:Class="ProjetLoreau.RestitutionArticles"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
