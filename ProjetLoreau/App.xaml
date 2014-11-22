@@ -3,6 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="/View/Accueil.xaml">
     <Application.Resources>
-         
+
+        <Style BasedOn="{StaticResource {x:Type TextBlock}}"
+       TargetType="Label"
+       x:Key="TitleText">
+            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property=""
+                
+            
+        </Style>
+
     </Application.Resources>
 </Application>
