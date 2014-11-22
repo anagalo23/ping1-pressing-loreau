@@ -292,6 +292,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\bdd\bddping1.sql" />
+    <Resource Include="Resources\info.txt" />
     <Resource Include="Resources\pics\suivant.png" />
     <Resource Include="Resources\pics\precedent.png" />
   </ItemGroup>
