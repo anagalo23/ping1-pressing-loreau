@@ -32,14 +32,15 @@
                             <RowDefinition Height="25*"/>
                             <RowDefinition Height="25*"/>
                             <RowDefinition Height="25*"/>
+                            <RowDefinition Height="25*"/>
 
                         </Grid.RowDefinitions>
 
-                        <Label Content="Nom :"  Grid.Row="0" Grid.Column="0"   VerticalContentAlignment="Center"
+                        <Label Content="Nom * :"  Grid.Row="0" Grid.Column="0"   VerticalContentAlignment="Center"
                                FontFamily="Arial" FontSize="16" FontWeight="SemiBold"/>
                         <TextBox x:Name="txb_nouveauClient_nom" Grid.Row="0" Grid.Column="1" Margin="10" 
                                  VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" FontWeight="Normal"/>
-                        <Label Content="Prénom :" Grid.Row="1" Grid.Column="0"  VerticalContentAlignment="Center"
+                        <Label Content="Prénom * :" Grid.Row="1" Grid.Column="0"  VerticalContentAlignment="Center"
                                FontFamily="Arial" FontSize="16" FontWeight="SemiBold"/>
                         <TextBox x:Name="txb_nouveauClient_prenom" Grid.Row="1" Grid.Column="1" Margin="10" 
                                  VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" FontWeight="Normal"/>
@@ -47,7 +48,10 @@
                                FontFamily="Arial" FontSize="16" FontWeight="SemiBold"/>
                         <TextBox x:Name="txb_nouveauClient_date_naissance" Grid.Row="2"  Grid.Column="1" Margin="10" 
                                  VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" FontWeight="Normal"/>
-
+                        <Label Content="ID Cleanway  :"  Grid.Row="3" Grid.Column="0"   VerticalContentAlignment="Center"
+                               FontFamily="Arial" FontSize="16" FontWeight="SemiBold"/>
+                        <TextBox x:Name="txb_nouveauClient_idCleanway" Grid.Row="3" Grid.Column="1" Margin="10" 
+                                 VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" FontWeight="Normal"/>
                     </Grid>
                 </Grid>
             </Border>

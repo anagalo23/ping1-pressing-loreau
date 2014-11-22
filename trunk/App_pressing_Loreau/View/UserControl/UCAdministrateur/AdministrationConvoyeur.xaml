@@ -49,7 +49,7 @@
                         </Canvas>
                         <Canvas Grid.Column="2" Margin="79,72,90,53" VerticalAlignment="Center" HorizontalAlignment="Center" Height="0" Width="0" >
                             <Button x:Name="btn_admin_commandes_editer" Grid.Column="2" Click="btn_admin_commandes_editer_Click" Canvas.Left="-55" Canvas.Top="-42">
-                                <Image Source="/Image/Admin1/logo_edit.png" Width="54"/>
+                                <Image Source="/Resources/pics/Admin1/logo_edit.png" Width="54"/>
                             </Button>
                         </Canvas>
                     </Grid>

@@ -42,11 +42,11 @@ namespace App_pressing_Loreau
         {
             List<Article> listArt;
             List<String> art = new List<String>();
-          //  listArt= ArticleDAO.getArticlesById(Int32.Parse(txb_restitutionArticles_nuemro_facture.Text));
-            //listArt= ControlerRendu.getCommandeByNumeroFacture(Int32.Parse(txb_restitutionArticles_nuemro_facture.Text));
+          //  listArt= ArticleDAO.getArticlesById(Int32.Parse(txb_restitutionArticles_numero_facture.Text));
+            //listArt= ControlerRendu.getCommandeByNumeroFacture(Int32.Parse(txb_restitutionArticles_numero_facture.Text));
             //listArt.photo
-           //Art.Add(listArt[Int32.Parse(txb_restitutionArticles_nuemro_facture.Text)].photo);
-           //Art.Add(listArt[Int32.Parse(txb_restitutionArticles_nuemro_facture.Text)].commentaire);
+           //Art.Add(listArt[Int32.Parse(txb_restitutionArticles_numero_facture.Text)].photo);
+           //Art.Add(listArt[Int32.Parse(txb_restitutionArticles_numero_facture.Text)].commentaire);
            art.Add("bonjour");
            art.Add("bonjour");
            art.Add("bonjour");
