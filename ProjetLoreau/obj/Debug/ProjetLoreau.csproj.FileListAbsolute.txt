@@ -100,3 +100,6 @@ C:\Users\HP\Desktop\Ping_huguetteV2\Ping_huguetteV2\ProjetLoreau\obj\Debug\Proje
 C:\Users\HP\Desktop\Ping_huguetteV2\Ping_huguetteV2\ProjetLoreau\obj\Debug\ProjetLoreau.g.resources
 C:\Users\HP\Desktop\Ping_huguetteV2\Ping_huguetteV2\ProjetLoreau\obj\Debug\ProjetLoreau.Properties.Resources.resources
 C:\Users\HP\Desktop\Ping_huguetteV2\Ping_huguetteV2\ProjetLoreau\obj\Debug\ProjetLoreau.csproj.GenerateResource.Cache
+C:\Users\syncrase\Documents\Visual Studio 2013\Projects\loreau_project\ProjetLoreau\bin\Debug\ProjetLoreau.exe.config
+C:\Users\syncrase\Documents\Visual Studio 2013\Projects\loreau_project\ProjetLoreau\obj\Debug\ProjetLoreau.exe
+C:\Users\syncrase\Documents\Visual Studio 2013\Projects\loreau_project\ProjetLoreau\obj\Debug\ProjetLoreau.pdb
