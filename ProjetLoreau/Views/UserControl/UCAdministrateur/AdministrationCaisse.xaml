@@ -41,23 +41,23 @@
                         </Grid.ColumnDefinitions>
                         <Label Content="Carte Bleue" FontFamily="times new roman" FontSize="20" Grid.Column="0" VerticalContentAlignment="Center"/>
                         <Button x:Name="btn_admin_caisse_supprimer" BorderBrush="White" Background="White" Grid.Column="1" Click="btn_admin_caisse_supprimer_Click">
-                            <Image Source="Resources/pics/Admin1/logo_exit.png"/>
+                            <Image Source="/Resources/pics/Admin1/logo_exit.png"/>
                         </Button>
                         <Label Content="Espèces" FontFamily="times new roman" FontSize="20" Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center"/>
                         <Button x:Name="btn_admin_caisse_supprimer1" BorderBrush="White" Background="White" Grid.Column="1" Grid.Row="1" Click="btn_admin_caisse_supprimer1_Click">
-                            <Image Source="Resources/pics/Admin1/logo_exit.png"/>
+                            <Image Source="/Resources/pics/Admin1/logo_exit.png"/>
                         </Button>
                         <Label Content="Clean Way" FontFamily="times new roman" FontSize="20" Grid.Column="0" Grid.Row="2" VerticalContentAlignment="Center"/>
                         <Button x:Name="btn_admin_caisse_supprimer2" BorderBrush="White" Background="White" Grid.Column="1" Grid.Row="2" Click="btn_admin_caisse_supprimer2_Click">
-                            <Image Source="Resources/pics/Admin1/logo_exit.png"/>
+                            <Image Source="/Resources/pics/Admin1/logo_exit.png"/>
                         </Button>
                         <Label Content="Espèces" FontFamily="times new roman" FontSize="20" Grid.Row="3" Grid.Column="0" VerticalContentAlignment="Center"/>
                         <Button x:Name="btn_admin_caisse_supprimer3" BorderBrush="White" Background="White" Grid.Column="1" Grid.Row="3" Click="btn_admin_caisse_supprimer3_Click" >
-                            <Image Source="Resources/pics/Admin1/logo_exit.png"/>
+                            <Image Source="/Resources/pics/Admin1/logo_exit.png"/>
                         </Button>
                         <Label Content="American Express" FontFamily="times new roman" FontSize="20" Grid.Row="4" Grid.Column="0" VerticalContentAlignment="Center"/>
                         <Button x:Name="btn_admin_caisse_supprimer4" BorderBrush="White" Background="White" Grid.Column="1" Grid.Row="4" Click="btn_admin_caisse_supprimer4_Click">
-                            <Image Source="Resources/pics/Admin1/logo_exit.png"/>
+                            <Image Source="/Resources/pics/Admin1/logo_exit.png"/>
                         </Button>
                     </Grid>
                 </Grid>
@@ -77,7 +77,7 @@
                     <Label Content="Ajouter un mode de paiement" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
                            FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
                     <Button x:Name="btn_admin_caisse_ajouter" BorderBrush="White" Background="White" Grid.Column="0" Margin="2,1,0,0" Click="btn_admin_caisse_ajouter_Click">
-                        <Image Source="Resources/pics/Admin1/logo_add.png"/>
+                        <Image Source="/Resources/pics/Admin1/logo_add.png"/>
                     </Button>
 
                 </Grid>
@@ -95,7 +95,7 @@
                     </Canvas>
                     <Canvas Grid.Column="2" Margin="56,28,28,32" VerticalAlignment="Center" HorizontalAlignment="Center" Height="0" Width="0" >
                         <Button x:Name="btn_admin_caisse_editer" Grid.Column="2" Click="btn_admin_caisse_editer_Click" Canvas.Left="123" Canvas.Top="-25" Height="55" Width="67" >
-                            <Image Source="Resources/pics/Admin1/logo_edit.png"/>
+                            <Image Source="/Resources/pics/Admin1/logo_edit.png"/>
                         </Button>
                     </Canvas>
                 </Grid>
