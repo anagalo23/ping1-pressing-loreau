@@ -16,7 +16,7 @@ using ProjetLoreau.Model.DTO;
 
 
 
-namespace App_pressing_Loreau.View
+namespace ProjetLoreau.View
 {
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
