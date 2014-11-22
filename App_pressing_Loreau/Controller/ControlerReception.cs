@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App_pressing_Loreau.Controler
+namespace App_pressing_Loreau.Controller
 {
     class ControlerReception
     {
