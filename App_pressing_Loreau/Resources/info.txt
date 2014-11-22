@@ -1,0 +1,2 @@
+﻿Nom du projet : App_pressing_loreau
+Nom BDD : bddping1

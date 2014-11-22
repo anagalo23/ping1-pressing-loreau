@@ -26,9 +26,9 @@ namespace App_pressing_Loreau.Model.DAO
             cmd.Parameters.AddWithValue("@telfixe", client.telfix);
             cmd.Parameters.AddWithValue("@telport", client.telmob);
             cmd.Parameters.AddWithValue("@adresse", client.adresse);
-            cmd.Parameters.AddWithValue("@dateNaissance", client.dateNaissance)); //parametre date sous format annee + mois + jour + heure + minute + seconde
+            cmd.Parameters.AddWithValue("@dateNaissance", client.dateNaissance); //parametre date sous format annee + mois + jour + heure + minute + seconde
             cmd.Parameters.AddWithValue("@email", client.email);
-            cmd.Parameters.AddWithValue("@dateInsc", client.dateInscription)); //parametre date sous format annee + mois + jour + heure + minute + seconde
+            cmd.Parameters.AddWithValue("@dateInsc", client.dateInscription); //parametre date sous format annee + mois + jour + heure + minute + seconde
             cmd.Parameters.AddWithValue("@idCleanWay", client.idCleanWay);
             cmd.Parameters.AddWithValue("@contactMail", client.contactMail);
             cmd.Parameters.AddWithValue("@contactSms", client.contactSms);
