@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
-using App_pressing_Loreau.Controler;
 using App_pressing_Loreau.Model.DTO;
 using App_pressing_Loreau.Model.DAO;
 
