@@ -59,8 +59,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controler\AffichageAccueil.cs" />
-    <Compile Include="Controler\RelayCommand.cs" />
     <Compile Include="Model\Bdd.cs" />
     <Compile Include="Model\DAO\ArticleDAO.cs" />
     <Compile Include="Model\DAO\ClientDAO.cs" />
@@ -84,59 +82,6 @@
     <Compile Include="Model\DAO\PlaceConvoyeurDAO.cs" />
     <Compile Include="Model\DAO\TypeDAO.cs" />
     <Compile Include="Model\DAO\TypePayementDAO.cs" />
-    <Compile Include="Controler\ControlerRendu.cs" />
-    <Compile Include="Controler\ControlerReception.cs" />
-    <Compile Include="Interfaces NON UTILISEES\Administration.xaml.cs">
-      <DependentUpon>Administration.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces NON UTILISEES\DetailDeLaCommande.xaml.cs">
-      <DependentUpon>DetailDeLaCommande.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces NON UTILISEES\Fiche_client.xaml.cs">
-      <DependentUpon>Fiche_client.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces NON UTILISEES\GestionDeCommandes.xaml.cs">
-      <DependentUpon>GestionDeCommandes.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces NON UTILISEES\GestionDuConvoyeur.xaml.cs">
-      <DependentUpon>GestionDuConvoyeur.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces NON UTILISEES\Identification_client.xaml.cs">
-      <DependentUpon>Identification_client.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces NON UTILISEES\Inscription.xaml.cs">
-      <DependentUpon>Inscription.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces NON UTILISEES\Lectures.xaml.cs">
-      <DependentUpon>Lectures.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces NON UTILISEES\PaiementFini.xaml.cs">
-      <DependentUpon>PaiementFini.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces NON UTILISEES\Parametre_affichage.xaml.cs">
-      <DependentUpon>Parametre_affichage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces NON UTILISEES\Parametre_impression.xaml.cs">
-      <DependentUpon>Parametre_impression.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces NON UTILISEES\Recherche_client.xaml.cs">
-      <DependentUpon>Recherche_client.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces NON UTILISEES\ReglementPro.xaml.cs">
-      <DependentUpon>ReglementPro.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces NON UTILISEES\RestitutionArticle.xaml.cs">
-      <DependentUpon>RestitutionArticle.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces NON UTILISEES\Statistiques.xaml.cs">
-      <DependentUpon>Statistiques.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces NON UTILISEES\EditionDeFactures.xaml.cs">
-      <DependentUpon>EditionDeFactures.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UserControl\BanniereAccueil.xaml.cs">
-      <DependentUpon>BanniereAccueil.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\UserControl\UCAdministrateur\AdministrationCaisse.xaml.cs">
       <DependentUpon>AdministrationCaisse.xaml</DependentUpon>
     </Compile>
@@ -194,34 +139,6 @@
     <Compile Include="View\UserControl\UCAdministrateur\GestionUtilisateurs.xaml.cs">
       <DependentUpon>GestionUtilisateurs.xaml</DependentUpon>
     </Compile>
-    <Page Include="Interfaces NON UTILISEES\Administration.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Interfaces NON UTILISEES\DetailDeLaCommande.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Interfaces NON UTILISEES\Fiche_client.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Interfaces NON UTILISEES\GestionDeCommandes.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Interfaces NON UTILISEES\GestionDuConvoyeur.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Interfaces NON UTILISEES\Identification_client.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Interfaces NON UTILISEES\Inscription.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Accueil.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -234,46 +151,6 @@
       <DependentUpon>Accueil.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Interfaces NON UTILISEES\Lectures.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Interfaces NON UTILISEES\PaiementFini.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Interfaces NON UTILISEES\Parametre_affichage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Interfaces NON UTILISEES\Parametre_impression.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Interfaces NON UTILISEES\Recherche_client.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Interfaces NON UTILISEES\ReglementPro.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Interfaces NON UTILISEES\RestitutionArticle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Interfaces NON UTILISEES\Statistiques.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Interfaces NON UTILISEES\EditionDeFactures.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\UserControl\BanniereAccueil.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\UserControl\UCAdministrateur\AdministrationCaisse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -381,42 +258,46 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\Accueil1\logo_home.png" />
+    <Resource Include="Resources\pics\Accueil1\logo_home.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\Admin1\logo_exit.png" />
+    <Resource Include="Resources\pics\Admin1\logo_exit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\Admin1\logo_add.png" />
+    <Resource Include="Resources\pics\Admin1\logo_add.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\Admin1\logo_edit.png" />
+    <Resource Include="Resources\pics\Admin1\logo_edit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\Admin1\logo_admin.png" />
+    <Resource Include="Resources\pics\Admin1\logo_admin.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\Articles1\logo_articles.png" />
+    <Resource Include="Resources\pics\Articles1\logo_articles.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\Factures\signe_plus.png" />
+    <Resource Include="Resources\pics\Factures\signe_plus.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\Impressions\logo_impression.png" />
+    <Resource Include="Resources\pics\Impressions\logo_impression.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\Factures\logo_facture.png" />
+    <Resource Include="Resources\pics\Factures\logo_facture.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\Clients1\logo_client.png" />
+    <Resource Include="Resources\pics\Clients1\logo_client.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\Factures\loupederecherche.png" />
+    <Resource Include="Resources\pics\Factures\loupederecherche.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Base de données a jour\bddping1.sql" />
-    <Resource Include="Image\suivant.png" />
-    <Resource Include="Image\precedent.png" />
+    <Resource Include="Resources\pics\suivant.png" />
+    <Resource Include="Resources\pics\precedent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controler\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
