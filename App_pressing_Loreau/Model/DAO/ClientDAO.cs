@@ -2,7 +2,6 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,23 +21,17 @@ namespace App_pressing_Loreau.Model.DAO
             MySqlCommand cmd = new MySqlCommand(sql, connection);
 
             //ajout des parametres
-            cmd.Parameters.Add("@nom", SqlDbType.VarChar).Value = client.nom;
-            cmd.Parameters.Add("@prenom", SqlDbType.VarChar).Value = client.prenom;
-            cmd.Parameters.Add("@telfixe", SqlDbType.VarChar).Value = client.telfix;
-            cmd.Parameters.Add("@telport", SqlDbType.VarChar).Value = client.telmob;
-            cmd.Parameters.Add("@adresse", SqlDbType.VarChar).Value = client.adresse;
-            cmd.Parameters.Add("@dateNaissance", SqlDbType.DateTime).Value = client.dateNaissance; //parametre date sous format annee + mois + jour + heure + minute + seconde
-            cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = client.email;
-            cmd.Parameters.Add("@dateInsc", SqlDbType.DateTime).Value = client.dateInscription; //parametre date sous format annee + mois + jour + heure + minute + seconde
-            cmd.Parameters.Add("@idCleanWay", SqlDbType.Int).Value = client.idCleanWay;
-
-            if (client.contactMail)     cmd.Parameters.Add("@contactMail", SqlDbType.Int).Value = 1;
-            else                        cmd.Parameters.Add("@contactMail", SqlDbType.Int).Value = 0;
-
-            if (client.contactMail)     cmd.Parameters.Add("@contactSms", SqlDbType.Int).Value = 1;
-            else                        cmd.Parameters.Add("@contactSms", SqlDbType.Int).Value = 0;
-
-            
+            cmd.Parameters.AddWithValue("@nom", client.nom);
+            cmd.Parameters.AddWithValue("@prenom", client.prenom);
+            cmd.Parameters.AddWithValue("@telfixe", client.telfix);
+            cmd.Parameters.AddWithValue("@telport", client.telmob);
+            cmd.Parameters.AddWithValue("@adresse", client.adresse);
+            cmd.Parameters.AddWithValue("@dateNaissance", client.dateNaissance)); //parametre date sous format annee + mois + jour + heure + minute + seconde
+            cmd.Parameters.AddWithValue("@email", client.email);
+            cmd.Parameters.AddWithValue("@dateInsc", client.dateInscription)); //parametre date sous format annee + mois + jour + heure + minute + seconde
+            cmd.Parameters.AddWithValue("@idCleanWay", client.idCleanWay);
+            cmd.Parameters.AddWithValue("@contactMail", client.contactMail);
+            cmd.Parameters.AddWithValue("@contactSms", client.contactSms);
             int retour = cmd.ExecuteNonQuery();
             connection.Close();
 
