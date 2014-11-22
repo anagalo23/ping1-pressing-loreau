@@ -291,7 +291,7 @@
     <Resource Include="Resources\pics\Factures\loupederecherche.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Base de données a jour\bddping1.sql" />
+    <Content Include="Resources\bdd\bddping1.sql" />
     <Resource Include="Resources\pics\suivant.png" />
     <Resource Include="Resources\pics\precedent.png" />
   </ItemGroup>
