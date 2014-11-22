@@ -14,24 +14,23 @@ namespace App_pressing_Loreau.Model.DAO
         {
             MySqlConnection connection = Bdd.connexion();
 
-            String sql = "INSERT INTO client(clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway, clt_contactmail, clt_contactsms) VALUES (@nom,@prenom,@telfix,@telport,@adresse,@dateNaissance,@email,@dateInsc,@idCleanWay,@contactMail,@contactSms)";
-            //String sql = "INSERT INTO client(clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway, clt_contactmail, clt_contactsms) VALUES (\"" + client.nom + "\",\"" + client.prenom + "\",\"" + client.telfix + "\",\"" + client.telmob + "\",\"" + client.adresse + "\",\"" + String.Format("{0:YYYYMMddHHmmss}", client.dateNaissance) + "\",\"" + client.email + "\",\"" + String.Format("{0:YYYYMMddHHmmss}", client.dateInscription) + "\",\"" + client.idCleanWay + "\",\"" + client.contactMail + "\",\"" + client.contactSms + "\")";
+            String sql = "INSERT INTO client(clt_nom, clt_prenom, clt_num_fix, clt_num_portable, clt_adresse, clt_date_naissance, clt_email, clt_date_inscription, clt_idCleanway, clt_contactmail, clt_contactsms) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             
             //connection à la base de données   
             MySqlCommand cmd = new MySqlCommand(sql, connection);
 
             //ajout des parametres
-            cmd.Parameters.AddWithValue("@nom", client.nom);
-            cmd.Parameters.AddWithValue("@prenom", client.prenom);
-            cmd.Parameters.AddWithValue("@telfixe", client.telfix);
-            cmd.Parameters.AddWithValue("@telport", client.telmob);
-            cmd.Parameters.AddWithValue("@adresse", client.adresse);
-            cmd.Parameters.AddWithValue("@dateNaissance", client.dateNaissance); //parametre date sous format annee + mois + jour + heure + minute + seconde
-            cmd.Parameters.AddWithValue("@email", client.email);
-            cmd.Parameters.AddWithValue("@dateInsc", client.dateInscription); //parametre date sous format annee + mois + jour + heure + minute + seconde
-            cmd.Parameters.AddWithValue("@idCleanWay", client.idCleanWay);
-            cmd.Parameters.AddWithValue("@contactMail", client.contactMail);
-            cmd.Parameters.AddWithValue("@contactSms", client.contactSms);
+            cmd.Parameters.AddWithValue("nom", client.nom);
+            cmd.Parameters.AddWithValue("prenom", client.prenom);
+            cmd.Parameters.AddWithValue("telfixe", client.telfix);
+            cmd.Parameters.AddWithValue("telport", client.telmob);
+            cmd.Parameters.AddWithValue("adresse", client.adresse);
+            cmd.Parameters.AddWithValue("dateNaissance", client.dateNaissance);
+            cmd.Parameters.AddWithValue("email", client.email);
+            cmd.Parameters.AddWithValue("dateInsc", client.dateInscription);
+            cmd.Parameters.AddWithValue("idCleanWay", client.idCleanWay);
+            cmd.Parameters.AddWithValue("contactMail", client.contactMail);
+            cmd.Parameters.AddWithValue("contactSms", client.contactSms);
             int retour = cmd.ExecuteNonQuery();
             connection.Close();
 
@@ -61,20 +60,19 @@ namespace App_pressing_Loreau.Model.DAO
             #region complete la requete en fonction de la recherche voulue
             if (nom != null)
             {
-                //sql = String.Format("{0}{1}", sql, "clt_nom=\"@nom\"");
-                sql = String.Format("{0}{1}", sql, "clt_nom=\"" + nom + "\"");
+                sql = String.Format("{0}{1}", sql, "clt_nom=?");
                 ifPreviousElementSearch = true;
             }
             if (prenom != null)
             {
                 if (ifPreviousElementSearch) sql = String.Format("{0}{1}", sql, " AND ");
-                sql = String.Format("{0}{1}", sql, "clt_nom=\"" + prenom + "\"");
+                sql = String.Format("{0}{1}", sql, "clt_prenom=?");
                 ifPreviousElementSearch = true;
             }
             if (tel != null)
             {
                 if (ifPreviousElementSearch) sql = String.Format("{0}{1}", sql, " AND ");
-                sql = String.Format("{0}{1}", sql, "(clt_fix=\"" + tel + "\" OR clt_mob = \"" + tel + "\")");
+                sql = String.Format("{0}{1}", sql, "(clt_fix=? OR clt_mob =?)");
                 ifPreviousElementSearch = true;
             }
             if (!ifPreviousElementSearch) sql = String.Format("{0}{1}", sql, "1=1");
@@ -86,9 +84,15 @@ namespace App_pressing_Loreau.Model.DAO
             MySqlCommand cmd = new MySqlCommand(sql, connection);
 
             //ajout des parametres
-            //cmd.Parameters.AddWithValue("nom", nom);
-            //cmd.Parameters.AddWithValue("prenom", prenom);
-            //cmd.Parameters.AddWithValue("tel", tel);
+            if (nom != null)
+                cmd.Parameters.AddWithValue("nom", nom);
+            if (prenom != null)
+                cmd.Parameters.AddWithValue("prenom", prenom);
+            if (tel != null)
+            {
+                cmd.Parameters.AddWithValue("tel1", tel);
+                cmd.Parameters.AddWithValue("tel2", tel);
+            }
 
             //Execute la commande
             //try
