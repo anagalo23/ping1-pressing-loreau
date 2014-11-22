@@ -14,7 +14,7 @@ namespace App_pressing_Loreau.Model.DAO
         {
             MySqlConnection connection = Bdd.connexion();
 
-            String sql = "INSERT INTO client(clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway, clt_contactmail, clt_contactsms) VALUES (\"@nom\",\"@prenom\",\"@telfix\",\"@telport\",\"@adresse\",\"@dateNaissance\",\"@email\",\"@dateInsc\",\"@idCleanWay\",\"@contactMail\",\"@contactSms\")";
+            String sql = "INSERT INTO client(clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway, clt_contactmail, clt_contactsms) VALUES (@nom,@prenom,@telfix,@telport,@adresse,@dateNaissance,@email,@dateInsc,@idCleanWay,@contactMail,@contactSms)";
             //String sql = "INSERT INTO client(clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway, clt_contactmail, clt_contactsms) VALUES (\"" + client.nom + "\",\"" + client.prenom + "\",\"" + client.telfix + "\",\"" + client.telmob + "\",\"" + client.adresse + "\",\"" + String.Format("{0:YYYYMMddHHmmss}", client.dateNaissance) + "\",\"" + client.email + "\",\"" + String.Format("{0:YYYYMMddHHmmss}", client.dateInscription) + "\",\"" + client.idCleanWay + "\",\"" + client.contactMail + "\",\"" + client.contactSms + "\")";
             
             //connection à la base de données   
@@ -36,15 +36,15 @@ namespace App_pressing_Loreau.Model.DAO
             connection.Close();
 
             //Execute la commande
-            try
-            {
+            //try
+            //{
                 return retour;
-            }
-            catch (Exception Ex)
-            {
-                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                return 0;
-            }
+            //}
+            //catch (Exception Ex)
+            //{
+            //    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            //    return 0;
+            //}
         }
 
 

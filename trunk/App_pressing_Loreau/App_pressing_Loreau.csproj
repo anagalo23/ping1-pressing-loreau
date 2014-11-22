@@ -59,7 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controler\ControlerReception.cs" />
+    <Compile Include="Controller\ControlerReception.cs" />
     <Compile Include="Model\Bdd.cs" />
     <Compile Include="Model\DAO\ArticleDAO.cs" />
     <Compile Include="Model\DAO\ClientDAO.cs" />
