@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-I:\PING\ProjetLoreau\ProjetLoreau\obj\Debug\
+C:\Users\HP\Desktop\Ping_huguetteV2\Ping_huguetteV2\ProjetLoreau\obj\Debug\
 ProjetLoreau
 none
 false
 DEBUG;TRACE
-I:\PING\ProjetLoreau\ProjetLoreau\App.xaml
+C:\Users\HP\Desktop\Ping_huguetteV2\Ping_huguetteV2\ProjetLoreau\App.xaml
 20-1314541114
 
 481278831538
-13-1653762011
+131938268293
 View\Accueil.xaml;View\UserControl\Paiement.xaml;View\UserControl\UCAdministrateur\AdministrationCaisse.xaml;View\UserControl\UCAdministrateur\AdministrationCommandes.xaml;View\UserControl\UCAdministrateur\AdministrationConvoyeur.xaml;View\UserControl\UCAdministrateur\GestionUtilisateurs.xaml;View\UserControl\UCAdministrateur\IdentificationAdmin.xaml;View\UserControl\UCAdministrateur\PageAdministrateur.xaml;View\UserControl\UCAdministrateur\ParametreAffichage.xaml;View\UserControl\UCAdministrateur\ParametresImpression.xaml;View\UserControl\UCAdministrateur\Statistiques.xaml;View\UserControl\UCClientPro\ClientProUC.xaml;View\UserControl\UCConvoyeur\Convoyeur.xaml;View\UserControl\UCFacture\Factures.xaml;View\UserControl\UCImpression\Impression.xaml;View\UserControl\UCReception\IdentificationClient.xaml;View\UserControl\UCReception\NouveauClient.xaml;View\UserControl\UCReception\NouvelleCommande.xaml;View\UserControl\UCRendu\DetailCommande.xaml;View\UserControl\UCRendu\RestitutionArticles.xaml;
 
 False
