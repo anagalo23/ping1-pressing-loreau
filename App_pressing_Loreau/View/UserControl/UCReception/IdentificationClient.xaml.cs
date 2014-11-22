@@ -53,6 +53,7 @@ namespace App_pressing_Loreau
         private void btn_identClient_nouveau_client_Click(object sender, RoutedEventArgs e)
         {
             NouveauClient nouveauClient = new NouveauClient();
+            nouveauClient.parameter = 5;
             dp.Children.Clear();
             dp.Children.Add(nouveauClient);
 
