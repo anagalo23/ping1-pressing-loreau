@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E09EA836-AFB5-4476-A1D7-47EA72DD705A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProjetLoreau</RootNamespace>
+    <AssemblyName>ProjetLoreau</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.7.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 6.7.5\Assemblies\v4.5\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\Bdd.cs" />
+    <Compile Include="Model\DAO\ArticleDAO.cs" />
+    <Compile Include="Model\DAO\ClientDAO.cs" />
+    <Compile Include="Model\DAO\ClientProDAO.cs" />
+    <Compile Include="Model\DAO\CommandeDAO.cs" />
+    <Compile Include="Model\DAO\DepartementDAO.cs" />
+    <Compile Include="Model\DAO\EmployeDAO.cs" />
+    <Compile Include="Model\DAO\LogDAO.cs" />
+    <Compile Include="Model\DAO\PayementDAO.cs" />
+    <Compile Include="Model\DAO\PlaceConvoyeurDAO.cs" />
+    <Compile Include="Model\DAO\TypeDAO.cs" />
+    <Compile Include="Model\DAO\TypePayementDAO.cs" />
+    <Compile Include="Model\DTO\Article.cs" />
+    <Compile Include="Model\DTO\Client.cs" />
+    <Compile Include="Model\DTO\ClientPro.cs" />
+    <Compile Include="Model\DTO\Commande.cs" />
+    <Compile Include="Model\DTO\Departement.cs" />
+    <Compile Include="Model\DTO\Employe.cs" />
+    <Compile Include="Model\DTO\Log.cs" />
+    <Compile Include="Model\DTO\Payement.cs" />
+    <Compile Include="Model\DTO\PlaceConvoyeur.cs" />
+    <Compile Include="Model\DTO\Type.cs" />
+    <Compile Include="Model\DTO\TypePayement.cs" />
+    <Compile Include="Views\Accueil.xaml.cs">
+      <DependentUpon>Accueil.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControl\BanniereAccueil.xaml.cs">
+      <DependentUpon>BanniereAccueil.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControl\Paiement.xaml.cs">
+      <DependentUpon>Paiement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControl\UCAdministrateur\AdministrationCaisse.xaml.cs">
+      <DependentUpon>AdministrationCaisse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControl\UCAdministrateur\AdministrationCommandes.xaml.cs">
+      <DependentUpon>AdministrationCommandes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControl\UCAdministrateur\AdministrationConvoyeur.xaml.cs">
+      <DependentUpon>AdministrationConvoyeur.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControl\UCAdministrateur\GestionUtilisateurs.xaml.cs">
+      <DependentUpon>GestionUtilisateurs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControl\UCAdministrateur\IdentificationAdmin.xaml.cs">
+      <DependentUpon>IdentificationAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControl\UCAdministrateur\PageAdministrateur.xaml.cs">
+      <DependentUpon>PageAdministrateur.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControl\UCAdministrateur\ParametreAffichage.xaml.cs">
+      <DependentUpon>ParametreAffichage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControl\UCAdministrateur\ParametresImpression.xaml.cs">
+      <DependentUpon>ParametresImpression.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControl\UCAdministrateur\Statistiques.xaml.cs">
+      <DependentUpon>Statistiques.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControl\UCClientPro\ClientProUC.xaml.cs">
+      <DependentUpon>ClientProUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControl\UCConvoyeur\Convoyeur.xaml.cs">
+      <DependentUpon>Convoyeur.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControl\UCFacture\Factures.xaml.cs">
+      <DependentUpon>Factures.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControl\UCImpression\Impression.xaml.cs">
+      <DependentUpon>Impression.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControl\UCReception\IdentificationClient.xaml.cs">
+      <DependentUpon>IdentificationClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControl\UCReception\NouveauClient.xaml.cs">
+      <DependentUpon>NouveauClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControl\UCReception\NouvelleCommande.xaml.cs">
+      <DependentUpon>NouvelleCommande.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControl\UCRendu\DetailCommande.xaml.cs">
+      <DependentUpon>DetailCommande.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControl\UCRendu\RestitutionArticles.xaml.cs">
+      <DependentUpon>RestitutionArticles.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controleur\" />
+    <Folder Include="Resources\bdd\" />
+    <Folder Include="ViewModel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\Accueil.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControl\BanniereAccueil.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControl\Paiement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControl\UCAdministrateur\AdministrationCaisse.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControl\UCAdministrateur\AdministrationCommandes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControl\UCAdministrateur\AdministrationConvoyeur.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControl\UCAdministrateur\GestionUtilisateurs.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControl\UCAdministrateur\IdentificationAdmin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControl\UCAdministrateur\PageAdministrateur.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControl\UCAdministrateur\ParametreAffichage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControl\UCAdministrateur\ParametresImpression.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControl\UCAdministrateur\Statistiques.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControl\UCClientPro\ClientProUC.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControl\UCConvoyeur\Convoyeur.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControl\UCFacture\Factures.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControl\UCImpression\Impression.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControl\UCReception\IdentificationClient.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControl\UCReception\NouveauClient.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControl\UCReception\NouvelleCommande.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControl\UCRendu\DetailCommande.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControl\UCRendu\RestitutionArticles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pics\Accueil1\logo_home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pics\Admin1\logo_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pics\Admin1\logo_admin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pics\Admin1\logo_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pics\Admin1\logo_exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pics\Articles1\logo_articles.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pics\Clients1\logo_client.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pics\Factures\logo_facture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pics\Factures\loupederecherche.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pics\Factures\signe_plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pics\Impressions\logo_impression.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pics\precedent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pics\suivant.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\info.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

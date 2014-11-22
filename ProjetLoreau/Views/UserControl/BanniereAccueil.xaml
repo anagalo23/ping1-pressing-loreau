@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="App_pressing_Loreau.BanniereAccueil"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local ="clr-namespace:App_pressing_Loreau.Controler"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="750">
+    
+    <UserControl.DataContext>
+        <local:AffichageAccueil/>
+    </UserControl.DataContext>
+    
+    <!--<UserControl.Resources>
+        <DataTemplate x:Key="bannierreAccueil">
+        </DataTemplate>
+    </UserControl.Resources>-->
+    
+    <DockPanel x:Name="DPentete" Margin="5">
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="100*"/>
+
+
+            </Grid.ColumnDefinitions>
+            <Button  x:Name="btn_banniereaccueil_reception"  FontFamily="Arial" FontSize="25" Command="{Binding OnCollectionChangeCommand }" CommandParameter="accueil_reception" FontWeight="SemiBold"  Content="Reception" Grid.Column="0" Margin="5"  />
+            <Button x:Name="btn_banniereaccueil_rendu"  FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Rendu" Grid.Column="1" Margin="5" Click="btn_banniereaccueil_rendu_Click"  />
+            <Button x:Name="btn_banniereaccueil_facture" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Factures" Grid.Column="2" Margin="5" Click="btn_banniereaccueil_facture_Click" />
+            <Button x:Name="btn_banniereaccueil_client_pro" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="client Pro" Grid.Column="4" Margin="5" Click="btn_banniereaccueil_client_pro_Click" />
+            <Button x:Name="btn_banniereaccueil_impression" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Impressions" Grid.Column="5" Margin="5" Click="btn_banniereaccueil_impression_Click"/>
+            <Button x:Name="btn_banniereaccueil_administrateur" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Administrateur" Grid.Column="6" Margin="5" Click="btn_banniereaccueil_administrateur_Click" />
+            <Button x:Name="btn_banniereaccueil_convoyeur" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Convoyeur" Grid.Column="3" Margin="5" Click="btn_banniereaccueil_convoyeur_Click" />
+
+        </Grid>
+    </DockPanel>
+    
+</UserControl>
