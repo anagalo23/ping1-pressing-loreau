@@ -25,19 +25,13 @@
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
 
-                <Label Content="Prix HT :"  VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="0"
-                       FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
-                <Label x:Name="label_paiement_prix_ht" Grid.Row="0" Grid.Column="1" Margin="5" Content="X €" VerticalContentAlignment="Center"
-                       HorizontalContentAlignment="Center" Background="Azure" FontFamily="Arial" FontSize="12" FontWeight="Normal"/>
-                
-                <Label Content="Remise :" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="0"
-                       FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
-                <Label x:Name="label_paiement_remise" Grid.Row="1" Grid.Column="1" Background="Azure" Content="X €" VerticalContentAlignment="Center" 
-                       HorizontalContentAlignment="Center" Margin="5" FontFamily="Arial" FontSize="12" FontWeight="Normal"/>
-                <Label Content="Prix TTC :" VerticalContentAlignment="Center" Grid.Row="2" Grid.Column="0"
-                       FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
-                <Label x:Name="label_paiement_prix_ttc" Grid.Row="2" Grid.Column="1" Background="Azure" Margin="5" Content="X €" VerticalContentAlignment="Center" 
-                       HorizontalContentAlignment="Center" FontFamily="Arial" FontSize="12" FontWeight="Normal"/>
+                <Label Content="Prix HT :" Style="{StaticResource vertiLabel}" Grid.Row="0" Grid.Column="0"/>
+                <Label x:Name="label_paiement_prix_ht" Grid.Row="0" Grid.Column="1" Content="X €" Style="{StaticResource vertixy}"/>
+
+                <Label Content="Remise :" Style="{StaticResource vertiLabel}" Grid.Row="1" Grid.Column="0"/>
+                <Label x:Name="label_paiement_remise" Grid.Row="1" Grid.Column="1"  Content="X €" Style="{StaticResource vertixy}"/>
+                <Label Content="Prix TTC :" Style="{StaticResource vertiLabel}" Grid.Row="2" Grid.Column="0"/>
+                <Label x:Name="label_paiement_prix_ttc" Content="X €" Grid.Row="2" Grid.Column="1" Style="{StaticResource vertixy}"/>
                 <Button x:Name="btn_paiement_RRR" Grid.Row="3" Grid.Column="1"  Margin="15" Click="btn_paiement_RRR_Click">
                     <TextBlock FontFamily="Arial" FontSize="25" FontWeight="SemiBold">
                         Rabais <LineBreak /> Remise <LineBreak/> Ristourne
@@ -57,23 +51,18 @@
                     <RowDefinition Height="17*"/>
                     <RowDefinition Height="27*"/>
                 </Grid.RowDefinitions>
-                <Label Content="Mode de paiement" Grid.Row="0" VerticalContentAlignment="Center"
-                       FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
+                <Label Content="Mode de paiement" Grid.Row="0" Style="{StaticResource vertiLabel}"/>
                 <ComboBox  x:Name="conbobox_paimeent_choixPaiement" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
                            Grid.Row="0" Grid.Column="1" Margin="10" Foreground="red"  Background="Azure" FontFamily="Arial" FontSize="14" FontWeight="SemiBold">
                     <ComboBoxItem x:Name="cbi_paiment_choixCB" Content="CB"/>
                     <ComboBoxItem x:Name="cbi_paiement_choixAmericaExpress" Content="America Express"/>
                     <ComboBoxItem x:Name="cbi_paiement_choixEspèces" Content="Especes"/>
                 </ComboBox>
-                <Label Content="Montant" Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center"
-                       FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
-                <Label x:Name="label_paiement_montant" Content="xy €" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" 
-                       HorizontalContentAlignment="Center" Background="Azure" Margin="5" FontFamily="Arial" FontSize="12" FontWeight="Normal"/>
-                
-                <Label Content="Reste dû" Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center"
-                       FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
-                <Label x:Name="label_paiement_reste_du" Content="x €" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" 
-                       HorizontalContentAlignment="Center" Margin="5,30" Background="Azure" FontFamily="Arial" FontSize="12" FontWeight="Normal"/>
+                <Label Content="Montant" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertiLabel}"/>
+                <Label x:Name="label_paiement_montant" Content="xy €" Grid.Row="1" Grid.Column="1" Style="{StaticResource vertixy}"/>
+
+                <Label Content="Reste dû" Grid.Row="2" Grid.Column="0" Style="{StaticResource vertiLabel}"/>
+                <Label x:Name="label_paiement_reste_du" Content="x €" Grid.Row="2" Grid.Column="1" Margin="5,30" Style="{StaticResource vertixy}"/>
      
             </Grid>
             

@@ -20,29 +20,29 @@
                 <ColumnDefinition Width="10*"/>
                 <ColumnDefinition Width="10*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Couleurs des utilsateurs : " VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Arial" FontSize="24" Grid.Column="0" Grid.Row="0" />
-            <Label Content="Design des boutons : " VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Arial" FontSize="24" Grid.Column="1" Grid.Row="0"/>
-            <Label Content="User 1   " FontFamily="Arial" FontSize="24" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,0,249,0"/>
+            <Label Content="Couleurs des utilsateurs : " Style="{StaticResource vertiLabel}" Grid.Column="0" Grid.Row="0" />
+            <Label Content="Design des boutons : " Style="{StaticResource vertiLabel}" Grid.Column="1" Grid.Row="0"/>
+            <Label Content="User 1   " Style="{StaticResource vertiLabel}" Grid.Column="0" Grid.Row="1" Margin="0,0,249,0"/>
             <Canvas Grid.Row="1" Grid.Column="0" Margin="121,0,144,0" Height="43" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <Label Height="43" Width="105" Background="LightGreen"/>
             </Canvas>
-            <Label Content="User 2   " FontFamily="Arial" FontSize="24" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,0,249,0"/>
+            <Label Content="User 2   " Style="{StaticResource vertiLabel}" Grid.Column="0" Grid.Row="2" Margin="0,0,249,0"/>
             <Canvas Grid.Row="2" Grid.Column="0" Margin="121,0,144,0" Height="43" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Label Height="43" Width="105" Background="Ivory"/>
             </Canvas>
-            <Label Content="User 3   " FontFamily="Arial" FontSize="24" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,0,249,0"/>
+            <Label Content="User 3   " Style="{StaticResource vertiLabel}" Grid.Column="0" Grid.Row="3" Margin="0,0,249,0"/>
             <Canvas Grid.Row="3" Grid.Column="0" Margin="121,0,144,0" Height="43" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <Label Height="43" Width="105" Background="Fuchsia"/>
             </Canvas>
-            <Label Content="User 4   " FontFamily="Arial" FontSize="24" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,0,249,0"/>
+            <Label Content="User 4   " Style="{StaticResource vertiLabel}" Grid.Column="0" Grid.Row="4" Margin="0,0,249,0"/>
             <Canvas Grid.Row="4" Grid.Column="0" Margin="121,0,144,0" Height="43" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <Label Height="43" Width="105" Background="Tan"/>
             </Canvas>
-            <Label Content="User 5   " FontFamily="Arial" FontSize="24" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,0,249,0"/>
+            <Label Content="User 5   " Style="{StaticResource vertiLabel}" Grid.Column="0" Grid.Row="5" Margin="0,0,249,0"/>
             <Canvas Grid.Row="5" Grid.Column="0" Margin="121,0,144,0" Height="43" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <Label Height="43" Width="105" Background="Orange"/>
             </Canvas>
-            <Label Content="User 6   " FontFamily="Arial" FontSize="24" Grid.Column="0" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,0,249,0"/>
+            <Label Content="User 6   " Style="{StaticResource vertiLabel}" Grid.Column="0" Grid.Row="6"  Margin="0,0,249,0"/>
             <Canvas Grid.Row="6" Grid.Column="0" Margin="121,0,144,0" Height="43" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <Label Height="43" Width="105" Background="DarkMagenta"/>
             </Canvas>
