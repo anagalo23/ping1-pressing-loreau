@@ -103,3 +103,6 @@ C:\Users\HP\Desktop\Ping_huguetteV2\Ping_huguetteV2\ProjetLoreau\obj\Debug\Proje
 C:\Users\syncrase\Documents\Visual Studio 2013\Projects\loreau_project\ProjetLoreau\bin\Debug\ProjetLoreau.exe.config
 C:\Users\syncrase\Documents\Visual Studio 2013\Projects\loreau_project\ProjetLoreau\obj\Debug\ProjetLoreau.exe
 C:\Users\syncrase\Documents\Visual Studio 2013\Projects\loreau_project\ProjetLoreau\obj\Debug\ProjetLoreau.pdb
+C:\Users\HP\Desktop\PING\ProjetLoreau\bin\Debug\ProjetLoreau.exe.config
+C:\Users\HP\Desktop\PING\ProjetLoreau\obj\Debug\ProjetLoreau.exe
+C:\Users\HP\Desktop\PING\ProjetLoreau\obj\Debug\ProjetLoreau.pdb
