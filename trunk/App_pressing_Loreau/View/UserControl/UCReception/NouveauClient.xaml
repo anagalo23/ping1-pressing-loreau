@@ -117,19 +117,17 @@
                         </Grid.RowDefinitions>
 
                         <Label  Grid.Row="0" Grid.Column="0" Style="{StaticResource vertiLabel}">
-                            <TextBlock FontFamily="Arial" FontSize="16" FontWeight="SemiBold"> Souhaitez vous recevoir des  informations <LineBreak/> par SMS?</TextBlock>
+                            <TextBlock FontFamily="Arial" FontSize="16" FontWeight="SemiBold" > Souhaitez vous recevoir des  informations <LineBreak/> par SMS?</TextBlock>
                         </Label>
                         <CheckBox x:Name="ckb_nouveauClient_sms"  VerticalContentAlignment="Center" Margin="5" Grid.Row="0" Grid.Column="1" />
                         <Label Content="Portable :" Grid.Row="1" Grid.Column="0"  Style="{StaticResource vertiLabel}"/>
-                        <TextBox x:Name="txb_nouveauClient_portable"  Grid.Row="1" Grid.Column="1" Margin="5" 
-                                 VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" FontWeight="Normal"/>
-                        <Label  Grid.Row="2" Grid.Column="0"  Style="{StaticResource vertiLabel}" >
+                        <TextBox x:Name="txb_nouveauClient_portable"  Grid.Row="1" Grid.Column="1" Margin="5" Style="{StaticResource vertiTextBox}"/>
+                        <Label  Grid.Row="2" Grid.Column="0" Style="{StaticResource vertiLabel}" >
                             <TextBlock FontFamily="Arial" FontSize="16" FontWeight="SemiBold"> Souhaitez vous recevoir des  informations <LineBreak/> par Mail?</TextBlock>
                         </Label>
                         <CheckBox x:Name="ckb_nouveauClient_mail" Grid.Row="2" Margin="5"  Grid.Column="1" VerticalContentAlignment="Center" />
                         <Label Content="Mail:" Grid.Row="3" Grid.Column="0" Style="{StaticResource vertiLabel}"/>
-                        <TextBox x:Name="txb_nouveauClient_mail"  Grid.Row="3" Grid.Column="1" Margin="5"  
-                                 VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" FontWeight="Normal"/>
+                        <TextBox x:Name="txb_nouveauClient_mail"  Grid.Row="3" Grid.Column="1" Margin="5" Style="{StaticResource vertiLabel}"/>
 
                     </Grid>
                 </Grid>
