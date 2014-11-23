@@ -60,6 +60,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controller\ControlerReception.cs" />
+    <Compile Include="Helper\IPageViewModel.cs" />
+    <Compile Include="Helper\ObservableObject.cs" />
+    <Compile Include="Helper\RelayCommand.cs" />
     <Compile Include="Model\Bdd.cs" />
     <Compile Include="Model\DAO\ArticleDAO.cs" />
     <Compile Include="Model\DAO\ClientDAO.cs" />
@@ -83,6 +86,7 @@
     <Compile Include="Model\DAO\PlaceConvoyeurDAO.cs" />
     <Compile Include="Model\DAO\TypeDAO.cs" />
     <Compile Include="Model\DAO\TypePayementDAO.cs" />
+    <Compile Include="ViewModel\AccueilVM.cs" />
     <Compile Include="View\UserControl\UCAdministrateur\AdministrationCaisse.xaml.cs">
       <DependentUpon>AdministrationCaisse.xaml</DependentUpon>
     </Compile>
@@ -298,9 +302,7 @@
     <Resource Include="Resources\pics\suivant.png" />
     <Resource Include="Resources\pics\precedent.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
