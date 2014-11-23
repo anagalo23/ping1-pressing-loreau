@@ -21,11 +21,10 @@
                 <RowDefinition Height="179*"/>
                 <RowDefinition Height="51*"/>
             </Grid.RowDefinitions>
-            <Label x:Name="L_choixcommande"  Content="Choix des commandes" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
-               FontSize="35" FontFamily="Arial" FontWeight="Bold" Grid.ColumnSpan="3" />
+            <Label x:Name="L_choixcommande"  Content="Choix des commandes" Grid.Row="0" Style="{StaticResource Titre}" Grid.ColumnSpan="3" />
             <Button x:Name="B_editerfacture" Content="Editer la facture" Grid.Row="2" FontSize="30" FontFamily="Arial" FontWeight="SemiBold" 
                     Grid.ColumnSpan="3" Margin="55,0,57,0"/>
-            <Label x:Name="L_idcommande" Content=" Id commande   :" Grid.Row="1" FontSize="20" FontFamily="Arial" FontWeight="Bold" Margin="0,25,22,107"/>
+            <Label x:Name="L_idcommande" Content=" Id commande   :" Grid.Row="1" Style="{StaticResource vertiLabel}" Margin="0,25,22,107"/>
             <TextBox x:Name="T_entreztexte"  Grid.Row="1" Grid.Column="1" Margin="0,25,0,127" Text="entrez le texte"/>
             <Image Source="/Resources/pics/Factures/loupederecherche.png" Grid.Column="2" Grid.Row="1" Margin="10,5,10,0" HorizontalAlignment="Center"
                    VerticalAlignment="Top" Height="52" Width="70"/>
@@ -39,8 +38,7 @@
                 <RowDefinition Height="47*"/>
                 <RowDefinition Height="233*"/>
             </Grid.RowDefinitions>
-            <Label Content="Aperçu de la facture " FontFamily="Arial" FontSize="35" FontWeight="Bold" HorizontalContentAlignment="Center"
-                   VerticalContentAlignment="Center" Grid.Column="0"/>
+            <Label Content="Aperçu de la facture " Style="{StaticResource Titre}" Grid.Column="0"/>
 
         </Grid>
     </Grid>

@@ -33,7 +33,7 @@
                 <RowDefinition Height="47*"/>
                 <RowDefinition Height="233*"/>
             </Grid.RowDefinitions>
-            <Label Content="Ticket X" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Arial" FontSize="38" FontWeight="Bold"/>
+            <Label Content="Ticket X" Style="{StaticResource Titre}"/>
         </Grid>
     </Grid>
 </UserControl>

@@ -26,14 +26,10 @@
                             <ColumnDefinition Width="23*"/>
                             <ColumnDefinition Width="29*"/>
                         </Grid.ColumnDefinitions>
-                        <Label  Content="Identifiant" Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center"
-                               FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
-                        <TextBox x:Name="txb_identificationAdmin_identifiant" Grid.Row="0" Grid.Column="1" Margin="5,15" VerticalContentAlignment="Center"
-                                 FontFamily="Arial" FontSize="14"/>
-                        <Label Content="Mot de passe" Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center"
-                               FontFamily="Arial" FontSize="25" FontWeight="SemiBold" />
-                        <TextBox x:Name="txb_identificationAdmin_mdp"  Grid.Row="1" Grid.Column="1" Margin="5,15" VerticalContentAlignment="Center"
-                                 FontFamily="Arial" FontSize="14"/>
+                        <Label  Content="Identifiant" Grid.Row="0" Grid.Column="0" Style="{StaticResource vertiLabel}"/>
+                        <TextBox x:Name="txb_identificationAdmin_identifiant" Grid.Row="0" Grid.Column="1" Margin="5,15" Style="{StaticResource vertiTextBox}"/>
+                        <Label Content="Mot de passe" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertiLabel}" />
+                        <TextBox x:Name="txb_identificationAdmin_mdp"  Grid.Row="1" Grid.Column="1" Margin="5,15" Style="{StaticResource vertiTextBox}"/>
 
                     </Grid>
 

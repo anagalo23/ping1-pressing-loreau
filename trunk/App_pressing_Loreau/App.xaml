@@ -21,9 +21,12 @@
         
         <Style  TargetType="Label" BasedOn="{StaticResource {x:Type Label}}" x:Key="vertiLabel">
             <Setter Property="FontFamily" Value="Arial"/>
-            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontSize" Value="23"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Label">
@@ -43,6 +46,16 @@
             <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
 
+        <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}" x:Key="vertixy">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="Azure"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
         <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}" x:Key="Titre">
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -51,5 +64,6 @@
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
+        
     </Application.Resources>
 </Application>

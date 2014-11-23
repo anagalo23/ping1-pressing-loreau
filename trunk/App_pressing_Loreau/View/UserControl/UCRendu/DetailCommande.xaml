@@ -37,8 +37,7 @@
                                 <RowDefinition Height="4*"/>
                                 <RowDefinition Height="19*"/>
                             </Grid.RowDefinitions>
-                            <Label Content="Les commandes en cours" Background="AliceBlue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                                   FontFamily="Arial" FontSize="30" FontWeight="SemiBold"/>
+                            <Label Content="Les commandes en cours" Style="{StaticResource Titre}"/>
 
                         </Grid>
                     </Grid>
