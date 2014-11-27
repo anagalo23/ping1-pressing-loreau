@@ -57,10 +57,10 @@
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <Button x:Name="btn_nouvellecommande_valider" Grid.Column="0" Content="Valider commande"/>
-                            <Button x:Name="btn_nouvellecommande_modifier" Grid.Column="1" Content="modifier commande"
+                            <Button x:Name="btn_nouvellecommande_valider" Style="{StaticResource choixbouton20}" Grid.Column="0" Content="Valider commande"/>
+                            <Button x:Name="btn_nouvellecommande_modifier" Style="{StaticResource choixbouton20}" Grid.Column="1" Content="modifier commande"
                                     Click="btn_nouvellecommande_modifier_Click"/>
-                            <Button x:Name="btn_nouvellecommande_supprimer" Grid.Column="2" Content="supprimer articles" />
+                            <Button x:Name="btn_nouvellecommande_supprimer" Style="{StaticResource choixbouton20}" Grid.Column="2" Content="supprimer articles" />
                         </Grid>
                        
                     </Grid>
@@ -75,7 +75,7 @@
                             <ColumnDefinition Width="133*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Content="Total à payer : " Style="{StaticResource vertilabel25}" Grid.Row="0"/>
+                        <Label Content="Total à payer :" Style="{StaticResource vertilabel25}" Grid.Row="0" HorizontalContentAlignment="Left"/>
                         <Button x:Name="btn_nouvelleCommande_paiement_immediat" Content="Paiement immédiat" Grid.Row="1" Grid.Column="0"
                                 Margin="0,5,5,5" Click="btn_nouvelleCommande_paiement_immediat_Click" Style="{StaticResource choixbouton20}"/>
                         <Button x:Name="btn_nouvelleCommande_paiement_differe" Content="Paiement différé" Grid.Row="1" Grid.Column="1" Margin="5"
