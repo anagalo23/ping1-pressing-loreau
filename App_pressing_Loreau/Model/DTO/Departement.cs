@@ -14,6 +14,8 @@ namespace App_pressing_Loreau.Model.DTO
         #endregion
 
         #region classes
+
+        public Departement() { }
         public Departement(int id, string nom)
         {
             this.id = id;

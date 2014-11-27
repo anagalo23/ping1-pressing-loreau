@@ -10,6 +10,8 @@ namespace App_pressing_Loreau.Model.DTO
    
     class  Client
     {
+
+        // ATTENTION, CETTE CLASSE N'EST PAS COMPLETTE ET NON FONCTIONNELLE : manque d'attributs et de méthodes
         #region attributs
         public int id {get; set;}
         public string nom { get; set; }
@@ -23,6 +25,8 @@ namespace App_pressing_Loreau.Model.DTO
         public int idCleanWay { get; set; }
         public bool contactMail { get; set; }
         public bool contactSms { get; set; }
+        public int type { get; set; }
+        public List<Commande> listCommandes { get; set; }
 
         
         #endregion
@@ -40,6 +44,7 @@ namespace App_pressing_Loreau.Model.DTO
             this.email = email;
             this.dateInscription = dateInscription;
             this.idCleanWay = idCleanWay;
+            listCommandes = new List<Commande>();
         }
         public Client()
         {

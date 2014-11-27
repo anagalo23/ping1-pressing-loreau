@@ -12,13 +12,20 @@ namespace App_pressing_Loreau.Model.DTO
         public int id {get; set;}
         public DateTime date { get; set; }
         public float montant {get; set;}
+        public TypePayement typePayement { get; set; }
         #endregion
 
         #region classes
-        public Payement(DateTime date, float montant)
+        public Payement()
         {
+        }
+
+        public Payement(int id, DateTime date, float montant, TypePayement typePayement)
+        {
+            this.id = id;
             this.date = date;
             this.montant = montant;
+            this.typePayement = typePayement;
         }
         #endregion
     }

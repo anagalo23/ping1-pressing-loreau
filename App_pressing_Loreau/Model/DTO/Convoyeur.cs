@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace App_pressing_Loreau.Model.DTO
 {
-    class PlaceConvoyeur
+    class Convoyeur
     {
         #region attributs
         public int id {get; set;}
@@ -14,8 +14,11 @@ namespace App_pressing_Loreau.Model.DTO
         #endregion
 
         #region classes
-        public PlaceConvoyeur(int emplacement)
+
+        public Convoyeur() { }
+        public Convoyeur(int id, int emplacement)
         {
+            this.id = id;
             this.emplacement = emplacement;
         }
         #endregion

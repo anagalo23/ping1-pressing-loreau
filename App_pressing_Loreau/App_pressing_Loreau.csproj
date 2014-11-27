@@ -67,14 +67,13 @@
     <Compile Include="Model\Bdd.cs" />
     <Compile Include="Model\DAO\ArticleDAO.cs" />
     <Compile Include="Model\DAO\ClientDAO.cs" />
-    <Compile Include="Model\DTO\ClientPro.cs" />
     <Compile Include="Model\DAO\ClientProDAO.cs" />
     <Compile Include="Model\DTO\Commande.cs" />
     <Compile Include="Model\DTO\Departement.cs" />
     <Compile Include="Model\DTO\Employe.cs" />
     <Compile Include="Model\DTO\Log.cs" />
     <Compile Include="Model\DTO\Payement.cs" />
-    <Compile Include="Model\DTO\PlaceConvoyeur.cs" />
+    <Compile Include="Model\DTO\Convoyeur.cs" />
     <Compile Include="Model\DTO\Type.cs" />
     <Compile Include="Model\DTO\TypePayement.cs" />
     <Compile Include="Model\DTO\Article.cs" />
