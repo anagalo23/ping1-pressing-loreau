@@ -16,10 +16,13 @@ namespace App_pressing_Loreau.Model.DTO
         #endregion
 
         #region classes
-        public Log(DateTime date, String message)
+        public Log() { }
+        public Log(int id, DateTime date, String message, Employe employe)
         {
+            this.id = id;
             this.date = date;
             this.message = message;
+            this.employe = employe;
         }
         #endregion
     }

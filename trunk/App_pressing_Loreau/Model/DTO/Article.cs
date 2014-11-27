@@ -13,22 +13,25 @@ namespace App_pressing_Loreau.Model.DTO
         public string photo { get; set; }
         public string commentaire { get; set; }
         public bool ifRendu { get; set; }
-       
-        public int typ_id { get; set; }
-        public int dep_id { get; set; }
-        public int conv_id { get; set; }
+        public float TVA { get; set; }
+        public float HT { get; set; }
+        public Type type { get; set; }
+        public Convoyeur convoyeur { get; set; }
         #endregion
 
         #region classes
-        public Article(int idArticle, string photo, string commentaire, bool ifRendu, int typeid, int departementid, int placeConvoyeurid)
+
+        public Article() { }
+        public Article(int id, string photo, string commentaire, bool ifRendu, float TVA, float HT, Type type, Convoyeur convoyeur)
         {
-            this.id = idArticle;
+            this.id = id;
             this.photo = photo;
             this.commentaire = commentaire;
             this.ifRendu = ifRendu;
-            this.typ_id = typ_id;
-            this.dep_id = departementid;
-            this.conv_id = placeConvoyeurid;
+            this.TVA = TVA;
+            this.HT = HT;
+            this.type = type;
+            this.convoyeur = convoyeur;
          
         }
         #endregion

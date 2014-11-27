@@ -9,22 +9,40 @@ namespace App_pressing_Loreau.Model.DTO
     class Commande
     {
         #region attributs
-        public int cmd_id { get; set; }
+        public int id { get; set; }
         public DateTime date { get; set; }
         public Boolean payee { get; set; }
+        public float remise { get; set; }
         public Client client { get; set; }
-        public ClientPro clientpro { get; set; }
         public List<Article> listArticles { get; set; }
+        public List<Payement> listPayements { get; set; }
         #endregion
 
         #region classes
-        public Commande(int id_commande, DateTime date, Boolean payee, Client client, ClientPro clientPro)
+        public Commande()
         {
-            this.cmd_id = id_commande;
+            listArticles = new List<Article>();
+            listPayements = new List<Payement>();
+        }
+        public Commande(int id, DateTime date, Boolean payee, float remise, Client client)
+        {
+            this.id = id;
             this.date = date;
             this.payee = payee;
+            this.remise = remise;
             this.client = client;
-            this.clientpro = clientPro;
+            listArticles = new List<Article>();
+            listPayements = new List<Payement>();
+        }
+
+        public void addArticle(Article article)
+        {
+            listArticles.Add(article);
+        }
+
+        public void addPayement(Payement payement)
+        {
+            listPayements.Add(payement);
         }
         #endregion
     }

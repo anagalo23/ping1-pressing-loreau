@@ -8,14 +8,19 @@ namespace App_pressing_Loreau.Model.DTO
 {
     class TypePayement
     {
-                #region attributs
+        #region attributs
         public int id {get; set;}
         public string nom {get; set;}
         #endregion
 
         #region classes
-        public TypePayement(string nom)
+        public TypePayement()
         {
+        }
+
+        public TypePayement(int id, string nom)
+        {
+            this.id = id;
             this.nom = nom;
         }
         #endregion
