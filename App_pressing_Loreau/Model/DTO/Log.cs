@@ -31,6 +31,12 @@ namespace App_pressing_Loreau.Model.DTO
             this.message = message;
             this.employe = employe;
         }
+        public Log(DateTime date, String message)
+        {
+            this.date = date;
+            this.message = message;
+            employe = null;
+        }
         #endregion
     }
 }

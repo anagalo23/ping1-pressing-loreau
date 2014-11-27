@@ -69,7 +69,40 @@ namespace App_pressing_Loreau.Model.DTO
             this.type = type;
             listCommandes = new List<Commande>();
         }
-
+        public Client(string nom, string prenom, string telfix, string telmob, string adresse, DateTime dateNaissance, string email, DateTime dateInscription, int idCleanWay, int contactMail, int contactSms, int type)
+        {
+            id = 0;
+            this.nom = nom;
+            this.prenom = prenom;
+            this.telfix = telfix;
+            this.telmob = telmob;
+            this.adresse = adresse;
+            this.dateNaissance = dateNaissance;
+            this.email = email;
+            this.dateInscription = dateInscription;
+            this.idCleanWay = idCleanWay;
+            setContactMail(contactMail);
+            setContactSms(contactSms);
+            this.type = type;
+            listCommandes = new List<Commande>();
+        }
+        public Client(int id, string nom, string prenom, string telfix, string telmob, string adresse, DateTime dateNaissance, string email, DateTime dateInscription, int idCleanWay, int contactMail, int contactSms, int type)
+        {
+            this.id = id;
+            this.nom = nom;
+            this.prenom = prenom;
+            this.telfix = telfix;
+            this.telmob = telmob;
+            this.adresse = adresse;
+            this.dateNaissance = dateNaissance;
+            this.email = email;
+            this.dateInscription = dateInscription;
+            this.idCleanWay = idCleanWay;
+            setContactMail(contactMail);
+            setContactSms(contactSms);
+            this.type = type;
+            listCommandes = new List<Commande>();
+        }
         //Méthodes de listes
         public void addCommande(Commande commande)
         {

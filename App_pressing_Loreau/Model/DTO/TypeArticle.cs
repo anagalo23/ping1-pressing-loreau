@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace App_pressing_Loreau.Model.DTO
 {
-    class Type
+    class TypeArticle
     {
         #region attributs
         public int id {get; set;}
@@ -18,8 +18,8 @@ namespace App_pressing_Loreau.Model.DTO
         #endregion
 
         #region classes
-        public Type() { }
-        public Type(string nom, int encombrement, float TVA, float HT, Departement departement)
+        public TypeArticle() { }
+        public TypeArticle(string nom, int encombrement, float TVA, float HT, Departement departement)
         {
             id = 0;
             this.nom = nom;
@@ -28,7 +28,7 @@ namespace App_pressing_Loreau.Model.DTO
             this.HT = HT;
             this.departement = departement;
         }
-        public Type(int id, string nom, int encombrement, float TVA, float HT, Departement departement)
+        public TypeArticle(int id, string nom, int encombrement, float TVA, float HT, Departement departement)
         {
             this.id = id;
             this.nom = nom;
