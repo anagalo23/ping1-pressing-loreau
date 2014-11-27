@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="App_pressing_Loreau.PaiementDeLaCommande"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="740">
+    <DockPanel x:Name="dp">
+        <Border>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="39*"/>
+                    <ColumnDefinition Width="27*"/>
+                </Grid.ColumnDefinitions>
+                <Border Margin="10" BorderBrush="AliceBlue" BorderThickness="2" Grid.Column="0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="11*"/>
+                            <RowDefinition Height="5*"/>
+                        </Grid.RowDefinitions>
+                        <Border>
+                            <Label Content="Détail de la commande" Style="{StaticResource Titre}"/>
+                        </Border>
+                        <ScrollViewer Background="Bisque"  Margin="0,10" Grid.Row="1"/>
+                        <Button Grid.Row="2" Content="Retour" Style="{StaticResource choixbouton30}" Margin="251,0,0,0">
+                            
+                        </Button>
+                    </Grid>
+                </Border>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="193*"/>
+                        <RowDefinition Height="107*"/>
+                        
+                    </Grid.RowDefinitions>
+                    <Label Content=" Prix total :" Style="{StaticResource vertilabel18}">
+                        
+                    </Label>
+                    <Border Height="300" VerticalAlignment="Bottom" Grid.RowSpan="2">
+                        
+                        <Button x:Name="btn_paiementdeleCommande_payer"  Content="Payer la commande" 
+                            Margin="10,218,10,10" Style="{StaticResource choixbouton30}"/>
+                    </Border >
+                </Grid>
+
+            </Grid>
+        </Border>
+
+    </DockPanel>
+</UserControl>
