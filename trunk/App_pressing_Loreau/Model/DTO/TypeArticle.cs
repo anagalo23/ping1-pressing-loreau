@@ -11,7 +11,7 @@ namespace App_pressing_Loreau.Model.DTO
         #region attributs
         public int id {get; set;}
         public string nom { get; set; }
-        public int encombrement { get; set; }
+        public float encombrement { get; set; }
         public float TVA { get; set; }
         public float HT { get; set; }
         public Departement departement { get; set; }
@@ -19,7 +19,7 @@ namespace App_pressing_Loreau.Model.DTO
 
         #region classes
         public TypeArticle() { }
-        public TypeArticle(string nom, int encombrement, float TVA, float HT, Departement departement)
+        public TypeArticle(string nom, float encombrement, float TVA, float HT, Departement departement)
         {
             id = 0;
             this.nom = nom;
@@ -28,7 +28,7 @@ namespace App_pressing_Loreau.Model.DTO
             this.HT = HT;
             this.departement = departement;
         }
-        public TypeArticle(int id, string nom, int encombrement, float TVA, float HT, Departement departement)
+        public TypeArticle(int id, string nom, float encombrement, float TVA, float HT, Departement departement)
         {
             this.id = id;
             this.nom = nom;
