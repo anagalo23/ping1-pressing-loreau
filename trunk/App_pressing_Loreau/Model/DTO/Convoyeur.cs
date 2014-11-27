@@ -16,6 +16,11 @@ namespace App_pressing_Loreau.Model.DTO
         #region classes
 
         public Convoyeur() { }
+        public Convoyeur(int emplacement)
+        {
+            id = 0;
+            this.emplacement = emplacement;
+        }
         public Convoyeur(int id, int emplacement)
         {
             this.id = id;

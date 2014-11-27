@@ -15,6 +15,10 @@ namespace App_pressing_Loreau.Model.DTO
 
         #region classes
         public Employe() { }
+        public Employe(string nom)
+        {
+            this.nom = nom;
+        }
         public Employe(int id, string nom)
         {
             this.id = id;

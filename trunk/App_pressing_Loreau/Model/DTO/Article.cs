@@ -22,6 +22,18 @@ namespace App_pressing_Loreau.Model.DTO
         #region classes
 
         public Article() { }
+        public Article(string photo, string commentaire, bool ifRendu, float TVA, float HT, Type type, Convoyeur convoyeur)
+        {
+            id = 0;
+            this.photo = photo;
+            this.commentaire = commentaire;
+            this.ifRendu = ifRendu;
+            this.TVA = TVA;
+            this.HT = HT;
+            this.type = type;
+            this.convoyeur = convoyeur;
+
+        }
         public Article(int id, string photo, string commentaire, bool ifRendu, float TVA, float HT, Type type, Convoyeur convoyeur)
         {
             this.id = id;
