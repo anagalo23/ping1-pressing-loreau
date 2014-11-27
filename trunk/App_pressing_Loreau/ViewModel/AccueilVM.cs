@@ -61,7 +61,8 @@ namespace App_pressing_Loreau
             ac = new Accueil();
             if (lang.ToString().Equals("btn_accueil_reception"))
             {
-                CurrentPageViewModel = PageViewModels[0];
+                //CurrentPageViewModel = PageViewModels[0];
+                MessageBox.Show("Bonjour Pauline");
                 
                //ac.dpanel.Children.Clear();
                //ac.dpanel.Children.Add(new IdentificationClient());

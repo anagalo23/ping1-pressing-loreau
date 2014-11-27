@@ -52,10 +52,10 @@ namespace App_pressing_Loreau
         private void btn_identClient_nouveau_client_Click(object sender, RoutedEventArgs e)
         {
             NouveauClient nouveauClient = new NouveauClient();
-            (this.Parent as DockPanel).Children.Clear();
+     
             //nouveauClient.parameter = 5;
-            //dp.Children.Clear();
-            (this.Parent as DockPanel).Children.Remove(this);
+            dp.Children.Clear();
+            dp.Children.Add(nouveauClient);
 
            
             
