@@ -60,6 +60,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controller\ControlerReception.cs" />
+    <Compile Include="Helper\ButtonUserProperty.cs" />
     <Compile Include="Helper\IPageViewModel.cs" />
     <Compile Include="Helper\ObservableObject.cs" />
     <Compile Include="Helper\RelayCommand.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="View\UserControl\UCImpression\Impression.xaml.cs">
       <DependentUpon>Impression.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControl\UCReception\IdentificationClientVM.cs" />
     <Compile Include="View\UserControl\UCRendu\DetailCommande.xaml.cs">
       <DependentUpon>DetailCommande.xaml</DependentUpon>
     </Compile>
@@ -251,7 +253,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

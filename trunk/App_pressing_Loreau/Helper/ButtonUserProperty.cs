@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace App_pressing_Loreau.Helper
 {
-    public interface IPageViewModel
+    public class ButtonUser1
     {
-        string Name { get; }
+    }
+
+    public class ButtonUser2
+    {
+       
     }
 }

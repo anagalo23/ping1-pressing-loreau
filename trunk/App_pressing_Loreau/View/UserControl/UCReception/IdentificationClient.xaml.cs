@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using App_pressing_Loreau.View;
+using App_pressing_Loreau;
 using App_pressing_Loreau.Model.DAO;
 using App_pressing_Loreau.Model.DTO;
 
@@ -21,12 +21,11 @@ using App_pressing_Loreau.Model.DTO;
 namespace App_pressing_Loreau
 {
  
-
     /// <summary>
     /// Logique d'interaction pour IndentificationClient.xaml
     /// 
     /// </summary>
-    public partial class IdentificationClient
+    public partial class IdentificationClient : UserControl
     {
        
 
@@ -53,9 +52,10 @@ namespace App_pressing_Loreau
         private void btn_identClient_nouveau_client_Click(object sender, RoutedEventArgs e)
         {
             NouveauClient nouveauClient = new NouveauClient();
-            nouveauClient.parameter = 5;
-            dp.Children.Clear();
-            dp.Children.Add(nouveauClient);
+            (this.Parent as DockPanel).Children.Clear();
+            //nouveauClient.parameter = 5;
+            //dp.Children.Clear();
+            (this.Parent as DockPanel).Children.Remove(this);
 
            
             
