@@ -28,7 +28,7 @@
                         </Grid.ColumnDefinitions>
                         <Label Content="Numéro du ticket"  Grid.Column="0" VerticalContentAlignment="Center"
                                FontFamily="Arial" FontWeight="SemiBold"/>
-                        <TextBox x:Name="txb_restitutionArticles_numero_facture" Grid.Column="1" Margin="40,40,0,40" HorizontalAlignment="Left" Width="59"/>
+                        <TextBox x:Name="txb_restitutionArticles_numero_facture" Grid.Column="1" Margin="40,0,0,40" HorizontalAlignment="Left" Width="59" Height="15" VerticalAlignment="Bottom"/>
                         <Button x:Name="btn_restitutionArticles_ok" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="OK" Grid.Column="2" Margin="27,37,34,32" 
                                 Click="btn_restitutionArticles_ok_Click" Style="{StaticResource choixbouton20}" />
                     </Grid>
@@ -91,7 +91,7 @@
                     </Grid.RowDefinitions>
                     <Label Content="La commande concernant" Grid.Row="0"  Style="{StaticResource Titre}"/>
                     <Border Margin="5" Background="BlueViolet" Grid.Row="1">
-                        
+
                         <DataGrid VerticalContentAlignment="Center" HorizontalContentAlignment="Center" x:Name="dtgrid_restitution_article_affiche" 
                                   SelectionChanged="DataGrid_SelectionChanged" FontFamily="Arial" FontSize="20" FontWeight="SemiBold">
                             <DataGrid.Columns>
