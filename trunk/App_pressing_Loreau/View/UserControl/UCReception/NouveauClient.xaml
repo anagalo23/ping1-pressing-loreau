@@ -36,8 +36,8 @@
                         </Grid.RowDefinitions>
 
                         <Label Content="Nom * :"  Grid.Row="0" Grid.Column="0" Style="{StaticResource vertilabel25}" />
-                        <TextBox x:Name="txb_nouveauClient_nom" Grid.Row="0" Grid.Column="1" Margin="10" Style="{StaticResource vertilabel25}" />
-                        <Label Content="Prénom * :" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertiLabel}"/>
+                        <TextBox x:Name="txb_nouveauClient_nom" Grid.Row="0" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}" />
+                        <Label Content="Prénom * :" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_prenom" Grid.Row="1" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}"/>
                         <Label Content="Date de naissance :" Grid.Row="2" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_date_naissance" Grid.Row="2"  Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}"/>

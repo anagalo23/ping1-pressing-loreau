@@ -68,7 +68,7 @@
                                     <RowDefinition Height="7*"/>
                                     <RowDefinition Height="16*"/>
                                 </Grid.RowDefinitions>
-                                <Label Background="AliceBlue" Content="Résultat de la recherche" Style="{StaticResource vertiLabel25}"/>
+                                <Label Background="AliceBlue" Content="Résultat de la recherche" Style="{StaticResource vertilabel25}"/>
 
                             </Grid>
 
