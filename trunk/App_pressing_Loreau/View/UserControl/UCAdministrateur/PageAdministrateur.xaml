@@ -27,11 +27,11 @@
                     Style="{StaticResource butonpageadministration}" Click="btn_pageAdministrateur_gestion_utilisateur_Click"/>
             <Button  x:Name="btn_pageAdministrateur_statistiques" Content="Statistiques" Grid.Column="1" Grid.Row="1"  Style="{StaticResource butonpageadministration}" />
             <Button  x:Name="btn_pageAdministrateur_administration_client_pro" Content="Administration Client Pro" Grid.Column="2" Grid.Row="1" 
-                      Style="{StaticResource butonpageadministration}"  Click="btn_pageAdministrateur_journal_utilisation_Click"/>
+                      Style="{StaticResource butonpageadministration}" Click="btn_pageAdministrateur_administration_client_pro_Click" />
             <Button  x:Name="btn_pageAdministrateur_parametre_affichage" Content="Paramètres d'affichage" Grid.Column="0" 
                      Grid.Row="2"  Style="{StaticResource butonpageadministration}" Click="btn_pageAdministrateur_parametre_affichage_Click"/>
             <Button  x:Name="btn_pageAdministrateur_administration_articles_departements" Content="Administration articles et départements" Grid.Column="1" Grid.Row="2" 
-                     Click="btn_pageAdministrateur_parametre_impression_Click"  Style="{StaticResource butonpageadministration}" />
+                      Style="{StaticResource butonpageadministration}" Click="btn_pageAdministrateur_administration_articles_departements_Click" />
             <Button  x:Name="btn_pageAdministrateur_administration_convoyeur" Content="Administration convoyeur" Grid.Column="2" Grid.Row="2" 
                      Style="{StaticResource butonpageadministration}" Click="btn_pageAdministrateur_administration_convoyeur_Click"  />
         </Grid>

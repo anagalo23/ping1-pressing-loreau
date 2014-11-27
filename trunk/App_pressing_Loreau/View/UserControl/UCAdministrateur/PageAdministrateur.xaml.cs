@@ -31,11 +31,7 @@ namespace App_pressing_Loreau
             dp.Children.Add(new Statistiques());
         }
 
-        private void btn_pageAdministrateur_parametre_impression_Click(object sender, RoutedEventArgs e)
-        {
-            dp.Children.Clear();
-            dp.Children.Add(new ParametresImpression());
-        }
+     
 
         private void btn_pageAdministrateur_gestion_utilisateur_Click(object sender, RoutedEventArgs e)
         {
@@ -66,10 +62,7 @@ namespace App_pressing_Loreau
 
         }
 
-        private void btn_pageAdministrateur_journal_utilisation_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+ 
 
         private void btn_pageAdministrateur_parametre_utilisation_Click(object sender, RoutedEventArgs e)
         {
@@ -80,6 +73,16 @@ namespace App_pressing_Loreau
         {
             dp.Children.Clear();
             dp.Children.Add(new ParametreAffichage());
+        }
+
+        private void btn_pageAdministrateur_administration_articles_departements_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_pageAdministrateur_administration_client_pro_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
