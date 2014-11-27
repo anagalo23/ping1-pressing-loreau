@@ -60,5 +60,12 @@ namespace App_pressing_Loreau
             //dp_nouvelleCommande_cmd.Children.Add(dgdep);
 
         }
+
+        private void btn_nouvellecommande_modifier_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+      
     }
 }

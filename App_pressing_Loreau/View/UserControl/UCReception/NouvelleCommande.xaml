@@ -12,7 +12,6 @@
 
                 <ColumnDefinition Width="74*"/>
                 <ColumnDefinition Width="55*"/>
-                <ColumnDefinition Width="19*"/>
             </Grid.ColumnDefinitions>
             <Border  Grid.Column="0" Margin="10" CornerRadius="15" BorderThickness="2" BorderBrush="AliceBlue">
                 <Grid>
@@ -25,7 +24,7 @@
                         <Image Source="/Resources/pics/precedent.png" Height="25"/>
                     </Button>
                     <Border BorderBrush="Aqua" BorderThickness="2" Grid.Column="1" CornerRadius="15">
-                        
+
                     </Border>
                     <Button Grid.Column="2"  Background="White">
                         <Image Source="/Resources/pics/suivant.png"/>
@@ -47,18 +46,23 @@
                     <Label Content="Contenu de la commande" Style="{StaticResource Titre}"/>
 
                     <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="48*"/>
-                            <ColumnDefinition Width="203*"/>
-                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="9*"/>
-                            <RowDefinition Height="9*"/>
-                            <RowDefinition Height="9*"/>
+                            <RowDefinition Height="92*"/>
+                            <RowDefinition Height="40*"/>
                         </Grid.RowDefinitions>
-                        <TextBox Grid.Row="0" Margin="8,10,13,10"  Style="{StaticResource vertiTextBox}" Grid.ColumnSpan="2"/>
-                        <TextBox Grid.Row="1" Margin="8,10"  Style="{StaticResource vertiTextBox}" Grid.ColumnSpan="2"/>
-                        <TextBox Grid.Row="2" Margin="8,10" Style="{StaticResource vertiTextBox}" Grid.ColumnSpan="2"/>
+                        <ScrollViewer Background="Bisque" Grid.Row="0"  Margin="10"/>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="btn_nouvellecommande_valider" Grid.Column="0" Content="Valider commande"/>
+                            <Button x:Name="btn_nouvellecommande_modifier" Grid.Column="1" Content="modifier commande"
+                                    Click="btn_nouvellecommande_modifier_Click"/>
+                            <Button x:Name="btn_nouvellecommande_supprimer" Grid.Column="2" Content="supprimer articles" />
+                        </Grid>
+                       
                     </Grid>
 
                     <Grid Grid.Row="2">
@@ -71,40 +75,15 @@
                             <ColumnDefinition Width="133*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Content="Total à payer : " Style="{StaticResource vertilabel25}" Grid.Row="0" Grid.Column="1" Margin="5,0"/>
+                        <Label Content="Total à payer : " Style="{StaticResource vertilabel25}" Grid.Row="0"/>
                         <Button x:Name="btn_nouvelleCommande_paiement_immediat" Content="Paiement immédiat" Grid.Row="1" Grid.Column="0"
-                                Margin="5" Click="btn_nouvelleCommande_paiement_immediat_Click" Style="{StaticResource choixbouton20}"/>
+                                Margin="0,5,5,5" Click="btn_nouvelleCommande_paiement_immediat_Click" Style="{StaticResource choixbouton20}"/>
                         <Button x:Name="btn_nouvelleCommande_paiement_differe" Content="Paiement différé" Grid.Row="1" Grid.Column="1" Margin="5"
                                 Style="{StaticResource choixbouton20}"/>
 
                     </Grid>
 
                 </Grid>
-            </Border>
-
-
-            <!-- partie convoyeur-->
-            <Border Grid.Column="2" Margin="10" BorderBrush="AliceBlue" BorderThickness="2">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="43*"/>
-                        <RowDefinition Height="233*"/>
-                    </Grid.RowDefinitions>
-                    <Label Content="Convoyeur" Grid.Row="0" Style="{StaticResource Titre}"/>
-                    <Grid Grid.Row="1" >
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="45*"/>
-                            <RowDefinition Height="45*"/>
-                            <RowDefinition Height="45*"/>
-                            <RowDefinition Height="83*"/>
-                        </Grid.RowDefinitions>
-                        <CheckBox Content="0" Grid.Row="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                        <CheckBox Content="1" Grid.Row="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                        <CheckBox Content="2" Grid.Row="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-                    </Grid>
-
-                </Grid>
-
             </Border>
 
         </Grid>
