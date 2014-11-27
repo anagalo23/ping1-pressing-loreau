@@ -134,9 +134,6 @@
     <Compile Include="View\UserControl\Paiement.xaml.cs">
       <DependentUpon>Paiement.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\UCAdministrateur\ParametresImpression.xaml.cs">
-      <DependentUpon>ParametresImpression.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\UserControl\UCRendu\RestitutionArticles.xaml.cs">
       <DependentUpon>RestitutionArticles.xaml</DependentUpon>
     </Compile>
@@ -218,10 +215,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\UCAdministrateur\ParametresImpression.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\UserControl\UCRendu\RestitutionArticles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -299,6 +292,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\bdd\bddping1.sql" />
+    <Resource Include="Resources\pics\Paiements\carte_bleue.png" />
+    <Resource Include="Resources\pics\Paiements\Paiement_cheques.png" />
+    <Resource Include="Resources\pics\Paiements\paiement_especes.png" />
     <Resource Include="Resources\info.txt" />
     <Resource Include="Resources\pics\suivant.png" />
     <Resource Include="Resources\pics\precedent.png" />

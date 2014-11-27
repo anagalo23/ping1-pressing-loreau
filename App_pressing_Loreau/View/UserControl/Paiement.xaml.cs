@@ -38,5 +38,10 @@ namespace App_pressing_Loreau
         {
             dp.Children.Clear();
         }
+
+        private void btn_paiement_cheques_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
