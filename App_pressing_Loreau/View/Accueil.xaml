@@ -36,19 +36,19 @@
 
 
                     </Grid.ColumnDefinitions>
-                    <Button  x:Name="btn_accueil_reception"  Content="Reception" Grid.Column="0" Margin="5" Command="{Binding OnCollectionChangeCommand}" CommandParameter="btn_accueil_reception" Click="btn_accueil_reception_Click"  />
+                <Button  x:Name="btn_accueil_reception"  Content="Reception" Grid.Column="0" Margin="5" Command="{Binding OnCollectionChangeCommand}" CommandParameter="btn_accueil_reception" Style="{StaticResource personalisationbuton}" Click="btn_accueil_reception_Click"  />
 
-                    <Button x:Name="btn_accueil_rendu"  Content="Rendu" Grid.Column="1" Margin="5"  Command="{Binding OnCollectionChangeCommand}" Click="btn_accueil_rendu_Click" />
+                <Button x:Name="btn_accueil_rendu"  Content="Rendu" Grid.Column="1" Margin="5"  Command="{Binding OnCollectionChangeCommand}"  Style="{StaticResource personalisationbuton}" Click="btn_accueil_rendu_Click" />
 
-                    <Button x:Name="btn_accueil_facture" Content="Factures" Grid.Column="2" Margin="5" Command="{Binding OnCollectionChangeCommand}" Click="btn_accueil_facture_Click" />
+                <Button x:Name="btn_accueil_facture" Content="Factures" Grid.Column="2" Margin="5" Command="{Binding OnCollectionChangeCommand}"  Style="{StaticResource personalisationbuton}" Click="btn_accueil_facture_Click" />
 
-                    <Button x:Name="btn_accueil_client_pro" Content="client Pro" Grid.Column="4" Margin="5" Command="{Binding OnCollectionChangeCommand}" Click="btn_accueil_client_pro_Click"/>
+                <Button x:Name="btn_accueil_client_pro" Content="client Pro" Grid.Column="4" Margin="5" Command="{Binding OnCollectionChangeCommand}"  Style="{StaticResource personalisationbuton}" Click="btn_accueil_client_pro_Click"/>
 
-                    <Button x:Name="btn_accueil_impression"  Content="Impressions" Grid.Column="5" Margin="5" Command="{Binding OnCollectionChangeCommand}" Click="btn_accueil_impression_Click"/>
+                <Button x:Name="btn_accueil_impression"  Content="Impressions" Grid.Column="5" Margin="5" Command="{Binding OnCollectionChangeCommand}"  Style="{StaticResource personalisationbuton}" Click="btn_accueil_impression_Click"/>
 
-                    <Button x:Name="btn_accueil_administrateur" Content="Administrateur" Grid.Column="6" Margin="5" Command="{Binding OnCollectionChangeCommand}" Click="btn_accueil_administrateur_Click"/>
+                <Button x:Name="btn_accueil_administrateur" Content="Administrateur" Grid.Column="6" Margin="5" Command="{Binding OnCollectionChangeCommand}"  Style="{StaticResource personalisationbuton}" Click="btn_accueil_administrateur_Click"/>
 
-                    <Button x:Name="btn_accueil_convoyeur" Content="Convoyeur" Grid.Column="3" Margin="5" Command="{Binding OnCollectionChangeCommand}" Click="btn_accueil_convoyeur_Click" />
+                <Button x:Name="btn_accueil_convoyeur" Content="Convoyeur" Grid.Column="3" Margin="5" Command="{Binding OnCollectionChangeCommand}"  Style="{StaticResource personalisationbuton}" Click="btn_accueil_convoyeur_Click" />
 
                 </Grid>
 
@@ -85,17 +85,17 @@
                         </Grid.ColumnDefinitions>
 
 
-                        <Button x:Name="btn_user1"  Content="USER1"  Grid.Row="0" Grid.Column="0" Margin="5" Command="{Binding OnCollectionChangeCommand}" Click="btn_user1_Click"/>
+                        <Button x:Name="btn_user1"  Content="USER1"  Grid.Row="0" Grid.Column="0" Margin="5" Command="{Binding OnCollectionChangeCommand}" Click="btn_user1_Click"  Style="{StaticResource personalisationbuton}"/>
 
-                        <Button x:Name="btn_user2" Content="{Binding ButtonContent}" Grid.Row="0" Grid.Column="1" Margin="5" Click="btn_user1_Click" />
-                        <Button x:Name="btn_user3" Content="{Binding ButtonContent}" Grid.Row="1" Grid.Column="2" Margin="5" Click="btn_user1_Click"/>
-                        <Button x:Name="btn_user4" Content="{Binding ButtonContent}" Grid.Row="1" Grid.Column="3" Margin="5" Click="btn_user1_Click" />
-                        <Button x:Name="btn_user5" Content="{Binding ButtonContent}" Grid.Row="1" Grid.Column="4" Margin="5" Click="btn_user1_Click" />
-                        <Button x:Name="btn_user6" Content="{Binding ButtonContent}" Grid.Row="1" Grid.Column="5" Margin="5" Click="btn_user1_Click"  />
+                        <Button x:Name="btn_user2" Content="{Binding ButtonContent}" Grid.Row="0" Grid.Column="1" Margin="5" Click="btn_user1_Click"   Style="{StaticResource personalisationbuton}"/>
+                        <Button x:Name="btn_user3" Content="{Binding ButtonContent}" Grid.Row="1" Grid.Column="2" Margin="5" Click="btn_user1_Click"  Style="{StaticResource personalisationbuton}"/>
+                        <Button x:Name="btn_user4" Content="{Binding ButtonContent}" Grid.Row="1" Grid.Column="3" Margin="5" Click="btn_user1_Click"  Style="{StaticResource personalisationbuton}" />
+                        <Button x:Name="btn_user5" Content="{Binding ButtonContent}" Grid.Row="1" Grid.Column="4" Margin="5" Click="btn_user1_Click"  Style="{StaticResource personalisationbuton}"/>
+                        <Button x:Name="btn_user6" Content="{Binding ButtonContent}" Grid.Row="1" Grid.Column="5" Margin="5" Click="btn_user1_Click"   Style="{StaticResource personalisationbuton}"/>
 
                     </Grid>
                     <Button x:Name="btn_accueil_image" BorderBrush="White" Background="White" Grid.Column="1"  Margin="5" 
-                     Click="btn_accueil_image_Click">
+                     Click="btn_accueil_image_Click"  Style="{StaticResource personalisationbuton}">
                         <Image Source="/Resources/pics/Accueil1/logo_home.png"/>
                     </Button>
                 </Grid>
