@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 namespace App_pressing_Loreau.Model.DTO
 {
 
-   
-    class  Client
+
+    class Client
     {
 
-        // ATTENTION, CETTE CLASSE N'EST PAS COMPLETTE ET NON FONCTIONNELLE : manque d'attributs et de méthodes
         #region attributs
-        public int id {get; set;}
+        public int id { get; set; }
         public string nom { get; set; }
         public string prenom { get; set; }
         public string telfix { get; set; }
@@ -28,27 +27,53 @@ namespace App_pressing_Loreau.Model.DTO
         public int type { get; set; }
         public List<Commande> listCommandes { get; set; }
 
-        
+
         #endregion
 
         #region classes
-        //Constructeur
-        public Client(string nom, string prenom, string fix, string mob, string adresse, DateTime dateNaissance, string email, DateTime dateInscription, int idCleanWay)
+        //Constructeurs
+        public Client()
         {
+        }
+        public Client(string nom, string prenom, string telfix, string telmob, string adresse, DateTime dateNaissance, string email, DateTime dateInscription, int idCleanWay, bool contactMail, bool contactSms, int type)
+        {
+            id = 0;
             this.nom = nom;
             this.prenom = prenom;
-            this.telfix = fix;
-            this.telmob = mob;
+            this.telfix = telfix;
+            this.telmob = telmob;
             this.adresse = adresse;
             this.dateNaissance = dateNaissance;
             this.email = email;
             this.dateInscription = dateInscription;
             this.idCleanWay = idCleanWay;
+            this.contactMail = contactMail;
+            this.contactSms = contactSms;
+            this.type = type;
             listCommandes = new List<Commande>();
         }
-        public Client()
+        public Client(int id, string nom, string prenom, string telfix, string telmob, string adresse, DateTime dateNaissance, string email, DateTime dateInscription, int idCleanWay, bool contactMail, bool contactSms, int type)
         {
+            this.id = id;
+            this.nom = nom;
+            this.prenom = prenom;
+            this.telfix = telfix;
+            this.telmob = telmob;
+            this.adresse = adresse;
+            this.dateNaissance = dateNaissance;
+            this.email = email;
+            this.dateInscription = dateInscription;
+            this.idCleanWay = idCleanWay;
+            this.contactMail = contactMail;
+            this.contactSms = contactSms;
+            this.type = type;
+            listCommandes = new List<Commande>();
+        }
 
+        //Méthodes de listes
+        public void addCommande(Commande commande)
+        {
+            listCommandes.Add(commande);
         }
 
         public void setContactMail(int contactInt)

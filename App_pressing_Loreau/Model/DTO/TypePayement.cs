@@ -17,7 +17,11 @@ namespace App_pressing_Loreau.Model.DTO
         public TypePayement()
         {
         }
-
+        public TypePayement(string nom)
+        {
+            id = 0;
+            this.nom = nom;
+        }
         public TypePayement(int id, string nom)
         {
             this.id = id;

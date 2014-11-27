@@ -24,6 +24,16 @@ namespace App_pressing_Loreau.Model.DTO
             listArticles = new List<Article>();
             listPayements = new List<Payement>();
         }
+        public Commande(DateTime date, Boolean payee, float remise, Client client)
+        {
+            id = 0;
+            this.date = date;
+            this.payee = payee;
+            this.remise = remise;
+            this.client = client;
+            listArticles = new List<Article>();
+            listPayements = new List<Payement>();
+        }
         public Commande(int id, DateTime date, Boolean payee, float remise, Client client)
         {
             this.id = id;

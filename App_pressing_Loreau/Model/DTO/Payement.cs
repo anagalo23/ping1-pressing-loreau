@@ -20,6 +20,13 @@ namespace App_pressing_Loreau.Model.DTO
         {
         }
 
+        public Payement(DateTime date, float montant, TypePayement typePayement)
+        {
+            id = 0;
+            this.date = date;
+            this.montant = montant;
+            this.typePayement = typePayement;
+        }
         public Payement(int id, DateTime date, float montant, TypePayement typePayement)
         {
             this.id = id;

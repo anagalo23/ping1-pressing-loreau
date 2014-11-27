@@ -19,6 +19,15 @@ namespace App_pressing_Loreau.Model.DTO
 
         #region classes
         public Type() { }
+        public Type(string nom, int encombrement, float TVA, float HT, Departement departement)
+        {
+            id = 0;
+            this.nom = nom;
+            this.encombrement = encombrement;
+            this.TVA = TVA;
+            this.HT = HT;
+            this.departement = departement;
+        }
         public Type(int id, string nom, int encombrement, float TVA, float HT, Departement departement)
         {
             this.id = id;
