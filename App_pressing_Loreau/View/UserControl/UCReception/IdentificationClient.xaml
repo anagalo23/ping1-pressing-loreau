@@ -17,7 +17,7 @@
             <Border Grid.Column="0" Margin="10" BorderBrush="Aqua" BorderThickness="2" CornerRadius="15">
                 <Grid Margin="2">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="31*"/>
+                        <RowDefinition Height="40*"/>
                         <RowDefinition Height="190*"/>
                         <RowDefinition Height="50*"/>
 
@@ -61,7 +61,7 @@
                 <Border Margin="10" BorderBrush="Aqua" BorderThickness="2" Grid.Column="1" CornerRadius="15">
                 <Grid Margin="2">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="31*"/>
+                        <RowDefinition Height="40*"/>
                         <RowDefinition Height="241*"/>
 
                     </Grid.RowDefinitions>
