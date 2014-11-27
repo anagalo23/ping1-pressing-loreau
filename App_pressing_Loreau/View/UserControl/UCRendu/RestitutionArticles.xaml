@@ -19,7 +19,7 @@
                         <RowDefinition Height="6*"/>
                         <RowDefinition Height="23*"/>
                     </Grid.RowDefinitions>
-                    <Label Content="Client possédant un ticket" Style="{StaticResource Titre}" Background="Beige" Grid.Row="0" />
+                    <Label Content="Client possédant un ticket" Style="{StaticResource Titre}"  Grid.Row="0" />
                     <Grid Grid.Row="1" Margin="10,36,10,44" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="15*"/>
@@ -30,10 +30,10 @@
                                FontFamily="Arial" FontSize="20" FontWeight="SemiBold" Grid.ColumnSpan="2"/>
                         <TextBox x:Name="txb_restitutionArticles_numero_facture" Grid.Column="1" Margin="38,40,10,40" VerticalContentAlignment="Center"/>
                         <Button x:Name="btn_restitutionArticles_ok" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="OK" Grid.Column="2" Margin="27,0,34,7" 
-                                Click="btn_restitutionArticles_ok_Click" FontFamily="Arial" FontSize="20" FontWeight="SemiBold" Height="28" VerticalAlignment="Bottom"/>
+                                Click="btn_restitutionArticles_ok_Click" Style="{StaticResource choixbouton20}" />
                     </Grid>
 
-                    <Label Content="Client sans ticket" Grid.Row="2" Style="{StaticResource Titre}" Background="Beige"/>
+                    <Label Content="Client sans ticket" Grid.Row="2" Style="{StaticResource Titre}"/>
                     <Grid Grid.Row="3" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="33*"/>
@@ -55,9 +55,9 @@
                                     <ComboBoxItem x:Name="cbbi_restitutionArticles_tel_port">Télephone Portable</ComboBoxItem>
                                 </ComboBox>
 
-                                <TextBox x:Name="txb_restitutionArticles_choix"  Grid.Column="1" Margin="5,10,5,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="40"/>
+                                <TextBox x:Name="txb_restitutionArticles_choix"  Grid.Column="1" Margin="5,10,5,0" Style="{StaticResource vertiTextBox}"/>
                                 <Button x:Name="btn_restitutionArticles_valider" Content="valider" Grid.Column="1" Margin="5,0" VerticalAlignment="Bottom" Height="40"
-                                        FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
+                                        Style="{StaticResource choixbouton30}"/>
 
                             </Grid>
                         </Border>
@@ -68,7 +68,7 @@
                                     <RowDefinition Height="7*"/>
                                     <RowDefinition Height="16*"/>
                                 </Grid.RowDefinitions>
-                                <Label Background="AliceBlue" Content="Résultat de la recherche" FontSize="25" Style="{StaticResource vertiLabel}"/>
+                                <Label Background="AliceBlue" Content="Résultat de la recherche" Style="{StaticResource vertiLabel25}"/>
 
                             </Grid>
 
@@ -89,7 +89,7 @@
                         <RowDefinition Height="17*"/>
                         <RowDefinition Height="9*"/>
                     </Grid.RowDefinitions>
-                    <Label Content="La commande concernant" Background="Beige" Grid.Row="0"  Style="{StaticResource Titre}"/>
+                    <Label Content="La commande concernant" Grid.Row="0"  Style="{StaticResource Titre}"/>
                     <Border Margin="5" Background="BlueViolet" Grid.Row="1">
                         <DataGrid VerticalContentAlignment="Center" HorizontalContentAlignment="Center" x:Name="dtgrid_restitution_article_affiche" 
                                   SelectionChanged="DataGrid_SelectionChanged" FontFamily="Arial" FontSize="20" FontWeight="SemiBold">
@@ -102,7 +102,7 @@
 
                     </Border>
                     <Button x:Name="btn_restitutionArticles_suivant" Content="Suivant"  Margin="65,20,60,15" Grid.Row="2" 
-                            Click="btn_restitutionArticles_suivant_Click" FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
+                            Click="btn_restitutionArticles_suivant_Click" Style="{StaticResource choixbouton30}"/>
 
                 </Grid>
 

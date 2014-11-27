@@ -71,11 +71,11 @@
                             <ColumnDefinition Width="133*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Content="Total à payer : " Style="{StaticResource vertiLabel}" Grid.Row="0" Grid.Column="1" Margin="5,0"/>
+                        <Label Content="Total à payer : " Style="{StaticResource vertilabel25}" Grid.Row="0" Grid.Column="1" Margin="5,0"/>
                         <Button x:Name="btn_nouvelleCommande_paiement_immediat" Content="Paiement immédiat" Grid.Row="1" Grid.Column="0"
-                                Margin="5" Click="btn_nouvelleCommande_paiement_immediat_Click" FontFamily="Arial" FontSize="22" FontWeight="SemiBold"/>
+                                Margin="5" Click="btn_nouvelleCommande_paiement_immediat_Click" Style="{StaticResource choixbouton20}"/>
                         <Button x:Name="btn_nouvelleCommande_paiement_differe" Content="Paiement différé" Grid.Row="1" Grid.Column="1" Margin="5"
-                                FontFamily="Arial" FontSize="22" FontWeight="SemiBold"/>
+                                Style="{StaticResource choixbouton20}"/>
 
                     </Grid>
 

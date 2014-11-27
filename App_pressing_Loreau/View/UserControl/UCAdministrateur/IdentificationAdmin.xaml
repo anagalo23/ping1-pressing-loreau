@@ -14,8 +14,7 @@
                         <RowDefinition Height="6*"/>
                         <RowDefinition Height="3*"/>
                     </Grid.RowDefinitions>
-                    <Label Content="Identification de l'administrateur" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                           FontFamily="Arial" FontSize="30" FontWeight="Bold"/>
+                    <Label Content="Identification de l'administrateur" Style="{StaticResource vertilabel25}"/>
                     
                     <Grid Grid.Row="1" Margin="5">
                         <Grid.RowDefinitions>
@@ -26,9 +25,9 @@
                             <ColumnDefinition Width="23*"/>
                             <ColumnDefinition Width="29*"/>
                         </Grid.ColumnDefinitions>
-                        <Label  Content="Identifiant" Grid.Row="0" Grid.Column="0" Style="{StaticResource vertiLabel}"/>
+                        <Label  Content="Identifiant" Grid.Row="0" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_identificationAdmin_identifiant" Grid.Row="0" Grid.Column="1" Margin="5,15" Style="{StaticResource vertiTextBox}"/>
-                        <Label Content="Mot de passe" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertiLabel}" />
+                        <Label Content="Mot de passe" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel25}" />
                         <TextBox x:Name="txb_identificationAdmin_mdp"  Grid.Row="1" Grid.Column="1" Margin="5,15" Style="{StaticResource vertiTextBox}"/>
 
                     </Grid>
@@ -40,7 +39,7 @@
                         </Grid.RowDefinitions>
                         <Label x:Name="label_identificationAdmin_erreur_affiche" Grid.Row="0" Margin="10" FontWeight="Bold"  />
                         <Button x:Name="btn_identificationAdmin_connecte" Content="Se connecter" Grid.Row="1" Margin="5"
-                            Click="btn_identificationAdmin_connecte_Click" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" />
+                            Click="btn_identificationAdmin_connecte_Click" Style="{StaticResource personalisationbuton}"/>
                     </Grid>
                     
                 </Grid>

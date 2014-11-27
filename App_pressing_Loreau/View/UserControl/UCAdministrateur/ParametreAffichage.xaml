@@ -20,29 +20,29 @@
                 <ColumnDefinition Width="10*"/>
                 <ColumnDefinition Width="10*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Couleurs des utilsateurs : " Style="{StaticResource vertiLabel}" Grid.Column="0" Grid.Row="0" />
-            <Label Content="Design des boutons : " Style="{StaticResource vertiLabel}" Grid.Column="1" Grid.Row="0"/>
-            <Label Content="User 1   " Style="{StaticResource vertiLabel}" Grid.Column="0" Grid.Row="1" Margin="0,0,249,0"/>
+            <Label Content="Couleurs des utilsateurs : " Style="{StaticResource vertilabel25}" Grid.Column="0" Grid.Row="0" />
+            <Label Content="Design des boutons : " Style="{StaticResource vertilabel25}" Grid.Column="1" Grid.Row="0"/>
+            <Label Content="User 1   " Style="{StaticResource vertilabel25}" Grid.Column="0" Grid.Row="1" Margin="0,0,249,0"/>
             <Canvas Grid.Row="1" Grid.Column="0" Margin="121,0,144,0" Height="43" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <Label Height="43" Width="105" Background="LightGreen"/>
             </Canvas>
-            <Label Content="User 2   " Style="{StaticResource vertiLabel}" Grid.Column="0" Grid.Row="2" Margin="0,0,249,0"/>
+            <Label Content="User 2   " Style="{StaticResource vertilabel25}" Grid.Column="0" Grid.Row="2" Margin="0,0,249,0"/>
             <Canvas Grid.Row="2" Grid.Column="0" Margin="121,0,144,0" Height="43" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Label Height="43" Width="105" Background="Ivory"/>
             </Canvas>
-            <Label Content="User 3   " Style="{StaticResource vertiLabel}" Grid.Column="0" Grid.Row="3" Margin="0,0,249,0"/>
+            <Label Content="User 3   " Style="{StaticResource vertilabel25}" Grid.Column="0" Grid.Row="3" Margin="0,0,249,0"/>
             <Canvas Grid.Row="3" Grid.Column="0" Margin="121,0,144,0" Height="43" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <Label Height="43" Width="105" Background="Fuchsia"/>
             </Canvas>
-            <Label Content="User 4   " Style="{StaticResource vertiLabel}" Grid.Column="0" Grid.Row="4" Margin="0,0,249,0"/>
+            <Label Content="User 4   " Style="{StaticResource vertilabel25}" Grid.Column="0" Grid.Row="4" Margin="0,0,249,0"/>
             <Canvas Grid.Row="4" Grid.Column="0" Margin="121,0,144,0" Height="43" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <Label Height="43" Width="105" Background="Tan"/>
             </Canvas>
-            <Label Content="User 5   " Style="{StaticResource vertiLabel}" Grid.Column="0" Grid.Row="5" Margin="0,0,249,0"/>
+            <Label Content="User 5   " Style="{StaticResource vertilabel25}" Grid.Column="0" Grid.Row="5" Margin="0,0,249,0"/>
             <Canvas Grid.Row="5" Grid.Column="0" Margin="121,0,144,0" Height="43" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <Label Height="43" Width="105" Background="Orange"/>
             </Canvas>
-            <Label Content="User 6   " Style="{StaticResource vertiLabel}" Grid.Column="0" Grid.Row="6"  Margin="0,0,249,0"/>
+            <Label Content="User 6   " Style="{StaticResource vertilabel25}" Grid.Column="0" Grid.Row="6"  Margin="0,0,249,0"/>
             <Canvas Grid.Row="6" Grid.Column="0" Margin="121,0,144,0" Height="43" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <Label Height="43" Width="105" Background="DarkMagenta"/>
             </Canvas>
@@ -51,7 +51,7 @@
                     <ColumnDefinition Width="18*"/>
                     <ColumnDefinition Width="18*"/>
                 </Grid.ColumnDefinitions>
-                <Label Content="Texte" Background="Red" FontFamily="Arial" FontSize="24" Grid.Column="0" Margin="0,0,63,0"/>
+                <Label Content="Texte" Background="Red" Style="{StaticResource vertilabel25}" Grid.Column="0" Margin="0,0,63,0"/>
                 <CheckBox  Grid.Column="1" Margin="10" Grid.ColumnSpan="2"/>
             </Grid>
             <Grid Grid.Column="1" Grid.Row="2">
@@ -59,7 +59,7 @@
                     <ColumnDefinition Width="18*"/>
                     <ColumnDefinition Width="18*"/>
                 </Grid.ColumnDefinitions>
-                <Label Content="Texte" Background="Pink" FontFamily="Arial" FontSize="24" Grid.Column="0" Margin="0,0,63,0"/>
+                <Label Content="Texte" Background="Pink" Style="{StaticResource vertilabel25}" Grid.Column="0" Margin="0,0,63,0"/>
                 <CheckBox  Grid.Column="1" Margin="10"/>
             </Grid>
             <Grid Grid.Column="1" Grid.Row="3">
@@ -67,7 +67,7 @@
                     <ColumnDefinition Width="18*"/>
                     <ColumnDefinition Width="18*"/>
                 </Grid.ColumnDefinitions>
-                <Label Content="Texte" Background="Yellow" FontFamily="Arial" FontSize="24" Grid.Column="0" Margin="0,0,63,0"/>
+                <Label Content="Texte" Background="Yellow" Style="{StaticResource vertilabel25}" Grid.Column="0" Margin="0,0,63,0"/>
                 <CheckBox  Grid.Column="1" Margin="10"/>
             </Grid>
             <Grid Grid.Column="1" Grid.Row="4">
@@ -75,7 +75,7 @@
                     <ColumnDefinition Width="18*"/>
                     <ColumnDefinition Width="18*"/>
                 </Grid.ColumnDefinitions>
-                <Label Content="Texte" Background="Gray" FontFamily="Arial" FontSize="24" Grid.Column="0" Grid.Row="4" Margin="0,0,63,0"/>
+                <Label Content="Texte" Background="Gray" Style="{StaticResource vertilabel25}" Grid.Column="0" Grid.Row="4" Margin="0,0,63,0"/>
                 <CheckBox  Grid.Column="1" Margin="10"/>
             </Grid>
             <Grid Grid.Column="1" Grid.Row="5">
@@ -91,7 +91,7 @@
                     <ColumnDefinition Width="18*"/>
                     <ColumnDefinition Width="18*"/>
                 </Grid.ColumnDefinitions>
-                <Label Content="Texte" Background="CadetBlue" FontFamily="Arial" FontSize="24" Grid.Column="0" Grid.Row="5" Margin="0,0,63,0"/>
+                <Label Content="Texte" Background="CadetBlue" Style="{StaticResource vertilabel25}" Grid.Column="0" Grid.Row="5" Margin="0,0,63,0"/>
                 <CheckBox  Grid.Column="1" Margin="10"/>
             </Grid>
             <Grid Grid.Column="1" Grid.Row="6">
@@ -99,10 +99,10 @@
                     <ColumnDefinition Width="18*"/>
                     <ColumnDefinition Width="18*"/>
                 </Grid.ColumnDefinitions>
-                <Label Content="Texte" Background="RosyBrown" FontFamily="Arial" FontSize="24" Grid.Column="0" Grid.Row="6" Margin="0,0,63,0"/>
+                <Label Content="Texte" Background="RosyBrown" Style="{StaticResource vertilabel25}" Grid.Column="0" Grid.Row="6" Margin="0,0,63,0"/>
                 <CheckBox  Grid.Column="1" Margin="10,10,122,10"/>
                 <Button x:Name="btn_parametre_affichage_retour" Content="Retour" Grid.Column="1" Margin="68,0,10,10" 
-                        Click="btn_parametre_affichage_retour_Click" FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
+                        Click="btn_parametre_affichage_retour_Click"  Style="{StaticResource choixbouton30}"/>
             </Grid>
         </Grid>
     </DockPanel>

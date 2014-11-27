@@ -11,8 +11,7 @@
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
-            <Label Content="Gestion du convoyeur" Grid.Row="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                   FontFamily="Arial" FontSize="35" FontWeight="Bold"/>
+            <Label Content="Gestion du convoyeur" Grid.Row="0" Style="{StaticResource Titre}"/>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="84*"/>
@@ -30,10 +29,9 @@
                             <ColumnDefinition Width="77*"/>
                             <ColumnDefinition Width="169*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Content="Disponibles  :" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                               FontFamily="Arial" FontSize="20" FontWeight="SemiBold" Margin="0,10,0,22" Height="94"/>
+                        <Label Content="Disponibles  :" Grid.Column="0" Style="{StaticResource vertilabel25}" Margin="0,10,0,22" />
                         <Canvas Grid.Column="1" Margin="2,72,144,53" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <Label Background="Bisque"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="46" Width="60" Canvas.Left="7" Canvas.Top="-38"/>
+                            <Label Background="Bisque"  Style="{StaticResource vertilabel18}" Height="46" Width="60" Canvas.Left="7" Canvas.Top="-38"/>
                         </Canvas>
                     </Grid>
                     <Grid Grid.Row="0">
@@ -42,10 +40,9 @@
                             <ColumnDefinition Width="77*"/>
                             <ColumnDefinition Width="169*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Content="Nombre de places :" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                               FontFamily="Arial" FontSize="20" FontWeight="SemiBold" Margin="0,10,0,22"/>
+                        <Label Content="Nombre de places :" Style="{StaticResource vertilabel25}" Margin="0,10,0,22"/>
                         <Canvas Grid.Column="1" Margin="34,72,43,53" VerticalAlignment="Center" HorizontalAlignment="Center" Height="0" Width="0">
-                            <Label Background="Bisque"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="46" Width="60" Canvas.Left="-25" Canvas.Top="-30"/>
+                            <Label Background="Bisque"  Style="{StaticResource vertilabel18}" Height="46" Width="60" Canvas.Left="-25" Canvas.Top="-30"/>
                         </Canvas>
                         <Canvas Grid.Column="2" Margin="79,72,90,53" VerticalAlignment="Center" HorizontalAlignment="Center" Height="0" Width="0" >
                             <Button x:Name="btn_admin_commandes_editer" Grid.Column="2" Click="btn_admin_commandes_editer_Click" Canvas.Left="-55" Canvas.Top="-42">
@@ -65,8 +62,8 @@
                                 <RowDefinition Height="37*"/>
                                 <RowDefinition Height="145*"/>
                             </Grid.RowDefinitions>
-                            <Label Content="Détails des emplacements" HorizontalContentAlignment="Left" Background="AliceBlue" Grid.Row="0"
-                               FontFamily="Arial" FontSize="30" FontWeight="SemiBold"/>
+                            <Label Content="Détails des emplacements" Style="{StaticResource vertilabel25}"  Grid.Row="0"
+/>
                             <Border Grid.Row="1"  Background="Silver"/>
 
                         </Grid>
@@ -77,7 +74,7 @@
                             <ColumnDefinition Width="10*"/>
                         </Grid.ColumnDefinitions>
                         <Button x:Name="btn_admin_convoyeur_retour"  Content="Retour" Grid.Column="1" Click="btn_admin_convoyeur_retour_Click"
-                                FontFamily="Arial" FontSize="30" FontWeight="SemiBold" Margin="10"/>
+                                Style="{StaticResource choixbouton30}" FontSize="30" Margin="10"/>
                     </Grid>
 
                 </Grid>

@@ -29,9 +29,9 @@
                 <RowDefinition Height="59*"/>
             </Grid.RowDefinitions>
             <Label  Content="Détail des commandes par client" Style="{StaticResource Titre}" Grid.Row="0" Grid.ColumnSpan="3"/>
-            <Label Content="Total à payer" Style="{StaticResource vertiLabel}" Grid.Column="0" Grid.Row="2"/>
+            <Label Content="Total à payer" Style="{StaticResource vertilabel25}" Grid.Column="0" Grid.Row="2"/>
             <Label Grid.Column="1" Grid.Row="2"/>
-            <Button Content="Réglement" FontFamily="Arial" FontSize="25" FontWeight="Bold" Grid.Row="2" Grid.Column="2"/>
+            <Button Content="Réglement" Style="{StaticResource choixbouton20}" Grid.Row="2" Grid.Column="2"/>
         </Grid>
 
     </Grid>

@@ -24,10 +24,8 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <Button x:Name="btn_detailCommande_selectionner_tout" Content="Sélectionner tout" Margin="10"
-                                        FontFamily="Arial" FontSize="22" FontWeight="Bold"/>
-                                <Button x:Name="btn_detailCommande_deselectionner_tout"  Content="Désélectionner tout" Grid.Column="1" Margin="10"
-                                        FontFamily="Arial" FontSize="22" FontWeight="Bold"/>
+                                <Button x:Name="btn_detailCommande_selectionner_tout" Content="Sélectionner tout" Margin="10" Style="{StaticResource choixbouton20}"/>
+                                <Button x:Name="btn_detailCommande_deselectionner_tout"  Content="Désélectionner tout" Grid.Column="1" Margin="10" Style="{StaticResource choixbouton20}"/>
                             </Grid>
 
                         </Border>
@@ -47,8 +45,8 @@
                 <Border Grid.Column="2" Height="300" VerticalAlignment="Bottom">
 
 
-                    <Button x:Name="btn_detailCommande_rendre_articles_selectionnes"  Content="Rendre les articles sélectionnés"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="90,190,10,10" 
-                            Click="btn_detailCommande_rendre_articles_selectionnes_Click" FontFamily="Arial" FontSize="30" FontWeight="SemiBold"/>
+                    <Button x:Name="btn_detailCommande_rendre_articles_selectionnes"  Content="Rendre les articles sélectionnés" 
+                            Margin="90,190,10,10" Click="btn_detailCommande_rendre_articles_selectionnes_Click" Style="{StaticResource choixbouton30}"/>
                 </Border >
             </Grid>
         </Border>

@@ -21,13 +21,13 @@
                 </Grid.ColumnDefinitions>
 
                 <Button x:Name="btn_statistique_du_jour" Content="Du jour" Grid.Row="0" Margin="1" BorderBrush="Aqua" BorderThickness="2" 
-                        Click="btn_statistique_du_jour_Click_1" FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
+                        Click="btn_statistique_du_jour_Click_1" Style="{StaticResource choixbouton30}"/>
                 <Button x:Name="btn_statistique_de_la_semaine" Content="De la semaine" Grid.Column="1" Grid.Row="0" Margin="1" 
-                        BorderBrush="Aqua" BorderThickness="2" FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
+                        BorderBrush="Aqua" BorderThickness="2" Style="{StaticResource choixbouton30}"/>
                 <Button x:Name="btn_statistique_du_mois" Content="Du mois" Grid.Column="2" Grid.Row="0" Margin="1" BorderBrush="Aqua" 
-                        BorderThickness="2"  FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
+                        BorderThickness="2" Style="{StaticResource choixbouton30}"/>
                 <Button x:Name="btn_statistique_des_derniers_mois" Content="Des 14 derniers mois" Grid.Column="3" Grid.Row="0" 
-                        Margin="1" BorderBrush="Aqua" BorderThickness="2"  FontFamily="Arial" FontSize="25" FontWeight="SemiBold" />
+                        Margin="1" BorderBrush="Aqua" BorderThickness="2"  Style="{StaticResource choixbouton30}" />
 
             </Grid>
 
@@ -52,7 +52,7 @@
                             <ColumnDefinition Width="100*"/>
                         </Grid.ColumnDefinitions>
                         <Button x:Name="btn_statistiques_retour" Content="Retour" Grid.Row="1" Grid.Column="1" Margin="23,10,10,10" 
-                        Click="btn_statistiques_retour_Click" FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
+                        Click="btn_statistiques_retour_Click" Style="{StaticResource choixbouton30}"/>
                     </Grid>
                 </Border>
 
@@ -63,8 +63,7 @@
                             <RowDefinition Height="27*"/>
                         </Grid.RowDefinitions>
                         <Rectangle Fill="#FFF4F4F5" Margin="35,10"  Stroke="Black" />
-                        <Label Content="Graphes du CA par type d'article" Grid.Row="1" VerticalContentAlignment="Center" 
-                               HorizontalContentAlignment="Center" FontFamily="Arial" FontSize="18" FontWeight="SemiBold"/>
+                        <Label Content="Graphes du CA par type d'article" Grid.Row="1" Style="{StaticResource vertilabel18}"/>
                     </Grid>
                 </Border>
                 <Border Grid.Column="0" Grid.Row="1">
@@ -75,8 +74,7 @@
                         </Grid.RowDefinitions>
 
                         <Rectangle Fill="#FFF4F4F5" Margin="35,10,35,0" Stroke="Black" />
-                        <Label Content="Graphes du CA par département" Grid.Row="1" HorizontalContentAlignment="Center" 
-                               VerticalContentAlignment="Center" FontFamily="Arial" FontSize="18" FontWeight="SemiBold"/>
+                        <Label Content="Graphes du CA par département" Grid.Row="1" Style="{StaticResource vertilabel18}"/>
                     </Grid>
 
                 </Border>
@@ -88,8 +86,7 @@
                             <RowDefinition Height="3*"/>
                         </Grid.RowDefinitions>
                         <Rectangle Fill="#FFF4F4F5" Margin="10" Stroke="Black" />
-                        <Label Content="Graphes du CA par ville" Grid.Row="1" HorizontalContentAlignment="Center" 
-                               VerticalContentAlignment="Center" FontFamily="Arial" FontSize="20" FontWeight="SemiBold"/>
+                        <Label Content="Graphes du CA par ville" Grid.Row="1" Style="{StaticResource vertilabel18}"/>
 
                     </Grid>
                 </Border>
