@@ -9,20 +9,21 @@
         ResizeMode="NoResize" 
         ShowInTaskbar="False">
 
-    <Window.Resources>
+    <!--<Window.Resources>
         <DataTemplate DataType="{x:Type vm:IdentificationClientVM}">
             <local:IdentificationClient />
         </DataTemplate>
         
-    </Window.Resources>
+    </Window.Resources>-->
     
     <Grid Margin="10" >
         <Grid.RowDefinitions >
+            <RowDefinition Height="70"/>
             <RowDefinition Height="355*"/>
             <RowDefinition Height="44*"/>
         </Grid.RowDefinitions>
-        <DockPanel Grid.Row="0">
-            <Border DockPanel.Dock="Top" BorderBrush="Aqua" BorderThickness="2" Height="78"  CornerRadius="20" Background="Bisque">
+    
+            <Border  BorderBrush="Aqua" BorderThickness="2" Grid.Row="0" CornerRadius="20" Background="Bisque">
                 <Grid >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100*"/>
@@ -35,32 +36,32 @@
 
 
                     </Grid.ColumnDefinitions>
-                    <Button  x:Name="btn_accueil_reception"  FontFamily="Arial" FontSize="25" FontWeight="SemiBold"  Content="Reception" Grid.Column="0" Margin="5" Command="{Binding OnCollectionChangeCommand}" CommandParameter="btn_accueil_reception"  />
+                    <Button  x:Name="btn_accueil_reception"  Content="Reception" Grid.Column="0" Margin="5" Command="{Binding OnCollectionChangeCommand}" CommandParameter="btn_accueil_reception" Click="btn_accueil_reception_Click"  />
 
-                    <Button x:Name="btn_accueil_rendu"  FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Rendu" Grid.Column="1" Margin="5"  Command="{Binding OnCollectionChangeCommand}" />
+                    <Button x:Name="btn_accueil_rendu"  Content="Rendu" Grid.Column="1" Margin="5"  Command="{Binding OnCollectionChangeCommand}" Click="btn_accueil_rendu_Click" />
 
-                    <Button x:Name="btn_accueil_facture" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Factures" Grid.Column="2" Margin="5" Command="{Binding OnCollectionChangeCommand}" />
+                    <Button x:Name="btn_accueil_facture" Content="Factures" Grid.Column="2" Margin="5" Command="{Binding OnCollectionChangeCommand}" Click="btn_accueil_facture_Click" />
 
-                    <Button x:Name="btn_accueil_client_pro" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="client Pro" Grid.Column="4" Margin="5" Command="{Binding OnCollectionChangeCommand}"/>
+                    <Button x:Name="btn_accueil_client_pro" Content="client Pro" Grid.Column="4" Margin="5" Command="{Binding OnCollectionChangeCommand}" Click="btn_accueil_client_pro_Click"/>
 
-                    <Button x:Name="btn_accueil_impression" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Impressions" Grid.Column="5" Margin="5" Command="{Binding OnCollectionChangeCommand}"/>
+                    <Button x:Name="btn_accueil_impression"  Content="Impressions" Grid.Column="5" Margin="5" Command="{Binding OnCollectionChangeCommand}" Click="btn_accueil_impression_Click"/>
 
-                    <Button x:Name="btn_accueil_administrateur" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Administrateur" Grid.Column="6" Margin="5" Command="{Binding OnCollectionChangeCommand}"/>
+                    <Button x:Name="btn_accueil_administrateur" Content="Administrateur" Grid.Column="6" Margin="5" Command="{Binding OnCollectionChangeCommand}" Click="btn_accueil_administrateur_Click"/>
 
-                    <Button x:Name="btn_accueil_convoyeur" FontFamily="Arial" FontSize="25" FontWeight="SemiBold" Content="Convoyeur" Grid.Column="3" Margin="5" Command="{Binding OnCollectionChangeCommand}" />
+                    <Button x:Name="btn_accueil_convoyeur" Content="Convoyeur" Grid.Column="3" Margin="5" Command="{Binding OnCollectionChangeCommand}" Click="btn_accueil_convoyeur_Click" />
 
                 </Grid>
 
         </Border>
-            <ContentControl Margin="5"   Content="{Binding CurrentPageViewModel}" />
+            <!--<ContentControl Margin="5"   Content="{Binding CurrentPageViewModel}" />-->
 
-        </DockPanel>
-        <!--<Border x:Name="border1" BorderBrush="Aqua" BorderThickness="2" Grid.Row="1" CornerRadius="20" Background="Silver">
+        <Border x:Name="border1" BorderBrush="Aqua" BorderThickness="2" Grid.Row="1" CornerRadius="20" Background="Silver">
 
-            <DockPanel x:Name="principalDP" Visibility="Visible">
-              
-            </DockPanel></Border>--> 
-        
+            <DockPanel x:Name="dp" Visibility="Visible">
+
+            </DockPanel>
+        </Border>
+
         <Border Grid.Row="2" CornerRadius="20" Background="LightSkyBlue" >
 
             <DockPanel >
@@ -84,13 +85,13 @@
                         </Grid.ColumnDefinitions>
 
 
-                        <Button x:Name="btn_user1" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="{Binding ButtonContent}"  Grid.Row="0" Grid.Column="0" Margin="5" Command="{Binding OnCollectionChangeCommand}" Click="btn_user1_Click"/>
+                        <Button x:Name="btn_user1"  Content="USER1"  Grid.Row="0" Grid.Column="0" Margin="5" Command="{Binding OnCollectionChangeCommand}" Click="btn_user1_Click"/>
 
-                        <Button x:Name="btn_user2" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="{Binding ButtonContent}" Grid.Row="0" Grid.Column="1" Margin="5" Click="btn_user1_Click" />
-                        <Button x:Name="btn_user3" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="{Binding ButtonContent}" Grid.Row="1" Grid.Column="2" Margin="5" Click="btn_user1_Click"/>
-                        <Button x:Name="btn_user4" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="{Binding ButtonContent}" Grid.Row="1" Grid.Column="3" Margin="5" Click="btn_user1_Click" />
-                        <Button x:Name="btn_user5" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="{Binding ButtonContent}" Grid.Row="1" Grid.Column="4" Margin="5" Click="btn_user1_Click" />
-                        <Button x:Name="btn_user6" FontFamily="Arial" FontSize="22" FontWeight="SemiBold" Content="{Binding ButtonContent}" Grid.Row="1" Grid.Column="5" Margin="5" Click="btn_user1_Click"  />
+                        <Button x:Name="btn_user2" Content="{Binding ButtonContent}" Grid.Row="0" Grid.Column="1" Margin="5" Click="btn_user1_Click" />
+                        <Button x:Name="btn_user3" Content="{Binding ButtonContent}" Grid.Row="1" Grid.Column="2" Margin="5" Click="btn_user1_Click"/>
+                        <Button x:Name="btn_user4" Content="{Binding ButtonContent}" Grid.Row="1" Grid.Column="3" Margin="5" Click="btn_user1_Click" />
+                        <Button x:Name="btn_user5" Content="{Binding ButtonContent}" Grid.Row="1" Grid.Column="4" Margin="5" Click="btn_user1_Click" />
+                        <Button x:Name="btn_user6" Content="{Binding ButtonContent}" Grid.Row="1" Grid.Column="5" Margin="5" Click="btn_user1_Click"  />
 
                     </Grid>
                     <Button x:Name="btn_accueil_image" BorderBrush="White" Background="White" Grid.Column="1"  Margin="5" 

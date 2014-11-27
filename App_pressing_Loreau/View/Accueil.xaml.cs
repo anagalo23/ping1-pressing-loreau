@@ -25,7 +25,7 @@ namespace App_pressing_Loreau
     {
         Button btn;
 
-        public DockPanel dpanel { get; set;}
+      
         
       
         public Accueil()
@@ -98,8 +98,8 @@ namespace App_pressing_Loreau
 
         public void btn_accueil_reception_Click(Object sender, RoutedEventArgs e)
         {
-            dpanel.Children.Clear();
-            dpanel.Children.Add(new IdentificationClient());
+            dp.Children.Clear();
+            dp.Children.Add(new IdentificationClient());
 
             //entete = new Label();
             //entete.Content = "Reception";
@@ -110,50 +110,52 @@ namespace App_pressing_Loreau
 
         private void btn_accueil_rendu_Click(Object sender, RoutedEventArgs e)
         {
-           // dpanel.Children.Clear();
-           // dpanel.Children.Add(new RestitutionArticles());
+           dp.Children.Clear();
+           dp.Children.Add(new RestitutionArticles());
 
         }
 
         private void btn_accueil_facture_Click(Object sender, RoutedEventArgs e)
         {
-            //dpanel.Children.Clear();
-            //dpanel.Children.Add(new Factures());
+            dp.Children.Clear();
+            dp.Children.Add(new Factures());
         }
 
         private void btn_accueil_client_pro_Click(Object sender, RoutedEventArgs e)
         {
-            //dpanel.Children.Clear();
-            //dpanel.Children.Add(new ClientProUC());
+            dp.Children.Clear();
+            dp.Children.Add(new ClientProUC());
         }
 
         private void btn_accueil_administrateur_Click(Object sender, RoutedEventArgs e)
         {
-            //dpanel.Children.Clear();
-            //dpanel.Children.Add(new IdentificationAdmin());
+            dp.Children.Clear();
+            dp.Children.Add(new IdentificationAdmin());
         }
 
         private void btn_accueil_convoyeur_Click(Object sender, RoutedEventArgs e)
         {
-            //dpanel.Children.Clear();
-            //dpanel.Children.Add(new Convoyeur());
+            dp.Children.Clear();
+            dp.Children.Add(new Convoyeur());
         }
 
         private void btn_accueil_image_Click(Object sender, RoutedEventArgs e)
         {
            // DPentete.Children.Clear();
             //DPentete.Children.Add(new BanniereAccueil());
-            //dpanel.Children.Clear();
+            dp.Children.Clear();
 
-            //dpanel.Children.Clear();
+            dp.Children.Clear();
         }
 
         private void btn_accueil_impression_Click(Object sender, RoutedEventArgs e)
         {
-            //dpanel.Children.Clear();
-            //dpanel.Children.Add(new Impression());
+            dp.Children.Clear();
+            dp.Children.Add(new Impression());
 
         }
+
+      
 
     }
 
