@@ -88,6 +88,9 @@
     <Compile Include="Model\DAO\TypeDAO.cs" />
     <Compile Include="Model\DAO\TypePayementDAO.cs" />
     <Compile Include="ViewModel\AccueilVM.cs" />
+    <Compile Include="View\UserControl\PaiementDeLaCommande.xaml.cs">
+      <DependentUpon>PaiementDeLaCommande.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControl\UCAdministrateur\AdministrationCaisse.xaml.cs">
       <DependentUpon>AdministrationCaisse.xaml</DependentUpon>
     </Compile>
@@ -155,6 +158,10 @@
       <DependentUpon>Accueil.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\UserControl\PaiementDeLaCommande.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\UserControl\UCAdministrateur\AdministrationCaisse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
