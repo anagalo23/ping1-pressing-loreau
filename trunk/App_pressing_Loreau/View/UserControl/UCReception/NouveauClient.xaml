@@ -35,13 +35,13 @@
 
                         </Grid.RowDefinitions>
 
-                        <Label Content="Nom * :"  Grid.Row="0" Grid.Column="0" Style="{StaticResource vertiLabel}" />
-                        <TextBox x:Name="txb_nouveauClient_nom" Grid.Row="0" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}" />
+                        <Label Content="Nom * :"  Grid.Row="0" Grid.Column="0" Style="{StaticResource vertilabel25}" />
+                        <TextBox x:Name="txb_nouveauClient_nom" Grid.Row="0" Grid.Column="1" Margin="10" Style="{StaticResource vertilabel25}" />
                         <Label Content="Prénom * :" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertiLabel}"/>
                         <TextBox x:Name="txb_nouveauClient_prenom" Grid.Row="1" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}"/>
-                        <Label Content="Date de naissance :" Grid.Row="2" Grid.Column="0" Style="{StaticResource vertiLabel}"/>
+                        <Label Content="Date de naissance :" Grid.Row="2" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_date_naissance" Grid.Row="2"  Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}"/>
-                        <Label Content="ID Cleanway  :"  Grid.Row="3" Grid.Column="0" Style="{StaticResource vertiLabel}"/>
+                        <Label Content="ID Cleanway  :"  Grid.Row="3" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_idCleanway" Grid.Row="3" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}"/>
                     </Grid>
                 </Grid>
@@ -67,13 +67,13 @@
 
                         </Grid.RowDefinitions>
 
-                        <Label Content="Numéro :"  Grid.Row="0" Grid.Column="0"  Style="{StaticResource vertiLabel}"/>
+                        <Label Content="Numéro :"  Grid.Row="0" Grid.Column="0"  Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_numero" Grid.Row="0" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}"/>
-                        <Label  Content="Rue, voie :" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertiLabel}"/>
+                        <Label  Content="Rue, voie :" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_rue_voie" Grid.Row="1" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}"/>
-                        <Label Content="BP :" Grid.Row="2" Grid.Column="0" Style="{StaticResource vertiLabel}"/>
+                        <Label Content="BP :" Grid.Row="2" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_bp" Grid.Row="2"  Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}"/>
-                        <Label Content="Ville" Grid.Row="3" Grid.Column="0" Style="{StaticResource vertiLabel}"/>
+                        <Label Content="Ville" Grid.Row="3" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_ville" Grid.Row="3" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}"/>
 
                     </Grid>
@@ -101,17 +101,17 @@
 
                         </Grid.RowDefinitions>
 
-                        <Label  Grid.Row="0" Grid.Column="0" Style="{StaticResource vertiLabel}">
-                            <TextBlock FontFamily="Arial" FontSize="16" FontWeight="SemiBold" > Souhaitez vous recevoir des  informations <LineBreak/> par SMS?</TextBlock>
+                        <Label  Grid.Row="0" Grid.Column="0" Style="{StaticResource vertilabel18}">
+                            <TextBlock  > Souhaitez vous recevoir des  informations <LineBreak/> par SMS?</TextBlock>
                         </Label>
                         <CheckBox x:Name="ckb_nouveauClient_sms"  VerticalContentAlignment="Center" Margin="5" Grid.Row="0" Grid.Column="1" />
-                        <Label Content="Portable :" Grid.Row="1" Grid.Column="0"  Style="{StaticResource vertiLabel}"/>
+                        <Label Content="Portable :" Grid.Row="1" Grid.Column="0"  Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_portable"  Grid.Row="1" Grid.Column="1" Margin="5" Style="{StaticResource vertiTextBox}" />
-                        <Label  Grid.Row="2" Grid.Column="0" Style="{StaticResource vertiLabel}" >
-                            <TextBlock FontFamily="Arial" FontSize="16" FontWeight="SemiBold"> Souhaitez vous recevoir des  informations <LineBreak/> par Mail?</TextBlock>
+                        <Label  Grid.Row="2" Grid.Column="0" Style="{StaticResource vertilabel18}" >
+                            <TextBlock > Souhaitez vous recevoir des  informations <LineBreak/> par Mail?</TextBlock>
                         </Label>
                         <CheckBox x:Name="ckb_nouveauClient_mail" Grid.Row="2" Margin="5"  Grid.Column="1" VerticalContentAlignment="Center" />
-                        <Label Content="Mail:" Grid.Row="3" Grid.Column="0" Style="{StaticResource vertiLabel}"/>
+                        <Label Content="Mail:" Grid.Row="3" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_mail"  Grid.Row="3" Grid.Column="1" Margin="5" Style="{StaticResource vertiTextBox}"/>
 
                     </Grid>
@@ -129,7 +129,7 @@
                     <RowDefinition Height="10*"/>
                 </Grid.RowDefinitions>
                 <Button x:Name="btn_nouveauClient_valider_inscription" Content="Valider l'inscription" Grid.Row="1" Grid.Column="1" 
-                    Margin="20,43,10,10" Click="btn_nouveauClient_valider_inscription_Click" FontFamily="Arial" FontSize="25" FontWeight="SemiBold"/>
+                    Margin="20,43,10,10" Click="btn_nouveauClient_valider_inscription_Click" Style="{StaticResource choixbouton30}"/>
             </Grid>
         </Grid>
     </DockPanel>
