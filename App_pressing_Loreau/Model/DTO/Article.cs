@@ -16,13 +16,13 @@ namespace App_pressing_Loreau.Model.DTO
         public float TVA { get; set; }
         public float HT { get; set; }
         public TypeArticle type { get; set; }
-        public Convoyeur convoyeur { get; set; }
+        public PlaceConvoyeur convoyeur { get; set; }
         #endregion
 
         #region classes
 
         public Article() { }
-        public Article(string photo, string commentaire, bool ifRendu, float TVA, float HT, TypeArticle type, Convoyeur convoyeur)
+        public Article(string photo, string commentaire, bool ifRendu, float TVA, float HT, TypeArticle type, PlaceConvoyeur convoyeur)
         {
             id = 0;
             this.photo = photo;
@@ -34,7 +34,7 @@ namespace App_pressing_Loreau.Model.DTO
             this.convoyeur = convoyeur;
 
         }
-        public Article(int id, string photo, string commentaire, bool ifRendu, float TVA, float HT, TypeArticle type, Convoyeur convoyeur)
+        public Article(int id, string photo, string commentaire, bool ifRendu, float TVA, float HT, TypeArticle type, PlaceConvoyeur convoyeur)
         {
             this.id = id;
             this.photo = photo;

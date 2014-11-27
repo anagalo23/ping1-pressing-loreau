@@ -41,73 +41,83 @@ namespace App_pressing_Loreau.Model.DAO
             }
         }
 
-        //public static List<Type> selectDepartements()
-        //{
-        //    try
-        //    {
-        //        List<Departement> retour = new List<Departement>();
-        //        String sql = "SELECT dep_id, dep_nom FROM departement";
+        public static List<TypeArticle> selectTypes()
+        {
+            try
+            {
+                List<TypeArticle> retour = new List<TypeArticle>();
+                String sql = "SELECT T.typ_id, T.type_nom, T.type_encombrement, T.type_TVA, T.type_HT, T.type_dep_id, D.dep_nom FROM type T, departement D WHERE T.type_dep_id=D.dep_id";
 
-        //        //connection à la base de données   
-        //        MySqlConnection connection = Bdd.connexion();
-        //        MySqlCommand cmd = new MySqlCommand(sql, connection);
+                //connection à la base de données   
+                MySqlConnection connection = Bdd.connexion();
+                MySqlCommand cmd = new MySqlCommand(sql, connection);
 
-        //        //Execute la commande
-        //        MySqlDataReader msdr = cmd.ExecuteReader();
-        //        Departement departement;
-        //        while (msdr.Read())
-        //        {
-        //            departement = new Departement(
-        //                Int32.Parse(msdr["dep_id"].ToString()),
-        //                msdr["dep_nom"].ToString());
-        //            retour.Add(departement);
-        //        }
-        //        msdr.Dispose();
-        //        return retour;
-        //    }
-        //    catch (Exception Ex)
-        //    {
-        //        LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
-        //        return null;
-        //    }
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                TypeArticle type;
+                Departement departement;
+                while (msdr.Read())
+                {
+                    departement = new Departement(
+                        Int32.Parse(msdr["type_dep_id"].ToString()),
+                        msdr["dep_nom"].ToString());
+                    type = new TypeArticle(
+                        Int32.Parse(msdr["typ_id"].ToString()),
+                        msdr["type_nom"].ToString(),
+                        float.Parse(msdr["type_encombrement"].ToString()),
+                        Int32.Parse(msdr["type_TVA"].ToString()),
+                        Int32.Parse(msdr["type_HT"].ToString()),
+                        departement);
+                    retour.Add(type);
+                }
+                msdr.Dispose();
+                return retour;
+            }
+            catch (Exception Ex)
+            {
+                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de types dans la base de données."));
+                return null;
+            }
+        }
 
+        public static TypeArticle selectTypeById(int id)
+        {
+            try
+            {
+                TypeArticle retour = new TypeArticle();
+                String sql = "SELECT T.typ_id, T.type_nom, T.type_encombrement, T.type_TVA, T.type_HT, T.type_dep_id, D.dep_nom FROM type T, departement D WHERE T.type_dep_id=D.dep_id AND T.typ_id=?";
 
-        //}
+                //connection à la base de données
+                MySqlConnection connection = Bdd.connexion();
+                MySqlCommand cmd = new MySqlCommand(sql, connection);
 
-        //public static Type selectDepartementById(int id)
-        //{
-        //    try
-        //    {
-        //        Departement retour = new Departement();
-        //        String sql = "SELECT dep_id, dep_nom FROM departement WHERE id=?";
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("id", id);
 
-        //        //connection à la base de données
-        //        MySqlConnection connection = Bdd.connexion();
-        //        MySqlCommand cmd = new MySqlCommand(sql, connection);
-
-        //        //ajout des parametres
-        //        cmd.Parameters.AddWithValue("id", id);
-
-        //        //Execute la commande
-        //        MySqlDataReader msdr = cmd.ExecuteReader();
-        //        Departement departement;
-        //        while (msdr.Read())
-        //        {
-        //            departement = new Departement(
-        //                Int32.Parse(msdr["dep_id"].ToString()),
-        //                msdr["dep_nom"].ToString());
-        //            retour = departement;
-        //        }
-        //        msdr.Dispose();
-        //        return retour;
-        //    }
-        //    catch (Exception Ex)
-        //    {
-        //        LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un département dans la base de données."));
-        //        return null;
-        //    }
-
-
-        //}
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                Departement departement;
+                while (msdr.Read())
+                {
+                    departement = new Departement(
+                        Int32.Parse(msdr["type_dep_id"].ToString()),
+                        msdr["dep_nom"].ToString());
+                    retour = new TypeArticle(
+                        Int32.Parse(msdr["typ_id"].ToString()),
+                        msdr["type_nom"].ToString(),
+                        float.Parse(msdr["type_encombrement"].ToString()),
+                        Int32.Parse(msdr["type_TVA"].ToString()),
+                        Int32.Parse(msdr["type_HT"].ToString()),
+                        departement);
+                }
+                msdr.Dispose();
+                return retour;
+            }
+            catch (Exception Ex)
+            {
+                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un département dans la base de données."));
+                return null;
+            }
+        }
     }
 }
