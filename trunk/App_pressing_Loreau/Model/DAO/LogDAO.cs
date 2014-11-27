@@ -10,20 +10,30 @@ namespace App_pressing_Loreau.Model.DAO
 {
     class LogDAO
     {
-        public static void insertLog(Log log)
+        public static int insertLog(Log log)
         {
-            Bdd.connexion();
-            MySqlCommand cmd = new MySqlCommand("SELECT BDD_gold, BDD_turrets, BDD_Life, BDD_NbWave, BDD_Score FROM game ORDER BY BDD_Score");
-            cmd.Connection = Bdd.connexion();
-            MySqlDataReader msdr;
-            msdr = cmd.ExecuteReader();
-            while (msdr.Read())
+            try
             {
-                //LC.Add(new Game(MSDR.GetInt32(0), MSDR.GetInt32(1), MSDR.GetInt32(2), MSDR.GetInt32(3), MSDR.GetInt32(4)));
+                String sql = "INSERT INTO Log(log_date, log_message, log_emp_id) VALUES (?,?,?)";
+
+                //connection à la base de données
+                MySqlConnection connection = Bdd.connexion();
+                MySqlCommand cmd = new MySqlCommand(sql, connection);
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("date", log.date);
+                cmd.Parameters.AddWithValue("message", log.message);
+                cmd.Parameters.AddWithValue("emp_id", log.employe.id);
+
+                //Execute la commande
+                int retour = cmd.ExecuteNonQuery();
+                connection.Close();
+                return retour;
             }
-            msdr.Dispose();
-            //return LC;
-            Bdd.deconnexion();
+            catch (Exception Ex)
+            {
+                return 0;
+            }
         }
     }
 }

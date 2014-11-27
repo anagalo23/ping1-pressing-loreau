@@ -10,7 +10,7 @@ namespace App_pressing_Loreau.Model.DAO
 {
     class ArticleDAO
     {
-        public static int insertArticle(Article article)
+        public static void insertArticle(Article article)
         {
             MySqlConnection connection = Bdd.connexion();
 
@@ -25,24 +25,18 @@ namespace App_pressing_Loreau.Model.DAO
             cmd.Parameters.AddWithValue("@photo", article.photo);
             cmd.Parameters.AddWithValue("@comm", article.commentaire);
             cmd.Parameters.AddWithValue("@rendu", article.ifRendu);
-            cmd.Parameters.AddWithValue("@conv_id", article.conv_id);
-            cmd.Parameters.AddWithValue("@dep_id", article.dep_id);
-            cmd.Parameters.AddWithValue("@typ_id", article.typ_id);
+
 
             int retour = cmd.ExecuteNonQuery();
             connection.Close();
             try
             {
                 return retour;
-
             }
             catch
             {
                 return 0;
             }
-
-
-
         }
 
         public static List<Article> getArticlesById(int art_id)
@@ -65,11 +59,11 @@ namespace App_pressing_Loreau.Model.DAO
                 Article article;
                 while (msdr.Read())
                 {
-                    article = new Article(Int32.Parse(msdr["art_id"].ToString()),
-                        msdr["art_photo"].ToString(), msdr["art_commentaire"].ToString(),
-                         bool.Parse(msdr["art_rendu"].ToString()), Int32.Parse(msdr["type_typ_id"].ToString()),
-                         Int32.Parse(msdr["departement_dep_id"].ToString()), Int32.Parse(msdr["convoyeur_conv_id"].ToString()));
-                    listArticle.Add(article);
+                    //article = new Article(Int32.Parse(msdr["art_id"].ToString()),
+                    //    msdr["art_photo"].ToString(), msdr["art_commentaire"].ToString(),
+                    //     bool.Parse(msdr["art_rendu"].ToString()), Int32.Parse(msdr["type_typ_id"].ToString()),
+                    //     Int32.Parse(msdr["departement_dep_id"].ToString()), Int32.Parse(msdr["convoyeur_conv_id"].ToString()));
+                    //listArticle.Add(article);
                 }
                 msdr.Dispose();
 
