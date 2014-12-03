@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:App_pressing_Loreau"
+                    xmlns:vm="clr-namespace:App_pressing_Loreau.View">
+
+    <!-- Déclarations des données pour la reception client -->
+    <DataTemplate DataType="{x:Type vm:IdentificationClientVM}">
+        <local:IdentificationClient/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:NouveauClientVM}">
+        <local:NouveauClient />        
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:NouvelleCommandeVM}">
+        <local:NouvelleCommande/>        
+    </DataTemplate>
+    
+    <!-- Déclarations des données pour rendu Commande-->
+    <DataTemplate DataType="{x:Type vm:RestitutionArticlesVM}">
+        <local:RestitutionArticles/>
+    </DataTemplate>
+
+</ResourceDictionary>
