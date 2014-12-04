@@ -12,6 +12,13 @@
                     <ColumnDefinition Width="39*"/>
                     <ColumnDefinition Width="27*"/>
                 </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="btn_detailCommande_rendre_articles_selectionnes" Grid.Row="1"  Content="Rendre les articles sélectionnés" Style="{StaticResource personalisationbuton}" Click="btn_detailCommande_rendre_articles_selectionnes_Click" />
+                </Grid>
                 <Border Margin="10" BorderBrush="AliceBlue" BorderThickness="2" Grid.Column="0">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -41,13 +48,6 @@
                     </Grid>
 
                 </Border>
-
-                <Border Grid.Column="2" Height="300" VerticalAlignment="Bottom">
-
-
-                    <Button x:Name="btn_detailCommande_rendre_articles_selectionnes"  Content="Rendre les articles sélectionnés" 
-                            Margin="10,190,10,10" Click="btn_detailCommande_rendre_articles_selectionnes_Click" Style="{StaticResource choixbouton30}"/>
-                </Border >
             </Grid>
         </Border>
 
