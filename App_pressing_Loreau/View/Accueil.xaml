@@ -49,6 +49,7 @@
 
                     </Grid>
                 </Border>
+                
                 <ContentControl Margin="5"   Content="{Binding accessUserControl}" />
             </DockPanel>
         </Border>
