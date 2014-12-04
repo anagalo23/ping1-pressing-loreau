@@ -81,7 +81,8 @@
                             </Grid.RowDefinitions>
 
                             <Label  Content="Nom"  Grid.Row="0" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
-                            <TextBox x:Name="txb_identificationClient_nom" Grid.Row="0" Grid.Column="1" Margin="10,4,13,4" Text="{Binding Path=txb_identificationClient_nom, UpdateSourceTrigger=PropertyChanged}"
+                            <TextBox x:Name="txb_identificationClient_nom" Grid.Row="0" Grid.Column="1" Margin="10,4,13,4" 
+                                     Text="{Binding Path=txb_identificationClient_nom, UpdateSourceTrigger=PropertyChanged}"
                                Style="{StaticResource vertiTextBox}"/>
                             <Label  Content="Prenom" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                             <TextBox x:Name="txb_identificationClient_prenom" Grid.Row="1" Grid.Column="1" Margin="10,4,13,4" Style="{StaticResource vertiTextBox}"/>
