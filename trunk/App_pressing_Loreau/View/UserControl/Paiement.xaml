@@ -32,7 +32,7 @@
                 <Label x:Name="label_paiement_remise" Grid.Row="1" Grid.Column="1"  Content="X €" Style="{StaticResource vertixy}"/>
                 <Label Content="Prix TTC :" Style="{StaticResource vertilabel25}" Grid.Row="2" Grid.Column="0"/>
                 <Label x:Name="label_paiement_prix_ttc" Content="X €" Grid.Row="2" Grid.Column="1" Style="{StaticResource vertixy}"/>
-                <Button x:Name="btn_paiement_RRR" Grid.Row="3" Grid.Column="1"  Margin="0,50,5,10" Click="btn_paiement_RRR_Click">
+                <Button x:Name="btn_paiement_RRR" Grid.Row="3" Grid.Column="1"  Margin="0,50,5,10" >
                     <TextBlock FontFamily="Arial" FontSize="25" FontWeight="SemiBold">
                         Rabais <LineBreak /> Remise <LineBreak/> Ristourne
                     </TextBlock>
@@ -58,7 +58,7 @@
                     <Button x:Name="btn_paiement_especes" Canvas.Left="76">
                         <Image Source="/Resources/pics/paiements/paiement_especes.png" Height="59" Width="62"  />
                     </Button>
-                    <Button x:Name="btn_paiement_cheques" Canvas.Top="71" Height="71" Click="btn_paiement_cheques_Click">
+                    <Button x:Name="btn_paiement_cheques" Canvas.Top="71" Height="71" >
                         <Image Source="/Resources/pics/paiements/Paiement_cheques.png" Height="61" Width="66"  />
                     </Button>
                     <Button x:Name="btn_paiement_cleanway" Content="Cleanway" Canvas.Left="77" Canvas.Top="71" Height="71" Width="67"  />
@@ -77,7 +77,7 @@
                     <RowDefinition Height="31*"/>
                     <RowDefinition Height="29*"/>
                 </Grid.RowDefinitions>
-                <Button x:Name="btn_paiment_valider" Content="Valider" Grid.Row="1" Margin="47,50,38,10" Click="btn_paiment_payer_Click"
+                <Button x:Name="btn_paiment_valider" Content="Valider" Grid.Row="1" Margin="47,50,38,10" 
                         FontFamily="Arial" FontSize="30" FontWeight="SemiBold"/>
 
             </Grid>

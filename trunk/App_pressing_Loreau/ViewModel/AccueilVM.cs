@@ -43,7 +43,7 @@ namespace App_pressing_Loreau
 
         #region Properties / Commands
 
-        #region Commands Button
+        #region Commands / Action
        
         ICommand onCollectionChangeCommand;
         public ICommand OnCollectionChangeCommand

@@ -10,7 +10,11 @@ namespace App_pressing_Loreau.View
     {
         public string Name
         {
-            get { return "Reception"; }
+            get { return ""; }
         }
+
+
+
+        //Suite 
     }
 }
