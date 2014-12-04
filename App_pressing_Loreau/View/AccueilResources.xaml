@@ -20,5 +20,38 @@
     <DataTemplate DataType="{x:Type vm:RestitutionArticlesVM}">
         <local:RestitutionArticles/>
     </DataTemplate>
+    
+    
+    <!-- Déclarations des données pour Facture-->
+    
+    <DataTemplate DataType="{x:Type vm:FactureVM}">
+        <local:Factures/>
+    </DataTemplate>
 
+    <!-- Déclarations des données pour Convoyeur-->
+    
+    <DataTemplate DataType="{x:Type vm:ConvoyeurVM}">
+        <local:Convoyeur/>        
+    </DataTemplate>
+    
+    <!-- Déclarations des données pour ClientPRO-->
+    <DataTemplate DataType="{x:Type vm:ClientPROVM}">
+        <local:ClientProUC/>
+    </DataTemplate>
+    
+    <!-- Déclarations des données impression -->
+    <DataTemplate DataType="{x:Type vm:ImpressionVM}">
+        <local:Impression/>
+    </DataTemplate>
+    
+    <!-- Déclarations des données Administrateurs-->
+    <DataTemplate DataType="{x:Type vm:AdministrateurConnexionVM}">
+        <local:IdentificationAdmin/>
+    </DataTemplate>
+    
+    <!--Déclaration des données pour la connexion administrateur-->
+    <DataTemplate DataType="{x:Type vm:PageAdministrateurVM}">
+        <local:PageAdministrateur/>
+    </DataTemplate>
+    
 </ResourceDictionary>

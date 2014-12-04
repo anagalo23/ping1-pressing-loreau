@@ -1,40 +1,39 @@
 ﻿<Application x:Class="App_pressing_Loreau.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:App_pressing_Loreau"
-             StartupUri="View\Accueil.xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
     <Application.Resources>
         <!--personnalisation des interfaces contenant des boutons arrondi et de background de type vert-->
-        
+
         <Style  TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="personalisationbuton">
-                <Setter Property="Background" Value="Teal"/>
-                <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Teal"/>
+            <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontFamily" Value=" Arial"/>
             <Setter Property="FontSize" Value=" 25"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Border CornerRadius="15" Background="{TemplateBinding Background}"
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="15" Background="{TemplateBinding Background}"
                                 BorderThickness="1">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
                             </ContentPresenter>
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-        
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <!--personnalisation des interfaces contenant des boutons  de taille 20-->
-        
+
         <Style  TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="choixbouton20">
             <Setter Property="FontFamily" Value=" Arial"/>
             <Setter Property="FontSize" Value=" 13"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
         </Style>
-        
-     <!--personnalisation des interfaces contenant des boutons de la page administration-->
-        
+
+        <!--personnalisation des interfaces contenant des boutons de la page administration-->
+
         <Style  TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="butonpageadministration">
             <Setter Property="FontFamily" Value=" Arial"/>
             <Setter Property="FontSize" Value=" 34"/>
@@ -45,37 +44,16 @@
         </Style>
 
         <!--personnalisation des interfaces contenant des boutons  de taille 27-->
-        
+
         <Style  TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="choixbouton30">
             <Setter Property="FontFamily" Value=" Arial"/>
             <Setter Property="FontSize" Value=" 25"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
         </Style>
 
-        <!--personnalisation des interfaces contenant des labels de type semibold et de bords arrondis-->
-        
-        <!--<Style  TargetType="Label" BasedOn="{StaticResource {x:Type Label}}" x:Key="vertiLabel">
-            <Setter Property="FontFamily" Value="Arial"/>
-            <Setter Property="FontSize" Value="30"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Label">
-                        <Border CornerRadius="15" Background="{TemplateBinding Background}"
-                                BorderThickness="1">
-                            <ContentPresenter  VerticalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>-->
-
+   
         <!--personnalisation des interfaces contenant des labels de type normal et de taille 14-->
-        
+
         <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}" x:Key="vertiTextBox">
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="FontFamily" Value="Arial"/>
@@ -84,14 +62,14 @@
         </Style>
 
         <!--personnalisation des interfaces contenant des labels de type semiBold et de taille 25-->
-        
+
         <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}" x:Key="vertilabel25">
             <Setter Property="FontSize" Value="13"/>
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
-           
+
         </Style>
 
         <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}" x:Key="vertilabel18">
@@ -104,7 +82,7 @@
         </Style>
 
         <!--personnalisation des interfaces contenant des labels de type normal et de taille 12-->
-        
+
         <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}" x:Key="vertixy">
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="FontFamily" Value="Arial"/>
@@ -115,7 +93,7 @@
             <Setter Property="Margin" Value="5"/>
         </Style>
         <!--personnalisation des interfaces contenant des labels de type bold et de taille 30 (pour les titres)-->
-        
+
         <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}" x:Key="Titre">
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -124,10 +102,10 @@
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
-        
-        
+
+
         <!-- Les ressources dictionnaires-->
-        
-        
+
+
     </Application.Resources>
 </Application>

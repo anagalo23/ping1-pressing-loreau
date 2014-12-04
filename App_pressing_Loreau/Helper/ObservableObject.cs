@@ -8,6 +8,7 @@ namespace App_pressing_Loreau.Helper
 {
     public abstract class ObservableObject : INotifyPropertyChanged
     {
+
         #region Debugging Aides
 
         /// <summary>
@@ -77,5 +78,6 @@ namespace App_pressing_Loreau.Helper
 
         #endregion // INotifyPropertyChanged Members
     }
+
 
 }

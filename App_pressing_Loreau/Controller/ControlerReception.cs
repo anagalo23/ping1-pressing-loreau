@@ -30,7 +30,7 @@ namespace App_pressing_Loreau.Controller
 
             //Get the client id
             int idClt;
-            if ((commande.client.id == 0) && (commande.clientpro.id != 0))
+            /*if ((commande.client.id == 0) && (commande.clientpro.id != 0))
             {
                 idClt = commande.clientpro.id;
             }
@@ -42,7 +42,7 @@ namespace App_pressing_Loreau.Controller
             {
                 //Both Ids are null or both are initialized. Theses impossibles cases are to be avoided
                 throw new Exception("Problème dans la construction de la commande : soit pas de client, soit deux. Faudrait savoir...");
-            }
+            }*/
             //Assert the integrity ------------------> TODO
 
             //Add the command in the dataBase

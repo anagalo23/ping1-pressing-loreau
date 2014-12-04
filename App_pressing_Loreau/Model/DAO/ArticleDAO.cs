@@ -10,7 +10,7 @@ namespace App_pressing_Loreau.Model.DAO
 {
     class ArticleDAO
     {
-        public static void insertArticle(Article article)
+        public static int insertArticle(Article article)
         {
             MySqlConnection connection = Bdd.connexion();
 

@@ -24,17 +24,10 @@ namespace App_pressing_Loreau
     public partial class Accueil : Window
     {
         Button btn;
-
-      
-        
       
         public Accueil()
-        {
-            
+        {    
             InitializeComponent();
-            //DPentete.Children.Clear();
-            //DPentete.Children.Add(new BanniereAccueil());
-
         }
       
         void btn_user1_Click(Object sender, EventArgs e)
@@ -58,6 +51,7 @@ namespace App_pressing_Loreau
                     btn_user4.ClearValue(Button.BackgroundProperty);
                     btn_user5.ClearValue(Button.BackgroundProperty);
                     btn_user6.ClearValue(Button.BackgroundProperty);
+
                     break;
                 case "btn_user3":
                     btn_user3.Background = Brushes.Red;
@@ -95,65 +89,6 @@ namespace App_pressing_Loreau
 
         }
 
-
-        public void btn_accueil_reception_Click(Object sender, RoutedEventArgs e)
-        {
-            dp.Children.Clear();
-            dp.Children.Add(new IdentificationClient());
-
-            //entete = new Label();
-            //entete.Content = "Reception";
-            //DPentete.Children.Clear();
-            //DPentete.Children.Add(entete);
-
-        }
-
-        private void btn_accueil_rendu_Click(Object sender, RoutedEventArgs e)
-        {
-           dp.Children.Clear();
-           dp.Children.Add(new RestitutionArticles());
-
-        }
-
-        private void btn_accueil_facture_Click(Object sender, RoutedEventArgs e)
-        {
-            dp.Children.Clear();
-            dp.Children.Add(new Factures());
-        }
-
-        private void btn_accueil_client_pro_Click(Object sender, RoutedEventArgs e)
-        {
-            dp.Children.Clear();
-            dp.Children.Add(new ClientProUC());
-        }
-
-        private void btn_accueil_administrateur_Click(Object sender, RoutedEventArgs e)
-        {
-            dp.Children.Clear();
-            dp.Children.Add(new IdentificationAdmin());
-        }
-
-        private void btn_accueil_convoyeur_Click(Object sender, RoutedEventArgs e)
-        {
-            dp.Children.Clear();
-            dp.Children.Add(new Convoyeur());
-        }
-
-        private void btn_accueil_image_Click(Object sender, RoutedEventArgs e)
-        {
-           // DPentete.Children.Clear();
-            //DPentete.Children.Add(new BanniereAccueil());
-            dp.Children.Clear();
-
-            dp.Children.Clear();
-        }
-
-        private void btn_accueil_impression_Click(Object sender, RoutedEventArgs e)
-        {
-            dp.Children.Clear();
-            dp.Children.Add(new Impression());
-
-        }
 
       
 

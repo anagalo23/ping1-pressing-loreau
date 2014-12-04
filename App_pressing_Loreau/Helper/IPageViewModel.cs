@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace App_pressing_Loreau.Helper
 {
-    public interface IPageViewModel
+    public interface IPageViewModel 
     {
         string Name { get; }
     }

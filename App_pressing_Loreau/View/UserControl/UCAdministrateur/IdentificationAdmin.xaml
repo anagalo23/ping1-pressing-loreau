@@ -7,7 +7,7 @@
              d:DesignHeight="300" d:DesignWidth="500">
     <DockPanel x:Name="dp">
         <Grid>
-            <Border Margin="80,25,80,55" Background="Thistle">
+            <Border Margin="80" Background="Thistle">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2*"/>
@@ -39,7 +39,7 @@
                         </Grid.RowDefinitions>
                         <Label x:Name="label_identificationAdmin_erreur_affiche" Grid.Row="0" Margin="10" FontWeight="Bold"  />
                         <Button x:Name="btn_identificationAdmin_connecte" Content="Se connecter" Grid.Row="1" Margin="5"
-                            Click="btn_identificationAdmin_connecte_Click" Style="{StaticResource personalisationbuton}"/>
+                           Command="{Binding OnCollectionChangeCommand}" CommandParameter="btn_identificationAdmin_connecte" Style="{StaticResource personalisationbuton}"/>
                     </Grid>
                     
                 </Grid>
