@@ -18,25 +18,16 @@ namespace App_pressing_Loreau
     public class AccueilVM : ObservableObject
     {
         #region Fields
-        //private ICommand _changePageCommand;
-        private IPageViewModel _accessUserControl;
-        private List<IPageViewModel> _ViewModels;
 
+        private IPageViewModel _accessUserControl;
+        private ICommand _btn_identificationAdmin_connecte;
 
         #endregion
 
-        #region Constructeur 
+        #region Constructeur
         public AccueilVM()
         {
-            ViewModels.Add(new IdentificationClientVM());
-            ViewModels.Add(new RestitutionArticlesVM());
-            ViewModels.Add(new FactureVM());
-            ViewModels.Add(new ConvoyeurVM());
-            ViewModels.Add(new ClientPROVM());
-            ViewModels.Add(new ImpressionVM());
-            ViewModels.Add(new AdministrateurConnexionVM());
-            ViewModels.Add(new PageAdministrateurVM());
-            //ViewModels.Add(new NouveauClientVM());
+
         }
 
         #endregion
@@ -44,7 +35,7 @@ namespace App_pressing_Loreau
         #region Properties / Commands
 
         #region Commands / Action
-       
+
         ICommand onCollectionChangeCommand;
         public ICommand OnCollectionChangeCommand
         {
@@ -55,54 +46,56 @@ namespace App_pressing_Loreau
             //Bouton reception
             if (lang.ToString().Equals("btn_accueil_receptionClient"))
             {
-                accessUserControl = ViewModels[0];
+                accessUserControl = new IdentificationClientVM();
 
             }
             //Bouton Recu
             else if (lang.ToString().Equals("btn_accueil_renduArticles"))
             {
-                accessUserControl = ViewModels[1];
+                accessUserControl = new RestitutionArticlesVM();
 
                 //MessageBox.Show("Bonjour NAGALO", "Bonjour");
             }
-             // Bouton Facture
+            // Bouton Facture
             else if (lang.ToString().Equals("btn_accueil_facture"))
             {
-                accessUserControl = ViewModels[2];
+                accessUserControl = new FactureVM();
             }
-                // Bouton Convoyeur
+            // Bouton Convoyeur
             else if (lang.ToString().Equals("btn_accueil_convoyeur"))
             {
-                accessUserControl = ViewModels[3];
+                accessUserControl = new ConvoyeurVM();
 
             }
-                //Bouton Client Pro
-            else if (lang.ToString().Equals("btn_accueil_client_pro")) 
+            //Bouton Client Pro
+            else if (lang.ToString().Equals("btn_accueil_client_pro"))
             {
-                accessUserControl = ViewModels[4];
+                accessUserControl = new ClientPROVM();
 
             }
-                //Bouton Impression
+            //Bouton Impression
             else if (lang.ToString().Equals("btn_accueil_impression"))
             {
-                accessUserControl = ViewModels[5];
+                accessUserControl = new ImpressionVM();
 
             }
-                //Bouton Administrateur
+            //Bouton Administrateur
             else if (lang.ToString().Equals("btn_accueil_administrateur"))
             {
-                accessUserControl = ViewModels[6];
+                accessUserControl = new AdministrateurConnexionVM();
+
 
             }
+
+
             else if (lang.ToString().Equals("btn_identificationAdmin_connecte"))
             {
-                accessUserControl = ViewModels[7];
+                //accessUserControl = null;
+                //accessUserControl = new PageAdministrateurVM();
+                MessageBox.Show("Alexis");
 
             }
-            else if (lang.ToString().Equals("btnIdentifiantNouveauClient"))
-            {
-                //accessUserControl = ViewModels[3];
-            }
+
 
                 //Bouton Accueil Image
             else if (lang.ToString().Equals("btn_accueil_image"))
@@ -110,20 +103,10 @@ namespace App_pressing_Loreau
                 accessUserControl = null;
             }
         }
-       
-#endregion 
+
+        #endregion
 
 
-        public List<IPageViewModel> ViewModels
-        {
-            get
-            {
-                if (_ViewModels == null)
-                    _ViewModels = new List<IPageViewModel>();
-
-                return _ViewModels;
-            }
-        }
 
         public IPageViewModel accessUserControl
         {
@@ -135,29 +118,27 @@ namespace App_pressing_Loreau
             {
                 if (_accessUserControl != value)
                 {
-                    _accessUserControl= value;
+                    _accessUserControl = value;
                     OnPropertyChanged("accessUserControl");
                 }
             }
         }
 
+        public ICommand btn_identificationAdmin_connecte
+        {
+            set
+            {
+                accessUserControl = new PageAdministrateurVM();
+            }
 
-      
+        }
+
         #endregion
 
         #region Methods
 
 
-        private void ChangeViewModel(IPageViewModel viewModel)
-        {
-            if (!ViewModels.Contains(viewModel))
-                ViewModels.Add(viewModel);
 
-            accessUserControl = ViewModels
-                .FirstOrDefault(vm => vm == viewModel);
-        }
-
-     
         #endregion
 
     }

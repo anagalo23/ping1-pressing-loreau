@@ -12,6 +12,7 @@ namespace App_pressing_Loreau.View
 {
     class NouvelleCommandeVM : ObservableObject, IPageViewModel
     {
+        Commande commande;
         public String Name
         {
             get { return ""; }
@@ -27,7 +28,7 @@ namespace App_pressing_Loreau.View
                 if (_ajoutCommande == null)
                 {
                     _ajoutCommande = new RelayCommand(
-                        param => ajoutCommande(commande)
+                        param => ajoutCommande()
                     );
                 }
                 return _ajoutCommande;
@@ -39,8 +40,9 @@ namespace App_pressing_Loreau.View
 
         #region Methods
 
-        private void ajoutCommande(Commande commande)
+        private void ajoutCommande()
         {
+           
             //Command contain : 
             //  -   each articles (List of articles)
             //  -   the client
