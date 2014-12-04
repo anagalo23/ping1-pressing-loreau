@@ -2,12 +2,23 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:App_pressing_Loreau"
+             xmlns:vm="clr-namespace:App_pressing_Loreau.View"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="500">
-    <DockPanel x:Name="dp">
+
+
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type vm:PageAdministrateurVM}">
+            <local:PageAdministrateur/>
+        </DataTemplate>
+    </UserControl.Resources>
+
+
+    <DockPanel >
         <Grid>
-            <Border Margin="80" Background="Thistle">
+            <Border Margin="60" Background="Thistle">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2*"/>
@@ -15,7 +26,7 @@
                         <RowDefinition Height="3*"/>
                     </Grid.RowDefinitions>
                     <Label Content="Identification de l'administrateur" Style="{StaticResource vertilabel25}"/>
-                    
+
                     <Grid Grid.Row="1" Margin="5">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
@@ -34,14 +45,14 @@
 
                     <Grid Grid.Row="2" >
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
                             <RowDefinition Height="5*"/>
-                            <RowDefinition Height="7*"/>
                         </Grid.RowDefinitions>
-                        <Label x:Name="label_identificationAdmin_erreur_affiche" Grid.Row="0" Margin="10" FontWeight="Bold"  />
-                        <Button x:Name="btn_identificationAdmin_connecte" Content="Se connecter" Grid.Row="1" Margin="5"
+                        <Label x:Name="label_identificationAdmin_erreur_affiche" Grid.Row="0" Margin="10,10,10,4" FontWeight="Bold"  />
+                        <Button x:Name="btn_identificationAdmin_connecte" Content="Se connecter" Grid.Row="1" Margin="10"
                            Command="{Binding OnCollectionChangeCommand}" CommandParameter="btn_identificationAdmin_connecte" Style="{StaticResource personalisationbuton}"/>
                     </Grid>
-                    
+
                 </Grid>
             </Border>
         </Grid>
