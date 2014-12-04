@@ -39,16 +39,16 @@
 
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="12*"/>
-                        <RowDefinition Height="40*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="42*"/>
                         <RowDefinition Height="17*"/>
                     </Grid.RowDefinitions>
                     <Label Content="Contenu de la commande" Style="{StaticResource Titre}"/>
 
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="92*"/>
-                            <RowDefinition Height="40*"/>
+                            <RowDefinition Height="61*"/>
+                            <RowDefinition Height="23*"/>
                         </Grid.RowDefinitions>
                         <ScrollViewer Background="Bisque" Grid.Row="0"  Margin="10"/>
                         <Grid Grid.Row="1">
@@ -57,18 +57,18 @@
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <Button x:Name="btn_nouvellecommande_valider" Style="{StaticResource choixbouton20}" Grid.Column="0" Content="Valider commande"/>
-                            <Button x:Name="btn_nouvellecommande_modifier" Style="{StaticResource choixbouton20}" Grid.Column="1" Content="modifier commande"
+                            <Button x:Name="btn_nouvellecommande_valider" Style="{StaticResource personalisationbuton1}" Grid.Column="0" Content="Valider commande"/>
+                            <Button x:Name="btn_nouvellecommande_modifier" Style="{StaticResource personalisationbuton1}" Grid.Column="1" Content="modifier commande"
                                     Click="btn_nouvellecommande_modifier_Click"/>
-                            <Button x:Name="btn_nouvellecommande_supprimer" Style="{StaticResource choixbouton20}" Grid.Column="2" Content="supprimer articles" />
+                            <Button x:Name="btn_nouvellecommande_supprimer" Style="{StaticResource personalisationbuton1}" Grid.Column="2" Content="supprimer articles" />
                         </Grid>
-                       
+
                     </Grid>
 
                     <Grid Grid.Row="2">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="15*"/>
-                            <RowDefinition Height="19*"/>
+                            <RowDefinition Height="23*"/>
+                            <RowDefinition Height="45*"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="118*"/>
@@ -77,9 +77,9 @@
 
                         <Label Content="Total à payer :" Style="{StaticResource vertilabel25}" Grid.Row="0" HorizontalContentAlignment="Left"/>
                         <Button x:Name="btn_nouvelleCommande_paiement_immediat" Content="Paiement immédiat" Grid.Row="1" Grid.Column="0"
-                                Margin="0,5,5,5" Click="btn_nouvelleCommande_paiement_immediat_Click" Style="{StaticResource choixbouton20}"/>
+                                Margin="0,5,5,5" Click="btn_nouvelleCommande_paiement_immediat_Click" Style="{StaticResource personalisationbuton1}"/>
                         <Button x:Name="btn_nouvelleCommande_paiement_differe" Content="Paiement différé" Grid.Row="1" Grid.Column="1" Margin="5"
-                                Style="{StaticResource choixbouton20}"/>
+                                Style="{StaticResource personalisationbuton1}"/>
 
                     </Grid>
 

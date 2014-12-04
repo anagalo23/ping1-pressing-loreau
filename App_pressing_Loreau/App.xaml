@@ -24,6 +24,65 @@
             </Setter>
         </Style>
 
+        <!--personnalisation des interfaces contenant des boutons de taille 20-->
+
+        <Style  TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="personalisationbuton1">
+            <Setter Property="Background" Value="Teal"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value=" Arial"/>
+            <Setter Property="FontSize" Value=" 20"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="15" Background="{TemplateBinding Background}"
+                                BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                            </ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--personnalisation des interfaces contenant des combobox de taille 20-->
+
+        <Style TargetType="{x:Type ComboBoxItem}" x:Key="persoComboboxItem">
+            <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                        <Border>
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type ComboBox}" x:Key="persoComboBox">
+            <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ContentPresenter />
+                            <TextBox />
+                            <Popup>
+                                <Grid>
+                                    <Border>
+                                        <ScrollViewer>
+                                            <ItemsPresenter />
+                                        </ScrollViewer>
+                                    </Border>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <!--personnalisation des interfaces contenant des boutons  de taille 20-->
 
         <Style  TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="choixbouton20">

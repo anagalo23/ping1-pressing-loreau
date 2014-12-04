@@ -12,7 +12,7 @@
                     <ColumnDefinition Width="39*"/>
                     <ColumnDefinition Width="27*"/>
                 </Grid.ColumnDefinitions>
-                <Border Margin="10" BorderBrush="AliceBlue" BorderThickness="2" Grid.Column="0">
+                <Border Margin="10,10,10,0" BorderBrush="AliceBlue" BorderThickness="2" Grid.Column="0">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="3*"/>
@@ -23,25 +23,33 @@
                             <Label Content="Détail de la commande" Style="{StaticResource Titre}"/>
                         </Border>
                         <ScrollViewer Background="Bisque"  Margin="0,10" Grid.Row="1"/>
-                        <Button Grid.Row="2" Content="Retour" Style="{StaticResource choixbouton30}" Margin="251,0,0,0">
-                            
-                        </Button>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="1" Content="Retour" Style="{StaticResource personalisationbuton}" Click="Button_Click">
+                            </Button>
+                        </Grid>
                     </Grid>
                 </Border>
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="193*"/>
-                        <RowDefinition Height="107*"/>
-                        
+                        <RowDefinition Height="113*"/>
+                        <RowDefinition Height="37*"/>
                     </Grid.RowDefinitions>
                     <Label Content=" Prix total :" Style="{StaticResource vertilabel18}">
-                        
+
                     </Label>
-                    <Border Height="300" VerticalAlignment="Bottom" Grid.RowSpan="2">
-                        
-                        <Button x:Name="btn_paiementdeleCommande_payer"  Content="Payer la commande" 
-                            Margin="10,218,10,10" Style="{StaticResource choixbouton30}"/>
-                    </Border >
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="98*"/>
+                            <ColumnDefinition Width="205*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btn_paiementdeleCommande_payer" Grid.Column="1"  Content="Payer la commande" 
+                            Style="{StaticResource personalisationbuton}"/>
+                    </Grid>
                 </Grid>
 
             </Grid>
