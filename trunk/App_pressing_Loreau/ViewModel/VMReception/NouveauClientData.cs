@@ -76,6 +76,83 @@ namespace App_pressing_Loreau.View
                 }
             }
         }
+
+        public String txb_nouveauClient_numero
+        {
+            get { return _txt_nouveauClient_numero; }
+            set
+            {
+                if (value != _txt_nouveauClient_numero)
+                {
+                    _txt_nouveauClient_numero = value;
+                    OnPropertyChanged("txb_nouveauClient_numero");
+                }
+            }
+        }
+
+        public String txb_nouveauClient_rue_voie
+        {
+            get { return _txt_nouveauClient_rue_voie; }
+            set
+            {
+                if (value != _txt_nouveauClient_rue_voie)
+                {
+                    _txt_nouveauClient_rue_voie = value;
+                    OnPropertyChanged("txb_nouveauClient_rue_voie");
+                }
+            }
+        }
+
+        public String txb_nouveauClient_bp
+        {
+            get { return _txt_nouveauClient_bp; }
+            set
+            {
+                if (value != _txt_nouveauClient_bp)
+                {
+                    _txt_nouveauClient_bp = value;
+                    OnPropertyChanged("txb_nouveauClient_bp");
+                }
+            }
+        }
+
+        public String txb_nouveauClient_ville
+        {
+            get { return _txt_nouveauClient_ville; }
+            set
+            {
+                if (value != _txt_nouveauClient_ville)
+                {
+                    _txt_nouveauClient_ville = value;
+                    OnPropertyChanged("txb_nouveauClient_ville");
+                }
+            }
+        }
+        public String txb_nouveauClient_portable
+        {
+            get { return _txt_nouveauClient_portable; }
+            set
+            {
+                if (value != _txt_nouveauClient_portable)
+                {
+                    _txt_nouveauClient_portable = value;
+                    OnPropertyChanged("txb_nouveauClient_portable");
+                }
+            }
+        }
+
+        public String txb_nouveauClient_mail
+        {
+            get { return _txt_nouveauClient_mail; }
+            set
+            {
+                if (value != _txt_nouveauClient_mail)
+                {
+                    _txt_nouveauClient_mail = value;
+                    OnPropertyChanged("txb_nouveauClient_mail");
+                }
+            }
+        }
         #endregion
     }
 }
