@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Input;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,25 @@ namespace App_pressing_Loreau.View
         {
             get { return ""; }
         }
+        private ICommand _ajoutCommande;
 
+        #region Properties/Commands
+
+        public ICommand GetProductCommand
+        {
+            get
+            {
+                if (_ajoutCommande == null)
+                {
+                    _ajoutCommande = new RelayCommand(
+                        param => ajoutCommande(commande)
+                    );
+                }
+                return _ajoutCommande;
+            }
+        }
+
+        #endregion
 
 
         #region Methods
