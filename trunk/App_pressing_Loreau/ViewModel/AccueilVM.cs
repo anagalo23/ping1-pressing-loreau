@@ -7,50 +7,44 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 using App_pressing_Loreau;
-using System.Windows;
 using App_pressing_Loreau.View;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Windows;
+using App_pressing_Loreau.ViewModel;
 
 namespace App_pressing_Loreau
 {
-   public class AccueilVM : ObservableObject
+    public class AccueilVM : ObservableObject
     {
         #region Fields
-        private ICommand _changePageCommand;
-        Accueil ac;
-        private IPageViewModel _currentPageViewModel;
-        private List<IPageViewModel> _pageViewModels;
+        //private ICommand _changePageCommand;
+        private IPageViewModel _accessUserControl;
+        private List<IPageViewModel> _ViewModels;
+
 
         #endregion
 
         #region Constructeur 
-        public AccueilVM () 
+        public AccueilVM()
         {
-           // PageViewModels.Add(this);
-            PageViewModels.Add(new IdentificationClientVM());
-          
-
+            ViewModels.Add(new IdentificationClientVM());
+            ViewModels.Add(new RestitutionArticlesVM());
+            ViewModels.Add(new FactureVM());
+            ViewModels.Add(new ConvoyeurVM());
+            ViewModels.Add(new ClientPROVM());
+            ViewModels.Add(new ImpressionVM());
+            ViewModels.Add(new AdministrateurConnexionVM());
+            ViewModels.Add(new PageAdministrateurVM());
+            //ViewModels.Add(new NouveauClientVM());
         }
 
         #endregion
 
         #region Properties / Commands
 
-        public ICommand ChangePageCommand
-        {
-            get
-            {
-                if (_changePageCommand == null)
-                {
-                    _changePageCommand = new RelayCommand(
-                        p => ChangeViewModel((IPageViewModel)p),
-                        p => p is IPageViewModel);
-                }
-
-                return _changePageCommand;
-            }
-        }
-
-
+        #region Commands Button
+       
         ICommand onCollectionChangeCommand;
         public ICommand OnCollectionChangeCommand
         {
@@ -58,65 +52,113 @@ namespace App_pressing_Loreau
         }
         private void OnCollectionChange(object lang)
         {
-            ac = new Accueil();
-            if (lang.ToString().Equals("btn_accueil_reception"))
+            //Bouton reception
+            if (lang.ToString().Equals("btn_accueil_receptionClient"))
             {
-                //CurrentPageViewModel = PageViewModels[0];
-                MessageBox.Show("Bonjour Pauline");
-                
-               //ac.dpanel.Children.Clear();
-               //ac.dpanel.Children.Add(new IdentificationClient());
+                accessUserControl = ViewModels[0];
+
+            }
+            //Bouton Recu
+            else if (lang.ToString().Equals("btn_accueil_renduArticles"))
+            {
+                accessUserControl = ViewModels[1];
+
+                //MessageBox.Show("Bonjour NAGALO", "Bonjour");
+            }
+             // Bouton Facture
+            else if (lang.ToString().Equals("btn_accueil_facture"))
+            {
+                accessUserControl = ViewModels[2];
+            }
+                // Bouton Convoyeur
+            else if (lang.ToString().Equals("btn_accueil_convoyeur"))
+            {
+                accessUserControl = ViewModels[3];
+
+            }
+                //Bouton Client Pro
+            else if (lang.ToString().Equals("btn_accueil_client_pro")) 
+            {
+                accessUserControl = ViewModels[4];
+
+            }
+                //Bouton Impression
+            else if (lang.ToString().Equals("btn_accueil_impression"))
+            {
+                accessUserControl = ViewModels[5];
+
+            }
+                //Bouton Administrateur
+            else if (lang.ToString().Equals("btn_accueil_administrateur"))
+            {
+                accessUserControl = ViewModels[6];
+
+            }
+            else if (lang.ToString().Equals("btn_identificationAdmin_connecte"))
+            {
+                accessUserControl = ViewModels[7];
+
+            }
+            else if (lang.ToString().Equals("btnIdentifiantNouveauClient"))
+            {
+                //accessUserControl = ViewModels[3];
+            }
+
+                //Bouton Accueil Image
+            else if (lang.ToString().Equals("btn_accueil_image"))
+            {
+                accessUserControl = null;
             }
         }
-        public List<IPageViewModel> PageViewModels
+       
+#endregion 
+
+
+        public List<IPageViewModel> ViewModels
         {
             get
             {
-                if (_pageViewModels == null)
-                    _pageViewModels = new List<IPageViewModel>();
+                if (_ViewModels == null)
+                    _ViewModels = new List<IPageViewModel>();
 
-                return _pageViewModels;
+                return _ViewModels;
             }
         }
 
-        public IPageViewModel CurrentPageViewModel
+        public IPageViewModel accessUserControl
         {
             get
             {
-                return _currentPageViewModel;
+                return _accessUserControl;
             }
             set
             {
-                if (_currentPageViewModel != value)
+                if (_accessUserControl != value)
                 {
-                    _currentPageViewModel = value;
-                    OnPropertyChanged("CurrentPageViewModel");
+                    _accessUserControl= value;
+                    OnPropertyChanged("accessUserControl");
                 }
             }
         }
 
+
+      
         #endregion
 
         #region Methods
 
+
         private void ChangeViewModel(IPageViewModel viewModel)
         {
-            if (!PageViewModels.Contains(viewModel))
-                PageViewModels.Add(viewModel);
+            if (!ViewModels.Contains(viewModel))
+                ViewModels.Add(viewModel);
 
-            CurrentPageViewModel = PageViewModels
+            accessUserControl = ViewModels
                 .FirstOrDefault(vm => vm == viewModel);
         }
 
+     
         #endregion
 
     }
-
-
-   public class CategoryItem
-   {
-       public string ButtonContent { get; set; }
-       public string ButtonTag { get; set; }
-   }
-
 }

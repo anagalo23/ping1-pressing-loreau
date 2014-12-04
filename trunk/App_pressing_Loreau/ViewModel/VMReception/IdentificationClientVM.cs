@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using App_pressing_Loreau.Helper;
 
 namespace App_pressing_Loreau.View
 {
-    class RestitutionArticlesVM : ObservableObject, IPageViewModel
+    class IdentificationClientVM : ObservableObject, IPageViewModel
     {
-        public String Name
+        public string Name
         {
-            get { return ""; }
+            get { return "Reception"; }
         }
     }
 }

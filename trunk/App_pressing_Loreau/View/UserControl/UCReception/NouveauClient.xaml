@@ -129,7 +129,7 @@
                     <RowDefinition Height="10*"/>
                 </Grid.RowDefinitions>
                 <Button x:Name="btn_nouveauClient_valider_inscription" Content="Valider l'inscription" Grid.Row="1" Grid.Column="1" 
-                    Margin="20,43,10,10" Click="btn_nouveauClient_valider_inscription_Click" Style="{StaticResource choixbouton30}"/>
+                    Margin="20,43,10,10" Click="btn_nouveauClient_valider_inscription_Click" Style="{StaticResource personalisationbuton}"/>
             </Grid>
         </Grid>
     </DockPanel>

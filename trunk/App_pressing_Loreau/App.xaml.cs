@@ -14,9 +14,14 @@ namespace App_pressing_Loreau
     /// </summary>
     public partial class App : Application
     {
-        private void Application_start(object sender, StartupEventArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
+            base.OnStartup(e);
 
+            Accueil acc = new Accueil();
+            AccueilVM context = new AccueilVM();
+            acc.DataContext = context;
+            acc.Show();
         }
         
     }

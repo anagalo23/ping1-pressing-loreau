@@ -7,7 +7,7 @@ using App_pressing_Loreau.Helper;
 
 namespace App_pressing_Loreau.View
 {
-    class RestitutionArticlesVM : ObservableObject, IPageViewModel
+    class ClientPROVM : ObservableObject, IPageViewModel
     {
         public String Name
         {

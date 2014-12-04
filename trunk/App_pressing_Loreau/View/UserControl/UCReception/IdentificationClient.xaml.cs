@@ -1,21 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Documents;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-using App_pressing_Loreau;
+﻿using App_pressing_Loreau;
 using App_pressing_Loreau.Model.DAO;
 using App_pressing_Loreau.Model.DTO;
+using System.Windows;
+using System.Windows.Controls;
 
 
 namespace App_pressing_Loreau
@@ -25,7 +12,7 @@ namespace App_pressing_Loreau
     /// Logique d'interaction pour IndentificationClient.xaml
     /// 
     /// </summary>
-    public partial class IdentificationClient : UserControl
+    public partial class IdentificationClient : System.Windows.Controls.UserControl
     {
        
 
@@ -53,9 +40,9 @@ namespace App_pressing_Loreau
         {
             NouveauClient nouveauClient = new NouveauClient();
      
-            //nouveauClient.parameter = 5;
-            dp.Children.Clear();
-            dp.Children.Add(nouveauClient);
+        //    //nouveauClient.parameter = 5;
+        //    //dp.Children.Clear();
+        //    //dp.Children.Add(nouveauClient);
 
            
             

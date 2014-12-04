@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using App_pressing_Loreau.Helper;
+
 
 namespace App_pressing_Loreau.View
 {
-    class IdentificationClientVM : ObservableObject, IPageViewModel
+    class NouveauClientVM : ObservableObject, IPageViewModel
     {
-        public string Name
+        public String Name 
         {
-            get { return "Reception"; }
+            get { return "Nouveau Client"; }
         }
-
-
+ 
     }
 }

@@ -13,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -23,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,6 +35,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
@@ -86,6 +90,15 @@
     <Compile Include="Model\DAO\TypeArticleDAO.cs" />
     <Compile Include="Model\DAO\TypePayementDAO.cs" />
     <Compile Include="ViewModel\AccueilVM.cs" />
+    <Compile Include="ViewModel\ApplicationViewModel.cs" />
+    <Compile Include="ViewModel\VMAdministrateur\AdministrateurConnexionVM.cs" />
+    <Compile Include="ViewModel\VMAdministrateur\PageAdministrateurVM.cs" />
+    <Compile Include="ViewModel\VMClientPRO\ClientPROVM.cs" />
+    <Compile Include="ViewModel\VMConvoyeur\ConvoyeurVM.cs" />
+    <Compile Include="ViewModel\VMFacture\FactureVM.cs" />
+    <Compile Include="ViewModel\VMImpression\ImpressionVM.cs" />
+    <Compile Include="ViewModel\VMRendu\DetailCommandeVM.cs" />
+    <Compile Include="ViewModel\VMRendu\RestitutionArticlesVM.cs" />
     <Compile Include="View\UserControl\PaiementDeLaCommande.xaml.cs">
       <DependentUpon>PaiementDeLaCommande.xaml</DependentUpon>
     </Compile>
@@ -113,7 +126,9 @@
     <Compile Include="View\UserControl\UCImpression\Impression.xaml.cs">
       <DependentUpon>Impression.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\UCReception\IdentificationClientVM.cs" />
+    <Compile Include="ViewModel\VMReception\IdentificationClientVM.cs" />
+    <Compile Include="ViewModel\VMReception\NouveauClientVM.cs" />
+    <Compile Include="ViewModel\VMReception\NouvelleCommandeVM.cs" />
     <Compile Include="View\UserControl\UCRendu\DetailCommande.xaml.cs">
       <DependentUpon>DetailCommande.xaml</DependentUpon>
     </Compile>
@@ -156,6 +171,10 @@
       <DependentUpon>Accueil.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\AccueilResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\UserControl\PaiementDeLaCommande.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
