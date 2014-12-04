@@ -42,5 +42,33 @@ namespace App_pressing_Loreau.Model.DAO
 
         }
 
+        public static int lastId()
+        {
+            MySqlConnection connection = Bdd.connexion();
+            String sql = "";
+
+            //connection à la base de données   
+
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            // Le langage d'insertion en bdd est le sql
+            cmd.CommandText = sql;
+            //ajout des parametres
+
+
+            int id_de_la_derniere_commande_enregistree;
+
+
+            try
+            {
+                id_de_la_derniere_commande_enregistree = cmd.ExecuteNonQuery();
+                connection.Close();
+                return id_de_la_derniere_commande_enregistree;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
     }
 }

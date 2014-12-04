@@ -15,6 +15,7 @@ namespace App_pressing_Loreau.Model.DTO
         public bool ifRendu { get; set; }
         public float TVA { get; set; }
         public float HT { get; set; }
+        public int fk_commande { get; set; }
         public TypeArticle type { get; set; }
         public PlaceConvoyeur convoyeur { get; set; }
         #endregion
