@@ -35,12 +35,12 @@ CREATE TABLE IF NOT EXISTS `article` (
   `art_rendu` tinyint(1) NOT NULL,
   `art_TVA` float NOT NULL,
   `art_HT` float NOT NULL,
-  `art_conv_id` int(11) NOT NULL,
-  `art_dep_id` int(11) NOT NULL,
+  `art_conv_id` int(11) DEFAULT NULL,
+  `art_cmd_id` int(11) NOT NULL,/*new item*/
   `art_typ_id` int(11) NOT NULL,
   PRIMARY KEY (`art_id`),
   KEY `fk_article_convoyeur1_idx` (`art_conv_id`),
-  KEY `fk_article_departement1_idx` (`art_dep_id`),
+  KEY `fk_article_commande1_idx` (`art_cmd_id`),
   KEY `fk_article_type1_idx` (`art_typ_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -48,16 +48,19 @@ CREATE TABLE IF NOT EXISTS `article` (
 
 --
 -- Structure de la table `client`
+-- clt_type : 0=client normal  et  1=cleint pro
+-- clt_contactmail :  0=non   et   1=oui on les contacte par mail
+-- clt_contactsms : 0=non   et   1=oui
 --
 
 CREATE TABLE IF NOT EXISTS `client` (
   `clt_id` int(11) NOT NULL AUTO_INCREMENT,
+  `clt_type` tinyint(1) NOT NULL,
   `clt_nom` varchar(45) NOT NULL,
   `clt_prenom` varchar(45) NOT NULL,
   `clt_dateInscription` varchar(45) NOT NULL,
   `clt_contactmail` tinyint(1) NOT NULL,
   `clt_contactsms` tinyint(1) NOT NULL,
-  `clt_type` varchar(45) NOT NULL,
   `clt_fix` varchar(45),
   `clt_mob` varchar(45),
   `clt_adresse` text,
@@ -93,7 +96,6 @@ CREATE TABLE IF NOT EXISTS `commande` (
 CREATE TABLE IF NOT EXISTS `convoyeur` (
   `conv_id` int(11) NOT NULL AUTO_INCREMENT,
   `conv_emplacement` int(11) NOT NULL,
-  `conv_encombrement` float DEFAULT NULL,
   PRIMARY KEY (`conv_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -203,7 +205,7 @@ CREATE TABLE IF NOT EXISTS `log` (
   `log_id` int(11) NOT NULL AUTO_INCREMENT,
   `log_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `log_message` varchar(45) NOT NULL,
-  `log_emp_id` int(11) NOT NULL,
+  `log_emp_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`log_id`),
   KEY `fk_log_employe1_idx` (`log_emp_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -217,7 +219,7 @@ CREATE TABLE IF NOT EXISTS `log` (
 CREATE TABLE IF NOT EXISTS `paiement` (
   `pai_id` int(11) NOT NULL AUTO_INCREMENT,
   `pai_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `pai_montant` varchar(45) NOT NULL,
+  `pai_montant` float NOT NULL,
   `pai_cmd_id` int(11) NOT NULL,
   PRIMARY KEY (`pai_id`),
   KEY `fk_paiement_commande1_idx` (`pai_cmd_id`)
@@ -232,22 +234,22 @@ CREATE TABLE IF NOT EXISTS `paiement` (
 
 CREATE TABLE IF NOT EXISTS `type` (
   `typ_id` int(11) NOT NULL AUTO_INCREMENT,
-  `type_nom` varchar(45) NOT NULL,
-  `type_encombrement` float NOT NULL,
-  `type_TVA` float NOT NULL,
-  `type_HT` float NOT NULL,
-  `type_dep_id` int(11) NOT NULL,
+  `typ_nom` varchar(45) NOT NULL,
+  `typ_encombrement` float NOT NULL,
+  `typ_TVA` float NOT NULL,
+  `typ_HT` float NOT NULL,
+  `typ_dep_id` int(11) NOT NULL,
   PRIMARY KEY (`typ_id`),
   UNIQUE KEY `typ_id` (`typ_id`),
-  UNIQUE KEY `type_nom` (`type_nom`),
-  KEY `fk_type_departement_idx` (`type_dep_id`)
+  UNIQUE KEY `typ_nom` (`typ_nom`),
+  KEY `fk_typ_departement_idx` (`typ_dep_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Contenu de la table `type`
 --
 
-INSERT INTO `type` (`typ_id`, `type_nom`, `type_encombrement`, `type_TVA`, `type_HT`) VALUES
+INSERT INTO `type` (`typ_id`, `typ_nom`, `typ_encombrement`, `typ_TVA`, `typ_HT`) VALUES
 (4, 'Pantalon clair', 1.5, 20, 40),
 (3, 'Pantalon', 1.5, 20, 30),
 (1, 'Veste', 2, 20, 20),
@@ -277,7 +279,7 @@ CREATE TABLE IF NOT EXISTS `typepaiement` (
 --
 ALTER TABLE `article`
   ADD CONSTRAINT `fk_article_convoyeur1` FOREIGN KEY (`art_conv_id`) REFERENCES `convoyeur` (`conv_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_article_departement1` FOREIGN KEY (`art_dep_id`) REFERENCES `departement` (`dep_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_article_commande1` FOREIGN KEY (`art_cmd_id`) REFERENCES `commande` (`cmd_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_article_type1` FOREIGN KEY (`art_typ_id`) REFERENCES `type` (`typ_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
