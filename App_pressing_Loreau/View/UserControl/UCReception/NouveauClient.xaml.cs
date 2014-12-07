@@ -29,9 +29,9 @@ namespace App_pressing_Loreau
 
         private void btn_nouveauClient_valider_inscription_Click(object sender, RoutedEventArgs e)
         {
-            //dp.Children.Clear();
+            dp.Children.Clear();
             
-            //dp.Children.Add(new NouvelleCommande());
+            dp.Children.Add(new NouvelleCommande());
         }
 
 

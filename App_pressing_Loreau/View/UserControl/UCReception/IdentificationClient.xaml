@@ -99,7 +99,7 @@
 
                         </Grid>
                         <Button x:Name="btn_identClient_nouveau_client" Content="Nouveau client" Grid.Row="2" Margin="10,5" 
-                            Command="{Binding OnCollectionChangeCommand }" CommandParameter="btnIdentifiantNouveauClient" Style="{StaticResource personalisationbuton}"/>
+                            Command="{Binding OnCollectionChangeCommand }" CommandParameter="btnIdentifiantNouveauClient" Style="{StaticResource personalisationbuton}" Click="btn_identClient_nouveau_client_Click"/>
 
 
                     </Grid>

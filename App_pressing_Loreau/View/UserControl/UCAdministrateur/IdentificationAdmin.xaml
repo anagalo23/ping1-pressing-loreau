@@ -50,7 +50,7 @@
                         </Grid.RowDefinitions>
                         <Label x:Name="label_identificationAdmin_erreur_affiche" Grid.Row="0" Margin="10,10,10,4" FontWeight="Bold"  />
                         <Button x:Name="btn_identificationAdmin_connecte" Content="Se connecter" Grid.Row="1" Margin="10"
-                           Command="{Binding OnCollectionChangeCommand}" CommandParameter="btn_identificationAdmin_connecte" Style="{StaticResource personalisationbuton}"/>
+                           Command="{Binding Btn_identificationAdmin_connecte}"  Style="{StaticResource personalisationbuton}"/>
                     </Grid>
 
                 </Grid>
