@@ -439,7 +439,7 @@
   <Class Name="App_pressing_Loreau.View.RestitutionArticlesVM">
     <Position X="5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAIAAACAAAAAAABAIAAgAQAAAAAAAAAAAAACAAAAAA=</HashCode>
       <FileName>ViewModel\VMRendu\RestitutionArticlesVM.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />

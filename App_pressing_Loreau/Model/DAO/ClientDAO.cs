@@ -102,7 +102,7 @@ namespace App_pressing_Loreau.Model.DAO
                         msdr["clt_prenom"].ToString(),
                         msdr["clt_fix"].ToString(),
                         msdr["clt_mob"].ToString(),
-                        msdr["clt_adresse"].ToString(),
+                        new Adresse(),
                         DateTime.Parse(msdr["clt_dateNaissance"].ToString()),
                         msdr["clt_email"].ToString(),
                         DateTime.Parse(msdr["clt_dateInscription"].ToString()),

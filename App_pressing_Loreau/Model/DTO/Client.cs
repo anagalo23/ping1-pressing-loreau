@@ -17,7 +17,7 @@ namespace App_pressing_Loreau.Model.DTO
         public string prenom { get; set; }
         public string telfix { get; set; }
         public string telmob { get; set; }
-        public string adresse { get; set; }
+        public Adresse adresse { get; set; }
         public DateTime dateNaissance { get; set; }
         public string email { get; set; }
         public DateTime dateInscription { get; set; }
@@ -35,7 +35,7 @@ namespace App_pressing_Loreau.Model.DTO
         public Client()
         {
         }
-        public Client(string nom, string prenom, string telfix, string telmob, string adresse, DateTime dateNaissance, string email, DateTime dateInscription, int idCleanWay, bool contactMail, bool contactSms, int type)
+        public Client(string nom, string prenom, string telfix, string telmob, Adresse adresse, DateTime dateNaissance, string email, DateTime dateInscription, int idCleanWay, bool contactMail, bool contactSms, int type)
         {
             id = 0;
             this.nom = nom;
@@ -52,7 +52,7 @@ namespace App_pressing_Loreau.Model.DTO
             this.type = type;
             listCommandes = new List<Commande>();
         }
-        public Client(int id, string nom, string prenom, string telfix, string telmob, string adresse, DateTime dateNaissance, string email, DateTime dateInscription, int idCleanWay, bool contactMail, bool contactSms, int type)
+        public Client(int id, string nom, string prenom, string telfix, string telmob, Adresse adresse, DateTime dateNaissance, string email, DateTime dateInscription, int idCleanWay, bool contactMail, bool contactSms, int type)
         {
             this.id = id;
             this.nom = nom;
@@ -69,7 +69,7 @@ namespace App_pressing_Loreau.Model.DTO
             this.type = type;
             listCommandes = new List<Commande>();
         }
-        public Client(string nom, string prenom, string telfix, string telmob, string adresse, DateTime dateNaissance, string email, DateTime dateInscription, int idCleanWay, int contactMail, int contactSms, int type)
+        public Client(string nom, string prenom, string telfix, string telmob, Adresse adresse,  DateTime dateNaissance, string email, DateTime dateInscription, int idCleanWay, int contactMail, int contactSms, int type)
         {
             id = 0;
             this.nom = nom;
@@ -86,7 +86,7 @@ namespace App_pressing_Loreau.Model.DTO
             this.type = type;
             listCommandes = new List<Commande>();
         }
-        public Client(int id, string nom, string prenom, string telfix, string telmob, string adresse, DateTime dateNaissance, string email, DateTime dateInscription, int idCleanWay, int contactMail, int contactSms, int type)
+        public Client(int id, string nom, string prenom, string telfix, string telmob, Adresse adresse, DateTime dateNaissance, string email, DateTime dateInscription, int idCleanWay, int contactMail, int contactSms, int type)
         {
             this.id = id;
             this.nom = nom;
