@@ -9,25 +9,34 @@ namespace App_pressing_Loreau.Model
 {
     class Bdd
     {
-        private static MySqlConnection MSConnexion = new MySqlConnection("Server=localhost;Database=bddping1;Uid=root;Pwd=;");
+        private static MySqlConnection MSConnexion;
         private static int ReturnCode = 0;
 
         public static MySqlConnection connexion()
         {
             try
             {
-                MSConnexion.Open();
+
+                if (MSConnexion == null)
+                {
+                    MSConnexion = new MySqlConnection("Server=localhost;Database=bddping1;Uid=root;Pwd=;");
+                    MSConnexion.Open();
+                }
+                return MSConnexion;
             }
             catch (Exception Ex)
             {
                 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                return null;
             }
-            return MSConnexion;
+
         }
 
         public static void deconnexion()
         {
+            
             MSConnexion.Close();
+            MSConnexion = null;
         }
     }
 }
