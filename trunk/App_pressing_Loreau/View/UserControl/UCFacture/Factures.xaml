@@ -18,7 +18,7 @@
                 <RowDefinition Height="71*"/>
             </Grid.RowDefinitions>
             <Label x:Name="Factures_choixcommande"  Content="Choix des commandes" Grid.Row="0" Style="{StaticResource Titre}" />
-            <Button x:Name="Factures_editerfacture" Content="Editer la facture" Grid.Row="3" Style="{StaticResource choixbouton30}" Margin="55,0,57,0"/>
+            <Button x:Name="Factures_editerfacture" Content="Editer la facture" Grid.Row="3" Style="{StaticResource choixbouton30}" Margin="55,0,57,0" Command="{Binding Btn_factures_edite_facture}"/>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions >
                     <ColumnDefinition Width="1*" />
@@ -26,7 +26,7 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <Label x:Name="Factures_idcommande" Content=" Id commande   :" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
-                <TextBox x:Name="Factures_entreztexte" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                <TextBox x:Name="Txb_factures_entreztexte" Grid.Column="1" Margin="5,20" Text="{Binding Txb_factures_idCommande}" HorizontalContentAlignment="Center" />
                 <Image Source="/Resources/pics/Factures/loupederecherche.png" Grid.Column="2" Grid.Row="1" Margin="10,20,10,0" HorizontalAlignment="Center"
                    VerticalAlignment="Top" Height="52" Width="70"/>
             </Grid>
@@ -45,6 +45,9 @@
                 <RowDefinition Height="233*"/>
             </Grid.RowDefinitions>
             <Label Content="Aperçu de la facture " Style="{StaticResource Titre}" Grid.Column="0"/>
+            <DockPanel Grid.Row="1">
+                <ContentControl Content="{Binding Path=Apercu_facture}"/>
+            </DockPanel>
 
         </Grid>
     </Grid>

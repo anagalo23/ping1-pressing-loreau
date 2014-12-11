@@ -14,6 +14,12 @@ namespace App_pressing_Loreau
             InitializeComponent();
         }
 
+        private void btn_identificationAdmin_connecte_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            dp.Children.Clear();
+            dp.Children.Add(new PageAdministrateur());
+        }
+
       
     }
 }

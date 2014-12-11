@@ -25,7 +25,7 @@ namespace App_pressing_Loreau
             InitializeComponent();
         }
 
-        private void btn_pageAdministrateur_statistiques_Click(object sender, RoutedEventArgs e)
+       private void btn_pageAdministrateur_statistiques_Click(object sender, RoutedEventArgs e)
         {
             dp.Children.Clear();
             dp.Children.Add(new Statistiques());
@@ -84,6 +84,7 @@ namespace App_pressing_Loreau
         {
 
         }
+
     }
 }
  
