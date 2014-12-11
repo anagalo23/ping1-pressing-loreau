@@ -10,14 +10,38 @@
         <!-- Données à afficher sur la partir 'commande concernant'-->
         <DataTemplate DataType="{x:Type local:CommandeConcernantRA_DATA }">
             <Border>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+
+                    </Grid.RowDefinitions>
+                    
+                    <Label Content="Le type de l'article " Grid.Row="0" Grid.Column="0" /> 
+                    <Label Content="{Binding Label_restitutionArticles_type}" Grid.Row="0" Grid.Column="1"/>
+                    
+                    <Label Content="Le departement de l'article " Grid.Row="1" Grid.Column="0" />
+                    <Label Content="{Binding Label_restitutionArticles_departement}" Grid.Row="1" Grid.Column="1"/>
+                    
+                    <Label Content="Le type de l'article " Grid.Row="2" Grid.Column="0" />
+                    <Label Content="{Binding Label_restitutionArticles_name}" Grid.Row="2" Grid.Column="1"/>
+
+                </Grid>
+                <!--
                 <DataGrid VerticalContentAlignment="Center" HorizontalContentAlignment="Center" x:Name="dtgrid_restitution_article_affiche" 
                                   SelectionChanged="DataGrid_SelectionChanged" FontFamily="Arial" FontSize="20" FontWeight="SemiBold" Margin="0,0,-9,0">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Photo"  Width="45*" Binding="{Binding GameName}"  />
-                        <DataGridTextColumn Header="Commentaire" Width="45*" Binding="{Binding Creator}" />
-                        <DataGridTextColumn Header="rendu" Width="45*" Binding="{Binding Publisher}" />
+                        <DataGridTextColumn Header="Departement"  Width="45*" Binding="{Binding Dgtc_restitutionArticles_departement}"  />
+                        <DataGridTextColumn Header="Type" Width="45*" Binding="{Binding Dgtc_restitutionArticles_type}" />
+                        <DataGridTextColumn Header="rendu" Width="45*" Binding="{Binding Dgtc_restitutionArticles_rendu}" />
                     </DataGrid.Columns>
                 </DataGrid>
+                -->
             </Border>
         </DataTemplate>
         
@@ -116,9 +140,9 @@
                         <RowDefinition Height="93*"/>
                     </Grid.RowDefinitions>
                     <Label Content="La commande concernant" Grid.Row="0"  Style="{StaticResource Titre}"/>
-                    <Border Margin="5" Background="BlueViolet" Grid.Row="1">
+                    <Border Margin="5"  Grid.Row="1">
 
-                        <ContentControl />
+                        <ContentControl  Content="{Binding Path=ContentCommandeConcernant}"/>
 
                     </Border>
                     <Grid Grid.Row="2">

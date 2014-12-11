@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using App_pressing_Loreau.Helper;
+using System.Windows.Input;
+using App_pressing_Loreau.Model.DAO;
+using App_pressing_Loreau.Model.DTO;
 
 
 namespace App_pressing_Loreau.View
@@ -12,62 +15,202 @@ namespace App_pressing_Loreau.View
     class NouveauClientVM : ObservableObject, IPageViewModel
     {
 
-        private ICommand _clientAjoute;
+        #region Variables locales
+
+        Client client;
+        #endregion
 
 
-        //private int _clientName;
 
-
-        public String Name 
+        public String Name
         {
-            get { return "Nouveau Client"; }
+            get { return " "; }
         }
 
 
-        #region Properties/Commands
-
-        //public int ClientName
-        //{
-        //    get { return _clientName; }
-        //    set
-        //    {
-        //        if (value != _clientName)
-        //        {
-        //            _clientName = value;
-        //            OnPropertyChanged("ProductId");
-        //        }
-        //    }
-        //}
-
-
-        public ICommand ajoutNouveauClient
+        #region Properties / Commands
+        public String Txb_nouveauClient_nom
         {
-            get
+            get { return client.nom; }
+            set
             {
-                if (_clientAjoute == null)
+                if (value != client.nom)
                 {
-                    _clientAjoute = new RelayCommand(
-                        param => ajoutClient()
-                    );
+                    client.nom = value;
+                    OnPropertyChanged("Txb_nouveauClient_nom");
                 }
-                return _clientAjoute;
             }
         }
 
-        #endregion
-
-
-        #region Methods
-
-        private void ajoutClient()
+        public String Txb_nouveauClient_prenom
         {
-            //Implémentation du code pour l'enregistrement en base de données
-            NouveauClientData clientData
+            get { return client.prenom; }
+            set
+            {
+                if (value != client.prenom)
+                {
+                    client.prenom = value;
+                    OnPropertyChanged("Txb_nouveauClient_prenom");
+                }
+            }
+        }
+
+        public String Txb_nouveauClient_date_naissance
+        {
+            get { return client.dateNaissance; }
+            set
+            {
+                if (value != client.dateNaissance)
+                {
+                    client.dateNaissance = DateTime.Parse(value);
+                    OnPropertyChanged("Txb_nouveauClient_date_naissance");
+                }
+            }
+
         }
 
 
+        public String Txb_nouveauClient_idCleanway
+        {
+            get { return client.idCleanWay; }
+            set
+            {
+                if (value != client.idCleanWay)
+                {
+                    client.idCleanWay = Int16.Parse(value);
+                    OnPropertyChanged("Txb_nouveauClient_idCleanway");
+                }
+            }
+        }
+
+        public String Txb_nouveauClient_numero
+        {
+            get { return client.adresse.numero; }
+            set
+            {
+                if (value != client.adresse.numero)
+                {
+                    client.adresse.numero = value;
+                    OnPropertyChanged("Txb_nouveauClient_numero");
+                }
+            }
+        }
+
+        public String Txb_nouveauClient_rue_voie
+        {
+            get { return client.adresse.rue; }
+            set
+            {
+                if (value != client.adresse.rue)
+                {
+                    client.adresse.rue = value;
+                    OnPropertyChanged("Txb_nouveauClient_rue_voie");
+                }
+            }
+        }
+
+        public String Txb_nouveauClient_bp
+        {
+            get { return client.adresse.codePostal; }
+            set
+            {
+                if (value != client.adresse.codePostal)
+                {
+                    client.adresse.codePostal = value;
+                    OnPropertyChanged("Txb_nouveauClient_bp");
+                }
+            }
+        }
+
+        public String Txb_nouveauClient_ville
+        {
+            get { return client.adresse.ville; }
+            set
+            {
+                if (value != client.adresse.ville)
+                {
+                    client.adresse.ville = value;
+                    OnPropertyChanged("Txb_nouveauClient_ville");
+
+                }
+            }
+        }
+
+
+
+
+        public bool Ckb_nouveauClient_sms
+        {
+            get { return client.contactSms; }
+            set
+            {
+                if (value != client.contactSms)
+                {
+                    client.contactSms = value;
+                    OnPropertyChanged("Ckb_nouveauClient_sms");
+                }
+            }
+        }
+        public String Txb_nouveauClient_portable
+        {
+            get { return client.telmob; }
+            set
+            {
+                if (value != client.telmob)
+                {
+                    client.telmob = value;
+                    OnPropertyChanged("Txb_nouveauClient_portable");
+                }
+            }
+        }
+
+
+        public bool Ckb_nouveauClient_mail
+        {
+            get { return client.contactMail; }
+            set
+            {
+                if (value != client.contactMail)
+                {
+                    client.contactMail = value;
+                    OnPropertyChanged("Ckb_nouveauClient_mail");
+                }
+            }
+        }
+
+        public String Txb_nouveauClient_mail
+        {
+            get { return client.email; }
+            set
+            {
+                if (value != client.email)
+                {
+                    client.email = value;
+                    OnPropertyChanged("Txb_nouveauClient_mail");
+                }
+            }
+        }
+
+
+        public ICommand Btn_nouveauClient_enregistrer
+        {
+            get
+            {
+                return new RelayCommand(
+                    p => enregisterClient(),
+                    p => Txb_nouveauClient_nom != null,
+                    p => Txb_nouveauClient_prenom != null);
+            }
+        }
         #endregion
 
+
+        #region Méthodes
+        public void enregisterClient()
+        {
+            ClientDAO.insertClient(client);
+        }
+        #endregion
 
     }
 }

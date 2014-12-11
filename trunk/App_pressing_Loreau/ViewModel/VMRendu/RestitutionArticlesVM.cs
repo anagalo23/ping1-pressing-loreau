@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 using App_pressing_Loreau.Helper;
 using System.Windows.Input;
 
+using App_pressing_Loreau.Model.DAO;
+using App_pressing_Loreau.Model.DTO;
+
 namespace App_pressing_Loreau.View
 {
     class RestitutionArticlesVM : ObservableObject, IPageViewModel
     {
+        Departement dep ;
 
         private int _txb_restitutionArticles_idFactures;
+        public CommandeConcernantRA_DATA _contentCommandeConcernant;
         public String Name
         {
             get { return ""; }
@@ -39,10 +44,27 @@ namespace App_pressing_Loreau.View
 
         }
 
+        public CommandeConcernantRA_DATA ContentCommandeConcernant
+        {
+            get { return _contentCommandeConcernant; }
+            set
+            {
+                if (value != _contentCommandeConcernant)
+                {
+                     _contentCommandeConcernant=value ;
+                    OnPropertyChanged("ContentCommandeConcernant");
+                }
+            }
 
+        }
         public void but()
         {
-
+            dep = (Departement)DepartementDAO.selectDepartementById(2);
+            CommandeConcernantRA_DATA ccd = new CommandeConcernantRA_DATA();
+            ccd.Label_restitutionArticles_departement = "repassage";
+            ccd.Label_restitutionArticles_type = "Pantalon";
+            ccd.Label_restitutionArticles_name = Txb_restitutionArticles_idFactures.ToString();
+            ContentCommandeConcernant = ccd;
         }
     }
 }
