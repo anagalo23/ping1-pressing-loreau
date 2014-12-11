@@ -5,9 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="740">
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+mc:Ignorable="d"
+d:DesignHeight="500" d:DesignWidth="740">
 
     <DockPanel x:Name="dp">
         <Grid  Margin="5">
+        <Grid Margin="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="37*"/>
                 <ColumnDefinition Width="36*"/>
@@ -17,6 +24,7 @@
                 <RowDefinition Height="97*"/>
             </Grid.RowDefinitions>
             <Border  HorizontalAlignment="Stretch" BorderBrush="AliceBlue"  BorderThickness="1" Margin="10" Grid.Row="0" Grid.Column="0">
+            <Border HorizontalAlignment="Stretch" BorderBrush="AliceBlue" BorderThickness="1" Margin="10" Grid.Row="0" Grid.Column="0">
                 <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="39*"/>
@@ -37,23 +45,31 @@
                         </Grid.RowDefinitions>
 
                         <Label Content="Nom * :"  Grid.Row="0" Grid.Column="0" Style="{StaticResource vertilabel25}" />
+                        <Label Content="Nom * :" Grid.Row="0" Grid.Column="0" Style="{StaticResource vertilabel25}" />
                         <TextBox x:Name="txb_nouveauClient_nom" Grid.Row="0" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}"
                                  Text="{Binding Path=Txb_nouveauClient_nom, UpdateSourceTrigger=PropertyChanged}"/>
+Text="{Binding Path=Txb_nouveauClient_nom, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label Content="Prénom * :" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_prenom" Grid.Row="1" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}"
                                   Text="{Binding Path=Txb_nouveauClient_prenom, UpdateSourceTrigger=PropertyChanged}"/>
+Text="{Binding Path=Txb_nouveauClient_prenom, UpdateSourceTrigger=PropertyChanged}"/>
 
                         <Label Content="Date de naissance :" Grid.Row="2" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_date_naissance" Grid.Row="2"  Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}"
                                 Text="{Binding Path=Txb_nouveauClient_date_naissance, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Content="ID Cleanway  :"  Grid.Row="3" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
+                        <TextBox x:Name="txb_nouveauClient_date_naissance" Grid.Row="2" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}"
+Text="{Binding Path=Txb_nouveauClient_date_naissance, UpdateSourceTrigger=PropertyChanged}" />
+                        <Label Content="ID Cleanway :" Grid.Row="3" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_idCleanway" Grid.Row="3" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}"
                                  Text="{Binding Path=Txb_nouveauClient_idCleanway, UpdateSourceTrigger=PropertyChanged}"/>
+Text="{Binding Path=Txb_nouveauClient_idCleanway, UpdateSourceTrigger=PropertyChanged}"/>
                     </Grid>
                 </Grid>
             </Border>
 
             <Border  HorizontalAlignment="Stretch" BorderBrush="AliceBlue"  BorderThickness="1" Margin="10" Grid.Row="1" Grid.Column="0">
+            <Border HorizontalAlignment="Stretch" BorderBrush="AliceBlue" BorderThickness="1" Margin="10" Grid.Row="1" Grid.Column="0">
                 <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="39*"/>
@@ -74,20 +90,32 @@
                         </Grid.RowDefinitions>
 
                         <Label Content="Numéro :"  Grid.Row="0" Grid.Column="0"  Style="{StaticResource vertilabel25}"/>
+                        <Label Content="Numéro :" Grid.Row="0" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_numero" Grid.Row="0" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}"
-                                 Text="{Binding Path=Txb_nouveauClient_numero, UpdateSourceTrigger=PropertyChanged}" />
-
+                                 Text="{Binding Path=Txb_nouveauClient_numero, UpdateSourceTrigger=PropertyChanged}"/>
+                        
                         <Label  Content="Rue, voie :" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_rue_voie" Grid.Row="1" Grid.Column="1" Margin="10" 
                                 Text="{Binding Path=Txb_nouveauClient_rue_voie, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}"/>
+                        
+Text="{Binding Path=Txb_nouveauClient_numero, UpdateSourceTrigger=PropertyChanged}" />
+
+                        <Label Content="Rue, voie :" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
+                        <TextBox x:Name="txb_nouveauClient_rue_voie" Grid.Row="1" Grid.Column="1" Margin="10"
+Text="{Binding Path=Txb_nouveauClient_rue_voie, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}"/>
 
                         <Label Content="BP :" Grid.Row="2" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_bp" Grid.Row="2"  Grid.Column="1" Margin="10" 
                                 Text="{Binding Path=Txb_nouveauClient_bp, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}"/>
+                        
+                        <TextBox x:Name="txb_nouveauClient_bp" Grid.Row="2" Grid.Column="1" Margin="10"
+Text="{Binding Path=Txb_nouveauClient_bp, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}"/>
 
                         <Label Content="Ville" Grid.Row="3" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_ville" Grid.Row="3" Grid.Column="1" Margin="10" 
                                 Text="{Binding Path=Txb_nouveauClient_ville, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}"/>
+                        <TextBox x:Name="txb_nouveauClient_ville" Grid.Row="3" Grid.Column="1" Margin="10"
+Text="{Binding Path=Txb_nouveauClient_ville, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}"/>
 
                     </Grid>
                 </Grid>
@@ -95,12 +123,14 @@
             </Border>
 
             <Border  HorizontalAlignment="Stretch" BorderBrush="AliceBlue"  BorderThickness="1" Margin="10" Grid.Row="0" Grid.Column="1">
+            <Border HorizontalAlignment="Stretch" BorderBrush="AliceBlue" BorderThickness="1" Margin="10" Grid.Row="0" Grid.Column="1">
                 <Grid >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="39*"/>
                         <RowDefinition Height="184*"/>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" Content="Communication avec le client " Background="AliceBlue"  Style="{StaticResource Titre}" />
+                    <Label Grid.Row="0" Content="Communication avec le client " Background="AliceBlue" Style="{StaticResource Titre}" />
                     <Grid Grid.Row="1" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="107*"/>
@@ -116,20 +146,33 @@
 
                         <Label  Grid.Row="0" Grid.Column="0" Style="{StaticResource vertilabel18}">
                             <TextBlock  > Souhaitez vous recevoir des  informations <LineBreak/> par SMS?</TextBlock>
+                        <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource vertilabel18}">
+                            <TextBlock > Souhaitez vous recevoir des informations <LineBreak/> par SMS?</TextBlock>
                         </Label>
-                        <CheckBox x:Name="ckb_nouveauClient_sms"  VerticalContentAlignment="Center" Margin="5" Grid.Row="0" Grid.Column="1" IsChecked="{Binding Ckb_nouveauClient_sms ,UpdateSourceTrigger=PropertyChanged}" />
-
+                        <CheckBox x:Name="ckb_nouveauClient_sms"  VerticalContentAlignment="Center" Margin="5" Grid.Row="0" Grid.Column="1" IsChecked="{Binding Ckb_nouveauClient_sms}" />
+                        
                         <Label Content="Portable :" Grid.Row="1" Grid.Column="0"  Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_portable"  Grid.Row="1" Grid.Column="1" Margin="5" 
                                 Text="{Binding Path=Txb_nouveauClient_portable, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}" />
                         <Label  Grid.Row="2" Grid.Column="0" Style="{StaticResource vertilabel18}" >
                             <TextBlock > Souhaitez vous recevoir des  informations <LineBreak/> par Mail?</TextBlock>
+                        <CheckBox x:Name="ckb_nouveauClient_sms" VerticalContentAlignment="Center" Margin="5" Grid.Row="0" Grid.Column="1" IsChecked="{Binding Ckb_nouveauClient_sms ,UpdateSourceTrigger=PropertyChanged}" />
+
+                        <Label Content="Portable :" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
+                        <TextBox x:Name="txb_nouveauClient_portable" Grid.Row="1" Grid.Column="1" Margin="5"
+Text="{Binding Path=Txb_nouveauClient_portable, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}" />
+                        <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource vertilabel18}" >
+                            <TextBlock > Souhaitez vous recevoir des informations <LineBreak/> par Mail?</TextBlock>
                         </Label>
-                        <CheckBox x:Name="ckb_nouveauClient_mail" Grid.Row="2" Margin="5"  Grid.Column="1" VerticalContentAlignment="Center" IsChecked="{Binding Ckb_nouveauClient_mail ,UpdateSourceTrigger=PropertyChanged}" />
+                        <CheckBox x:Name="ckb_nouveauClient_mail" Grid.Row="2" Margin="5"  Grid.Column="1" VerticalContentAlignment="Center" IsChecked="{Binding Ckb_nouveauClient_mail}" />
+                        
+                        <CheckBox x:Name="ckb_nouveauClient_mail" Grid.Row="2" Margin="5" Grid.Column="1" VerticalContentAlignment="Center" IsChecked="{Binding Ckb_nouveauClient_mail ,UpdateSourceTrigger=PropertyChanged}" />
 
                         <Label Content="Mail:" Grid.Row="3" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_mail"  Grid.Row="3" Grid.Column="1" Margin="5" 
                                 Text="{Binding Path=Txb_nouveauClient_mail, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}"/>
+                        <TextBox x:Name="txb_nouveauClient_mail" Grid.Row="3" Grid.Column="1" Margin="5"
+Text="{Binding Path=Txb_nouveauClient_mail, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}"/>
 
                     </Grid>
                 </Grid>
@@ -138,18 +181,25 @@
             </Border>
             <Grid Grid.Column="1" Grid.Row="1">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="143*"/>
+                    <ColumnDefinition Width="217*"/>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="22*"/>
+                    <RowDefinition Height="13*"/>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
+                <Button x:Name="btn_nouveauClient_valider_inscription" Content="Valider l'inscription" Grid.Row="1" Grid.Column="1" Click="btn_nouveauClient_valider_inscription_Click" Style="{StaticResource personalisationbuton}"/>
+
                 <Button Content="Enregistrer " Style="{StaticResource personalisationbuton}" Margin="10,40" Grid.Column="1" Command="{Binding Btn_nouveauClient_enregistrer}" />
 
-                <Button x:Name="btn_nouveauClient_nouvelle_commande" Content="Nouvelle Commande" Grid.Row="1"  Margin="10,40" Grid.Column="1" Click="btn_nouveauClient_valider_inscription_Click" Style="{StaticResource personalisationbuton}"/>
+                <Button x:Name="btn_nouveauClient_nouvelle_commande" Content="Nouvelle Commande" Grid.Row="1" Margin="10,40" Grid.Column="1" Click="btn_nouveauClient_valider_inscription_Click" Style="{StaticResource personalisationbuton}"/>
             </Grid>
         </Grid>
     </DockPanel>
 
+</UserControl>
 </UserControl>
