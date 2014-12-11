@@ -8,6 +8,8 @@ using App_pressing_Loreau.Helper;
 using App_pressing_Loreau.Model.DAO;
 using App_pressing_Loreau.Model.DTO;
 
+using App_pressing_Loreau.Model;
+
 namespace App_pressing_Loreau.View
 {
     class NouvelleCommandeVM : ObservableObject, IPageViewModel
@@ -61,19 +63,10 @@ namespace App_pressing_Loreau.View
             //Get the client id
             int idClt;
             idClt = commande.client.id;
-            /*if ((commande.client.id == 0) && (commande.clientpro.id != 0))
-            {
-                idClt = commande.clientpro.id;
-            }
-            else if ((commande.client.id != 0) && (commande.clientpro.id == 0))
-            {
-                idClt = commande.client.id;
-            }
-            else
-            {
-                //Both Ids are null or both are initialized. Theses impossibles cases are to be avoided
-                throw new Exception("Problème dans la construction de la commande : soit pas de client, soit deux. Faudrait savoir...");
-            }*/
+
+
+
+            CommandeDAO.open();
 
             //Assert the integrity ------------------> TODO
 
@@ -101,6 +94,8 @@ namespace App_pressing_Loreau.View
                 article.fk_commande = fk_cmd;
                 ArticleDAO.insertArticle(article);
             }
+
+            Bdd.deconnexion();
         }
 
 

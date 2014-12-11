@@ -12,6 +12,14 @@ namespace App_pressing_Loreau.Model.DAO
     {
         //public static List<Commande> get
 
+        MySqlConnection connection;
+
+        public static void open()
+        {
+            connection = Bdd.connexion();
+        }
+
+
         public static void insertCommande(Commande commande)
         {
             try

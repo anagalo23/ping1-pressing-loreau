@@ -16,7 +16,7 @@ namespace App_pressing_Loreau.View
 
         #region Variables
 
-        private String _int_id
+        private String _int_id;
         #endregion
 
 
