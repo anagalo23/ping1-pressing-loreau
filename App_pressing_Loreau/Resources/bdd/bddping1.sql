@@ -36,7 +36,6 @@ CREATE TABLE IF NOT EXISTS `article` (
   `art_TVA` float NOT NULL,
   `art_HT` float NOT NULL,
   `art_conv_id` int(11) DEFAULT NULL,
-  `art_cmd_id` int(11) NOT NULL,/*new item*/
   `art_cmd_id` int(11) NOT NULL,
   `art_typ_id` int(11) NOT NULL,
   PRIMARY KEY (`art_id`),
