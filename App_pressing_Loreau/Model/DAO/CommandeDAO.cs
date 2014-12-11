@@ -10,16 +10,6 @@ namespace App_pressing_Loreau.Model.DAO
 {
     class CommandeDAO
     {
-        //public static List<Commande> get
-
-        MySqlConnection connection;
-
-        public static void open()
-        {
-            connection = Bdd.connexion();
-        }
-
-
         public static void insertCommande(Commande commande)
         {
             try
@@ -38,56 +28,7 @@ namespace App_pressing_Loreau.Model.DAO
                 cmd.Parameters.AddWithValue("remise", commande.remise);
 
                 int retour = cmd.ExecuteNonQuery();
-
-                #region Insert Articles
-                if (commande.listArticles.Count != 0 && commande.listArticles.Count != null)
-                {
-                    String sqlarticle = "INSERT INTO article(art_photo, art_commentaire, art_rendu, art_TVA, art_HT, art_conv_id, art_typ_id) VALUES (?,?,?,?,?,?,?)";
-                    cmd.CommandText = sqlarticle;
-
-                    foreach(Article article in commande.listArticles)
-                    {
-                        //ajout des parametres
-                        cmd.Parameters.AddWithValue("photo", article.photo);
-                        cmd.Parameters.AddWithValue("commentaire", article.commentaire);
-                        cmd.Parameters.AddWithValue("rendu", article.ifRendu);
-                        cmd.Parameters.AddWithValue("TVA", article.TVA);
-                        cmd.Parameters.AddWithValue("HT", article.HT);
-                        cmd.Parameters.AddWithValue("conv_id", article.convoyeur.id);
-                        cmd.Parameters.AddWithValue("typ_id", article.type.id);
-
-                        //Execute la commande
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-                #endregion
-
-                #region Insert payement
-                /*if (commande.listArticles.Count != 0 && commande.listArticles.Count != null)
-                {
-                    String sqlarticle = "INSERT INTO article(art_photo, art_commentaire, art_rendu, art_TVA, art_HT, art_conv_id, art_typ_id) VALUES (?,?,?,?,?,?,?)";
-                    cmd.CommandText = sqlarticle;
-
-                    foreach (Article article in commande.listArticles)
-                    {
-                        //ajout des parametres
-                        cmd.Parameters.AddWithValue("photo", article.photo);
-                        cmd.Parameters.AddWithValue("commentaire", article.commentaire);
-                        cmd.Parameters.AddWithValue("rendu", article.ifRendu);
-                        cmd.Parameters.AddWithValue("TVA", article.TVA);
-                        cmd.Parameters.AddWithValue("HT", article.HT);
-                        cmd.Parameters.AddWithValue("conv_id", article.convoyeur.id);
-                        cmd.Parameters.AddWithValue("typ_id", article.type.id);
-
-                        //Execute la commande
-                        cmd.ExecuteNonQuery();
-                    }
-                }*/
-                
-                #endregion
-
-                //Ferme la connexion
-                connection.Close();
+                retour = (retour = 0) ? 0 : lastId();
             }
             catch (Exception Ex)
             {
@@ -95,31 +36,24 @@ namespace App_pressing_Loreau.Model.DAO
             }
         }
 
-        public static int lastId()
+        //Methode permettant de renvoyer l'id de la dernière commande
+        private static int lastId()
         {
+            String sql = "SELECT cmd_id FROM commande ORDER BY cmd_id DESC LIMIT 1;";
+            int retour;
+
+            //connection à la base de données
             MySqlConnection connection = Bdd.connexion();
-            String sql = "";
-
-            //connection à la base de données   
-
             MySqlCommand cmd = new MySqlCommand(sql, connection);
-            // Le langage d'insertion en bdd est le sql
-            cmd.CommandText = sql;
-            //ajout des parametres
-
-
-            int id_de_la_derniere_commande_enregistree;
-
 
             try
             {
-                id_de_la_derniere_commande_enregistree = cmd.ExecuteNonQuery();
-                connection.Close();
-                return id_de_la_derniere_commande_enregistree;
+                retour = cmd.ExecuteNonQuery();
+                return retour;
             }
             catch
             {
-                return 0;
+                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la récupération de l'id de la dernière commande dans la base de données."));
             }
         }
 
