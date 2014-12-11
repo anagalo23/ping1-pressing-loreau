@@ -12,34 +12,79 @@ namespace App_pressing_Loreau.Model.DAO
     {
         //public static List<Commande> get
 
-        public static int insertCommande(Commande commande)
+        public static void insertCommande(Commande commande)
         {
-            MySqlConnection connection = Bdd.connexion();
-            String sql = "INSERT INTO commande (cmd_date, cmd_payee) Values (\"@cmd_date\", \"@cmd_payee\")";
-
-            //connection à la base de données   
-
-            MySqlCommand cmd = new MySqlCommand(sql, connection);
-            // Le langage d'insertion en bdd est le sql
-            cmd.CommandText = sql;
-            //ajout des parametres
-            cmd.Parameters.AddWithValue("@cmd_date", commande.date);
-            cmd.Parameters.AddWithValue("@cmd_payee", commande.payee);
-
-            int retour;
-
-
             try
             {
-                retour = cmd.ExecuteNonQuery();
-                connection.Close();
-                return retour;
-            }
-            catch
-            {
-                return 0;
-            }
+                String sql = "INSERT INTO commande(cmd_date, cmd_payee, cmd_clt_id, cmd_remise) VALUES (?,?,?,?)";
 
+                //connection à la base de données
+                MySqlConnection connection = Bdd.connexion();
+                MySqlCommand cmd = new MySqlCommand(sql, connection);
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("date", commande.date);
+                int payee = (commande.payee) ? 1 : 0;
+                cmd.Parameters.AddWithValue("payee", payee);
+                cmd.Parameters.AddWithValue("clt_id", commande.client.id);
+                cmd.Parameters.AddWithValue("remise", commande.remise);
+
+                int retour = cmd.ExecuteNonQuery();
+
+                #region Insert Articles
+                if (commande.listArticles.Count != 0 && commande.listArticles.Count != null)
+                {
+                    String sqlarticle = "INSERT INTO article(art_photo, art_commentaire, art_rendu, art_TVA, art_HT, art_conv_id, art_typ_id) VALUES (?,?,?,?,?,?,?)";
+                    cmd.CommandText = sqlarticle;
+
+                    foreach(Article article in commande.listArticles)
+                    {
+                        //ajout des parametres
+                        cmd.Parameters.AddWithValue("photo", article.photo);
+                        cmd.Parameters.AddWithValue("commentaire", article.commentaire);
+                        cmd.Parameters.AddWithValue("rendu", article.ifRendu);
+                        cmd.Parameters.AddWithValue("TVA", article.TVA);
+                        cmd.Parameters.AddWithValue("HT", article.HT);
+                        cmd.Parameters.AddWithValue("conv_id", article.convoyeur.id);
+                        cmd.Parameters.AddWithValue("typ_id", article.type.id);
+
+                        //Execute la commande
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                #endregion
+
+                #region Insert payement
+                /*if (commande.listArticles.Count != 0 && commande.listArticles.Count != null)
+                {
+                    String sqlarticle = "INSERT INTO article(art_photo, art_commentaire, art_rendu, art_TVA, art_HT, art_conv_id, art_typ_id) VALUES (?,?,?,?,?,?,?)";
+                    cmd.CommandText = sqlarticle;
+
+                    foreach (Article article in commande.listArticles)
+                    {
+                        //ajout des parametres
+                        cmd.Parameters.AddWithValue("photo", article.photo);
+                        cmd.Parameters.AddWithValue("commentaire", article.commentaire);
+                        cmd.Parameters.AddWithValue("rendu", article.ifRendu);
+                        cmd.Parameters.AddWithValue("TVA", article.TVA);
+                        cmd.Parameters.AddWithValue("HT", article.HT);
+                        cmd.Parameters.AddWithValue("conv_id", article.convoyeur.id);
+                        cmd.Parameters.AddWithValue("typ_id", article.type.id);
+
+                        //Execute la commande
+                        cmd.ExecuteNonQuery();
+                    }
+                }*/
+                
+                #endregion
+
+                //Ferme la connexion
+                connection.Close();
+            }
+            catch (Exception Ex)
+            {
+                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'une commande dans la base de données."));
+            }
         }
 
         public static int lastId()
