@@ -36,7 +36,6 @@ namespace App_pressing_Loreau.Model.DAO
 
                 //Execute la commande
                 int retour = cmd.ExecuteNonQuery();
-                connection.Close();
             }
             catch (Exception Ex)
             {
