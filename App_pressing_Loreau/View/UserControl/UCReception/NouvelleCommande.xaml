@@ -20,13 +20,13 @@
                         <ColumnDefinition Width="130*"/>
                         <ColumnDefinition Width="19*"/>
                     </Grid.ColumnDefinitions>
-                    <Button  Background="White">
+                    <Button  Background="White" Command="{Binding Commande_precedente}">
                         <Image Source="/Resources/pics/precedent.png" Height="25"/>
                     </Button>
                     <Border BorderBrush="Aqua" BorderThickness="2" Grid.Column="1" CornerRadius="15">
 
                     </Border>
-                    <Button Grid.Column="2"  Background="White">
+                    <Button Grid.Column="2"  Background="White" Command="{Binding  Commande_suivante}" >
                         <Image Source="/Resources/pics/suivant.png"/>
                     </Button>
 
@@ -50,17 +50,21 @@
                             <RowDefinition Height="61*"/>
                             <RowDefinition Height="23*"/>
                         </Grid.RowDefinitions>
-                        <ScrollViewer Background="Bisque" Grid.Row="0"  Margin="10"/>
+                        <DockPanel Grid.Row="0">
+                            <ContentControl  Content="{Binding Path=ContentCommande}"/>
+                            <ScrollViewer Background="Bisque"   Margin="10"/>
+                        </DockPanel>
+                        
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <Button x:Name="btn_nouvellecommande_valider" Style="{StaticResource personalisationbuton1}" Grid.Column="0" Content="Valider commande"/>
-                            <Button x:Name="btn_nouvellecommande_modifier" Style="{StaticResource personalisationbuton1}" Grid.Column="1" Content="modifier commande"
-                                    Click="btn_nouvellecommande_modifier_Click"/>
-                            <Button x:Name="btn_nouvellecommande_supprimer" Style="{StaticResource personalisationbuton1}" Grid.Column="2" Content="supprimer articles" />
+                            <Button x:Name="btn_nouvellecommande_valider" Style="{StaticResource personalisationbuton1}" Grid.Column="0" Content="Valider commande" Command="{Binding Btn_nouvellecommande_valider}"/>
+
+                            <Button x:Name="btn_nouvellecommande_modifier" Style="{StaticResource personalisationbuton1}" Grid.Column="1" Content="modifier commande" Command="{Binding Btn_nouvellecommande_modifier }"/>
+                            <Button x:Name="btn_nouvellecommande_supprimer" Style="{StaticResource personalisationbuton1}" Grid.Column="2" Content="supprimer articles" Command="{Binding Btn_nouvellecommande_supprimer}"/>
                         </Grid>
 
                     </Grid>

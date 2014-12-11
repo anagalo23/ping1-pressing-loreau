@@ -118,14 +118,8 @@
                         <Label Content="Résultat de la recherche" Style="{StaticResource  Titre}" Grid.Row="0" />
 
                         <Border Grid.Row="1">
-                            <!--<DataGrid  ItemsSource="{Binding retour}" x:Name="datagridClient" AutoGenerateColumns="False" Margin="5" SelectionChanged="datagridClient_SelectionChanged" FontFamily="Arial" FontSize="20" FontWeight="SemiBold" >
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Nom" Width="45*" Binding="{Binding GameName}" />
-                                    <DataGridTextColumn Header="Prénom" Width="45*" Binding="{Binding Creator}" />
-                                    <DataGridTextColumn Header="Cleanway" Width="45*" Binding="{Binding Publisher}" />
-                                </DataGrid.Columns>
-                            </DataGrid>-->
-                            <ContentControl  Content="{Binding Path=resultatRecherche}"/>
+                           
+                            <ContentControl  Content="{Binding Path=resultatRecherche_identificationClient}"/>
                         </Border>
 
 

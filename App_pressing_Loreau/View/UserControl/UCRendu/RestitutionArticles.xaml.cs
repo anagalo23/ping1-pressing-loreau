@@ -53,7 +53,7 @@ namespace App_pressing_Loreau
 
 
 
-            this.dtgrid_restitution_article_affiche.ItemsSource = null;
+    
 
             //this.dtgrid_restitution_article_affiche.ItemsSource =art;
 

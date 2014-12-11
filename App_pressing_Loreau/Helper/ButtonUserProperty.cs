@@ -6,12 +6,5 @@ using System.Threading.Tasks;
 
 namespace App_pressing_Loreau.Helper
 {
-    public class ButtonUser1
-    {
-    }
-
-    public class ButtonUser2
-    {
-       
-    }
+    
 }

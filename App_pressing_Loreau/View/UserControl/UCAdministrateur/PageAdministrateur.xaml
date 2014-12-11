@@ -28,7 +28,7 @@
                    Style="{StaticResource butonpageadministration}"  Grid.Row="0"  Click="btn_pageAdministrateur_administration_commandes_Click"/>
             <Button x:Name="btn_pageAdministrateur_gestion_utilisateur" Content="Gestion des utilisateurs" Grid.Column="0" Grid.Row="1" 
                     Style="{StaticResource butonpageadministration}" Click="btn_pageAdministrateur_gestion_utilisateur_Click"/>
-            <Button  x:Name="btn_pageAdministrateur_statistiques" Content="Statistiques" Grid.Column="1" Grid.Row="1"  Style="{StaticResource butonpageadministration}" />
+            <Button  x:Name="btn_pageAdministrateur_statistiques" Content="Statistiques" Grid.Column="1" Grid.Row="1"  Style="{StaticResource butonpageadministration}" Click="btn_pageAdministrateur_statistiques_Click" />
             <Button  x:Name="btn_pageAdministrateur_administration_client_pro" Content="Administration Client Pro" Grid.Column="2" Grid.Row="1" 
                       Style="{StaticResource butonpageadministration}" Click="btn_pageAdministrateur_administration_client_pro_Click" />
             <Button  x:Name="btn_pageAdministrateur_parametre_affichage" Content="Paramètres d'affichage" Grid.Column="0" 
