@@ -15,6 +15,7 @@ namespace App_pressing_Loreau.View
     class NouvelleCommandeVM : ObservableObject, IPageViewModel
     {
         Commande commande;
+
         public String Name
         {
             get { return ""; }
@@ -44,7 +45,7 @@ namespace App_pressing_Loreau.View
 
         private void ajoutCommande()
         {
-           
+
             //Command contain : 
             //  -   each articles (List of articles)
             //  -   the client
@@ -61,8 +62,8 @@ namespace App_pressing_Loreau.View
             commande.payee = false;
 
             //Get the client id
-            int idClt;
-            idClt = commande.client.id;
+            //int idClt;
+            //idClt = commande.client.id;
 
 
 
