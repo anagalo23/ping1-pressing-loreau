@@ -45,6 +45,7 @@ namespace App_pressing_Loreau.Helper
             _execute = execute;
             _canExecute = canExecute;           
         }
+
         public RelayCommand(Action<object> execute, Predicate<object> canExecute, Predicate<object> canBeExecute)
         {
             if (execute == null)
