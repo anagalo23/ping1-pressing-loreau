@@ -157,10 +157,6 @@ namespace App_pressing_Loreau
         { get { return new RelayCommand(p => accueilVM());  } }
         #endregion
 
-
-
-
-
         #region Methods
 
         //Methodes des redirection vers le ViewModel de l'Identification client
