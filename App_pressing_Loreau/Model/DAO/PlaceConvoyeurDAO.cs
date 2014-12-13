@@ -39,7 +39,7 @@ namespace App_pressing_Loreau.Model.DAO
                 List<PlaceConvoyeur> retour = new List<PlaceConvoyeur>();
                 String sql = "SELECT conv_id, conv_emplacement FROM convoyeur";
 
-                //connection à la base de données   
+                //connection à la base de données  
                 MySqlConnection connection = Bdd.connexion();
                 MySqlCommand cmd = new MySqlCommand(sql, connection);
 

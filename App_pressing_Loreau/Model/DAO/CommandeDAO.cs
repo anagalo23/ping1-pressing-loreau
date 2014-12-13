@@ -4,12 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using App_pressing_Loreau.Model.DTO;
+using App_pressing_Loreau.Model;
 using MySql.Data.MySqlClient;
 
 namespace App_pressing_Loreau.Model.DAO
 {
     class CommandeDAO
     {
+        public static void open()
+        {
+            MySqlConnection  connection = Bdd.connexion();
+        }
+
+
         public static void insertCommande(Commande commande)
         {
             try
@@ -28,8 +35,7 @@ namespace App_pressing_Loreau.Model.DAO
                 cmd.Parameters.AddWithValue("remise", commande.remise);
 
                 int retour = cmd.ExecuteNonQuery();
-                retour = (retour = 0) ? 0 : lastId();
-            }
+                connection.Close();            }
             catch (Exception Ex)
             {
                 LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'une commande dans la base de données."));

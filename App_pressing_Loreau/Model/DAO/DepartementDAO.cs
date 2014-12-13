@@ -39,10 +39,10 @@ namespace App_pressing_Loreau.Model.DAO
                 List<Departement> retour = new List<Departement>();
                 String sql = "SELECT dep_id, dep_nom FROM departement";
 
-                //connection à la base de données   
+                //connection à la base de données  
                 MySqlConnection connection = Bdd.connexion();
                 MySqlCommand cmd = new MySqlCommand(sql, connection);
-                
+
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
                 Departement departement;
