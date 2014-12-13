@@ -116,7 +116,7 @@ SelectionChanged="DataGrid_SelectionChanged" FontFamily="Arial" FontSize="20" Fo
                             </Grid>
                         </Border>
 
-                        <Border Margin="1" BorderBrush="Black" BorderThickness="1" Grid.Column="1" >
+                        <Border Margin="1" BorderBrush="Aqua" BorderThickness="1" Grid.Column="1" >
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="23*"/>
