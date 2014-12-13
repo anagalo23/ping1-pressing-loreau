@@ -13,21 +13,21 @@ namespace App_pressing_Loreau.View
 {
     class RestitutionArticlesVM : ObservableObject, IPageViewModel
     {
-        Departement dep ;
+        Departement dep;
 
         private int _txb_restitutionArticles_idFactures;
         public CommandeConcernantRA_DATA _contentCommandeConcernant;
         public String Name
         {
             get { return ""; }
-          
+
         }
 
 
 
         public int Txb_restitutionArticles_idFactures
         {
-            get { return _txb_restitutionArticles_idFactures;}
+            get { return _txb_restitutionArticles_idFactures; }
             set
             {
                 _txb_restitutionArticles_idFactures = value;
@@ -38,9 +38,12 @@ namespace App_pressing_Loreau.View
 
         public ICommand Btn_restitutionArticles_ok
         {
-            get { return new RelayCommand(
-                p=>but(),
-                p=> Txb_restitutionArticles_idFactures>0 ); }
+            get
+            {
+                return new RelayCommand(
+                    p => but(),
+                    p => Txb_restitutionArticles_idFactures > 0);
+            }
 
         }
 
@@ -51,7 +54,7 @@ namespace App_pressing_Loreau.View
             {
                 if (value != _contentCommandeConcernant)
                 {
-                     _contentCommandeConcernant=value ;
+                    _contentCommandeConcernant = value;
                     OnPropertyChanged("ContentCommandeConcernant");
                 }
             }
