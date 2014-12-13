@@ -69,8 +69,7 @@ namespace App_pressing_Loreau.Model.DTO
             this.type = type;
             listCommandes = new List<Commande>();
         }
-        public Client(string nom, string prenom, string telfix, string telmob, Adresse adresse,  DateTime dateNaissance, string email, DateTime dateInscription, int idCleanWay, int contactMail, int contactSms, int type)
-        {
+        public Client(string nom, string prenom, string telfix, string telmob, Adresse adresse, DateTime dateNaissance, string email, DateTime dateInscription, int idCleanWay, int contactMail, int contactSms, int type)        {
             id = 0;
             this.nom = nom;
             this.prenom = prenom;
