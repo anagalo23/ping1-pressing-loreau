@@ -57,10 +57,10 @@ namespace App_pressing_Loreau.View
 
         public String Txb_nouveauClient_date_naissance
         {
-            get { return client.dateNaissance; }
+            get { return client.dateNaissance.ToString(); }
             set
             {
-                if (value != client.dateNaissance)
+                if (value != client.dateNaissance.ToString())
                 {
                     client.dateNaissance = DateTime.Parse(value);
                     OnPropertyChanged("Txb_nouveauClient_date_naissance");
@@ -72,10 +72,10 @@ namespace App_pressing_Loreau.View
 
         public String Txb_nouveauClient_idCleanway
         {
-            get { return client.idCleanWay; }
+            get { return client.idCleanWay.ToString(); }
             set
             {
-                if (value != client.idCleanWay)
+                if (value != client.idCleanWay.ToString())
                 {
                     client.idCleanWay = Int16.Parse(value);
                     OnPropertyChanged("Txb_nouveauClient_idCleanway");
