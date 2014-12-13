@@ -5,7 +5,7 @@ using System.Windows.Input;
 namespace App_pressing_Loreau.Helper
 {
     /// <summary>
-    /// A command whose sole purpose is to 
+    /// A command whose sole purpose is to
     /// relay its functionality to other
     /// objects by invoking delegates. The
     /// default return value for the CanExecute
@@ -43,9 +43,8 @@ namespace App_pressing_Loreau.Helper
                 throw new ArgumentNullException("execute");
 
             _execute = execute;
-            _canExecute = canExecute;           
+            _canExecute = canExecute;
         }
-
         public RelayCommand(Action<object> execute, Predicate<object> canExecute, Predicate<object> canBeExecute)
         {
             if (execute == null)
