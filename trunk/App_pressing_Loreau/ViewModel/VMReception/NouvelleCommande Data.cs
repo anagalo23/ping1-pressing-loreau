@@ -4,9 +4,3 @@
 //using System.Text;
 //using System.Threading.Tasks;
 
-//namespace App_pressing_Loreau.ViewModel.VMReception
-//{
-//    class NouvelleCommande_Data
-//    {
-//    }
-//}
