@@ -47,7 +47,7 @@ namespace App_pressing_Loreau.Model.DAO
                 List<TypeArticle> retour = new List<TypeArticle>();
                 String sql = "SELECT T.typ_id, T.type_nom, T.type_encombrement, T.type_TVA, T.type_HT, T.type_dep_id, D.dep_nom FROM type T, departement D WHERE T.type_dep_id=D.dep_id";
 
-                //connection à la base de données   
+                //connection à la base de données  
                 MySqlConnection connection = Bdd.connexion();
                 MySqlCommand cmd = new MySqlCommand(sql, connection);
 

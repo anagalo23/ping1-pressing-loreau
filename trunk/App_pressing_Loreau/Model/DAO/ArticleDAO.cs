@@ -59,25 +59,25 @@ namespace App_pressing_Loreau.Model.DAO
                     Departement dep = new Departement(
                         Int32.Parse(msdr["type_dep_id"].ToString()),
                         msdr["dep_nom"].ToString());
-                    
+
                     TypeArticle type = new TypeArticle(
-                        Int32.Parse(msdr["typ_id"].ToString()), 
-                        msdr["type_nom"].ToString() , 
-                        float.Parse(msdr["type_encombrement"].ToString()), 
-                        float.Parse(msdr["type_TVA"].ToString()), 
-                        float.Parse(msdr["type_HT"].ToString()), 
+                        Int32.Parse(msdr["typ_id"].ToString()),
+                        msdr["type_nom"].ToString(),
+                        float.Parse(msdr["type_encombrement"].ToString()),
+                        float.Parse(msdr["type_TVA"].ToString()),
+                        float.Parse(msdr["type_HT"].ToString()),
                         dep);
                     PlaceConvoyeur conv = new PlaceConvoyeur(
-                        Int32.Parse(msdr["conv_id"].ToString()), 
+                        Int32.Parse(msdr["conv_id"].ToString()),
                         Int32.Parse(msdr["conv_emplacement"].ToString()));
                     retour = new Article(
-                        Int32.Parse(msdr["art_id"].ToString()), 
-                        msdr["art_photo"].ToString(), 
-                        msdr["art_commentaire"].ToString(), 
-                        bool.Parse(msdr["art_rendu"].ToString()), 
-                        float.Parse(msdr["art_TVA"].ToString()), 
-                        float.Parse(msdr["art_HT"].ToString()), 
-                        type, 
+                        Int32.Parse(msdr["art_id"].ToString()),
+                        msdr["art_photo"].ToString(),
+                        msdr["art_commentaire"].ToString(),
+                        bool.Parse(msdr["art_rendu"].ToString()),
+                        float.Parse(msdr["art_TVA"].ToString()),
+                        float.Parse(msdr["art_HT"].ToString()),
+                        type,
                         conv);
                 }
                 msdr.Dispose();

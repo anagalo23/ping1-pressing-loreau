@@ -76,7 +76,7 @@ namespace App_pressing_Loreau.Model.DAO
                 //sql = String.Format("{0}{1}", sql, " ORDER BY clt_nom ASC;");
                 #endregion
 
-                //connection à la base de données   
+                //connection à la base de données  
                 MySqlConnection connection = Bdd.connexion();
                 MySqlCommand cmd = new MySqlCommand(sql, connection);
 
@@ -126,3 +126,4 @@ namespace App_pressing_Loreau.Model.DAO
         }
     }
 }
+
