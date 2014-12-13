@@ -23,7 +23,7 @@ namespace App_pressing_Loreau.View
             get { return _label_restitutionArticles_type; }
             set
             {
-                if (value != _label_restitutionArticles_type)
+                if (value!=_label_restitutionArticles_type)
                 {
                     _label_restitutionArticles_type = value;
                     OnPropertyChanged("Label_restitutionArticles_type");
@@ -39,7 +39,7 @@ namespace App_pressing_Loreau.View
             {
                 if (value != _label_restitutionArticles_departement)
                 {
-                    _label_restitutionArticles_departement= value;
+                    _label_restitutionArticles_departement = value;
                     OnPropertyChanged("Label_restitutionArticles_departement");
                 }
             }
