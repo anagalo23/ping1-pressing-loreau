@@ -34,7 +34,7 @@ namespace App_pressing_Loreau.Model
 
         public static void deconnexion()
         {
-            
+
             MSConnexion.Close();
             MSConnexion = null;
         }
