@@ -45,8 +45,6 @@ namespace App_pressing_Loreau.View
 
         private void ajoutCommande()
         {
-
-            //Command contain : 
             //  -   each articles (List of articles)
             //  -   the client
 
@@ -75,7 +73,7 @@ namespace App_pressing_Loreau.View
             CommandeDAO.insertCommande(commande);
 
             //Get the command id ------------------> TODO
-            // Good question 
+            // Good question
             // Check commande.id = ?
             int fk_cmd = CommandeDAO.lastId();
             //Set paiement  ------------------------> TODO
