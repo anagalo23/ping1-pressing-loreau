@@ -22,7 +22,7 @@ namespace App_pressing_Loreau.View
     class NouvelleCommandeVM : ObservableObject, IPageViewModel
     {
         Commande commande;
-        private NouvelleCommande_Data _contentCommande;
+      
         private List<CategoryItem> categorybuttonList;
         private ICommand onButtonClickCommand;
 
@@ -105,18 +105,7 @@ namespace App_pressing_Loreau.View
         #endregion
         #endregion
         #region contenu commande
-        public NouvelleCommande_Data ContentCommande
-        {
-            get { return _contentCommande; }
-            set
-            {
-                if (value != _contentCommande)
-                {
-                    _contentCommande = value;
-                    OnPropertyChanged("ContentCommande");
-                }
-            }
-        }
+        
 
         public DelegateCommand<string> AddArticles
         {
@@ -219,9 +208,7 @@ namespace App_pressing_Loreau.View
 
         public void menu1()
         {
-            NouvelleCommande_Data ncd = new NouvelleCommande_Data();
-
-            ContentCommande = ncd;
+         
         }
 
         public void DefileDepartement(Object lang)
@@ -279,8 +266,7 @@ namespace App_pressing_Loreau.View
 
             }
 
-            Button b = new Button();
-            b.Background = Brushes.Black;
+          
 
 
         }

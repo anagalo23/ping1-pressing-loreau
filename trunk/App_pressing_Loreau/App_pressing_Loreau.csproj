@@ -122,13 +122,9 @@
     <Compile Include="ViewModel\VMReception\ContenuCommande.cs" />
     <Compile Include="ViewModel\VMReception\IdentificationClientData.cs" />
     <Compile Include="ViewModel\VMReception\NouveauClientData.cs" />
-
-
-    <Compile Include="ViewModel\VMReception\NouvelleCommande Data.cs" />
-    <Compile Include="ViewModel\VMRendu\DetailCommandeVM.cs" />
-    <Compile Include="ViewModel\VMReception\NouvelleCommande Data.cs" />
+    <Compile Include="ViewModel\VMReception\NouvelleCommandeData.cs" />
     <Compile Include="ViewModel\VMRendu\CommandeConcernantRA_DATA.cs" />
-    <Compile Include="ViewModel\VMRendu\DetailCommandeVM.cs" />    <Compile Include="ViewModel\VMRendu\RestitutionArticlesVM.cs" />
+    <Compile Include="ViewModel\VMRendu\RestitutionArticlesVM.cs" />
     <Compile Include="ViewModel\VMRendu\ResultatRechercheRA_DATA.cs" />
     <Compile Include="View\UserControl\PaiementDeLaCommande.xaml.cs">
       <DependentUpon>PaiementDeLaCommande.xaml</DependentUpon>

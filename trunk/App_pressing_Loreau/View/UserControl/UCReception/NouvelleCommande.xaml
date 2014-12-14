@@ -20,7 +20,7 @@
         </DataTemplate >
         
         <!-- Contenu des departements-->
-        <DataTemplate DataType="{x:Type local:NouvelleCommande_Data}">
+        <DataTemplate DataType="{x:Type local:NouvelleCommandeDATA}">
             <Border>
                 <ListBox ItemsSource="{Binding ListArticlesParDept}">
                     <Button Content="Button1"/>
