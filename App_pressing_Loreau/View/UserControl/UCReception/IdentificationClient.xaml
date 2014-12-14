@@ -11,17 +11,14 @@
     <UserControl.Resources>
         <DataTemplate DataType="{x:Type vm:NouveauClientVM}">
             <local:NouveauClient/>
+            
         </DataTemplate>
+        
+        
         
         <DataTemplate DataType="{x:Type vm:IdentificationClientData}">
             <Border>
-                <!--<DataGrid  ItemsSource="{Binding retour}" x:Name="datagridClient" AutoGenerateColumns="False" Margin="5" SelectionChanged="datagridClient_SelectionChanged" FontFamily="Arial" FontSize="20" FontWeight="SemiBold" >
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Nom" Width="45*" Binding="{Binding Name}" />
-                        <DataGridTextColumn Header="Prénom" Width="45*" Binding="{Binding Creator}" />
-                        <DataGridTextColumn Header="Cleanway" Width="45*" Binding="{Binding Publisher}" />
-                    </DataGrid.Columns>
-                </DataGrid>-->
+                
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -46,6 +43,8 @@
             </Border>
         </DataTemplate>
             
+        
+       
     </UserControl.Resources>
 
     <DockPanel x:Name="dp">
