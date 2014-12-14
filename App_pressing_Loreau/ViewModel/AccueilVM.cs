@@ -12,6 +12,8 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using App_pressing_Loreau.ViewModel;
+using System.Drawing;
+
 
 
 namespace App_pressing_Loreau
@@ -21,82 +23,28 @@ namespace App_pressing_Loreau
         #region Fields
 
         private IPageViewModel _accessUserControl;
+        private bool _someConditionalProperty;
+        Button b;
+        private String User1 { get; set; }
+        private String User2 { get; set; }
+        private String User3 { get; set; }
+        private String User4 { get; set; }
+        private String User5 { get; set; }
+        private String User6 { get; set; }
+
 
         #endregion
 
         #region Constructeur
         public AccueilVM()
         {
-
+            User1 = "User1";
+            User2 = "User2";
         }
 
         #endregion
 
         #region Properties / Commands
-
-        #region Commands / Action
-/*
-        ICommand onCollectionChangeCommand;
-        public ICommand OnCollectionChangeCommand
-        {
-            get { return onCollectionChangeCommand ?? (onCollectionChangeCommand = new RelayCommand(OnCollectionChange)); }
-        }
-        private void OnCollectionChange(object lang)
-        {
-            //Bouton reception
-            if (lang.ToString().Equals("btn_accueil_receptionClient"))
-            {
-                accessUserControl = new IdentificationClientVM();
-
-            }
-            //Bouton Recu
-            else if (lang.ToString().Equals("btn_accueil_renduArticles"))
-            {
-                accessUserControl = new RestitutionArticlesVM();
-
-                //MessageBox.Show("Bonjour NAGALO", "Bonjour");
-            }
-            // Bouton Facture
-            else if (lang.ToString().Equals("btn_accueil_facture"))
-            {
-                accessUserControl = new FactureVM();
-            }
-            // Bouton Convoyeur
-            else if (lang.ToString().Equals("btn_accueil_convoyeur"))
-            {
-                accessUserControl = new ConvoyeurVM();
-
-            }
-            //Bouton Client Pro
-            else if (lang.ToString().Equals("btn_accueil_client_pro"))
-            {
-                accessUserControl = new ClientPROVM();
-
-            }
-            //Bouton Impression
-            else if (lang.ToString().Equals("btn_accueil_impression"))
-            {
-                accessUserControl = new ImpressionVM();
-                
-            }
-            //Bouton Administrateur
-            else if (lang.ToString().Equals("btn_accueil_administrateur"))
-            {
-                accessUserControl = new AdministrateurConnexionVM();
-
-
-            }
-
-                
-                //Bouton Accueil Image
-            else if (lang.ToString().Equals("btn_accueil_image"))
-            {
-                accessUserControl = null;
-            }
-        }
-
- * */
-        #endregion
 
 
         public IPageViewModel accessUserControl
@@ -114,7 +62,32 @@ namespace App_pressing_Loreau
                 }
             }
         }
+        public bool SomeConditionalProperty
+        {
+            get { return _someConditionalProperty; }
+            set
+            {
+                //...
 
+                OnPropertyChanged("SomeConditionalProperty");
+                //Because Background is dependent on this property.
+                OnPropertyChanged("Background");
+            }
+        }
+        public Brush ButtonUserColor
+        {
+            get
+            {
+                return true ? Brushes.Red : Brushes.Pink;
+            }
+        }
+        public ICommand Btn_user1_accueil
+        {
+            get { return new RelayCommand(
+                p=> user1Action()); }
+        }
+
+        #region Command bouton menu
         // Button permettant la redirection vers la page Identification Client 
         public ICommand Btn_accueil_receptionClient
         { get { return new RelayCommand( p => identificationClientVM()); } }
@@ -151,6 +124,7 @@ namespace App_pressing_Loreau
         public ICommand Btn_accueil_convoyeur
         { get{ return new RelayCommand( p => convoyeurVM());  }  }
 
+        #endregion
 
         // Button permettant de revenir a la page preincipale 
         public ICommand Btn_accueil_image
@@ -159,6 +133,13 @@ namespace App_pressing_Loreau
 
         #region Methods
 
+        public void user1Action()
+        {
+            
+            SomeConditionalProperty = true;
+        }
+
+        #region Methodes Button menu
         //Methodes des redirection vers le ViewModel de l'Identification client
         public void identificationClientVM()
         {
@@ -194,6 +175,7 @@ namespace App_pressing_Loreau
             accessUserControl = new ConvoyeurVM();
         }
 
+        #endregion
         public void accueilVM()
         {
             accessUserControl = null;
