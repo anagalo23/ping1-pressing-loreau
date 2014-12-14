@@ -2,10 +2,53 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:App_pressing_Loreau.View"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="740">
 
+    <UserControl.DataContext>
+        <local:NouvelleCommandeVM />
+    </UserControl.DataContext>
+    
+    <UserControl.Resources>
+        
+        <!--  Menu bouton liste des departement -->
+        <DataTemplate x:Key="UserTemplate1">
+            <Button x:Name="button1" Width="115" Height="34" Content="{Binding ButtonContent}" Tag="{Binding ButtonTag}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.OnButtonClickCommand}" 
+                    CommandParameter="{Binding ElementName=button1}"/>
+        </DataTemplate >
+        
+        <!-- Contenu des departements-->
+        <DataTemplate DataType="{x:Type local:NouvelleCommande_Data}">
+            <Border>
+                <ListBox ItemsSource="{Binding ListArticlesParDept}">
+                    <Button Content="Button1"/>
+                    <Button Content="Button2"/>
+                </ListBox>
+            </Border>
+            
+        </DataTemplate>
+
+        <!-- Articles ajoutés-->
+
+        <DataTemplate DataType="{x:Type local:ContenuCommande}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{Binding ProductName}" Margin="5"/>
+                <TextBox/>
+                <Button Grid.Column="1" Margin="5"
+                    Content="Remove"
+                    Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path= DataContext.DeleteProduct}"
+                    CommandParameter="{Binding}" />
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    
+    
     <DockPanel x:Name="dp">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -16,17 +59,41 @@
             <Border  Grid.Column="0" Margin="10" CornerRadius="15" BorderThickness="2" BorderBrush="AliceBlue">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="19*"/>
+                        <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="130*"/>
-                        <ColumnDefinition Width="19*"/>
+                        <ColumnDefinition Width="10*"/>
                     </Grid.ColumnDefinitions>
-                    <Button  Background="White" Command="{Binding Commande_precedente}">
+                    <Button  Background="White" Command="{Binding  OnCollectionChangeCommand }" CommandParameter=" Commande_precedente">
                         <Image Source="/Resources/pics/precedent.png" Height="25"/>
                     </Button>
                     <Border BorderBrush="Aqua" BorderThickness="2" Grid.Column="1" CornerRadius="15">
 
+                        <DockPanel Margin="7">
+                   
+                            <Border DockPanel.Dock="Top" Height="40">
+                                <ListBox  ScrollViewer.HorizontalScrollBarVisibility="Hidden" VerticalAlignment="Center" Cursor="Hand"  BorderThickness="0" Background="Transparent" ItemsSource="{Binding CategoryButtonList}" ItemTemplate="{StaticResource UserTemplate1}"  TextOptions.TextHintingMode="Animated">
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <VirtualizingStackPanel Orientation="Horizontal"/>
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                </ListBox>
+                            </Border>
+                           <!-- <ContentControl  Content="{Binding ContentCommande}"/>-->
+                            <Border >
+                                <ListBox  ScrollViewer.HorizontalScrollBarVisibility="Hidden" VerticalAlignment="Center" Cursor="Hand"  BorderThickness="0" Background="Transparent" ItemsSource="{Binding ListeArticles}" ItemTemplate="{StaticResource UserTemplate1}"  TextOptions.TextHintingMode="Animated">
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <VirtualizingStackPanel Orientation="Vertical"/>
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                </ListBox>
+                               
+                            </Border>
+                        </DockPanel>
+
                     </Border>
-                    <Button Grid.Column="2"  Background="White" Command="{Binding  Commande_suivante}" >
+                    <Button Grid.Column="2"  Background="White" Command="{Binding  OnCollectionChangeCommand }"  CommandParameter="Commande_suivante">
                         <Image Source="/Resources/pics/suivant.png"/>
                     </Button>
 
@@ -45,16 +112,18 @@
                     </Grid.RowDefinitions>
                     <Label Content="Contenu de la commande" Style="{StaticResource Titre}"/>
 
+                    <!-- Contenu de la commande -->
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="61*"/>
-                            <RowDefinition Height="23*"/>
+                            <RowDefinition Height="8*"/>
+                            <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
                         <DockPanel Grid.Row="0">
-                            <ContentControl  Content="{Binding Path=ContentCommande}"/>
-                            <ScrollViewer Background="Bisque"   Margin="10"/>
+
+                            <ListBox Background="Bisque" Margin="5" ItemsSource="{Binding ContentDetailCommande}"/>
+                           
                         </DockPanel>
-                        
+
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
