@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Pressing de Loreau" Height="500" Width="750"
         xmlns:dz="http://schemas.devzest.com/presentation/docking"
+        xmlns:local="clr-namespace:App_pressing_Loreau"
         WindowState="Maximized"
         WindowStyle="ToolWindow"
         ResizeMode="NoResize" 
@@ -11,6 +12,8 @@
     <Window.Resources>
         <ResourceDictionary Source="AccueilResources.xaml"/>
     </Window.Resources>
+
+   
 
     <Grid Margin="10" >
         <Grid.RowDefinitions >
@@ -55,23 +58,25 @@
         </Border>
 
 
-        <!-- <Border x:Name="border1" BorderBrush="Aqua" BorderThickness="2" Grid.Row="1" CornerRadius="20" Background="Silver">
-
-            <DockPanel x:Name="dp" Visibility="Visible">
-
-            </DockPanel>
-        </Border>
--->
+        
         <Border Grid.Row="1" CornerRadius="20" Background="LightSkyBlue" >
 
             <DockPanel >
                 <Grid>
-
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="605*"/>
                         <ColumnDefinition Width="119*"/>
 
                     </Grid.ColumnDefinitions>
+                    <ListBox  ScrollViewer.HorizontalScrollBarVisibility="Hidden" VerticalAlignment="Center" Margin="5" Cursor="Hand"  BorderThickness="0" Background="Transparent" ItemsSource="{Binding ListeUser}" ItemTemplate="{StaticResource Utilisateurs}"  TextOptions.TextHintingMode="Animated">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+
+                    <!--
                     <Grid  Grid.Column="0">
 
                         <Grid.ColumnDefinitions>
@@ -98,6 +103,7 @@
                         <Button x:Name="btn_user6" Content="{Binding User6}" Grid.Row="1" Grid.Column="5" Margin="5" Click="btn_user1_Click"   Style="{StaticResource personalisationbuton}"/>
 
                     </Grid>
+                    -->
                     <Button x:Name="btn_accueil_image" BorderBrush="White" Background="White" Grid.Column="1"  Margin="5" Command="{Binding Btn_accueil_image}" Style="{StaticResource personalisationbuton}">
                         <Image Source="/Resources/pics/Accueil1/logo_home.png"/>
                     </Button>

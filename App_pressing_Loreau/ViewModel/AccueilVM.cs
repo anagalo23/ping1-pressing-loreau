@@ -12,7 +12,8 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using App_pressing_Loreau.ViewModel;
-using System.Drawing;
+using System.Windows.Media;
+
 
 
 
@@ -23,23 +24,14 @@ namespace App_pressing_Loreau
         #region Fields
 
         private IPageViewModel _accessUserControl;
-        private bool _someConditionalProperty;
-        Button b;
-        private String User1 { get; set; }
-        private String User2 { get; set; }
-        private String User3 { get; set; }
-        private String User4 { get; set; }
-        private String User5 { get; set; }
-        private String User6 { get; set; }
-
-
+        private List<CategoryItem> _listeUser;
+ 
         #endregion
 
         #region Constructeur
         public AccueilVM()
         {
-            User1 = "User1";
-            User2 = "User2";
+            UtilisateurListe();
         }
 
         #endregion
@@ -62,30 +54,23 @@ namespace App_pressing_Loreau
                 }
             }
         }
-        public bool SomeConditionalProperty
+
+        public List<CategoryItem> ListeUser
         {
-            get { return _someConditionalProperty; }
+            get { return this._listeUser; }
             set
             {
-                //...
+                this._listeUser = value;
+                OnPropertyChanged("ListeUser");
+            }
+        }
 
-                OnPropertyChanged("SomeConditionalProperty");
-                //Because Background is dependent on this property.
-                OnPropertyChanged("Background");
-            }
-        }
-        public Brush ButtonUserColor
+        ICommand lesUtilisateurs;
+        public ICommand LesUtilisateurs
         {
-            get
-            {
-                return true ? Brushes.Red : Brushes.Pink;
-            }
+            get {return lesUtilisateurs ?? (lesUtilisateurs = new RelayCommand(ClickSurUtilisateur)); }
         }
-        public ICommand Btn_user1_accueil
-        {
-            get { return new RelayCommand(
-                p=> user1Action()); }
-        }
+      
 
         #region Command bouton menu
         // Button permettant la redirection vers la page Identification Client 
@@ -133,12 +118,7 @@ namespace App_pressing_Loreau
 
         #region Methods
 
-        public void user1Action()
-        {
-            
-            SomeConditionalProperty = true;
-        }
-
+       
         #region Methodes Button menu
         //Methodes des redirection vers le ViewModel de l'Identification client
         public void identificationClientVM()
@@ -176,9 +156,76 @@ namespace App_pressing_Loreau
         }
 
         #endregion
+
+
+        public void ClickSurUtilisateur(object User)
+        {
+            Button clickedbutton = User as Button;
+            if (clickedbutton != null)
+            {
+                
+                clickedbutton.Background = Brushes.Red;
+              
+            }
+            else { clickedbutton.Background = Brushes.Blue; }
+           
+        }
+        public void UtilisateurListe()
+        {
+            Button button = new Button();
+
+            ListeUser = new List<CategoryItem>();
+            Button clickedbutton = button as Button;
+
+            CategoryItem User1 = new CategoryItem();
+            CategoryItem User2 = new CategoryItem();
+            CategoryItem User3 = new CategoryItem();
+            CategoryItem User4 = new CategoryItem();
+            CategoryItem User5 = new CategoryItem();
+            CategoryItem User6 = new CategoryItem();
+
+            User1.ButtonUserBackground = Brushes.Teal;
+            User2.ButtonUserBackground = Brushes.Teal;
+            User3.ButtonUserBackground = Brushes.Teal;
+            User4.ButtonUserBackground = Brushes.Teal;
+            User5.ButtonUserBackground = Brushes.Teal;
+
+
+            User1.ButtonUserContent = "FAYE";
+            User2.ButtonUserContent = "FOFOU";
+            User3.ButtonUserContent = "NAGALO";
+            User4.ButtonUserContent = "POLLET";
+            User5.ButtonUserContent = "TAQUET";
+
+
+
+            ListeUser.Add(User1);
+            ListeUser.Add(User2);
+            ListeUser.Add(User3);
+            ListeUser.Add(User4);
+            ListeUser.Add(User5);
+            ListeUser.Add(User6);
+
+        }
         public void accueilVM()
         {
             accessUserControl = null;
+        }
+        #endregion
+
+
+
+
+        #region Class
+        public class CategoryItem
+        {
+            public string ButtonUserContent { get; set; }
+
+            public string ButtonUserTag { get; set; }
+
+            public Brush ButtonUserBackground { get; set; }
+
+
         }
         #endregion
 

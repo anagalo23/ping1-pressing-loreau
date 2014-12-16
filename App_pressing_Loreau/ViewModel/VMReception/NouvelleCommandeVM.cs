@@ -15,23 +15,35 @@ using System.Collections.ObjectModel;
 using Microsoft.Practices.Prism.Commands;
 using System.Windows.Controls;
 using System.Windows;
-using System.Drawing;
+using Microsoft.Win32;
+
+
+///S
+/// 
+/// 
+/// 
+///
 
 namespace App_pressing_Loreau.View
 {
     class NouvelleCommandeVM : ObservableObject, IPageViewModel
     {
+
+
+        #region Attributs
         Commande commande;
-      
-        private List<CategoryItem> categorybuttonList;
+
+        private List<CategoryItem> _listeDepartement;
         private ICommand onButtonClickCommand;
 
-        private DelegateCommand<string> _addArticles;
-        private ObservableCollection<ContenuCommande> _contentDetailCommande;
-        private DelegateCommand<ContenuCommande> _deleteProduct;
+        private ObservableCollection<ArticlesVM> _contentDetailCommande;
+        private DelegateCommand<ArticlesVM> _deleteArticles;
+
         private List<CategoryItem> _listeArticles;
 
+        private string _defaultPath;
 
+        #endregion
         public String Name
         {
             get { return ""; }
@@ -43,27 +55,10 @@ namespace App_pressing_Loreau.View
         }
 
 
-        #region Properties/Commands
-
-        /*public ICommand GetProductCommand
-        {
-            get
-            {
-                if (_ajoutCommande == null)
-                {
-                    _ajoutCommande = new RelayCommand(
-                        param => ajoutCommande()
-                    );
-                }
-                return _ajoutCommande;
-            }
-        }
-        */
+        #region Properties/Commande
 
 
 
-
-        #region Commande
         //gestion du choix des articles
 
         #region Bouton departement
@@ -77,16 +72,27 @@ namespace App_pressing_Loreau.View
         {
             get { return onCollectionChangeCommand ?? (onCollectionChangeCommand = new RelayCommand(DefileDepartement)); }
         }
-        public List<CategoryItem> CategoryButtonList
+
+        ICommand listesArtclesCommandes;
+        public ICommand ListesArtclesCommandes
+        {
+            get { return listesArtclesCommandes ?? (listesArtclesCommandes = new RelayCommand(AjouterArticles)); }
+
+        }
+
+        
+
+
+        public List<CategoryItem> ListeDepartements
         {
             get
             {
-                return categorybuttonList;
+                return _listeDepartement;
             }
             set
             {
-                categorybuttonList = value;
-                RaisePropertyChanged("CategoryButtonList");
+                _listeDepartement = value;
+                RaisePropertyChanged("ListeDepartements");
             }
         }
 
@@ -103,26 +109,17 @@ namespace App_pressing_Loreau.View
             }
         }
         #endregion
-        #endregion
+      
+
         #region contenu commande
         
-
-        public DelegateCommand<string> AddArticles
-        {
-            get
-            {
-                return this._addArticles ?? (this._addArticles = new DelegateCommand<string>(
-                                                                  this.ExecuteAddProduct,
-                                                                  (arg) => true));
-            }
-        }
-
-        public ObservableCollection<ContenuCommande> ContentDetailCommande
+       
+        public ObservableCollection<ArticlesVM> ContentDetailCommande
         {
             get
             {
                 return this._contentDetailCommande ??
-                    (this._contentDetailCommande = new ObservableCollection<ContenuCommande>());
+                    (this._contentDetailCommande = new ObservableCollection<ArticlesVM>());
             }
 
             set
@@ -134,20 +131,19 @@ namespace App_pressing_Loreau.View
                 }
             }
         }
-        public DelegateCommand<ContenuCommande> DeleteProduct
+        public DelegateCommand<ArticlesVM> DeleteArticles
         {
             get
             {
-                return this._deleteProduct ?? (this._deleteProduct = new DelegateCommand<ContenuCommande>(
-                                                                       this.ExecuteDeleteProduct,
+                return this._deleteArticles ?? (this._deleteArticles = new DelegateCommand<ArticlesVM>(
+                                                                       this.ExecuteDeleteArticles,
                                                                        (arg) => true));
             }
         }
         #endregion
 
-       
 
-        #endregion
+        #endregion 
 
        
         #region Methods
@@ -206,10 +202,7 @@ namespace App_pressing_Loreau.View
             Bdd.deconnexion();
         }
 
-        public void menu1()
-        {
-         
-        }
+      
 
         public void DefileDepartement(Object lang)
         {
@@ -219,7 +212,7 @@ namespace App_pressing_Loreau.View
             CategoryItem item4 = new CategoryItem();
             CategoryItem item5 = new CategoryItem();
 
-            CategoryButtonList = new List<CategoryItem>();           // Intialize the button list
+            ListeDepartements = new List<CategoryItem>();           // Intialize the button list
 
             if (lang.ToString().Equals("Commande_suivante"))
             {
@@ -239,11 +232,11 @@ namespace App_pressing_Loreau.View
                 item5.ButtonContent = Category1.Dep5;
                 item5.ButtonTag = ButtonNames.NameC1D5;
 
-                CategoryButtonList.Add(item1);
-                CategoryButtonList.Add(item2);
-                CategoryButtonList.Add(item3);
-                CategoryButtonList.Add(item4);
-                CategoryButtonList.Add(item5);
+                ListeDepartements.Add(item1);
+                ListeDepartements.Add(item2);
+                ListeDepartements.Add(item3);
+                ListeDepartements.Add(item4);
+                ListeDepartements.Add(item5);
             }
             else
             {
@@ -259,21 +252,19 @@ namespace App_pressing_Loreau.View
                 item4.ButtonContent = Category2.Dep4;
                 item4.ButtonTag = ButtonNames.NameC2D4;
 
-                CategoryButtonList.Add(item1);
-                CategoryButtonList.Add(item2);
-                CategoryButtonList.Add(item3);
-                CategoryButtonList.Add(item4);
+                ListeDepartements.Add(item1);
+                ListeDepartements.Add(item2);
+                ListeDepartements.Add(item3);
+                ListeDepartements.Add(item4);
 
             }
-
-          
-
-
         }
+
+
         private void Contenudepartement(object button)
         {
             Button clickedbutton = button as Button;
-
+            
             if (clickedbutton != null & clickedbutton.Tag.ToString().Equals("Accessoire"))
             {
 
@@ -281,10 +272,16 @@ namespace App_pressing_Loreau.View
                 CategoryItem item2 = new CategoryItem();
                 CategoryItem item3 = new CategoryItem();
 
-                item1.ButtonContent = "Pantalon";
-                item2.ButtonContent = "Veste";
-                item3.ButtonContent = "Chemise";
+                item1.ButtonArticlesContent = "Pantalon";
+                item1.ButtonArticlesTag = "Pantalon";
 
+                item2.ButtonArticlesContent = "Veste";
+                item2.ButtonArticlesTag = "Veste";
+
+                item3.ButtonArticlesContent = "Chemise";
+                item3.ButtonArticlesTag = "Chemise";
+
+                clickedbutton.Background = Brushes.Blue;
                 ListeArticles = new List<CategoryItem>();
 
                 ListeArticles.Add(item1);
@@ -292,16 +289,21 @@ namespace App_pressing_Loreau.View
                 ListeArticles.Add(item3);
                 
             }
-            if (clickedbutton != null & clickedbutton.Tag.ToString().Equals("Ameublement"))
+            else if (clickedbutton != null & clickedbutton.Tag.ToString().Equals("Ameublement"))
             {
-
+                clickedbutton.Background = Brushes.Blue;
                 CategoryItem item1 = new CategoryItem();
                 CategoryItem item2 = new CategoryItem();
                 CategoryItem item3 = new CategoryItem();
 
-                item1.ButtonContent = "Robe";
-                item2.ButtonContent = "Jupe";
-                item3.ButtonContent = "écharpe";
+                item1.ButtonArticlesContent = "Robe";
+                item1.ButtonArticlesTag = "Robe";
+
+                item2.ButtonArticlesContent = "Jupe";
+                item2.ButtonArticlesTag = "Jupe";
+
+                item3.ButtonArticlesContent = "écharpe";
+                item3.ButtonArticlesTag = "echarpe";
 
                 ListeArticles = new List<CategoryItem>();
 
@@ -310,20 +312,31 @@ namespace App_pressing_Loreau.View
                 ListeArticles.Add(item3);
 
             }
+            else
+            {
+                clickedbutton.Background = Brushes.Blue;
+                string msg = string.Format("You Pressed : {0} button", clickedbutton.Tag);
+                MessageBox.Show(msg);
+            }
         }
 
-        private void ExecuteAddProduct(string obj)
+
+
+        public void AjouterArticles(object button)
         {
-            if (!string.IsNullOrEmpty(obj))
+            Button clickedbutton = button as Button;
+            if (clickedbutton != null )
             {
-                this._contentDetailCommande.Add(new ContenuCommande()
+                this._contentDetailCommande.Add(new ArticlesVM()
                 {
-                    ProductName = "Bonjour"
+                    ArticlesName = clickedbutton.Tag.ToString()
+
                 });
             }
         }
 
-        private void ExecuteDeleteProduct(ContenuCommande obj)
+       
+        private void ExecuteDeleteArticles(ArticlesVM obj)
         {
             if (this._contentDetailCommande.Contains(obj))
             {
@@ -339,7 +352,11 @@ namespace App_pressing_Loreau.View
         public class CategoryItem
         {
             public string ButtonContent { get; set; }
+            public string ButtonArticlesContent { get; set; }
+
             public string ButtonTag { get; set; }
+            public string ButtonArticlesTag { get; set; }
+
         }
         #endregion
     }

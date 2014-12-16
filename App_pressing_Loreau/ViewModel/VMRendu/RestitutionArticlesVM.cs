@@ -8,6 +8,7 @@ using System.Windows.Input;
 
 using App_pressing_Loreau.Model.DAO;
 using App_pressing_Loreau.Model.DTO;
+using System.Collections.ObjectModel;
 
 namespace App_pressing_Loreau.View
 {
@@ -16,6 +17,8 @@ namespace App_pressing_Loreau.View
         Departement dep;
 
         private int _txb_restitutionArticles_idFactures;
+
+        private ObservableCollection<ChoixBox> _cbb_restitutionClient_choix_theme;
         public CommandeConcernantRA_DATA _contentCommandeConcernant;
         public String Name
         {
@@ -23,6 +26,11 @@ namespace App_pressing_Loreau.View
 
         }
 
+        public RestitutionArticlesVM()
+        {
+            //Cbb_restitutionClient_choix_theme.Add(new ChoixBox() { Name = "Nom"});
+            //Cbb_restitutionClient_choix_theme.Add("Prenom");
+        }
 
 
         public int Txb_restitutionArticles_idFactures
@@ -36,6 +44,22 @@ namespace App_pressing_Loreau.View
         }
 
 
+        public ObservableCollection<ChoixBox> Cbb_restitutionClient_choix_theme
+        {
+            set
+            {
+                this._cbb_restitutionClient_choix_theme = value;
+                this.RaisePropertyChanged("Cbb_restitutionClient_choix_theme");
+            }
+            get
+            {
+                return this._cbb_restitutionClient_choix_theme;
+            }
+        }
+       
+
+ 
+        
         public ICommand Btn_restitutionArticles_ok
         {
             get
@@ -69,5 +93,20 @@ namespace App_pressing_Loreau.View
             ccd.Label_restitutionArticles_name = Txb_restitutionArticles_idFactures.ToString();
             ContentCommandeConcernant = ccd;
         }
+
+
+        #region Classe
+
+        public class ChoixBox
+        {
+            public String Name { get; set; }
+        }
+
+
+
+        #endregion
+
+
+
     }
 }
