@@ -10,7 +10,7 @@
   <Class Name="App_pressing_Loreau.Accueil" Collapsed="true">
     <Position X="30.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>View\Accueil.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -149,8 +149,15 @@
   </Class>
   <Class Name="App_pressing_Loreau.AccueilVM">
     <Position X="9.5" Y="3" Width="2" />
+    <NestedTypes>
+      <Class Name="App_pressing_Loreau.AccueilVM.CategoryItem" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ViewModel\AccueilVM.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>Ag0gAAOARAAAAABAKBAAAEAVBAgAACQgAQAAEBAQAIA=</HashCode>
+      <HashCode>Ag0gAAEAQAAAAAAACBAAAGAYAAAAACQgAAAAEBAcAIA=</HashCode>
       <FileName>ViewModel\AccueilVM.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -395,17 +402,10 @@
       </Class>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAEAAAABIAAGAAABQABCA1AAAACAAgAQAQkAQAACAA=</HashCode>
+      <HashCode>QAgEAAAAhAAAGIAAAQAAAA1AAAACAQEAAAAoBAAACAA=</HashCode>
       <FileName>ViewModel\VMReception\NouvelleCommandeVM.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="App_pressing_Loreau.View.DetailCommandeVM" Collapsed="true">
-    <Position X="39.25" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ViewModel\VMRendu\DetailCommandeVM.cs</FileName>
-    </TypeIdentifier>
   </Class>
   <Class Name="App_pressing_Loreau.View.RestitutionArticlesVM">
     <Position X="5" Y="3" Width="1.5" />
@@ -435,13 +435,6 @@
     <TypeIdentifier>
       <HashCode>ABgAAAAAAAAAAIAiAAAAIAEACAABIABQEAQAAgAAAoA=</HashCode>
       <FileName>Model\DTO\Client.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="App_pressing_Loreau.View.NouvelleCommande_Data">
-    <Position X="19" Y="7" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ViewModel\VMReception\NouvelleCommande Data.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="App_pressing_Loreau.View.IdentificationClientData">

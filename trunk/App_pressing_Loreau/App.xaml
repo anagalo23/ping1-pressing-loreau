@@ -59,7 +59,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
+        <!-- Style du combo box-->
         <Style TargetType="{x:Type ComboBox}" x:Key="persoComboBox">
             <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
             <Setter Property="Control.Template">
@@ -91,6 +91,24 @@
             <Setter Property="FontWeight" Value="SemiBold"/>
         </Style>
 
+        <!--Buton des departements et des articles  -->
+        
+        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="departementArt">
+            <Setter Property="Background" Value="Beige"/>
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="5" Background="{TemplateBinding Background}"
+                                BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                            </ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+                
+            </Setter>
+            
+        </Style>
         <!--personnalisation des interfaces contenant des boutons de la page administration-->
 
         <Style  TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="butonpageadministration">

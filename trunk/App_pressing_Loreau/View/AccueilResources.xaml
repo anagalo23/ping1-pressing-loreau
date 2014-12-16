@@ -3,6 +3,9 @@
                     xmlns:local="clr-namespace:App_pressing_Loreau"
                     xmlns:vm="clr-namespace:App_pressing_Loreau.View">
 
+
+ 
+
     <!-- Déclarations des données pour la reception client -->
     <DataTemplate DataType="{x:Type vm:IdentificationClientVM}">
         <local:IdentificationClient/>
@@ -49,14 +52,18 @@
         <local:IdentificationAdmin/>
     </DataTemplate>
 
+    <DataTemplate x:Key="Utilisateurs">
+        <Button x:Name="button1" Width="170" Height="60" Content="{Binding ButtonUserContent}" Tag="{Binding ButtonUserTag}" Background="{Binding ButtonUserBackground}" Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.LesUtilisateurs}"  Style="{StaticResource personalisationbuton}"
+                    CommandParameter="{Binding ElementName=button1}"/>
+    </DataTemplate >
+
+    
     <!--Déclaration des données pour la connexion administrateur-->
     <!--<DataTemplate DataType="{x:Type vm:PageAdministrateurVM}">
         <local:PageAdministrateur/>
     </DataTemplate>-->
 
     <Style TargetType="Button"  BasedOn="{StaticResource {x:Type Button}}" x:Key="buttonColorAccueil">
-        <!-- Set the default value here (if any) 
-                 if you set it directly on the button that will override the trigger -->
         <Setter Property="Background" Value="Teal"/>
         <Setter Property="Template">
             <Setter.Value>

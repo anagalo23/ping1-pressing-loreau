@@ -23,13 +23,13 @@ namespace App_pressing_Loreau
     /// </summary>
     public partial class Accueil : Window
     {
-        Button btn;
+        //Button btn;
       
         public Accueil()
         {    
             InitializeComponent();
         }
-      
+      /*
         void btn_user1_Click(Object sender, EventArgs e)
         {
             btn = ((Button)(sender));
@@ -86,9 +86,9 @@ namespace App_pressing_Loreau
                     btn_user1.ClearValue(Button.BackgroundProperty);
                     break;
             }
-
+            
         }
-
+*/
 
       
 
