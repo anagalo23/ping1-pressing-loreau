@@ -15,14 +15,14 @@ namespace App_pressing_Loreau.Model.DTO
         public float remise { get; set; }
         public Client client { get; set; }
         public List<Article> listArticles { get; set; }
-        public List<Payement> listPayements { get; set; }
+        public List<Paiement> listPayements { get; set; }
         #endregion
 
         #region classes
         public Commande()
         {
             listArticles = new List<Article>();
-            listPayements = new List<Payement>();
+            listPayements = new List<Paiement>();
         }
         public Commande(DateTime date, Boolean payee, float remise, Client client)
         {
@@ -32,7 +32,7 @@ namespace App_pressing_Loreau.Model.DTO
             this.remise = remise;
             this.client = client;
             listArticles = new List<Article>();
-            listPayements = new List<Payement>();
+            listPayements = new List<Paiement>();
         }
         public Commande(int id, DateTime date, Boolean payee, float remise, Client client)
         {
@@ -42,7 +42,7 @@ namespace App_pressing_Loreau.Model.DTO
             this.remise = remise;
             this.client = client;
             listArticles = new List<Article>();
-            listPayements = new List<Payement>();
+            listPayements = new List<Paiement>();
         }
 
         public void addArticle(Article article)
@@ -50,7 +50,7 @@ namespace App_pressing_Loreau.Model.DTO
             listArticles.Add(article);
         }
 
-        public void addPayement(Payement payement)
+        public void addPayement(Paiement payement)
         {
             listPayements.Add(payement);
         }

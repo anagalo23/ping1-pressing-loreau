@@ -6,28 +6,28 @@ using System.Threading.Tasks;
 
 namespace App_pressing_Loreau.Model.DTO
 {
-    class Payement
+    class Paiement
     {
         #region attributs
         public int id {get; set;}
         public DateTime date { get; set; }
         public float montant {get; set;}
-        public TypePayement typePayement { get; set; }
+        public TypePaiement typePayement { get; set; }
         #endregion
 
         #region classes
-        public Payement()
+        public Paiement()
         {
         }
 
-        public Payement(DateTime date, float montant, TypePayement typePayement)
+        public Paiement(DateTime date, float montant, TypePaiement typePayement)
         {
             id = 0;
             this.date = date;
             this.montant = montant;
             this.typePayement = typePayement;
         }
-        public Payement(int id, DateTime date, float montant, TypePayement typePayement)
+        public Paiement(int id, DateTime date, float montant, TypePaiement typePayement)
         {
             this.id = id;
             this.date = date;

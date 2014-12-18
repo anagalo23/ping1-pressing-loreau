@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace App_pressing_Loreau.Model.DTO
 {
-    class TypePayement
+    class TypePaiement
     {
         #region attributs
         public int id {get; set;}
@@ -14,15 +14,15 @@ namespace App_pressing_Loreau.Model.DTO
         #endregion
 
         #region classes
-        public TypePayement()
+        public TypePaiement()
         {
         }
-        public TypePayement(string nom)
+        public TypePaiement(string nom)
         {
             id = 0;
             this.nom = nom;
         }
-        public TypePayement(int id, string nom)
+        public TypePaiement(int id, string nom)
         {
             this.id = id;
             this.nom = nom;
