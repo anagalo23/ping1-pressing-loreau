@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace App_pressing_Loreau.Model.DAO
 {
-    class PayementDAO
+    class PaiementDAO
     {
     }
 }
