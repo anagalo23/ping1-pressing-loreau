@@ -112,7 +112,6 @@
     <Compile Include="Model\DAO\TypeArticleDAO.cs" />
     <Compile Include="Model\DAO\TypePayementDAO.cs" />
     <Compile Include="ViewModel\AccueilVM.cs" />
-    <Compile Include="ViewModel\ApplicationViewModel.cs" />
     <Compile Include="ViewModel\VMAdministrateur\AdministrateurConnexionVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\PageAdministrateurVM.cs" />
     <Compile Include="ViewModel\VMClientPRO\ClientPROVM.cs" />
@@ -142,6 +141,9 @@
     </Compile>
     <Compile Include="View\UserControl\UCClientPro\ClientProUC.xaml.cs">
       <DependentUpon>ClientProUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl\UCClientPro\UnClientPro.xaml.cs">
+      <DependentUpon>UnClientPro.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControl\UCConvoyeur\Convoyeur.xaml.cs">
       <DependentUpon>Convoyeur.xaml</DependentUpon>
@@ -200,7 +202,7 @@
       <DependentUpon>Accueil.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\AccueilResources.xaml">
+    <Page Include="Resources\AccueilResources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -225,6 +227,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControl\UCClientPro\ClientProUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl\UCClientPro\UnClientPro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

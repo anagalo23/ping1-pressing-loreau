@@ -97,7 +97,7 @@
                                 </Grid.ColumnDefinitions>
 
                                 <!-- Definition du champ de selection combo box-->
-                                <ComboBox x:Name="cbb_restitutionClient_choix_theme" Grid.Column="0" FontFamily="Arial" FontWeight="SemiBold" HorizontalContentAlignment="Center" Margin="5,5,5,30" VerticalContentAlignment="Center" Grid.Row="1" ItemsSource="{Binding Cbb_restitutionClient_choix_theme}" SelectedItem="{Binding Selected_restitutionClient_choix_theme}" DisplayMemberPath="Name" />
+                                <ComboBox x:Name="cbb_restitutionClient_choix_theme" Grid.Column="0" FontFamily="Arial" FontWeight="SemiBold" HorizontalContentAlignment="Center" Margin="5,5,5,30" VerticalContentAlignment="Center" Grid.Row="1" ItemsSource="{Binding Cbb_restitutionClient_choix_theme}" SelectedItem="{Binding Selected_restitutionClient_choix_theme}" DisplayMemberPath="NameCbb" />
 
                                 <TextBox x:Name="txb_restitutionArticles_choix" Margin="10,20" Grid.Column="1" Style="{StaticResource vertiTextBox}" Text="{Binding Txb_restitutionArticles_choix, UpdateSourceTrigger=PropertyChanged }" Grid.Row="1"/>
 

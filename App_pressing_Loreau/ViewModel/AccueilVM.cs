@@ -11,7 +11,6 @@ using App_pressing_Loreau.View;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
-using App_pressing_Loreau.ViewModel;
 using System.Windows.Media;
 
 
@@ -19,9 +18,12 @@ using System.Windows.Media;
 
 namespace App_pressing_Loreau
 {
+    /// <summary>
+    /// ViewModel pour la classe Accueil.xaml
+    /// </summary>
     public class AccueilVM : ObservableObject
     {
-        #region Fields
+        #region Attributs
 
         private IPageViewModel _accessUserControl;
         private List<CategoryItem> _listeUser;
@@ -36,7 +38,7 @@ namespace App_pressing_Loreau
 
         #endregion
 
-        #region Properties / Commands
+        #region Propriétés et Commandes
 
 
         public IPageViewModel accessUserControl
@@ -116,7 +118,9 @@ namespace App_pressing_Loreau
         { get { return new RelayCommand(p => accueilVM());  } }
         #endregion
 
-        #region Methods
+
+
+        #region Méthodes
 
        
         #region Methodes Button menu
@@ -161,13 +165,17 @@ namespace App_pressing_Loreau
         public void ClickSurUtilisateur(object User)
         {
             Button clickedbutton = User as Button;
-            if (clickedbutton != null)
+            for (int i = 0; i < ListeUser.Count; i++)
             {
-                
-                clickedbutton.Background = Brushes.Red;
-              
+                if (clickedbutton != null & clickedbutton.Tag.ToString().Equals(ListeUser[i].ButtonUserTag))
+                {
+
+                    //clickedbutton.Background = Brushes.Red;
+                    ListeUser[i].ButtonUserBackground = Brushes.Blue;
+
+                }
+                else { clickedbutton.Background = Brushes.Blue; }
             }
-            else { clickedbutton.Background = Brushes.Blue; }
            
         }
         public void UtilisateurListe()
