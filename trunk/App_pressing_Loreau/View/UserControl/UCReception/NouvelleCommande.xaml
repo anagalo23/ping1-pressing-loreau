@@ -131,7 +131,7 @@
                                 <ColumnDefinition Width="1*"/>
                                 
                             </Grid.ColumnDefinitions>
-                            <Button x:Name="btn_nouvellecommande_valider" Style="{StaticResource personalisationbuton1}" Grid.Column="0" Content="Valider commande" Command="{Binding Btn_nouvellecommande_valider}"/>
+                            <Button x:Name="btn_nouvellecommande_valider" Grid.Column="0" Content="Valider commande" Command="{Binding Btn_nouvellecommande_valider}"/>
 
                         </Grid>
 

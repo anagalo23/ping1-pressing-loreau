@@ -28,7 +28,7 @@ namespace App_pressing_Loreau.View
 
 
         #region Attributs
-        Commande commande;
+
 
         private List<CategoryItem> _listeDepartement;
         private List<CategoryItem> _listeArticles;
@@ -37,6 +37,9 @@ namespace App_pressing_Loreau.View
 
         private ObservableCollection<ArticlesVM> _contentDetailCommande;
         private DelegateCommand<ArticlesVM> _deleteArticles;
+
+
+        private List<Article> lArticles;
 
         #endregion
 
@@ -49,6 +52,9 @@ namespace App_pressing_Loreau.View
         #region Constructeur
         public NouvelleCommandeVM()
         {
+            ListeArticles = new List<CategoryItem>();
+            lArticles = new List<Article>(); 
+
             DefileDepartement("Commande_suivante");
         }
 
@@ -62,25 +68,25 @@ namespace App_pressing_Loreau.View
         //gestion du choix des articles
 
         #region Bouton departement
+        //Permet de faire réagir le bouton
         public ICommand OnButtonClickCommand
         {
             get { return onButtonClickCommand ?? (onButtonClickCommand = new RelayCommand(Contenudepartement)); }
         }
 
+        //Permet de changer switcher d'écran de sélection de département
         ICommand onCollectionChangeCommand;
         public ICommand OnCollectionChangeCommand
         {
             get { return onCollectionChangeCommand ?? (onCollectionChangeCommand = new RelayCommand(DefileDepartement)); }
         }
 
-        ICommand listesArtclesCommandes;
-        public ICommand ListesArtclesCommandes
+        ICommand listesArticlesCommandes;
+        public ICommand ListesArticlesCommandes
         {
-            get { return listesArtclesCommandes ?? (listesArtclesCommandes = new RelayCommand(AjouterArticles)); }
+            get { return listesArticlesCommandes ?? (listesArticlesCommandes = new RelayCommand(AjouterArticles)); }
 
         }
-
-        
 
 
         public List<CategoryItem> ListeDepartements
@@ -131,6 +137,7 @@ namespace App_pressing_Loreau.View
                 }
             }
         }
+
         public DelegateCommand<ArticlesVM> DeleteArticles
         {
             get
@@ -140,6 +147,13 @@ namespace App_pressing_Loreau.View
                                                                        (arg) => true));
             }
         }
+
+        public ICommand Btn_nouvellecommande_valider
+        {
+            get { return new RelayCommand (
+                p=>EnregistrerCommande(),
+            p=> ContentDetailCommande.Count()>0);}
+        }
         #endregion
 
 
@@ -148,8 +162,128 @@ namespace App_pressing_Loreau.View
        
         #region Méthodes
 
-        private void ajoutCommande()
+
+        /**
+         * Permet le défilement des départements 
+         * */
+
+
+        public void DefileDepartement(Object lang)
         {
+            _listeDepartement = new List<CategoryItem>();
+
+
+            if (lang.ToString().Equals("Commande_suivante"))
+            {
+
+                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category1.Dep1, ButtonTag = ButtonNames.NameC1D1 });
+                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category1.Dep2, ButtonTag = ButtonNames.NameC1D2 });
+                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category1.Dep3, ButtonTag = ButtonNames.NameC1D3 });
+                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category1.Dep4, ButtonTag = ButtonNames.NameC1D4 });
+                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category1.Dep5, ButtonTag = ButtonNames.NameC1D5 });
+            }
+            else
+            {
+
+                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category2.Dep1, ButtonTag = ButtonNames.NameC2D1 });
+                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category2.Dep2, ButtonTag = ButtonNames.NameC2D2 });
+                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category2.Dep3, ButtonTag = ButtonNames.NameC2D3 });
+                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category2.Dep4, ButtonTag = ButtonNames.NameC2D4 });
+
+            }
+        }
+
+        /**
+         * Permet d'afficher  les articles correspondants à un département
+         * */
+        private void Contenudepartement(object button)
+        {
+            Button clickedbutton = button as Button;
+            ListeArticles = new List<CategoryItem>();            if (clickedbutton != null & clickedbutton.Tag.ToString().Equals("Accessoire"))
+            {
+
+                clickedbutton.Background = Brushes.Blue;
+
+                ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Pantalon", ButtonArticlesTag = "Pantalon" });
+                ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Veste", ButtonArticlesTag = "Veste" });
+                ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Chemise", ButtonArticlesTag = "Chemise" });
+
+            }
+            else if (clickedbutton != null & clickedbutton.Tag.ToString().Equals("Ameublement"))
+            {
+
+                ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Robe", ButtonArticlesTag = "Robe" });
+                ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Jupe", ButtonArticlesTag = "Jupe" });
+                ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "écharpe", ButtonArticlesTag = "écharpe" });
+
+            }
+            else
+            {
+                clickedbutton.Background = Brushes.Blue;
+                string msg = string.Format("You Pressed : {0} button", clickedbutton.Tag);
+                MessageBox.Show(msg);
+            }
+        }
+
+
+        public void AjouterArticles(object button)
+        {
+            Button clickedbutton = button as Button;
+            if (clickedbutton != null )
+            {
+                String typeDelArticle = clickedbutton.Tag.ToString();
+                //Ajout de l'article à l'interface graphique
+                this._contentDetailCommande.Add(new ArticlesVM()
+                {
+                    ArticlesName = typeDelArticle
+                });
+
+                //Ajout du même article à la liste d'article locale
+                TypeArticle type = TypeArticleDAO.getTypeObjectByName(typeDelArticle);
+                if (type != null)
+                {
+                    float TVA = type.TVA;
+                    float HT = type.HT;
+
+                    //Récupération du lien de la photo et du commentaire
+                    string photo = null;
+                    string commentaire = null;
+                    bool ifRendu = false;
+
+
+                    PlaceConvoyeur convoyeur = PlaceConvoyeurDAO.getFirstPlace(type.encombrement);
+
+                    lArticles.Add(new Article(photo, commentaire, ifRendu, TVA, HT, type, convoyeur));
+                }
+                else
+                {
+                    // Problème de récupération du type
+                    // Cette erreur ne devrait jamais arriver puisque les types d'articles sont constants et inscrits en BDD
+                }
+                
+                
+
+            }
+        }
+
+       
+        private void ExecuteDeleteArticles(ArticlesVM obj)
+        {
+            if (this._contentDetailCommande.Contains(obj))
+            {
+                this._contentDetailCommande.Remove(obj);
+            }
+        }
+
+        public void EnregistrerCommande()
+        {
+
+            Commande commande = new Commande();
+            //Parcours des articles de la commande et stockage de ceux-ci dans l'objet commande
+            foreach (Article art in lArticles)
+            {
+                commande.addArticle(art);
+            }
             //  -   each articles (List of articles)
             //  -   the client
 
@@ -201,90 +335,6 @@ namespace App_pressing_Loreau.View
 
             Bdd.deconnexion();
         }
-
-
-
-
-        public void DefileDepartement(Object lang)
-        {
-            _listeDepartement = new List<CategoryItem>();
-
-
-            if (lang.ToString().Equals("Commande_suivante"))
-            {
-
-                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category1.Dep1, ButtonTag = ButtonNames.NameC1D1 });
-                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category1.Dep2, ButtonTag = ButtonNames.NameC1D2 });
-                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category1.Dep3, ButtonTag = ButtonNames.NameC1D3 });
-                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category1.Dep4, ButtonTag = ButtonNames.NameC1D4 });
-                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category1.Dep5, ButtonTag = ButtonNames.NameC1D5 });
-            }
-            else
-            {
-
-                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category2.Dep1, ButtonTag = ButtonNames.NameC2D1 });
-                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category2.Dep2, ButtonTag = ButtonNames.NameC2D2 });
-                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category2.Dep3, ButtonTag = ButtonNames.NameC2D3 });
-                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category2.Dep4, ButtonTag = ButtonNames.NameC2D4 });
-
-            }
-        }
-
-
-        private void Contenudepartement(object button)
-        {
-            Button clickedbutton = button as Button;
-            ListeArticles = new List<CategoryItem>();
-            if (clickedbutton != null & clickedbutton.Tag.ToString().Equals("Accessoire"))
-            {
-
-                clickedbutton.Background = Brushes.Blue;
-
-                ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Pantalon", ButtonArticlesTag = "Pantalon" });
-                ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Veste", ButtonArticlesTag = "Veste" });
-                ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Chemise", ButtonArticlesTag = "Chemise" });
-
-            }
-            else if (clickedbutton != null & clickedbutton.Tag.ToString().Equals("Ameublement"))
-            {
-
-                ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Robe", ButtonArticlesTag = "Robe" });
-                ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Jupe", ButtonArticlesTag = "Jupe" });
-                ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "écharpe", ButtonArticlesTag = "écharpe" });
-
-            }
-            else
-            {
-                clickedbutton.Background = Brushes.Blue;
-                string msg = string.Format("You Pressed : {0} button", clickedbutton.Tag);
-                MessageBox.Show(msg);
-            }
-        }
-
-
-        public void AjouterArticles(object button)
-        {
-            Button clickedbutton = button as Button;
-            if (clickedbutton != null )
-            {
-                this._contentDetailCommande.Add(new ArticlesVM()
-                {
-                    ArticlesName = clickedbutton.Tag.ToString()
-
-                });
-            }
-        }
-
-       
-        private void ExecuteDeleteArticles(ArticlesVM obj)
-        {
-            if (this._contentDetailCommande.Contains(obj))
-            {
-                this._contentDetailCommande.Remove(obj);
-            }
-        }
-
-
         #endregion
 
 
