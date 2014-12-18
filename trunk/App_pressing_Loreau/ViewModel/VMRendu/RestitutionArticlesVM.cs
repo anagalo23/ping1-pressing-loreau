@@ -164,6 +164,7 @@ namespace App_pressing_Loreau.View
                 lstCb.Add(new ChoixBox() { cbbId=1, NameCbb="Nom" });
                 lstCb.Add(new ChoixBox() { cbbId = 2, NameCbb = "Prenom" });
                 lstCb.Add(new ChoixBox() { cbbId = 3, NameCbb = "IdCleanWay" });
+                lstCb.Add(new ChoixBox() { cbbId = 4, NameCbb = "Salut" });
 
 
                 return lstCb;

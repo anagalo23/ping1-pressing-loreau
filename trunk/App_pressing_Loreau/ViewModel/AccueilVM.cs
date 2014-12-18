@@ -27,12 +27,14 @@ namespace App_pressing_Loreau
 
         private IPageViewModel _accessUserControl;
         private List<CategoryItem> _listeUser;
- 
+
         #endregion
 
         #region Constructeur
         public AccueilVM()
         {
+            _listeUser = new List<CategoryItem>();
+
             UtilisateurListe();
         }
 
@@ -70,18 +72,18 @@ namespace App_pressing_Loreau
         ICommand lesUtilisateurs;
         public ICommand LesUtilisateurs
         {
-            get {return lesUtilisateurs ?? (lesUtilisateurs = new RelayCommand(ClickSurUtilisateur)); }
+            get { return lesUtilisateurs ?? (lesUtilisateurs = new RelayCommand(ClickSurUtilisateur)); }
         }
-      
+
 
         #region Command bouton menu
         // Button permettant la redirection vers la page Identification Client 
         public ICommand Btn_accueil_receptionClient
-        { get { return new RelayCommand( p => identificationClientVM()); } }
+        { get { return new RelayCommand(p => identificationClientVM()); } }
 
         // Button permettant la redirection vers la page Restitution client 
         public ICommand Btn_accueil_renduArticles
-        { get { return new RelayCommand( p=> restitutionArticleVM()); } }
+        { get { return new RelayCommand(p => restitutionArticleVM()); } }
 
 
 
@@ -92,37 +94,37 @@ namespace App_pressing_Loreau
 
         // Button permettant la redirection vers la page client pro
         public ICommand Btn_accueil_client_pro
-        { get { return new RelayCommand( p => clientproVM() ); } }
+        { get { return new RelayCommand(p => clientproVM()); } }
 
-   
+
 
         // Button permettant la redirection vers la page impression 
         public ICommand Btn_accueil_impression
-        { get { return new RelayCommand( p => impressionVM());} }
+        { get { return new RelayCommand(p => impressionVM()); } }
 
 
 
         // Button permettant la redirection vers la page Connexion administateur
         public ICommand Btn_accueil_administrateur
-        { get  {  return new RelayCommand( p => administateurVM()); } }
+        { get { return new RelayCommand(p => administateurVM()); } }
 
 
         // Button permettant la redirection vers la page convoyeur
         public ICommand Btn_accueil_convoyeur
-        { get{ return new RelayCommand( p => convoyeurVM());  }  }
+        { get { return new RelayCommand(p => convoyeurVM()); } }
 
         #endregion
 
         // Button permettant de revenir a la page preincipale 
         public ICommand Btn_accueil_image
-        { get { return new RelayCommand(p => accueilVM());  } }
+        { get { return new RelayCommand(p => accueilVM()); } }
         #endregion
 
 
 
         #region Méthodes
 
-       
+
         #region Methodes Button menu
         //Methodes des redirection vers le ViewModel de l'Identification client
         public void identificationClientVM()
@@ -146,7 +148,7 @@ namespace App_pressing_Loreau
         }
         public void impressionVM()
         {
-            accessUserControl = new FactureVM();
+            accessUserControl = new ImpressionVM();
         }
 
         public void administateurVM()
@@ -165,54 +167,41 @@ namespace App_pressing_Loreau
         public void ClickSurUtilisateur(object User)
         {
             Button clickedbutton = User as Button;
-            for (int i = 0; i < ListeUser.Count; i++)
-            {
-                if (clickedbutton != null & clickedbutton.Tag.ToString().Equals(ListeUser[i].ButtonUserTag))
-                {
-
-                    //clickedbutton.Background = Brushes.Red;
-                    ListeUser[i].ButtonUserBackground = Brushes.Blue;
-
-                }
-                else { clickedbutton.Background = Brushes.Blue; }
-            }
            
+            if (clickedbutton != null)
+            {
+
+                //_listeUser[0].ButtonUserBackground = Brushes.Blue;
+                //_listeUser[1].ButtonUserBackground = Brushes.Blue;
+                //_listeUser[2].ButtonUserBackground = Brushes.Blue;
+                //_listeUser[3].ButtonUserBackground = Brushes.Blue;
+                //_listeUser[4].ButtonUserBackground = Brushes.Blue;
+                clickedbutton.Background= Brushes.Red;
+
+            }
+            else //if (clickedbutton != null & clickedbutton.Tag.ToString().Equals(ListeUser[1].ButtonUserTag))
+            {
+                //_listeUser[0].ButtonUserBackground = Brushes.Blue;
+                //_listeUser[1].ButtonUserBackground = Brushes.Red;
+                //_listeUser[2].ButtonUserBackground = Brushes.Blue;
+                //_listeUser[3].ButtonUserBackground = Brushes.Blue;
+                //_listeUser[4].ButtonUserBackground = Brushes.Blue;
+                clickedbutton.Background = Brushes.Blue;
+
+            }
+   
+
         }
         public void UtilisateurListe()
         {
-            Button button = new Button();
+            
 
-            ListeUser = new List<CategoryItem>();
-            Button clickedbutton = button as Button;
-
-            CategoryItem User1 = new CategoryItem();
-            CategoryItem User2 = new CategoryItem();
-            CategoryItem User3 = new CategoryItem();
-            CategoryItem User4 = new CategoryItem();
-            CategoryItem User5 = new CategoryItem();
-            CategoryItem User6 = new CategoryItem();
-
-            User1.ButtonUserBackground = Brushes.Teal;
-            User2.ButtonUserBackground = Brushes.Teal;
-            User3.ButtonUserBackground = Brushes.Teal;
-            User4.ButtonUserBackground = Brushes.Teal;
-            User5.ButtonUserBackground = Brushes.Teal;
-
-
-            User1.ButtonUserContent = "FAYE";
-            User2.ButtonUserContent = "FOFOU";
-            User3.ButtonUserContent = "NAGALO";
-            User4.ButtonUserContent = "POLLET";
-            User5.ButtonUserContent = "TAQUET";
-
-
-
-            ListeUser.Add(User1);
-            ListeUser.Add(User2);
-            ListeUser.Add(User3);
-            ListeUser.Add(User4);
-            ListeUser.Add(User5);
-            ListeUser.Add(User6);
+            _listeUser.Add(new CategoryItem() { ButtonUserContent="Faye" , ButtonUserBackground=Brushes.Teal ,ButtonUserTag="Faye" });
+            _listeUser.Add(new CategoryItem() { ButtonUserContent="Fofou", ButtonUserBackground=Brushes.Teal,ButtonUserTag="Fofou"});
+            _listeUser.Add(new CategoryItem() { ButtonUserContent="Nagalo",ButtonUserBackground=Brushes.Teal, ButtonUserTag="Nagalo"});
+            _listeUser.Add(new CategoryItem() { ButtonUserContent = "Pollet", ButtonUserBackground = Brushes.Teal, ButtonUserTag = "Pollet" });
+            _listeUser.Add(new CategoryItem() { ButtonUserContent = "Taquet", ButtonUserBackground = Brushes.Teal, ButtonUserTag = "Taquet" });
+            _listeUser.Add(null);
 
         }
         public void accueilVM()

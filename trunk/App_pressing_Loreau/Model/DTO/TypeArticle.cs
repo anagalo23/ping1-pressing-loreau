@@ -14,6 +14,7 @@ namespace App_pressing_Loreau.Model.DTO
         public float encombrement { get; set; }
         public float TVA { get; set; }
         public float HT { get; set; }
+        public int typ_id_dep { get; set; }
         public Departement departement { get; set; }
         #endregion
 
@@ -28,14 +29,15 @@ namespace App_pressing_Loreau.Model.DTO
             this.HT = HT;
             this.departement = departement;
         }
-        public TypeArticle(int id, string nom, float encombrement, float TVA, float HT, Departement departement)
+    
+        public TypeArticle(int id, string nom, float encombrement, float TVA, float HT, int dep_id)
         {
             this.id = id;
             this.nom = nom;
             this.encombrement = encombrement;
             this.TVA = TVA;
             this.HT = HT;
-            this.departement = departement;
+            this.typ_id_dep = dep_id;
         }
         #endregion
     }

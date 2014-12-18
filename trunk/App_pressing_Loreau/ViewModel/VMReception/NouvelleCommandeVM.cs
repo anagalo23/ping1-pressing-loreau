@@ -31,12 +31,13 @@ namespace App_pressing_Loreau.View
         Commande commande;
 
         private List<CategoryItem> _listeDepartement;
+        private List<CategoryItem> _listeArticles;
+
         private ICommand onButtonClickCommand;
 
         private ObservableCollection<ArticlesVM> _contentDetailCommande;
         private DelegateCommand<ArticlesVM> _deleteArticles;
 
-        private List<CategoryItem> _listeArticles;
         #endregion
 
 
@@ -201,60 +202,30 @@ namespace App_pressing_Loreau.View
             Bdd.deconnexion();
         }
 
-      
+
+
 
         public void DefileDepartement(Object lang)
         {
-            CategoryItem item1 = new CategoryItem();
-            CategoryItem item2 = new CategoryItem();
-            CategoryItem item3 = new CategoryItem();
-            CategoryItem item4 = new CategoryItem();
-            CategoryItem item5 = new CategoryItem();
+            _listeDepartement = new List<CategoryItem>();
 
-            ListeDepartements = new List<CategoryItem>();           // Intialize the button list
 
             if (lang.ToString().Equals("Commande_suivante"))
             {
-                item1.ButtonContent = Category1.Dep1;
-                item1.ButtonTag = ButtonNames.NameC1D1;
-                
 
-                item2.ButtonContent = Category1.Dep2;
-                item2.ButtonTag = ButtonNames.NameC1D2;
-
-                item3.ButtonContent = Category1.Dep3;
-                item3.ButtonTag = ButtonNames.NameC1D3;
-
-                item4.ButtonContent = Category1.Dep4;
-                item4.ButtonTag = ButtonNames.NameC1D4;
-
-                item5.ButtonContent = Category1.Dep5;
-                item5.ButtonTag = ButtonNames.NameC1D5;
-
-                ListeDepartements.Add(item1);
-                ListeDepartements.Add(item2);
-                ListeDepartements.Add(item3);
-                ListeDepartements.Add(item4);
-                ListeDepartements.Add(item5);
+                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category1.Dep1, ButtonTag = ButtonNames.NameC1D1 });
+                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category1.Dep2, ButtonTag = ButtonNames.NameC1D2 });
+                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category1.Dep3, ButtonTag = ButtonNames.NameC1D3 });
+                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category1.Dep4, ButtonTag = ButtonNames.NameC1D4 });
+                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category1.Dep5, ButtonTag = ButtonNames.NameC1D5 });
             }
             else
             {
-                item1.ButtonContent = Category2.Dep1;
-                item1.ButtonTag = ButtonNames.NameC2D1;
 
-                item2.ButtonContent = Category2.Dep2;
-                item2.ButtonTag = ButtonNames.NameC2D2;
-
-                item3.ButtonContent = Category2.Dep3;
-                item3.ButtonTag = ButtonNames.NameC2D3;
-
-                item4.ButtonContent = Category2.Dep4;
-                item4.ButtonTag = ButtonNames.NameC2D4;
-
-                ListeDepartements.Add(item1);
-                ListeDepartements.Add(item2);
-                ListeDepartements.Add(item3);
-                ListeDepartements.Add(item4);
+                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category2.Dep1, ButtonTag = ButtonNames.NameC2D1 });
+                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category2.Dep2, ButtonTag = ButtonNames.NameC2D2 });
+                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category2.Dep3, ButtonTag = ButtonNames.NameC2D3 });
+                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category2.Dep4, ButtonTag = ButtonNames.NameC2D4 });
 
             }
         }
@@ -263,52 +234,23 @@ namespace App_pressing_Loreau.View
         private void Contenudepartement(object button)
         {
             Button clickedbutton = button as Button;
-            
+            ListeArticles = new List<CategoryItem>();
             if (clickedbutton != null & clickedbutton.Tag.ToString().Equals("Accessoire"))
             {
 
-                CategoryItem item1 = new CategoryItem();
-                CategoryItem item2 = new CategoryItem();
-                CategoryItem item3 = new CategoryItem();
-
-                item1.ButtonArticlesContent = "Pantalon";
-                item1.ButtonArticlesTag = "Pantalon";
-
-                item2.ButtonArticlesContent = "Veste";
-                item2.ButtonArticlesTag = "Veste";
-
-                item3.ButtonArticlesContent = "Chemise";
-                item3.ButtonArticlesTag = "Chemise";
-
                 clickedbutton.Background = Brushes.Blue;
-                ListeArticles = new List<CategoryItem>();
 
-                ListeArticles.Add(item1);
-                ListeArticles.Add(item2);
-                ListeArticles.Add(item3);
-                
+                ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Pantalon", ButtonArticlesTag = "Pantalon" });
+                ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Veste", ButtonArticlesTag = "Veste" });
+                ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Chemise", ButtonArticlesTag = "Chemise" });
+
             }
             else if (clickedbutton != null & clickedbutton.Tag.ToString().Equals("Ameublement"))
             {
-                clickedbutton.Background = Brushes.Blue;
-                CategoryItem item1 = new CategoryItem();
-                CategoryItem item2 = new CategoryItem();
-                CategoryItem item3 = new CategoryItem();
 
-                item1.ButtonArticlesContent = "Robe";
-                item1.ButtonArticlesTag = "Robe";
-
-                item2.ButtonArticlesContent = "Jupe";
-                item2.ButtonArticlesTag = "Jupe";
-
-                item3.ButtonArticlesContent = "écharpe";
-                item3.ButtonArticlesTag = "echarpe";
-
-                ListeArticles = new List<CategoryItem>();
-
-                ListeArticles.Add(item1);
-                ListeArticles.Add(item2);
-                ListeArticles.Add(item3);
+                ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Robe", ButtonArticlesTag = "Robe" });
+                ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Jupe", ButtonArticlesTag = "Jupe" });
+                ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "écharpe", ButtonArticlesTag = "écharpe" });
 
             }
             else
@@ -318,7 +260,6 @@ namespace App_pressing_Loreau.View
                 MessageBox.Show(msg);
             }
         }
-
 
 
         public void AjouterArticles(object button)

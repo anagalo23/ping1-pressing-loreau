@@ -249,12 +249,12 @@ CREATE TABLE IF NOT EXISTS `type` (
 -- Contenu de la table `type`
 --
 
-INSERT INTO `type` (`typ_id`, `typ_nom`, `typ_encombrement`, `typ_TVA`, `typ_HT`) VALUES
-(4, 'Pantalon clair', 1.5, 20, 40),
-(3, 'Pantalon', 1.5, 20, 30),
-(1, 'Veste', 2, 20, 20),
-(5, 'Chemise', 1, 20, 10),
-(2, 'Veste clair', 2, 20, 50);
+INSERT INTO `type` (`typ_id`, `typ_nom`, `typ_encombrement`, `typ_TVA`, `typ_HT`,`typ_dep_id`) VALUES
+(4, 'Pantalon clair', 1.5, 20, 40,1),
+(3, 'Pantalon', 1.5, 20, 30,1),
+(1, 'Veste', 2, 20, 20,2),
+(5, 'Chemise', 1, 20, 10,2),
+(2, 'Veste clair', 2, 20, 50,2);
 
 -- --------------------------------------------------------
 
@@ -281,6 +281,9 @@ ALTER TABLE `article`
   ADD CONSTRAINT `fk_article_convoyeur1` FOREIGN KEY (`art_conv_id`) REFERENCES `convoyeur` (`conv_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_article_commande1` FOREIGN KEY (`art_cmd_id`) REFERENCES `commande` (`cmd_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_article_type1` FOREIGN KEY (`art_typ_id`) REFERENCES `type` (`typ_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+  ALTER TABLE `type`
+  ADD CONSTRAINT `fk_typ_departement_idx` FOREIGN KEY (`typ_dep_id`) REFERENCES `departement` (`dep_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `commande`
