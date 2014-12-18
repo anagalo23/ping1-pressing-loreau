@@ -107,10 +107,10 @@
     <Compile Include="Model\DAO\DepartementDAO.cs" />
     <Compile Include="Model\DAO\EmployeDAO.cs" />
     <Compile Include="Model\DAO\LogDAO.cs" />
-    <Compile Include="Model\DAO\PayementDAO.cs" />
+    <Compile Include="Model\DAO\PaiementDAO.cs" />
     <Compile Include="Model\DAO\PlaceConvoyeurDAO.cs" />
     <Compile Include="Model\DAO\TypeArticleDAO.cs" />
-    <Compile Include="Model\DAO\TypePayementDAO.cs" />
+    <Compile Include="Model\DAO\TypePaiementDAO.cs" />
     <Compile Include="ViewModel\AccueilVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\AdministrateurConnexionVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\PageAdministrateurVM.cs" />
