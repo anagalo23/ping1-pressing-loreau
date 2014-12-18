@@ -10,11 +10,11 @@ namespace App_pressing_Loreau.Model.DAO
 {
     class TypePaiementDAO
     {
-        public static List<TypePayement> selectTypePayement()
+        public static List<TypePaiement> selectTypePayement()
         {
             try
             {
-                List<TypePayement> retour = new List<TypePayement>();
+                List<TypePaiement> retour = new List<TypePaiement>();
                 String sql = "SELECT tpp_id, tpp_nom FROM typepaiement";
 
                 //connection à la base de données  
@@ -23,10 +23,10 @@ namespace App_pressing_Loreau.Model.DAO
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
-                TypePayement typePayement;
+                TypePaiement typePayement;
                 while (msdr.Read())
                 {
-                    typePayement = new TypePayement(
+                    typePayement = new TypePaiement(
                         Int32.Parse(msdr["tpp_id"].ToString()),
                         msdr["tpp_nom"].ToString());
                     retour.Add(typePayement);
@@ -43,11 +43,11 @@ namespace App_pressing_Loreau.Model.DAO
 
         }
 
-        public static TypePayement selectTypePayementById(int id)
+        public static TypePaiement selectTypePayementById(int id)
         {
             try
             {
-                TypePayement retour = new TypePayement();
+                TypePaiement retour = new TypePaiement();
                 String sql = "SELECT tpp_id, tpp_nom FROM typepaiement WHERE tpp_id=?";
 
                 //connection à la base de données
@@ -59,10 +59,10 @@ namespace App_pressing_Loreau.Model.DAO
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
-                TypePayement typePayement;
+                TypePaiement typePayement;
                 while (msdr.Read())
                 {
-                    typePayement = new TypePayement(
+                    typePayement = new TypePaiement(
                         Int32.Parse(msdr["tpp_id"].ToString()),
                         msdr["tpp_nom"].ToString());
                     retour = typePayement;

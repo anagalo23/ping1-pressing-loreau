@@ -97,10 +97,10 @@
     <Compile Include="Model\DTO\Departement.cs" />
     <Compile Include="Model\DTO\Employe.cs" />
     <Compile Include="Model\DTO\Log.cs" />
-    <Compile Include="Model\DTO\Payement.cs" />
+    <Compile Include="Model\DTO\Paiement.cs" />
     <Compile Include="Model\DTO\PlaceConvoyeur.cs" />
     <Compile Include="Model\DTO\TypeArticle.cs" />
-    <Compile Include="Model\DTO\TypePayement.cs" />
+    <Compile Include="Model\DTO\TypePaiement.cs" />
     <Compile Include="Model\DTO\Article.cs" />
     <Compile Include="Model\DTO\Client.cs" />
     <Compile Include="Model\DAO\CommandeDAO.cs" />
