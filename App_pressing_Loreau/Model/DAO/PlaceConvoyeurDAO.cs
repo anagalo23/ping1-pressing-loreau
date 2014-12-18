@@ -94,5 +94,19 @@ namespace App_pressing_Loreau.Model.DAO
                 return null;
             }
         }
+
+        //Retourne la première place disponible dans le convoyeur
+        // retourne 0 si aucune place n'est trouvée
+        internal static PlaceConvoyeur getFirstPlace(float encombrement)
+        {
+            //throw new NotImplementedException();
+            
+            PlaceConvoyeur emplacementConvoyeurDisponible = new PlaceConvoyeur();
+            emplacementConvoyeurDisponible.emplacement = 4;
+            emplacementConvoyeurDisponible.id = 4;
+            //Il faut un emplacement capable de recueillir un certain article avec un certain encombrement
+            return emplacementConvoyeurDisponible;
+            
+        }
     }
 }

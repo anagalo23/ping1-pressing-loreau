@@ -45,7 +45,6 @@ namespace App_pressing_Loreau.Model.DTO
             this.HT = HT;
             this.type = type;
             this.convoyeur = convoyeur;
-         
         }
         #endregion
     }

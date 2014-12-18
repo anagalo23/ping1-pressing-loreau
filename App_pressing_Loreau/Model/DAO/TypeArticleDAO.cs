@@ -81,7 +81,7 @@ namespace App_pressing_Loreau.Model.DAO
 
         // Modifier par Alexis
         //Dans notre application, on recuprere l'article par departement
-        /*
+        /**/
         public static TypeArticle selectTypeById(int id)
         {
             try
@@ -106,6 +106,7 @@ namespace App_pressing_Loreau.Model.DAO
                        msdr["dep_nom"].ToString());
                     retour = new TypeArticle(
                         Int32.Parse(msdr["typ_id"].ToString()),
+ 
                         msdr["typ_nom"].ToString(),
                         float.Parse(msdr["typ_encombrement"].ToString()),
                         float.Parse(msdr["typ_TVA"].ToString()),
@@ -121,8 +122,6 @@ namespace App_pressing_Loreau.Model.DAO
                 return null;
             }
         }
-
-        */
         public static TypeArticle selectTypeByIdDep(int idDep)
         {
             try
@@ -159,6 +158,13 @@ namespace App_pressing_Loreau.Model.DAO
                 LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un département dans la base de données."));
                 return null;
             }
+
         }
-    }
+        
+        
+        internal static TypeArticle getTypeObjectByName(string typeDelArticle)
+        {
+            String requete = "SELECT * FROM type WHERE type_nom = ?";
+            throw new NotImplementedException();
+        }    }
 }
