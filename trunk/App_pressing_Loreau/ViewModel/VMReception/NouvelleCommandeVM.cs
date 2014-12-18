@@ -18,14 +18,11 @@ using System.Windows;
 using Microsoft.Win32;
 
 
-///S
-/// 
-/// 
-/// 
-///
-
 namespace App_pressing_Loreau.View
 {
+    /// <summary>
+    /// ViewModel pour la vue NouvelleCommande.xaml
+    /// </summary>
     class NouvelleCommandeVM : ObservableObject, IPageViewModel
     {
 
@@ -40,22 +37,24 @@ namespace App_pressing_Loreau.View
         private DelegateCommand<ArticlesVM> _deleteArticles;
 
         private List<CategoryItem> _listeArticles;
-
-        private string _defaultPath;
-
         #endregion
+
+
         public String Name
         {
             get { return ""; }
         }
 
+        #region Constructeur
         public NouvelleCommandeVM()
         {
             DefileDepartement("Commande_suivante");
         }
 
+        #endregion
 
-        #region Properties/Commande
+
+        #region Proprietés et Commandes
 
 
 
@@ -146,7 +145,7 @@ namespace App_pressing_Loreau.View
         #endregion 
 
        
-        #region Methods
+        #region Méthodes
 
         private void ajoutCommande()
         {

@@ -12,27 +12,42 @@ using System.Collections.ObjectModel;
 
 namespace App_pressing_Loreau.View
 {
+    /// <summary>
+    /// ViewModel pour la vue RestitutionArticles.xaml
+    /// 
+    /// </summary>
     class RestitutionArticlesVM : ObservableObject, IPageViewModel
     {
+        #region Attributs 
         Departement dep;
 
         private int _txb_restitutionArticles_idFactures;
+        private string _txb_restitutionArticles_choix;
 
-        private ObservableCollection<ChoixBox> _cbb_restitutionClient_choix_theme;
+        ChoixBox choixbox = new ChoixBox();
+        private ChoixBox _selected_restitutionClient_choix_theme;
+        public List<ChoixBox> Cbb_restitutionClient_choix_theme { get; set; }
+
         public CommandeConcernantRA_DATA _contentCommandeConcernant;
+        public CommandeConcernantRA_DATA _dp_content_affiche_select;
+
+        #endregion
         public String Name
         {
             get { return ""; }
 
         }
-
+        #region Constructeur 
         public RestitutionArticlesVM()
         {
-            //Cbb_restitutionClient_choix_theme.Add(new ChoixBox() { Name = "Nom"});
-            //Cbb_restitutionClient_choix_theme.Add("Prenom");
+            Cbb_restitutionClient_choix_theme = choixbox.ListeChamp();
         }
 
 
+        #endregion
+
+
+        #region Propriétés et commandes
         public int Txb_restitutionArticles_idFactures
         {
             get { return _txb_restitutionArticles_idFactures; }
@@ -43,32 +58,45 @@ namespace App_pressing_Loreau.View
             }
         }
 
-
-        public ObservableCollection<ChoixBox> Cbb_restitutionClient_choix_theme
+        public String Txb_restitutionArticles_choix
         {
+            get { return _txb_restitutionArticles_choix; }
             set
             {
-                this._cbb_restitutionClient_choix_theme = value;
-                this.RaisePropertyChanged("Cbb_restitutionClient_choix_theme");
+                _txb_restitutionArticles_choix = value;
+                OnPropertyChanged("Txb_restitutionArticles_choix");
             }
-            get
+
+        }
+        
+
+        public ChoixBox Selected_restitutionClient_choix_theme
+        {
+            get { return _selected_restitutionClient_choix_theme; }
+            set
             {
-                return this._cbb_restitutionClient_choix_theme;
+                _selected_restitutionClient_choix_theme = value;
+                RaisePropertyChanged("Selected_restitutionClient_choix_theme");
             }
         }
-       
-
- 
         
         public ICommand Btn_restitutionArticles_ok
         {
             get
             {
                 return new RelayCommand(
-                    p => but(),
+                    p => ContenuDeLaCommande(),
                     p => Txb_restitutionArticles_idFactures > 0);
             }
 
+        }
+
+        public ICommand Btn_restitutionArticles_valider
+        {
+            get { return new RelayCommand(
+                p => ContenuDeLaRecherche(),
+                p=> Txb_restitutionArticles_choix!=null);
+            }
         }
 
         public CommandeConcernantRA_DATA ContentCommandeConcernant
@@ -84,7 +112,21 @@ namespace App_pressing_Loreau.View
             }
 
         }
-        public void but()
+       
+        public CommandeConcernantRA_DATA Dp_content_affiche_select
+        {
+            get { return _dp_content_affiche_select; }
+            set
+            {
+                _dp_content_affiche_select = value;
+                OnPropertyChanged("Dp_content_affiche_select");
+            }
+        }
+
+        #endregion
+
+        #region Méthodes
+        public void ContenuDeLaCommande()
         {
             dep = (Departement)DepartementDAO.selectDepartementById(2);
             CommandeConcernantRA_DATA ccd = new CommandeConcernantRA_DATA();
@@ -94,12 +136,38 @@ namespace App_pressing_Loreau.View
             ContentCommandeConcernant = ccd;
         }
 
+        public void ContenuDeLaRecherche()
+        {
+            CommandeConcernantRA_DATA cdata = new CommandeConcernantRA_DATA();
+            cdata.Label_restitutionArticles_departement = "repassage";
+            cdata.Label_restitutionArticles_type = "Pantalon";
+            cdata.Label_restitutionArticles_name = Txb_restitutionArticles_choix.ToString();
+
+            Dp_content_affiche_select = cdata;
+
+        }
+
+        #endregion
+
 
         #region Classe
 
         public class ChoixBox
         {
-            public String Name { get; set; }
+            public String NameCbb { get; set; }
+            public int cbbId { get; set; }
+
+            public List<ChoixBox> ListeChamp()
+            {
+                List<ChoixBox> lstCb = new List<ChoixBox>();
+
+                lstCb.Add(new ChoixBox() { cbbId=1, NameCbb="Nom" });
+                lstCb.Add(new ChoixBox() { cbbId = 2, NameCbb = "Prenom" });
+                lstCb.Add(new ChoixBox() { cbbId = 3, NameCbb = "IdCleanWay" });
+
+
+                return lstCb;
+            }
         }
 
 

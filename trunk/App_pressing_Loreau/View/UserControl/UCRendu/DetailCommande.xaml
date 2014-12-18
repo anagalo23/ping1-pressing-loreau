@@ -56,6 +56,7 @@
                             </Grid.RowDefinitions>
                             <Label Content="Les commandes en cours" Style="{StaticResource Titre}" Margin="10,0"/>
                             <DockPanel Grid.Row="1">
+                                
                                 <ContentControl Content="{Binding Path=AfficheDetailCommande}"/>
                             </DockPanel>
 
