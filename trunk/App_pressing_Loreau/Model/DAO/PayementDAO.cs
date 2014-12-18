@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace App_pressing_Loreau.Model.DAO
 {
-    class PaiementDAO
+    class PayementDAO
     {
-        public static void insertPaiement(Paiement paiement)
+        public static void insertPaiement(Payement paiement, int id_commande)
         {
             try
             {
@@ -22,6 +22,8 @@ namespace App_pressing_Loreau.Model.DAO
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("datePaiement", paiement.date);
+                cmd.Parameters.AddWithValue("montant", paiement.montant);
+                cmd.Parameters.AddWithValue("commande_id", id_commande);
 
                 //Execute la commande
                 int retour = cmd.ExecuteNonQuery();
@@ -32,11 +34,11 @@ namespace App_pressing_Loreau.Model.DAO
             }
         }
 
-        /*public static List<TypeArticle> selectTypes()
+        public static List<Payement> selectPayement(Commande commande)
         {
             try
             {
-                List<TypeArticle> retour = new List<TypeArticle>();
+                List<Payement> retour = new List<Payement>();
                 String sql = "SELECT T.typ_id, T.type_nom, T.type_encombrement, T.type_TVA, T.type_HT, T.type_dep_id, D.dep_nom FROM type T, departement D WHERE T.type_dep_id=D.dep_id";
 
                 //connection à la base de données  
@@ -109,6 +111,6 @@ namespace App_pressing_Loreau.Model.DAO
                 LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un département dans la base de données."));
                 return null;
             }
-        }*/
+        }
     }
 }
