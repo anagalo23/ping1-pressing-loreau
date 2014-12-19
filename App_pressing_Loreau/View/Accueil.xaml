@@ -36,19 +36,19 @@
 
 
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="btn_accueil_reception" Content="Reception" Grid.Column="0" Margin="5" Command="{Binding Btn_accueil_receptionClient}" Style="{StaticResource personalisationbuton}"  />
+                        <Button x:Name="btn_accueil_reception" Content="Reception" Grid.Column="0" Margin="5" Background="{Binding Btn_receptionColor}" Command="{Binding Btn_accueil_receptionClient}" Style="{StaticResource personalisationbuton}"  />
 
-                        <Button x:Name="btn_accueil_rendu"  Content="Rendu" Grid.Column="1" Margin="5"  Command="{Binding Btn_accueil_renduArticles}" Style="{StaticResource personalisationbuton}"  />
+                        <Button x:Name="btn_accueil_rendu"  Content="Rendu" Grid.Column="1" Margin="5" Background="{Binding Btn_renduColor}" Command="{Binding Btn_accueil_renduArticles}" Style="{StaticResource personalisationbuton}"  />
 
-                        <Button x:Name="btn_accueil_facture" Content="Factures" Grid.Column="2" Margin="5" Command="{Binding Btn_accueil_facture}" Style="{StaticResource personalisationbuton}" />
+                        <Button x:Name="btn_accueil_facture" Content="Factures" Grid.Column="2" Margin="5" Background="{Binding Btn_factureColor}" Command="{Binding Btn_accueil_facture}" Style="{StaticResource personalisationbuton}" />
 
-                        <Button x:Name="btn_accueil_client_pro" Content="client Pro" Grid.Column="4" Margin="5" Command="{Binding Btn_accueil_client_pro}"  Style="{StaticResource personalisationbuton}"/>
+                        <Button x:Name="btn_accueil_client_pro" Content="client Pro" Grid.Column="4" Margin="5" Background="{Binding Btn_clientProColor}" Command="{Binding Btn_accueil_client_pro}"  Style="{StaticResource personalisationbuton}"/>
 
-                        <Button x:Name="btn_accueil_impression"  Content="Impressions" Grid.Column="5" Margin="5" Command="{Binding Btn_accueil_impression}" CommandParameter=""  Style="{StaticResource personalisationbuton}" />
+                        <Button x:Name="btn_accueil_impression"  Content="Impressions" Grid.Column="5" Margin="5" Background="{Binding Btn_impressionColor}" Command="{Binding Btn_accueil_impression}" CommandParameter=""  Style="{StaticResource personalisationbuton}" />
 
-                        <Button x:Name="btn_accueil_administrateur" Content="Administrateur" Grid.Column="6" Margin="5" Command="{Binding Btn_accueil_administrateur}" Style="{StaticResource personalisationbuton}" />
+                        <Button x:Name="btn_accueil_administrateur" Content="Administrateur" Grid.Column="6" Margin="5"  Background="{Binding Btn_administrateurColor}" Command="{Binding Btn_accueil_administrateur}" Style="{StaticResource personalisationbuton}" />
 
-                        <Button x:Name="btn_accueil_convoyeur" Content="Convoyeur" Grid.Column="3" Margin="5" Command="{Binding Btn_accueil_convoyeur}"  Style="{StaticResource personalisationbuton}" />
+                        <Button x:Name="btn_accueil_convoyeur" Content="Convoyeur" Grid.Column="3" Margin="5" Background="{Binding Btn_convoyeurColor}" Command="{Binding Btn_accueil_convoyeur}"  Style="{StaticResource personalisationbuton}" />
 
                     </Grid>
                 </Border>

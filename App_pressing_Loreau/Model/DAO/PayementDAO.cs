@@ -33,7 +33,7 @@ namespace App_pressing_Loreau.Model.DAO
                 LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
             }
         }
-
+        /*
         public static List<Payement> selectPayement(Commande commande)
         {
             try
@@ -72,7 +72,7 @@ namespace App_pressing_Loreau.Model.DAO
                 return null;
             }
         }
-
+       
         public static TypeArticle selectTypeById(int id)
         {
             try
@@ -111,6 +111,6 @@ namespace App_pressing_Loreau.Model.DAO
                 LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un département dans la base de données."));
                 return null;
             }
-        }
+        } */
     }
 }

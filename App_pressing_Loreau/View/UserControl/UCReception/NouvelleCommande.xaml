@@ -148,6 +148,8 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Content="Total à payer :" Style="{StaticResource vertilabel25}" Grid.Row="0" HorizontalContentAlignment="Left"/>
+                        <Label Content="{Binding Label_NouvelleCommande_prixTotal}" Margin="4" Grid.Row="0" Grid.Column="1" />
+                        
                         <Button x:Name="btn_nouvelleCommande_paiement_immediat" Content="Paiement immédiat" Grid.Row="1" Grid.Column="0"
                                 Margin="0,5,5,5" Click="btn_nouvelleCommande_paiement_immediat_Click" Style="{StaticResource personalisationbuton1}"/>
                         <Button x:Name="btn_nouvelleCommande_paiement_differe" Content="Paiement différé" Grid.Row="1" Grid.Column="1" Margin="5"
