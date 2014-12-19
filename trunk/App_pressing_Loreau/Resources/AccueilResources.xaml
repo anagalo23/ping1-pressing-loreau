@@ -53,7 +53,7 @@
     </DataTemplate>
 
     <DataTemplate x:Key="Utilisateurs">
-        <Button x:Name="button1" Width="170" Height="60" Content="{Binding ButtonUserContent}" Tag="{Binding ButtonUserTag}" Background="{Binding ButtonUserBackground}" Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.LesUtilisateurs}"  Style="{StaticResource personalisationbuton}"
+        <Button x:Name="button1" Width="170" Height="60" Content="{Binding ButtonUserContent}" Tag="{Binding ButtonUserTag}" Background="{Binding ButtonUserBackground , Mode=TwoWay}" Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.LesUtilisateurs}"  Style="{StaticResource personalisationbuton}"
                     CommandParameter="{Binding ElementName=button1}"/>
     </DataTemplate >
 

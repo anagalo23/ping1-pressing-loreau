@@ -27,7 +27,17 @@ namespace App_pressing_Loreau
 
         private IPageViewModel _accessUserControl;
         private List<CategoryItem> _listeUser;
+        private Brush _color;
 
+        private Brush _btn_receptionColor;
+        private Brush _btn_renduColor;
+        private Brush _btn_factureColor;
+        private Brush _btn_impressionColor;
+        private Brush _btn_clientProColor;
+        private Brush _btn_administrateurColor;
+        private Brush _btn_convoyeurColor;
+
+        //private bool thisColorButton;
         #endregion
 
         #region Constructeur
@@ -36,6 +46,18 @@ namespace App_pressing_Loreau
             _listeUser = new List<CategoryItem>();
 
             UtilisateurListe();
+            thisColorButton = new bool();
+            thisColorButton = false;
+
+            Btn_receptionColor = Brushes.Teal;
+            Btn_renduColor = Brushes.Teal;
+            Btn_factureColor = Brushes.Teal;
+            Btn_clientProColor = Brushes.Teal;
+            Btn_convoyeurColor = Brushes.Teal;
+            Btn_impressionColor = Brushes.Teal;
+            Btn_administrateurColor = Brushes.Teal;
+
+            ButtonUserBackground = Brushes.Teal;
         }
 
         #endregion
@@ -75,6 +97,86 @@ namespace App_pressing_Loreau
             get { return lesUtilisateurs ?? (lesUtilisateurs = new RelayCommand(ClickSurUtilisateur)); }
         }
 
+
+        public Brush Btn_receptionColor
+        {
+            get { return _btn_receptionColor; }
+            set
+            {
+                _btn_receptionColor = value;
+                RaisePropertyChanged("Btn_receptionColor");
+
+            }
+        }
+        public Brush Btn_renduColor
+        {
+            get { return _btn_renduColor; }
+            set
+            {
+                _btn_renduColor = value;
+                RaisePropertyChanged("Btn_renduColor");
+            }
+        }
+        public Brush Btn_factureColor
+        {
+            get { return _btn_factureColor; }
+            set
+            {
+                _btn_factureColor = value;
+                RaisePropertyChanged("Btn_factureColor");
+            }
+        }
+        public Brush Btn_convoyeurColor
+        {
+            get { return _btn_convoyeurColor; }
+            set
+            {
+                _btn_convoyeurColor = value;
+                RaisePropertyChanged("Btn_convoyeurColor");
+            }
+        }
+        public Brush Btn_clientProColor
+        {
+            get { return _btn_clientProColor; }
+            set
+            {
+                _btn_clientProColor = value;
+                RaisePropertyChanged("Btn_clientProColor");
+            }
+        }
+        public Brush Btn_impressionColor
+        {
+            get { return _btn_impressionColor; }
+            set
+            {
+                _btn_impressionColor = value;
+                RaisePropertyChanged("Btn_impressionColor");
+            }
+        }
+        public Brush Btn_administrateurColor
+        {
+            get { return _btn_administrateurColor; }
+            set
+            {
+                _btn_administrateurColor = value;
+                RaisePropertyChanged("Btn_administrateurColor");
+            }
+        }
+
+
+        public bool thisColorButton {get; set;}
+
+        public Brush ButtonUserBackground
+        {
+            
+            get { _color = thisColorButton ? Brushes.IndianRed : Brushes.Teal; return _color;}
+            set
+            {
+                this._color = value;
+                RaisePropertyChanged("ButtonUserBackground");
+            }
+
+        }
 
         #region Command bouton menu
         // Button permettant la redirection vers la page Identification Client 
@@ -129,36 +231,99 @@ namespace App_pressing_Loreau
         //Methodes des redirection vers le ViewModel de l'Identification client
         public void identificationClientVM()
         {
+            Btn_receptionColor = Brushes.IndianRed;
+            Btn_renduColor = Brushes.Teal;
+            Btn_factureColor = Brushes.Teal;
+            Btn_clientProColor = Brushes.Teal;
+            Btn_convoyeurColor = Brushes.Teal;
+            Btn_impressionColor = Brushes.Teal;
+            Btn_administrateurColor = Brushes.Teal;
+
             accessUserControl = new IdentificationClientVM();
+
         }
         //Methodes des redirection vers le ViewModel de l'restitution client
         public void restitutionArticleVM()
         {
             accessUserControl = new RestitutionArticlesVM();
+
+            Btn_receptionColor = Brushes.Teal;
+            Btn_renduColor = Brushes.IndianRed;
+            Btn_factureColor = Brushes.Teal;
+            Btn_clientProColor = Brushes.Teal;
+            Btn_convoyeurColor = Brushes.Teal;
+            Btn_impressionColor = Brushes.Teal;
+            Btn_administrateurColor = Brushes.Teal;
+
         }
 
         public void factureVM()
         {
             accessUserControl = new FactureVM();
+
+            Btn_receptionColor = Brushes.Teal;
+            Btn_renduColor = Brushes.Teal;
+            Btn_factureColor = Brushes.IndianRed;
+            Btn_clientProColor = Brushes.Teal;
+            Btn_convoyeurColor = Brushes.Teal;
+            Btn_impressionColor = Brushes.Teal;
+            Btn_administrateurColor = Brushes.Teal;
+
         }
 
         public void clientproVM()
         {
             accessUserControl = new ClientPROVM();
+
+            Btn_receptionColor = Brushes.Teal;
+            Btn_renduColor = Brushes.Teal;
+            Btn_factureColor = Brushes.Teal;
+            Btn_clientProColor = Brushes.IndianRed;
+            Btn_convoyeurColor = Brushes.Teal;
+            Btn_impressionColor = Brushes.Teal;
+            Btn_administrateurColor = Brushes.Teal;
+
         }
         public void impressionVM()
         {
             accessUserControl = new ImpressionVM();
+
+            Btn_receptionColor = Brushes.Teal;
+            Btn_renduColor = Brushes.Teal;
+            Btn_factureColor = Brushes.Teal;
+            Btn_clientProColor = Brushes.Teal;
+            Btn_convoyeurColor = Brushes.Teal;
+            Btn_impressionColor = Brushes.IndianRed;
+            Btn_administrateurColor = Brushes.Teal;
+
         }
 
         public void administateurVM()
         {
             accessUserControl = new AdministrateurConnexionVM();
+
+            Btn_receptionColor = Brushes.Teal;
+            Btn_renduColor = Brushes.Teal;
+            Btn_factureColor = Brushes.Teal;
+            Btn_clientProColor = Brushes.Teal;
+            Btn_convoyeurColor = Brushes.Teal;
+            Btn_impressionColor = Brushes.Teal;
+            Btn_administrateurColor = Brushes.IndianRed;
+
         }
 
         public void convoyeurVM()
         {
             accessUserControl = new ConvoyeurVM();
+
+            Btn_receptionColor = Brushes.Teal;
+            Btn_renduColor = Brushes.Teal;
+            Btn_factureColor = Brushes.Teal;
+            Btn_clientProColor = Brushes.Teal;
+            Btn_convoyeurColor = Brushes.IndianRed;
+            Btn_impressionColor = Brushes.Teal;
+            Btn_administrateurColor = Brushes.Teal;
+
         }
 
         #endregion
@@ -167,40 +332,30 @@ namespace App_pressing_Loreau
         public void ClickSurUtilisateur(object User)
         {
             Button clickedbutton = User as Button;
-           
+
             if (clickedbutton != null)
             {
 
-                //_listeUser[0].ButtonUserBackground = Brushes.Blue;
-                //_listeUser[1].ButtonUserBackground = Brushes.Blue;
-                //_listeUser[2].ButtonUserBackground = Brushes.Blue;
-                //_listeUser[3].ButtonUserBackground = Brushes.Blue;
-                //_listeUser[4].ButtonUserBackground = Brushes.Blue;
-                clickedbutton.Background= Brushes.Red;
+                thisColorButton = true;
+                clickedbutton.Background = ButtonUserBackground;
 
             }
-            else //if (clickedbutton != null & clickedbutton.Tag.ToString().Equals(ListeUser[1].ButtonUserTag))
+            else 
             {
-                //_listeUser[0].ButtonUserBackground = Brushes.Blue;
-                //_listeUser[1].ButtonUserBackground = Brushes.Red;
-                //_listeUser[2].ButtonUserBackground = Brushes.Blue;
-                //_listeUser[3].ButtonUserBackground = Brushes.Blue;
-                //_listeUser[4].ButtonUserBackground = Brushes.Blue;
-                clickedbutton.Background = Brushes.Blue;
+                thisColorButton = false;
 
             }
-   
+
 
         }
         public void UtilisateurListe()
         {
-            
 
-            _listeUser.Add(new CategoryItem() { ButtonUserContent="Faye" , ButtonUserBackground=Brushes.Teal ,ButtonUserTag="Faye" });
-            _listeUser.Add(new CategoryItem() { ButtonUserContent="Fofou", ButtonUserBackground=Brushes.Teal,ButtonUserTag="Fofou"});
-            _listeUser.Add(new CategoryItem() { ButtonUserContent="Nagalo",ButtonUserBackground=Brushes.Teal, ButtonUserTag="Nagalo"});
-            _listeUser.Add(new CategoryItem() { ButtonUserContent = "Pollet", ButtonUserBackground = Brushes.Teal, ButtonUserTag = "Pollet" });
-            _listeUser.Add(new CategoryItem() { ButtonUserContent = "Taquet", ButtonUserBackground = Brushes.Teal, ButtonUserTag = "Taquet" });
+            _listeUser.Add(new CategoryItem() { ButtonUserContent = "Faye",  ButtonUserTag = "Faye" });
+            _listeUser.Add(new CategoryItem() { ButtonUserContent = "Fofou", ButtonUserTag = "Fofou" });
+            _listeUser.Add(new CategoryItem() { ButtonUserContent = "Nagalo", ButtonUserTag = "Nagalo" });
+            _listeUser.Add(new CategoryItem() { ButtonUserContent = "Pollet", ButtonUserTag = "Pollet" });
+            _listeUser.Add(new CategoryItem() { ButtonUserContent = "Taquet", ButtonUserTag = "Taquet" });
             _listeUser.Add(null);
 
         }
@@ -219,9 +374,6 @@ namespace App_pressing_Loreau
             public string ButtonUserContent { get; set; }
 
             public string ButtonUserTag { get; set; }
-
-            public Brush ButtonUserBackground { get; set; }
-
 
         }
         #endregion

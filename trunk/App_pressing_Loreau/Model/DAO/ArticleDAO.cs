@@ -37,7 +37,7 @@ namespace App_pressing_Loreau.Model.DAO
                 LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un article dans la base de données."));
             }
         }
-
+        /*
         public static Article getArticleById(int art_id)
         {
             try
@@ -89,5 +89,6 @@ namespace App_pressing_Loreau.Model.DAO
                 return null;
             }
         }
+         * */
     }
 }

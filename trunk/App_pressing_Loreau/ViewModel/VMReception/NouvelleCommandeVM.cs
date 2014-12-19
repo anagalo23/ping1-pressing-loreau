@@ -199,7 +199,8 @@ namespace App_pressing_Loreau.View
         private void Contenudepartement(object button)
         {
             Button clickedbutton = button as Button;
-            ListeArticles = new List<CategoryItem>();            if (clickedbutton != null & clickedbutton.Tag.ToString().Equals("Accessoire"))
+            ListeArticles = new List<CategoryItem>();            
+            if (clickedbutton != null & clickedbutton.Tag.ToString().Equals("Accessoire"))
             {
 
                 clickedbutton.Background = Brushes.Blue;
