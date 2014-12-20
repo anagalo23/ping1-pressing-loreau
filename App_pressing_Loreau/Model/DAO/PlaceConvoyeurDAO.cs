@@ -10,15 +10,18 @@ namespace App_pressing_Loreau.Model.DAO
 {
     class PlaceConvoyeurDAO
     {
+        public static void open()
+        {
+            MySqlConnection connection = Bdd.connexion();
+        }
+
         public static void insertConvoyeur(PlaceConvoyeur convoyeur)
         {
             try
             {
-                String sql = "INSERT INTO convoyeur(conv_emplacement) VALUES (?)";
-
                 //connection à la base de données
                 MySqlConnection connection = Bdd.connexion();
-                MySqlCommand cmd = new MySqlCommand(sql, connection);
+                MySqlCommand cmd = new MySqlCommand(Bdd.insertConvoyeur, connection);
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("emplacement", convoyeur.emplacement);
@@ -37,11 +40,10 @@ namespace App_pressing_Loreau.Model.DAO
             try
             {
                 List<PlaceConvoyeur> retour = new List<PlaceConvoyeur>();
-                String sql = "SELECT conv_id, conv_emplacement FROM convoyeur";
-
+                
                 //connection à la base de données  
                 MySqlConnection connection = Bdd.connexion();
-                MySqlCommand cmd = new MySqlCommand(sql, connection);
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectConvoyeurs, connection);
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
@@ -68,11 +70,10 @@ namespace App_pressing_Loreau.Model.DAO
             try
             {
                 PlaceConvoyeur retour = new PlaceConvoyeur();
-                String sql = "SELECT conv_id, conv_emplacement FROM convoyeur WHERE T.typ_id=?";
-
+                
                 //connection à la base de données
                 MySqlConnection connection = Bdd.connexion();
-                MySqlCommand cmd = new MySqlCommand(sql, connection);
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectTypeById, connection);
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("id", id);
@@ -93,20 +94,6 @@ namespace App_pressing_Loreau.Model.DAO
                 LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un convoyeur dans la base de données."));
                 return null;
             }
-        }
-
-        //Retourne la première place disponible dans le convoyeur
-        // retourne 0 si aucune place n'est trouvée
-        internal static PlaceConvoyeur getFirstPlace(float encombrement)
-        {
-            //throw new NotImplementedException();
-            
-            PlaceConvoyeur emplacementConvoyeurDisponible = new PlaceConvoyeur();
-            emplacementConvoyeurDisponible.emplacement = 4;
-            emplacementConvoyeurDisponible.id = 4;
-            //Il faut un emplacement capable de recueillir un certain article avec un certain encombrement
-            return emplacementConvoyeurDisponible;
-            
-        }
+        }       
     }
 }
