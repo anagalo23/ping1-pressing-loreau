@@ -10,6 +10,11 @@ namespace App_pressing_Loreau.Model.DAO
 {
     class DepartementDAO
     {
+        public static void open()
+        {
+            MySqlConnection connection = Bdd.connexion();
+        }
+
         public static void insertDepartement(Departement departement)
         {
             try
