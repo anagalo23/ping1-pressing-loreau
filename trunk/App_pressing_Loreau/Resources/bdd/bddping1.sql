@@ -266,9 +266,25 @@ CREATE TABLE IF NOT EXISTS `typepaiement` (
   `tpp_id` int(11) NOT NULL AUTO_INCREMENT,
   `tpp_nom` varchar(45) NOT NULL,
   `tpp_pai_id` int(11) NOT NULL,
+  `tpp_tppp_id` int(11) NOT NULL,
   PRIMARY KEY (`tpp_id`),
-  KEY `fk_typepaiement_paiement1_idx` (`tpp_pai_id`)
+  KEY `fk_typepaiement_paiement1_idx` (`tpp_pai_id`),
+  KEY `fk_typepaiement_typepaiementpattern1_idx` (`tpp_tppp_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `typepaiementpattern`
+--
+
+CREATE TABLE IF NOT EXISTS `typepaiementpattern` (
+  `tppp_id` int(11) NOT NULL AUTO_INCREMENT,
+  `tppp_nom` varchar(45) NOT NULL,
+  PRIMARY KEY (`tpp_id`),
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
 
 --
 -- Contraintes pour les tables exportées
@@ -307,7 +323,8 @@ ALTER TABLE `paiement`
 -- Contraintes pour la table `typepaiement`
 --
 ALTER TABLE `typepaiement`
-  ADD CONSTRAINT `fk_typepaiement_paiement1` FOREIGN KEY (`tpp_pai_id`) REFERENCES `paiement` (`pai_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_typepaiement_paiement1` FOREIGN KEY (`tpp_pai_id`) REFERENCES `paiement` (`pai_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_typepaiement_typepaiementpattern1_idx` FOREIGN KEY (`tpp_tppp_id`) REFERENCES `typepaiementpattern` (`tppp_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
