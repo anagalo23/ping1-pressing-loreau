@@ -14,11 +14,9 @@ namespace App_pressing_Loreau.Model.DAO
         {
             try
             {
-                String sql = "INSERT INTO departement(dep_nom) VALUES (?)";
-
                 //connection à la base de données
                 MySqlConnection connection = Bdd.connexion();
-                MySqlCommand cmd = new MySqlCommand(sql, connection);
+                MySqlCommand cmd = new MySqlCommand(Bdd.insertDepartement, connection);
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("nom", departement.nom);
@@ -37,11 +35,10 @@ namespace App_pressing_Loreau.Model.DAO
             try
             {
                 List<Departement> retour = new List<Departement>();
-                String sql = "SELECT dep_id, dep_nom FROM departement";
-
+                
                 //connection à la base de données  
                 MySqlConnection connection = Bdd.connexion();
-                MySqlCommand cmd = new MySqlCommand(sql, connection);
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectDepartements, connection);
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
@@ -70,11 +67,10 @@ namespace App_pressing_Loreau.Model.DAO
             try
             {
                 Departement retour = new Departement();
-                String sql = "SELECT dep_id, dep_nom FROM departement WHERE id=?";
-
+                
                 //connection à la base de données
                 MySqlConnection connection = Bdd.connexion();
-                MySqlCommand cmd = new MySqlCommand(sql, connection);
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectDepartementById, connection);
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("id", id);
