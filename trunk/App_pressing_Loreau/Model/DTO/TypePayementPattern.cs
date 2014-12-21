@@ -6,30 +6,26 @@ using System.Threading.Tasks;
 
 namespace App_pressing_Loreau.Model.DTO
 {
-    class TypePayement
+    class TypePayementPattern
     {
         #region attributs
         public int id {get; set;}
         public string nom {get; set;}
-        public TypePayementPattern typesPayementPattern {get; set;}
-
         #endregion
 
         #region classes
-        public TypePayement()
+        public TypePayementPattern()
         {
         }
-        public TypePayement(string nom, TypePayementPattern typesPayementPattern)
+        public TypePayementPattern(string nom)
         {
             id = 0;
             this.nom = nom;
-            this.typesPayementPattern = typesPayementPattern;
         }
-        public TypePayement(int id, string nom, TypePayementPattern typesPayementPattern)
+        public TypePayementPattern(int id, string nom)
         {
             this.id = id;
             this.nom = nom;
-            this.typesPayementPattern = typesPayementPattern;
         }
         #endregion
     }
