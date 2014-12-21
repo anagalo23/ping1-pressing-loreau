@@ -10,7 +10,13 @@ namespace App_pressing_Loreau.Model.DAO
 {
     class TypePayementDAO
     {
-        public static List<TypePayement> selectTypePayement()
+        public static void open()
+        {
+            MySqlConnection connection = Bdd.connexion();
+        }
+
+        //mise en commentaire car méthode à priori inutile. Mais à conserver au cas ou.
+        /*public static List<TypePayement> selectTypePayement()
         {
             try
             {
@@ -41,14 +47,14 @@ namespace App_pressing_Loreau.Model.DAO
             }
 
 
-        }
+        }*/
 
         public static TypePayement selectTypePayementById(int id)
         {
             try
             {
                 TypePayement retour = new TypePayement();
-                String sql = "SELECT tpp_id, tpp_nom FROM typepaiement WHERE tpp_id=?";
+                String sql = "SELECT tpp_id, tpp_nom, tpp_ FROM typepaiement WHERE tpp_id=?";
 
                 //connection à la base de données
                 MySqlConnection connection = Bdd.connexion();

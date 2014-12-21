@@ -93,6 +93,7 @@
     <Compile Include="Model\Bdd.cs" />
     <Compile Include="Model\DAO\ArticleDAO.cs" />
     <Compile Include="Model\DAO\ClientDAO.cs" />
+    <Compile Include="Model\DAO\TypePayementPatternDAO.cs" />
     <Compile Include="Model\DTO\Commande.cs" />
     <Compile Include="Model\DTO\Departement.cs" />
     <Compile Include="Model\DTO\Employe.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Model\DAO\PlaceConvoyeurDAO.cs" />
     <Compile Include="Model\DAO\TypeArticleDAO.cs" />
     <Compile Include="Model\DAO\TypePayementDAO.cs" />
+    <Compile Include="Model\DTO\TypePayementPattern.cs" />
     <Compile Include="ViewModel\AccueilVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\AdministrateurConnexionVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\PageAdministrateurVM.cs" />
