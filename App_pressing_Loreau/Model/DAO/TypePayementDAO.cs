@@ -54,24 +54,68 @@ namespace App_pressing_Loreau.Model.DAO
             try
             {
                 TypePayement retour = new TypePayement();
-                String sql = "SELECT tpp_id, tpp_nom, tpp_ FROM typepaiement WHERE tpp_id=?";
 
                 //connection à la base de données
                 MySqlConnection connection = Bdd.connexion();
-                MySqlCommand cmd = new MySqlCommand(sql, connection);
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectTypePayementById, connection);
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("id", id);
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
+                TypePayementPattern typePayementPattern;
+                while (msdr.Read())
+                {
+                    typePayementPattern = new TypePayementPattern(
+                        Int32.Parse(msdr["tpp_tppp_id"].ToString()),
+                        msdr["tppp_nom"].ToString());
+                    retour = new TypePayement(
+                        Int32.Parse(msdr["tpp_id"].ToString()),
+                        msdr["tpp_nom"].ToString(),
+                        typePayementPattern);
+                }
+                msdr.Dispose();
+                return retour;
+            }
+            catch (Exception Ex)
+            {
+                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un département dans la base de données."));
+                return null;
+            }
+
+
+        }
+
+        public static List<TypePayement> selectTypePayementByIdPaiement(int id_paiement)
+        {
+            try
+            {
+                List<TypePayement> retour = new List<TypePayement>();
+
+                //connection à la base de données
+                MySqlConnection connection = Bdd.connexion();
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectTypePayementByIdPaiement, connection);
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("id", id_paiement);
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                TypePayementPattern typePayementPattern;
                 TypePayement typePayement;
                 while (msdr.Read())
                 {
+                    typePayementPattern = new TypePayementPattern(
+                        Int32.Parse(msdr["tpp_tppp_id"].ToString()),
+                        msdr["tppp_nom"].ToString());
+
                     typePayement = new TypePayement(
                         Int32.Parse(msdr["tpp_id"].ToString()),
-                        msdr["tpp_nom"].ToString());
-                    retour = typePayement;
+                        msdr["tpp_nom"].ToString(),
+                        typePayementPattern);
+
+                    retour.Add(typePayement);
                 }
                 msdr.Dispose();
                 return retour;
