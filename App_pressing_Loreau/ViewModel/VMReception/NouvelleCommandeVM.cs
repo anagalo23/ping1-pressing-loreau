@@ -232,35 +232,35 @@ namespace App_pressing_Loreau.View
             Button clickedbutton = button as Button;
             if (clickedbutton != null )
             {
-                String typeDelArticle = clickedbutton.Tag.ToString();
+                //String typeDelArticle = clickedbutton.Tag.ToString();
                 //Ajout de l'article à l'interface graphique
                 this._contentDetailCommande.Add(new ArticlesVM()
                 {
-                    ArticlesName = typeDelArticle
+                    ArticlesName =clickedbutton.Tag.ToString()
                 });
 
                 //Ajout du même article à la liste d'article locale
-                TypeArticle type = TypeArticleDAO.getTypeObjectByName(typeDelArticle);
-                if (type != null)
-                {
-                    float TVA = type.TVA;
-                    float HT = type.HT;
+                //TypeArticle type = TypeArticleDAO.getTypeObjectByName(typeDelArticle);
+                //if (type != null)
+                //{
+                //    float TVA = type.TVA;
+                //    float HT = type.HT;
 
-                    //Récupération du lien de la photo et du commentaire
-                    string photo = null;
-                    string commentaire = null;
-                    bool ifRendu = false;
+                //    //Récupération du lien de la photo et du commentaire
+                //    string photo = null;
+                //    string commentaire = null;
+                //    bool ifRendu = false;
 
 
-                    PlaceConvoyeur convoyeur = PlaceConvoyeurDAO.getFirstPlace(type.encombrement);
+                //    PlaceConvoyeur convoyeur = PlaceConvoyeurDAO.getFirstPlace(type.encombrement);
 
-                    lArticles.Add(new Article(photo, commentaire, ifRendu, TVA, HT, type, convoyeur));
-                }
-                else
-                {
-                    // Problème de récupération du type
-                    // Cette erreur ne devrait jamais arriver puisque les types d'articles sont constants et inscrits en BDD
-                }
+                //    lArticles.Add(new Article(photo, commentaire, ifRendu, TVA, HT, type, convoyeur));
+                //}
+                //else
+                //{
+                //    // Problème de récupération du type
+                //    // Cette erreur ne devrait jamais arriver puisque les types d'articles sont constants et inscrits en BDD
+                //}
                 
                 
 
