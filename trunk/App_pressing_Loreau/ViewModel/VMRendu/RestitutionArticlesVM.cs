@@ -53,8 +53,11 @@ namespace App_pressing_Loreau.View
             get { return _txb_restitutionArticles_idFactures; }
             set
             {
-                _txb_restitutionArticles_idFactures = value;
-                OnPropertyChanged("Txb_restitutionArticles_idFactures");
+               
+                    _txb_restitutionArticles_idFactures = value;
+                    OnPropertyChanged("Txb_restitutionArticles_idFactures");
+                
+              
             }
         }
 
@@ -128,6 +131,7 @@ namespace App_pressing_Loreau.View
         #region Méthodes
         public void ContenuDeLaCommande()
         {
+        
             dep = (Departement)DepartementDAO.selectDepartementById(2);
             CommandeConcernantRA_DATA ccd = new CommandeConcernantRA_DATA();
             ccd.Label_restitutionArticles_departement = "repassage";

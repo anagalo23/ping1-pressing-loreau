@@ -28,7 +28,7 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-            <Button x:Name="button1"  Grid.Column="0" Width="120" Height="37" Margin="6" Content="{Binding ButtonArticlesContent}" Tag="{Binding ButtonArticlesTag}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ListesArtclesCommandes}"  Style="{StaticResource departementArt}"
+            <Button x:Name="button1"  Grid.Column="0" Width="120" Height="37" Margin="6" Content="{Binding ButtonArticlesContent}" Tag="{Binding ButtonArticlesTag}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ListesArticlesCommandes}"  Style="{StaticResource departementArt}"
                     CommandParameter="{Binding ElementName=button1}" Background="Coral"/>
 
                 <Label Content="Bonjour" Grid.Column="1" Height="37"/>

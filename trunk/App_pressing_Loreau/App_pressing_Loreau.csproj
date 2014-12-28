@@ -144,6 +144,9 @@
     <Compile Include="View\UserControl\UCClientPro\ClientProUC.xaml.cs">
       <DependentUpon>ClientProUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControl\UCClientPro\NouveauClientPro.xaml.cs">
+      <DependentUpon>NouveauClientPro.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControl\UCClientPro\UnClientPro.xaml.cs">
       <DependentUpon>UnClientPro.xaml</DependentUpon>
     </Compile>
@@ -229,6 +232,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControl\UCClientPro\ClientProUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl\UCClientPro\NouveauClientPro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
