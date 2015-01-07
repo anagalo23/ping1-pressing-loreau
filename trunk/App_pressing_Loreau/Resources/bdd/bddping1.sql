@@ -221,8 +221,10 @@ CREATE TABLE IF NOT EXISTS `paiement` (
   `pai_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `pai_montant` float NOT NULL,
   `pai_cmd_id` int(11) NOT NULL,
+  `pai_tpp_id` int(11) NOT NULL,
   PRIMARY KEY (`pai_id`),
-  KEY `fk_paiement_commande1_idx` (`pai_cmd_id`)
+  KEY `fk_paiement_commande1_idx` (`pai_cmd_id`),
+  KEY `fk_paiement_typepaiement1_idx` (`pai_tpp_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 
@@ -265,25 +267,10 @@ INSERT INTO `type` (`typ_id`, `typ_nom`, `typ_encombrement`, `typ_TVA`, `typ_HT`
 CREATE TABLE IF NOT EXISTS `typepaiement` (
   `tpp_id` int(11) NOT NULL AUTO_INCREMENT,
   `tpp_nom` varchar(45) NOT NULL,
-  `tpp_pai_id` int(11) NOT NULL,
-  `tpp_tppp_id` int(11) NOT NULL,
-  PRIMARY KEY (`tpp_id`),
-  KEY `fk_typepaiement_paiement1_idx` (`tpp_pai_id`),
-  KEY `fk_typepaiement_typepaiementpattern1_idx` (`tpp_tppp_id`)
+  PRIMARY KEY (`tpp_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 
--- --------------------------------------------------------
-
---
--- Structure de la table `typepaiementpattern`
---
-
-CREATE TABLE IF NOT EXISTS `typepaiementpattern` (
-  `tppp_id` int(11) NOT NULL AUTO_INCREMENT,
-  `tppp_nom` varchar(45) NOT NULL,
-  PRIMARY KEY (`tpp_id`),
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 
 --
@@ -318,13 +305,8 @@ ALTER TABLE `log`
 --
 ALTER TABLE `paiement`
   ADD CONSTRAINT `fk_paiement_commande1` FOREIGN KEY (`pai_cmd_id`) REFERENCES `commande` (`cmd_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_paiement_typepaiement1_idx` FOREIGN KEY (`pai_tpp_id`) REFERENCES `typepaiement` (`tpp_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
---
--- Contraintes pour la table `typepaiement`
---
-ALTER TABLE `typepaiement`
-  ADD CONSTRAINT `fk_typepaiement_paiement1` FOREIGN KEY (`tpp_pai_id`) REFERENCES `paiement` (`pai_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_typepaiement_typepaiementpattern1_idx` FOREIGN KEY (`tpp_tppp_id`) REFERENCES `typepaiementpattern` (`tppp_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
