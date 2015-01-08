@@ -19,14 +19,13 @@ namespace App_pressing_Loreau.Model.DAO
         }
 
 
-        public static void insertCommande(Commande commande)
+        public static void insertCommande(MySqlConnection connection, Commande commande)
         {
             try
             {
                 String sql = "INSERT INTO commande(cmd_date, cmd_payee, cmd_clt_id, cmd_remise) VALUES (?,?,?,?)";
 
                 //connection à la base de données
-                MySqlConnection connection = Bdd.connexion();
                 MySqlCommand cmd = new MySqlCommand(sql, connection);
 
                 //ajout des parametres
@@ -90,11 +89,11 @@ namespace App_pressing_Loreau.Model.DAO
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'une commande dans la base de données."));
+                LogDAO.insertLog(connection, new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'une commande dans la base de données."));
             }
         }
 
-        public static int lastId()
+        public static int lastId(MySqlConnection connection)
         {
             MySqlConnection connection = Bdd.connexion();
             String sql = "";

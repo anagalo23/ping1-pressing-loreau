@@ -15,12 +15,11 @@ namespace App_pressing_Loreau.Model.DAO
             MySqlConnection connection = Bdd.connexion();
         }
 
-        public static void insertConvoyeur(PlaceConvoyeur convoyeur)
+        public static void insertConvoyeur(MySqlConnection connection, PlaceConvoyeur convoyeur)
         {
             try
             {
                 //connection à la base de données
-                MySqlConnection connection = Bdd.connexion();
                 MySqlCommand cmd = new MySqlCommand(Bdd.insertConvoyeur, connection);
 
                 //ajout des parametres
@@ -31,18 +30,17 @@ namespace App_pressing_Loreau.Model.DAO
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un convoyeur dans la base de données."));
+                LogDAO.insertLog(connection, new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un convoyeur dans la base de données."));
             }
         }
 
-        public static List<PlaceConvoyeur> selectConvoyeurs()
+        public static List<PlaceConvoyeur> selectConvoyeurs(MySqlConnection connection)
         {
             try
             {
                 List<PlaceConvoyeur> retour = new List<PlaceConvoyeur>();
                 
                 //connection à la base de données  
-                MySqlConnection connection = Bdd.connexion();
                 MySqlCommand cmd = new MySqlCommand(Bdd.selectConvoyeurs, connection);
 
                 //Execute la commande
@@ -60,19 +58,18 @@ namespace App_pressing_Loreau.Model.DAO
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de convoyeurs dans la base de données."));
+                LogDAO.insertLog(connection, new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de convoyeurs dans la base de données."));
                 return null;
             }
         }
 
-        public static PlaceConvoyeur selectTypeById(int id)
+        public static PlaceConvoyeur selectTypeById(MySqlConnection connection, int id)
         {
             try
             {
                 PlaceConvoyeur retour = new PlaceConvoyeur();
                 
                 //connection à la base de données
-                MySqlConnection connection = Bdd.connexion();
                 MySqlCommand cmd = new MySqlCommand(Bdd.selectTypeById, connection);
 
                 //ajout des parametres
@@ -91,7 +88,7 @@ namespace App_pressing_Loreau.Model.DAO
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un convoyeur dans la base de données."));
+                LogDAO.insertLog(connection, new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un convoyeur dans la base de données."));
                 return null;
             }
         }       
