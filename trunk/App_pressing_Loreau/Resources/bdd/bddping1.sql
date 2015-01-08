@@ -103,57 +103,57 @@ CREATE TABLE IF NOT EXISTS `convoyeur` (
 -- Contenu de la table `convoyeur`
 --
 
-INSERT INTO `convoyeur` (`conv_id`, `conv_emplacement`) VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8),
-(9, 9),
-(10, 10),
-(11, 11),
-(12, 12),
-(13, 13),
-(14, 14),
-(15, 15),
-(16, 16),
-(17, 17),
-(18, 18),
-(19, 19),
-(20, 20),
-(21, 21),
-(22, 22),
-(23, 23),
-(24, 24),
-(25, 25),
-(26, 26),
-(27, 27),
-(28, 28),
-(29, 29),
-(30, 30),
-(31, 31),
-(32, 32),
-(33, 33),
-(34, 34),
-(35, 35),
-(36, 36),
-(37, 37),
-(38, 38),
-(39, 39),
-(40, 40),
-(41, 41),
-(42, 42),
-(43, 43),
-(44, 44),
-(45, 45),
-(46, 46),
-(47, 47),
-(48, 48),
-(49, 49),
-(50, 50);
+INSERT INTO `convoyeur` (`conv_emplacement`) VALUES
+(1),
+(2),
+(3),
+(4),
+(5),
+(6),
+(7),
+(8),
+(9),
+(10),
+(11),
+(12),
+(13),
+(14),
+(15),
+(16),
+(17),
+(18),
+(19),
+(20),
+(21),
+(22),
+(23),
+(24),
+(25),
+(26),
+(27),
+(28),
+(29),
+(30),
+(31),
+(32),
+(33),
+(34),
+(35),
+(36),
+(37),
+(38),
+(39),
+(40),
+(41),
+(42),
+(43),
+(44),
+(45),
+(46),
+(47),
+(48),
+(49),
+(50);
 
 -- --------------------------------------------------------
 
@@ -171,16 +171,16 @@ CREATE TABLE IF NOT EXISTS `departement` (
 -- Contenu de la table `departement`
 --
 
-INSERT INTO `departement` (`dep_id`, `dep_nom`) VALUES
-(1, 'Accesoire'),
-(2, 'Ameublement'),
-(3, 'Blanchisserie'),
-(4, 'Classique'),
-(5, 'Literie'),
-(6, 'Manteaux'),
-(7, 'Reppassage'),
-(8, 'sous traitance'),
-(9, 'Vente additionnelle');
+INSERT INTO `departement` (`dep_nom`) VALUES
+('Accesoire'),
+('Ameublement'),
+('Blanchisserie'),
+('Classique'),
+('Literie'),
+('Manteaux'),
+('Reppassage'),
+('sous traitance'),
+('Vente additionnelle');
 
 -- --------------------------------------------------------
 
@@ -242,7 +242,6 @@ CREATE TABLE IF NOT EXISTS `type` (
   `typ_HT` float NOT NULL,
   `typ_dep_id` int(11) NOT NULL,
   PRIMARY KEY (`typ_id`),
-  UNIQUE KEY `typ_id` (`typ_id`),
   UNIQUE KEY `typ_nom` (`typ_nom`),
   KEY `fk_typ_departement_idx` (`typ_dep_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -251,12 +250,12 @@ CREATE TABLE IF NOT EXISTS `type` (
 -- Contenu de la table `type`
 --
 
-INSERT INTO `type` (`typ_id`, `typ_nom`, `typ_encombrement`, `typ_TVA`, `typ_HT`,`typ_dep_id`) VALUES
-(4, 'Pantalon clair', 1.5, 20, 40,1),
-(3, 'Pantalon', 1.5, 20, 30,1),
-(1, 'Veste', 2, 20, 20,2),
-(5, 'Chemise', 1, 20, 10,2),
-(2, 'Veste clair', 2, 20, 50,2);
+INSERT INTO `type` (`typ_nom`, `typ_encombrement`, `typ_TVA`, `typ_HT`,`typ_dep_id`) VALUES
+('Pantalon clair', 1.5, 20, 40, 1),
+('Pantalon', 1.5, 20, 30, 1),
+('Veste', 2, 20, 20, 2),
+('Chemise', 1, 20, 10, 2),
+('Veste clair', 2, 20, 50, 2);
 
 -- --------------------------------------------------------
 
@@ -304,7 +303,7 @@ ALTER TABLE `log`
 -- Contraintes pour la table `paiement`
 --
 ALTER TABLE `paiement`
-  ADD CONSTRAINT `fk_paiement_commande1` FOREIGN KEY (`pai_cmd_id`) REFERENCES `commande` (`cmd_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_paiement_commande1` FOREIGN KEY (`pai_cmd_id`) REFERENCES `commande` (`cmd_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_paiement_typepaiement1_idx` FOREIGN KEY (`pai_tpp_id`) REFERENCES `typepaiement` (`tpp_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 
