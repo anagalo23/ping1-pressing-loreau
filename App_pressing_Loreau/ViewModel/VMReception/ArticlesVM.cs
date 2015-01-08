@@ -13,6 +13,7 @@ namespace App_pressing_Loreau.View
     class ArticlesVM: ObservableObject
     {
         #region Attributes 
+
         private string _articlesName;
         private string _txb_Articles_Commentaire;
         private string _selectFile;

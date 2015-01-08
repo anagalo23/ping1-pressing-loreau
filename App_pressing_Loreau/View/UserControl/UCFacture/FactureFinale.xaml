@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="App_pressing_Loreau.FactureFinale"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="740" d:DesignWidth="300">
+    
+    
+    <UserControl.Resources>
+        <DataTemplate x:Key="UnArticleFacture">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="1"/>
+                </Grid.ColumnDefinitions> 
+                <Label Grid.Column="0" Content="{Binding LabelNameArticle}" />
+                <Label Grid.Column="1" Content="   =   "/>
+                <Label Grid.Column="2" Content="{Binding LabelPrixArticle}"/>
+            </Grid>
+        
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140*" MaxHeight="150"/>
+            <RowDefinition MinHeight="20"/>
+            <RowDefinition Height="110*" MaxHeight="130"/>
+            <RowDefinition Height="60*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Label Content="PRESSING DU LOREAU" Grid.Row="0" FontWeight="Bold" FontSize="20"/>
+            <Label Content="{Binding LabelReferenceFacture}" Grid.Row="1" />
+            <Label  Grid.Row="2">
+                <TextBlock Width="280"> PLACE SAINT MARC <LineBreak/> CC INTERMARCHE CENTRE VILLE <LineBreak/> 76100 ROUEN <LineBreak/> Tel : 0235892619</TextBlock>
+            </Label>
+        </Grid>
+        <DockPanel Grid.Row="1">
+            <ListBox  Margin="5" ItemsSource="{Binding ListBoxDetailFacture}"   />
+            <Border >
+                <ListBox  ScrollViewer.HorizontalScrollBarVisibility="Hidden" Cursor="Hand" Margin="5,10"  BorderThickness="0" Background="Transparent" ItemsSource="{Binding ListBoxDetailFacture}" ItemTemplate="{StaticResource UnArticleFacture}"  TextOptions.TextHintingMode="Animated" >
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                </ListBox>
+
+            </Border>
+        </DockPanel>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+               
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+            <Label Content="TOTAL " Grid.Column="0"/>
+                <Label Content="{Binding LabelDetailTotal}" Grid.Column="1" />
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="12*"/>
+                    <RowDefinition Height="19*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Taux TVA" Grid.Row="0" Grid.Column="0"/>
+                <Label Content="{Binding LabelDetailTauxTVA}" Grid.Row="1" Grid.Column="0"/>
+                <Label Content="Montant H.T." Grid.Row="0" Grid.Column="1"/>
+                <Label Content="{Binding LabelDetailMontantHT}" Grid.Row="1" Grid.Column="1"/>
+                <Label Content="T.V.A." Grid.Row="0" Grid.Column="3"/>
+                <Label Content="{Binding LabelDetailMontantTVA}" Grid.Row="1" Grid.Column="2" />
+            </Grid>
+        </Grid>
+        <DockPanel Grid.Row="3">
+        
+            <TextBlock>
+            Echange ou remboursement sous 30 jours et sur <LineBreak/> présentation du ticket de caisse d'un article non <LineBreak/> porté dans son emballage d'origine. <LineBreak /> <LineBreak/> 08/01/2015  15:14 <LineBreak/>
+                <LineBreak/> PRESSING DU LOREAU
+        </TextBlock>
+        </DockPanel>
+     
+    </Grid>
+</UserControl>

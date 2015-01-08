@@ -116,8 +116,10 @@
     <Compile Include="ViewModel\VMAdministrateur\PageAdministrateurVM.cs" />
     <Compile Include="ViewModel\VMClientPRO\ClientPROVM.cs" />
     <Compile Include="ViewModel\VMConvoyeur\ConvoyeurVM.cs" />
+    <Compile Include="ViewModel\VMFacture\FactureFinaleVM.cs" />
     <Compile Include="ViewModel\VMFacture\FactureVM.cs" />
     <Compile Include="ViewModel\VMImpression\ImpressionVM.cs" />
+    <Compile Include="ViewModel\VMImpression\ImprimeClass.cs" />
     <Compile Include="ViewModel\VMReception\ArticlesVM.cs" />
     <Compile Include="ViewModel\VMReception\IdentificationClientData.cs" />
     <Compile Include="ViewModel\VMReception\NouveauClientData.cs" />
@@ -150,6 +152,9 @@
     </Compile>
     <Compile Include="View\UserControl\UCConvoyeur\Convoyeur.xaml.cs">
       <DependentUpon>Convoyeur.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControl\UCFacture\FactureFinale.xaml.cs">
+      <DependentUpon>FactureFinale.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControl\UCFacture\Factures.xaml.cs">
       <DependentUpon>Factures.xaml</DependentUpon>
@@ -242,6 +247,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControl\UCConvoyeur\Convoyeur.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControl\UCFacture\FactureFinale.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
