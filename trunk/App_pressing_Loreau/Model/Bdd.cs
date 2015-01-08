@@ -10,7 +10,7 @@ namespace App_pressing_Loreau.Model
     class Bdd
     {
         #region attributs
-        private static MySqlConnection MSConnexion;
+        public static MySqlConnection MSConnexion {get; set;}
         private static int ReturnCode = 0;
         #endregion
 
@@ -48,6 +48,10 @@ namespace App_pressing_Loreau.Model
          * Liste de l'ensemble des requetes sql du logiciel
          * Triés par classes
          */
+
+        //Commande
+        public static String insertCommande = "INSERT INTO commande(cmd_date, cmd_payee, cmd_remise, cmd_clt_id) VALUES (?,?,?,?)";
+        public static String selectCommandes = "SELECT cmd_id, cmd_date, cmd_payee, cmd_clt_id, cmd_remise FROM commande";
 
         //Département
         public static String insertDepartement = "INSERT INTO departement(dep_nom) VALUES (?)";

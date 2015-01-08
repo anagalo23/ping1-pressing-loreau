@@ -15,76 +15,90 @@ namespace App_pressing_Loreau.Model.DAO
         {
             try
             {
-                String sql = "INSERT INTO commande(cmd_date, cmd_payee, cmd_clt_id, cmd_remise) VALUES (?,?,?,?)";
-
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(sql, connection);
+                MySqlCommand cmd = new MySqlCommand(Bdd.insertCommande, Bdd.MSConnexion);
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("date", commande.date);
                 int payee = (commande.payee) ? 1 : 0;
-                cmd.Parameters.AddWithValue("payee", payee);
-                cmd.Parameters.AddWithValue("clt_id", commande.client.id);
+                cmd.Parameters.AddWithValue("payee", payee); 
                 cmd.Parameters.AddWithValue("remise", commande.remise);
+                cmd.Parameters.AddWithValue("clt_id", commande.client.id);
 
                 int retour = cmd.ExecuteNonQuery();
 
                 #region Insert Articles
-                if (commande.listArticles.Count != 0 && commande.listArticles.Count != null)
+                if (commande.listArticles.Count != 0 && commande.listArticles != null)
                 {
-                    String sqlarticle = "INSERT INTO article(art_photo, art_commentaire, art_rendu, art_TVA, art_HT, art_conv_id, art_typ_id) VALUES (?,?,?,?,?,?,?)";
-                    cmd.CommandText = sqlarticle;
-
                     foreach (Article article in commande.listArticles)
-                    {
-                        //ajout des parametres
-                        cmd.Parameters.AddWithValue("photo", article.photo);
-                        cmd.Parameters.AddWithValue("commentaire", article.commentaire);
-                        cmd.Parameters.AddWithValue("rendu", article.ifRendu);
-                        cmd.Parameters.AddWithValue("TVA", article.TVA);
-                        cmd.Parameters.AddWithValue("HT", article.HT);
-                        cmd.Parameters.AddWithValue("conv_id", article.convoyeur.id);
-                        cmd.Parameters.AddWithValue("typ_id", article.type.id);
-
-                        //Execute la commande
-                        cmd.ExecuteNonQuery();
-                    }
+                        ArticleDAO.insertArticle(article);
                 }
                 #endregion
 
                 #region Insert payement
-                /*if (commande.listArticles.Count != 0 && commande.listArticles.Count != null)
+                if (commande.listPayements.Count != 0 && commande.listPayements != null)
                 {
-                    String sqlarticle = "INSERT INTO article(art_photo, art_commentaire, art_rendu, art_TVA, art_HT, art_conv_id, art_typ_id) VALUES (?,?,?,?,?,?,?)";
-                    cmd.CommandText = sqlarticle;
-
-                    foreach (Article article in commande.listArticles)
-                    {
-                        //ajout des parametres
-                        cmd.Parameters.AddWithValue("photo", article.photo);
-                        cmd.Parameters.AddWithValue("commentaire", article.commentaire);
-                        cmd.Parameters.AddWithValue("rendu", article.ifRendu);
-                        cmd.Parameters.AddWithValue("TVA", article.TVA);
-                        cmd.Parameters.AddWithValue("HT", article.HT);
-                        cmd.Parameters.AddWithValue("conv_id", article.convoyeur.id);
-                        cmd.Parameters.AddWithValue("typ_id", article.type.id);
-
-                        //Execute la commande
-                        cmd.ExecuteNonQuery();
-                    }
-                }*/
-
+                    foreach (Payement payement in commande.listPayements)
+                        PayementDAO.insertPaiement(payement, commande.id);
+                }
                 #endregion
-
-                //Ferme la connexion
-                connection.Close();
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(connection, new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'une commande dans la base de données."));
+                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'une commande dans la base de données."));
             }
         }
 
+        
+        public static void selectCommandes(Boolean addPaiement, Boolean addArticles)
+        {
+            try
+            {
+                List<Commande> retour = new List<Commande>();
+                List<int> id_clients = new List<int>();
+                
+                //connection à la base de données  
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectCommandes, Bdd.MSConnexion);
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                Commande commande;
+                while (msdr.Read())
+                {
+                    commande = new Commande(
+                        Int32.Parse(msdr["cmd_id"].ToString()),
+                        DateTime.Parse(msdr["cmd_date"].ToString()),
+                        Boolean.Parse(msdr["cmd_payee"].ToString()),
+                        float.Parse(msdr["cmd_remise"].ToString()));
+                    retour.Add(commande);
+                }
+                msdr.Dispose();
+
+                #region ajout paiement
+                if(addPaiement)
+                {
+                    foreach (Commande c1 in retour)
+                        c1.listPayements = PayementDAO.selectPayementByCommande(c1.id);
+                }
+                #endregion
+
+                #region ajout article
+                if(addArticles)
+                {
+                    foreach (Commande c1 in retour)
+                        c1.listArticles = ArticleDAO.
+                }
+                #endregion
+
+
+                return retour;
+            }
+            catch (Exception Ex)
+            {
+                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                return null;
+            }
+        }
         public static int lastId(MySqlConnection connection)
         {
             String sql = "";
