@@ -65,14 +65,13 @@ namespace App_pressing_Loreau.Model
         public static String selectTypeByDepId = "SELECT T.typ_id, T.typ_nom, T.typ_encombrement, T.typ_TVA, T.typ_HT, T.typ_dep_id, D.dep_nom FROM type T, departement D WHERE T.typ_dep_id=D.dep_id AND D.dep_id=?";
         
         //TypePayement
-        public static String selectTypePayementById = "SELECT T1.tpp_id, T1.tpp_nom, T2.tppp_nom FROM typepaiement T1, TypePaiementPattern T2 WHERE T1.tpp_tppp_id = T2.tppp_id AND T1.tpp_id=?";
-        public static String selectTypePayementByIdPaiement = "SELECT T1.tpp_id, T1.tpp_nom, T2.tppp_nom FROM typepaiement T1, TypePaiementPattern T2 WHERE T1.tpp_tppp_id = T2.tppp_id AND T1.tpp_pai_id=?";
+        public static String selectTypesPayement = "SELECT tpp_id, tpp_nom FROM typepaiement";
+        public static String selectTypePayementById = "SELECT tpp_id, tpp_nom FROM typepaiement WHERE tpp_id=?";
+        public static String selectTypePayementByName = "SELECT tpp_id, tpp_nom FROM typepaiement WHERE tpp_nom=?";
 
-        //TypePayementPattern
-        public static String selectPayementPatternByName = "SELECT tppp_id, tppp_nom FROM TypePaiementPattern WHERE tppp_nom LIKE %?%";
-        public static String selectPayementPatternById = "SELECT tppp_id, tppp_nom FROM TypePaiementPattern WHERE tppp_id=?";
-        public static String selectPayementsPatterns = "SELECT tppp_id, tppp_nom FROM TypePaiementPattern";
-
+        //Payement
+        public static String insertPaiement = "INSERT INTO paiement (pai_date, pai_montant, pai_name ,pai_cmd_id) VALUES (?,?,?,?)";
+        public static String selectPayementByCommande = "SELECT pai_id, pai_date, pai_name, pai_montant FROM paiement WHERE pai_cmd_id=?";
         #endregion
     }
 }

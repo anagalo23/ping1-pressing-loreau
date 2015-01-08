@@ -12,7 +12,7 @@ namespace App_pressing_Loreau.Model.DTO
         public int id {get; set;}
         public DateTime date { get; set; }
         public float montant {get; set;}
-        public List<TypePayement> typesPayements { get; set; }
+        public String typePaiement { get; set; }
         #endregion
 
         #region classes
@@ -20,19 +20,19 @@ namespace App_pressing_Loreau.Model.DTO
         {
         }
 
-        public Payement(DateTime date, float montant, List<TypePayement> typesPayements)
+        public Payement(DateTime date, float montant, String typePaiement)
         {
             id = 0;
             this.date = date;
             this.montant = montant;
-            this.typesPayements = typesPayements;
+            this.typePaiement = typePaiement;
         }
-        public Payement(int id, DateTime date, float montant, List<TypePayement> typesPayements)
+        public Payement(int id, DateTime date, float montant, String typePaiement)
         {
             this.id = id;
             this.date = date;
             this.montant = montant;
-            this.typesPayements = typesPayements;
+            this.typePaiement = typePaiement;
         }
         #endregion
     }

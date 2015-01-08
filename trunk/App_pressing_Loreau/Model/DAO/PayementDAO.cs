@@ -10,19 +10,22 @@ namespace App_pressing_Loreau.Model.DAO
 {
     class PayementDAO
     {
-        public static void insertPaiement(Payement paiement, int id_commande)
+        public static void open()
+        {
+            MySqlConnection connection = Bdd.connexion();
+        }
+
+        public static void insertPaiement(MySqlConnection connection, Payement paiement, int id_commande)
         {
             try
             {
-                String sql = "INSERT INTO paiement (pai_date, pai_montant, pai_cmd_id) VALUES (?,?,?)";
-
                 //connection à la base de données
-                MySqlConnection connection = Bdd.connexion();
-                MySqlCommand cmd = new MySqlCommand(sql, connection);
+                MySqlCommand cmd = new MySqlCommand(Bdd.insertPaiement, connection);
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("datePaiement", paiement.date);
                 cmd.Parameters.AddWithValue("montant", paiement.montant);
+                cmd.Parameters.AddWithValue("name", paiement.typePaiement);
                 cmd.Parameters.AddWithValue("commande_id", id_commande);
 
                 //Execute la commande
@@ -30,87 +33,76 @@ namespace App_pressing_Loreau.Model.DAO
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
+                LogDAO.insertLog(connection, new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
             }
         }
-        /*
-        public static List<Payement> selectPayement(Commande commande)
+        
+        public static List<Payement> selectPayementByCommande(MySqlConnection connection, Commande commande)
         {
             try
             {
                 List<Payement> retour = new List<Payement>();
-                String sql = "SELECT T.typ_id, T.type_nom, T.type_encombrement, T.type_TVA, T.type_HT, T.type_dep_id, D.dep_nom FROM type T, departement D WHERE T.type_dep_id=D.dep_id";
 
                 //connection à la base de données  
-                MySqlConnection connection = Bdd.connexion();
-                MySqlCommand cmd = new MySqlCommand(sql, connection);
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectPayementByCommande, connection);
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("idCommande", commande.id);
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
-                TypeArticle type;
-                Departement departement;
+                Payement payement;
                 while (msdr.Read())
                 {
-                    departement = new Departement(
-                        Int32.Parse(msdr["type_dep_id"].ToString()),
-                        msdr["dep_nom"].ToString());
-                    type = new TypeArticle(
-                        Int32.Parse(msdr["typ_id"].ToString()),
-                        msdr["type_nom"].ToString(),
-                        float.Parse(msdr["type_encombrement"].ToString()),
-                        Int32.Parse(msdr["type_TVA"].ToString()),
-                        Int32.Parse(msdr["type_HT"].ToString()),
-                        departement);
-                    retour.Add(type);
+                    payement = new Payement(
+                        Int32.Parse(msdr["pai_id"].ToString()),
+                        DateTime.Parse(msdr["pai_date"].ToString()),
+                        float.Parse(msdr["pai_montant"].ToString()),
+                        msdr["pai_name"].ToString());
+                        retour.Add(payement);
                 }
                 msdr.Dispose();
                 return retour;
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de types dans la base de données."));
+                LogDAO.insertLog(connection, new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de types dans la base de données."));
                 return null;
             }
         }
-       
-        public static TypeArticle selectTypeById(int id)
+
+        public static List<Payement> selectPayementByCommande(MySqlConnection connection, int id_commande)
         {
             try
             {
-                TypeArticle retour = new TypeArticle();
-                String sql = "SELECT T.typ_id, T.type_nom, T.type_encombrement, T.type_TVA, T.type_HT, T.type_dep_id, D.dep_nom FROM type T, departement D WHERE T.type_dep_id=D.dep_id AND T.typ_id=?";
+                List<Payement> retour = new List<Payement>();
 
-                //connection à la base de données
-                MySqlConnection connection = Bdd.connexion();
-                MySqlCommand cmd = new MySqlCommand(sql, connection);
+                //connection à la base de données  
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectPayementByCommande, connection);
 
                 //ajout des parametres
-                cmd.Parameters.AddWithValue("id", id);
+                cmd.Parameters.AddWithValue("idCommande", id_commande);
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
-                Departement departement;
+                Payement payement;
                 while (msdr.Read())
                 {
-                    departement = new Departement(
-                        Int32.Parse(msdr["type_dep_id"].ToString()),
-                        msdr["dep_nom"].ToString());
-                    retour = new TypeArticle(
-                        Int32.Parse(msdr["typ_id"].ToString()),
-                        msdr["type_nom"].ToString(),
-                        float.Parse(msdr["type_encombrement"].ToString()),
-                        Int32.Parse(msdr["type_TVA"].ToString()),
-                        Int32.Parse(msdr["type_HT"].ToString()),
-                        departement);
+                    payement = new Payement(
+                        Int32.Parse(msdr["pai_id"].ToString()),
+                        DateTime.Parse(msdr["pai_date"].ToString()),
+                        float.Parse(msdr["pai_montant"].ToString()),
+                        msdr["pai_name"].ToString());
+                        retour.Add(payement);
                 }
                 msdr.Dispose();
                 return retour;
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un département dans la base de données."));
+                LogDAO.insertLog(connection, new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de types dans la base de données."));
                 return null;
             }
-        } */
+        }
     }
 }

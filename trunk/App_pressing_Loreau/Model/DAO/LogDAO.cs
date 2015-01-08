@@ -10,14 +10,18 @@ namespace App_pressing_Loreau.Model.DAO
 {
     class LogDAO
     {
-        public static int insertLog(Log log)
+        public static void open()
+        {
+            MySqlConnection connection = Bdd.connexion();
+        }
+
+        public static int insertLog( MySqlConnection connection, Log log)
         {
             try
             {
                 String sql = "INSERT INTO Log(log_date, log_message, log_emp_id) VALUES (?,?,?)";
 
                 //connection à la base de données
-                MySqlConnection connection = Bdd.connexion();
                 MySqlCommand cmd = new MySqlCommand(sql, connection);
 
                 //ajout des parametres
