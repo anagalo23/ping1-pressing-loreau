@@ -165,7 +165,7 @@ namespace App_pressing_Loreau.View
 
         /**
          * Permet le défilement des départements 
-         * */
+         **/
 
 
         public void DefileDepartement(Object lang)

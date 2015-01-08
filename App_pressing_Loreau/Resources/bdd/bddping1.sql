@@ -221,10 +221,9 @@ CREATE TABLE IF NOT EXISTS `paiement` (
   `pai_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `pai_montant` float NOT NULL,
   `pai_cmd_id` int(11) NOT NULL,
-  `pai_tpp_id` int(11) NOT NULL,
+  `pai_type` varchar(45) NOT NULL,
   PRIMARY KEY (`pai_id`),
-  KEY `fk_paiement_commande1_idx` (`pai_cmd_id`),
-  KEY `fk_paiement_typepaiement1_idx` (`pai_tpp_id`)
+  KEY `fk_paiement_commande1_idx` (`pai_cmd_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 
@@ -303,8 +302,7 @@ ALTER TABLE `log`
 -- Contraintes pour la table `paiement`
 --
 ALTER TABLE `paiement`
-  ADD CONSTRAINT `fk_paiement_commande1` FOREIGN KEY (`pai_cmd_id`) REFERENCES `commande` (`cmd_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_paiement_typepaiement1_idx` FOREIGN KEY (`pai_tpp_id`) REFERENCES `typepaiement` (`tpp_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_paiement_commande1` FOREIGN KEY (`pai_cmd_id`) REFERENCES `commande` (`cmd_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
