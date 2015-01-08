@@ -83,7 +83,7 @@
                             </Border>
                            <!-- <ContentControl  Content="{Binding ContentCommande}"/>-->
                             <Border >
-                                <ListBox  ScrollViewer.HorizontalScrollBarVisibility="Hidden" Cursor="Hand" Margin="5,10"  BorderThickness="0" Background="Transparent" ItemsSource="{Binding ListeArticles}" ItemTemplate="{StaticResource articles}"  TextOptions.TextHintingMode="Animated">
+                                <ListBox  ScrollViewer.HorizontalScrollBarVisibility="Hidden" Cursor="Hand" Margin="5,10"  BorderThickness="0" Background="Transparent" ItemsSource="{Binding ListeArticles}" ItemTemplate="{StaticResource articles}"  TextOptions.TextHintingMode="Animated" >
                                     <ListBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <VirtualizingStackPanel Orientation="Vertical"/>

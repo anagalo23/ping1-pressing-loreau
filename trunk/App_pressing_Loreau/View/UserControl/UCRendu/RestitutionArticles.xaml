@@ -8,7 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="740">
 
     <UserControl.Resources>
-        <!-- Données à afficher sur la partir 'commande concernant'-->
+        <!-- Données à afficher sur la partie 'commande concernant'-->
         <DataTemplate DataType="{x:Type local:CommandeConcernantRA_DATA }">
             <Border>
                 <Grid>

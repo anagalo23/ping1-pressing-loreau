@@ -52,7 +52,7 @@ namespace App_pressing_Loreau.View
         #region Constructeur
         public NouvelleCommandeVM()
         {
-            ListeArticles = new List<CategoryItem>();
+           
             lArticles = new List<Article>(); 
 
             DefileDepartement("Commande_suivante");
