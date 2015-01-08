@@ -10,17 +10,12 @@ namespace App_pressing_Loreau.Model.DAO
 {
     class PayementDAO
     {
-        public static void open()
-        {
-            MySqlConnection connection = Bdd.connexion();
-        }
-
-        public static void insertPaiement(MySqlConnection connection, Payement paiement, int id_commande)
+        public static void insertPaiement(Payement paiement, int id_commande)
         {
             try
             {
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(Bdd.insertPaiement, connection);
+                MySqlCommand cmd = new MySqlCommand(Bdd.insertPaiement, Bdd.MSConnexion);
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("datePaiement", paiement.date);
@@ -33,18 +28,18 @@ namespace App_pressing_Loreau.Model.DAO
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(connection, new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
+                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
             }
         }
         
-        public static List<Payement> selectPayementByCommande(MySqlConnection connection, Commande commande)
+        public static List<Payement> selectPayementByCommande(Commande commande)
         {
             try
             {
                 List<Payement> retour = new List<Payement>();
 
                 //connection à la base de données  
-                MySqlCommand cmd = new MySqlCommand(Bdd.selectPayementByCommande, connection);
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectPayementByCommande, Bdd.MSConnexion);
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("idCommande", commande.id);
@@ -66,19 +61,19 @@ namespace App_pressing_Loreau.Model.DAO
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(connection, new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de types dans la base de données."));
+                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de types dans la base de données."));
                 return null;
             }
         }
 
-        public static List<Payement> selectPayementByCommande(MySqlConnection connection, int id_commande)
+        public static List<Payement> selectPayementByCommande(int id_commande)
         {
             try
             {
                 List<Payement> retour = new List<Payement>();
 
                 //connection à la base de données  
-                MySqlCommand cmd = new MySqlCommand(Bdd.selectPayementByCommande, connection);
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectPayementByCommande, Bdd.MSConnexion);
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("idCommande", id_commande);
@@ -100,7 +95,7 @@ namespace App_pressing_Loreau.Model.DAO
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(connection, new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de types dans la base de données."));
+                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de types dans la base de données."));
                 return null;
             }
         }

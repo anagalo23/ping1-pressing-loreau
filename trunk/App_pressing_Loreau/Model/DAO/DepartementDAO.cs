@@ -10,17 +10,12 @@ namespace App_pressing_Loreau.Model.DAO
 {
     class DepartementDAO
     {
-        public static void open()
-        {
-            MySqlConnection connection = Bdd.connexion();
-        }
-
-        public static void insertDepartement( MySqlConnection connection, Departement departement)
+        public static void insertDepartement(Departement departement)
         {
             try
             {
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(Bdd.insertDepartement, connection);
+                MySqlCommand cmd = new MySqlCommand(Bdd.insertDepartement, Bdd.MSConnexion);
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("nom", departement.nom);
@@ -30,18 +25,18 @@ namespace App_pressing_Loreau.Model.DAO
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(connection, new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un departement dans la base de données."));
+                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un departement dans la base de données."));
             }
         }
 
-        public static List<Departement> selectDepartements(MySqlConnection connection)
+        public static List<Departement> selectDepartements()
         {
             try
             {
                 List<Departement> retour = new List<Departement>();
                 
                 //connection à la base de données  
-                MySqlCommand cmd = new MySqlCommand(Bdd.selectDepartements, connection);
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectDepartements, Bdd.MSConnexion);
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
@@ -58,21 +53,21 @@ namespace App_pressing_Loreau.Model.DAO
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(connection, new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
                 return null;
             }
 
 
         }
 
-        public static Departement selectDepartementById(MySqlConnection connection, int id)
+        public static Departement selectDepartementById(int id)
         {
             try
             {
                 Departement retour = new Departement();
                 
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(Bdd.selectDepartementById, connection);
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectDepartementById, Bdd.MSConnexion);
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("id", id);
@@ -92,7 +87,7 @@ namespace App_pressing_Loreau.Model.DAO
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(connection, new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un département dans la base de données."));
+                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un département dans la base de données."));
                 return null;
             }
 

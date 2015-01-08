@@ -11,15 +11,7 @@ namespace App_pressing_Loreau.Model.DAO
 {
     class CommandeDAO
     {
-        //public static List<Commande> get
-
-        public static void open()
-        {
-            MySqlConnection  connection = Bdd.connexion();
-        }
-
-
-        public static void insertCommande(MySqlConnection connection, Commande commande)
+        public static void insertCommande(Commande commande)
         {
             try
             {
@@ -95,12 +87,11 @@ namespace App_pressing_Loreau.Model.DAO
 
         public static int lastId(MySqlConnection connection)
         {
-            MySqlConnection connection = Bdd.connexion();
             String sql = "";
 
             //connection à la base de données  
 
-            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            MySqlCommand cmd = new MySqlCommand(sql, Bdd.MSConnexion);
             // Le langage d'insertion en bdd est le sql
             cmd.CommandText = sql;
             //ajout des parametres

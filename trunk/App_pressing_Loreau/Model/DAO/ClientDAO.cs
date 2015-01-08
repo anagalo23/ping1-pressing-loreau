@@ -11,19 +11,14 @@ namespace App_pressing_Loreau.Model.DAO
     class ClientDAO
     {
 
-        public static void open()
-        {
-            MySqlConnection connection = Bdd.connexion();
-        }
-
-        public static void insertClient(MySqlConnection connection, Client client)
+        public static void insertClient(Client client)
         {
             try
             {
                 String sql = "INSERT INTO client(clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway, clt_contactmail, clt_contactsms, clt_type) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(sql, connection);
+                MySqlCommand cmd = new MySqlCommand(sql, Bdd.MSConnexion);
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("nom", client.nom);
@@ -44,13 +39,13 @@ namespace App_pressing_Loreau.Model.DAO
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(connection, new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
+                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
             }
         }
 
 
         //Recherche de client classique a partir du nom, du prenom et/ou du numéro de telephone
-        public static List<Client> seekClients(MySqlConnection connection, String nom, String prenom, String tel)
+        public static List<Client> seekClients(String nom, String prenom, String tel)
         {
             try
             {
@@ -82,7 +77,7 @@ namespace App_pressing_Loreau.Model.DAO
                 #endregion
 
                 //connection à la base de données  
-                MySqlCommand cmd = new MySqlCommand(sql, connection);
+                MySqlCommand cmd = new MySqlCommand(sql, Bdd.MSConnexion);
 
                 //ajout des parametres
                 if (nom != null)
@@ -122,7 +117,7 @@ namespace App_pressing_Loreau.Model.DAO
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(connection, new Log(DateTime.Now, "ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données."));
+                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données."));
                 return null;
             }
 
