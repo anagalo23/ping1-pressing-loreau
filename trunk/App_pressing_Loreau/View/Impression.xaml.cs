@@ -18,7 +18,7 @@ namespace App_pressing_Loreau
     /// <summary>
     /// Logique d'interaction pour Impression.xaml
     /// </summary>
-    public partial class Impression
+    public partial class Impression : UserControl
     {
         public Impression()
         {

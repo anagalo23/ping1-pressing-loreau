@@ -18,7 +18,7 @@ namespace App_pressing_Loreau
     /// <summary>
     /// Logique d'interaction pour NouveauClient.xaml
     /// </summary>
-    public partial class NouveauClient
+    public partial class NouveauClient : UserControl
     {
 
         public int parameter {get; set;}

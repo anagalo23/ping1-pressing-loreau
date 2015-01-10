@@ -18,7 +18,7 @@ namespace App_pressing_Loreau
     /// <summary>
     /// Logique d'interaction pour ClientPro.xaml
     /// </summary>
-    public partial class ClientProUC 
+    public partial class ClientProUC : UserControl
     {
         public ClientProUC()
         {

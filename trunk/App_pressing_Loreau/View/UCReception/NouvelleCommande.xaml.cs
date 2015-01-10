@@ -10,7 +10,7 @@ namespace App_pressing_Loreau
     /// <summary>
     /// Logique d'interaction pour NouvelleCommande.xaml
     /// </summary>
-    public partial class NouvelleCommande
+    public partial class NouvelleCommande : UserControl
     {
         public NouvelleCommande()
         {

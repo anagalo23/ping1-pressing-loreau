@@ -18,7 +18,7 @@ namespace App_pressing_Loreau.View
     /// <summary>
     /// Logique d'interaction pour GestionUtilasteurs.xaml
     /// </summary>
-    public partial class GestionUtilisateurs 
+    public partial class GestionUtilisateurs : UserControl
     {
         public GestionUtilisateurs()
         {

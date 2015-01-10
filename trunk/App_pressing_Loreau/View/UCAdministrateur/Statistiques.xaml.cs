@@ -17,7 +17,7 @@ namespace App_pressing_Loreau.View
     /// <summary>
     /// Logique d'interaction pour Statistiques.xaml
     /// </summary>
-    public partial class Statistiques
+    public partial class Statistiques : UserControl
     {
         public Statistiques()
         {
