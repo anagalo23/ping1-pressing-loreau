@@ -114,8 +114,8 @@
     <Compile Include="ViewModel\AccueilVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\AdministrateurConnexionVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\PageAdministrateurVM.cs" />
-    <Compile Include="ViewModel\VMClientPRO\ClientPROVM.cs" />
-    <Compile Include="ViewModel\VMConvoyeur\ConvoyeurVM.cs" />
+    <Compile Include="ViewModel\ClientPROVM.cs" />
+    <Compile Include="ViewModel\ConvoyeurVM.cs" />
     <Compile Include="ViewModel\VMFacture\FactureFinaleVM.cs" />
     <Compile Include="ViewModel\VMFacture\FactureVM.cs" />
     <Compile Include="ViewModel\VMImpression\ImpressionVM.cs" />
@@ -159,7 +159,7 @@
     <Compile Include="View\UCFacture\Factures.xaml.cs">
       <DependentUpon>Factures.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UCImpression\Impression.xaml.cs">
+    <Compile Include="View\Impression.xaml.cs">
       <DependentUpon>Impression.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\VMReception\IdentificationClientVM.cs" />
@@ -258,7 +258,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UCImpression\Impression.xaml">
+    <Page Include="View\Impression.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
