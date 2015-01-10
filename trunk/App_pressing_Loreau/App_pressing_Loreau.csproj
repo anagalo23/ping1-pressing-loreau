@@ -84,7 +84,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controller\ControlerReception.cs" />
     <Compile Include="Helper\ButtonNames.cs" />
     <Compile Include="Helper\IPageViewModel.cs" />
     <Compile Include="ViewModel\ObservableObject.cs" />

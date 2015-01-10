@@ -36,7 +36,7 @@
                 <RowDefinition Height="71*"/>
             </Grid.RowDefinitions>
             <Label x:Name="Factures_choixcommande"  Content="Choix des commandes" Grid.Row="0" Style="{StaticResource Titre}" />
-            <Button x:Name="Factures_editerfacture" Content="Imprimer la facture" Grid.Row="3" Style="{StaticResource choixbouton30}" Margin="55,0,57,0" Command="{Binding Btn_factures_imprimer_facture}"/>
+            <Button x:Name="Factures_editerfacture" Content="Imprimer la facture" Grid.Row="3" Style="{StaticResource choixbouton30}" Margin="55,0,57,0" BorderBrush="White"  Command="{Binding Btn_factures_imprimer_facture}"/>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions >
                     <ColumnDefinition Width="1*" />
@@ -45,8 +45,8 @@
                 </Grid.ColumnDefinitions>
                 <Label x:Name="Factures_idcommande" Content=" Id commande   :" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                 <TextBox x:Name="Txb_factures_entreztexte" Grid.Column="1" Margin="5,20" Text="{Binding Txb_factures_idCommande, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                
-                <Button Grid.Column="2" Margin="15" Grid.Row="1" Command="{Binding Btn_Factures_Recherche}" >
+
+                <Button Grid.Column="2" Margin="15" Grid.Row="1" BorderBrush="White" Background="White" Command="{Binding Btn_Factures_Recherche}" >
                     <Image Source="/Resources/pics/Factures/loupederecherche.png" />
                 </Button>
             </Grid>

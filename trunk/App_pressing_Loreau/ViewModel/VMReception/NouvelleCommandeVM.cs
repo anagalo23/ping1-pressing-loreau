@@ -4,18 +4,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using App_pressing_Loreau.Helper;
-using App_pressing_Loreau.Model.DAO;
-using App_pressing_Loreau.Model.DTO;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-
-using App_pressing_Loreau.Model;
 using System.Collections.ObjectModel;
 using Microsoft.Practices.Prism.Commands;
 using System.Windows.Controls;
 using System.Windows;
 using Microsoft.Win32;
+
+using App_pressing_Loreau.Helper;
+using App_pressing_Loreau.Data.DAO;
+using App_pressing_Loreau.Model.DTO;
+using App_pressing_Loreau.Model;
+using App_pressing_Loreau.Data;
 
 
 namespace App_pressing_Loreau.ViewModel

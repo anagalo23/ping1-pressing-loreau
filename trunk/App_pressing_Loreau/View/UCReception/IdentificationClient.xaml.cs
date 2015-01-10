@@ -1,7 +1,4 @@
-﻿using App_pressing_Loreau;
-using App_pressing_Loreau.Model.DAO;
-using App_pressing_Loreau.Model.DTO;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 

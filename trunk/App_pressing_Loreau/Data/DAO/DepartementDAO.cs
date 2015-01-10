@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using App_pressing_Loreau.Model.DTO;
 
-namespace App_pressing_Loreau.Model.DAO
+namespace App_pressing_Loreau.Data.DAO
 {
     class DepartementDAO
     {

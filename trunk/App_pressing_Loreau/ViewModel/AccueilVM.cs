@@ -1,5 +1,9 @@
 ﻿using App_pressing_Loreau.Helper;
 using App_pressing_Loreau.ViewModel;
+using App_pressing_Loreau.Data.DAO;
+using App_pressing_Loreau.Model.DTO;
+using App_pressing_Loreau.View;
+
 
 using System;
 using System.Collections.Generic;
@@ -8,8 +12,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
-using App_pressing_Loreau;
-using App_pressing_Loreau.View;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;

@@ -7,7 +7,7 @@ using App_pressing_Loreau.Model.DTO;
 using App_pressing_Loreau.Model;
 using MySql.Data.MySqlClient;
 
-namespace App_pressing_Loreau.Model.DAO
+namespace App_pressing_Loreau.Data.DAO
 {
     class CommandeDAO
     {
