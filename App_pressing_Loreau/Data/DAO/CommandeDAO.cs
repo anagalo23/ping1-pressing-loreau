@@ -16,7 +16,7 @@ namespace App_pressing_Loreau.Data.DAO
             try
             {
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(Bdd.insertCommande, Bdd.MSConnexion);
+                MySqlCommand cmd = new MySqlCommand(Bdd.insertCommande, Bdd.connexion());
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("date", commande.date);
@@ -58,7 +58,7 @@ namespace App_pressing_Loreau.Data.DAO
                 List<int> id_clients = new List<int>();
                 
                 //connection à la base de données  
-                MySqlCommand cmd = new MySqlCommand(Bdd.selectCommandes, Bdd.MSConnexion);
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectCommandes, Bdd.connexion());
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();

@@ -15,7 +15,7 @@ namespace App_pressing_Loreau.Data.DAO
             try
             {
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(Bdd.insertConvoyeur, Bdd.MSConnexion);
+                MySqlCommand cmd = new MySqlCommand(Bdd.insertConvoyeur, Bdd.connexion());
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("emplacement", convoyeur.emplacement);
@@ -65,7 +65,7 @@ namespace App_pressing_Loreau.Data.DAO
                 PlaceConvoyeur retour = new PlaceConvoyeur();
                 
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(Bdd.selectTypeById, Bdd.MSConnexion);
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectTypeById, Bdd.connexion());
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("id", id);

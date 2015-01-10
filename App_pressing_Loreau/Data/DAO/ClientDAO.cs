@@ -20,7 +20,7 @@ namespace App_pressing_Loreau.Data.DAO
                 String sql = "INSERT INTO client(clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway, clt_contactmail, clt_contactsms, clt_type) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(sql, Bdd.MSConnexion);
+                MySqlCommand cmd = new MySqlCommand(sql, Bdd.connexion());
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("nom", client.nom);
@@ -79,7 +79,7 @@ namespace App_pressing_Loreau.Data.DAO
                 #endregion
 
                 //connection à la base de données  
-                MySqlCommand cmd = new MySqlCommand(sql, Bdd.MSConnexion);
+                MySqlCommand cmd = new MySqlCommand(sql, Bdd.connexion());
 
                 //ajout des parametres
                 if (nom != null)
