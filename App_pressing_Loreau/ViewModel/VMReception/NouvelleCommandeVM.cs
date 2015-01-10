@@ -186,10 +186,17 @@ namespace App_pressing_Loreau.ViewModel
 
             else 
             {
-                for (int i = 5; i < listeDepartementDTO.Count; i++)
+                if (listeDepartementDTO != null)
                 {
-                    ListeDepartements.Add(new CategoryItem() { ButtonContent = listeDepartementDTO[i].nom, ButtonTag = listeDepartementDTO[i].id });
-                }                
+                    for (int i = 5; i < listeDepartementDTO.Count; i++)
+                    {
+                        ListeDepartements.Add(new CategoryItem() { ButtonContent = listeDepartementDTO[i].nom, ButtonTag = listeDepartementDTO[i].id });
+                    }  
+                }
+                else
+                {
+                    //Inscription dans le log -> liste departement dto n'existe pas
+                }
             }
         }
 
@@ -201,22 +208,26 @@ namespace App_pressing_Loreau.ViewModel
             Button clickedbutton = button as Button;
             ListeArticles = new List<CategoryItem>();
             articlesByDep = (List<TypeArticle>) TypeArticleDAO.selectTypeByDepId(Int32.Parse(clickedbutton.Tag.ToString()));
-            if (articlesByDep.Count > 0)
+            if (articlesByDep != null)
             {
-                if (clickedbutton != null)
+                if (articlesByDep.Count > 0)
                 {
-
-                    clickedbutton.Background = Brushes.Blue;
-                    for (int i = 0; i < articlesByDep.Count; i++)
+                    if (clickedbutton != null)
                     {
-                        ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = articlesByDep[i].nom, ButtonArticlesTag = articlesByDep[i].id });
-                    }
-                    //ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Pantalon", ButtonArticlesTag = "Pantalon" });
-                    //ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Veste", ButtonArticlesTag = "Veste" });
-                    //ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Chemise", ButtonArticlesTag = "Chemise" });
 
+                        clickedbutton.Background = Brushes.Blue;
+                        for (int i = 0; i < articlesByDep.Count; i++)
+                        {
+                            ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = articlesByDep[i].nom, ButtonArticlesTag = articlesByDep[i].id });
+                        }
+                        //ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Pantalon", ButtonArticlesTag = "Pantalon" });
+                        //ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Veste", ButtonArticlesTag = "Veste" });
+                        //ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Chemise", ButtonArticlesTag = "Chemise" });
+
+                    }
                 }
             }
+
             
             //else if (clickedbutton != null & clickedbutton.Tag.ToString().Equals("Ameublement"))
             //{
