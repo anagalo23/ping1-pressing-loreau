@@ -19,7 +19,7 @@ namespace App_pressing_Loreau.Data.DAO
                 String sql = "INSERT INTO article(art_photo, art_commentaire, art_rendu, art_TVA, art_HT, art_conv_id, art_typ_id) VALUES (?,?,?,?,?,?,?)";
 
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(sql, Bdd.MSConnexion);
+                MySqlCommand cmd = new MySqlCommand(sql, Bdd.connexion());
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("photo", article.photo);
@@ -47,7 +47,7 @@ namespace App_pressing_Loreau.Data.DAO
                 String sql = "SELECT A.art_id, A.art_photo, A.art_commentaire, A.art_rendu, A.art_TVA, A.art_HT, C.conv_id, C.conv_emplacement, T.typ_id, T.type_nom, T.type_encombrement, T.type_TVA, T.type_HT, T.type_dep_id, D.dep_nom FROM article A, convoyeur C, type T, departement D WHERE A.art_conv_id=C.conv_id AND A.art_typ_id=T.typ_id AND T.type_dep_id=D.dep_id AND A.art_id=?";
 
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(sql, Bdd.MSConnexion);
+                MySqlCommand cmd = new MySqlCommand(sql, Bdd.connexion());
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("id", art_id);

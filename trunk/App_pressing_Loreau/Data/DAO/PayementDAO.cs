@@ -15,7 +15,7 @@ namespace App_pressing_Loreau.Data.DAO
             try
             {
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(Bdd.insertPaiement, Bdd.MSConnexion);
+                MySqlCommand cmd = new MySqlCommand(Bdd.insertPaiement, Bdd.connexion());
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("datePaiement", paiement.date);
@@ -39,7 +39,7 @@ namespace App_pressing_Loreau.Data.DAO
                 List<Payement> retour = new List<Payement>();
 
                 //connection à la base de données  
-                MySqlCommand cmd = new MySqlCommand(Bdd.selectPayementByCommande, Bdd.MSConnexion);
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectPayementByCommande, Bdd.connexion());
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("idCommande", commande.id);
@@ -73,7 +73,7 @@ namespace App_pressing_Loreau.Data.DAO
                 List<Payement> retour = new List<Payement>();
 
                 //connection à la base de données  
-                MySqlCommand cmd = new MySqlCommand(Bdd.selectPayementByCommande, Bdd.MSConnexion);
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectPayementByCommande, Bdd.connexion());
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("idCommande", id_commande);

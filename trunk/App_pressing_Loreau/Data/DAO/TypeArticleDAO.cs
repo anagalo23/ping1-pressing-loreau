@@ -15,7 +15,7 @@ namespace App_pressing_Loreau.Data.DAO
             try
             {                
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(Bdd.insertType, Bdd.MSConnexion);
+                MySqlCommand cmd = new MySqlCommand(Bdd.insertType, Bdd.connexion());
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("nom", type.nom);
@@ -40,7 +40,7 @@ namespace App_pressing_Loreau.Data.DAO
                 List<TypeArticle> retour = new List<TypeArticle>();
                 
                 //connection à la base de données  
-                MySqlCommand cmd = new MySqlCommand(Bdd.selectTypes, Bdd.MSConnexion);
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectTypes, Bdd.connexion());
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
@@ -77,7 +77,7 @@ namespace App_pressing_Loreau.Data.DAO
                 List<TypeArticle> retour = new List<TypeArticle>();
                 
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(Bdd.selectTypeByDepId, Bdd.MSConnexion);
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectTypeByDepId, Bdd.connexion());
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("id", dep_id);
