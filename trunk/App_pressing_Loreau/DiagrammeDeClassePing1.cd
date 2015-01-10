@@ -1,0 +1,525 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="App_pressing_Loreau.App" Collapsed="true">
+    <Position X="47" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Accueil" Collapsed="true">
+    <Position X="38.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Accueil.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Paiement" Collapsed="true">
+    <Position X="48.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Paiement.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.PaiementDeLaCommande" Collapsed="true">
+    <Position X="50.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\PaiementDeLaCommande.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.DetailCommande" Collapsed="true">
+    <Position X="48.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>View\UCRendu\DetailCommande.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.AccueilVM" Collapsed="true">
+    <Position X="17.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>Ag2ggAEAQRAIBAAECJAAIGAYAAAAADYgAEAAEFgcAYA=</HashCode>
+      <FileName>ViewModel\AccueilVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.ObservableObject" Collapsed="true">
+    <Position X="18" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAIAAAAQAQgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\ObservableObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="App_pressing_Loreau.Data.Bdd" Collapsed="true">
+    <Position X="40" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAgAhQAAQAAAAAAAgABRAgAAAAACAABIAAgYACgSA=</HashCode>
+      <FileName>Data\Bdd.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Data.DAO.ArticleDAO" Collapsed="true">
+    <Position X="50.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAEAA=</HashCode>
+      <FileName>Data\DAO\ArticleDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Data.DAO.ClientDAO" Collapsed="true">
+    <Position X="50.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\DAO\ClientDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Data.DAO.CommandeDAO" Collapsed="true">
+    <Position X="41.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAgAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\DAO\CommandeDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Data.DAO.DepartementDAO" Collapsed="true">
+    <Position X="47" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABQAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Data\DAO\DepartementDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Data.DAO.EmployeDAO" Collapsed="true">
+    <Position X="38.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\DAO\EmployeDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Data.DAO.LogDAO" Collapsed="true">
+    <Position X="40" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\DAO\LogDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Data.DAO.PayementDAO" Collapsed="true">
+    <Position X="41.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAgAA=</HashCode>
+      <FileName>Data\DAO\PayementDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Data.DAO.PlaceConvoyeurDAO" Collapsed="true">
+    <Position X="45.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAACAAA=</HashCode>
+      <FileName>Data\DAO\PlaceConvoyeurDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Data.DAO.TypeArticleDAO" Collapsed="true">
+    <Position X="45.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAIAAAQAAAAA=</HashCode>
+      <FileName>Data\DAO\TypeArticleDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Data.DAO.TypePayementDAO" Collapsed="true">
+    <Position X="48.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASA=</HashCode>
+      <FileName>Data\DAO\TypePayementDAO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Helper.ButtonNames" Collapsed="true">
+    <Position X="41.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAQAAAAAAAABAAAAAAAAgAAAAAAAABAAA=</HashCode>
+      <FileName>Helper\ButtonNames.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Helper.Category1" Collapsed="true">
+    <Position X="43.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AHgBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helper\ButtonNames.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Helper.Category2" Collapsed="true">
+    <Position X="45.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AGgBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helper\ButtonNames.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Helper.RelayCommand" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="47" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEACAAQAAECAAAAAAAAAAAAAEAAAAAAAAAI=</HashCode>
+      <FileName>Helper\RelayCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="App_pressing_Loreau.Model.Adresse" Collapsed="true">
+    <Position X="45.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAEAAAAAAAQAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Model\Adresse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Model.DTO.Article" Collapsed="true">
+    <Position X="48.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAgQAAAACAAAAAAAAAAFAAAAAAABAAAAAkA=</HashCode>
+      <FileName>Model\DTO\Article.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Model.DTO.Client" Collapsed="true">
+    <Position X="48.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABgAAAAAAAAAAIAiAAAAIAEACAABIABQEAQAAgAAAoA=</HashCode>
+      <FileName>Model\DTO\Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Model.DTO.Commande" Collapsed="true">
+    <Position X="40" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAAAAAAAAQAAAAAAAAIAAAAAAgAAAAAAAABQAIAgA=</HashCode>
+      <FileName>Model\DTO\Commande.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Model.DTO.Departement" Collapsed="true">
+    <Position X="45.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Model\DTO\Departement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Model.DTO.Employe" Collapsed="true">
+    <Position X="50.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Model\DTO\Employe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Model.DTO.Log" Collapsed="true">
+    <Position X="38.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAiA=</HashCode>
+      <FileName>Model\DTO\Log.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Model.DTO.Payement" Collapsed="true">
+    <Position X="40" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAASAAAgA=</HashCode>
+      <FileName>Model\DTO\Payement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Model.DTO.PlaceConvoyeur" Collapsed="true">
+    <Position X="43.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Model\DTO\PlaceConvoyeur.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Model.DTO.TypeArticle" Collapsed="true">
+    <Position X="43.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAIAAAAAAAAABAAAABAAAAAkA=</HashCode>
+      <FileName>Model\DTO\TypeArticle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Model.DTO.TypePayement" Collapsed="true">
+    <Position X="47" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Model\DTO\TypePayement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Properties.Resources" Collapsed="true">
+    <Position X="48.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.Properties.Settings" Collapsed="true">
+    <Position X="40" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.View.Convoyeur" Collapsed="true">
+    <Position X="43.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Convoyeur.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.View.Impression" Collapsed="true">
+    <Position X="48.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Impression.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.View.AdministrationCaisse" Collapsed="true">
+    <Position X="40" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gACAAEAAAABAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UCAdministrateur\AdministrationCaisse.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.View.AdministrationCommandes" Collapsed="true">
+    <Position X="41.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAARAAAAA=</HashCode>
+      <FileName>View\UCAdministrateur\AdministrationCommandes.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.View.AdministrationConvoyeur" Collapsed="true">
+    <Position X="43.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UCAdministrateur\AdministrationConvoyeur.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.View.GestionUtilisateurs" Collapsed="true">
+    <Position X="43.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAgAAAAAAAAAgAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>View\UCAdministrateur\GestionUtilisateurs.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.View.IdentificationAdmin" Collapsed="true">
+    <Position X="45.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>View\UCAdministrateur\IdentificationAdmin.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.View.PageAdministrateur" Collapsed="true">
+    <Position X="47" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAQAAAAAAAAQAAAUAAAQAAQIAAQACAAAAAAA=</HashCode>
+      <FileName>View\UCAdministrateur\PageAdministrateur.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.View.ParametreAffichage" Collapsed="true">
+    <Position X="38.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>View\UCAdministrateur\ParametreAffichage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.View.Statistiques" Collapsed="true">
+    <Position X="41.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UCAdministrateur\Statistiques.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.View.ClientProUC" Collapsed="true">
+    <Position X="38.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>View\UCClientPro\ClientProUC.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.View.NouveauClientPro" Collapsed="true">
+    <Position X="43.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UCClientPro\NouveauClientPro.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.View.UnClientPro" Collapsed="true">
+    <Position X="50.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UCClientPro\UnClientPro.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.View.FactureFinale" Collapsed="true">
+    <Position X="40" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UCFacture\FactureFinale.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.View.Factures" Collapsed="true">
+    <Position X="41.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UCFacture\Factures.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.View.Articles" Collapsed="true">
+    <Position X="38.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UCReception\Articles.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.View.IdentificationClient" Collapsed="true">
+    <Position X="47" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>View\UCReception\IdentificationClient.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.View.NouveauClient" Collapsed="true">
+    <Position X="41.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>View\UCReception\NouveauClient.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.View.NouvelleCommande" Collapsed="true">
+    <Position X="45.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UCReception\NouvelleCommande.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.View.RestitutionArticles" Collapsed="true">
+    <Position X="50.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAQAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>View\UCRendu\RestitutionArticles.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.ViewModel.ClientPROVM" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\ClientPROVM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="App_pressing_Loreau.ViewModel.ConvoyeurVM" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAABAAIAAAAAAAAAQAAAIAAAAiAAAAABRAAAA=</HashCode>
+      <FileName>ViewModel\ConvoyeurVM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="App_pressing_Loreau.ViewModel.AdministrateurConnexionVM" Collapsed="true">
+    <Position X="12.25" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AA0AAAAAAAAAAAAAAAIAAAQAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>ViewModel\VMAdministrateur\AdministrateurConnexionVM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="App_pressing_Loreau.ViewModel.PageAdministrateurVM" Collapsed="true">
+    <Position X="20" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\VMAdministrateur\PageAdministrateurVM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="App_pressing_Loreau.ViewModel.FactureFinaleVM" Collapsed="true">
+    <Position X="25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIBAgAAAAAAAgAEAAAABAAQAAJAAQAAIAABAAAA=</HashCode>
+      <FileName>ViewModel\VMFacture\FactureFinaleVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.ViewModel.CategoryArticle" Collapsed="true">
+    <Position X="47" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>ViewModel\VMFacture\FactureFinaleVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.ViewModel.FactureVM" Collapsed="true">
+    <Position X="33.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAEUAABAAAAQCAAAIAAAAAAQgAAAAAAA=</HashCode>
+      <FileName>ViewModel\VMFacture\FactureVM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="App_pressing_Loreau.ViewModel.ImpressionVM" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\VMImpression\ImpressionVM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="App_pressing_Loreau.ViewModel.ImprimeClass" Collapsed="true">
+    <Position X="50.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\VMImpression\ImprimeClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.ViewModel.ArticlesVM" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAACAAACCAAAAAABABAABAAQAAAAAA=</HashCode>
+      <FileName>ViewModel\VMReception\ArticlesVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.ViewModel.IdentificationClientData" Collapsed="true">
+    <Position X="9.5" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAgAAAgAAAAAAgCAAAAIACAAAAABEAAEAAAA=</HashCode>
+      <FileName>ViewModel\VMReception\IdentificationClientData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.ViewModel.IdentificationClientVM" Collapsed="true">
+    <Position X="15.25" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAACAAAAAAwIAAAADAAAAAAEAAAAAAA=</HashCode>
+      <FileName>ViewModel\VMReception\IdentificationClientVM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="App_pressing_Loreau.ViewModel.NouveauClientVM" Collapsed="true">
+    <Position X="22.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgCQABAgAABgAAAAAAAAgQAIAAgJAAAAAAARAAAAAg=</HashCode>
+      <FileName>ViewModel\VMReception\NouveauClientVM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="App_pressing_Loreau.ViewModel.NouvelleCommandeVM" Collapsed="true">
+    <Position X="27.25" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAgEAAAAhAAAGIAAAQAAAA0AAEACAQFAoAAABAAAACA=</HashCode>
+      <FileName>ViewModel\VMReception\NouvelleCommandeVM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="App_pressing_Loreau.ViewModel.CommandeConcernantRA_DATA" Collapsed="true">
+    <Position X="30" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAEAAAAQAAAABAAAAAAAAAAEgAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\VMRendu\CommandeConcernantRA_DATA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="App_pressing_Loreau.ViewModel.RestitutionArticlesVM" Collapsed="true">
+    <Position X="35.5" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAABAAAAAYABgIABhAQAAABAAAwAAAAACAAgAAA=</HashCode>
+      <FileName>ViewModel\VMRendu\RestitutionArticlesVM.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="App_pressing_Loreau.ViewModel.ResultatRechercheRA_DATA" Collapsed="true">
+    <Position X="38.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\VMRendu\ResultatRechercheRA_DATA.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="App_pressing_Loreau.Helper.IPageViewModel" Collapsed="true">
+    <Position X="38.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helper\IPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

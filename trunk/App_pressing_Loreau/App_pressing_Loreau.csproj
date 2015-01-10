@@ -67,6 +67,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -112,6 +113,7 @@
     <Compile Include="Data\DAO\TypePayementDAO.cs" />
     <Compile Include="ViewModel\AccueilVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\AdministrateurConnexionVM.cs" />
+    <Compile Include="ViewModel\VMAdministrateur\AdministrationUtilisateursVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\PageAdministrateurVM.cs" />
     <Compile Include="ViewModel\ClientPROVM.cs" />
     <Compile Include="ViewModel\ConvoyeurVM.cs" />
@@ -130,6 +132,9 @@
     </Compile>
     <Compile Include="View\UCAdministrateur\AdministrationCaisse.xaml.cs">
       <DependentUpon>AdministrationCaisse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UCAdministrateur\AdministrationClient.xaml.cs">
+      <DependentUpon>AdministrationClient.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UCAdministrateur\AdministrationCommandes.xaml.cs">
       <DependentUpon>AdministrationCommandes.xaml</DependentUpon>
@@ -218,6 +223,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UCAdministrateur\AdministrationCaisse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UCAdministrateur\AdministrationClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -324,7 +333,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="DiagrammeDeClasse.cd" />
+    <None Include="DiagrammeDeClassePing1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

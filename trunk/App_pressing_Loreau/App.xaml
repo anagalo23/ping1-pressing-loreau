@@ -149,6 +149,16 @@
 
         </Style>
 
+        <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}" x:Key="Utilisateur">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            
+
+        </Style>
+
         <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}" x:Key="vertilabel18">
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="FontFamily" Value="Arial"/>

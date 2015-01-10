@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="740">
+    
     <DockPanel x:Name="dp">
         <Grid>
             <Grid.RowDefinitions>
@@ -85,15 +86,18 @@
                     <ColumnDefinition Width="293*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
-                    <Label Content="Fond de caisse désiré :" Grid.Column="0"  Style="{StaticResource vertilabel25}" HorizontalAlignment="Left"/>
-                    <Canvas   VerticalAlignment="Center" HorizontalAlignment="Center" Height="0" Margin="124,30,162,30" Width="0" >
-                        <Label Content="152" Background="Bisque"  Grid.Column="1" Style="{StaticResource vertilabel18}"  Height="38" Width="50" Canvas.Left="86" Canvas.Top="-20" />
-                    </Canvas>
-                    <Canvas Grid.Column="2" Margin="56,28,28,32" VerticalAlignment="Center" HorizontalAlignment="Center" Height="0" Width="0" >
-                        <Button x:Name="btn_admin_caisse_editer" Grid.Column="2" Click="btn_admin_caisse_editer_Click" Canvas.Left="123" Canvas.Top="-25" Height="55" Width="67" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Fond de caisse désiré :" Grid.Column="0"  Style="{StaticResource vertilabel25}" HorizontalAlignment="Left" />
+                           <Label Content="{Binding Label_administrationCaisse_fonCaisse}" Background="Wheat"  Grid.Column="1" Style="{StaticResource vertilabel18}" Margin="43,20" />
+
+                    <Button x:Name="btn_admin_caisse_editer" Grid.Column="2"  Margin="43, 15"  BorderBrush="Bisque" Background="Bisque" Command="{Binding Btn_AdministrateurCaisse_recherche}"  >
                             <Image Source="/Resources/pics/Admin1/logo_edit.png"/>
                         </Button>
-                    </Canvas>
+                  
                 </Grid>
             </Grid>
         </Grid>
