@@ -126,76 +126,76 @@
     <Compile Include="ViewModel\VMRendu\CommandeConcernantRA_DATA.cs" />
     <Compile Include="ViewModel\VMRendu\RestitutionArticlesVM.cs" />
     <Compile Include="ViewModel\VMRendu\ResultatRechercheRA_DATA.cs" />
-    <Compile Include="View\UserControl\PaiementDeLaCommande.xaml.cs">
+    <Compile Include="View\PaiementDeLaCommande.xaml.cs">
       <DependentUpon>PaiementDeLaCommande.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\UCAdministrateur\AdministrationCaisse.xaml.cs">
+    <Compile Include="View\UCAdministrateur\AdministrationCaisse.xaml.cs">
       <DependentUpon>AdministrationCaisse.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\UCAdministrateur\AdministrationCommandes.xaml.cs">
+    <Compile Include="View\UCAdministrateur\AdministrationCommandes.xaml.cs">
       <DependentUpon>AdministrationCommandes.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\UCAdministrateur\AdministrationConvoyeur.xaml.cs">
+    <Compile Include="View\UCAdministrateur\AdministrationConvoyeur.xaml.cs">
       <DependentUpon>AdministrationConvoyeur.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\UCAdministrateur\ParametreAffichage.xaml.cs">
+    <Compile Include="View\UCAdministrateur\ParametreAffichage.xaml.cs">
       <DependentUpon>ParametreAffichage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\UCClientPro\ClientProUC.xaml.cs">
+    <Compile Include="View\UCClientPro\ClientProUC.xaml.cs">
       <DependentUpon>ClientProUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\UCClientPro\NouveauClientPro.xaml.cs">
+    <Compile Include="View\UCClientPro\NouveauClientPro.xaml.cs">
       <DependentUpon>NouveauClientPro.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\UCClientPro\UnClientPro.xaml.cs">
+    <Compile Include="View\UCClientPro\UnClientPro.xaml.cs">
       <DependentUpon>UnClientPro.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\UCConvoyeur\Convoyeur.xaml.cs">
+    <Compile Include="View\UCConvoyeur\Convoyeur.xaml.cs">
       <DependentUpon>Convoyeur.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\UCFacture\FactureFinale.xaml.cs">
+    <Compile Include="View\UCFacture\FactureFinale.xaml.cs">
       <DependentUpon>FactureFinale.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\UCFacture\Factures.xaml.cs">
+    <Compile Include="View\UCFacture\Factures.xaml.cs">
       <DependentUpon>Factures.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\UCImpression\Impression.xaml.cs">
+    <Compile Include="View\UCImpression\Impression.xaml.cs">
       <DependentUpon>Impression.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\VMReception\IdentificationClientVM.cs" />
     <Compile Include="ViewModel\VMReception\NouveauClientVM.cs" />
     <Compile Include="ViewModel\VMReception\NouvelleCommandeVM.cs" />
-    <Compile Include="View\UserControl\UCReception\Articles.xaml.cs">
+    <Compile Include="View\UCReception\Articles.xaml.cs">
       <DependentUpon>Articles.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\UCRendu\DetailCommande.xaml.cs">
+    <Compile Include="View\UCRendu\DetailCommande.xaml.cs">
       <DependentUpon>DetailCommande.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\UCAdministrateur\IdentificationAdmin.xaml.cs">
+    <Compile Include="View\UCAdministrateur\IdentificationAdmin.xaml.cs">
       <DependentUpon>IdentificationAdmin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\UCReception\IdentificationClient.xaml.cs">
+    <Compile Include="View\UCReception\IdentificationClient.xaml.cs">
       <DependentUpon>IdentificationClient.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\UCReception\NouveauClient.xaml.cs">
+    <Compile Include="View\UCReception\NouveauClient.xaml.cs">
       <DependentUpon>NouveauClient.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\UCReception\NouvelleCommande.xaml.cs">
+    <Compile Include="View\UCReception\NouvelleCommande.xaml.cs">
       <DependentUpon>NouvelleCommande.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\UCAdministrateur\PageAdministrateur.xaml.cs">
+    <Compile Include="View\UCAdministrateur\PageAdministrateur.xaml.cs">
       <DependentUpon>PageAdministrateur.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\Paiement.xaml.cs">
+    <Compile Include="View\Paiement.xaml.cs">
       <DependentUpon>Paiement.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\UCRendu\RestitutionArticles.xaml.cs">
+    <Compile Include="View\UCRendu\RestitutionArticles.xaml.cs">
       <DependentUpon>RestitutionArticles.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\UCAdministrateur\Statistiques.xaml.cs">
+    <Compile Include="View\UCAdministrateur\Statistiques.xaml.cs">
       <DependentUpon>Statistiques.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControl\UCAdministrateur\GestionUtilisateurs.xaml.cs">
+    <Compile Include="View\UCAdministrateur\GestionUtilisateurs.xaml.cs">
       <DependentUpon>GestionUtilisateurs.xaml</DependentUpon>
     </Compile>
     <Page Include="View\Accueil.xaml">
@@ -214,95 +214,95 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\PaiementDeLaCommande.xaml">
+    <Page Include="View\PaiementDeLaCommande.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\UCAdministrateur\AdministrationCaisse.xaml">
+    <Page Include="View\UCAdministrateur\AdministrationCaisse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\UCAdministrateur\AdministrationCommandes.xaml">
+    <Page Include="View\UCAdministrateur\AdministrationCommandes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\UCAdministrateur\AdministrationConvoyeur.xaml">
+    <Page Include="View\UCAdministrateur\AdministrationConvoyeur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\UCAdministrateur\ParametreAffichage.xaml">
+    <Page Include="View\UCAdministrateur\ParametreAffichage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\UCClientPro\ClientProUC.xaml">
+    <Page Include="View\UCClientPro\ClientProUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\UCClientPro\NouveauClientPro.xaml">
+    <Page Include="View\UCClientPro\NouveauClientPro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\UCClientPro\UnClientPro.xaml">
+    <Page Include="View\UCClientPro\UnClientPro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\UCConvoyeur\Convoyeur.xaml">
+    <Page Include="View\UCConvoyeur\Convoyeur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\UCFacture\FactureFinale.xaml">
+    <Page Include="View\UCFacture\FactureFinale.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\UCFacture\Factures.xaml">
+    <Page Include="View\UCFacture\Factures.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\UCImpression\Impression.xaml">
+    <Page Include="View\UCImpression\Impression.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\UCReception\Articles.xaml">
+    <Page Include="View\UCReception\Articles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\UCRendu\DetailCommande.xaml">
+    <Page Include="View\UCRendu\DetailCommande.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\UCAdministrateur\IdentificationAdmin.xaml">
+    <Page Include="View\UCAdministrateur\IdentificationAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\UCReception\IdentificationClient.xaml">
+    <Page Include="View\UCReception\IdentificationClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\UCReception\NouveauClient.xaml">
+    <Page Include="View\UCReception\NouveauClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\UCReception\NouvelleCommande.xaml">
+    <Page Include="View\UCReception\NouvelleCommande.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\UCAdministrateur\PageAdministrateur.xaml">
+    <Page Include="View\UCAdministrateur\PageAdministrateur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\Paiement.xaml">
+    <Page Include="View\Paiement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\UCRendu\RestitutionArticles.xaml">
+    <Page Include="View\UCRendu\RestitutionArticles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\UCAdministrateur\Statistiques.xaml">
+    <Page Include="View\UCAdministrateur\Statistiques.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControl\UCAdministrateur\GestionUtilisateurs.xaml">
+    <Page Include="View\UCAdministrateur\GestionUtilisateurs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
