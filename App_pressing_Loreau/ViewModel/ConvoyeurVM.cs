@@ -24,6 +24,8 @@ namespace App_pressing_Loreau.ViewModel
 
         List<PlaceConvoyeur> listePlace = (List<PlaceConvoyeur>)PlaceConvoyeurDAO.selectConvoyeurs();
 
+        PlaceConvoyeur place = null;
+
         #endregion
         public String Name
         {
@@ -32,12 +34,9 @@ namespace App_pressing_Loreau.ViewModel
 
         public ConvoyeurVM()
         {
-            Bdd.connecter();
-            if (listePlace != null)
-            {
+           
                 Label_convoyeur_diponibles = listePlace.Count.ToString();
-            }
-            else Label_convoyeur_diponibles = 150.ToString();
+         
            
         }
 
@@ -86,7 +85,7 @@ namespace App_pressing_Loreau.ViewModel
         {
             get { return new RelayCommand(
                 p=>convoyeurContenu(),
-                p=>Txb_Convoyeur_nbPlace>0); }
+                p=>Txb_Convoyeur_nbPlace>0 & Txb_Convoyeur_nbPlace<30); }
         }
 
         #endregion
@@ -97,7 +96,10 @@ namespace App_pressing_Loreau.ViewModel
 
         public void convoyeurContenu()
         {
-
+            place = (PlaceConvoyeur)PlaceConvoyeurDAO.selectTypeById(Txb_Convoyeur_nbPlace);
+            ContenuConvoyeur = new List<string>();
+            //ContenuConvoyeur.Add(place.ToString());
+ 
         }
         #endregion
     }

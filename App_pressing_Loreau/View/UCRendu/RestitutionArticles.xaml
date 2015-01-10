@@ -36,12 +36,7 @@
         </Border>
         </DataTemplate>
 
-        <!-- données a afficher pour le resultat de la recherche pour sans ticket-->
-        <DataTemplate DataType="{x:Type local:ResultatRechercheRA_DATA}">
-            <Border>
-                <Label Content="Bonjour"/>
-            </Border>
-        </DataTemplate>
+        
     </UserControl.Resources>
 
     <DockPanel x:Name="dp" >
