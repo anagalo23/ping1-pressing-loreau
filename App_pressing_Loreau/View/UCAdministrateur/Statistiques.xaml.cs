@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace App_pressing_Loreau
+namespace App_pressing_Loreau.View
 {
     /// <summary>
     /// Logique d'interaction pour Statistiques.xaml
