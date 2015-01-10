@@ -22,7 +22,7 @@ namespace App_pressing_Loreau
     /// <summary>
     /// Logique d'interaction pour RestitutionClient.xaml
     /// </summary>
-    public partial class RestitutionArticles
+    public partial class RestitutionArticles : UserControl
     {
 
 

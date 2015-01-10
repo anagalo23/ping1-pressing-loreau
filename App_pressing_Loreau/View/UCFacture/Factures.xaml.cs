@@ -18,7 +18,7 @@ namespace App_pressing_Loreau
     /// <summary>
     /// Logique d'interaction pour Factures.xaml
     /// </summary>
-    public partial class Factures
+    public partial class Factures : UserControl
     {
         public Factures()
         {

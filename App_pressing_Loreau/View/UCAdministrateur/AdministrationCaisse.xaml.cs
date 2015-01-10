@@ -18,7 +18,7 @@ namespace App_pressing_Loreau.View
     /// <summary>
     /// Logique d'interaction pour AdministrationCaisse.xaml
     /// </summary>
-    public partial class AdministrationCaisse 
+    public partial class AdministrationCaisse : UserControl
     {
         public AdministrationCaisse()
         {

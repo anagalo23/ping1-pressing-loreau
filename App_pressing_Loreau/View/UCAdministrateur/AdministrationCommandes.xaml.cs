@@ -18,7 +18,7 @@ namespace App_pressing_Loreau.View
     /// <summary>
     /// Logique d'interaction pour AdministrationCommandes.xaml
     /// </summary>
-    public partial class AdministrationCommandes 
+    public partial class AdministrationCommandes : UserControl
     {
         public AdministrationCommandes()
         {

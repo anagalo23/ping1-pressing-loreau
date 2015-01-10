@@ -18,7 +18,7 @@ namespace App_pressing_Loreau.View
     /// <summary>
     /// Logique d'interaction pour ParametreAffichage.xaml
     /// </summary>
-    public partial class ParametreAffichage
+    public partial class ParametreAffichage : UserControl
     {
         public ParametreAffichage()
         {

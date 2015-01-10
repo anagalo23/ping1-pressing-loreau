@@ -18,7 +18,7 @@ namespace App_pressing_Loreau.View
     /// <summary>
     /// Logique d'interaction pour AdministrationConvoyeur.xaml
     /// </summary>
-    public partial class AdministrationConvoyeur 
+    public partial class AdministrationConvoyeur : UserControl
     {
         public AdministrationConvoyeur()
         {

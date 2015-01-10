@@ -18,7 +18,7 @@ namespace App_pressing_Loreau.View
     /// <summary>
     /// Logique d'interaction pour PageAdministrateur.xaml
     /// </summary>
-    public partial class PageAdministrateur
+    public partial class PageAdministrateur : UserControl
     {
         public PageAdministrateur()
         {
