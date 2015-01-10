@@ -41,7 +41,15 @@ namespace App_pressing_Loreau.Data
              if (MSConnexion == null)
                 {
                     MSConnexion = new MySqlConnection("Server=localhost;Database=bddping1;Uid=root;Pwd=;");
-                    MSConnexion.Open();
+                 try
+                 {
+                     MSConnexion.Open();
+                 }
+                 catch (MySql.Data.MySqlClient.MySqlException e)
+                 {
+
+                 }
+                    
                 }
 
         }
