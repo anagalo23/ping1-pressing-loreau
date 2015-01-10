@@ -198,8 +198,7 @@ namespace App_pressing_Loreau.ViewModel
             {
                 return new RelayCommand(
                     p => enregisterClient(),
-                    p => Txb_nouveauClient_nom != null,
-                    p => Txb_nouveauClient_prenom != null);
+                    p => Txb_nouveauClient_nom != null & Txb_nouveauClient_prenom != null);
             }
         }
         #endregion
