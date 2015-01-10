@@ -89,6 +89,11 @@ namespace App_pressing_Loreau.ViewModel
         }
         #endregion
 
-     
+
+
+        public string Name
+        {
+            get { return ""; }
+        }
     }
 }
