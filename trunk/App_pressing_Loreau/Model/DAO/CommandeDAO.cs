@@ -85,18 +85,18 @@ namespace App_pressing_Loreau.Model.DAO
                 #region ajout article
                 if(addArticles)
                 {
-                    foreach (Commande c1 in retour)
-                        c1.listArticles = ArticleDAO.
+                    foreach (Commande c1 in retour) ;
+                       // c1.listArticles = ArticleDAO.
                 }
                 #endregion
 
 
-                return retour;
+                ///return retour;
             }
             catch (Exception Ex)
             {
                 LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
-                return null;
+                ///return null;
             }
         }
         public static int lastId(MySqlConnection connection)

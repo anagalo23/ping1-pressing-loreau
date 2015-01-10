@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using App_pressing_Loreau.Helper;
 using System.Windows.Input;
+using System.Windows.Controls;
 
 namespace App_pressing_Loreau.View
 {
@@ -18,8 +19,16 @@ namespace App_pressing_Loreau.View
         #region Attributes
         private int _txb_factures_idCommande;
 
+        FactureFinaleVM ffVM = null;
+        
         private FactureFinaleVM _apercu_facture;
         #endregion
+
+
+        public FactureVM()
+        {
+            ffVM = new FactureFinaleVM();
+        }
 
 
         #region Properties and commands
@@ -39,7 +48,7 @@ namespace App_pressing_Loreau.View
             }
         }
 
-        public FactureFinaleVM Apercu_facture
+        public FactureFinaleVM ApercuFacture
         {
             get
             {
@@ -50,16 +59,31 @@ namespace App_pressing_Loreau.View
                 if (_apercu_facture != value)
                 {
                     this._apercu_facture = value;
-                    OnPropertyChanged("Apercu_facture");
+                    OnPropertyChanged("ApercuFacture");
                 }
             }
         }
 
 
         public ICommand Btn_Factures_Recherche
-        { get { return new RelayCommand(
-            p =>FactureApercu(), 
-            p => Txb_factures_idCommande > 0); } }
+        {
+            get
+            {
+                return new RelayCommand(
+                    p => FactureApercu(), 
+                    p=>Txb_factures_idCommande>0);
+            }
+        }
+
+
+        public ICommand Btn_factures_imprimer_facture
+        {
+            get
+            {
+                return new RelayCommand(
+                    p => impression());
+            }
+        }
         #endregion
         
         
@@ -68,19 +92,35 @@ namespace App_pressing_Loreau.View
 
         public void FactureApercu()
         {
-            FactureFinaleVM ffVM = new FactureFinaleVM();
+            int ht=20;
+            List<CategoryArticle> listeArticles= new List<CategoryArticle>();
+            ffVM.LabelReferenceFacture = "Ref: " + 277777 + Txb_factures_idCommande;
+            ffVM.LabelDetailTotal= ht*1.2 +" €";
 
-            ffVM.LabelReferenceFacture = "Ref: " +12 ;
-            ffVM.LabelDetailTotal=23 + "€";
+            listeArticles.Add(new CategoryArticle() { LabelNameArticle = "Pantalon", LabelPrixArticle = 100 + "€" });
+            listeArticles.Add(new CategoryArticle() { LabelNameArticle = "Pantalon", LabelPrixArticle = 100 + "€" });
 
-            ffVM.ListBoxDetailFacture.Add(new CategoryArticle() { LabelNameArticle = "Pantalon", LabelPrixArticle = 100 + "€" });
-
-            Apercu_facture = ffVM;
+            ffVM.ListBoxDetailFacture = listeArticles;
+            ffVM.LabelDetailTauxTVA = 20 + "%";
+            ffVM.LabelDetailMontantHT = ht + "€";
+            ffVM.LabelDetailMontantTVA = ht * 20 / 100 + " €";
+            ApercuFacture= ffVM;
         }
-        
+
+        public void impression()
+        {
+            PrintDialog dialog = new PrintDialog();
+            FactureFinale fenetreFacture = new FactureFinale();
+            if (dialog.ShowDialog() == true)
+            {
+                dialog.PrintVisual(fenetreFacture, "fenetreFacture");
+            }
+        }
         
         #endregion
 
 
     }
+
+
 }

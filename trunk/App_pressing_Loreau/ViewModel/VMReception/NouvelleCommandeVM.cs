@@ -33,7 +33,7 @@ namespace App_pressing_Loreau.View
         private List<CategoryItem> _listeDepartement;
         private List<CategoryItem> _listeArticles;
 
-        private ICommand onButtonClickCommand;
+
 
         private ObservableCollection<ArticlesVM> _contentDetailCommande;
         private DelegateCommand<ArticlesVM> _deleteArticles;
@@ -55,7 +55,7 @@ namespace App_pressing_Loreau.View
            
             lArticles = new List<Article>(); 
 
-            DefileDepartement("Commande_suivante");
+            DefileDepartement("CommandeSuivante");
         }
 
         #endregion
@@ -69,6 +69,7 @@ namespace App_pressing_Loreau.View
 
         #region Bouton departement
         //Permet de faire réagir le bouton
+        ICommand onButtonClickCommand;
         public ICommand OnButtonClickCommand
         {
             get { return onButtonClickCommand ?? (onButtonClickCommand = new RelayCommand(Contenudepartement)); }
@@ -170,25 +171,26 @@ namespace App_pressing_Loreau.View
 
         public void DefileDepartement(Object lang)
         {
-            _listeDepartement = new List<CategoryItem>();
+            ListeDepartements = new List<CategoryItem>();
 
 
-            if (lang.ToString().Equals("Commande_suivante"))
+            if (lang.ToString().Equals("CommandeSuivante"))
             {
 
-                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category1.Dep1, ButtonTag = ButtonNames.NameC1D1 });
-                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category1.Dep2, ButtonTag = ButtonNames.NameC1D2 });
-                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category1.Dep3, ButtonTag = ButtonNames.NameC1D3 });
-                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category1.Dep4, ButtonTag = ButtonNames.NameC1D4 });
-                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category1.Dep5, ButtonTag = ButtonNames.NameC1D5 });
+                ListeDepartements.Add(new CategoryItem() { ButtonContent = Category1.Dep1, ButtonTag = ButtonNames.NameC1D1 });
+                ListeDepartements.Add(new CategoryItem() { ButtonContent = Category1.Dep2, ButtonTag = ButtonNames.NameC1D2 });
+                ListeDepartements.Add(new CategoryItem() { ButtonContent = Category1.Dep3, ButtonTag = ButtonNames.NameC1D3 });
+                ListeDepartements.Add(new CategoryItem() { ButtonContent = Category1.Dep4, ButtonTag = ButtonNames.NameC1D4 });
+                ListeDepartements.Add(new CategoryItem() { ButtonContent = Category1.Dep5, ButtonTag = ButtonNames.NameC1D5 });
             }
-            else
+
+            else 
             {
 
-                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category2.Dep1, ButtonTag = ButtonNames.NameC2D1 });
-                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category2.Dep2, ButtonTag = ButtonNames.NameC2D2 });
-                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category2.Dep3, ButtonTag = ButtonNames.NameC2D3 });
-                _listeDepartement.Add(new CategoryItem() { ButtonContent = Category2.Dep4, ButtonTag = ButtonNames.NameC2D4 });
+                ListeDepartements.Add(new CategoryItem() { ButtonContent = Category2.Dep1, ButtonTag = ButtonNames.NameC2D1 });
+                ListeDepartements.Add(new CategoryItem() { ButtonContent = Category2.Dep2, ButtonTag = ButtonNames.NameC2D2 });
+                ListeDepartements.Add(new CategoryItem() { ButtonContent = Category2.Dep3, ButtonTag = ButtonNames.NameC2D3 });
+                ListeDepartements.Add(new CategoryItem() { ButtonContent = Category2.Dep4, ButtonTag = ButtonNames.NameC2D4 });
 
             }
         }
@@ -305,7 +307,7 @@ namespace App_pressing_Loreau.View
 
 
 
-            CommandeDAO.open();
+            //CommandeDAO.open();
 
             //Assert the integrity ------------------> TODO
 
@@ -315,7 +317,7 @@ namespace App_pressing_Loreau.View
             //Get the command id ------------------> TODO
             // Good question
             // Check commande.id = ?
-            int fk_cmd = CommandeDAO.lastId();
+            //int fk_cmd = CommandeDAO.lastId();
             //Set paiement  ------------------------> TODO
 
 
@@ -330,7 +332,7 @@ namespace App_pressing_Loreau.View
             // Better ;-)
             foreach (Article article in listArticles)
             {
-                article.fk_commande = fk_cmd;
+                //article.fk_commande = fk_cmd;
                 ArticleDAO.insertArticle(article);
             }
 
