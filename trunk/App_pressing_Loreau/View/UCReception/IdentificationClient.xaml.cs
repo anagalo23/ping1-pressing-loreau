@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 
 
-namespace App_pressing_Loreau
+namespace App_pressing_Loreau.View
 {
  
     /// <summary>
