@@ -150,7 +150,7 @@
     <Compile Include="View\UCClientPro\UnClientPro.xaml.cs">
       <DependentUpon>UnClientPro.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UCConvoyeur\Convoyeur.xaml.cs">
+    <Compile Include="View\Convoyeur.xaml.cs">
       <DependentUpon>Convoyeur.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UCFacture\FactureFinale.xaml.cs">
@@ -246,7 +246,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UCConvoyeur\Convoyeur.xaml">
+    <Page Include="View\Convoyeur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
