@@ -250,11 +250,81 @@ CREATE TABLE IF NOT EXISTS `type` (
 --
 
 INSERT INTO `type` (`typ_nom`, `typ_encombrement`, `typ_TVA`, `typ_HT`,`typ_dep_id`) VALUES
-('Pantalon clair', 1.5, 20, 40, 1),
-('Pantalon', 1.5, 20, 30, 1),
-('Veste', 2, 20, 20, 2),
-('Chemise', 1, 20, 10, 2),
-('Veste clair', 2, 20, 50, 2);
+
+('Pantalon',1,20,4.48,1),
+('Pantalon clair', 1, 20, 5.2, 1),
+('Veste', 1,5, 20,4.48,1),
+('Veste clair', 1,5, 20, 6, 1),
+('Costume 2 pièces', 1,5, 20,8.96, 1),
+('Gilet de costume', 1, 20,3.2,1),
+('Polo', 1, 20, 3.68, 1),
+('Tee shirt', 1, 20, 3.68,1),
+('Pull', 3, 20, 4.4, 1),
+('Gilet',3,20,4.4,1),
+('Pantalon',1,20,4.48,1),
+('Pantalon',1,20,4.48,1),
+('Pantalon',1,20,4.48,1),
+('Pantalon',1,20,4.48,1),
+('Pantalon',1,20,4.48,1),
+('Pantalon',1,20,4.48,1),
+
+Gilet
+Jupe
+Cravate
+Chemise
+Chemise pliée
+Chemisier
+Robe
+Robe de soirée
+Blouson
+Manteau
+Manteau long
+Doudoine
+Doudoune longue
+Imperméable
+couette synthétique
+Couette plume
+Dessus de lit
+Dessus de lit epais
+couverture
+Couverture epaisse
+traversin
+traversin plume
+Oreiller
+oreiller plulme
+housse de canapé
+Rideau simple
+Double Rideauw
+Drap plat
+Drap amidonné
+Drap housse
+Housse de couette
+Housse de couette a la main
+Taie
+Torchon
+serviette de table
+Nappe
+Serviette de toilette
+Peignoir
+Chemise
+Pantalon
+Robe
+jupe
+Casquette
+Chapeau
+foulard
+Echarpe
+Tapis
+manteau peau
+manteau daim
+jupe cuir
+Location machine moquette
+produit moquette
+Brosse deboulochage
+anti mite
+coffret cravate
+sachet couette
+Bombe impéermabilisant
 
 -- --------------------------------------------------------
 
