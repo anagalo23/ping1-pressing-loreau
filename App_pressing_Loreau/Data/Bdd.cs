@@ -10,7 +10,11 @@ namespace App_pressing_Loreau.Data
     class Bdd
     {
         #region attributs
-        public static MySqlConnection MSConnexion {get; set;}
+        public static MySqlConnection MSConnexion
+        {
+            get;
+            set;
+        }
         private static int ReturnCode = 0;
         #endregion
 

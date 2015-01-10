@@ -36,8 +36,8 @@ namespace App_pressing_Loreau.Data.DAO
                 List<PlaceConvoyeur> retour = new List<PlaceConvoyeur>();
                 
                 //connection à la base de données  
-                MySqlCommand cmd = new MySqlCommand(Bdd.selectConvoyeurs, Bdd.MSConnexion);
-
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectConvoyeurs, Bdd.connexion());
+                
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
                 PlaceConvoyeur convoyeur;
