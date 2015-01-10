@@ -10,7 +10,7 @@ using App_pressing_Loreau.Model.DAO;
 using App_pressing_Loreau.Model.DTO;
 using System.Collections.ObjectModel;
 
-namespace App_pressing_Loreau.View
+namespace App_pressing_Loreau.ViewModel
 {
     /// <summary>
     /// ViewModel pour la vue RestitutionArticles.xaml

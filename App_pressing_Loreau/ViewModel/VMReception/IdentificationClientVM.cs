@@ -5,7 +5,7 @@ using System.Text;
 using App_pressing_Loreau.Helper;
 using System.Windows.Input;
 
-namespace App_pressing_Loreau.View
+namespace App_pressing_Loreau.ViewModel
 {
     class IdentificationClientVM : ObservableObject, IPageViewModel
     {

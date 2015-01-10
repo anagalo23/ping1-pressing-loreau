@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Collections;
 using System.ComponentModel;
 
-namespace App_pressing_Loreau.Helper
+namespace App_pressing_Loreau
 {
     public abstract class ObservableObject : INotifyPropertyChanged
     {
