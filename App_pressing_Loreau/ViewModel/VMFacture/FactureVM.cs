@@ -7,6 +7,8 @@ using App_pressing_Loreau.Helper;
 using System.Windows.Input;
 using System.Windows.Controls;
 
+using App_pressing_Loreau.View;
+
 namespace App_pressing_Loreau.ViewModel
 {
     class FactureVM : ObservableObject, IPageViewModel

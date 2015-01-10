@@ -6,7 +6,7 @@
 
  
 
-    <!-- Déclarations des données pour la reception client --><!--
+     <!--Déclarations des données pour la reception client--> 
     <DataTemplate DataType="{x:Type vm:IdentificationClientVM}">
         <local:IdentificationClient/>
     </DataTemplate>
@@ -19,38 +19,38 @@
         <local:NouvelleCommande/>
     </DataTemplate>
 
-    --><!-- Déclarations des données pour rendu Commande--><!--
+     <!--Déclarations des données pour rendu Commande-->
     <DataTemplate DataType="{x:Type vm:RestitutionArticlesVM}">
         <local:RestitutionArticles/>
     </DataTemplate>
 
 
-    --><!-- Déclarations des données pour Facture--><!--
+     <!--Déclarations des données pour Facture-->
 
     <DataTemplate DataType="{x:Type vm:FactureVM}">
         <local:Factures/>
     </DataTemplate>
 
-    --><!-- Déclarations des données pour Convoyeur--><!--
+     <!--Déclarations des données pour Convoyeur-->
 
     <DataTemplate DataType="{x:Type vm:ConvoyeurVM}">
         <local:Convoyeur/>
     </DataTemplate>
 
-    --><!-- Déclarations des données pour ClientPRO--><!--
+     <!--Déclarations des données pour ClientPRO-->
     <DataTemplate DataType="{x:Type vm:ClientPROVM}">
         <local:ClientProUC/>
     </DataTemplate>
 
-    --><!-- Déclarations des données impression --><!--
+     <!--Déclarations des données impression--> 
     <DataTemplate DataType="{x:Type vm:ImpressionVM}">
         <local:Impression/>
     </DataTemplate>
 
-    --><!-- Déclarations des données Administrateurs--><!--
+     <!--Déclarations des données Administrateurs-->
     <DataTemplate DataType="{x:Type vm:AdministrateurConnexionVM}">
         <local:IdentificationAdmin/>
-    </DataTemplate>-->
+    </DataTemplate>
 
     <DataTemplate x:Key="Utilisateurs">
         <Button x:Name="button1" Width="170" Height="60" Content="{Binding ButtonUserContent}" Tag="{Binding ButtonUserTag}" Background="{Binding ButtonUserBackground , Mode=TwoWay}" Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.LesUtilisateurs}"  Style="{StaticResource personalisationbuton}"
@@ -59,9 +59,9 @@
 
     
     <!--Déclaration des données pour la connexion administrateur-->
-    <!--<DataTemplate DataType="{x:Type vm:PageAdministrateurVM}">
+    <DataTemplate DataType="{x:Type vm:PageAdministrateurVM}">
         <local:PageAdministrateur/>
-    </DataTemplate>-->
+    </DataTemplate>
 
     <Style TargetType="Button"  BasedOn="{StaticResource {x:Type Button}}" x:Key="buttonColorAccueil">
         <Setter Property="Background" Value="Teal"/>

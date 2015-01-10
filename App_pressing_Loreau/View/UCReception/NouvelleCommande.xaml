@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:App_pressing_Loreau.View"
-             xmlns:view="clr-namespace:App_pressing_Loreau"
+             xmlns:local="clr-namespace:App_pressing_Loreau.ViewModel"
+             xmlns:view="clr-namespace:App_pressing_Loreau.View"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="740">
 
@@ -38,9 +38,9 @@
 
         <!-- Articles ajoutés-->
 
-        <DataTemplate DataType="{x:Type local:ArticlesVM}">
+        <!--<DataTemplate DataType="{x:Type local:ArticlesVM}">
             <view:Articles/>
-        </DataTemplate>
+        </DataTemplate>-->
         
         
     </UserControl.Resources>
