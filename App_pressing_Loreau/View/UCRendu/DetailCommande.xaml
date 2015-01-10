@@ -8,12 +8,8 @@
     
     <!-- les données à affichier dans la liste de commande-->
     <UserControl.Resources>
-        <DataTemplate DataType="{}">
-            <ScrollViewer >
-                
-                
-                
-            </ScrollViewer>
+        <DataTemplate x:Key="detailArticles">
+           
         </DataTemplate>
     </UserControl.Resources>
     
@@ -56,8 +52,17 @@
                             </Grid.RowDefinitions>
                             <Label Content="Les commandes en cours" Style="{StaticResource Titre}" Margin="10,0"/>
                             <DockPanel Grid.Row="1">
-                                
-                                <ContentControl Content="{Binding Path=AfficheDetailCommande}"/>
+                                <Border >
+                                    <ListBox  ScrollViewer.HorizontalScrollBarVisibility="Hidden" Cursor="Hand" Margin="5,10"  BorderThickness="0" Background="Transparent" ItemsSource="{Binding AfficheDetailCommande}" ItemTemplate="{StaticResource detailArticles}"  TextOptions.TextHintingMode="Animated" >
+                                        <ListBox.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <VirtualizingStackPanel Orientation="Vertical"/>
+                                            </ItemsPanelTemplate>
+                                        </ListBox.ItemsPanel>
+                                    </ListBox>
+
+                                </Border>
+                      
                             </DockPanel>
 
                         </Grid>
