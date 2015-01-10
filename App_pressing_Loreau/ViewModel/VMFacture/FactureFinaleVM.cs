@@ -8,7 +8,7 @@ using App_pressing_Loreau.Helper;
 
 namespace App_pressing_Loreau.ViewModel
 {
-    class FactureFinaleVM : ObservableObject
+    class FactureFinaleVM : ObservableObject, IPageViewModel
     {
         #region Attributes
 

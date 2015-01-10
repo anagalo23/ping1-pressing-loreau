@@ -25,7 +25,7 @@ namespace App_pressing_Loreau
     /// <summary>
     /// ViewModel pour la classe Accueil.xaml
     /// </summary>
-    public class AccueilVM : ObservableObject
+    public class AccueilVM : ObservableObject, IPageViewModel
     {
         #region Attributs
 

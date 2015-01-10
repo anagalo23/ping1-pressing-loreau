@@ -12,9 +12,9 @@ namespace App_pressing_Loreau.ViewModel
     /// Listes des commandes d'un client
     /// Cette classe permettra de constituer les articles a afficher par client 
     /// </summary>
-    
 
-    class CommandeConcernantRA_DATA : ObservableObject
+
+    class CommandeConcernantRA_DATA : ObservableObject, IPageViewModel
     {
         private String _label_restitutionArticles_type;
         private String _label_restitutionArticles_departement;

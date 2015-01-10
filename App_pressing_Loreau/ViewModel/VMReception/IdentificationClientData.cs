@@ -8,7 +8,7 @@ using App_pressing_Loreau.Helper;
 
 namespace App_pressing_Loreau.ViewModel
 {
-    class IdentificationClientData : ObservableObject
+    class IdentificationClientData : ObservableObject, IPageViewModel
     {
         #region Variables
 
