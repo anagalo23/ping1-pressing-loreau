@@ -54,8 +54,8 @@ namespace App_pressing_Loreau.ViewModel
         #region Constructeur
         public NouvelleCommandeVM()
         {
-           
-            lArticles = new List<Article>(); 
+
+            lArticles = new List<Article>();
 
             DefileDepartement("CommandeSuivante");
         }
@@ -118,11 +118,11 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
         #endregion
-      
+
 
         #region contenu commande
-        
-       
+
+
         public ObservableCollection<ArticlesVM> ContentDetailCommande
         {
             get
@@ -153,16 +153,19 @@ namespace App_pressing_Loreau.ViewModel
 
         public ICommand Btn_nouvellecommande_valider
         {
-            get { return new RelayCommand (
-                p=>EnregistrerCommande(),
-            p=> ContentDetailCommande.Count()>0);}
+            get
+            {
+                return new RelayCommand(
+                    p => EnregistrerCommande(),
+                    p => ContentDetailCommande.Count() > 0);
+            }
         }
         #endregion
 
 
-        #endregion 
+        #endregion
 
-       
+
         #region Méthodes
 
 
@@ -175,28 +178,30 @@ namespace App_pressing_Loreau.ViewModel
         {
             ListeDepartements = new List<CategoryItem>();
             listeDepartementDTO = (List<Departement>)DepartementDAO.selectDepartements();
-
-            if (lang.ToString().Equals("CommandeSuivante"))
+            if (listeDepartementDTO != null)
             {
-                for (int i = 0; i <5; i++)
+                if (lang.ToString().Equals("CommandeSuivante"))
                 {
-                    ListeDepartements.Add(new CategoryItem() { ButtonContent = listeDepartementDTO[i].nom, ButtonTag = listeDepartementDTO[i].id });
-                } 
-            }
+                    for (int i = 0; i < 5; i++)
+                    {
+                        ListeDepartements.Add(new CategoryItem() { ButtonContent = listeDepartementDTO[i].nom, ButtonTag = listeDepartementDTO[i].id });
+                    }
+                }
 
-            else 
-            {
-                if (listeDepartementDTO != null)
+                else
                 {
+
                     for (int i = 5; i < listeDepartementDTO.Count; i++)
                     {
                         ListeDepartements.Add(new CategoryItem() { ButtonContent = listeDepartementDTO[i].nom, ButtonTag = listeDepartementDTO[i].id });
-                    }  
+                    }
+
+
                 }
-                else
-                {
-                    //Inscription dans le log -> liste departement dto n'existe pas
-                }
+            }
+            else
+            {
+                //Inscription dans le log -> liste departement dto n'existe pas
             }
         }
 
@@ -207,7 +212,8 @@ namespace App_pressing_Loreau.ViewModel
         {
             Button clickedbutton = button as Button;
             ListeArticles = new List<CategoryItem>();
-            articlesByDep = (List<TypeArticle>) TypeArticleDAO.selectTypeByDepId(Int32.Parse(clickedbutton.Tag.ToString()));
+            articlesByDep = (List<TypeArticle>)TypeArticleDAO.selectTypeByDepId(Int32.Parse(clickedbutton.Tag.ToString()));
+
             if (articlesByDep != null)
             {
                 if (articlesByDep.Count > 0)
@@ -228,15 +234,7 @@ namespace App_pressing_Loreau.ViewModel
                 }
             }
 
-            
-            //else if (clickedbutton != null & clickedbutton.Tag.ToString().Equals("Ameublement"))
-            //{
 
-            //    ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Robe", ButtonArticlesTag = "Robe" });
-            //    ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Jupe", ButtonArticlesTag = "Jupe" });
-            //    ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "écharpe", ButtonArticlesTag = "écharpe" });
-
-            //}
             else
             {
                 clickedbutton.Background = Brushes.Blue;
@@ -249,13 +247,13 @@ namespace App_pressing_Loreau.ViewModel
         public void AjouterArticles(object button)
         {
             Button clickedbutton = button as Button;
-            if (clickedbutton != null )
+            if (clickedbutton != null)
             {
                 //String typeDelArticle = clickedbutton.Tag.ToString();
                 //Ajout de l'article à l'interface graphique
                 this._contentDetailCommande.Add(new ArticlesVM()
                 {
-                    ArticlesName =clickedbutton.Tag.ToString()
+                    ArticlesName = clickedbutton.Tag.ToString()
                 });
 
                 //Ajout du même article à la liste d'article locale
@@ -280,13 +278,13 @@ namespace App_pressing_Loreau.ViewModel
                 //    // Problème de récupération du type
                 //    // Cette erreur ne devrait jamais arriver puisque les types d'articles sont constants et inscrits en BDD
                 //}
-                
-                
+
+
 
             }
         }
 
-       
+
         private void ExecuteDeleteArticles(ArticlesVM obj)
         {
             if (this._contentDetailCommande.Contains(obj))

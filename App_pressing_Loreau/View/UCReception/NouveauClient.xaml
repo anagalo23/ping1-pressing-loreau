@@ -37,8 +37,7 @@ d:DesignHeight="500" d:DesignWidth="740">
                         </Grid.RowDefinitions>
 
                         <Label Content="Nom * :" Grid.Row="0" Grid.Column="0" Style="{StaticResource vertilabel25}" />
-                        <TextBox x:Name="txb_nouveauClient_nom" Grid.Row="0" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}"
-Text="{Binding Path=Txb_nouveauClient_nom, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox x:Name="txb_nouveauClient_nom" Grid.Row="0" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}" Text="{Binding Path=Txb_nouveauClient_nom, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Content="Prénom * :" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_prenom" Grid.Row="1" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}"
 Text="{Binding Path=Txb_nouveauClient_prenom, UpdateSourceTrigger=PropertyChanged}"/>
@@ -145,8 +144,8 @@ Text="{Binding Path=Txb_nouveauClient_mail, UpdateSourceTrigger=PropertyChanged}
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
-                <Button Content="Enregistrer " Style="{StaticResource personalisationbuton}" Margin="10,40" Grid.Column="1" Command="{Binding Btn_nouveauClient_enregistrer}" />
-
+                <Button Content="Enregistrer "  Margin="10,40" Grid.Column="1" Command="{Binding Btn_nouveauClient_enregistrer}" />
+                <!--Style="{StaticResource personalisationbuton}"-->
                 <Button x:Name="btn_nouveauClient_nouvelle_commande" Content="Nouvelle Commande" Grid.Row="1" Margin="10,40" Grid.Column="1" Click="btn_nouveauClient_valider_inscription_Click" Style="{StaticResource personalisationbuton}"/>
             </Grid>
         </Grid>
