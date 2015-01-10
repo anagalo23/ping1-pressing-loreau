@@ -3,8 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:App_pressing_Loreau.View"
+             xmlns:view="clr-namespace:App_pressing_Loreau"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="730">
+    
+    
+    <UserControl.DataContext>
+        <local:FactureVM />
+    </UserControl.DataContext>
+
+   
+
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type local:FactureFinaleVM}">
+            <view:FactureFinale/>
+        </DataTemplate>
+        
+       
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="357*"/>
@@ -18,7 +36,7 @@
                 <RowDefinition Height="71*"/>
             </Grid.RowDefinitions>
             <Label x:Name="Factures_choixcommande"  Content="Choix des commandes" Grid.Row="0" Style="{StaticResource Titre}" />
-            <Button x:Name="Factures_editerfacture" Content="Editer la facture" Grid.Row="3" Style="{StaticResource choixbouton30}" Margin="55,0,57,0" Command="{Binding Btn_factures_edite_facture}"/>
+            <Button x:Name="Factures_editerfacture" Content="Imprimer la facture" Grid.Row="3" Style="{StaticResource choixbouton30}" Margin="55,0,57,0" Command="{Binding Btn_factures_imprimer_facture}"/>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions >
                     <ColumnDefinition Width="1*" />
@@ -26,10 +44,10 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <Label x:Name="Factures_idcommande" Content=" Id commande   :" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
-                <TextBox x:Name="Txb_factures_entreztexte" Grid.Column="1" Margin="5,20" Text="{Binding Txb_factures_idCommande}" HorizontalContentAlignment="Center" />
+                <TextBox x:Name="Txb_factures_entreztexte" Grid.Column="1" Margin="5,20" Text="{Binding Txb_factures_idCommande, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                
                 <Button Grid.Column="2" Margin="15" Grid.Row="1" Command="{Binding Btn_Factures_Recherche}" >
-                    <Image Source="/Resources/pics/Factures/loupederecherche.png"  HorizontalAlignment="Center"
-/>
+                    <Image Source="/Resources/pics/Factures/loupederecherche.png" />
                 </Button>
             </Grid>
             <Grid Grid.Row="2">
@@ -48,7 +66,9 @@
             </Grid.RowDefinitions>
             <Label Content="Aperçu de la facture " Style="{StaticResource Titre}" Grid.Column="0"/>
             <DockPanel Grid.Row="1">
-                <ContentControl Content="{Binding Path=Apercu_facture}"/>
+                <Border Margin="3" BorderBrush="Blue" BorderThickness="2">
+                <ContentControl Content="{Binding Path=ApercuFacture}"/>
+                </Border>
             </DockPanel>
 
         </Grid>

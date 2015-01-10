@@ -18,18 +18,21 @@ namespace App_pressing_Loreau.View
         private string _labelDetailMontantTVA;
 
         private List<CategoryArticle> _listBoxDetailFacture;
+
         #endregion 
 
-        #region Propriétés et commandes
-        public string LabelReferenceFacture
+        public FactureFinaleVM()
         {
-            get
-            {
-                return _labelReferenceFacture;
-            }
+
+        }
+
+        #region Propriétés et commandes
+        public string LabelReferenceFacture 
+        {
+            get {  return this._labelReferenceFacture;}
             set
             {
-                if (_labelReferenceFacture!= value)
+                if (!string.IsNullOrEmpty(value))
                 {
                     this._labelReferenceFacture = value;
                     OnPropertyChanged("LabelReferenceFacture");
@@ -39,13 +42,10 @@ namespace App_pressing_Loreau.View
 
         public string LabelDetailTotal
         {
-            get
-            {
-                return _labelDetailTotal;
-            }
+            get { return this._labelDetailTotal;  }
             set
             {
-                if (_labelDetailTotal != value)
+                if (!string.IsNullOrEmpty(value))
                 {
                     this._labelDetailTotal = value;
                     OnPropertyChanged("LabelDetailTotal");
@@ -56,13 +56,10 @@ namespace App_pressing_Loreau.View
 
         public string LabelDetailTauxTVA
         {
-            get
-            {
-                return _labelDetailTauxTVA;
-            }
+            get { return this._labelDetailTauxTVA; }
             set
             {
-                if (_labelDetailTauxTVA != value)
+                if (!string.IsNullOrEmpty(value))
                 {
                     this._labelDetailTauxTVA = value;
                     OnPropertyChanged("LabelDetailTauxTVA");
@@ -72,13 +69,10 @@ namespace App_pressing_Loreau.View
 
         public string LabelDetailMontantHT
         {
-            get
-            {
-                return _labelDetailMontantHT;
-            }
+            get {  return this._labelDetailMontantHT; }
             set
             {
-                if (_labelDetailMontantHT != value)
+                if (!string.IsNullOrEmpty(value))
                 {
                     this._labelDetailMontantHT = value;
                     OnPropertyChanged("LabelDetailMontantHT");
@@ -88,13 +82,10 @@ namespace App_pressing_Loreau.View
 
         public string LabelDetailMontantTVA
         {
-            get
-            {
-                return _labelDetailMontantTVA;
-            }
+            get {  return this._labelDetailMontantTVA; }
             set
             {
-                if (_labelDetailMontantTVA != value)
+                if (!string.IsNullOrEmpty(value))
                 {
                     this._labelDetailMontantTVA = value;
                     OnPropertyChanged("LabelDetailMontantTVA");
@@ -105,10 +96,7 @@ namespace App_pressing_Loreau.View
 
         public List<CategoryArticle> ListBoxDetailFacture
         {
-            get
-            {
-                return _listBoxDetailFacture;
-            }
+            get { return _listBoxDetailFacture; }
             set
             {
                 _listBoxDetailFacture = value;
@@ -126,8 +114,7 @@ namespace App_pressing_Loreau.View
           public string LabelNameArticle { get; set;}
           public string LabelPrixArticle { get; set; }
     }
-    
-    
+
     #endregion
 
 }
