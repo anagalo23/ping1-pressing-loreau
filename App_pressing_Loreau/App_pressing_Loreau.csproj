@@ -120,13 +120,11 @@
     <Compile Include="ViewModel\VMFacture\FactureFinaleVM.cs" />
     <Compile Include="ViewModel\VMFacture\FactureVM.cs" />
     <Compile Include="ViewModel\VMImpression\ImpressionVM.cs" />
-    <Compile Include="ViewModel\VMImpression\ImprimeClass.cs" />
     <Compile Include="ViewModel\VMReception\ArticlesVM.cs" />
     <Compile Include="ViewModel\VMReception\IdentificationClientData.cs" />
     <Compile Include="ViewModel\VMReception\NouveauClientData.cs" />
     <Compile Include="ViewModel\VMRendu\CommandeConcernantRA_DATA.cs" />
     <Compile Include="ViewModel\VMRendu\RestitutionArticlesVM.cs" />
-    <Compile Include="ViewModel\VMRendu\ResultatRechercheRA_DATA.cs" />
     <Compile Include="View\PaiementDeLaCommande.xaml.cs">
       <DependentUpon>PaiementDeLaCommande.xaml</DependentUpon>
     </Compile>
