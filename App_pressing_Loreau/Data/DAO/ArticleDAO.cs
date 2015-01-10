@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using App_pressing_Loreau.Model.DTO;
 
-namespace App_pressing_Loreau.Model.DAO
+using App_pressing_Loreau.Model.DTO;
+using App_pressing_Loreau.Data;
+
+namespace App_pressing_Loreau.Data.DAO
 {
     class ArticleDAO
     {

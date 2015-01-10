@@ -29,10 +29,10 @@
                     </Grid.ColumnDefinitions>
                     <Label x:Name="L_nbreplace" Content="Nombre de place   :" Style="{StaticResource vertilabel25}" Grid.Column="0"/>
                     <Canvas Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,53,21,51" Height="24" Width="61" >
-                        <TextBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="56" Height="28"/>
+                        <TextBox HorizontalContentAlignment="Center" Text="{Binding Txb_Convoyeur_nbPlace, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" Width="56" Height="28"/>
                     </Canvas>
                     <Canvas Grid.Column="2" Margin="16,53,10,45" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="67">
-                        <Button x:Name="btn_convoyeur_editer" BorderBrush="White" Background="White" Height="24" Width="73">
+                        <Button x:Name="btn_convoyeur_editer" BorderBrush="White" Background="White" Height="24" Width="73" Command="{Binding Btn_convoyeur_validerRecherche}">
                             <Image Source="/Resources/pics/Admin1/logo_edit.png" Width="63" Height="24"/>
                         </Button>
                     </Canvas>
@@ -42,9 +42,9 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="Disponible   :" Style="{StaticResource vertilabel25}" Grid.Column="0"/>
+                    <Label Content="Disponibles   :" Style="{StaticResource vertilabel25}" Grid.Column="0"/>
                     <Canvas Grid.Column="1" Margin="10,54,118,50">
-                        <TextBox HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="57" Height="25" />
+                        <TextBlock Background="White" Width="57" Height="25" Text="{Binding Label_convoyeur_diponibles}" />
                     </Canvas>
                 </Grid>
             </Grid>
@@ -56,7 +56,7 @@
                         <RowDefinition Height="31*"/>
                     </Grid.RowDefinitions>
                     <Label x:Name="L_dtailemplcement" Content="Détail des emplacements" Style="{StaticResource Titre}" Grid.Row="0"/>
-                    <ScrollViewer Background="CadetBlue" Grid.Row="1"  Margin="10" />
+                    <ScrollViewer Background="CadetBlue" Grid.Row="1" Content="{Binding ContenuConvoyeur}" Margin="10" />
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>

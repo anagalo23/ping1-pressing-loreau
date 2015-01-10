@@ -38,9 +38,9 @@
 
         <!-- Articles ajoutés-->
 
-        <!--<DataTemplate DataType="{x:Type local:ArticlesVM}">
+        <DataTemplate DataType="{x:Type local:ArticlesVM}">
             <view:Articles/>
-        </DataTemplate>-->
+        </DataTemplate>
         
         
     </UserControl.Resources>

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App_pressing_Loreau.Model
+namespace App_pressing_Loreau.Data
 {
     class Bdd
     {
@@ -19,19 +19,30 @@ namespace App_pressing_Loreau.Model
         {
             try
             {
-
                 if (MSConnexion == null)
                 {
                     MSConnexion = new MySqlConnection("Server=localhost;Database=bddping1;Uid=root;Pwd=;");
                     MSConnexion.Open();
                 }
                 return MSConnexion;
+
+               
             }
             catch (Exception Ex)
             {
                 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 return null;
             }
+
+        }
+
+        public static void connecter()
+        {
+             if (MSConnexion == null)
+                {
+                    MSConnexion = new MySqlConnection("Server=localhost;Database=bddping1;Uid=root;Pwd=;");
+                    MSConnexion.Open();
+                }
 
         }
 

@@ -1,12 +1,14 @@
-﻿using App_pressing_Loreau.Model.DTO;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App_pressing_Loreau.Model.DAO
+using App_pressing_Loreau.Model.DTO;
+using App_pressing_Loreau.Model;
+
+namespace App_pressing_Loreau.Data.DAO
 {
     class ClientDAO
     {
