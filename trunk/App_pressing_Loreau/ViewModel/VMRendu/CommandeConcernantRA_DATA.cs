@@ -64,5 +64,10 @@ namespace App_pressing_Loreau.ViewModel
                 }
             }
         }
+
+        public string Name
+        {
+            get { return ""; }
+        }
     }
 }

@@ -382,5 +382,10 @@ namespace App_pressing_Loreau
         }
         #endregion
 
+
+        public string Name
+        {
+            get { return ""; }
+        }
     }
 }
