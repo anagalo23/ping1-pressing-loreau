@@ -9,7 +9,7 @@ using App_pressing_Loreau.Model.DAO;
 using App_pressing_Loreau.Model.DTO;
 
 
-namespace App_pressing_Loreau.View
+namespace App_pressing_Loreau.ViewModel
 {
     class NouveauClientVM : ObservableObject, IPageViewModel
     {

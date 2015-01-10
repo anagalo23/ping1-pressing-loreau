@@ -9,7 +9,7 @@ using System.Windows;
 
 
 
-namespace App_pressing_Loreau.View
+namespace App_pressing_Loreau.ViewModel
 {
     class AdministrateurConnexionVM : ObservableObject, IPageViewModel
     {

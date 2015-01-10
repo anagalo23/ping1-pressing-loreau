@@ -18,7 +18,7 @@ using System.Windows;
 using Microsoft.Win32;
 
 
-namespace App_pressing_Loreau.View
+namespace App_pressing_Loreau.ViewModel
 {
     /// <summary>
     /// ViewModel pour la vue NouvelleCommande.xaml

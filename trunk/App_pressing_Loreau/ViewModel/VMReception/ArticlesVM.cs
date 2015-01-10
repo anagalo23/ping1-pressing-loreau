@@ -8,7 +8,7 @@ using App_pressing_Loreau.Helper;
 using Microsoft.Win32;
 using System.Windows.Input;
 
-namespace App_pressing_Loreau.View
+namespace App_pressing_Loreau.ViewModel
 {
     class ArticlesVM: ObservableObject
     {

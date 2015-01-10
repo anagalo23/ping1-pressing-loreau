@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App_pressing_Loreau.View
+namespace App_pressing_Loreau.ViewModel
 {
 
     /// <summary>

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using App_pressing_Loreau.Helper;
 
-namespace App_pressing_Loreau.View
+namespace App_pressing_Loreau.ViewModel
 {
     class ClientPROVM : ObservableObject, IPageViewModel
     {

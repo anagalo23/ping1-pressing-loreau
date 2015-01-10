@@ -23,6 +23,7 @@
         
         </DataTemplate>
     </UserControl.Resources>
+    
     <Grid Margin="7">
         <Grid.RowDefinitions>
             <RowDefinition Height="140*" MaxHeight="150"/>
