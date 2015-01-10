@@ -41,6 +41,7 @@
       <HashCode>Ag2ggAEAQRAIBAAECJAAIGAYAAAAADYgAEAAEFgcAYA=</HashCode>
       <FileName>ViewModel\AccueilVM.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="App_pressing_Loreau.ObservableObject" Collapsed="true">
     <Position X="18" Y="0.5" Width="1.5" />
@@ -423,6 +424,7 @@
       <HashCode>AAAAAIBAgAAAAAAAgAEAAAABAAQAAJAAQAAIAABAAAA=</HashCode>
       <FileName>ViewModel\VMFacture\FactureFinaleVM.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="App_pressing_Loreau.ViewModel.CategoryArticle" Collapsed="true">
     <Position X="47" Y="1.5" Width="1.5" />
@@ -460,6 +462,7 @@
       <HashCode>AAACAAAAAAAAAAAACAAACCAAAAAABABAABAAQAAAAAA=</HashCode>
       <FileName>ViewModel\VMReception\ArticlesVM.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="App_pressing_Loreau.ViewModel.IdentificationClientData" Collapsed="true">
     <Position X="9.5" Y="1.75" Width="2" />
@@ -467,6 +470,7 @@
       <HashCode>AABAAAAAAgAAAgAAAAAAgCAAAAIACAAAAABEAAEAAAA=</HashCode>
       <FileName>ViewModel\VMReception\IdentificationClientData.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="App_pressing_Loreau.ViewModel.IdentificationClientVM" Collapsed="true">
     <Position X="15.25" Y="1.75" Width="1.75" />
@@ -498,6 +502,7 @@
       <HashCode>AAEAAAAEAAAAQAAAABAAAAAAAAAAEgAAAAAAAAAAAAA=</HashCode>
       <FileName>ViewModel\VMRendu\CommandeConcernantRA_DATA.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="App_pressing_Loreau.ViewModel.RestitutionArticlesVM" Collapsed="true">
     <Position X="35.5" Y="1.75" Width="1.75" />

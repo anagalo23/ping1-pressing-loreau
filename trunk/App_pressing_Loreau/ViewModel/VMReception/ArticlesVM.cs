@@ -11,7 +11,7 @@ using App_pressing_Loreau.Helper;
 
 namespace App_pressing_Loreau.ViewModel
 {
-    class ArticlesVM: ObservableObject
+    class ArticlesVM : ObservableObject, IPageViewModel
     {
         #region Attributes 
 
