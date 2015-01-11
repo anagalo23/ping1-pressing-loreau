@@ -98,7 +98,7 @@ namespace App_pressing_Loreau.Data
 
         //TypeArticle
         public static String insertType = "INSERT INTO type(typ_nom, typ_encombrement, typ_TVA, typ_HT, typ_dep_id) VALUES (?,?,?,?,?)";
-        public static String selectTypes = "SELECT T.typ_id, T.type_nom, T.type_encombrement, T.type_TVA, T.type_HT, T.type_dep_id, D.dep_nom FROM type T, departement D WHERE T.type_dep_id=D.dep_id";
+        public static String selectTypes = "SELECT T.typ_id, T.typ_nom, T.typ_encombrement, T.typ_TVA, T.typ_HT, T.typ_dep_id, D.dep_nom FROM type T, departement D WHERE T.typ_dep_id=D.dep_id";
         public static String selectTypeByDepId = "SELECT T.typ_id, T.typ_nom, T.typ_encombrement, T.typ_TVA, T.typ_HT, T.typ_dep_id, D.dep_nom FROM type T, departement D WHERE T.typ_dep_id=D.dep_id AND D.dep_id=?";
         
         //TypePayement
