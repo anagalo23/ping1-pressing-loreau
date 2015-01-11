@@ -96,7 +96,7 @@ namespace App_pressing_Loreau.Data.DAO
             catch (Exception Ex)
             {
                 LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
-                ///return null;
+                return null;
             }
         }
         public static int lastId(MySqlConnection connection)
