@@ -14,10 +14,8 @@ namespace App_pressing_Loreau.Data.DAO
         {
             try
             {
-                String sql = "INSERT INTO Log(log_date, log_message, log_emp_id) VALUES (?,?,?)";
-
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(sql, Bdd.connexion());
+                MySqlCommand cmd = new MySqlCommand(Bdd.insertLog, Bdd.connexion());
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("date", log.date);

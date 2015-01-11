@@ -12,15 +12,12 @@ namespace App_pressing_Loreau.Data.DAO
 {
     class ClientDAO
     {
-
         public static void insertClient(Client client)
         {
             try
             {
-                String sql = "INSERT INTO client(clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway, clt_contactmail, clt_contactsms, clt_type) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(sql, Bdd.connexion());
+                MySqlCommand cmd = new MySqlCommand(Bdd.insertClient, Bdd.connexion());
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("nom", client.nom);
@@ -54,7 +51,8 @@ namespace App_pressing_Loreau.Data.DAO
 
                 List<Client> retour = new List<Client>();
                 bool ifPreviousElementSearch = false; //variable servant a verifier si un élément de recheche a déja été inséré. Sert notament au AND de la requete.
-                String sql = "SELECT clt_id, clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway, clt_contactmail, clt_contactsms, clt_type FROM client WHERE clt_type=0 ";
+
+                String sql = Bdd.seekClients;
 
                 #region complete la requete en fonction de la recherche voulue
                 if (nom != null)
