@@ -50,7 +50,7 @@ namespace App_pressing_Loreau.Data.DAO
         }
 
         
-        public static void selectCommandes(Boolean addPaiement, Boolean addArticles)
+        public static List<Commande> selectCommandes(Boolean addPaiement, Boolean addArticles)
         {
             try
             {
@@ -86,12 +86,12 @@ namespace App_pressing_Loreau.Data.DAO
                 if(addArticles)
                 {
                     foreach (Commande c1 in retour) ;
-                       // c1.listArticles = ArticleDAO.
+                       //c1.listArticles = ArticleDAO.
                 }
                 #endregion
 
 
-                ///return retour;
+                return retour;
             }
             catch (Exception Ex)
             {
