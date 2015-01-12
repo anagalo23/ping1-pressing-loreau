@@ -57,7 +57,7 @@ namespace App_pressing_Loreau.ViewModel
 
             lArticles = new List<Article>();
 
-            DefileDepartement("CommandeSuivante");
+            defileDepartementSuivannte();
         }
 
         #endregion
@@ -78,12 +78,23 @@ namespace App_pressing_Loreau.ViewModel
         }
 
         //Permet de changer switcher d'écran de sélection de département
-        ICommand onCollectionChangeCommand;
-        public ICommand OnCollectionChangeCommand
-        {
-            get { return onCollectionChangeCommand ?? (onCollectionChangeCommand = new RelayCommand(DefileDepartement)); }
+        //ICommand onCollectionChangeCommand;
+        //public ICommand OnCollectionChangeCommand
+        //{
+        //    get { return onCollectionChangeCommand ?? (onCollectionChangeCommand = new RelayCommand(DefileDepartement)); }
+        //}
+
+        public ICommand CommandeSuivante
+        { get { return new RelayCommand(p => defileDepartementSuivannte(),
+            p => ListeDepartements.Count!=5);
+        }
         }
 
+        public ICommand CommandePrecedente
+        { get { return new RelayCommand(p => defileDepartementPrecedente(),
+            p => ListeDepartements.Count!=4);
+        }
+        }
 
         //Ajouter un article a la commande 
         ICommand listesArticlesCommandes;
@@ -176,35 +187,32 @@ namespace App_pressing_Loreau.ViewModel
          **/
 
 
-        public void DefileDepartement(Object lang)
+        public void defileDepartementSuivannte()
         {
             ListeDepartements = new List<CategoryItem>();
             listeDepartementDTO = (List<Departement>)DepartementDAO.selectDepartements();
-            if (listeDepartementDTO != null)
-            {
-                if (lang.ToString().Equals("CommandeSuivante"))
-                {
-                    for (int i = 0; i < 5; i++)
-                    {
-                        ListeDepartements.Add(new CategoryItem() { ButtonContent = listeDepartementDTO[i].nom, ButtonTag = listeDepartementDTO[i].id });
-                    }
-                }
 
-                else
+           
+                if (listeDepartementDTO != null)
+                {
+
+                    for (int i = 0; i < 5; i++)
+                        ListeDepartements.Add(new CategoryItem() { ButtonContent = listeDepartementDTO[i].nom, ButtonTag = listeDepartementDTO[i].id });
+                    
+                }
+            
+        }
+        public void defileDepartementPrecedente()
+        {
+             ListeDepartements = new List<CategoryItem>();
+
+                if (listeDepartementDTO != null)
                 {
 
                     for (int i = 5; i < listeDepartementDTO.Count; i++)
-                    {
                         ListeDepartements.Add(new CategoryItem() { ButtonContent = listeDepartementDTO[i].nom, ButtonTag = listeDepartementDTO[i].id });
-                    }
-
-
                 }
-            }
-            else
-            {
-                //Inscription dans le log -> liste departement dto n'existe pas
-            }
+     
         }
 
         /**
@@ -213,38 +221,37 @@ namespace App_pressing_Loreau.ViewModel
         private void Contenudepartement(object button)
         {
             Button clickedbutton = button as Button;
-            ListeArticles = new List<CategoryItem>();
+            List<CategoryItem> listedesArticles = new List<CategoryItem>();
             articlesByDep = (List<TypeArticle>)TypeArticleDAO.selectTypeByDepId(Int32.Parse(clickedbutton.Tag.ToString()));
 
-            if (articlesByDep != null)
+            //if (articlesByDep.Count > 0)
+            //{
+            if (clickedbutton != null)
             {
-                if (articlesByDep.Count > 0)
+
+                clickedbutton.Background = Brushes.Blue;
+
+                for (int i = 0; i < Int32.Parse(clickedbutton.Tag.ToString()); i++)
                 {
-                    if (clickedbutton != null)
-                    {
-
-                        clickedbutton.Background = Brushes.Blue;
-
-                        for (int i = 0; i < articlesByDep.Count; i++)
-                        {
-                            ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = articlesByDep[i].nom, ButtonArticlesTag = articlesByDep[i].id });
-                        }
-                        //ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Pantalon", ButtonArticlesTag = "Pantalon" });
-                        //ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Veste", ButtonArticlesTag = "Veste" });
-                        //ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Chemise", ButtonArticlesTag = "Chemise" });
-
-                    }
-                    else
-                    {
-                        clickedbutton.Background = Brushes.Blue;
-                        string msg = string.Format("You Pressed : {0} button", clickedbutton.Tag);
-                        MessageBox.Show(msg);
-                    }
+                    listedesArticles.Add(new CategoryItem() { ButtonArticlesContent =  clickedbutton.Tag.ToString()+i + " bon ", ButtonArticlesTag = Int32.Parse(clickedbutton.Tag.ToString()) });
                 }
+               
+                ListeArticles = listedesArticles;
             }
+            else
+            {
+                clickedbutton.Background = Brushes.Blue;
+                string msg = string.Format("You Pressed : {0} button", clickedbutton.Tag);
+                MessageBox.Show(msg);
+            }
+            //if (articlesByDep != null)
+            //{
+
+            //    //}
+            //}
 
 
-           
+
         }
 
 
