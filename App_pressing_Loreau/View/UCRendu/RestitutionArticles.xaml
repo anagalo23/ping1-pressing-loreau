@@ -4,14 +4,26 @@
                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                xmlns:local="clr-namespace:App_pressing_Loreau.ViewModel"
+             xmlns:view="clr-namespace:App_pressing_Loreau.View"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="740">
 
+    <UserControl.DataContext>
+        <local:RestitutionArticlesVM />
+    </UserControl.DataContext>
+    
+    
     <UserControl.Resources>
+        <DataTemplate DataType="{x:Type local:ArticlesRestitutionVM}">
+            <view:ArticlesRestitution/>
+        </DataTemplate>
+        
         <!-- Données à afficher sur la partie 'commande concernant'-->
-        <DataTemplate DataType="{x:Type local:CommandeConcernantRA_DATA }">
-            <Border>
-                <Grid>
+        <DataTemplate DataType="{x:Type local:CommandeConcernantRA_DATA }" x:Key="UneCommande">
+            <Border CornerRadius="10" BorderBrush="Blue" BorderThickness="2">
+            <DockPanel >
+                <Border DockPanel.Dock="Top" BorderBrush="Blue" BorderThickness="2" CornerRadius="10">
+                <Grid >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
@@ -20,20 +32,25 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
-
                     </Grid.RowDefinitions>
 
-                    <Label Content="Le type de l'article " Grid.Row="0" Grid.Column="0" />
-                    <Label Content="{Binding Label_restitutionArticles_type}" Grid.Row="0" Grid.Column="1"/>
+                    <Label Content="Reference de la commande :" Grid.Row="0" Grid.Column="0" />
+                    <Label Content="{Binding Label_restitutionArticles_Reference}" Grid.Row="0" Grid.Column="1"/>
 
-                    <Label Content="Le departement de l'article " Grid.Row="1" Grid.Column="0" />
-                    <Label Content="{Binding Label_restitutionArticles_departement}" Grid.Row="1" Grid.Column="1"/>
+                    <Label Content="Nom du proprietaire : " Grid.Row="1" Grid.Column="0" />
+                    <Label Content="{Binding Label_restitutionArticles_Name}" Grid.Row="1" Grid.Column="1"/>
 
-                    <Label Content="Le type de l'article " Grid.Row="2" Grid.Column="0" />
-                    <Label Content="{Binding Label_restitutionArticles_name}" Grid.Row="2" Grid.Column="1"/>
+                    <Label Content="Nombre d'articles :" Grid.Row="2" Grid.Column="0" />
+                    <Label Content="{Binding Label_restitutionArticles_NombreArticles}" Grid.Row="2" Grid.Column="1"/>
 
                 </Grid>
-        </Border>
+                </Border>
+                    
+                    <Border>
+                        <ListBox Background="Bisque" Margin="5" ItemsSource="{Binding ListeArticlesRestitution}"  />
+                    </Border>
+            </DockPanel>
+            </Border>
         </DataTemplate>
 
         
@@ -109,7 +126,7 @@
                                 </Grid.RowDefinitions>
                                 <Label Background="AliceBlue" Content="Résultat de la recherche" Style="{StaticResource vertilabel25}"/>
                                 <DockPanel Grid.Row="1">
-                                    <ContentControl Margin="5" Content="{Binding Path=Dp_content_affiche_select}" />
+                                    <ContentControl Margin="5"  Content="{Binding Path=Dp_content_affiche_select}" />
                                 </DockPanel>
                             </Grid>
                         </Border>
@@ -120,14 +137,14 @@
             <Border Margin="5" Grid.Column="1">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="44*"/>
-                        <RowDefinition Height="153*"/>
-                        <RowDefinition Height="93*"/>
+                        <RowDefinition Height="9*"/>
+                        <RowDefinition Height="45*"/>
+                        <RowDefinition Height="7*"/>
                     </Grid.RowDefinitions>
                     <Label Content="La commande concernant" Grid.Row="0" Style="{StaticResource Titre}"/>
-                    <Border Margin="5" Grid.Row="1">
+                    <Border Margin="5" Grid.Row="1" >
 
-                        <ContentControl Content="{Binding Path=ContentCommandeConcernant}"/>
+                        <ContentControl ContentTemplate="{StaticResource UneCommande}" Content="{Binding Path=ContentCommandeConcernant}"/>
 
                     </Border>
                     <Grid Grid.Row="2">
@@ -136,7 +153,7 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         <Button x:Name="btn_restitutionArticles_suivant" Content="Suivant" Grid.Column="1"
-Click="btn_restitutionArticles_suivant_Click" Style="{StaticResource choixbouton30}" Margin="45,10,0,0"/>
+Click="btn_restitutionArticles_suivant_Click" Style="{StaticResource choixbouton30}" Margin="45,5,2,2"/>
                     </Grid>
                 </Grid>
 

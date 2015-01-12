@@ -13,7 +13,7 @@
     
     
     <UserControl.Resources>     
-        <DataTemplate x:Key="utilisateur">
+        <DataTemplate x:Key="utilisateur" DataType="{x:Type local:AdministrationUtilisateursVM}">
             <Border BorderBrush="White" BorderThickness="1" CornerRadius="10">
             <Grid Height="30" Width="500">
                 <Grid.ColumnDefinitions>
@@ -35,8 +35,8 @@
             </Grid>
             </Border>
         </DataTemplate >
-        
-        <DataTemplate x:Key="AddUtilisateur">
+
+        <DataTemplate x:Key="AddUtilisateur" DataType="{x:Type local:AdministrationUtilisateursVM}" >
             <Border BorderBrush="AliceBlue" Margin="3" BorderThickness="2" CornerRadius="10" >
 
                 <Grid>
@@ -48,10 +48,9 @@
                     
                     <TextBlock Grid.Column="0" Text="Saisir Nom :" Margin="5" />
                     
-                    <TextBox Grid.Column="1" Margin="5" Text="{Binding Path=Txb_Utilisateur_Name}" />
-                    
-                    <Button  Margin="5" Grid.Column="2" Content="Valider" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Border}}, Path= DataContext.AddUser}"
-                    CommandParameter="{Binding}" />
+                    <TextBox Grid.Column="1" Margin="5" Text="{Binding Path=Txb_Utilisateur_Name, UpdateSourceTrigger=PropertyChanged}" />
+
+                    <Button  Margin="5" Grid.Column="2" Content="Valider" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.AddUser}" CommandParameter="{Binding ElementName=button1}"/>
 
                 </Grid>
             </Border>
@@ -89,7 +88,7 @@
                 <Label Content="Ajouter des utilisateurs" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                 
                 <Border Margin="2" Grid.Column="1"  >
-                    <ContentControl ContentTemplate="{StaticResource AddUtilisateur}"  />
+                    <ContentControl ContentTemplate="{StaticResource AddUtilisateur}" Content="{Binding}"  />
                 </Border>
                 
                 

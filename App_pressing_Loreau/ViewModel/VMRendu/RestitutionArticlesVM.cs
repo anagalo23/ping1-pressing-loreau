@@ -132,21 +132,26 @@ namespace App_pressing_Loreau.ViewModel
         #region Méthodes
         public void ContenuDeLaCommande()
         {
+            ObservableCollection<ArticlesRestitutionVM> listeArt = new ObservableCollection<ArticlesRestitutionVM>();
         
             dep = (Departement)DepartementDAO.selectDepartementById(2);
             CommandeConcernantRA_DATA ccd = new CommandeConcernantRA_DATA();
-            ccd.Label_restitutionArticles_departement = "repassage";
-            ccd.Label_restitutionArticles_type = "Pantalon";
-            ccd.Label_restitutionArticles_name = Txb_restitutionArticles_idFactures.ToString();
+            ccd.Label_restitutionArticles_Name = "Alexis";
+            ccd.Label_restitutionArticles_Reference = "23678";
+            listeArt.Add(new ArticlesRestitutionVM(){ArticlesNameRes=Txb_restitutionArticles_idFactures+"pt", Txb_ArticlesRes_etat="Fini"});
+            listeArt.Add(new ArticlesRestitutionVM() { ArticlesNameRes = Txb_restitutionArticles_idFactures+"pj", Txb_ArticlesRes_etat = "encours" });
+
+            ccd.ListeArticlesRestitution = listeArt;
+            ccd.Label_restitutionArticles_NombreArticles = Txb_restitutionArticles_idFactures;
             ContentCommandeConcernant = ccd;
         }
 
         public void ContenuDeLaRecherche()
         {
             CommandeConcernantRA_DATA cdata = new CommandeConcernantRA_DATA();
-            cdata.Label_restitutionArticles_departement = "repassage";
-            cdata.Label_restitutionArticles_type = "Pantalon";
-            cdata.Label_restitutionArticles_name = Txb_restitutionArticles_choix.ToString();
+            cdata.Label_restitutionArticles_Name = "repassage";
+            cdata.Label_restitutionArticles_Reference = "Pantalon";
+            cdata.Label_restitutionArticles_NombreArticles =Int32.Parse(Txb_restitutionArticles_choix);
 
             Dp_content_affiche_select = cdata;
 
