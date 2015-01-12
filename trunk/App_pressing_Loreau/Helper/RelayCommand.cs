@@ -17,7 +17,6 @@ namespace App_pressing_Loreau.Helper
 
         readonly Action<object> _execute;
         readonly Predicate<object> _canExecute;
-        readonly Predicate<object> _canBeExecute;
 
         #endregion // Fields
 
@@ -45,15 +44,7 @@ namespace App_pressing_Loreau.Helper
             _execute = execute;
             _canExecute = canExecute;
         }
-        public RelayCommand(Action<object> execute, Predicate<object> canExecute, Predicate<object> canBeExecute)
-        {
-            if (execute == null)
-                throw new ArgumentNullException("execute");
-
-            _execute = execute;
-            _canExecute = canExecute;
-            _canBeExecute = canBeExecute;
-        }
+ 
 
         #endregion // Constructors
 
@@ -64,11 +55,7 @@ namespace App_pressing_Loreau.Helper
         {
             return _canExecute == null ? true : _canExecute(parameters);
         }
-        public bool CanBeExecute(object parameters)
-        {
-            return _canBeExecute == null ? true : _canBeExecute(parameters);
-        }
-
+      
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }

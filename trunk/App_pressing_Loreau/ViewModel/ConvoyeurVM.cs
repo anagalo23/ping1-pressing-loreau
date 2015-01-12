@@ -22,7 +22,7 @@ namespace App_pressing_Loreau.ViewModel
         private String _label_convoyeur_diponibles;
         private List<String> _contenuConvoyeur;
 
-        List<PlaceConvoyeur> listePlace = (List<PlaceConvoyeur>)PlaceConvoyeurDAO.selectConvoyeurs();
+        List<PlaceConvoyeur> listePlace = null;
 
         PlaceConvoyeur place = null;
 
@@ -34,8 +34,8 @@ namespace App_pressing_Loreau.ViewModel
 
         public ConvoyeurVM()
         {
-           
-                Label_convoyeur_diponibles = listePlace.Count.ToString();
+            listePlace=(List<PlaceConvoyeur>)PlaceConvoyeurDAO.selectConvoyeurs();
+            Label_convoyeur_diponibles = listePlace.Count.ToString();
          
            
         }

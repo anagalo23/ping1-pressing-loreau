@@ -80,7 +80,7 @@ namespace App_pressing_Loreau.Data.DAO
                 MySqlCommand cmd = new MySqlCommand(Bdd.selectTypeByDepId, Bdd.connexion());
 
                 //ajout des parametres
-                cmd.Parameters.AddWithValue("id", dep_id);
+                cmd.Parameters.AddWithValue("typ_dep_id", dep_id);
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();

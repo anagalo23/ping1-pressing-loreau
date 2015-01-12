@@ -123,7 +123,9 @@
     <Compile Include="ViewModel\VMReception\ArticlesVM.cs" />
     <Compile Include="ViewModel\VMReception\IdentificationClientData.cs" />
     <Compile Include="ViewModel\VMReception\NouveauClientData.cs" />
+    <Compile Include="ViewModel\VMRendu\ArticlesRestitutionVM.cs" />
     <Compile Include="ViewModel\VMRendu\CommandeConcernantRA_DATA.cs" />
+    <Compile Include="ViewModel\VMRendu\DetailCommandeVM.cs" />
     <Compile Include="ViewModel\VMRendu\RestitutionArticlesVM.cs" />
     <Compile Include="View\PaiementDeLaCommande.xaml.cs">
       <DependentUpon>PaiementDeLaCommande.xaml</DependentUpon>
@@ -169,6 +171,9 @@
     <Compile Include="ViewModel\VMReception\NouvelleCommandeVM.cs" />
     <Compile Include="View\UCReception\Articles.xaml.cs">
       <DependentUpon>Articles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UCRendu\ArticlesRestitution.xaml.cs">
+      <DependentUpon>ArticlesRestitution.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UCRendu\DetailCommande.xaml.cs">
       <DependentUpon>DetailCommande.xaml</DependentUpon>
@@ -269,6 +274,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UCReception\Articles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UCRendu\ArticlesRestitution.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

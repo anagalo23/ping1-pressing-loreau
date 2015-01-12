@@ -84,6 +84,8 @@ namespace App_pressing_Loreau.ViewModel
             get { return onCollectionChangeCommand ?? (onCollectionChangeCommand = new RelayCommand(DefileDepartement)); }
         }
 
+
+        //Ajouter un article a la commande 
         ICommand listesArticlesCommandes;
         public ICommand ListesArticlesCommandes
         {
@@ -222,6 +224,7 @@ namespace App_pressing_Loreau.ViewModel
                     {
 
                         clickedbutton.Background = Brushes.Blue;
+
                         for (int i = 0; i < articlesByDep.Count; i++)
                         {
                             ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = articlesByDep[i].nom, ButtonArticlesTag = articlesByDep[i].id });
@@ -231,16 +234,17 @@ namespace App_pressing_Loreau.ViewModel
                         //ListeArticles.Add(new CategoryItem() { ButtonArticlesContent = "Chemise", ButtonArticlesTag = "Chemise" });
 
                     }
+                    else
+                    {
+                        clickedbutton.Background = Brushes.Blue;
+                        string msg = string.Format("You Pressed : {0} button", clickedbutton.Tag);
+                        MessageBox.Show(msg);
+                    }
                 }
             }
 
 
-            else
-            {
-                clickedbutton.Background = Brushes.Blue;
-                string msg = string.Format("You Pressed : {0} button", clickedbutton.Tag);
-                MessageBox.Show(msg);
-            }
+           
         }
 
 

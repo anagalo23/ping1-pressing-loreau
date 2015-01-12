@@ -1,6 +1,7 @@
 ﻿using App_pressing_Loreau.Helper;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,58 +17,78 @@ namespace App_pressing_Loreau.ViewModel
 
     class CommandeConcernantRA_DATA : ObservableObject, IPageViewModel
     {
-        private String _label_restitutionArticles_type;
-        private String _label_restitutionArticles_departement;
-        private String _label_restitutionArticles_name;
+        private String _label_restitutionArticles_Reference;
+        private String _label_restitutionArticles_Name;
+        private int _label_restitutionArticles_NombreArticles;
 
+        private ObservableCollection<ArticlesRestitutionVM> _listeArticlesRestitution;
+        public string Name
+        {
+            get { return ""; }
+        }
         public CommandeConcernantRA_DATA()
         {
 
         }
 
-        public String Label_restitutionArticles_type
+        public String Label_restitutionArticles_Reference
         {
-            get { return _label_restitutionArticles_type; }
+            get { return _label_restitutionArticles_Reference; }
             set
             {
-                if (value!=_label_restitutionArticles_type)
+                if (value != _label_restitutionArticles_Reference)
                 {
-                    _label_restitutionArticles_type = value;
-                    OnPropertyChanged("Label_restitutionArticles_type");
+                    _label_restitutionArticles_Reference = value;
+                    OnPropertyChanged("Label_restitutionArticles_Reference");
                 }
             }
         }
 
 
-        public String Label_restitutionArticles_departement
+        public String Label_restitutionArticles_Name
         {
-            get { return _label_restitutionArticles_departement; }
+            get { return _label_restitutionArticles_Name; }
             set
             {
-                if (value != _label_restitutionArticles_departement)
+                if (value!=_label_restitutionArticles_Name)
                 {
-                    _label_restitutionArticles_departement = value;
-                    OnPropertyChanged("Label_restitutionArticles_departement");
+                    _label_restitutionArticles_Name = value;
+                    OnPropertyChanged("Label_restitutionArticles_Name");
                 }
             }
         }
 
-        public String Label_restitutionArticles_name
+        public int Label_restitutionArticles_NombreArticles
         {
-            get { return _label_restitutionArticles_name; }
+            get { return _label_restitutionArticles_NombreArticles; }
             set
             {
-                if (value != _label_restitutionArticles_name)
+                if (value != _label_restitutionArticles_NombreArticles)
                 {
-                    _label_restitutionArticles_name = value;
-                    OnPropertyChanged("Label_restitutionArticles_name");
+                    _label_restitutionArticles_NombreArticles = value;
+                    OnPropertyChanged("Label_restitutionArticles_NombreArticles");
                 }
             }
         }
 
-        public string Name
+
+        public ObservableCollection<ArticlesRestitutionVM> ListeArticlesRestitution
         {
-            get { return ""; }
+            get
+            {
+                return this._listeArticlesRestitution ??
+                    (this._listeArticlesRestitution = new ObservableCollection<ArticlesRestitutionVM>());
+            }
+
+            set
+            {
+                if (value != null)
+                {
+                    this._listeArticlesRestitution = value;
+                    OnPropertyChanged("ListeArticlesRestitution");
+                }
+            }
         }
+     
     }
 }
