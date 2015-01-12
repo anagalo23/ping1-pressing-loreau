@@ -20,9 +20,9 @@
         
         <!-- Données à afficher sur la partie 'commande concernant'-->
         <DataTemplate DataType="{x:Type local:CommandeConcernantRA_DATA }" x:Key="UneCommande">
-            <Border CornerRadius="10" BorderBrush="Blue" BorderThickness="2">
+            <Border CornerRadius="10" BorderBrush="Blue" BorderThickness="1">
             <DockPanel >
-                <Border DockPanel.Dock="Top" BorderBrush="Blue" BorderThickness="2" CornerRadius="10">
+                <Border DockPanel.Dock="Top" BorderBrush="Blue" BorderThickness="1" CornerRadius="10">
                 <Grid >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
@@ -47,7 +47,7 @@
                 </Border>
                     
                     <Border>
-                        <ListBox Background="Bisque" Margin="5" ItemsSource="{Binding ListeArticlesRestitution}"  />
+                        <ListBox Background="Transparent" BorderThickness="0" Margin="5" ItemsSource="{Binding ListeArticlesRestitution}"  />
                     </Border>
             </DockPanel>
             </Border>

@@ -63,7 +63,7 @@
                         <ColumnDefinition Width="10*"/>
                     </Grid.ColumnDefinitions>
                     <!-- Bouton precedent-->
-                    <Button  Background="Beige" Command="{Binding  OnCollectionChangeCommand }" CommandParameter=" CommandePrecedente">
+                    <Button  Background="Beige" Command="{Binding  CommandePrecedente }" CommandParameter=" ">
                         <Image Source="/Resources/pics/precedent.png" Height="25"/>
                     </Button>
                     
@@ -73,7 +73,7 @@
                         <DockPanel Margin="2">
              
                             <Border DockPanel.Dock="Top" Height="40">
-                                <ListBox  ScrollViewer.HorizontalScrollBarVisibility="Hidden" VerticalAlignment="Center" Cursor="Hand"  BorderThickness="0" Background="Transparent" ItemsSource="{Binding ListeDepartements}" ItemTemplate="{StaticResource departement}"  TextOptions.TextHintingMode="Animated">
+                                <ListBox  ScrollViewer.HorizontalScrollBarVisibility="Hidden" BorderThickness="0" Background="Transparent" ItemsSource="{Binding ListeDepartements}" ItemTemplate="{StaticResource departement}"  >
                                     <ListBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <VirtualizingStackPanel Orientation="Horizontal"/>
@@ -95,7 +95,7 @@
                         </DockPanel>
 
                     </Border>
-                    <Button Grid.Column="2"  Background="Beige" Command="{Binding  OnCollectionChangeCommand }"  CommandParameter="CommandeSuivante">
+                    <Button Grid.Column="2"  Background="Beige" Command="{Binding  CommandeSuivante }"  CommandParameter="">
                         <Image Source="/Resources/pics/suivant.png"/>
                     </Button>
 
@@ -122,7 +122,7 @@
                         </Grid.RowDefinitions>
                         <DockPanel Grid.Row="0">
 
-                            <ListBox Background="Bisque" Margin="5" ItemsSource="{Binding ContentDetailCommande}"  />
+                            <ListBox Margin="5" Background="Transparent" BorderThickness="0"  ItemsSource="{Binding ContentDetailCommande}"  />
                            
                         </DockPanel>
 
