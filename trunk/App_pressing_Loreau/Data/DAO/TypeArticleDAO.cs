@@ -77,6 +77,49 @@ namespace App_pressing_Loreau.Data.DAO
             }
         }
 
+        //Selectionner un types de la base de données à partir de son id
+        public static TypeArticle selectTypesById(int type_id)
+        {
+            try
+            {
+                TypeArticle retour = new TypeArticle();
+
+                //connection à la base de données  
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectTypesById, Bdd.connexion());
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("typ_id", type_id);
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                while (msdr.Read())
+                {
+                    retour = new TypeArticle(
+                        Int32.Parse(msdr["typ_id"].ToString()),
+                        msdr["typ_nom"].ToString(),
+                        float.Parse(msdr["typ_encombrement"].ToString()),
+                        Int32.Parse(msdr["typ_TVA"].ToString()),
+                        Int32.Parse(msdr["typ_HT"].ToString()),
+                        new Departement(Int32.Parse(msdr["typ_dep_id"].ToString()), null));
+                }
+                msdr.Dispose();
+
+                #region ajout des départements
+
+                foreach (TypeArticle typ in retour)
+                    typ.departement = DepartementDAO.selectDepartementById(typ.departement.id);
+
+                #endregion
+
+                return retour;
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de types dans la base de données."));
+                return null;
+            }
+        }
+
         //Selectionner les types d'articles pour un département
         public static List<TypeArticle> selectTypeByDepId(int dep_id)
         {
