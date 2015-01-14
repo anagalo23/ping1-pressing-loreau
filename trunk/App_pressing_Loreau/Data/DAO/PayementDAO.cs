@@ -10,7 +10,8 @@ namespace App_pressing_Loreau.Data.DAO
 {
     class PayementDAO
     {
-        public static void insertPaiement(Payement paiement, int id_commande)
+        //Inserer un payement dans la base de données
+        public static int insertPaiement(Payement paiement, int id_commande)
         {
             try
             {
@@ -24,14 +25,16 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("commande_id", id_commande);
 
                 //Execute la commande
-                int retour = cmd.ExecuteNonQuery();
+                return cmd.ExecuteNonQuery();
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
+                return 0;
             }
         }
-        
+
+        //Selectionner l'ensemble des payements par commande de la base de données
         public static List<Payement> selectPayementByCommande(Commande commande)
         {
             try
@@ -61,11 +64,12 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de types dans la base de données."));
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de types dans la base de données."));
                 return null;
             }
         }
 
+        //Selectionner l'ensemble des payements par commande de la base de données
         public static List<Payement> selectPayementByCommande(int id_commande)
         {
             try
@@ -97,6 +101,32 @@ namespace App_pressing_Loreau.Data.DAO
             {
                 LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de types dans la base de données."));
                 return null;
+            }
+        }
+
+        //Update un paiement
+        public static int updatePaiement(Payement paiement, int commandeId)
+        {
+            try
+            {
+                //connection à la base de données
+                MySqlCommand cmd = new MySqlCommand(Bdd.insertPaiement, Bdd.connexion());
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("id", paiement.id);
+                cmd.Parameters.AddWithValue("date", paiement.date);
+                cmd.Parameters.AddWithValue("montant", paiement.montant);
+                cmd.Parameters.AddWithValue("type", paiement.typePaiement);
+                cmd.Parameters.AddWithValue("pai_cmd_id", commandeId);
+                cmd.Parameters.AddWithValue("id", paiement.id);
+
+                //Execute la commande
+                return cmd.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
+                return 0;
             }
         }
     }

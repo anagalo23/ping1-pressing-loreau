@@ -101,6 +101,7 @@ namespace App_pressing_Loreau.Data
         //Payement
         public static String insertPaiement = "INSERT INTO paiement (pai_date, pai_montant, pai_name ,pai_cmd_id) VALUES (?,?,?,?)";
         public static String selectPayementByCommande = "SELECT pai_id, pai_date, pai_name, pai_montant FROM paiement WHERE pai_cmd_id=?";
+        public static String updatePaiement = "UPDATE paiement SET pai_id=?,pai_date=?,pai_montant=?,pai_cmd_id=?,pai_tpp_id=? WHERE pai_id=?";
 
         //PlaceConvoyeur
         public static String insertConvoyeur = "INSERT INTO convoyeur(conv_emplacement, conv_encombrement) VALUES (?,?)";
