@@ -120,6 +120,9 @@ namespace App_pressing_Loreau.Data.DAO
                 //connection à la base de données  
                 MySqlCommand cmd = new MySqlCommand(Bdd.selectCommandesByClient, Bdd.connexion());
 
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("clt_id", id_client);
+
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
                 Commande commande;
@@ -178,38 +181,36 @@ namespace App_pressing_Loreau.Data.DAO
             try
             {
                 Commande retour = new Commande();
-                List<int> id_clients = new List<int>();
 
                 //connection à la base de données  
                 MySqlCommand cmd = new MySqlCommand(Bdd.selectCommandeById, Bdd.connexion());
 
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("cmd_id", id_cmd);
+
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
-                Commande commande;
                 while (msdr.Read())
                 {
-                    commande = new Commande(
+                    retour = new Commande(
                         Int32.Parse(msdr["cmd_id"].ToString()),
                         DateTime.Parse(msdr["cmd_date"].ToString()),
                         Boolean.Parse(msdr["cmd_payee"].ToString()),
                         float.Parse(msdr["cmd_remise"].ToString()));
-                    retour.Add(commande);
                 }
                 msdr.Dispose();
 
                 #region ajout paiement
                 if (addPaiement)
                 {
-                    foreach (Commande comm in retour)
-                        comm.listPayements = PayementDAO.selectPayementByCommande(comm.id);
+                        retour.listPayements = PayementDAO.selectPayementByCommande(retour.id);
                 }
                 #endregion
 
                 #region ajout article
                 if (addArticles)
                 {
-                    foreach (Commande comm in retour)
-                        comm.listArticles = ArticleDAO.selectArticleByIdCmd(comm.id);
+                        retour.listArticles = ArticleDAO.selectArticleByIdCmd(retour.id);
                 }
                 #endregion
 
