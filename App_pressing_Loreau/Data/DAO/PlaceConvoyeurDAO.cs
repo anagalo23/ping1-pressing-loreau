@@ -64,14 +64,14 @@ namespace App_pressing_Loreau.Data.DAO
         }
 
         //Selectionner une place convoyeur de la base de données à partir de son id
-        public static PlaceConvoyeur selectTypeById(int id)
+        public static PlaceConvoyeur selectConvoyeurById(int id)
         {
             try
             {
                 PlaceConvoyeur retour = new PlaceConvoyeur();
                 
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(Bdd.selectTypeById, Bdd.connexion());
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectConvoyeurById, Bdd.connexion());
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("conv_id", id);
