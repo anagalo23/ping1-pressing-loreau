@@ -105,10 +105,7 @@ namespace App_pressing_Loreau.Data.DAO
                 msdr.Dispose();
 
                 #region ajout des départements
-
-                foreach (TypeArticle typ in retour)
-                    typ.departement = DepartementDAO.selectDepartementById(typ.departement.id);
-
+                    retour.departement = DepartementDAO.selectDepartementById(retour.departement.id);
                 #endregion
 
                 return retour;
