@@ -12,7 +12,7 @@ namespace App_pressing_Loreau.Data.DAO
 {
     class ClientDAO
     {
-        public static void insertClient(Client client)
+        public static int insertClient(Client client)
         {
             try
             {
@@ -35,11 +35,12 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("type", client.type);
 
                 //Execute la commande
-                int retour = cmd.ExecuteNonQuery();
+                return cmd.ExecuteNonQuery();
             }
             catch (Exception Ex)
             {
                 LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
+                return 0;
             }
         }
 
