@@ -97,10 +97,16 @@ namespace App_pressing_Loreau.Data
         //log
         public static String insertLog = "INSERT INTO Log(log_date, log_message, log_emp_id) VALUES (?,?,?)";
 
+        //Payement
+        public static String insertPaiement = "INSERT INTO paiement (pai_date, pai_montant, pai_name ,pai_cmd_id) VALUES (?,?,?,?)";
+        public static String selectPayementByCommande = "SELECT pai_id, pai_date, pai_name, pai_montant FROM paiement WHERE pai_cmd_id=?";
+
         //PlaceConvoyeur
-        public static String insertConvoyeur = "INSERT INTO convoyeur(conv_emplacement) VALUES (?)";
-        public static String selectConvoyeurs = "SELECT conv_id, conv_emplacement FROM convoyeur";
-        public static String selectTypeById = "SELECT conv_id, conv_emplacement FROM convoyeur WHERE conv_id=?";
+        public static String insertConvoyeur = "INSERT INTO convoyeur(conv_emplacement, conv_encombrement) VALUES (?,?)";
+        public static String selectConvoyeurs = "SELECT conv_id, conv_emplacement, conv_encombrement FROM convoyeur";
+        public static String selectTypeById = "SELECT conv_id, conv_emplacement, conv_encombrement FROM convoyeur WHERE conv_id=?";
+        public static String selectConvoyeursEmpty = "SELECT conv_id, conv_emplacement, conv_encombrement FROM convoyeur WHERE conv_emplacement=0";
+        public static String updatePlaceConvoyeur = "UPDATE convoyeur SET conv_id=?,conv_emplacement=?,conv_encombrement=? WHERE conv_id=?";
 
         //TypeArticle
         public static String insertType = "INSERT INTO type(typ_nom, typ_encombrement, typ_TVA, typ_HT, typ_dep_id) VALUES (?,?,?,?,?)";
@@ -113,10 +119,6 @@ namespace App_pressing_Loreau.Data
         public static String selectTypesPayement = "SELECT tpp_id, tpp_nom FROM typepaiement";
         public static String selectTypePayementById = "SELECT tpp_id, tpp_nom FROM typepaiement WHERE tpp_id=?";
         public static String selectTypePayementByName = "SELECT tpp_id, tpp_nom FROM typepaiement WHERE tpp_nom=?";
-
-        //Payement
-        public static String insertPaiement = "INSERT INTO paiement (pai_date, pai_montant, pai_name ,pai_cmd_id) VALUES (?,?,?,?)";
-        public static String selectPayementByCommande = "SELECT pai_id, pai_date, pai_name, pai_montant FROM paiement WHERE pai_cmd_id=?";
         #endregion
     }
 }
