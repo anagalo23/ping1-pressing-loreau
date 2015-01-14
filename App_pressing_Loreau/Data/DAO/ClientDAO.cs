@@ -38,7 +38,7 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
                 return 0;
             }
         }
@@ -102,7 +102,7 @@ namespace App_pressing_Loreau.Data.DAO
                         msdr["clt_prenom"].ToString(),
                         msdr["clt_fix"].ToString(),
                         msdr["clt_mob"].ToString(),
-                        new Adresse(),
+                        Adresse.Parse(msdr["clt_adresse"].ToString()),
                         DateTime.Parse(msdr["clt_dateNaissance"].ToString()),
                         msdr["clt_email"].ToString(),
                         DateTime.Parse(msdr["clt_dateInscription"].ToString()),
@@ -118,11 +118,61 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données."));
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données."));
                 return null;
             }
+        }
 
+        public static Client selectClientById(int client_id, Boolean addCommandes, Boolean cmd_addPaiement, Boolean cmd_addArticles)
+        {
+            try
+            {
+                Client retour = new Client();
+                
+                //connection à la base de données  
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectClientById, Bdd.connexion());
 
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("id_client", client_id);
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                Client client;
+                while (msdr.Read())
+                {
+                    client = new Client(
+                        Int32.Parse(msdr["clt_id"].ToString()),
+                        msdr["clt_nom"].ToString(),
+                        msdr["clt_prenom"].ToString(),
+                        msdr["clt_fix"].ToString(),
+                        msdr["clt_mob"].ToString(),
+                        Adresse.Parse(msdr["clt_adresse"].ToString()),
+                        DateTime.Parse(msdr["clt_dateNaissance"].ToString()),
+                        msdr["clt_email"].ToString(),
+                        DateTime.Parse(msdr["clt_dateInscription"].ToString()),
+                        Int32.Parse(msdr["clt_idCleanway"].ToString()),
+                        Int32.Parse(msdr["clt_contactmail"].ToString()),
+                        Int32.Parse(msdr["clt_contactsms"].ToString()),
+                        Int32.Parse(msdr["clt_type"].ToString())
+                        );
+                }
+                msdr.Dispose();
+
+                #region ajout des commandes
+                if(addCommandes)
+                {
+                    // Attention ! dernier parametre obligatoirement en false afin de ne pas boucler.
+                    retour.listCommandes = CommandeDAO.selectCommandesByClient(retour.id, cmd_addPaiement, cmd_addArticles, false);
+                }
+                #endregion
+
+                return retour;
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données."));
+                return null;
+            }
         }
     }
 }
