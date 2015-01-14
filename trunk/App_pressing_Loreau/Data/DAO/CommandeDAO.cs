@@ -50,15 +50,76 @@ namespace App_pressing_Loreau.Data.DAO
         }
 
         
-        public static List<Commande> selectCommandes(Boolean addPaiement, Boolean addArticles)
+        public static List<Commande> selectCommandes(Boolean addPaiement, Boolean addArticles, Boolean addClient)
         {
             try
             {
                 List<Commande> retour = new List<Commande>();
-                List<int> id_clients = new List<int>();
                 
                 //connection à la base de données  
                 MySqlCommand cmd = new MySqlCommand(Bdd.selectCommandes, Bdd.connexion());
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                Commande commande;
+                while (msdr.Read())
+                {
+                    commande = new Commande(
+                        Int32.Parse(msdr["cmd_id"].ToString()),
+                        DateTime.Parse(msdr["cmd_date"].ToString()),
+                        Boolean.Parse(msdr["cmd_payee"].ToString()),
+                        float.Parse(msdr["cmd_remise"].ToString()));
+                    commande.client = new Client();
+                    commande.client.id = Int32.Parse(msdr["cmd_clt_id"].ToString());
+
+                    retour.Add(commande);
+                }
+                msdr.Dispose();
+
+                #region ajout paiement
+                if(addPaiement)
+                {
+                    foreach (Commande comm in retour)
+                        comm.listPayements = PayementDAO.selectPayementByCommande(comm.id);
+                }
+                #endregion
+
+                #region ajout article
+                if(addArticles)
+                {
+                    foreach (Commande comm in retour)
+                        comm.listArticles = ArticleDAO.selectArticleByIdCmd(comm.id);
+                }
+                #endregion
+
+                #region ajout client
+                if (addClient)
+                {
+                    //foreach (Commande comm in retour)
+                        //comm.client = ClientDAO.
+                    
+                }
+                #endregion
+
+
+                return retour;
+            }
+            catch (Exception Ex)
+            {
+                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                return null;
+            }
+        }
+
+        public static Commande selectCommandeById(int id_cmd, Boolean addPaiement, Boolean addArticles)
+        {
+            try
+            {
+                Commande retour = new Commande();
+                List<int> id_clients = new List<int>();
+
+                //connection à la base de données  
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectCommandeById, Bdd.connexion());
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
@@ -75,18 +136,18 @@ namespace App_pressing_Loreau.Data.DAO
                 msdr.Dispose();
 
                 #region ajout paiement
-                if(addPaiement)
+                if (addPaiement)
                 {
-                    foreach (Commande c1 in retour)
-                        c1.listPayements = PayementDAO.selectPayementByCommande(c1.id);
+                    foreach (Commande comm in retour)
+                        comm.listPayements = PayementDAO.selectPayementByCommande(comm.id);
                 }
                 #endregion
 
                 #region ajout article
-                if(addArticles)
+                if (addArticles)
                 {
-                    foreach (Commande c1 in retour) ;
-                       //c1.listArticles = ArticleDAO.
+                    foreach (Commande comm in retour)
+                        comm.listArticles = ArticleDAO.selectArticleByIdCmd(comm.id);
                 }
                 #endregion
 
@@ -99,6 +160,7 @@ namespace App_pressing_Loreau.Data.DAO
                 return null;
             }
         }
+
         public static int lastId(MySqlConnection connection)
         {
             String sql = "";
