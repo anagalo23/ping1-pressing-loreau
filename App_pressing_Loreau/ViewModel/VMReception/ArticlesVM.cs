@@ -7,6 +7,11 @@ using Microsoft.Win32;
 using System.Windows.Input;
 
 using App_pressing_Loreau.Helper;
+using System.Windows.Media;
+using System.Threading;
+using System.Windows.Media.Imaging;
+using System.IO;
+using System.Windows;
 
 
 namespace App_pressing_Loreau.ViewModel
@@ -17,7 +22,10 @@ namespace App_pressing_Loreau.ViewModel
 
         private string _articlesName;
         private string _txb_Articles_Commentaire;
-        private string _selectFile;
+        private ImageSource _changedPhoto;
+        private string _changedPhotoFileName = null;
+        private ConvertToImage convert = new ConvertToImage();
+        
         #endregion
 
         #region Propietés et commandes 
@@ -56,28 +64,59 @@ namespace App_pressing_Loreau.ViewModel
 
         }
 
+       
         public ICommand Btn_Articles_ChargerPhoto
-        { get { return new RelayCommand(P => ExecuteOpenFileDialog()); } }
+        { get { return new RelayCommand(P => ChangePhoto()); } }
 
-        public String SelectFile
+   
+
+        public ImageSource SelectedPhoto
         {
-            get { return _selectFile; }
+            get {  return _changedPhoto; }
             set
             {
-                _selectFile = value;
-                OnPropertyChanged("SelectFile");
+                if (_changedPhoto == null)
+                {
+                    //_changedPhoto = (ImageSource)convert.Convert(
+                    //    value,
+                    //    typeof(ImageSource),
+                    //    null,
+                    //    Thread.CurrentThread.CurrentUICulture);
+                    OnPropertyChanged("SelectedPhoto");
+                }
             }
         }
-
-
         private void ExecuteOpenFileDialog()
         {
 
             OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Multiselect = false;
+            dialog.Filter = "Image Files|*.jpg;*.png;*.bmp";
             dialog.ShowDialog();
-            SelectFile = dialog.FileName;
+            //SelectFile = dialog.FileName;
         }
-       
+        private void ChangePhoto()
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Multiselect = false;
+            dlg.Filter = "Image Files|*.jpg;*.png;*.bmp";
+            if (dlg.ShowDialog() == true)
+            {
+                BitmapImage bi = new BitmapImage();
+                //the input stream will be disposed at the end to avoid wpf lock / file access exceptions 
+                using (Stream inputStream = File.OpenRead(dlg.FileName))
+                {
+                    bi.BeginInit();
+                    bi.StreamSource = inputStream;
+                    //load the image now so we can immediately dispose of the stream
+                    bi.CacheOption = BitmapCacheOption.OnLoad;
+                    bi.EndInit();
+                }
+                _changedPhotoFileName = dlg.FileName;
+                _changedPhoto = bi;
+                OnPropertyChanged("SelectedPhoto");
+            }
+        }
         #endregion
 
 

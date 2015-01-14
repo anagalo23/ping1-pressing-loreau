@@ -151,7 +151,7 @@ namespace App_pressing_Loreau.ViewModel
             CommandeConcernantRA_DATA cdata = new CommandeConcernantRA_DATA();
             cdata.Label_restitutionArticles_Name = "repassage";
             cdata.Label_restitutionArticles_Reference = "Pantalon";
-            cdata.Label_restitutionArticles_NombreArticles =Int32.Parse(Txb_restitutionArticles_choix);
+            //cdata.Label_restitutionArticles_NombreArticles =Int32.Parse(Txb_restitutionArticles_choix);
 
             Dp_content_affiche_select = cdata;
 

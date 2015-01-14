@@ -224,19 +224,20 @@ namespace App_pressing_Loreau.ViewModel
             List<CategoryItem> listedesArticles = new List<CategoryItem>();
             articlesByDep = (List<TypeArticle>)TypeArticleDAO.selectTypeByDepId(Int32.Parse(clickedbutton.Tag.ToString()));
 
-            //if (articlesByDep.Count > 0)
-            //{
-            if (clickedbutton != null)
+            if (articlesByDep.Count > 0)
             {
-
-                clickedbutton.Background = Brushes.Blue;
-
-                for (int i = 0; i < Int32.Parse(clickedbutton.Tag.ToString()); i++)
+                if (clickedbutton != null)
                 {
-                    listedesArticles.Add(new CategoryItem() { ButtonArticlesContent =  clickedbutton.Tag.ToString()+i + " bon ", ButtonArticlesTag = Int32.Parse(clickedbutton.Tag.ToString()) });
+
+                    clickedbutton.Background = Brushes.Blue;
+
+                    for (int i = 0; i < articlesByDep.Count; i++)
+                    {
+                        listedesArticles.Add(new CategoryItem() { ButtonArticlesContent = articlesByDep[i].nom, ButtonArticlesTag = articlesByDep[i].id });
+                    }
+
+                    ListeArticles = listedesArticles;
                 }
-               
-                ListeArticles = listedesArticles;
             }
             else
             {

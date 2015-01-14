@@ -19,11 +19,12 @@ namespace App_pressing_Loreau.ViewModel
         #region Attributes 
 
         private int _txb_Convoyeur_nbPlace;
-        private String _label_convoyeur_diponibles;
-        private List<String> _contenuConvoyeur;
+        private int _label_convoyeur_diponibles;
+        private String _contenuConvoyeur;
 
         List<PlaceConvoyeur> listePlace = null;
 
+        
         PlaceConvoyeur place = null;
 
         #endregion
@@ -35,8 +36,11 @@ namespace App_pressing_Loreau.ViewModel
         public ConvoyeurVM()
         {
             listePlace=(List<PlaceConvoyeur>)PlaceConvoyeurDAO.selectConvoyeurs();
-            Label_convoyeur_diponibles = listePlace.Count.ToString();
-         
+            Label_convoyeur_diponibles = listePlace.Count;
+
+            //convoyeur = new bddping1DataSet.convoyeurDataTable();
+
+            //Label_convoyeur_diponibles = convoyeur.FindByconv_id(1).conv_emplacement;   
            
         }
 
@@ -57,7 +61,7 @@ namespace App_pressing_Loreau.ViewModel
         }
 
 
-        public String Label_convoyeur_diponibles
+        public int Label_convoyeur_diponibles
         {
             get { return _label_convoyeur_diponibles; }
             set
@@ -71,7 +75,7 @@ namespace App_pressing_Loreau.ViewModel
 
         }
 
-        public List<String> ContenuConvoyeur
+        public String ContenuConvoyeur
         {
             get { return _contenuConvoyeur; }
             set
@@ -96,9 +100,11 @@ namespace App_pressing_Loreau.ViewModel
 
         public void convoyeurContenu()
         {
+
+
             place = (PlaceConvoyeur)PlaceConvoyeurDAO.selectTypeById(Txb_Convoyeur_nbPlace);
-            ContenuConvoyeur = new List<string>();
-            //ContenuConvoyeur.Add(place.ToString());
+            //ContenuConvoyeur = new List<string>();
+            ContenuConvoyeur=place.emplacement.ToString()+" et l' id est: " +place.id;
  
         }
         #endregion
