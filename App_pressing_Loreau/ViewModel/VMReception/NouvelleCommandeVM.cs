@@ -35,6 +35,10 @@ namespace App_pressing_Loreau.ViewModel
         private List<CategoryItem> _listeArticles;
         private List<Departement> listeDepartementDTO = null;
         private List<TypeArticle> articlesByDep = null;
+        private TypeArticle typeArticleDTO = null;
+
+        private float _label_NouvelleCommande_prixTotal;
+        public float prixTotal { get; private set;}
 
 
         private ObservableCollection<ArticlesVM> _contentDetailCommande;
@@ -77,12 +81,6 @@ namespace App_pressing_Loreau.ViewModel
             get { return onButtonClickCommand ?? (onButtonClickCommand = new RelayCommand(Contenudepartement)); }
         }
 
-        //Permet de changer switcher d'écran de sélection de département
-        //ICommand onCollectionChangeCommand;
-        //public ICommand OnCollectionChangeCommand
-        //{
-        //    get { return onCollectionChangeCommand ?? (onCollectionChangeCommand = new RelayCommand(DefileDepartement)); }
-        //}
 
         public ICommand CommandeSuivante
         { get { return new RelayCommand(p => defileDepartementSuivannte(),
@@ -135,7 +133,18 @@ namespace App_pressing_Loreau.ViewModel
 
         #region contenu commande
 
-
+        public float Label_NouvelleCommande_prixTotal
+        {
+            get { return _label_NouvelleCommande_prixTotal; }
+            set
+            {
+                if (value != _label_NouvelleCommande_prixTotal)
+                {
+                    value = _label_NouvelleCommande_prixTotal;
+                    OnPropertyChanged("Label_NouvelleCommande_prixTotal");
+                }
+            }
+        }
         public ObservableCollection<ArticlesVM> ContentDetailCommande
         {
             get
@@ -222,6 +231,7 @@ namespace App_pressing_Loreau.ViewModel
         {
             Button clickedbutton = button as Button;
             List<CategoryItem> listedesArticles = new List<CategoryItem>();
+            articlesByDep = new List<TypeArticle>();
             articlesByDep = (List<TypeArticle>)TypeArticleDAO.selectTypeByDepId(Int32.Parse(clickedbutton.Tag.ToString()));
 
             if (articlesByDep.Count > 0)
@@ -245,13 +255,6 @@ namespace App_pressing_Loreau.ViewModel
                 string msg = string.Format("You Pressed : {0} button", clickedbutton.Tag);
                 MessageBox.Show(msg);
             }
-            //if (articlesByDep != null)
-            //{
-
-            //    //}
-            //}
-
-
 
         }
 
@@ -259,15 +262,19 @@ namespace App_pressing_Loreau.ViewModel
         public void AjouterArticles(object button)
         {
             Button clickedbutton = button as Button;
+            prixTotal = 0;
+            typeArticleDTO = (TypeArticle)TypeArticleDAO.selectTypesById(Int32.Parse(clickedbutton.Tag.ToString()));
+
             if (clickedbutton != null)
             {
                 //String typeDelArticle = clickedbutton.Tag.ToString();
                 //Ajout de l'article à l'interface graphique
                 this._contentDetailCommande.Add(new ArticlesVM()
                 {
-                    ArticlesName = clickedbutton.Tag.ToString()
+                    ArticlesName = typeArticleDTO.nom
                 });
 
+                prixTotal += typeArticleDTO.HT;
                 //Ajout du même article à la liste d'article locale
                 //TypeArticle type = TypeArticleDAO.getTypeObjectByName(typeDelArticle);
                 //if (type != null)
@@ -294,6 +301,8 @@ namespace App_pressing_Loreau.ViewModel
 
 
             }
+            Label_NouvelleCommande_prixTotal = prixTotal;
+            
         }
 
 

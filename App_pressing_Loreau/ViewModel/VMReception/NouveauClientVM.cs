@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using App_pressing_Loreau.Helper;
 using App_pressing_Loreau.Data.DAO;
 using App_pressing_Loreau.Model.DTO;
+using System.Windows;
 
 
 namespace App_pressing_Loreau.ViewModel
@@ -17,7 +18,21 @@ namespace App_pressing_Loreau.ViewModel
 
         #region Variables locales
 
-        Client client;
+        Client client = new Client();
+        private String _txb_nouveauClient_nom;
+        private String _txb_nouveauClient_prenom;
+        private DateTime _txb_nouveauClient_date_naissance;
+        private int _txb_nouveauClient_idCleanway;
+        private int _txb_nouveauClient_numero;
+        private String _txb_nouveauClient_rue_voie;
+        private String _txb_nouveauClient_bp;
+        private String _txb_nouveauClient_ville;
+        private bool _ckb_nouveauClient_sms;
+        private String _txb_nouveauClient_portable;
+        private bool _ckb_nouveauClient_mail;
+        private String _txt_nouveauClient_mail;
+
+        public static int index { get; private set; }
         #endregion
 
 
@@ -31,12 +46,12 @@ namespace App_pressing_Loreau.ViewModel
         #region Properties / Commands
         public String Txb_nouveauClient_nom
         {
-            get { return client.nom; }
+            get { return _txb_nouveauClient_nom; }
             set
             {
-                if (value != client.nom)
+                if (value != _txb_nouveauClient_nom)
                 {
-                    client.nom = value;
+                    _txb_nouveauClient_nom = value;
                     OnPropertyChanged("Txb_nouveauClient_nom");
                 }
             }
@@ -44,25 +59,25 @@ namespace App_pressing_Loreau.ViewModel
 
         public String Txb_nouveauClient_prenom
         {
-            get { return client.prenom; }
+            get { return _txb_nouveauClient_prenom; }
             set
             {
-                if (value != client.prenom)
+                if (value != _txb_nouveauClient_prenom)
                 {
-                    client.prenom = value;
+                    _txb_nouveauClient_prenom = value;
                     OnPropertyChanged("Txb_nouveauClient_prenom");
                 }
             }
         }
 
-        public String Txb_nouveauClient_date_naissance
+        public DateTime Txb_nouveauClient_date_naissance
         {
-            get { return client.dateNaissance.ToString(); }
+            get { return _txb_nouveauClient_date_naissance; }
             set
             {
-                if (value != client.dateNaissance.ToString())
+                if (value != _txb_nouveauClient_date_naissance)
                 {
-                    client.dateNaissance = DateTime.Parse(value);
+                    _txb_nouveauClient_date_naissance = value;
                     OnPropertyChanged("Txb_nouveauClient_date_naissance");
                 }
             }
@@ -70,27 +85,27 @@ namespace App_pressing_Loreau.ViewModel
         }
 
 
-        public String Txb_nouveauClient_idCleanway
+        public int Txb_nouveauClient_idCleanway
         {
-            get { return client.idCleanWay.ToString(); }
+            get { return _txb_nouveauClient_idCleanway; }
             set
             {
-                if (value != client.idCleanWay.ToString())
+                if (value != _txb_nouveauClient_idCleanway)
                 {
-                    client.idCleanWay = Int16.Parse(value);
+                    _txb_nouveauClient_idCleanway = value;
                     OnPropertyChanged("Txb_nouveauClient_idCleanway");
                 }
             }
         }
 
-        public String Txb_nouveauClient_numero
+        public int Txb_nouveauClient_numero
         {
-            get { return client.adresse.numero; }
+            get { return _txb_nouveauClient_numero; }
             set
             {
-                if (value != client.adresse.numero)
+                if (value != _txb_nouveauClient_numero)
                 {
-                    client.adresse.numero = value;
+                    _txb_nouveauClient_numero = value;
                     OnPropertyChanged("Txb_nouveauClient_numero");
                 }
             }
@@ -98,12 +113,12 @@ namespace App_pressing_Loreau.ViewModel
 
         public String Txb_nouveauClient_rue_voie
         {
-            get { return client.adresse.rue; }
+            get { return _txb_nouveauClient_rue_voie; }
             set
             {
-                if (value != client.adresse.rue)
+                if (value != _txb_nouveauClient_rue_voie)
                 {
-                    client.adresse.rue = value;
+                    _txb_nouveauClient_rue_voie = value;
                     OnPropertyChanged("Txb_nouveauClient_rue_voie");
                 }
             }
@@ -111,12 +126,12 @@ namespace App_pressing_Loreau.ViewModel
 
         public String Txb_nouveauClient_bp
         {
-            get { return client.adresse.codePostal; }
+            get { return _txb_nouveauClient_bp; }
             set
             {
-                if (value != client.adresse.codePostal)
+                if (value != _txb_nouveauClient_bp)
                 {
-                    client.adresse.codePostal = value;
+                    _txb_nouveauClient_bp = value;
                     OnPropertyChanged("Txb_nouveauClient_bp");
                 }
             }
@@ -124,41 +139,38 @@ namespace App_pressing_Loreau.ViewModel
 
         public String Txb_nouveauClient_ville
         {
-            get { return client.adresse.ville; }
+            get { return _txb_nouveauClient_ville; }
             set
             {
-                if (value != client.adresse.ville)
+                if (value != _txb_nouveauClient_ville)
                 {
-                    client.adresse.ville = value;
+                    _txb_nouveauClient_ville = value;
                     OnPropertyChanged("Txb_nouveauClient_ville");
 
                 }
             }
         }
 
-
-
-
         public bool Ckb_nouveauClient_sms
         {
-            get { return client.contactSms; }
+            get { return _ckb_nouveauClient_sms; }
             set
             {
-                if (value != client.contactSms)
+                if (value != _ckb_nouveauClient_sms)
                 {
-                    client.contactSms = value;
+                    _ckb_nouveauClient_sms = value;
                     OnPropertyChanged("Ckb_nouveauClient_sms");
                 }
             }
         }
         public String Txb_nouveauClient_portable
         {
-            get { return client.telmob; }
+            get { return _txb_nouveauClient_portable; }
             set
             {
-                if (value != client.telmob)
+                if (value != _txb_nouveauClient_portable)
                 {
-                    client.telmob = value;
+                    _txb_nouveauClient_portable = value;
                     OnPropertyChanged("Txb_nouveauClient_portable");
                 }
             }
@@ -167,12 +179,12 @@ namespace App_pressing_Loreau.ViewModel
 
         public bool Ckb_nouveauClient_mail
         {
-            get { return client.contactMail; }
+            get { return _ckb_nouveauClient_mail; }
             set
             {
-                if (value != client.contactMail)
+                if (value != _ckb_nouveauClient_mail)
                 {
-                    client.contactMail = value;
+                    _ckb_nouveauClient_mail = value;
                     OnPropertyChanged("Ckb_nouveauClient_mail");
                 }
             }
@@ -180,25 +192,25 @@ namespace App_pressing_Loreau.ViewModel
 
         public String Txb_nouveauClient_mail
         {
-            get { return client.email; }
+            get { return _txt_nouveauClient_mail; }
             set
             {
-                if (value != client.email)
+                if (value != _txt_nouveauClient_mail)
                 {
-                    client.email = value;
+                    _txt_nouveauClient_mail = value;
                     OnPropertyChanged("Txb_nouveauClient_mail");
                 }
             }
         }
 
 
-        public ICommand Btn_nouveauClient_enregistrer
+        public ICommand BtnNouveauClientEnregistrer
         {
             get
             {
                 return new RelayCommand(
                     p => enregisterClient(),
-                    p => Txb_nouveauClient_nom != null & Txb_nouveauClient_prenom != null);
+                    p=> Txb_nouveauClient_nom!=null & Txb_nouveauClient_prenom!=null);
             }
         }
         #endregion
@@ -207,7 +219,30 @@ namespace App_pressing_Loreau.ViewModel
         #region Méthodes
         public void enregisterClient()
         {
-            ClientDAO.insertClient(client);
+            client.nom = this._txb_nouveauClient_nom;
+            client.prenom = Txb_nouveauClient_prenom;
+            client.dateNaissance = Txb_nouveauClient_date_naissance;
+            client.idCleanWay = Txb_nouveauClient_idCleanway;
+
+            client.adresse = new Model.Adresse();
+            client.adresse.numero = Txb_nouveauClient_numero + "";
+            client.adresse.rue = Txb_nouveauClient_rue_voie;
+            client.adresse.codePostal = Txb_nouveauClient_bp;
+            client.adresse.ville = Txb_nouveauClient_ville;
+
+            client.contactSms = Ckb_nouveauClient_sms;
+            client.telmob = Txb_nouveauClient_portable;
+            client.contactMail = Ckb_nouveauClient_mail;
+            client.email = Txb_nouveauClient_mail;
+            //index = 1;
+
+            index= ClientDAO.insertClient(client);
+
+            if (index == 0)
+            {
+                MessageBox.Show("alexis te dis : Bonjour");
+            }
+
         }
         #endregion
 

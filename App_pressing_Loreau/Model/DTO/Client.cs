@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using App_pressing_Loreau.Model;
+
 namespace App_pressing_Loreau.Model.DTO
 {
 

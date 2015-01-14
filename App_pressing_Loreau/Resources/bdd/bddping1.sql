@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `article` (
 
 --
 -- Structure de la table `client`
--- clt_type : 0=client normal  et  1=cleint pro
+-- clt_type : 0=client normal  et  1=client pro
 -- clt_contactmail :  0=non   et   1=oui on les contacte par mail
 -- clt_contactsms : 0=non   et   1=oui
 --

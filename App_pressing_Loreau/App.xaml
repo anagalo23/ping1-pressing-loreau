@@ -8,6 +8,7 @@
         <Style  TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="personalisationbuton">
             <Setter Property="Background" Value="Teal"/>
             <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Focusable" Value="True"/> 
             <Setter Property="FontFamily" Value=" Arial"/>
             <Setter Property="FontSize" Value=" 25"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
