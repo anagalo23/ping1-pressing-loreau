@@ -10,7 +10,8 @@ namespace App_pressing_Loreau.Data.DAO
 {
     class TypeArticleDAO
     {
-        public static void insertType(TypeArticle type)
+        //Inserer un type dans la base de données
+        public static int insertType(TypeArticle type)
         {
             try
             {                
@@ -25,14 +26,16 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("id_dep", type.departement.id);
 
                 //Execute la commande
-                int retour = cmd.ExecuteNonQuery();
+                return cmd.ExecuteNonQuery();
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
+                return 0;
             }
         }
 
+        //Selectionner l'ensemble des types de la base de données
         public static List<TypeArticle> selectTypes()
         {
             try
@@ -45,31 +48,36 @@ namespace App_pressing_Loreau.Data.DAO
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
                 TypeArticle type;
-                Departement departement;
                 while (msdr.Read())
                 {
-                    departement = new Departement(
-                        Int32.Parse(msdr["typ_dep_id"].ToString()),
-                        msdr["dep_nom"].ToString());
                     type = new TypeArticle(
                         Int32.Parse(msdr["typ_id"].ToString()),
                         msdr["typ_nom"].ToString(),
                         float.Parse(msdr["typ_encombrement"].ToString()),
                         Int32.Parse(msdr["typ_TVA"].ToString()),
                         Int32.Parse(msdr["typ_HT"].ToString()),
-                        departement);
+                        new Departement(Int32.Parse(msdr["typ_dep_id"].ToString()), null));
                     retour.Add(type);
                 }
                 msdr.Dispose();
+
+                #region ajout des départements
+
+                foreach (TypeArticle typ in retour)
+                    typ.departement = DepartementDAO.selectDepartementById(typ.departement.id);
+
+                #endregion
+
                 return retour;
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de types dans la base de données."));
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de types dans la base de données."));
                 return null;
             }
         }
 
+        //Selectionner les types d'articles pour un département
         public static List<TypeArticle> selectTypeByDepId(int dep_id)
         {
             try
@@ -85,30 +93,60 @@ namespace App_pressing_Loreau.Data.DAO
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
                 TypeArticle type;
-                Departement departement;
                 while (msdr.Read())
                 {
-                    departement = new Departement(
-                        Int32.Parse(msdr["typ_dep_id"].ToString()),
-                        msdr["dep_nom"].ToString());
                     type = new TypeArticle(
                         Int32.Parse(msdr["typ_id"].ToString()),
                         msdr["typ_nom"].ToString(),
                         float.Parse(msdr["typ_encombrement"].ToString()),
                         Int32.Parse(msdr["typ_TVA"].ToString()),
                         Int32.Parse(msdr["typ_HT"].ToString()),
-                        departement);
+                        new Departement(Int32.Parse(msdr["typ_dep_id"].ToString()), null));
                     retour.Add(type);
                 }
                 msdr.Dispose();
+
+                #region ajout des départements
+
+                foreach (TypeArticle typ in retour)
+                    typ.departement = DepartementDAO.selectDepartementById(typ.departement.id);
+
+                #endregion
+
                 return retour;
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un département dans la base de données."));
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un département dans la base de données."));
                 return null;
             }
         }
 
+        //Update un type d'article
+        public static int updateType(TypeArticle type)
+        {
+            try
+            {
+                //connection à la base de données
+                MySqlCommand cmd = new MySqlCommand(Bdd.updateType, Bdd.connexion());
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("id", type.id);
+                cmd.Parameters.AddWithValue("nom", type.nom);
+                cmd.Parameters.AddWithValue("encombrement", type.encombrement);
+                cmd.Parameters.AddWithValue("tva", type.TVA);
+                cmd.Parameters.AddWithValue("ht", type.HT);
+                cmd.Parameters.AddWithValue("dep_id", type.departement.id);
+                cmd.Parameters.AddWithValue("id", type.id);
+
+                //Execute la commande
+                return cmd.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
+                return 0;
+            }
+        }
     }
 }

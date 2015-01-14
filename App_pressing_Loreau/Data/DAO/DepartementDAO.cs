@@ -10,6 +10,7 @@ namespace App_pressing_Loreau.Data.DAO
 {
     class DepartementDAO
     {
+        //Inserer un département dans la base de données
         public static void insertDepartement(Departement departement)
         {
             try
@@ -25,10 +26,11 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un departement dans la base de données."));
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un departement dans la base de données."));
             }
         }
 
+        //Selectionner l'ensemble des départements de la base de données
         public static List<Departement> selectDepartements()
         {
             try
@@ -53,11 +55,12 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
                 return null;
             }
         }
 
+        //Selectionner un département à partir d'un ID
         public static Departement selectDepartementById(int id)
         {
             try
@@ -85,12 +88,37 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un département dans la base de données."));
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un département dans la base de données."));
                 return null;
             }
 
 
         }
+
+        //Update d'un département
+        public static int updateDepartement(Departement dep)
+        {
+            try
+            {
+                //connection à la base de données
+                MySqlCommand cmd = new MySqlCommand(Bdd.updateDepartement, Bdd.connexion());
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("id", dep.id);
+                cmd.Parameters.AddWithValue("nom", dep.nom);
+                cmd.Parameters.AddWithValue("id", dep.id);
+
+                //Execute la commande
+                return cmd.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un departement dans la base de données."));
+                return 0;
+            }
+        }
+
+
 
     }
 }

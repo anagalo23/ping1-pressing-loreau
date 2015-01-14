@@ -90,7 +90,8 @@ namespace App_pressing_Loreau.Data
         //Département
         public static String insertDepartement = "INSERT INTO departement(dep_nom) VALUES (?)";
         public static String selectDepartements = "SELECT dep_id, dep_nom FROM departement";
-        public static String selectDepartementById = "SELECT dep_id, dep_nom FROM departement WHERE id=?";
+        public static String selectDepartementById = "SELECT dep_id, dep_nom FROM departement WHERE dep_id=?";
+        public static String updateDepartement = "UPDATE departement SET dep_id=?,dep_nom=? WHERE dep_id=?";
 
         //log
         public static String insertLog = "INSERT INTO Log(log_date, log_message, log_emp_id) VALUES (?,?,?)";
@@ -102,8 +103,9 @@ namespace App_pressing_Loreau.Data
 
         //TypeArticle
         public static String insertType = "INSERT INTO type(typ_nom, typ_encombrement, typ_TVA, typ_HT, typ_dep_id) VALUES (?,?,?,?,?)";
-        public static String selectTypes = "SELECT T.typ_id, T.typ_nom, T.typ_encombrement, T.typ_TVA, T.typ_HT, T.typ_dep_id, D.dep_nom FROM type T, departement D WHERE T.typ_dep_id=D.dep_id";
-        public static String selectTypeByDepId = "SELECT T.typ_id, T.typ_nom, T.typ_encombrement, T.typ_TVA, T.typ_HT, T.typ_dep_id, D.dep_nom FROM type T, departement D WHERE T.typ_dep_id=D.dep_id AND D.dep_id=?";
+        public static String selectTypes = "SELECT typ_id, typ_nom, typ_encombrement, typ_TVA, typ_HT, typ_dep_id FROM type";
+        public static String selectTypeByDepId = "SELECT typ_id, typ_nom, typ_encombrement, typ_TVA, typ_HT, typ_dep_id FROM type WHERE D.dep_id=?";
+        public static String updateType = "UPDATE type SET typ_id=?,typ_nom=?,typ_encombrement=?,typ_TVA=?,typ_HT=?,typ_dep_id=? WHERE typ_id=?";
 
         //TypePayement
         public static String selectTypesPayement = "SELECT tpp_id, tpp_nom FROM typepaiement";
