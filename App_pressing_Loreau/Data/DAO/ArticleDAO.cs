@@ -86,5 +86,61 @@ namespace App_pressing_Loreau.Data.DAO
                 return null;
             }
         }
+
+        public static List<Article> selectArticleByIdCmd(int cmd_id)
+        {
+            try
+            {
+                List<Article> retour = new List<Article>();
+
+                //connection à la base de données
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectArticleByIdCmd, Bdd.connexion());
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("id", cmd_id);
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                Departement dep;
+                TypeArticle type;
+                PlaceConvoyeur conv;
+                Article article;
+                while (msdr.Read())
+                {
+                    dep = new Departement(
+                        Int32.Parse(msdr["type_dep_id"].ToString()),
+                        msdr["dep_nom"].ToString());
+
+                    type = new TypeArticle(
+                        Int32.Parse(msdr["typ_id"].ToString()),
+                        msdr["type_nom"].ToString(),
+                        float.Parse(msdr["type_encombrement"].ToString()),
+                        float.Parse(msdr["type_TVA"].ToString()),
+                        float.Parse(msdr["type_HT"].ToString()),
+                        dep);
+                    conv = new PlaceConvoyeur(
+                        Int32.Parse(msdr["conv_id"].ToString()),
+                        Int32.Parse(msdr["conv_emplacement"].ToString()));
+                    article = new Article(
+                        Int32.Parse(msdr["art_id"].ToString()),
+                        msdr["art_photo"].ToString(),
+                        msdr["art_commentaire"].ToString(),
+                        bool.Parse(msdr["art_rendu"].ToString()),
+                        float.Parse(msdr["art_TVA"].ToString()),
+                        float.Parse(msdr["art_HT"].ToString()),
+                        type,
+                        conv);
+
+                    retour.Add(article);
+                }
+                msdr.Dispose();
+                return retour;
+            }
+            catch (Exception Ex)
+            {
+                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un article dans la base de données."));
+                return null;
+            }
+        }
     }
 }

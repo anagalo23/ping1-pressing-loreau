@@ -20,11 +20,12 @@ namespace App_pressing_Loreau.Data.DAO
                 MySqlCommand cmd = new MySqlCommand(Bdd.insertClient, Bdd.connexion());
 
                 //ajout des parametres
+                
                 cmd.Parameters.AddWithValue("nom", client.nom);
                 cmd.Parameters.AddWithValue("prenom", client.prenom);
                 cmd.Parameters.AddWithValue("telfixe", client.telfix);
                 cmd.Parameters.AddWithValue("telport", client.telmob);
-                cmd.Parameters.AddWithValue("adresse", client.adresse);
+                cmd.Parameters.AddWithValue("adresse", client.adresse.giveAdresse());
                 cmd.Parameters.AddWithValue("dateNaissance", client.dateNaissance);
                 cmd.Parameters.AddWithValue("email", client.email);
                 cmd.Parameters.AddWithValue("dateInsc", client.dateInscription);
