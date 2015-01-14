@@ -12,7 +12,8 @@ namespace App_pressing_Loreau.Data.DAO
 {
     class ArticleDAO
     {
-        public static void insertArticle(Article article)
+        //Inserer un article dans la base de données
+        public static int insertArticle(Article article)
         {
             try
             {
@@ -29,11 +30,12 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("typ_id", article.type.id);
 
                 //Execute la commande
-                int retour = cmd.ExecuteNonQuery();
+                return cmd.ExecuteNonQuery();
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un article dans la base de données."));
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un article dans la base de données."));
+                return 0;
             }
         }
 
@@ -53,20 +55,6 @@ namespace App_pressing_Loreau.Data.DAO
                 MySqlDataReader msdr = cmd.ExecuteReader();
                 while (msdr.Read())
                 {
-                    Departement dep = new Departement(
-                        Int32.Parse(msdr["type_dep_id"].ToString()),
-                        msdr["dep_nom"].ToString());
-
-                    TypeArticle type = new TypeArticle(
-                        Int32.Parse(msdr["typ_id"].ToString()),
-                        msdr["type_nom"].ToString(),
-                        float.Parse(msdr["type_encombrement"].ToString()),
-                        float.Parse(msdr["type_TVA"].ToString()),
-                        float.Parse(msdr["type_HT"].ToString()),
-                        dep);
-                    PlaceConvoyeur conv = new PlaceConvoyeur(
-                        Int32.Parse(msdr["conv_id"].ToString()),
-                        Int32.Parse(msdr["conv_emplacement"].ToString()));
                     retour = new Article(
                         Int32.Parse(msdr["art_id"].ToString()),
                         msdr["art_photo"].ToString(),
@@ -74,15 +62,24 @@ namespace App_pressing_Loreau.Data.DAO
                         bool.Parse(msdr["art_rendu"].ToString()),
                         float.Parse(msdr["art_TVA"].ToString()),
                         float.Parse(msdr["art_HT"].ToString()),
-                        type,
-                        conv);
+                        new TypeArticle(Int32.Parse(msdr["art_typ_id"].ToString()), null, 0, 0, 0, null),
+                        new PlaceConvoyeur(Int32.Parse(msdr[" art_conv_id"].ToString()), 0, 0));
                 }
                 msdr.Dispose();
+
+                #region ajout du type et du departement
+                retour.type = TypeArticleDAO.selectTypesById(retour.type.id);
+                #endregion
+
+                #region ajout de la place convoyeur
+                retour.convoyeur = PlaceConvoyeurDAO.selectConvoyeurById(retour.convoyeur.id);
+                #endregion
+
                 return retour;
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un article dans la base de données."));
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un article dans la base de données."));
                 return null;
             }
         }
@@ -101,26 +98,9 @@ namespace App_pressing_Loreau.Data.DAO
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
-                Departement dep;
-                TypeArticle type;
-                PlaceConvoyeur conv;
                 Article article;
                 while (msdr.Read())
                 {
-                    dep = new Departement(
-                        Int32.Parse(msdr["type_dep_id"].ToString()),
-                        msdr["dep_nom"].ToString());
-
-                    type = new TypeArticle(
-                        Int32.Parse(msdr["typ_id"].ToString()),
-                        msdr["type_nom"].ToString(),
-                        float.Parse(msdr["type_encombrement"].ToString()),
-                        float.Parse(msdr["type_TVA"].ToString()),
-                        float.Parse(msdr["type_HT"].ToString()),
-                        dep);
-                    conv = new PlaceConvoyeur(
-                        Int32.Parse(msdr["conv_id"].ToString()),
-                        Int32.Parse(msdr["conv_emplacement"].ToString()));
                     article = new Article(
                         Int32.Parse(msdr["art_id"].ToString()),
                         msdr["art_photo"].ToString(),
@@ -128,17 +108,26 @@ namespace App_pressing_Loreau.Data.DAO
                         bool.Parse(msdr["art_rendu"].ToString()),
                         float.Parse(msdr["art_TVA"].ToString()),
                         float.Parse(msdr["art_HT"].ToString()),
-                        type,
-                        conv);
+                        new TypeArticle(Int32.Parse(msdr["art_typ_id"].ToString()), null, 0, 0, 0, null),
+                        new PlaceConvoyeur(Int32.Parse(msdr[" art_conv_id"].ToString()), 0, 0));
 
                     retour.Add(article);
                 }
                 msdr.Dispose();
+
+                #region ajout des types, des departements et des places convoyeurs
+                foreach(Article art in retour)
+                {
+                    art.type = TypeArticleDAO.selectTypesById(art.type.id);
+                    art.convoyeur = PlaceConvoyeurDAO.selectConvoyeurById(art.convoyeur.id);
+                }
+                #endregion
+
                 return retour;
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un article dans la base de données."));
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un article dans la base de données."));
                 return null;
             }
         }

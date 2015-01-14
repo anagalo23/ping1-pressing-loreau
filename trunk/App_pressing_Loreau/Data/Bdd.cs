@@ -74,8 +74,8 @@ namespace App_pressing_Loreau.Data
 
         //Article
         public static String insertArticle = "INSERT INTO article(art_photo, art_commentaire, art_rendu, art_TVA, art_HT, art_conv_id, art_typ_id) VALUES (?,?,?,?,?,?,?)";
-        public static String selectArticleById = "SELECT A.art_id, A.art_photo, A.art_commentaire, A.art_rendu, A.art_TVA, A.art_HT, C.conv_id, C.conv_emplacement, T.typ_id, T.type_nom, T.type_encombrement, T.type_TVA, T.type_HT, T.type_dep_id, D.dep_nom FROM article A, convoyeur C, type T, departement D WHERE A.art_conv_id=C.conv_id AND A.art_typ_id=T.typ_id AND T.type_dep_id=D.dep_id AND A.art_id=?";
-        public static String selectArticleByIdCmd = "SELECT A.art_id, A.art_photo, A.art_commentaire, A.art_rendu, A.art_TVA, A.art_HT, C.conv_id, C.conv_emplacement, T.typ_id, T.type_nom, T.type_encombrement, T.type_TVA, T.type_HT, T.type_dep_id, D.dep_nom FROM article A, convoyeur C, type T, departement D WHERE A.art_conv_id=C.conv_id AND A.art_typ_id=T.typ_id AND T.type_dep_id=D.dep_id AND A.art_cmd_id=?";
+        public static String selectArticleById = "SELECT art_id, art_photo, art_commentaire, art_rendu, art_TVA, art_HT, art_conv_id, art_typ_id FROM article WHERE art_id=?";
+        public static String selectArticleByIdCmd = "SELECT art_id, art_photo, art_commentaire, art_rendu, art_TVA, art_HT, art_conv_id, art_typ_id FROM article WHERE art_conv_id=?";
 
         //Client
         public static String insertClient = "INSERT INTO client(clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_idCleanway, clt_contactmail, clt_contactsms, clt_type) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
@@ -104,7 +104,7 @@ namespace App_pressing_Loreau.Data
         //PlaceConvoyeur
         public static String insertConvoyeur = "INSERT INTO convoyeur(conv_emplacement, conv_encombrement) VALUES (?,?)";
         public static String selectConvoyeurs = "SELECT conv_id, conv_emplacement, conv_encombrement FROM convoyeur";
-        public static String selectTypeById = "SELECT conv_id, conv_emplacement, conv_encombrement FROM convoyeur WHERE conv_id=?";
+        public static String selectConvoyeurById = "SELECT conv_id, conv_emplacement, conv_encombrement FROM convoyeur WHERE conv_id=?";
         public static String selectConvoyeursEmpty = "SELECT conv_id, conv_emplacement, conv_encombrement FROM convoyeur WHERE conv_emplacement=0";
         public static String updatePlaceConvoyeur = "UPDATE convoyeur SET conv_id=?,conv_emplacement=?,conv_encombrement=? WHERE conv_id=?";
 
