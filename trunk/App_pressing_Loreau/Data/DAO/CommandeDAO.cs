@@ -106,6 +106,68 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                return null;
+            }
+        }
+
+        public static List<Commande> selectCommandesByClient(int id_client, Boolean addPaiement, Boolean addArticles, Boolean addClient)
+        {
+            try
+            {
+                List<Commande> retour = new List<Commande>();
+
+                //connection à la base de données  
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectCommandesByClient, Bdd.connexion());
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                Commande commande;
+                while (msdr.Read())
+                {
+                    commande = new Commande(
+                        Int32.Parse(msdr["cmd_id"].ToString()),
+                        DateTime.Parse(msdr["cmd_date"].ToString()),
+                        Boolean.Parse(msdr["cmd_payee"].ToString()),
+                        float.Parse(msdr["cmd_remise"].ToString()));
+                    commande.client = new Client();
+                    commande.client.id = Int32.Parse(msdr["cmd_clt_id"].ToString());
+
+                    retour.Add(commande);
+                }
+                msdr.Dispose();
+
+                #region ajout paiement
+                if (addPaiement)
+                {
+                    foreach (Commande comm in retour)
+                        comm.listPayements = PayementDAO.selectPayementByCommande(comm.id);
+                }
+                #endregion
+
+                #region ajout article
+                if (addArticles)
+                {
+                    foreach (Commande comm in retour)
+                        comm.listArticles = ArticleDAO.selectArticleByIdCmd(comm.id);
+                }
+                #endregion
+
+                #region ajout client
+                if (addClient)
+                {
+                    foreach (Commande comm in retour)
+                        // Attention ! Parametres en false afin de ne pas boucler!
+                        comm.client = ClientDAO.selectClientById(comm.client.id, false, false, false);
+
+                }
+                #endregion
+
+
+                return retour;
+            }
+            catch (Exception Ex)
+            {
                 LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
                 return null;
             }
