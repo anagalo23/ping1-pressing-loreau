@@ -94,7 +94,7 @@ namespace App_pressing_Loreau.Data
         //PlaceConvoyeur
         public static String insertConvoyeur = "INSERT INTO convoyeur(conv_emplacement) VALUES (?)";
         public static String selectConvoyeurs = "SELECT conv_id, conv_emplacement FROM convoyeur";
-        public static String selectTypeById = "SELECT conv_id, conv_emplacement FROM convoyeur WHERE T.typ_id=?";
+        public static String selectTypeById = "SELECT conv_id, conv_emplacement FROM convoyeur WHERE conv_id=?";
 
         //TypeArticle
         public static String insertType = "INSERT INTO type(typ_nom, typ_encombrement, typ_TVA, typ_HT, typ_dep_id) VALUES (?,?,?,?,?)";

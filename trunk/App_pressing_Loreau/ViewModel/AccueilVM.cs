@@ -365,6 +365,17 @@ namespace App_pressing_Loreau
         }
         public void accueilVM()
         {
+            // chargement de la page accueil
+            Accueil acc = new Accueil();
+            // liaison avec la page AccueilVM
+            AccueilVM context = new AccueilVM();
+            // Permet de traiter les données dans AccueilVM
+            acc.DataContext = context;
+            acc.Show();
+            //this.Accueil().
+
+            App app = new App();
+            
             accessUserControl = null;
         }
         #endregion

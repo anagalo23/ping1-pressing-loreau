@@ -49,14 +49,14 @@ namespace App_pressing_Loreau.Data.DAO
                 while (msdr.Read())
                 {
                     departement = new Departement(
-                        Int32.Parse(msdr["type_dep_id"].ToString()),
+                        Int32.Parse(msdr["typ_dep_id"].ToString()),
                         msdr["dep_nom"].ToString());
                     type = new TypeArticle(
                         Int32.Parse(msdr["typ_id"].ToString()),
-                        msdr["type_nom"].ToString(),
-                        float.Parse(msdr["type_encombrement"].ToString()),
-                        Int32.Parse(msdr["type_TVA"].ToString()),
-                        Int32.Parse(msdr["type_HT"].ToString()),
+                        msdr["typ_nom"].ToString(),
+                        float.Parse(msdr["typ_encombrement"].ToString()),
+                        Int32.Parse(msdr["typ_TVA"].ToString()),
+                        Int32.Parse(msdr["typ_HT"].ToString()),
                         departement);
                     retour.Add(type);
                 }
@@ -89,14 +89,14 @@ namespace App_pressing_Loreau.Data.DAO
                 while (msdr.Read())
                 {
                     departement = new Departement(
-                        Int32.Parse(msdr["type_dep_id"].ToString()),
+                        Int32.Parse(msdr["typ_dep_id"].ToString()),
                         msdr["dep_nom"].ToString());
                     type = new TypeArticle(
                         Int32.Parse(msdr["typ_id"].ToString()),
-                        msdr["type_nom"].ToString(),
-                        float.Parse(msdr["type_encombrement"].ToString()),
-                        Int32.Parse(msdr["type_TVA"].ToString()),
-                        Int32.Parse(msdr["type_HT"].ToString()),
+                        msdr["typ_nom"].ToString(),
+                        float.Parse(msdr["typ_encombrement"].ToString()),
+                        Int32.Parse(msdr["typ_TVA"].ToString()),
+                        Int32.Parse(msdr["typ_HT"].ToString()),
                         departement);
                     retour.Add(type);
                 }
