@@ -39,6 +39,7 @@ namespace App_pressing_Loreau.Data.DAO
             }
         }
 
+        //Selectionner un article à partir de son id
         public static Article selectArticleById(int art_id)
         {
             try
@@ -84,6 +85,7 @@ namespace App_pressing_Loreau.Data.DAO
             }
         }
 
+        //Selectionner l'ensemble des articles d'une commande dans la base de données
         public static List<Article> selectArticleByIdCmd(int cmd_id)
         {
             try
@@ -129,6 +131,34 @@ namespace App_pressing_Loreau.Data.DAO
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un article dans la base de données."));
                 return null;
+            }
+        }
+
+        //Update un article dans la base de données
+        public static int updateArticle(Article article)
+        {
+            try
+            {
+                //connection à la base de données
+                MySqlCommand cmd = new MySqlCommand(Bdd.insertArticle, Bdd.connexion());
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("id", article.id);
+                cmd.Parameters.AddWithValue("photo", article.photo);
+                cmd.Parameters.AddWithValue("commentaire", article.commentaire);
+                cmd.Parameters.AddWithValue("rendu", article.ifRendu);
+                cmd.Parameters.AddWithValue("TVA", article.TVA);
+                cmd.Parameters.AddWithValue("HT", article.HT);
+                cmd.Parameters.AddWithValue("conv_id", article.convoyeur.id);
+                cmd.Parameters.AddWithValue("typ_id", article.type.id);
+
+                //Execute la commande
+                return cmd.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un article dans la base de données."));
+                return 0;
             }
         }
     }

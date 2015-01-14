@@ -76,6 +76,7 @@ namespace App_pressing_Loreau.Data
         public static String insertArticle = "INSERT INTO article(art_photo, art_commentaire, art_rendu, art_TVA, art_HT, art_conv_id, art_typ_id) VALUES (?,?,?,?,?,?,?)";
         public static String selectArticleById = "SELECT art_id, art_photo, art_commentaire, art_rendu, art_TVA, art_HT, art_conv_id, art_typ_id FROM article WHERE art_id=?";
         public static String selectArticleByIdCmd = "SELECT art_id, art_photo, art_commentaire, art_rendu, art_TVA, art_HT, art_conv_id, art_typ_id FROM article WHERE art_conv_id=?";
+        public static String updateArticle = "UPDATE article SET art_id=?,art_photo=?,art_commentaire=?,art_rendu=?,art_TVA=?,art_HT=?,art_conv_id=?,art_cmd_id=?,art_typ_id=? WHERE art_id=?";
 
         //Client
         public static String insertClient = "INSERT INTO client(clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_idCleanway, clt_contactmail, clt_contactsms, clt_type) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
