@@ -28,7 +28,6 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("adresse", client.adresse.giveAdresse());
                 cmd.Parameters.AddWithValue("dateNaissance", client.dateNaissance);
                 cmd.Parameters.AddWithValue("email", client.email);
-                cmd.Parameters.AddWithValue("dateInsc", client.dateInscription);
                 cmd.Parameters.AddWithValue("idCleanWay", client.idCleanWay);
                 cmd.Parameters.AddWithValue("contactMail", client.contactMail);
                 cmd.Parameters.AddWithValue("contactSms", client.contactSms);
