@@ -85,6 +85,7 @@ namespace App_pressing_Loreau.Data
         //Commande
         public static String insertCommande = "INSERT INTO commande(cmd_date, cmd_payee, cmd_remise, cmd_clt_id) VALUES (?,?,?,?)";
         public static String selectCommandes = "SELECT cmd_id, cmd_date, cmd_payee, cmd_clt_id, cmd_remise FROM commande";
+        public static String selectCommandeById = "SELECT cmd_id, cmd_date, cmd_payee, cmd_clt_id, cmd_remise FROM commande WHERE cmd_id=?";
         public static String selectCommandesByClient = "SELECT cmd_id, cmd_date, cmd_payee, cmd_clt_id, cmd_remise FROM commande WHERE cmd_clt_id=?";
 
         //Département
