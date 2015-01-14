@@ -139,8 +139,8 @@ namespace App_pressing_Loreau.Data.DAO
                         Int32.Parse(msdr["typ_id"].ToString()),
                         msdr["typ_nom"].ToString(),
                         float.Parse(msdr["typ_encombrement"].ToString()),
-                        Int32.Parse(msdr["typ_TVA"].ToString()),
-                        Int32.Parse(msdr["typ_HT"].ToString()),
+                        float.Parse(msdr["typ_TVA"].ToString()),
+                        float.Parse(msdr["typ_HT"].ToString()),
                         new Departement(Int32.Parse(msdr["typ_dep_id"].ToString()), null));
                     retour.Add(type);
                 }
