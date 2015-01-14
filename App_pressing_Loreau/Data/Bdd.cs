@@ -106,7 +106,7 @@ namespace App_pressing_Loreau.Data
         public static String insertType = "INSERT INTO type(typ_nom, typ_encombrement, typ_TVA, typ_HT, typ_dep_id) VALUES (?,?,?,?,?)";
         public static String selectTypes = "SELECT typ_id, typ_nom, typ_encombrement, typ_TVA, typ_HT, typ_dep_id FROM type";
         public static String selectTypesById = "SELECT typ_id, typ_nom, typ_encombrement, typ_TVA, typ_HT, typ_dep_id FROM type WHERE typ_id=?";
-        public static String selectTypeByDepId = "SELECT typ_id, typ_nom, typ_encombrement, typ_TVA, typ_HT, typ_dep_id FROM type WHERE dep_id=?";
+        public static String selectTypeByDepId = "SELECT typ_id, typ_nom, typ_encombrement, typ_TVA, typ_HT, typ_dep_id FROM type WHERE typ_dep_id=?";
         public static String updateType = "UPDATE type SET typ_id=?,typ_nom=?,typ_encombrement=?,typ_TVA=?,typ_HT=?,typ_dep_id=? WHERE typ_id=?";
 
         //TypePayement
