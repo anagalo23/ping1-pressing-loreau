@@ -8,14 +8,12 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="740">
 
+    <UserControl.DataContext>
+        <vm:IdentificationClientVM/>
+    </UserControl.DataContext>
     <UserControl.Resources>
-        <DataTemplate DataType="{x:Type vm:NouveauClientVM}">
-            <local:NouveauClient/>
-            
-        </DataTemplate>
-        
-        
-        
+             
+               
         <DataTemplate DataType="{x:Type vm:IdentificationClientData}">
             <Border>
                 
@@ -51,17 +49,15 @@
         <Border>
             <Grid>
                 <Grid.ColumnDefinitions>
-
-                    <ColumnDefinition Width="365*"/>
-                    <ColumnDefinition Width="364*"/>
-
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0" Margin="10" BorderBrush="Aqua" BorderThickness="2" CornerRadius="15">
                     <Grid Margin="2">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="40*"/>
-                            <RowDefinition Height="190*"/>
-                            <RowDefinition Height="50*"/>
+                            <RowDefinition Height="6*"/>
+                            <RowDefinition Height="30*"/>
+                            <RowDefinition Height="5*"/>
 
                         </Grid.RowDefinitions>
                         <Label  Content="Champs de recherche désirés"  Style="{StaticResource  Titre}"  Grid.Row="0"/>
@@ -97,8 +93,8 @@
                                      Text="{Binding Path=txb_identificationClient_date_naissance, UpdateSourceTrigger=PropertyChanged}" Margin="10,4,13,4" Style="{StaticResource vertiTextBox}"/>
 
                         </Grid>
-                        <Button x:Name="btn_identClient_nouveau_client" Content="Nouveau client" Grid.Row="2" Margin="10,5" 
-                            Command="{Binding OnCollectionChangeCommand }" CommandParameter="btnIdentifiantNouveauClient" Style="{StaticResource personalisationbuton}" Click="btn_identClient_nouveau_client_Click"/>
+                        <Button x:Name="btn_identClient_nouveau_client" Content="Nouveau client" Grid.Row="2" Margin="40,5" 
+                            Command="{Binding  }" CommandParameter="btnIdentifiantNouveauClient" Style="{StaticResource personalisationbuton}" Click="btn_identClient_nouveau_client_Click"/>
 
 
                     </Grid>
@@ -109,19 +105,34 @@
                 <Border Margin="10" BorderBrush="Aqua" BorderThickness="2" Grid.Column="1" CornerRadius="15">
                     <Grid Margin="2">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="40*"/>
-                            <RowDefinition Height="241*"/>
-
+                            <RowDefinition Height="6*"/>
+                            <RowDefinition Height="30*"/>
+                            <RowDefinition Height="5*"/>
                         </Grid.RowDefinitions>
 
                         <Label Content="Résultat de la recherche" Style="{StaticResource  Titre}" Grid.Row="0" />
 
                         <Border Grid.Row="1">
+                            <ListBox x:Name="Collection" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Background="Transparent" ItemsSource="{Binding  ResultatRecherche_identificationClient}" >
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel Orientation="Vertical"/>
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type vm:IdentificationClientData}">
+                                        <Grid>
+                                            <Button x:Name="button1"  Width="120" Height="30" Margin="2" Content="{Binding ButtonClientContent}" Tag="{Binding ButtonClientTag}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ResultatRechercheClient}"  Style="{StaticResource departementArt}" CommandParameter="{Binding ElementName=button1}" Background="Coral"/>
+                                        </Grid>
+                                          
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ListBox>
                            
-                            <ContentControl  Content="{Binding Path=resultatRecherche_identificationClient}"/>
                         </Border>
 
-
+                        <Button x:Name="btn_identClient_nouvelle_commande" Content="Nouvelle commande" Grid.Row="2" Margin="40,5" 
+                            Command="{Binding OnCollectionChangeCommand }" CommandParameter="btnIdentifiantNouveauClient" Style="{StaticResource personalisationbuton}" Click="btn_identClient_nouvelle_commande_Click" />
 
                     </Grid>
                 </Border>

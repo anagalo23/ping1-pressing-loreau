@@ -19,15 +19,17 @@ namespace App_pressing_Loreau.View
 
         }
 
-        private void datagridClient_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
 
         private void btn_identClient_nouveau_client_Click(object sender, RoutedEventArgs e)
         {
             dp.Children.Clear();
             dp.Children.Add(new NouveauClient());
+        }
+
+        private void btn_identClient_nouvelle_commande_Click(object sender, RoutedEventArgs e)
+        {
+            dp.Children.Clear();
+            dp.Children.Add(new NouvelleCommande());
         }
 
     }

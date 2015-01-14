@@ -12,6 +12,7 @@ using System.Threading;
 using System.Windows.Media.Imaging;
 using System.IO;
 using System.Windows;
+using App_pressing_Loreau.Model.DTO;
 
 
 namespace App_pressing_Loreau.ViewModel
@@ -20,11 +21,17 @@ namespace App_pressing_Loreau.ViewModel
     {
         #region Attributes 
 
-        private string _articlesName;
+        //private string _articlesName;
         private string _txb_Articles_Commentaire;
         private ImageSource _changedPhoto;
         private string _changedPhotoFileName = null;
+        
         private ConvertToImage convert = new ConvertToImage();
+        //public float prixHT;
+
+        public TypeArticle article;
+
+        
         
         #endregion
 
@@ -33,14 +40,14 @@ namespace App_pressing_Loreau.ViewModel
         {
             get
             {
-                return this._articlesName;
+                return this.article.nom;
             }
 
             set
             {
                 if (!string.IsNullOrEmpty(value))
                 {
-                    this._articlesName = value;
+                    this.article.nom = value;
                     OnPropertyChanged("ArticlesName");
                 }
             }
@@ -50,14 +57,14 @@ namespace App_pressing_Loreau.ViewModel
         {
             get
             {
-                return this._txb_Articles_Commentaire;
+                return _txb_Articles_Commentaire;
             }
 
             set
             {
                 if (!string.IsNullOrEmpty(value))
                 {
-                    this._txb_Articles_Commentaire = value;
+                    _txb_Articles_Commentaire = value;
                     OnPropertyChanged("Txb_Articles_Commentaire");
                 }
             }
