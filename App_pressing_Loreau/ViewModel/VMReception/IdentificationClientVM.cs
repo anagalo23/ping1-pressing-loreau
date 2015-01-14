@@ -15,10 +15,14 @@ namespace App_pressing_Loreau.ViewModel
 
         #region Variables
 
-        private String _txt_identificationClient_nom;
-        private IdentificationClientData _resultatRecherche;
+        private List<IdentificationClientData> _resultatRecherche_identificationClient;
+     
 
-        private ICommand _btnIdentifiantNouveauClient;
+        private String _txt_identificationClient_nom;
+        private String _txt_identificationClient_prenom;
+        private String _txt_identificationClient_portable;
+        private String _txt_identificationClient_adresse;
+        private String _txt_identificationClient_date_naissance;
         #endregion
 
         public string Name
@@ -27,11 +31,11 @@ namespace App_pressing_Loreau.ViewModel
         }
 
         public IdentificationClientVM(){
-          
+            resultatName();
         }
 
          #region Properties 
-
+     
         public String txb_identificationClient_nom
         {
             get { return _txt_identificationClient_nom; }
@@ -45,43 +49,91 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-
-        public IdentificationClientData resultatRecherche
+        public String txb_identificationClient_prenom
         {
-            get { return _resultatRecherche; }
+            get { return _txt_identificationClient_prenom; }
             set
             {
-                if (value != _resultatRecherche)
+                if (value != _txt_identificationClient_prenom)
                 {
-                    _resultatRecherche = value;
-                    OnPropertyChanged("resultatRecherche");
+                    _txt_identificationClient_prenom = value;
+                    OnPropertyChanged("txb_identificationClient_prenom");
                 }
             }
         }
 
-        public ICommand btnIdentifiantNouveauClient
+        public String txb_identificationClient_portable
         {
-            get
+            get { return _txt_identificationClient_portable; }
+            set
             {
-                if (_btnIdentifiantNouveauClient != null)
+                if (value != _txt_identificationClient_portable)
                 {
-                    _btnIdentifiantNouveauClient = new RelayCommand(
-                        p=>resultatName());
-
+                    _txt_identificationClient_portable = value;
+                    OnPropertyChanged("txb_identificationClient_portable");
                 }
-                return _btnIdentifiantNouveauClient;
             }
-
         }
+
+        public String txb_identificationClient_adresse
+        {
+            get { return _txt_identificationClient_adresse; }
+            set
+            {
+                if (value != _txt_identificationClient_adresse)
+                {
+                    _txt_identificationClient_adresse = value;
+                    OnPropertyChanged("txb_identificationClient_adresse");
+                }
+            }
+        }
+
+        public String txb_identificationClient_date_naissance
+        {
+            get { return _txt_identificationClient_date_naissance; }
+            set
+            {
+                if (value != _txt_identificationClient_date_naissance)
+                {
+                    _txt_identificationClient_date_naissance = value;
+                    OnPropertyChanged("txb_identificationClient_date_naissance");
+                }
+            }
+        }
+
+
+
+        public List<IdentificationClientData> ResultatRecherche_identificationClient
+        {
+            get { return _resultatRecherche_identificationClient; }
+            set
+            {
+                if (value != _resultatRecherche_identificationClient)
+                {
+                    _resultatRecherche_identificationClient = value;
+                    OnPropertyChanged("ResultatRecherche_identificationClient");
+                }
+            }
+        }
+
+    
+        //public ICommand ResultatRechercheClient
+        //{
+        //    get { return new RelayCommand(P => resultatName()); }
+        //}
+       
          #endregion
 
 
         #region methodes
         private void resultatName()
         {
-            IdentificationClientData icd = new IdentificationClientData();
-            icd.txb_identificationClient_nom= txb_identificationClient_nom;
-            resultatRecherche = icd;
+            ResultatRecherche_identificationClient = new List<IdentificationClientData>();
+
+            ResultatRecherche_identificationClient.Add(new IdentificationClientData() { ButtonClientContent = "NAGALO", ButtonClientTag = 2 });
+            ResultatRecherche_identificationClient.Add(new IdentificationClientData() { ButtonClientContent = "NAGALO", ButtonClientTag = 2 });
+            ResultatRecherche_identificationClient.Add(new IdentificationClientData() { ButtonClientContent = "NAGALO", ButtonClientTag = 2 });
+
         }
         #endregion
 

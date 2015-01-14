@@ -15,6 +15,8 @@ namespace App_pressing_Loreau.ViewModel
     class AdministrationUtilisateursVM : ObservableObject, IPageViewModel
     {
         #region attributs
+
+        List<Employe> listEmploye = null;
         private List<Utilisateur> _listeUtilisateurs;
         private String _txb_Utilisateur_Name;
         #endregion
@@ -84,7 +86,7 @@ namespace App_pressing_Loreau.ViewModel
         }
         public void initialisationUtilisateurs()
         {
-          
+          //listEmploye= (List<Employe>) EmployeDAO.
             ListeUtilisateurs.Add(new Utilisateur() { NameUtilisateur = "Alexis" });
             ListeUtilisateurs.Add(new Utilisateur() { NameUtilisateur = "Huguette" });
             ListeUtilisateurs.Add(new Utilisateur() { NameUtilisateur = "Pierre" });

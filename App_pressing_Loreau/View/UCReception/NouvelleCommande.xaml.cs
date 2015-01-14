@@ -21,8 +21,5 @@ namespace App_pressing_Loreau.View
             dp.Children.Add(new Paiement());
         }
 
-       
-       
-      
     }
 }

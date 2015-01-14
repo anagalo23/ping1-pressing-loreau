@@ -11,43 +11,34 @@
     <UserControl.DataContext>
         <local:NouvelleCommandeVM />
     </UserControl.DataContext>
-    
+
     <UserControl.Resources>
         <!--  Menu bouton liste des departement -->
         <DataTemplate x:Key="departement">
             <Button x:Name="button1" Width="115" Height="34" Content="{Binding ButtonContent}" Tag="{Binding ButtonTag}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.OnButtonClickCommand}"  Style="{StaticResource departementArt}"
                     CommandParameter="{Binding ElementName=button1}"/>
         </DataTemplate >
-        
-        
+
+
         <!-- Les articles-->
 
         <DataTemplate x:Key="articles">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-            <Button x:Name="button1"  Grid.Column="0" Width="120" Height="37" Margin="6" Content="{Binding ButtonArticlesContent}" Tag="{Binding ButtonArticlesTag}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ListesArticlesCommandes}"  Style="{StaticResource departementArt}"
-                    CommandParameter="{Binding ElementName=button1}" Background="Coral"/>
 
-                <Label Content="Bonjour" Grid.Column="1" Height="37"/>
-            </Grid>
         </DataTemplate >
-        
+
 
         <!-- Articles ajoutés-->
 
         <DataTemplate DataType="{x:Type local:ArticlesVM}">
             <view:Articles/>
         </DataTemplate>
-        
-        
+
+
     </UserControl.Resources>
-    
-    
+
+
     <!-- Contenu du code-->
-    
+
     <DockPanel x:Name="dp">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -66,12 +57,12 @@
                     <Button  Background="Beige" Command="{Binding  CommandePrecedente }" CommandParameter=" ">
                         <Image Source="/Resources/pics/precedent.png" Height="25"/>
                     </Button>
-                    
+
                     <!-- tous les articles par departement-->
                     <Border BorderBrush="Aqua" BorderThickness="2" Grid.Column="1" CornerRadius="15">
 
                         <DockPanel Margin="2">
-             
+
                             <Border DockPanel.Dock="Top" Height="40">
                                 <ListBox  ScrollViewer.HorizontalScrollBarVisibility="Hidden" BorderThickness="0" Background="Transparent" ItemsSource="{Binding ListeDepartements}" ItemTemplate="{StaticResource departement}"  >
                                     <ListBox.ItemsPanel>
@@ -81,17 +72,28 @@
                                     </ListBox.ItemsPanel>
                                 </ListBox>
                             </Border>
-                           <!-- <ContentControl  Content="{Binding ContentCommande}"/>-->
-                            <Border >
-                                <ListBox  ScrollViewer.HorizontalScrollBarVisibility="Hidden" Cursor="Hand" Margin="5,10"  BorderThickness="0" Background="Transparent" ItemsSource="{Binding ListeArticles}" ItemTemplate="{StaticResource articles}"  TextOptions.TextHintingMode="Animated" >
-                                    <ListBox.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <VirtualizingStackPanel Orientation="Vertical"/>
-                                        </ItemsPanelTemplate>
-                                    </ListBox.ItemsPanel>
-                                </ListBox>
-                               
-                            </Border>
+                            <!-- <ContentControl  Content="{Binding ContentCommande}"/>-->
+                            <ItemsControl x:Name="Collection" ItemsSource="{Binding  ListeArticles}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type local:ArticlesVM}">
+                                        <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+                                            <Border Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}">
+                                                <Grid>
+
+                                                    <Button x:Name="button1"  Width="120" Height="57" Margin="2" Content="{Binding ButtonArticlesContent}" Tag="{Binding ButtonArticlesTag}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ListesArticlesCommandes}"  Style="{StaticResource departementArt}" CommandParameter="{Binding ElementName=button1}" Background="Coral"/>
+                                                </Grid>
+                                            </Border>
+                                        </Canvas>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                          
                         </DockPanel>
 
                     </Border>
@@ -109,47 +111,46 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="10*"/>
-                        <RowDefinition Height="42*"/>
-                        <RowDefinition Height="17*"/>
+                        <RowDefinition Height="50*"/>
+                        <RowDefinition Height="10*"/>
                     </Grid.RowDefinitions>
                     <Label Content="Contenu de la commande" Style="{StaticResource Titre}"/>
 
                     <!-- Contenu de la commande -->
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="8*"/>
+                            <RowDefinition Height="12*"/>
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
                         <DockPanel Grid.Row="0">
 
                             <ListBox Margin="5" Background="Transparent" BorderThickness="0"  ItemsSource="{Binding ContentDetailCommande}"  />
-                           
+
                         </DockPanel>
 
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                
+                                <ColumnDefinition Width="126*"/>
+                                <ColumnDefinition Width="57*"/>
+                                <ColumnDefinition Width="109*"/>
+
                             </Grid.ColumnDefinitions>
-                            <Button x:Name="btn_nouvellecommande_valider" Grid.Column="0" Content="Valider commande" Command="{Binding Btn_nouvellecommande_valider}"/>
+                            <Button x:Name="btn_nouvellecommande_valider" Grid.Column="0" Content="Valider commande" Command="{Binding Btn_nouvellecommande_valider}" Margin="3"/>
+                            <Label Content="Total à payer :" Style="{StaticResource vertilabel25}" Grid.Column="1" HorizontalContentAlignment="Left"/>
+                            <Label Content="{Binding Label_NouvelleCommande_prixTotal}" Style="{StaticResource vertilabel25}"  Grid.Column="2" />
 
                         </Grid>
 
                     </Grid>
 
                     <Grid Grid.Row="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="23*"/>
-                            <RowDefinition Height="45*"/>
-                        </Grid.RowDefinitions>
+                     
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="118*"/>
                             <ColumnDefinition Width="133*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Content="Total à payer :" Style="{StaticResource vertilabel25}" Grid.Row="0" HorizontalContentAlignment="Left"/>
-                        <Label Content="{Binding Label_NouvelleCommande_prixTotal}" Margin="4" Grid.Row="0" Grid.Column="1" />
-                        
+                      
                         <Button x:Name="btn_nouvelleCommande_paiement_immediat" Content="Paiement immédiat" Grid.Row="1" Grid.Column="0"
                                 Margin="0,5,5,5" Click="btn_nouvelleCommande_paiement_immediat_Click" Style="{StaticResource personalisationbuton1}"/>
                         <Button x:Name="btn_nouvelleCommande_paiement_differe" Content="Paiement différé" Grid.Row="1" Grid.Column="1" Margin="5"
