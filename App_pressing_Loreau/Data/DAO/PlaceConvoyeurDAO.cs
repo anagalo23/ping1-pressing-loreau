@@ -132,7 +132,7 @@ namespace App_pressing_Loreau.Data.DAO
             try
             {
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(Bdd.updateType, Bdd.connexion());
+                MySqlCommand cmd = new MySqlCommand(Bdd.updatePlaceConvoyeur, Bdd.connexion());
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("id", conv.id);
