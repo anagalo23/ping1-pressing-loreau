@@ -36,7 +36,7 @@ namespace App_pressing_Loreau.ViewModel
 
          #region Properties 
      
-        public String txb_identificationClient_nom
+        public String Txb_identificationClient_nom
         {
             get { return _txt_identificationClient_nom; }
             set
@@ -44,12 +44,12 @@ namespace App_pressing_Loreau.ViewModel
                 if (value != _txt_identificationClient_nom)
                 {
                     _txt_identificationClient_nom = value;
-                    OnPropertyChanged("txb_identificationClient_nom");
+                    OnPropertyChanged("Txb_identificationClient_nom");
                 }
             }
         }
 
-        public String txb_identificationClient_prenom
+        public String Txb_identificationClient_prenom
         {
             get { return _txt_identificationClient_prenom; }
             set
@@ -57,12 +57,12 @@ namespace App_pressing_Loreau.ViewModel
                 if (value != _txt_identificationClient_prenom)
                 {
                     _txt_identificationClient_prenom = value;
-                    OnPropertyChanged("txb_identificationClient_prenom");
+                    OnPropertyChanged("Txb_identificationClient_prenom");
                 }
             }
         }
 
-        public String txb_identificationClient_portable
+        public String Txb_identificationClient_portable
         {
             get { return _txt_identificationClient_portable; }
             set
@@ -70,12 +70,12 @@ namespace App_pressing_Loreau.ViewModel
                 if (value != _txt_identificationClient_portable)
                 {
                     _txt_identificationClient_portable = value;
-                    OnPropertyChanged("txb_identificationClient_portable");
+                    OnPropertyChanged("Txb_identificationClient_portable");
                 }
             }
         }
 
-        public String txb_identificationClient_adresse
+        public String Txb_identificationClient_adresse
         {
             get { return _txt_identificationClient_adresse; }
             set
@@ -83,12 +83,12 @@ namespace App_pressing_Loreau.ViewModel
                 if (value != _txt_identificationClient_adresse)
                 {
                     _txt_identificationClient_adresse = value;
-                    OnPropertyChanged("txb_identificationClient_adresse");
+                    OnPropertyChanged("Txb_identificationClient_adresse");
                 }
             }
         }
 
-        public String txb_identificationClient_date_naissance
+        public String Txb_identificationClient_date_naissance
         {
             get { return _txt_identificationClient_date_naissance; }
             set
@@ -96,7 +96,7 @@ namespace App_pressing_Loreau.ViewModel
                 if (value != _txt_identificationClient_date_naissance)
                 {
                     _txt_identificationClient_date_naissance = value;
-                    OnPropertyChanged("txb_identificationClient_date_naissance");
+                    OnPropertyChanged("Txb_identificationClient_date_naissance");
                 }
             }
         }
@@ -126,8 +126,10 @@ namespace App_pressing_Loreau.ViewModel
 
 
         #region methodes
+
         private void resultatName()
         {
+
             ResultatRecherche_identificationClient = new List<IdentificationClientData>();
 
             ResultatRecherche_identificationClient.Add(new IdentificationClientData() { ButtonClientContent = "NAGALO", ButtonClientTag = 2 });
@@ -141,4 +143,44 @@ namespace App_pressing_Loreau.ViewModel
 
         //Suite 
     }
+
+
+    #region Class 
+
+    public class AutoComplete
+    {
+
+        static Fields fields;
+        public static Fields getFields()
+        {
+            
+            if(fields==null){
+                fields = new Fields();
+                return fields;
+            }
+            else
+            {
+                return fields;
+            }
+
+        }
+
+        public static string parseFromClassToMessage(string classeuh)
+        {
+            string[] salutTableau = classeuh.Split(':');
+            string contenuDuChampDeText = salutTableau[salutTableau.Length - 1];
+            return contenuDuChampDeText;
+        }
+
+    }
+
+    public class Fields
+    {
+        public String nom { get; set; }
+        public String prenom { get; set; }
+        public String portable { get; set; }
+        public String adresse { get; set; }
+        public String dateDeNaissance { get; set; }
+    }
+    #endregion
 }

@@ -103,7 +103,6 @@ namespace App_pressing_Loreau.ViewModel
 
         }
 
-
         public List<CategoryItem> ListeDepartements
         {
             get
@@ -205,10 +204,8 @@ namespace App_pressing_Loreau.ViewModel
            
                 if (listeDepartementDTO != null)
                 {
-
                     for (int i = 0; i < 5; i++)
-                        ListeDepartements.Add(new CategoryItem() { ButtonContent = listeDepartementDTO[i].nom, ButtonTag = listeDepartementDTO[i].id });
-                    
+                        ListeDepartements.Add(new CategoryItem() { ButtonContent = listeDepartementDTO[i].nom, ButtonTag = listeDepartementDTO[i].id });   
                 }
             
         }

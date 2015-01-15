@@ -138,7 +138,6 @@
     <Compile Include="ViewModel\VMImpression\ImpressionVM.cs" />
     <Compile Include="ViewModel\VMReception\ArticlesVM.cs" />
     <Compile Include="ViewModel\VMReception\IdentificationClientData.cs" />
-    <Compile Include="ViewModel\VMReception\NouveauClientData.cs" />
     <Compile Include="ViewModel\VMRendu\ArticlesRestitutionVM.cs" />
     <Compile Include="ViewModel\VMRendu\CommandeConcernantRA_DATA.cs" />
     <Compile Include="ViewModel\VMRendu\DetailCommandeVM.cs" />

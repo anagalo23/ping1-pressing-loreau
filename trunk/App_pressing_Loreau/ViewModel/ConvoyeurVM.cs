@@ -36,11 +36,9 @@ namespace App_pressing_Loreau.ViewModel
         public ConvoyeurVM()
         {
             listePlace=(List<PlaceConvoyeur>)PlaceConvoyeurDAO.selectConvoyeurs();
-            Label_convoyeur_diponibles = listePlace.Count;
+            //Label_convoyeur_diponibles = listePlace.Count;
 
-            //convoyeur = new bddping1DataSet.convoyeurDataTable();
-
-            //Label_convoyeur_diponibles = convoyeur.FindByconv_id(1).conv_emplacement;   
+        
            
         }
 
