@@ -27,6 +27,8 @@ namespace App_pressing_Loreau.Model.DTO
         public bool contactMail { get; set; }
         public bool contactSms { get; set; }
         public int type { get; set; }
+        //0 : Client classique
+        //1 : Client pro
         public List<Commande> listCommandes { get; set; }
 
 
