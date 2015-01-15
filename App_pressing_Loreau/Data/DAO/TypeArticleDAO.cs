@@ -188,5 +188,26 @@ namespace App_pressing_Loreau.Data.DAO
                 return 0;
             }
         }
+
+        //Delete un type d'article
+        public static int deleteType(TypeArticle type)
+        {
+            try
+            {
+                //connection à la base de données
+                MySqlCommand cmd = new MySqlCommand(Bdd.deleteType, Bdd.connexion());
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("id", type.id);
+
+                //Execute la commande
+                return cmd.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
+                return 0;
+            }
+        }
     }
 }

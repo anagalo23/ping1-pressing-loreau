@@ -267,6 +267,26 @@ namespace App_pressing_Loreau.Data.DAO
             }
         }
 
+        //Delete une commande dans la base de données
+        public static int deleteCommande(Commande commande)
+        {
+            try
+            {
+                //connection à la base de données
+                MySqlCommand cmd = new MySqlCommand(Bdd.deleteCommande, Bdd.connexion());
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("id", commande.id);
+
+                return cmd.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'une commande dans la base de données."));
+                return 0;
+            }
+        }
+
         public static int lastId(MySqlConnection connection)
         {
             String sql = "";
