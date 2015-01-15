@@ -252,7 +252,6 @@ CREATE TABLE IF NOT EXISTS `type` (
   `typ_HT` float NOT NULL,
   `typ_dep_id` int(11) NOT NULL,
   PRIMARY KEY (`typ_id`),
-  UNIQUE KEY `typ_nom` (`typ_nom`),
   KEY `fk_typ_departement_idx` (`typ_dep_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=153 ;
 
