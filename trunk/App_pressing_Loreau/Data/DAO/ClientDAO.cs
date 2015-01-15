@@ -51,30 +51,23 @@ namespace App_pressing_Loreau.Data.DAO
             {
 
                 List<Client> retour = new List<Client>();
-                bool ifPreviousElementSearch = false; //variable servant a verifier si un élément de recheche a déja été inséré. Sert notament au AND de la requete.
-
+                
                 String sql = Bdd.seekClients;
 
                 #region complete la requete en fonction de la recherche voulue
                 if (nom != null)
                 {
-                    sql = String.Format("{0}{1}", sql, "clt_nom=?");
-                    ifPreviousElementSearch = true;
+                    sql = String.Format("{0}{1}", sql, " AND clt_nom=?");
                 }
                 if (prenom != null)
                 {
-                    if (ifPreviousElementSearch) sql = String.Format("{0}{1}", sql, " AND ");
-                    sql = String.Format("{0}{1}", sql, "clt_prenom=?");
-                    ifPreviousElementSearch = true;
+                    sql = String.Format("{0}{1}", sql, " AND clt_prenom=?");
                 }
                 if (tel != null)
                 {
-                    if (ifPreviousElementSearch) sql = String.Format("{0}{1}", sql, " AND ");
-                    sql = String.Format("{0}{1}", sql, "(clt_fix=? OR clt_mob =?)");
-                    ifPreviousElementSearch = true;
+                    sql = String.Format("{0}{1}", sql, " AND (clt_fix=? OR clt_mob =?)");
+                    
                 }
-                if (!ifPreviousElementSearch) sql = String.Format("{0}{1}", sql, "1=1");
-                //sql = String.Format("{0}{1}", sql, " ORDER BY clt_nom ASC;");
                 #endregion
 
                 //connection à la base de données  
