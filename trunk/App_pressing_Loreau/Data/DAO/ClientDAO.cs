@@ -57,32 +57,21 @@ namespace App_pressing_Loreau.Data.DAO
                 #region complete la requete en fonction de la recherche voulue
                 if (nom != null)
                 {
-                    sql = String.Format("{0}{1}", sql, " AND clt_nom=?");
+                    sql = String.Format("{0}{1}{2}{3}", sql, " AND clt_nom LIKE '%", nom, "%'");
                 }
                 if (prenom != null)
                 {
-                    sql = String.Format("{0}{1}", sql, " AND clt_prenom=?");
+                    sql = String.Format("{0}{1}{2}{3}", sql, " AND clt_prenom LIKE '%", prenom, "%'");
                 }
                 if (tel != null)
                 {
-                    sql = String.Format("{0}{1}", sql, " AND (clt_fix=? OR clt_mob =?)");
+                    sql = String.Format("{0}{1}{2}{3}", sql, " AND (clt_fix LIKE '%", tel , "%' OR clt_mob LIKE '%" , tel , "%')");
                     
                 }
                 #endregion
 
                 //connection à la base de données  
                 MySqlCommand cmd = new MySqlCommand(sql, Bdd.connexion());
-
-                //ajout des parametres
-                if (nom != null)
-                    cmd.Parameters.AddWithValue("nom", nom);
-                if (prenom != null)
-                    cmd.Parameters.AddWithValue("prenom", prenom);
-                if (tel != null)
-                {
-                    cmd.Parameters.AddWithValue("tel1", tel);
-                    cmd.Parameters.AddWithValue("tel2", tel);
-                }
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
