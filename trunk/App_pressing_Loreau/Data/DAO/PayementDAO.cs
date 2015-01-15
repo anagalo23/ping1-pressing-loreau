@@ -129,5 +129,26 @@ namespace App_pressing_Loreau.Data.DAO
                 return 0;
             }
         }
+
+        //Delete un paiement
+        public static int deletePaiement(Payement paiement, int commandeId)
+        {
+            try
+            {
+                //connection à la base de données
+                MySqlCommand cmd = new MySqlCommand(Bdd.deletePaiement, Bdd.connexion());
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("id", paiement.id);
+
+                //Execute la commande
+                return cmd.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
+                return 0;
+            }
+        }
     }
 }

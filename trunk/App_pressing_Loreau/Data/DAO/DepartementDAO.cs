@@ -118,6 +118,27 @@ namespace App_pressing_Loreau.Data.DAO
             }
         }
 
+        //Delete d'un département
+        public static int deleteDepartement(Departement dep)
+        {
+            try
+            {
+                //connection à la base de données
+                MySqlCommand cmd = new MySqlCommand(Bdd.deleteDepartement, Bdd.connexion());
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("id", dep.id);
+
+                //Execute la commande
+                return cmd.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un departement dans la base de données."));
+                return 0;
+            }
+        }
+
 
 
     }

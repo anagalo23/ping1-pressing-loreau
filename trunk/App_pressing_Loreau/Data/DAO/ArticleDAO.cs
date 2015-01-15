@@ -161,5 +161,26 @@ namespace App_pressing_Loreau.Data.DAO
                 return 0;
             }
         }
+
+        //Delete un article dans la base de données
+        public static int deleteArticle(Article article)
+        {
+            try
+            {
+                //connection à la base de données
+                MySqlCommand cmd = new MySqlCommand(Bdd.deleteArticle, Bdd.connexion());
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("id", article.id);
+
+                //Execute la commande
+                return cmd.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un article dans la base de données."));
+                return 0;
+            }
+        }
     }
 }

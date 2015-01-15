@@ -149,5 +149,26 @@ namespace App_pressing_Loreau.Data.DAO
                 return 0;
             }
         }
+
+        //Delete une place convoyeur
+        public static int deletePlaceConvoyeur(PlaceConvoyeur conv)
+        {
+            try
+            {
+                //connection à la base de données
+                MySqlCommand cmd = new MySqlCommand(Bdd.deletePlaceConvoyeur, Bdd.connexion());
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("id", conv.id);
+
+                //Execute la commande
+                return cmd.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
+                return 0;
+            }
+        }
     }
 }

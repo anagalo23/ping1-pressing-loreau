@@ -207,6 +207,27 @@ namespace App_pressing_Loreau.Data.DAO
                 return 0;
             }
         }
+
+        //Delete un client
+        public static int deleteClient(Client client)
+        {
+            try
+            {
+                //connection à la base de données
+                MySqlCommand cmd = new MySqlCommand(Bdd.deleteClient, Bdd.connexion());
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("id", client.id);
+
+                //Execute la commande
+                return cmd.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
+                return 0;
+            }
+        }
     }
 }
 

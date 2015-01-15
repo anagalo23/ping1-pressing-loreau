@@ -124,14 +124,14 @@ namespace App_pressing_Loreau.Data
         public static const String selectTypesById = "SELECT typ_id, typ_nom, typ_encombrement, typ_TVA, typ_HT, typ_dep_id FROM type WHERE typ_id=?";
         public static const String selectTypeByDepId = "SELECT typ_id, typ_nom, typ_encombrement, typ_TVA, typ_HT, typ_dep_id FROM type WHERE typ_dep_id=?";
         public static const String updateType = "UPDATE type SET typ_id=?,typ_nom=?,typ_encombrement=?,typ_TVA=?,typ_HT=?,typ_dep_id=? WHERE typ_id=?";
-        public static const String updateType = "DELETE FROM type WHERE typ_id=?";
+        public static const String deleteType = "DELETE FROM type WHERE typ_id=?";
 
         //TypePayement
         public static const String selectTypesPayement = "SELECT tpp_id, tpp_nom FROM typepaiement";
         public static const String selectTypePayementById = "SELECT tpp_id, tpp_nom FROM typepaiement WHERE tpp_id=?";
         public static const String selectTypePayementByName = "SELECT tpp_id, tpp_nom FROM typepaiement WHERE tpp_nom=?";
         public static const String updateTypePaiement = "UPDATE typepaiement SET tpp_id=?,tpp_nom=? WHERE tpp_id=?";
-        public static const String updateTypePaiement = "DELETE FROM typepaiement WHERE tpp_id=?";
+        public static const String deleteTypePaiement = "DELETE FROM typepaiement WHERE tpp_id=?";
         #endregion
     }
 }
