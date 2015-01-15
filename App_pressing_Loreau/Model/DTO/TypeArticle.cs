@@ -24,6 +24,9 @@ namespace App_pressing_Loreau.Model.DTO
             id = 0;
             this.nom = nom;
             this.encombrement = encombrement;
+            //0 : ne va pas dans le convoyeur
+            //1 , 1.5 et 3 vont dans le convoyeur
+            //10 : hors convoyeur
             this.TVA = TVA;
             this.HT = HT;
             this.departement = departement;
