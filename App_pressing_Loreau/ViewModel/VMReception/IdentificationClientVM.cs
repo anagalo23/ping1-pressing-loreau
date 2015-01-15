@@ -7,6 +7,7 @@ using System.Windows.Input;
 using App_pressing_Loreau.Helper;
 using App_pressing_Loreau.Data.DAO;
 using App_pressing_Loreau.Model.DTO;
+using System.Windows;
 
 namespace App_pressing_Loreau.ViewModel
 {
@@ -16,13 +17,15 @@ namespace App_pressing_Loreau.ViewModel
         #region Variables
 
         private List<IdentificationClientData> _resultatRecherche_identificationClient;
-     
+
 
         private String _txt_identificationClient_nom;
         private String _txt_identificationClient_prenom;
         private String _txt_identificationClient_portable;
         private String _txt_identificationClient_adresse;
         private String _txt_identificationClient_date_naissance;
+
+
         #endregion
 
         public string Name
@@ -30,12 +33,15 @@ namespace App_pressing_Loreau.ViewModel
             get { return ""; }
         }
 
-        public IdentificationClientVM(){
-            resultatName();
+        public IdentificationClientVM()
+        {
+            ResultatRecherche_identificationClient = new List<IdentificationClientData>();
+
+            //rechercheBDD();
         }
 
-         #region Properties 
-     
+        #region Properties
+
         public String Txb_identificationClient_nom
         {
             get { return _txt_identificationClient_nom; }
@@ -116,13 +122,13 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-    
+
         //public ICommand ResultatRechercheClient
         //{
         //    get { return new RelayCommand(P => resultatName()); }
         //}
-       
-         #endregion
+
+        #endregion
 
 
         #region methodes
@@ -130,13 +136,38 @@ namespace App_pressing_Loreau.ViewModel
         private void resultatName()
         {
 
-            ResultatRecherche_identificationClient = new List<IdentificationClientData>();
+            //ResultatRecherche_identificationClient = new List<IdentificationClientData>();
 
-            ResultatRecherche_identificationClient.Add(new IdentificationClientData() { ButtonClientContent = "NAGALO", ButtonClientTag = 2 });
-            ResultatRecherche_identificationClient.Add(new IdentificationClientData() { ButtonClientContent = "NAGALO", ButtonClientTag = 2 });
-            ResultatRecherche_identificationClient.Add(new IdentificationClientData() { ButtonClientContent = "NAGALO", ButtonClientTag = 2 });
+            //ResultatRecherche_identificationClient.Add(new IdentificationClientData() { ButtonClientContent = "NAGALO", ButtonClientTag = 2 });
+            //ResultatRecherche_identificationClient.Add(new IdentificationClientData() { ButtonClientContent = "NAGALO", ButtonClientTag = 2 });
+            //ResultatRecherche_identificationClient.Add(new IdentificationClientData() { ButtonClientContent = "NAGALO", ButtonClientTag = 2 });
 
         }
+
+        public void rechercheBDD()
+        {
+            //On recherche dans la bdd en fonction des champs que l'utilisateur à entré
+            Fields fields = AutoComplete.getFields();
+            List<Client> resultat = ClientDAO.seekClients(fields.nom, fields.prenom, fields.portable);
+
+            MessageBox.Show(fields.nom);
+            //On affiche le résultat dans le doc Panel
+            if (resultat != null)
+            {
+                foreach (Client clt in resultat)
+                {
+                    ResultatRecherche_identificationClient.Add(new IdentificationClientData() { ButtonClientContent = clt.nom, ButtonClientTag = clt.id });
+                }
+            }
+            else
+            {
+                MessageBox.Show("recherche infructueuse");
+            }
+
+
+        }
+
+
         #endregion
 
 
@@ -145,7 +176,7 @@ namespace App_pressing_Loreau.ViewModel
     }
 
 
-    #region Class 
+    #region Class
 
     public class AutoComplete
     {
@@ -153,8 +184,9 @@ namespace App_pressing_Loreau.ViewModel
         static Fields fields;
         public static Fields getFields()
         {
-            
-            if(fields==null){
+
+            if (fields == null)
+            {
                 fields = new Fields();
                 return fields;
             }

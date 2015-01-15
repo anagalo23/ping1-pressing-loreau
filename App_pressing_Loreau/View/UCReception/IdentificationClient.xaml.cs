@@ -12,12 +12,12 @@ namespace App_pressing_Loreau.View
     /// </summary>
     public partial class IdentificationClient : UserControl
     {
-       
+        IdentificationClientVM clientVm = new IdentificationClientVM();
 
         public IdentificationClient()
         {
             InitializeComponent();
-
+            clientVm = new IdentificationClientVM();
         }
 
 
@@ -41,8 +41,12 @@ namespace App_pressing_Loreau.View
 
             fields.nom = AutoComplete.parseFromClassToMessage(sender.ToString());
             //message();
+            
+            //clientVm
+            clientVm.rechercheBDD();
 
         }
+
 
         private void txb_identificationClient_prenom_TextChanged(object sender, TextChangedEventArgs e)
         {
