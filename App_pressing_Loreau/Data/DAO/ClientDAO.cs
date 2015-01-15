@@ -12,6 +12,7 @@ namespace App_pressing_Loreau.Data.DAO
 {
     class ClientDAO
     {
+        //Inserer un client dans la base de données
         public static int insertClient(Client client)
         {
             try
@@ -20,7 +21,6 @@ namespace App_pressing_Loreau.Data.DAO
                 MySqlCommand cmd = new MySqlCommand(Bdd.insertClient, Bdd.connexion());
 
                 //ajout des parametres
-                
                 cmd.Parameters.AddWithValue("nom", client.nom);
                 cmd.Parameters.AddWithValue("prenom", client.prenom);
                 cmd.Parameters.AddWithValue("telfixe", client.telfix);
@@ -44,7 +44,7 @@ namespace App_pressing_Loreau.Data.DAO
         }
 
 
-        //Recherche de client classique a partir du nom, du prenom et/ou du numéro de telephone
+        //Selectionner l'ensemble des clients de la base de données a partir du nom, du prenom et/ou du numéro de telephone
         public static List<Client> seekClients(String nom, String prenom, String tel)
         {
             try
@@ -123,6 +123,11 @@ namespace App_pressing_Loreau.Data.DAO
             }
         }
 
+        /* Selectionner un client à l'aide de l'id
+         * @param addCommande : truepour ajouter les commandes dans l'objet client
+         * @param cmd_addPaiement : Completer les commandes avec les paiements
+         * @param cmd_addArticles : Completer les commandes avec les articles
+         */
         public static Client selectClientById(int client_id, Boolean addCommandes, Boolean cmd_addPaiement, Boolean cmd_addArticles)
         {
             try
@@ -172,6 +177,41 @@ namespace App_pressing_Loreau.Data.DAO
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données."));
                 return null;
+            }
+        }
+
+        //Update un client
+        public static int updateClient(Client client)
+        {
+            try
+            {
+                //connection à la base de données
+                MySqlCommand cmd = new MySqlCommand(Bdd.updateClient, Bdd.connexion());
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("id", client.id);
+                cmd.Parameters.AddWithValue("type", client.type);
+                cmd.Parameters.AddWithValue("nom", client.nom);
+                cmd.Parameters.AddWithValue("prenom", client.prenom);
+                cmd.Parameters.AddWithValue("contactMail", client.contactMail);
+                cmd.Parameters.AddWithValue("contactSms", client.contactSms);
+                cmd.Parameters.AddWithValue("telfixe", client.telfix);
+                cmd.Parameters.AddWithValue("telport", client.telmob);
+                cmd.Parameters.AddWithValue("adresse", client.adresse.giveAdresse());
+                cmd.Parameters.AddWithValue("dateNaissance", client.dateNaissance);
+                cmd.Parameters.AddWithValue("email", client.email);
+                cmd.Parameters.AddWithValue("idCleanWay", client.idCleanWay);
+                cmd.Parameters.AddWithValue("id", client.id);
+
+                
+
+                //Execute la commande
+                return cmd.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
+                return 0;
             }
         }
     }

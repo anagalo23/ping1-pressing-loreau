@@ -11,7 +11,8 @@ namespace App_pressing_Loreau.Data.DAO
 {
     class CommandeDAO
     {
-        public static void insertCommande(Commande commande)
+        //Inserer une commande dans la base de données
+        public static int insertCommande(Commande commande)
         {
             try
             {
@@ -25,31 +26,36 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("remise", commande.remise);
                 cmd.Parameters.AddWithValue("clt_id", commande.client.id);
 
-                int retour = cmd.ExecuteNonQuery();
+                return cmd.ExecuteNonQuery();
 
-                #region Insert Articles
+                /*#region Insert Articles
                 if (commande.listArticles.Count != 0 && commande.listArticles != null)
                 {
                     foreach (Article article in commande.listArticles)
                         ArticleDAO.insertArticle(article);
                 }
-                #endregion
+                #endregion*/
 
-                #region Insert payement
+                /*#region Insert payement
                 if (commande.listPayements.Count != 0 && commande.listPayements != null)
                 {
                     foreach (Payement payement in commande.listPayements)
                         PayementDAO.insertPaiement(payement, commande.id);
                 }
-                #endregion
+                #endregion*/
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'une commande dans la base de données."));
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'une commande dans la base de données."));
+                return 0;
             }
         }
 
-        
+        /*Selectionner l'ensemble des commandes de la base de données
+         * @param addPaiement : True pour insérer les paiements dans l'object commande
+         * @param addArticles : True pour insérer les Articles dans l'objet Commande
+         * @param addClient : True pour insérer les Clients dans l'objet Commande
+         */
         public static List<Commande> selectCommandes(Boolean addPaiement, Boolean addArticles, Boolean addClient)
         {
             try
@@ -95,8 +101,9 @@ namespace App_pressing_Loreau.Data.DAO
                 #region ajout client
                 if (addClient)
                 {
-                    //foreach (Commande comm in retour)
-                        //comm.client = ClientDAO.
+                    foreach (Commande comm in retour)
+                        //parametres en false afin de ne pas boucler
+                        comm.client = ClientDAO.selectClientById(comm.client.id, false, false, false);
                     
                 }
                 #endregion
@@ -111,6 +118,11 @@ namespace App_pressing_Loreau.Data.DAO
             }
         }
 
+        /*Selectionner l'ensemble des commandes de la base de données à partir de son id
+         * @param addPaiement : True pour insérer les paiements dans l'object commande
+         * @param addArticles : True pour insérer les Articles dans l'objet Commande
+         * @param addClient : True pour insérer les Clients dans l'objet Commande
+         */
         public static List<Commande> selectCommandesByClient(int id_client, Boolean addPaiement, Boolean addArticles, Boolean addClient)
         {
             try
@@ -171,11 +183,15 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
                 return null;
             }
         }
 
+        /*Selectionner une commande à partir de son id
+         * @param addPaiement : True pour insérer les paiements dans l'object commande
+         * @param addArticles : True pour insérer les Articles dans l'objet Commande
+         */
         public static Commande selectCommandeById(int id_cmd, Boolean addPaiement, Boolean addArticles)
         {
             try
@@ -219,8 +235,35 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
                 return null;
+            }
+        }
+
+        //Inserer une commande dans la base de données
+        public static int updateCommande(Commande commande)
+        {
+            try
+            {
+                //connection à la base de données
+                MySqlCommand cmd = new MySqlCommand(Bdd.updateCommande, Bdd.connexion());
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("id", commande.id);
+                cmd.Parameters.AddWithValue("date", commande.date);
+                int payee = (commande.payee) ? 1 : 0;
+                cmd.Parameters.AddWithValue("payee", payee);
+                cmd.Parameters.AddWithValue("clt_id", commande.client.id);
+                cmd.Parameters.AddWithValue("remise", commande.remise);
+                cmd.Parameters.AddWithValue("id", commande.id);
+                
+
+                return cmd.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'une commande dans la base de données."));
+                return 0;
             }
         }
 
