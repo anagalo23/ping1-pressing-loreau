@@ -77,20 +77,20 @@
 
                             <Label  Content="Nom"  Grid.Row="0" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                             <TextBox x:Name="txb_identificationClient_nom" Grid.Row="0" Grid.Column="1" Margin="10,4,13,4" 
-                                     Text="{Binding Path=txb_identificationClient_nom, UpdateSourceTrigger=PropertyChanged}"
-                               Style="{StaticResource vertiTextBox}"/>
+                                     Text="{Binding Path=Txb_identificationClient_nom, UpdateSourceTrigger=PropertyChanged}"
+                               Style="{StaticResource vertiTextBox}" TextChanged="txb_identificationClient_nom_TextChanged"/>
                             <Label  Content="Prenom" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                             <TextBox x:Name="txb_identificationClient_prenom" Grid.Row="1" Grid.Column="1" Margin="10,4,13,4" 
-                                     Text="{Binding Path=txb_identificationClient_prenom, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}"/>
+                                     Text="{Binding Path=Txb_identificationClient_prenom, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}" TextChanged="txb_identificationClient_prenom_TextChanged"/>
                             <Label  Content="Portable" Grid.Row="2" Grid.Column="0"  Style="{StaticResource vertilabel25}"/>
                             <TextBox x:Name="txb_identificationClient_portable" Grid.Row="2" Grid.Column="1" Margin="10,4,13,4" 
-                                     Text="{Binding Path=txb_identificationClient_portable, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}"/>
+                                     Text="{Binding Path=Txb_identificationClient_portable, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}" TextChanged="txb_identificationClient_portable_TextChanged"/>
                             <Label  Content="Adresse" Grid.Row="3" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                             <TextBox x:Name="txb_identificationClient_adresse" Grid.Row="3" Grid.Column="1" Margin="10,4,13,4" 
-                                     Text="{Binding Path=txb_identificationClient_adresse, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}"/>
+                                     Text="{Binding Path=Txb_identificationClient_adresse, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}" TextChanged="txb_identificationClient_adresse_TextChanged"/>
                             <Label Content="Cleanway" Grid.Row="4" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                             <TextBox x:Name="txb_identificationClient_date_naissance" Grid.Row="4" Grid.Column="1" 
-                                     Text="{Binding Path=txb_identificationClient_date_naissance, UpdateSourceTrigger=PropertyChanged}" Margin="10,4,13,4" Style="{StaticResource vertiTextBox}"/>
+                                     Text="{Binding Path=Txb_identificationClient_date_naissance, UpdateSourceTrigger=PropertyChanged}" Margin="10,4,13,4" Style="{StaticResource vertiTextBox}" TextChanged="txb_identificationClient_date_naissance_TextChanged"/>
 
                         </Grid>
                         <Button x:Name="btn_identClient_nouveau_client" Content="Nouveau client" Grid.Row="2" Margin="40,5" 
