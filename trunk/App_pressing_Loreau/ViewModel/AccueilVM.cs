@@ -98,7 +98,15 @@ namespace App_pressing_Loreau
         ICommand lesUtilisateurs;
         public ICommand LesUtilisateurs
         {
-            get { return lesUtilisateurs ?? (lesUtilisateurs = new RelayCommand(ClickSurUtilisateur)); }
+            get { 
+                //for(int i=) 
+
+                
+
+                
+                return lesUtilisateurs ?? (lesUtilisateurs = new RelayCommand(ClickSurUtilisateur));
+            }
+            
         }
 
 
@@ -340,7 +348,7 @@ namespace App_pressing_Loreau
             if (clickedbutton != null)
             {
 
-                thisColorButton = true;
+             
                 clickedbutton.Background = ButtonUserBackground;
 
             }
@@ -365,16 +373,16 @@ namespace App_pressing_Loreau
         }
         public void accueilVM()
         {
-            // chargement de la page accueil
-            Accueil acc = new Accueil();
-            // liaison avec la page AccueilVM
-            AccueilVM context = new AccueilVM();
-            // Permet de traiter les données dans AccueilVM
-            acc.DataContext = context;
-            acc.Show();
-            //this.Accueil().
+            //// chargement de la page accueil
+            //Accueil acc = new Accueil();
+            //// liaison avec la page AccueilVM
+            //AccueilVM context = new AccueilVM();
+            //// Permet de traiter les données dans AccueilVM
+            //acc.DataContext = context;
+            //acc.Show();
+            ////this.Accueil().
 
-            App app = new App();
+            //App app = new App();
             
             accessUserControl = null;
         }

@@ -36,7 +36,7 @@ namespace App_pressing_Loreau.ViewModel
         public IdentificationClientVM()
         {
             ResultatRecherche_identificationClient = new List<IdentificationClientData>();
-
+         
             //rechercheBDD();
         }
 
@@ -150,7 +150,7 @@ namespace App_pressing_Loreau.ViewModel
             Fields fields = AutoComplete.getFields();
             List<Client> resultat = ClientDAO.seekClients(fields.nom, fields.prenom, fields.portable);
 
-            MessageBox.Show(fields.nom);
+            //MessageBox.Show(fields.nom);
             //On affiche le résultat dans le doc Panel
             if (resultat != null)
             {
