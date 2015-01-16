@@ -128,11 +128,13 @@
     <Compile Include="Data\DAO\TypeArticleDAO.cs" />
     <Compile Include="Data\DAO\TypePayementDAO.cs" />
     <Compile Include="ViewModel\AccueilVM.cs" />
+    <Compile Include="ViewModel\PaiementVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\AdministrateurConnexionVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\AdministrationUtilisateursVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\PageAdministrateurVM.cs" />
     <Compile Include="ViewModel\ClientPROVM.cs" />
     <Compile Include="ViewModel\ConvoyeurVM.cs" />
+    <Compile Include="ViewModel\VMAdministrateur\StatistiquesVM.cs" />
     <Compile Include="ViewModel\VMFacture\FactureFinaleVM.cs" />
     <Compile Include="ViewModel\VMFacture\FactureVM.cs" />
     <Compile Include="ViewModel\VMImpression\ImpressionVM.cs" />

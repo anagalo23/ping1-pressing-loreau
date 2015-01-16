@@ -10,7 +10,7 @@ using App_pressing_Loreau.Model.DTO;
 
 namespace App_pressing_Loreau.ViewModel
 {
-    class ClientPROVM : ObservableObject, IPageViewModel
+    class PaiementVM : ObservableObject, IPageViewModel
     {
         public String Name
         {

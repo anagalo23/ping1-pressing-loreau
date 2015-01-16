@@ -126,6 +126,9 @@
         <Style  TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="choixbouton30">
             <Setter Property="FontFamily" Value=" Arial"/>
             <Setter Property="FontSize" Value=" 25"/>
+            <Setter Property="BorderBrush" Value="Aqua"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Margin" Value="1"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
         </Style>
 

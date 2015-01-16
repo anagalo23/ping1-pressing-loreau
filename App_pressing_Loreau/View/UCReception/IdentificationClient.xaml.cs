@@ -39,7 +39,8 @@ namespace App_pressing_Loreau.View
             Fields fields = AutoComplete.getFields();
             //MessageBox.Show(sender.ToString());
 
-            fields.nom = AutoComplete.parseFromClassToMessage(sender.ToString());
+            fields.nom = txb_identificationClient_nom.Text; 
+                //AutoComplete.parseFromClassToMessage(sender.ToString());
             //message();
             
             //clientVm
@@ -76,7 +77,7 @@ namespace App_pressing_Loreau.View
         {
             Fields fields = AutoComplete.getFields();
             fields.dateDeNaissance = AutoComplete.parseFromClassToMessage(sender.ToString());
-            message();
+            //message();
         }
 
         private void message(){
