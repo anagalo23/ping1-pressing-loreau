@@ -43,7 +43,7 @@
                 <Label x:Name="label_paiement_prix_ttc" Content="{Binding Label_paiement_prixTTC}" Grid.Row="1" Grid.Column="1" Style="{StaticResource vertixy}"/>
 
                 <Label Content="Remise :" Style="{StaticResource vertilabel25}" Grid.Row="3" Grid.Column="0"/>
-                <TextBox x:Name="txb_paiement_remise" Grid.Row="3" Text="{Binding Txb_paiement_montantRemise}" Grid.Column="1" Margin="10,4" Style="{StaticResource vertiTextBox}" />
+                <TextBox x:Name="txb_paiement_remise" Grid.Row="3" Text="{Binding Txb_paiement_montantRemise, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="10,4" Style="{StaticResource vertiTextBox}" />
             </Grid>
             
             <Grid Grid.Column="1" >
