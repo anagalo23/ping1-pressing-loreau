@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `commande` (
 CREATE TABLE IF NOT EXISTS `convoyeur` (
   `conv_id` int(11) NOT NULL AUTO_INCREMENT,
   `conv_emplacement` int(11) NOT NULL,
-  `conv_encombrement` float NOT NULL
+  `conv_encombrement` float NOT NULL,
   PRIMARY KEY (`conv_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=51 ;
 
