@@ -3,25 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:App_pressing_Loreau.ViewModel"
-             xmlns:view="clr-namespace:App_pressing_Loreau.View"
+             xmlns:vm="clr-namespace:App_pressing_Loreau.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="730">
     
     
-    <!--<UserControl.DataContext>
-        <local:FactureVM />
-    </UserControl.DataContext>-->
-
-   
+    <UserControl.DataContext>
+        <vm:FactureVM />
+    </UserControl.DataContext>
 
     <UserControl.Resources>
-        <DataTemplate DataType="{x:Type local:FactureFinaleVM}">
-            <view:FactureFinale/>
-        </DataTemplate>
-        
-       
+        <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
     </UserControl.Resources>
+
     
     <Grid>
         <Grid.ColumnDefinitions>
@@ -46,7 +40,7 @@
                 <Label x:Name="Factures_idcommande" Content=" Id commande   :" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                 <TextBox x:Name="Txb_factures_entreztexte" Grid.Column="1" Margin="5,20" Text="{Binding Txb_factures_idCommande, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
-                <Button Grid.Column="2" Margin="15" Grid.Row="1" BorderBrush="White" Background="White" Command="{Binding Btn_Factures_Recherche}" >
+                <Button Grid.Column="2" Margin="15" Grid.Row="1" BorderThickness="0" Background="Transparent" Command="{Binding Btn_Factures_Recherche}" >
                     <Image Source="/Resources/pics/Factures/loupederecherche.png" />
                 </Button>
             </Grid>
@@ -66,7 +60,7 @@
             </Grid.RowDefinitions>
             <Label Content="Aperçu de la facture " Style="{StaticResource Titre}" Grid.Column="0"/>
             <DockPanel Grid.Row="1">
-                <Border Margin="3" BorderBrush="Blue" BorderThickness="2">
+                <Border Margin="3" BorderBrush="AliceBlue" BorderThickness="2">
                 <ContentControl Content="{Binding Path=ApercuFacture}"/>
                 </Border>
             </DockPanel>

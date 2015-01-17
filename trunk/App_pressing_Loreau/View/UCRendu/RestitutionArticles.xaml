@@ -3,59 +3,19 @@
                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-               xmlns:local="clr-namespace:App_pressing_Loreau.ViewModel"
-             xmlns:view="clr-namespace:App_pressing_Loreau.View"
+               xmlns:vm="clr-namespace:App_pressing_Loreau.ViewModel"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="740">
 
     <UserControl.DataContext>
-        <local:RestitutionArticlesVM />
+        <vm:RestitutionArticlesVM />
     </UserControl.DataContext>
-    
-    
+
     <UserControl.Resources>
-        <DataTemplate DataType="{x:Type local:ArticlesRestitutionVM}">
-            <view:ArticlesRestitution/>
-        </DataTemplate>
-        
-        <!-- Données à afficher sur la partie 'commande concernant'-->
-        <DataTemplate DataType="{x:Type local:CommandeConcernantRA_DATA }" x:Key="UneCommande">
-            <Border CornerRadius="10" BorderBrush="Blue" BorderThickness="1">
-            <DockPanel >
-                <Border DockPanel.Dock="Top" BorderBrush="Blue" BorderThickness="1" CornerRadius="10">
-                <Grid >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-
-                    <Label Content="Reference de la commande :" Grid.Row="0" Grid.Column="0" />
-                    <Label Content="{Binding Label_restitutionArticles_Reference}" Grid.Row="0" Grid.Column="1"/>
-
-                    <Label Content="Nom du proprietaire : " Grid.Row="1" Grid.Column="0" />
-                    <Label Content="{Binding Label_restitutionArticles_Name}" Grid.Row="1" Grid.Column="1"/>
-
-                    <Label Content="Nombre d'articles :" Grid.Row="2" Grid.Column="0" />
-                    <Label Content="{Binding Label_restitutionArticles_NombreArticles}" Grid.Row="2" Grid.Column="1"/>
-
-                </Grid>
-                </Border>
-                    
-                    <Border>
-                        <ListBox Background="Transparent" BorderThickness="0" Margin="5" ItemsSource="{Binding ListeArticlesRestitution}"  />
-                    </Border>
-            </DockPanel>
-            </Border>
-        </DataTemplate>
-
-        
+        <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
     </UserControl.Resources>
 
+    
     <DockPanel x:Name="dp" >
         <Grid>
             <Grid.ColumnDefinitions>

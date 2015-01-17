@@ -3,37 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:App_pressing_Loreau.ViewModel"
-             xmlns:view="clr-namespace:App_pressing_Loreau.View"
+             xmlns:vm="clr-namespace:App_pressing_Loreau.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="740">
 
     <UserControl.DataContext>
-        <local:NouvelleCommandeVM />
+        <vm:NouvelleCommandeVM />
     </UserControl.DataContext>
 
     <UserControl.Resources>
-        <!--  Menu bouton liste des departement -->
-        <DataTemplate x:Key="departement">
-            <Button x:Name="button1" Width="115" Height="34" Content="{Binding ButtonContent}" Tag="{Binding ButtonTag}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.OnButtonClickCommand}"  Style="{StaticResource departementArt}"
-                    CommandParameter="{Binding ElementName=button1}"/>
-        </DataTemplate >
-
-
-        <!-- Les articles-->
-
-        <DataTemplate x:Key="articles">
-
-        </DataTemplate >
-
-
-        <!-- Articles ajoutés-->
-
-        <DataTemplate DataType="{x:Type local:ArticlesVM}">
-            <view:Articles/>
-        </DataTemplate>
-
-
+        <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
     </UserControl.Resources>
 
 
@@ -80,7 +59,7 @@
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
                                 <ItemsControl.ItemTemplate>
-                                    <DataTemplate DataType="{x:Type local:ArticlesVM}">
+                                    <DataTemplate DataType="{x:Type vm:ArticlesVM}">
                                         <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
                                             <Border Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}">

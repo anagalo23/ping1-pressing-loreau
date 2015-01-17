@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Pressing de Loreau" Height="500" Width="750"
         xmlns:dz="http://schemas.devzest.com/presentation/docking"
-        xmlns:local="clr-namespace:App_pressing_Loreau"
         WindowState="Maximized"
         WindowStyle="ToolWindow"
         ResizeMode="NoResize" 

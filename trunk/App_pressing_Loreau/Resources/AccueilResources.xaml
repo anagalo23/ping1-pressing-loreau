@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:App_pressing_Loreau.View"
+                    xmlns:view="clr-namespace:App_pressing_Loreau.View"
                     xmlns:vm="clr-namespace:App_pressing_Loreau.ViewModel">
 
 
@@ -8,49 +8,164 @@
 
      <!--Déclarations des données pour la reception client--> 
     <DataTemplate DataType="{x:Type vm:IdentificationClientVM}">
-        <local:IdentificationClient/>
+        <view:IdentificationClient/>
     </DataTemplate>
+                    <!--binding contenu recherche client--> 
+    <DataTemplate DataType="{x:Type vm:IdentificationClientData}">
+        <Border>
 
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="0" Grid.Row="0"  Text="ID" VerticalAlignment="Center" Margin="5" />
+                <TextBox Grid.Row="0" Grid.Column="1"  Text="{Binding txb_identificationClient_nom}" Margin="5" Width="150" />
+
+                <TextBlock Grid.Column="0" Grid.Row="1"  Text="Name" VerticalAlignment="Center" Margin="5" />
+                <TextBox Grid.Row="1" Grid.Column="1"  Text="{Binding ProductName}" Margin="5" Width="150" />
+
+                <TextBlock Grid.Column="0" Grid.Row="2"  Text="Unit Price" VerticalAlignment="Center" Margin="5" />
+                <TextBox Grid.Row="2" Grid.Column="1"  Text="{Binding UnitPrice}" Margin="5" Width="150" />
+
+            </Grid>
+        </Border>
+    </DataTemplate>
+    
+    
     <DataTemplate DataType="{x:Type vm:NouveauClientVM}">
-        <local:NouveauClient />
+        <view:NouveauClient />
     </DataTemplate>
 
-    <DataTemplate DataType="{x:Type vm:NouvelleCommandeVM}">
-        <local:NouvelleCommande/>
-    </DataTemplate>
-
+    
      <!--Déclarations des données pour rendu Commande-->
+    <DataTemplate DataType="{x:Type vm:NouvelleCommandeVM}">
+        <view:NouvelleCommande/>
+    </DataTemplate>
+    
     <DataTemplate DataType="{x:Type vm:RestitutionArticlesVM}">
-        <local:RestitutionArticles/>
+        <view:RestitutionArticles/>
     </DataTemplate>
 
+    <!--  Menu bouton liste des departement -->
+    <DataTemplate x:Key="departement">
+        <Button x:Name="button1" Width="115" Height="34" Content="{Binding ButtonContent}" Tag="{Binding ButtonTag}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.OnButtonClickCommand}"  Style="{StaticResource departementArt}"
+                    CommandParameter="{Binding ElementName=button1}"/>
+    </DataTemplate >
 
-     <!--Déclarations des données pour Facture-->
+
+    <!-- Articles ajoutés-->
+
+    <DataTemplate DataType="{x:Type vm:ArticlesVM}">
+        <view:Articles/>
+    </DataTemplate>
+    
+    
+    <!--Déclarations des données pour Facture-->
 
     <DataTemplate DataType="{x:Type vm:FactureVM}">
-        <local:Factures/>
+        <view:Factures/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:FactureFinaleVM}">
+        <view:FactureFinale/>
+    </DataTemplate>
+    
+    <DataTemplate x:Key="UnArticleFacture">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="1"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="{Binding LabelNameArticle}" />
+            <Label Grid.Column="1" Content="   =   "/>
+            <TextBlock Grid.Column="2" Text="{Binding LabelPrixArticle}"/>
+        </Grid>
 
-     <!--Déclarations des données pour Convoyeur-->
+    </DataTemplate>
+    <!--Déclarations des données pour Convoyeur-->
 
     <DataTemplate DataType="{x:Type vm:ConvoyeurVM}">
-        <local:Convoyeur/>
+        <view:Convoyeur/>
     </DataTemplate>
 
      <!--Déclarations des données pour ClientPRO-->
     <DataTemplate DataType="{x:Type vm:ClientPROVM}">
-        <local:ClientProUC/>
+        <view:ClientProUC/>
     </DataTemplate>
 
      <!--Déclarations des données impression--> 
     <DataTemplate DataType="{x:Type vm:ImpressionVM}">
-        <local:Impression/>
+        <view:Impression/>
     </DataTemplate>
 
      <!--Déclarations des données Administrateurs-->
     <DataTemplate DataType="{x:Type vm:AdministrateurConnexionVM}">
-        <local:IdentificationAdmin/>
+        <view:IdentificationAdmin/>
     </DataTemplate>
+
+    
+    <!--page Paiement-->
+
+    <DataTemplate DataType="{x:Type vm:PaiementVM}">
+        <view:Paiement/>
+    </DataTemplate>
+    
+    <!--Page restitution commande-->
+
+    <!-- Données à afficher sur la partie 'commande concernant'-->
+    <DataTemplate DataType="{x:Type vm:ArticlesRestitutionVM}">
+        <view:ArticlesRestitution/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:CommandeConcernantRA_DATA }" x:Key="UneCommande">
+        <Border CornerRadius="10" BorderBrush="AliceBlue" BorderThickness="1">
+            <DockPanel >
+                <Border DockPanel.Dock="Top" BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="10">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Reference de la commande :" Grid.Row="0" Grid.Column="0" />
+                        <Label Content="{Binding Label_restitutionArticles_Reference}" Grid.Row="0" Grid.Column="1"/>
+
+                        <Label Content="Nom du proprietaire : " Grid.Row="1" Grid.Column="0" />
+                        <Label Content="{Binding Label_restitutionArticles_Name}" Grid.Row="1" Grid.Column="1"/>
+
+                        <Label Content="Nombre d'articles :" Grid.Row="2" Grid.Column="0" />
+                        <Label Content="{Binding Label_restitutionArticles_NombreArticles}" Grid.Row="2" Grid.Column="1"/>
+
+                    </Grid>
+                </Border>
+
+                <Border>
+                    <ListBox Background="Transparent" BorderThickness="0" Margin="5" ItemsSource="{Binding ListeArticlesRestitution}"  />
+                </Border>
+            </DockPanel>
+        </Border>
+    </DataTemplate>
+
+
+    <DataTemplate x:Key="detailArticles" DataType="{x:Type vm:DetailCommandeVM}">
+
+        <ListBox Background="Bisque" Margin="5" ItemsSource="{Binding AfficheDetailCommande}"  />
+
+    </DataTemplate>
+    
+    
 
     <DataTemplate x:Key="Utilisateurs">
         <Button x:Name="button1" Width="170" Height="60" Content="{Binding ButtonUserContent}" Tag="{Binding ButtonUserTag}" Background="{Binding ButtonUserBackground , Mode=TwoWay}" Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.LesUtilisateurs}"  Style="{StaticResource personalisationbuton}"
@@ -60,9 +175,57 @@
     
     <!--Déclaration des données pour la connexion administrateur-->
     <DataTemplate DataType="{x:Type vm:PageAdministrateurVM}">
-        <local:PageAdministrateur/>
+        <view:PageAdministrateur/>
     </DataTemplate>
 
+    <!--Declarations pour GestionUtilisateurs-->
+    <DataTemplate DataType="{x:Type vm:UnUtilisateurVM}">
+        <view:UnUtilisateur/>
+    </DataTemplate>
+
+    <!--<DataTemplate x:Key="utilisateur" DataType="{x:Type vm:AdministrationUtilisateursVM}">
+        <Border BorderBrush="White" BorderThickness="1" CornerRadius="10">
+            <Grid Height="30" Width="500">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="{Binding NameUtilisateur}" Margin="1" Grid.Column="0" Style="{StaticResource Utilisateur}"/>
+
+                <Button x:Name="btn_gest_utilisateur_editer1" BorderBrush="White" Background="White" Grid.Column="1" Margin="1"
+Click="btn_gest_utilisateur_editer_Click">
+                    <Image Source="/Resources/pics/Admin1/logo_edit.png"/>
+                </Button>
+                <Button x:Name="btn_gest_utilisateur_supprimer1" BorderBrush="White" Background="White" Grid.Column="2" Margin="1"
+Click="btn_gest_utilisateur_editer_Click" >
+                    <Image Source="/Resources/pics/Admin1/logo_exit.png"/>
+                </Button>
+
+            </Grid>
+        </Border>
+    </DataTemplate >-->
+    <DataTemplate x:Key="AddUtilisateur" DataType="{x:Type vm:AdministrationUtilisateursVM}" >
+        <Border BorderBrush="AliceBlue" Margin="3" BorderThickness="2" CornerRadius="10" >
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="Saisir Nom :" Margin="5" />
+                <TextBox Grid.Column="1" Margin="5" Text="{Binding Path=Txb_Utilisateur_Name, UpdateSourceTrigger=PropertyChanged}" />
+
+                <Button  Margin="5" Grid.Column="2" Content="Valider" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.AddUser}" CommandParameter="{Binding ElementName=button1}"/>
+
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    
+    
     <Style TargetType="Button"  BasedOn="{StaticResource {x:Type Button}}" x:Key="buttonColorAccueil">
         <Setter Property="Background" Value="Teal"/>
         <Setter Property="Template">
