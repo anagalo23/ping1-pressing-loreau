@@ -101,6 +101,13 @@ namespace App_pressing_Loreau.Data
         public static String updateDepartement = "UPDATE departement SET dep_id=?,dep_nom=? WHERE dep_id=?";
         public static String deleteDepartement = "DELETE FROM departement WHERE dep_id=?";
 
+        //Employee
+        public static String insertEmploye = "INSERT INTO employe(emp_nom,emp_prenom) VALUES (?,?)";
+        public static String selectEmployes = "SELECT emp_id, emp_nom, emp_prenom FROM employe";
+        public static String selectEmployeById = "SELECT emp_id, emp_nom, emp_prenom FROM employe WHERE emp_id=?";
+        public static String updateEmploye = "UPDATE employe SET emp_id=?,emp_nom=?,emp_prenom=? WHERE emp_id=?";
+        public static String deleteEmploye = "DELETE FROM employe WHERE emp_id=?";
+
         //log
         public static String insertLog = "INSERT INTO Log(log_date, log_message, log_emp_id) VALUES (?,?,?)";
 
