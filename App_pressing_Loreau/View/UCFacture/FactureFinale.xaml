@@ -3,25 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:App_pressing_Loreau.View"
              mc:Ignorable="d" 
              d:DesignHeight="740" d:DesignWidth="300">
 
     
     <UserControl.Resources>
-        <DataTemplate x:Key="UnArticleFacture">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1"/>
-                    <ColumnDefinition Width="1"/>
-                    <ColumnDefinition Width="1"/>
-                </Grid.ColumnDefinitions> 
-                <TextBlock Grid.Column="0" Text="{Binding LabelNameArticle}" />
-                <Label Grid.Column="1" Content="   =   "/>
-                <TextBlock Grid.Column="2" Text="{Binding LabelPrixArticle}"/>
-            </Grid>
-        
-        </DataTemplate>
+        <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
     </UserControl.Resources>
     
     <Grid Margin="7">

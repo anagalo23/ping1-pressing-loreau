@@ -9,6 +9,7 @@ using App_pressing_Loreau.Data.DAO;
 using App_pressing_Loreau.Model.DTO;
 using System.Windows.Input;
 using System.Windows.Controls;
+using Microsoft.Practices.Prism.Commands;
 
 namespace App_pressing_Loreau.ViewModel
 {
@@ -17,8 +18,10 @@ namespace App_pressing_Loreau.ViewModel
         #region attributs
 
         List<Employe> listEmploye = null;
-        private List<Utilisateur> _listeUtilisateurs;
+        private List<UnUtilisateurVM> _listeUtilisateurs;
         private String _txb_Utilisateur_Name;
+
+        private DelegateCommand<UnUtilisateurVM> _deleteUtilisateurs;
         #endregion
         public String Name
         {
@@ -27,7 +30,7 @@ namespace App_pressing_Loreau.ViewModel
 
         public AdministrationUtilisateursVM()
         {
-            ListeUtilisateurs = new List<Utilisateur>();
+            ListeUtilisateurs = new List<UnUtilisateurVM>();
             initialisationUtilisateurs();   
         }
 
@@ -45,7 +48,9 @@ namespace App_pressing_Loreau.ViewModel
                 }
             }
         }
-        public List<Utilisateur> ListeUtilisateurs
+
+
+        public List<UnUtilisateurVM> ListeUtilisateurs
         {
             get { return _listeUtilisateurs; }
             set
@@ -62,13 +67,17 @@ namespace App_pressing_Loreau.ViewModel
 
         }
 
-        //public ICommand AddUser
-        //{
-        //    get { return new RelayCommand(
-        //        p=>ajouterUser(),
-        //        p=>Txb_Utilisateur_Name!=null); }
 
-        //}
+
+        public DelegateCommand<UnUtilisateurVM> DeleteUtilisateurs
+        {
+            get
+            {
+                return this._deleteUtilisateurs ?? (this._deleteUtilisateurs = new DelegateCommand<UnUtilisateurVM>(
+                                                                       this.ExecuteDeleteUser,
+                                                                       (arg) => true));
+            }
+        }
         #endregion
 
         #region Methods
@@ -78,7 +87,7 @@ namespace App_pressing_Loreau.ViewModel
             Button clickedbutton = button as Button;
             if (clickedbutton != null)
             {
-                this._listeUtilisateurs.Add(new Utilisateur()
+                this._listeUtilisateurs.Add(new UnUtilisateurVM()
                 {
                     NameUtilisateur = this._txb_Utilisateur_Name
                 });
@@ -87,12 +96,20 @@ namespace App_pressing_Loreau.ViewModel
         public void initialisationUtilisateurs()
         {
           //listEmploye= (List<Employe>) EmployeDAO.
-            ListeUtilisateurs.Add(new Utilisateur() { NameUtilisateur = "Alexis" });
-            ListeUtilisateurs.Add(new Utilisateur() { NameUtilisateur = "Huguette" });
-            ListeUtilisateurs.Add(new Utilisateur() { NameUtilisateur = "Pierre" });
-            ListeUtilisateurs.Add(new Utilisateur() { NameUtilisateur = "Pierre" });
-            ListeUtilisateurs.Add(new Utilisateur() { NameUtilisateur = "Pierre" });
+            ListeUtilisateurs.Add(new UnUtilisateurVM() { NameUtilisateur = "Alexis" });
+            ListeUtilisateurs.Add(new UnUtilisateurVM() { NameUtilisateur = "Huguette" });
+            ListeUtilisateurs.Add(new UnUtilisateurVM() { NameUtilisateur = "Pierre" });
+            ListeUtilisateurs.Add(new UnUtilisateurVM() { NameUtilisateur = "Pierre" });
+            ListeUtilisateurs.Add(new UnUtilisateurVM() { NameUtilisateur = "Pierre" });
 
+        }
+
+        private void ExecuteDeleteUser(UnUtilisateurVM obj)
+        {
+            if (this._listeUtilisateurs.Contains(obj))
+            {
+                this._listeUtilisateurs.Remove(obj);
+            }
         }
         #endregion
     }
@@ -101,5 +118,6 @@ namespace App_pressing_Loreau.ViewModel
     class Utilisateur
     {
         public String NameUtilisateur { get; set; }
+        public int idUser { get; set; }
     }
 }

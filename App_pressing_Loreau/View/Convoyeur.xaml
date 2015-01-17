@@ -6,7 +6,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="740">
     
-    
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
+    </UserControl.Resources>
+
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>

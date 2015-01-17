@@ -130,11 +130,14 @@
     <Compile Include="ViewModel\AccueilVM.cs" />
     <Compile Include="ViewModel\PaiementVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\AdministrateurConnexionVM.cs" />
+    <Compile Include="ViewModel\VMAdministrateur\AdministrationCaisseVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\AdministrationUtilisateursVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\PageAdministrateurVM.cs" />
-    <Compile Include="ViewModel\ClientPROVM.cs" />
+    <Compile Include="ViewModel\VMAdministrateur\UnUtilisateurVM.cs" />
+    <Compile Include="ViewModel\VMCLientPro\ClientPROVM.cs" />
     <Compile Include="ViewModel\ConvoyeurVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\StatistiquesVM.cs" />
+    <Compile Include="ViewModel\VMCLientPro\NouveauClientProVM.cs" />
     <Compile Include="ViewModel\VMFacture\FactureFinaleVM.cs" />
     <Compile Include="ViewModel\VMFacture\FactureVM.cs" />
     <Compile Include="ViewModel\VMImpression\ImpressionVM.cs" />
@@ -161,6 +164,9 @@
     </Compile>
     <Compile Include="View\UCAdministrateur\ParametreAffichage.xaml.cs">
       <DependentUpon>ParametreAffichage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UCAdministrateur\UnUtilisateur.xaml.cs">
+      <DependentUpon>UnUtilisateur.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UCClientPro\ClientProUC.xaml.cs">
       <DependentUpon>ClientProUC.xaml</DependentUpon>
@@ -259,6 +265,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UCAdministrateur\ParametreAffichage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UCAdministrateur\UnUtilisateur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

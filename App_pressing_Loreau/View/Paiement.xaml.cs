@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 
 
-namespace App_pressing_Loreau
+namespace App_pressing_Loreau.View
 {
     /// <summary>
     /// Logique d'interaction pour Paiement.xaml

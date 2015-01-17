@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:App_pressing_Loreau.View"
+             
              xmlns:vm="clr-namespace:App_pressing_Loreau.ViewModel"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="740">
@@ -12,38 +12,10 @@
         <vm:IdentificationClientVM/>
     </UserControl.DataContext>
     <UserControl.Resources>
-             
-               
-        <DataTemplate DataType="{x:Type vm:IdentificationClientData}">
-            <Border>
-                
-                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-
-                    <TextBlock Grid.Column="0" Grid.Row="0"  Text="ID" VerticalAlignment="Center" Margin="5" />
-                    <TextBox Grid.Row="0" Grid.Column="1"  Text="{Binding txb_identificationClient_nom}" Margin="5" Width="150" />
-
-                    <TextBlock Grid.Column="0" Grid.Row="1"  Text="Name" VerticalAlignment="Center" Margin="5" />
-                    <TextBox Grid.Row="1" Grid.Column="1"  Text="{Binding ProductName}" Margin="5" Width="150" />
-
-                    <TextBlock Grid.Column="0" Grid.Row="2"  Text="Unit Price" VerticalAlignment="Center" Margin="5" />
-                    <TextBox Grid.Row="2" Grid.Column="1"  Text="{Binding UnitPrice}" Margin="5" Width="150" />
-
-                </Grid>
-            </Border>
-        </DataTemplate>
-            
-        
-       
+        <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
     </UserControl.Resources>
+    
+    
 
     <DockPanel x:Name="dp">
         <Border>

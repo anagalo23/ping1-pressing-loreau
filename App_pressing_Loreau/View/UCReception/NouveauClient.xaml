@@ -10,7 +10,11 @@
     <UserControl.DataContext>
         <vm:NouveauClientVM/>
     </UserControl.DataContext>
-
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
+    </UserControl.Resources>
+    
+    
     <DockPanel x:Name="dp">
         <Grid Margin="5">
             <Grid.ColumnDefinitions>
