@@ -13,6 +13,8 @@ namespace App_pressing_Loreau.ViewModel
     {
 
         private String _nameUtilisateur;
+
+        public int idEmployee { get; set; }
         public string Name
         {
             get { return ""; }

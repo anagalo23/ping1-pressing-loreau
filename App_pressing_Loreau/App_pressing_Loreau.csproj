@@ -131,7 +131,7 @@
     <Compile Include="ViewModel\PaiementVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\AdministrateurConnexionVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\AdministrationCaisseVM.cs" />
-    <Compile Include="ViewModel\VMAdministrateur\AdministrationUtilisateursVM.cs" />
+    <Compile Include="ViewModel\VMAdministrateur\GestionUtilisateursVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\PageAdministrateurVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\UnUtilisateurVM.cs" />
     <Compile Include="ViewModel\VMCLientPro\ClientPROVM.cs" />

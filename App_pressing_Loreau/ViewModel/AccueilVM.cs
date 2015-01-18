@@ -30,8 +30,8 @@ namespace App_pressing_Loreau
 
         private IPageViewModel _accessUserControl;
         private List<CategoryItem> _listeUser;
-        private Brush _color;
 
+        private Brush _color;
         private Brush _btn_receptionColor;
         private Brush _btn_renduColor;
         private Brush _btn_factureColor;
@@ -39,6 +39,8 @@ namespace App_pressing_Loreau
         private Brush _btn_clientProColor;
         private Brush _btn_administrateurColor;
         private Brush _btn_convoyeurColor;
+
+        private List<Employe> listeEmployer;
 
         //private bool thisColorButton;
         #endregion
@@ -361,28 +363,20 @@ namespace App_pressing_Loreau
         }
         public void UtilisateurListe()
         {
-
-            _listeUser.Add(new CategoryItem() { ButtonUserContent = "Faye",  ButtonUserTag = "Faye" });
-            _listeUser.Add(new CategoryItem() { ButtonUserContent = "Fofou", ButtonUserTag = "Fofou" });
-            _listeUser.Add(new CategoryItem() { ButtonUserContent = "Nagalo", ButtonUserTag = "Nagalo" });
-            _listeUser.Add(new CategoryItem() { ButtonUserContent = "Pollet", ButtonUserTag = "Pollet" });
-            _listeUser.Add(new CategoryItem() { ButtonUserContent = "Taquet", ButtonUserTag = "Taquet" });
-            _listeUser.Add(null);
+            listeEmployer = (List<Employe>)EmployeDAO.selectEmployes();
+            for (int i = 0; i < listeEmployer.Count; i++)
+            {
+                _listeUser.Add(new CategoryItem() { ButtonUserContent = listeEmployer[i].nom, ButtonUserTag = listeEmployer[i].id });
+            }
+               
+        
 
         }
         public void accueilVM()
         {
-            //// chargement de la page accueil
-            //Accueil acc = new Accueil();
-            //// liaison avec la page AccueilVM
-            //AccueilVM context = new AccueilVM();
-            //// Permet de traiter les données dans AccueilVM
-            //acc.DataContext = context;
-            //acc.Show();
-            ////this.Accueil().
-
-            //App app = new App();
-            
+            listeEmployer = null;
+             listeEmployer = (List<Employe>)EmployeDAO.selectEmployes();
+                       
             accessUserControl = null;
         }
         #endregion
@@ -395,7 +389,7 @@ namespace App_pressing_Loreau
         {
             public string ButtonUserContent { get; set; }
 
-            public string ButtonUserTag { get; set; }
+            public int ButtonUserTag { get; set; }
 
         }
         #endregion

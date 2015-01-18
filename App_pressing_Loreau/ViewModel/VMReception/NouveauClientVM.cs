@@ -223,7 +223,7 @@ namespace App_pressing_Loreau.ViewModel
             client.prenom = Txb_nouveauClient_prenom;
             client.dateNaissance = Txb_nouveauClient_date_naissance;
             client.idCleanWay = Txb_nouveauClient_idCleanway;
-
+            client.type = 0;
             client.adresse = new Model.Adresse();
             client.adresse.numero = Txb_nouveauClient_numero + "";
             client.adresse.rue = Txb_nouveauClient_rue_voie;
