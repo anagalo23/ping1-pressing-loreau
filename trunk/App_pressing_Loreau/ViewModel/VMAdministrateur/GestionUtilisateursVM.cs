@@ -3,23 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using App_pressing_Loreau.Helper;
-using App_pressing_Loreau.Data.DAO;
-using App_pressing_Loreau.Model.DTO;
 using System.Windows.Input;
 using System.Windows.Controls;
 using Microsoft.Practices.Prism.Commands;
 
+using App_pressing_Loreau.Helper;
+using App_pressing_Loreau.Data.DAO;
+using App_pressing_Loreau.Model.DTO;
+
+
 namespace App_pressing_Loreau.ViewModel
 {
-    class AdministrationUtilisateursVM : ObservableObject, IPageViewModel
+    class GestionnUtilisateursVM : ObservableObject, IPageViewModel
     {
         #region attributs
 
         List<Employe> listEmploye = null;
         private List<UnUtilisateurVM> _listeUtilisateurs;
         private String _txb_Utilisateur_Name;
+
+        private List<Employe> listeEmployer;
+        private Employe employee;
 
         private DelegateCommand<UnUtilisateurVM> _deleteUtilisateurs;
         #endregion
@@ -28,10 +32,13 @@ namespace App_pressing_Loreau.ViewModel
             get { return ""; }
         }
 
-        public AdministrationUtilisateursVM()
+        public GestionnUtilisateursVM()
         {
             ListeUtilisateurs = new List<UnUtilisateurVM>();
-            initialisationUtilisateurs();   
+            listeEmployer = (List<Employe>)EmployeDAO.selectEmployes();
+
+            ajouterUser();
+   
         }
 
         #region properties and commands
@@ -60,10 +67,14 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-        ICommand addUser;
-        public ICommand AddUser
+
+        public ICommand AjouterUnUtilisateur
         {
-            get { return addUser ?? (addUser = new RelayCommand(ajouterUser)); }
+            get
+            {
+               
+                return  new RelayCommand(
+                p=>ajouterUser()); }
 
         }
 
@@ -82,34 +93,29 @@ namespace App_pressing_Loreau.ViewModel
 
         #region Methods
 
-        public void ajouterUser(object button)
+        public void ajouterUser()
         {
-            Button clickedbutton = button as Button;
-            if (clickedbutton != null)
+          
+            employee = new Employe(this._txb_Utilisateur_Name,this._txb_Utilisateur_Name);
+            if (employee != null)
             {
-                this._listeUtilisateurs.Add(new UnUtilisateurVM()
-                {
-                    NameUtilisateur = this._txb_Utilisateur_Name
-                });
+                EmployeDAO.insertEmploye(employee);
+            }
+            for (int i = 0; i < listeEmployer.Count; i++)
+            {
+                ListeUtilisateurs.Add(new UnUtilisateurVM() { NameUtilisateur = listeEmployer[i].nom, idEmployee = listeEmployer[i].id });
             }
         }
-        public void initialisationUtilisateurs()
-        {
-          //listEmploye= (List<Employe>) EmployeDAO.
-            ListeUtilisateurs.Add(new UnUtilisateurVM() { NameUtilisateur = "Alexis" });
-            ListeUtilisateurs.Add(new UnUtilisateurVM() { NameUtilisateur = "Huguette" });
-            ListeUtilisateurs.Add(new UnUtilisateurVM() { NameUtilisateur = "Pierre" });
-            ListeUtilisateurs.Add(new UnUtilisateurVM() { NameUtilisateur = "Pierre" });
-            ListeUtilisateurs.Add(new UnUtilisateurVM() { NameUtilisateur = "Pierre" });
-
-        }
-
+    
         private void ExecuteDeleteUser(UnUtilisateurVM obj)
         {
+            employee = (Employe)EmployeDAO.selectEmployeById(obj.idEmployee);
+            EmployeDAO.deleteEmploye(employee);
             if (this._listeUtilisateurs.Contains(obj))
             {
                 this._listeUtilisateurs.Remove(obj);
             }
+
         }
         #endregion
     }

@@ -182,50 +182,13 @@
     <DataTemplate DataType="{x:Type vm:UnUtilisateurVM}">
         <view:UnUtilisateur/>
     </DataTemplate>
-
-    <!--<DataTemplate x:Key="utilisateur" DataType="{x:Type vm:AdministrationUtilisateursVM}">
-        <Border BorderBrush="White" BorderThickness="1" CornerRadius="10">
-            <Grid Height="30" Width="500">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="3*"/>
-                </Grid.ColumnDefinitions>
-                <Label Content="{Binding NameUtilisateur}" Margin="1" Grid.Column="0" Style="{StaticResource Utilisateur}"/>
-
-                <Button x:Name="btn_gest_utilisateur_editer1" BorderBrush="White" Background="White" Grid.Column="1" Margin="1"
-Click="btn_gest_utilisateur_editer_Click">
-                    <Image Source="/Resources/pics/Admin1/logo_edit.png"/>
-                </Button>
-                <Button x:Name="btn_gest_utilisateur_supprimer1" BorderBrush="White" Background="White" Grid.Column="2" Margin="1"
-Click="btn_gest_utilisateur_editer_Click" >
-                    <Image Source="/Resources/pics/Admin1/logo_exit.png"/>
-                </Button>
-
-            </Grid>
-        </Border>
-    </DataTemplate >-->
-    <DataTemplate x:Key="AddUtilisateur" DataType="{x:Type vm:AdministrationUtilisateursVM}" >
-        <Border BorderBrush="AliceBlue" Margin="3" BorderThickness="2" CornerRadius="10" >
-
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0" Text="Saisir Nom :" Margin="5" />
-                <TextBox Grid.Column="1" Margin="5" Text="{Binding Path=Txb_Utilisateur_Name, UpdateSourceTrigger=PropertyChanged}" />
-
-                <Button  Margin="5" Grid.Column="2" Content="Valider" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.AddUser}" CommandParameter="{Binding ElementName=button1}"/>
-
-            </Grid>
-        </Border>
+    <DataTemplate DataType="{x:Type vm:GestionnUtilisateursVM}">
+        <view:GestionUtilisateurs/>
     </DataTemplate>
 
-    
-    
+
+
+
     <Style TargetType="Button"  BasedOn="{StaticResource {x:Type Button}}" x:Key="buttonColorAccueil">
         <Setter Property="Background" Value="Teal"/>
         <Setter Property="Template">

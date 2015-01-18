@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:App_pressing_Loreau.ViewModel"
+             xmlns:vm="clr-namespace:App_pressing_Loreau.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="740">
 
     <UserControl.DataContext>
-        <local:AdministrationUtilisateursVM />
+        <vm:GestionnUtilisateursVM />
     </UserControl.DataContext>
-    
+
     <UserControl.Resources>
         <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
     </UserControl.Resources>
@@ -20,10 +20,10 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="20*"/>
-                <RowDefinition Height="2*"/>
-               
+                <RowDefinition Height="3*"/>
+
             </Grid.RowDefinitions>
-  
+
             <Border Grid.Row="0" >
                 <ListBox  ScrollViewer.HorizontalScrollBarVisibility="Hidden" Cursor="Hand" Margin="5,10"  BorderThickness="0" Background="Transparent" ItemsSource="{Binding ListeUtilisateurs}"  TextOptions.TextHintingMode="Animated" >
                     <ListBox.ItemsPanel>
@@ -37,18 +37,35 @@
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
-                   
+
                     <ColumnDefinition Width="5*"/>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="Ajouter des utilisateurs" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
-                
-                <Border Margin="2" Grid.Column="1"  >
-                    <ContentControl ContentTemplate="{StaticResource AddUtilisateur}" Content="{Binding}"  />
+
+                <Border Margin="2,0" Grid.Column="1" BorderBrush="AliceBlue"  BorderThickness="2" CornerRadius="10"  >
+
+
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" Content="Saisir Nom :" Style="{StaticResource vertilabel25}" />
+                        <TextBox Grid.Column="1" Margin="5" Style="{StaticResource vertiTextBox}" Text="{Binding Path=Txb_Utilisateur_Name, UpdateSourceTrigger=PropertyChanged}" />
+
+                        <Button  Margin="5" Grid.Column="2" Content="Valider" Command="{Binding AjouterUnUtilisateur}"/>
+
+                    </Grid>
+
+
                 </Border>
-                
-                
+
+
                 <Button x:Name="btn_gest_utilisateur_retour" Content="Retour" Grid.Column="3" Margin="2"
                     Click="btn_gest_utilisateur_retour_Click" Style="{StaticResource choixbouton30}"/>
 
