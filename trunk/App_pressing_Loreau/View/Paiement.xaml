@@ -13,7 +13,7 @@
     <UserControl.Resources>
         <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
     </UserControl.Resources>
-  
+
 
     <DockPanel x:Name="dp">
         <Grid>
@@ -45,7 +45,7 @@
                 <Label Content="Remise :" Style="{StaticResource vertilabel25}" Grid.Row="3" Grid.Column="0"/>
                 <TextBox x:Name="txb_paiement_remise" Grid.Row="3" Text="{Binding Txb_paiement_montantRemise, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="10,4" Style="{StaticResource vertiTextBox}" />
             </Grid>
-            
+
             <Grid Grid.Column="1" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -54,28 +54,41 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <Border  Grid.Row="0"  CornerRadius="7" Background="DarkKhaki">
-                <Grid  Margin="1" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
+                    <Grid  Margin="1" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Button x:Name="btn_paiement_cartebleue" Command="{Binding Btn_paiement_cb}" Margin="5" Background="Transparent"  BorderThickness="0" Grid.Column="0"  >
-                        <Image Source="/Resources/pics/paiements/carte_bleue.png" Width="80" Height="60"  />
-                    </Button>
-                    <Button x:Name="btn_paiement_especes" Command="{Binding Btn_paiement_Espece}"  Background="Transparent"  BorderThickness="0" Grid.Column="1" Margin="5">
-                        <Image Source="/Resources/pics/paiements/paiement_especes.png"  Width="80" Height="60"  />
-                    </Button>
-                    <Button x:Name="btn_paiement_cheques" Command="{Binding Btn_paiement_cheque}"  Background="Transparent"  BorderThickness="0" Grid.Column="2" >
-                        <Image Source="/Resources/pics/paiements/Paiement_cheques.png"  Width="80" Height="60"  />
-                    </Button>
-                    <Button x:Name="btn_paiement_cleanway" Content="Cleanway" Command="{Binding Btn_paiement_cleanway}"   BorderThickness="0" Grid.Column="3" Margin="5"  />
+                        <Button x:Name="btn_paiement_cartebleue" Command="{Binding Btn_paiement_cb}" Margin="5" Background="Transparent"  BorderThickness="0" Grid.Column="0"  >
+                            <Image Source="/Resources/pics/paiements/carte_bleue.png" Width="80" Height="60"  />
+                        </Button>
+                        <Button x:Name="btn_paiement_especes" Command="{Binding Btn_paiement_Espece}"  Background="Transparent"  BorderThickness="0" Grid.Column="1" Margin="5">
+                            <Image Source="/Resources/pics/paiements/paiement_especes.png"  Width="80" Height="60"  />
+                        </Button>
+                        <Button x:Name="btn_paiement_cheques" Command="{Binding Btn_paiement_cheque}"  Background="Transparent"  BorderThickness="0" Grid.Column="2" >
+                            <Image Source="/Resources/pics/paiements/Paiement_cheques.png"  Width="80" Height="60"  />
+                        </Button>
+                        <Button x:Name="btn_paiement_cleanway" Content="Cleanway" Command="{Binding Btn_paiement_cleanway}"   BorderThickness="0" Grid.Column="3" Margin="5"  />
 
-                </Grid>
+                    </Grid>
                 </Border>
+                <Border  Grid.Row="1" Margin="5,10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
 
+                        <Label  Content="Montant pour cette carte" Style="{StaticResource vertilabel25}"/>
+                        <TextBox  Grid.Column="2" Margin="5" Style="{StaticResource vertiTextBox}" Text="{Binding Txb_paiement_montantParMoyenPaiement, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
+
+                </Border>
                 <Border Grid.Row="2">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -85,14 +98,14 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         <Label Content="Montant TTC à payer"  Grid.Column="0" Style="{StaticResource vertilabel25}"/>
-                        
+
                         <Label x:Name="label_paiement_montant" Content="{Binding Label_paiement_montant}"   Grid.Column="2" Style="{StaticResource vertixy}" Margin="5,10"/>
 
-                      
+
                     </Grid>
                 </Border>
                 <Border  Grid.Row="3"  Margin="20,5">
-                <Button x:Name="btn_paiment_valider" Content="Valider" Margin="100,10"
+                    <Button x:Name="btn_paiment_valider" Content="Valider" Margin="100,10"
                         FontFamily="Arial" FontSize="30" FontWeight="SemiBold" Command="{Binding Btn_paiment_valider}"/>
                 </Border>
             </Grid>

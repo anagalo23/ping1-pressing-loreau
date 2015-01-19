@@ -8,9 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="740">
 
 
-    <UserControl.DataContext>
-        <vm:ClientPROVM/>
-    </UserControl.DataContext>
+ 
     <UserControl.Resources>
         <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
     </UserControl.Resources>
@@ -29,7 +27,7 @@
                 </Grid.RowDefinitions>
                 <Label Content="Liste des clients Pro" Style="{StaticResource Titre}" Grid.Column="0" Grid.Row="0"/>
                 <DockPanel Grid.Row="1">
-                    <ListBox Background="Bisque" Margin="5" ItemsSource="{Binding ListeClientPro}" />
+                    <ListBox Background="Transparent" Margin="5" ItemsSource="{Binding ListeClientPro}" BorderThickness="0" />
 
                 </DockPanel>
                 <Button  x:Name="btn_clientProUC_nouveau_clientPro" Grid.Row="2" Margin="5" Content="Nouveu client pro"  Style="{StaticResource personalisationbuton1}" Click="btn_clientProUC_nouveau_clientPro_Click" />
@@ -42,7 +40,7 @@
                 </Grid.RowDefinitions>
                 <Label  Content="Détail des commandes par client" Style="{StaticResource Titre}" Grid.Row="0"/>
                 <DockPanel Grid.Row="1">
-                    <ListBox Background="Bisque" Margin="5" ItemsSource="{Binding DetailCommandeClientPro}" />
+                    <ListBox Background="Transparent" BorderThickness="0"  Margin="5" ItemsSource="{Binding DetailCommandeClientPro}" />
 
                 </DockPanel>
                 <Grid Grid.Row="2">

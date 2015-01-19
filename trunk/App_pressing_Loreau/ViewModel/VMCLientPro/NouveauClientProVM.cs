@@ -100,9 +100,9 @@ namespace App_pressing_Loreau.ViewModel
             get { return _txb_nouveauClientPro_ville; }
             set
             {
-                if (value != Txb_nouveauClientPro_ville)
+                if (value != _txb_nouveauClientPro_ville)
                 {
-                    Txb_nouveauClientPro_ville = value;
+                    _txb_nouveauClientPro_ville = value;
                     OnPropertyChanged("Txb_nouveauClientPro_ville");
 
                 }
@@ -165,8 +165,8 @@ namespace App_pressing_Loreau.ViewModel
         #region Méthodes
         public void enregisterClient()
         {
-            client.nom = this.Txb_nouveauClientPro_nomSociete;
-            client.prenom = this.Txb_nouveauClientPro_nomSociete;
+            client.nom = Txb_nouveauClientPro_nomSociete;
+            client.prenom = Txb_nouveauClientPro_nomSociete;
             client.type = 1;
             client.adresse = new Model.Adresse();
             client.adresse.numero = Txb_nouveauClientPro_numeroAdresse + "";
@@ -176,7 +176,6 @@ namespace App_pressing_Loreau.ViewModel
 
             client.telfix = Txb_nouveauClientPro_numeroFixe;
             client.telmob = Txb_nouveauClientPro_numeroPortable;
-           
             client.email = Txb_nouveauClientPro_email;
             
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App_pressing_Loreau.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace App_pressing_Loreau.View
         public ClientProUC()
         {
             InitializeComponent();
+            DataContext = new ClientPROVM();
         }
 
         private void btn_clientProUC_nouveau_clientPro_Click(object sender, RoutedEventArgs e)
@@ -30,5 +32,7 @@ namespace App_pressing_Loreau.View
             dp.Children.Clear();
             dp.Children.Add(new NouveauClientPro());
         }
+
+       
     }
 }

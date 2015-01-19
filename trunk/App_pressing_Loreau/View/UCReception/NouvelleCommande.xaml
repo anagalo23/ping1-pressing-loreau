@@ -7,18 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="740">
 
-     
- 
+
+
 
     <UserControl.Resources>
-        <!--<ResourceDictionary Source="/Resources/AccueilResources.xaml"/>-->
-        <DataTemplate x:Key="departement">
-            <Button x:Name="button1" Width="115" Height="55" Content="{Binding ButtonContent}" Tag="{Binding ButtonTag}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.OnButtonClickCommand}"  Style="{StaticResource departementsStyles}"
-                    CommandParameter="{Binding ElementName=button1}"/>
-        </DataTemplate >
-
+        <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
     </UserControl.Resources>
-
 
     <!-- Contenu du code-->
 

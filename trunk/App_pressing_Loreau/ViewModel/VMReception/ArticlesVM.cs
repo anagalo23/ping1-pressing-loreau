@@ -15,25 +15,29 @@ using App_pressing_Loreau.Helper;
 using App_pressing_Loreau.Model.DTO;
 
 
+
 namespace App_pressing_Loreau.ViewModel
 {
     class ArticlesVM : ObservableObject, IPageViewModel
     {
         #region Attributes 
 
-        //private string _articlesName;
         private string _txb_Articles_Commentaire;
         private ImageSource _changedPhoto;
         private string _changedPhotoFileName = null;
-        
+        private String _selected_Articles_Commentaire;
+
+        public List<String> Cbb_Articles_Commentaire { get; set; }
+
+
         private ConvertToImage convert = new ConvertToImage();
-        //public float prixHT;
-
-        public TypeArticle article;
-
-        
-        
+        public TypeArticle article;        
         #endregion
+
+        public ArticlesVM()
+        {
+            
+        }
 
         #region Propietés et commandes 
         public string ArticlesName
@@ -53,25 +57,17 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-        public string Txb_Articles_Commentaire
-        {
-            get
-            {
-                return _txb_Articles_Commentaire;
-            }
+      
 
+        public String Selected_Articles_Commentaire
+        {
+            get { return _selected_Articles_Commentaire; }
             set
             {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    _txb_Articles_Commentaire = value;
-                    OnPropertyChanged("Txb_Articles_Commentaire");
-                }
+                _selected_Articles_Commentaire = value;
+                RaisePropertyChanged("Selected_Articles_Commentaire");
             }
-
         }
-
-       
         public ICommand Btn_Articles_ChargerPhoto
         { get { return new RelayCommand(P => ChangePhoto()); } }
 
@@ -133,4 +129,7 @@ namespace App_pressing_Loreau.ViewModel
             get { return ""; }
         }
     }
+
+
+   
 }
