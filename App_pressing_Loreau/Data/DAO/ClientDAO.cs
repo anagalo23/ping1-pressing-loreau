@@ -105,6 +105,49 @@ namespace App_pressing_Loreau.Data.DAO
             }
         }
 
+        //Selectionner l'ensemble des clients pro
+        public static List<Client> selectProClient()
+        {
+            try
+            {
+
+                List<Client> retour = new List<Client>();
+
+                //connection à la base de données  
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectProClient, Bdd.connexion());
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                Client client;
+                while (msdr.Read())
+                {
+                    client = new Client(
+                        Int32.Parse(msdr["clt_id"].ToString()),
+                        msdr["clt_nom"].ToString(),
+                        msdr["clt_prenom"].ToString(),
+                        msdr["clt_fix"].ToString(),
+                        msdr["clt_mob"].ToString(),
+                        Adresse.Parse(msdr["clt_adresse"].ToString()),
+                        DateTime.Parse(msdr["clt_dateNaissance"].ToString()),
+                        msdr["clt_email"].ToString(),
+                        DateTime.Parse(msdr["clt_dateInscription"].ToString()),
+                        Int32.Parse(msdr["clt_idCleanway"].ToString()),
+                        Int32.Parse(msdr["clt_contactmail"].ToString()),
+                        Int32.Parse(msdr["clt_contactsms"].ToString()),
+                        Int32.Parse(msdr["clt_type"].ToString())
+                        );
+                    retour.Add(client);
+                }
+                msdr.Dispose();
+                return retour;
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données."));
+                return null;
+            }
+        }
+
         /* Selectionner un client à l'aide de l'id
          * @param addCommande : truepour ajouter les commandes dans l'objet client
          * @param cmd_addPaiement : Completer les commandes avec les paiements
