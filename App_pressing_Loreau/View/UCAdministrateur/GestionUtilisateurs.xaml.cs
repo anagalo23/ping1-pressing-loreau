@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using App_pressing_Loreau.ViewModel;
+
 namespace App_pressing_Loreau.View
 {
     /// <summary>
@@ -23,6 +25,7 @@ namespace App_pressing_Loreau.View
         public GestionUtilisateurs()
         {
             InitializeComponent();
+            DataContext = new GestionnUtilisateursVM();
         }
 
         public void btn_gest_utilisateur_supprimer_Click(Object sender, RoutedEventArgs e)

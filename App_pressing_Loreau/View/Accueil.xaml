@@ -12,8 +12,6 @@
         <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
     </Window.Resources>
 
-   
-
     <Grid Margin="10" >
         <Grid.RowDefinitions >
             <RowDefinition Height="355*"/>
@@ -32,7 +30,6 @@
                             <ColumnDefinition Width="100*"/>
                             <ColumnDefinition Width="100*"/>
                             <ColumnDefinition Width="100*"/>
-
 
                         </Grid.ColumnDefinitions>
                         <Button x:Name="btn_accueil_reception" Content="Reception" Grid.Column="0" Margin="5" Background="{Binding Btn_receptionColor}" Command="{Binding Btn_accueil_receptionClient}" Style="{StaticResource personalisationbuton}"  />

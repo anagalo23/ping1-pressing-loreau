@@ -349,9 +349,19 @@ namespace App_pressing_Loreau
         public void UtilisateurListe()
         {
             listeEmployer = (List<Employe>)EmployeDAO.selectEmployes();
-            for (int i = 0; i < listeEmployer.Count; i++)
+            if (listeEmployer != null)
             {
-                _listeUser.Add(new CategoryItem() { ButtonUserContent = listeEmployer[i].nom, ButtonUserTag = listeEmployer[i].id, ButtonUserBackground = Brushes.Teal });
+
+            
+            foreach (Employe em in listeEmployer)
+            {
+                _listeUser.Add(new CategoryItem() { ButtonUserContent = em.nom, ButtonUserTag = em.id, ButtonUserBackground = Brushes.Teal });
+            }
+            }
+            else
+            {
+                _listeUser.Add(new CategoryItem() { ButtonUserContent = "David", ButtonUserBackground = Brushes.Teal });
+
             }
 
 

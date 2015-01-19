@@ -146,6 +146,7 @@
     <Compile Include="ViewModel\ConvoyeurVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\StatistiquesVM.cs" />
     <Compile Include="ViewModel\VMCLientPro\NouveauClientProVM.cs" />
+    <Compile Include="ViewModel\VMCLientPro\UnClientPROVM.cs" />
     <Compile Include="ViewModel\VMFacture\FactureFinaleVM.cs" />
     <Compile Include="ViewModel\VMFacture\FactureVM.cs" />
     <Compile Include="ViewModel\VMImpression\ImpressionVM.cs" />

@@ -64,6 +64,9 @@
         <view:Articles/>
     </DataTemplate>
     
+    <DataTemplate DataType="{x:Type vm:UnClientPROVM}">
+        <view:UnClientPro/>
+    </DataTemplate>
     
     <!--Déclarations des données pour Facture-->
 
@@ -208,4 +211,13 @@
 
         </Style.Triggers>
     </Style>
+
+
+
+
+    <DataTemplate x:Key="departement">
+        <Button x:Name="button1" Width="115" Height="55" Content="{Binding ButtonContent}" Tag="{Binding ButtonTag}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.OnButtonClickCommand}"  Style="{StaticResource departementsStyles}"
+                    CommandParameter="{Binding ElementName=button1}"/>
+    </DataTemplate>
+    
 </ResourceDictionary>

@@ -18,6 +18,7 @@ namespace App_pressing_Loreau.ViewModel
         private String _label_paiement_prixTTC;
         private String _label_paiement_montant;
 
+        private int _txb_paiement_montantParmoyenPaiement;
         private int _txb_paiement_montantRemise;
         #endregion
 
@@ -76,6 +77,18 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
+        public int Txb_paiement_montantParMoyenPaiement
+        {
+            get { return _txb_paiement_montantParmoyenPaiement; }
+            set
+            {
+                if (value != _txb_paiement_montantParmoyenPaiement)
+                {
+                    _txb_paiement_montantParmoyenPaiement = value;
+                    OnPropertyChanged("Txb_paiement_montantParMoyenPaiement");
+                }
+            }
+        }
         public ICommand Btn_paiment_valider
         {
             get
