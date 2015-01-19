@@ -7,19 +7,32 @@
 
         <Style  TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="personalisationbuton">
             <Setter Property="Background" Value="Teal"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Focusable" Value="True"/> 
+            <Setter Property="Foreground" Value="Azure"/>
+            <Setter Property="Focusable" Value="True"/>
             <Setter Property="FontFamily" Value=" Arial"/>
             <Setter Property="FontSize" Value=" 25"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="15" Background="{TemplateBinding Background}"
+                        <Border CornerRadius="10" Background="{TemplateBinding Background}"
                                 BorderThickness="1">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
                             </ContentPresenter>
                         </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Beige" />
+                                <Setter Property="Foreground" Value="Black" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="BurlyWood" />
+                                <Setter Property="Foreground" Value="Black" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                        
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -29,8 +42,9 @@
 
         <Style  TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="personalisationbuton1">
             <Setter Property="Background" Value="Teal"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontFamily" Value=" Arial"/>
+            
             <Setter Property="FontSize" Value=" 20"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Template">
@@ -41,9 +55,54 @@
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
                             </ContentPresenter>
                         </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Beige" />
+                                <Setter Property="Foreground" Value="Black" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="BurlyWood" />
+                                <Setter Property="Foreground" Value="Black" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
+
             </Setter>
+        </Style>
+
+        <!-- button personnaliser sans background  -->
+
+        <Style  TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="ButtonSansBck">
+       
+        <Setter Property="FontFamily" Value=" Arial"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="15" Background="{TemplateBinding Background}"
+                                BorderThickness="1">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                        </ContentPresenter>
+                    </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Beige" />
+                                <Setter Property="Foreground" Value="Black" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="BurlyWood" />
+                                <Setter Property="Foreground" Value="Black" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+            </Setter.Value>
+        </Setter>
         </Style>
 
         <!--personnalisation des interfaces contenant des combobox de taille 20-->
@@ -94,8 +153,9 @@
 
         <!--Buton des departements et des articles  -->
         
-        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="departementArt">
+        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="departementsStyles">
             <Setter Property="Background" Value="Beige"/>
+            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="Template" >
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -104,21 +164,73 @@
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
                             </ContentPresenter>
                         </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="Red" />
+                                <Setter Property="Foreground" Value="Black" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
                 
             </Setter>
             
         </Style>
+        <!--Buton des articles  -->
+
+        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="ArticlesStyles">
+            <Setter Property="Background" Value="SkyBlue"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="5" Background="{TemplateBinding Background}"
+                                BorderThickness="1" BorderBrush="SeaGreen">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                            </ContentPresenter>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                   
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="Red" />
+                                <Setter Property="Foreground" Value="white" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+
+            </Setter>
+
+        </Style>
         <!--personnalisation des interfaces contenant des boutons de la page administration-->
 
         <Style  TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="butonpageadministration">
             <Setter Property="FontFamily" Value=" Arial"/>
+            <Setter Property="Background" Value="Linen"/>
+            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontSize" Value=" 34"/>
-            <Setter Property="Margin" Value="10,10,10,10"/>
+            <Setter Property="Margin" Value="10"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="BorderBrush" Value="Aqua"/>
-            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="15" Background="{TemplateBinding Background }" BorderBrush="Aqua"  BorderThickness="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                            </ContentPresenter>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="Red" />
+                                <Setter Property="Foreground" Value="white" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <!--personnalisation des interfaces contenant des boutons  de taille 27-->
@@ -140,6 +252,7 @@
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="FontWeight" Value="Normal"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
+            
         </Style>
 
         <!--personnalisation des interfaces contenant des labels de type semiBold et de taille 25-->
@@ -152,6 +265,8 @@
             <Setter Property="VerticalContentAlignment" Value="Center"/>
 
         </Style>
+
+
 
         <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}" x:Key="Utilisateur">
             <Setter Property="FontSize" Value="15"/>
@@ -192,7 +307,19 @@
             <Setter Property="FontSize" Value="30"/>
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Template" >
+                <Setter.Value>
+                    <ControlTemplate TargetType="Label">
+                        <Border CornerRadius="15" Background="{TemplateBinding Background}"
+                                BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                            </ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
+
 
 
     </Application.Resources>

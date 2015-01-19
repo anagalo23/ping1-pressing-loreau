@@ -1,5 +1,4 @@
-﻿using App_pressing_Loreau.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,25 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
 namespace App_pressing_Loreau.View
 {
     /// <summary>
-    /// Logique d'interaction pour NouvelleCommande.xaml
+    /// Logique d'interaction pour AdministrationArticlesDepartements.xaml
     /// </summary>
-    public partial class NouvelleCommande : UserControl
+    public partial class AdministrationArticlesDepartements : UserControl
     {
-        public NouvelleCommande()
+        public AdministrationArticlesDepartements()
         {
             InitializeComponent();
-            DataContext = new NouvelleCommandeVM();
         }
-
-        private void btn_nouvelleCommande_paiement_immediat_Click(object sender, RoutedEventArgs e)
-        {
-            dp.Children.Clear();
-            dp.Children.Add(new Paiement());
-        }
-
     }
 }

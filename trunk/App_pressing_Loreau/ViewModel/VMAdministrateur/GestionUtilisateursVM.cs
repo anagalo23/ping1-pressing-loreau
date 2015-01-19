@@ -72,6 +72,7 @@ namespace App_pressing_Loreau.ViewModel
         {
             get
             {
+                this._txb_Utilisateur_Name = null;
                
                 return  new RelayCommand(
                 p=>ajouterUser()); }

@@ -239,18 +239,16 @@ namespace App_pressing_Loreau.ViewModel
                     int x = 5, y = 5;
                     clickedbutton.Background = Brushes.Blue;
 
-                    for (int i = 0; i < articlesByDep.Count; i++)
+                    foreach (TypeArticle type in articlesByDep)
                     {
-                        if (x < 100) x = 150;
-                        else if(x<200) { x = 300; }
-                        else x=5;
-                      
-                           listedesArticles.Add(new CategoryItem() { ButtonArticlesContent = articlesByDep[i].nom,
-                               ButtonArticlesTag = articlesByDep[i].id, X =x , Y = y});
-                          
-                           y += 25;
-                    }
+                        if (x < 100) x = 190;
+                        else if (x < 200) { x = 400; }
+                        else x = 5;
 
+                        listedesArticles.Add(new CategoryItem() { ButtonArticlesContent = type.nom, ButtonArticlesTag = type.id, X = x, Y = y });
+
+                        y += 23;
+                    }
                     ListeArticles = listedesArticles;
                 }
             }

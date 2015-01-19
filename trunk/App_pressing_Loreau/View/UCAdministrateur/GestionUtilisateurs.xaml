@@ -23,8 +23,13 @@
                 <RowDefinition Height="3*"/>
 
             </Grid.RowDefinitions>
-
-            <Border Grid.Row="0" >
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+            
+            <Border Grid.Column="0" >
                 <ListBox  ScrollViewer.HorizontalScrollBarVisibility="Hidden" Cursor="Hand" Margin="5,10"  BorderThickness="0" Background="Transparent" ItemsSource="{Binding ListeUtilisateurs}"  TextOptions.TextHintingMode="Animated" >
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -34,6 +39,7 @@
                 </ListBox>
 
             </Border>
+            </Grid>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
@@ -43,7 +49,7 @@
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="Ajouter des utilisateurs" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
-
+            
                 <Border Margin="2,0" Grid.Column="1" BorderBrush="AliceBlue"  BorderThickness="2" CornerRadius="10"  >
 
 

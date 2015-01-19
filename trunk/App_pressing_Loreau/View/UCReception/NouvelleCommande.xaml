@@ -7,12 +7,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="740">
 
-    <UserControl.DataContext>
-        <vm:NouvelleCommandeVM />
-    </UserControl.DataContext>
+     
+ 
 
     <UserControl.Resources>
-        <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
+        <!--<ResourceDictionary Source="/Resources/AccueilResources.xaml"/>-->
+        <DataTemplate x:Key="departement">
+            <Button x:Name="button1" Width="115" Height="55" Content="{Binding ButtonContent}" Tag="{Binding ButtonTag}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.OnButtonClickCommand}"  Style="{StaticResource departementsStyles}"
+                    CommandParameter="{Binding ElementName=button1}"/>
+        </DataTemplate >
+
     </UserControl.Resources>
 
 
@@ -21,7 +25,6 @@
     <DockPanel x:Name="dp">
         <Grid>
             <Grid.ColumnDefinitions>
-
                 <ColumnDefinition Width="74*"/>
                 <ColumnDefinition Width="55*"/>
             </Grid.ColumnDefinitions>
@@ -42,8 +45,8 @@
 
                         <DockPanel Margin="2">
 
-                            <Border DockPanel.Dock="Top" Height="40">
-                                <ListBox  ScrollViewer.HorizontalScrollBarVisibility="Hidden" BorderThickness="0" Background="Transparent" ItemsSource="{Binding ListeDepartements}" ItemTemplate="{StaticResource departement}"  >
+                            <Border DockPanel.Dock="Top" Height="56">
+                                <ListBox  ScrollViewer.HorizontalScrollBarVisibility="Hidden" BorderThickness="0" Background="Transparent" ItemsSource="{Binding ListeDepartements}" ItemTemplate="{StaticResource departement}" Margin="0,0,0,-11"  >
                                     <ListBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <VirtualizingStackPanel Orientation="Horizontal"/>
@@ -52,7 +55,7 @@
                                 </ListBox>
                             </Border>
                             <!-- <ContentControl  Content="{Binding ContentCommande}"/>-->
-                            <ItemsControl x:Name="Collection" ItemsSource="{Binding  ListeArticles}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <ItemsControl x:Name="Collection" ItemsSource="{Binding  ListeArticles}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2,20,2,2">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
@@ -65,7 +68,7 @@
                                             <Border Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}">
                                                 <Grid>
 
-                                                    <Button x:Name="button1"  Width="120" Height="57" Margin="2" Content="{Binding ButtonArticlesContent}" Tag="{Binding ButtonArticlesTag}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ListesArticlesCommandes}"  Style="{StaticResource departementArt}" CommandParameter="{Binding ElementName=button1}" Background="Coral"/>
+                                                    <Button x:Name="button1"  Width="160" Height="62" Margin="2" Content="{Binding ButtonArticlesContent}" Tag="{Binding ButtonArticlesTag}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ListesArticlesCommandes}"  Style="{StaticResource ArticlesStyles}" CommandParameter="{Binding ElementName=button1}"/>
                                                 </Grid>
                                             </Border>
                                         </Canvas>
