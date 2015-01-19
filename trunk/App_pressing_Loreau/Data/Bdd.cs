@@ -82,6 +82,7 @@ namespace App_pressing_Loreau.Data
         //Client
         public static String insertClient = "INSERT INTO client(clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_idCleanway, clt_contactmail, clt_contactsms, clt_type) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         public static String seekClients = "SELECT clt_id, clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway, clt_contactmail, clt_contactsms, clt_type FROM client WHERE clt_type=0";
+        public static String selectProClient = "SELECT clt_id, clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway, clt_contactmail, clt_contactsms, clt_type FROM client WHERE clt_type=1";
         public static String selectClientById = "SELECT clt_id, clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway, clt_contactmail, clt_contactsms, clt_type FROM client WHERE clt_id=?";
         public static String updateClient = "UPDATE client SET clt_id=?,clt_type=?,clt_nom=?,clt_prenom=?,clt_contactmail=?,clt_contactsms=?,clt_fix=?,clt_mob=?,clt_adresse=?,clt_dateNaissance=?,clt_email=?,clt_idCleanway=? WHERE clt_id=?";
         public static String deleteClient = "DELETE FROM client WHERE clt_id=?";
