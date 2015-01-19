@@ -85,7 +85,7 @@
                         <Label Content="Résultat de la recherche" Style="{StaticResource  Titre}" Grid.Row="0" />
 
                         <Border Grid.Row="1">
-                            <ListBox x:Name="Collection" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Background="Transparent" ItemsSource="{Binding  ResultatRecherche_identificationClient}" >
+                            <ListBox x:Name="Collection" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Background="Transparent" ItemsSource="{Binding  ResultatRecherche_identificationClient}" BorderThickness="0"  >
                                 <ListBox.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <VirtualizingStackPanel Orientation="Vertical"/>

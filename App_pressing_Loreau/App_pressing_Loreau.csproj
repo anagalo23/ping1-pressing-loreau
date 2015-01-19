@@ -53,6 +53,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DynamicDataDisplay.Silverlight">
+      <HintPath>C:\Users\nagalo\Downloads\Compressed\DynamicDataDisplay.2.0.907\DynamicDataDisplay\DynamicDataDisplay.Silverlight.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.Prism.Composition">
       <HintPath>..\packages\Prism.Composition.5.0.0\lib\NET45\Microsoft.Practices.Prism.Composition.dll</HintPath>
     </Reference>
@@ -81,6 +84,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
@@ -149,6 +153,9 @@
     <Compile Include="ViewModel\VMRendu\RestitutionArticlesVM.cs" />
     <Compile Include="View\PaiementDeLaCommande.xaml.cs">
       <DependentUpon>PaiementDeLaCommande.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UCAdministrateur\AdministrationArticlesDepartements.xaml.cs">
+      <DependentUpon>AdministrationArticlesDepartements.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UCAdministrateur\AdministrationCaisse.xaml.cs">
       <DependentUpon>AdministrationCaisse.xaml</DependentUpon>
@@ -245,6 +252,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PaiementDeLaCommande.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UCAdministrateur\AdministrationArticlesDepartements.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

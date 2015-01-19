@@ -31,7 +31,7 @@ namespace App_pressing_Loreau
         private IPageViewModel _accessUserControl;
         private List<CategoryItem> _listeUser;
 
-        private Brush _color;
+
         private Brush _btn_receptionColor;
         private Brush _btn_renduColor;
         private Brush _btn_factureColor;
@@ -40,9 +40,10 @@ namespace App_pressing_Loreau
         private Brush _btn_administrateurColor;
         private Brush _btn_convoyeurColor;
 
+
+
         private List<Employe> listeEmployer;
 
-        //private bool thisColorButton;
         #endregion
 
         #region Constructeur
@@ -51,8 +52,6 @@ namespace App_pressing_Loreau
             _listeUser = new List<CategoryItem>();
 
             UtilisateurListe();
-            thisColorButton = new bool();
-            thisColorButton = false;
 
             Btn_receptionColor = Brushes.Teal;
             Btn_renduColor = Brushes.Teal;
@@ -62,7 +61,9 @@ namespace App_pressing_Loreau
             Btn_impressionColor = Brushes.Teal;
             Btn_administrateurColor = Brushes.Teal;
 
-            ButtonUserBackground = Brushes.Teal;
+
+
+
         }
 
         #endregion
@@ -72,10 +73,7 @@ namespace App_pressing_Loreau
 
         public IPageViewModel accessUserControl
         {
-            get
-            {
-                return _accessUserControl;
-            }
+            get { return _accessUserControl; }
             set
             {
                 if (_accessUserControl != value)
@@ -99,15 +97,16 @@ namespace App_pressing_Loreau
         ICommand lesUtilisateurs;
         public ICommand LesUtilisateurs
         {
-            get { 
-                //for(int i=) 
+            get
+            {
+                foreach (CategoryItem utilisateur in _listeUser)
+                {
+                    utilisateur.ButtonUserBackground = Brushes.Teal;
+                }
 
-                
-
-                
                 return lesUtilisateurs ?? (lesUtilisateurs = new RelayCommand(ClickSurUtilisateur));
             }
-            
+
         }
 
 
@@ -177,19 +176,8 @@ namespace App_pressing_Loreau
         }
 
 
-        public bool thisColorButton {get; set;}
 
-        public Brush ButtonUserBackground
-        {
-            
-            get { _color = thisColorButton ? Brushes.IndianRed : Brushes.Teal; return _color;}
-            set
-            {
-                this._color = value;
-                RaisePropertyChanged("ButtonUserBackground");
-            }
 
-        }
 
         #region Command bouton menu
         // Button permettant la redirection vers la page Identification Client 
@@ -233,6 +221,7 @@ namespace App_pressing_Loreau
         // Button permettant de revenir a la page preincipale 
         public ICommand Btn_accueil_image
         { get { return new RelayCommand(p => accueilVM()); } }
+
         #endregion
 
 
@@ -349,15 +338,11 @@ namespace App_pressing_Loreau
             if (clickedbutton != null)
             {
 
-             
-                clickedbutton.Background = ButtonUserBackground;
+
+                clickedbutton.Background = Brushes.Red;
 
             }
-            else 
-            {
-                thisColorButton = false;
 
-            }
 
 
         }
@@ -366,17 +351,30 @@ namespace App_pressing_Loreau
             listeEmployer = (List<Employe>)EmployeDAO.selectEmployes();
             for (int i = 0; i < listeEmployer.Count; i++)
             {
-                _listeUser.Add(new CategoryItem() { ButtonUserContent = listeEmployer[i].nom, ButtonUserTag = listeEmployer[i].id });
+                _listeUser.Add(new CategoryItem() { ButtonUserContent = listeEmployer[i].nom, ButtonUserTag = listeEmployer[i].id, ButtonUserBackground = Brushes.Teal });
             }
-               
-        
+
+
 
         }
         public void accueilVM()
         {
             listeEmployer = null;
-             listeEmployer = (List<Employe>)EmployeDAO.selectEmployes();
-                       
+            listeEmployer = (List<Employe>)EmployeDAO.selectEmployes();
+
+            Btn_receptionColor = Brushes.Teal;
+            Btn_renduColor = Brushes.Teal;
+            Btn_factureColor = Brushes.Teal;
+            Btn_clientProColor = Brushes.Teal;
+            Btn_convoyeurColor = Brushes.Teal;
+            Btn_impressionColor = Brushes.Teal;
+            Btn_administrateurColor = Brushes.Teal;
+
+            foreach (CategoryItem utilisateur in _listeUser)
+            {
+                utilisateur.ButtonUserBackground = Brushes.Teal;
+            }
+
             accessUserControl = null;
         }
         #endregion
@@ -390,6 +388,8 @@ namespace App_pressing_Loreau
             public string ButtonUserContent { get; set; }
 
             public int ButtonUserTag { get; set; }
+
+            public Brush ButtonUserBackground { get; set; }
 
         }
         #endregion

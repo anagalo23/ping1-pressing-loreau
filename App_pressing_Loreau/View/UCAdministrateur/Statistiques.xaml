@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           
              xmlns:local="clr-namespace:App_pressing_Loreau.ViewModel"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="740">
@@ -65,7 +66,32 @@
                             <RowDefinition Height="100*"/>
                             <RowDefinition Height="27*"/>
                         </Grid.RowDefinitions>
-                        <Rectangle Fill="#FFF4F4F5" Margin="35,10"  Stroke="Black" />
+                        <Border>
+                            
+                            
+                            <Grid x:Name="LayoutRoot" Background="White" Margin="5">
+                                 <!--D3 markup starts here-->
+
+                                <Path Stroke="Black" StrokeThickness="1">
+                                    <Path.Data>
+                                        <PathGeometry>
+                                            <PathGeometry.Figures>
+                                                <PathFigureCollection>
+                                                    <PathFigure StartPoint="0,100">
+                                                        <PathFigure.Segments>
+                                                            <PathSegmentCollection>
+                                                                <BezierSegment Point1="0,0"  Point2="200,200" Point3="300,100" />
+                                                            </PathSegmentCollection>
+                                                        </PathFigure.Segments>
+                                                    </PathFigure>
+                                                </PathFigureCollection>
+                                            </PathGeometry.Figures>
+                                        </PathGeometry>
+                                    </Path.Data>
+                                </Path>
+                            </Grid>
+
+                        </Border>
                         <Label Content="Graphes du CA par type d'article" Grid.Row="1" Style="{StaticResource vertilabel18}"/>
                     </Grid>
                 </Border>

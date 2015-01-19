@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App_pressing_Loreau.View;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -16,8 +17,8 @@ namespace App_pressing_Loreau
 
         private void btn_detailCommande_rendre_articles_selectionnes_Click(object sender, RoutedEventArgs e)
         {
-            //dp.Children.Clear();
-            //dp.Children.Add( new Paiement());
+            dp.Children.Clear();
+            dp.Children.Add( new Paiement());
         }
     }
 }

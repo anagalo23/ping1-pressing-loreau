@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="App_pressing_Loreau.View.AdministrationArticlesDepartements"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="740">
+    <DockPanel x:Name="dp">
+        <Border DockPanel.Dock="Top">
+            <Label Content="Ajouter d'un articles " Style="{StaticResource Titre}"/>
+        </Border>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" CornerRadius="10" Margin="5" >
+            <DockPanel  >
+                <Border DockPanel.Dock="Top">
+                    <Label Content="Ajouter un article"/>
+                </Border>
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="59*"/>
+                        <ColumnDefinition Width="81*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        
+                    </Grid.RowDefinitions>
+                    <Label Content="Type de l'article" Grid.Row="0" Grid.Column="0"/>
+                    <TextBox x:Name="txb_adminArtDep_typeArticles" Grid.Row="0" Grid.Column="1" Margin="3"/>
+                    <Label Content="PrixHT" Grid.Row="1" Grid.Column="0"/>
+
+                    <TextBox x:Name="txb_adminArtDep_prixHT" Margin="3"  Grid.Row="1" Grid.Column="1"/>
+                    <Label Content=" Choisir le departement" Grid.Row="2" Grid.Column="0" />
+                    <ComboBox  ItemsSource="{Binding ListeDepartementChoix}"  Grid.Row="2" Grid.Column="1" Margin="5"/>
+
+                        <Button  Content="Ajouter l'article" Grid.Row="3" Grid.Column="1" Margin="5"/>
+
+                    </Grid>
+                <!--<Border DockPanel.Dock="Bottom" Height="10" >
+                    <Button Content="rzedflksef"/>
+                </Border>-->
+            </DockPanel>
+            </Border>
+            
+        </Grid>
+    </DockPanel>
+</UserControl>

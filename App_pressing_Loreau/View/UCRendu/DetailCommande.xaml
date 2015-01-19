@@ -19,15 +19,15 @@
         <Border>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="39*"/>
-                    <ColumnDefinition Width="27*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="3*"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <Button x:Name="btn_detailCommande_rendre_articles_selectionnes" Grid.Row="1"  Content="Rendre les articles sélectionnés" Style="{StaticResource personalisationbuton}" Click="btn_detailCommande_rendre_articles_selectionnes_Click" />
+                    <Button x:Name="btn_detailCommande_rendre_articles_selectionnes" Grid.Row="1" Margin="20,4" Content="Rendre les articles sélectionnés" Style="{StaticResource ButtonSansBck}" Click="btn_detailCommande_rendre_articles_selectionnes_Click" />
                 </Grid>
                 <Border Margin="10" BorderBrush="AliceBlue" BorderThickness="2" Grid.Column="0">
                     <Grid>

@@ -18,13 +18,12 @@
                 <ColumnDefinition Width="*"/>
 
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Text="{Binding ArticlesName}" Margin="5" Width="100" />
+            <TextBlock Grid.Column="0" Text="{Binding ArticlesName}" Margin="5" Width="170" />
             <ComboBox Grid.Column="1" Margin="5" Text="{Binding Path=Txb_Articles_Commentaire}" Width="70"  MinHeight="20"/>
             <Image Grid.Column="2" Source="{Binding ElementName=_window,Path=DataContext.SelectedPhoto }" Margin="5" Width="60"  MinHeight="20"/>
             <Button Content="Charger la photo" Grid.Column="3" Command="{Binding Btn_Articles_ChargerPhoto}" Margin="5"  />
             
-            <Button  Margin="5" Grid.Column="4" Content="Supprimer" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path= DataContext.DeleteArticles}"
-                    CommandParameter="{Binding}" />
+            <Button  Margin="5" Grid.Column="4" Content="Supprimer" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path= DataContext.DeleteArticles}" CommandParameter="{Binding}" />
            
         </Grid>
 

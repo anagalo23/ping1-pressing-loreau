@@ -1,11 +1,7 @@
 ﻿<UserControl x:Class="App_pressing_Loreau.View.UnUtilisateur"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" >
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-   
-    
     <Grid>
         <Border BorderBrush="White" BorderThickness="1" CornerRadius="10">
             <Grid Height="30" Width="500">
@@ -16,8 +12,7 @@
                 </Grid.ColumnDefinitions>
                 <Label Content="{Binding NameUtilisateur}" Margin="1" Grid.Column="0"  Style="{StaticResource Utilisateur}"/>
 
-                <Button x:Name="btn_gest_utilisateur_supprimer" BorderBrush="White" Background="Transparent" Grid.Column="2" Margin="1" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path= DataContext.DeleteUtilisateurs}"
-                    CommandParameter="{Binding}" >
+                <Button x:Name="btn_gest_utilisateur_supprimer" BorderBrush="White" Background="Transparent" Grid.Column="2" Margin="1" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path= DataContext.DeleteUtilisateurs}" CommandParameter="{Binding}">
                     <Image Source="/Resources/pics/Admin1/logo_exit.png"/>
                 </Button>
 

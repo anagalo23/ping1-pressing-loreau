@@ -28,7 +28,7 @@ namespace App_pressing_Loreau.View
         public NouveauClient()
         {
             InitializeComponent();
-            //nv = new NouveauClientVM();
+           
         }
 
         private void btn_nouveauClient_valider_inscription_Click(object sender, RoutedEventArgs e)
