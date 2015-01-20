@@ -14,7 +14,7 @@ namespace App_pressing_Loreau.Model
         public String type { get; set; }
         public String message { get; set; }
         public String complement { get; set; }
-        public static String pattern_path = "I:\\PING\\App_pressing_loreau\\App_pressing_Loreau\\Resources\\PatternExcel\\LogPattern.xlsx";
+        public static String pattern_path = "C:\\Users\\syncrase\\Documents\\Visual Studio 2013\\Projects\\loreau_project\\App_pressing_Loreau\\Resources\\PatternExcel\\LogPattern.xlsx";
         private static Microsoft.Office.Interop.Excel.Application oXL;
         private static Microsoft.Office.Interop.Excel.Workbook mWorkBook;
         private static Microsoft.Office.Interop.Excel.Sheets mWorkSheets;
