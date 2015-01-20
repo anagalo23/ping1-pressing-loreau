@@ -44,6 +44,7 @@ namespace App_pressing_Loreau.ViewModel
         public void clientsPro()
         {
             ListeClientPro = new List<UnClientPROVM>();
+
             listedesclientproDTO = (List<Client>)ClientDAO.selectProClient();
             if (listedesclientproDTO != null)
             {

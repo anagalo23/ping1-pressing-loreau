@@ -42,9 +42,10 @@ namespace App_pressing_Loreau.ViewModel
 
 
         ChoixCommentaire choixcom = new ChoixCommentaire();
-        private ObservableCollection<ArticlesVM> _contentDetailCommande;
+        //private  ObservableCollection<ArticlesVM> _contentDetailCommande;
         private DelegateCommand<ArticlesVM> _deleteArticles;
 
+        //private static NouvelleCommandeVM singleton;
 
         private List<Article> lArticles;
 
@@ -64,6 +65,12 @@ namespace App_pressing_Loreau.ViewModel
 
             defileDepartementSuivante();
             prixTotal = 0;
+
+            for (int i = 0; i < ContentDetailCommande.Count; i++)
+            {
+                Label_NouvelleCommande_prixTotal += (ContentDetailCommande[i].article.HT);
+            }
+
         }
 
         #endregion
@@ -150,15 +157,21 @@ namespace App_pressing_Loreau.ViewModel
         {
             get
             {
-                return this._contentDetailCommande ??
-                    (this._contentDetailCommande = new ObservableCollection<ArticlesVM>());
+                //ClasseGlobale._contentDetailCommande
+                if (ClasseGlobale._contentDetailCommande == null)
+                {
+                    ClasseGlobale.initializeContentDetailCommande();
+                }
+                return ClasseGlobale._contentDetailCommande;
+                    //??
+                    //(ClasseGlobale._contentDetailCommande = new ObservableCollection<ArticlesVM>());
             }
 
             set
             {
                 if (value != null)
                 {
-                    this._contentDetailCommande = value;
+                    ClasseGlobale._contentDetailCommande = value;
                     OnPropertyChanged("ContentDetailCommande");
                 }
             }
@@ -191,6 +204,11 @@ namespace App_pressing_Loreau.ViewModel
 
         #region Méthodes
 
+
+        //public static NouvelleCommandeVM getContentDetailCommande()
+        //{
+        //    return singleton;
+        //}
 
         /**
          * Permet le défilement des départements 
@@ -268,6 +286,8 @@ namespace App_pressing_Loreau.ViewModel
             Button clickedbutton = button as Button;
 
             List<String> lstCb = new List<String>();
+
+            //*********************************** ATTENTION
             lstCb.Add("Sang");
             lstCb.Add("Huile");
             lstCb.Add("produit");
@@ -280,7 +300,7 @@ namespace App_pressing_Loreau.ViewModel
                 //String typeDelArticle = clickedbutton.Tag.ToString();
                 //Ajout de l'article à l'interface graphique
                 //article=typeArticleDTO;
-                this._contentDetailCommande.Add(new ArticlesVM()
+                ClasseGlobale._contentDetailCommande.Add(new ArticlesVM()
                 {
                     article = typeArticleDTO,
                     ArticlesName = typeArticleDTO.nom,
@@ -311,7 +331,7 @@ namespace App_pressing_Loreau.ViewModel
                 //    // Cette erreur ne devrait jamais arriver puisque les types d'articles sont constants et inscrits en BDD
                 //}
 
-                
+                Label_NouvelleCommande_prixTotal = 0;
                 for (int i = 0; i < ContentDetailCommande.Count; i++)
                 {
                     Label_NouvelleCommande_prixTotal += (ContentDetailCommande[i].article.HT);
@@ -326,9 +346,9 @@ namespace App_pressing_Loreau.ViewModel
 
         private void ExecuteDeleteArticles(ArticlesVM obj)
         {
-            if (this._contentDetailCommande.Contains(obj))
+            if (ClasseGlobale._contentDetailCommande.Contains(obj))
             {
-                this._contentDetailCommande.Remove(obj);
+                ClasseGlobale._contentDetailCommande.Remove(obj);
                 Label_NouvelleCommande_prixTotal -= obj.article.HT;
             }
         }
@@ -391,7 +411,7 @@ namespace App_pressing_Loreau.ViewModel
                 ArticleDAO.insertArticle(article);
             }
 
-            Bdd.deconnexion();
+            //Bdd.deconnexion();
         }
         #endregion
 

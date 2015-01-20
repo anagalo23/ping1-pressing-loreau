@@ -102,7 +102,7 @@ namespace App_pressing_Loreau.ViewModel
 
             place = (PlaceConvoyeur)PlaceConvoyeurDAO.selectConvoyeurById(Txb_Convoyeur_nbPlace);
             //ContenuConvoyeur = new List<string>();
-            ContenuConvoyeur=place.emplacement.ToString()+" et l' id est: " +place.id;
+            //ContenuConvoyeur=place.emplacement.ToString()+" et l' id est: " +place.id;
  
         }
         #endregion

@@ -385,6 +385,8 @@ namespace App_pressing_Loreau
                 utilisateur.ButtonUserBackground = Brushes.Teal;
             }
 
+            ClasseGlobale.initializeContentDetailCommande();
+
             accessUserControl = null;
         }
         #endregion

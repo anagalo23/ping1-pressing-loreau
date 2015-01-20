@@ -108,6 +108,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helper\ButtonNames.cs" />
+    <Compile Include="Helper\ClasseGlobale.cs" />
     <Compile Include="Helper\ConvertToImage.cs" />
     <Compile Include="Helper\IPageViewModel.cs" />
     <Compile Include="Model\LogExcel.cs" />
