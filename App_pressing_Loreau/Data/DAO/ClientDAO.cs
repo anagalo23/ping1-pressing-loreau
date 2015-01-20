@@ -49,10 +49,11 @@ namespace App_pressing_Loreau.Data.DAO
         //Selectionner l'ensemble des clients de la base de données a partir du nom, du prenom et/ou du numéro de telephone
         public static List<Client> seekClients(String nom, String prenom, String tel)
         {
+            List<Client> retour = new List<Client>();
             try
             {
                 //nom.ToLower();
-                List<Client> retour = new List<Client>();
+                //List<Client> retour = new List<Client>();
 
                 String sql = Bdd.seekClients;
 
@@ -112,13 +113,14 @@ namespace App_pressing_Loreau.Data.DAO
                     retour.Add(client);
                 }
                 msdr.Dispose();
-                return retour;
+                //return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données."));
                 return null;
             }
+            return retour;
         }
 
         //Selectionner l'ensemble des clients pro

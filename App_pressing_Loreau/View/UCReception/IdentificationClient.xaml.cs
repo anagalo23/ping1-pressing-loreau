@@ -12,7 +12,7 @@ namespace App_pressing_Loreau.View
     /// </summary>
     public partial class IdentificationClient : UserControl
     {
-        IdentificationClientVM clientVm = new IdentificationClientVM();
+        IdentificationClientVM clientVm;
 
         public IdentificationClient()
         {
