@@ -8,6 +8,7 @@ using App_pressing_Loreau.Helper;
 using App_pressing_Loreau.Data.DAO;
 using App_pressing_Loreau.Model.DTO;
 using System.Windows;
+using System.Collections.ObjectModel;
 
 namespace App_pressing_Loreau.ViewModel
 {
@@ -16,7 +17,7 @@ namespace App_pressing_Loreau.ViewModel
 
         #region Variables
 
-        private List<IdentificationClientData> _resultatRecherche_identificationClient;
+        private ObservableCollection<IdentificationClientData> _resultatRecherche_identificationClient;
 
         //Client client = ClasseGlobale.client;
         private String _txt_identificationClient_nom;
@@ -35,7 +36,7 @@ namespace App_pressing_Loreau.ViewModel
 
         public IdentificationClientVM()
         {
-            ResultatRecherche_identificationClient = new List<IdentificationClientData>();
+            ResultatRecherche_identificationClient = new ObservableCollection<IdentificationClientData>();
 
             //rechercheBDD();
         }
@@ -109,7 +110,7 @@ namespace App_pressing_Loreau.ViewModel
 
 
 
-        public List<IdentificationClientData> ResultatRecherche_identificationClient
+        public ObservableCollection<IdentificationClientData> ResultatRecherche_identificationClient
         {
             get { return _resultatRecherche_identificationClient; }
             set

@@ -83,7 +83,7 @@
                         </Grid.RowDefinitions>
 
                         <Label Content="Résultat de la recherche" Style="{StaticResource  Titre}" Grid.Row="0" />
-
+                        
                         <Border Grid.Row="1">
                             <ListBox x:Name="Collection" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Background="Transparent" ItemsSource="{Binding  ResultatRecherche_identificationClient}" BorderThickness="0"  >
                                 <ListBox.ItemsPanel>
@@ -94,7 +94,7 @@
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate DataType="{x:Type vm:IdentificationClientData}">
                                         <Grid>
-                                            <Button x:Name="button1"  Width="120" Height="30" Margin="2" Content="{Binding ButtonClientContent}" Tag="{Binding ButtonClientTag}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ResultatRechercheClient}"  Style="{StaticResource departementArt}" CommandParameter="{Binding ElementName=button1}" Background="Coral"/>
+                                            <Button x:Name="button1"  Width="120" Height="30" Margin="2" Content="{Binding ButtonClientContent}" Tag="{Binding ButtonClientTag}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ResultatRechercheClient}"   CommandParameter="{Binding ElementName=button1}" Background="Coral"/>
                                         </Grid>
                                           
                                     </DataTemplate>
