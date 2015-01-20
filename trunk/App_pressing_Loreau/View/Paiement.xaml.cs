@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App_pressing_Loreau.ViewModel;
+using System;
 using System.Windows.Controls;
 
 
@@ -12,6 +13,7 @@ namespace App_pressing_Loreau.View
         public Paiement()
         {
             InitializeComponent();
+            DataContext = new PaiementVM();
         }
 
     }

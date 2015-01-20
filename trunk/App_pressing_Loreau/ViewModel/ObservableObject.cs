@@ -75,6 +75,7 @@ namespace App_pressing_Loreau
                 handler(this, e);
             }
         }
+        
 
         #endregion // INotifyPropertyChanged Members
     }

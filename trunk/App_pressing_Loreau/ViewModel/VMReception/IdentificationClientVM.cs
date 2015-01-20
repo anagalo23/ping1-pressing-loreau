@@ -18,7 +18,7 @@ namespace App_pressing_Loreau.ViewModel
 
         private List<IdentificationClientData> _resultatRecherche_identificationClient;
 
-
+        //Client client = ClasseGlobale.client;
         private String _txt_identificationClient_nom;
         private String _txt_identificationClient_prenom;
         private String _txt_identificationClient_portable;
@@ -36,7 +36,7 @@ namespace App_pressing_Loreau.ViewModel
         public IdentificationClientVM()
         {
             ResultatRecherche_identificationClient = new List<IdentificationClientData>();
-         
+
             //rechercheBDD();
         }
 
@@ -133,16 +133,16 @@ namespace App_pressing_Loreau.ViewModel
 
         #region methodes
 
-        private void resultatName()
-        {
+        //private void resultatName()
+        //{
 
-            //ResultatRecherche_identificationClient = new List<IdentificationClientData>();
+        //    //ResultatRecherche_identificationClient = new List<IdentificationClientData>();
 
-            //ResultatRecherche_identificationClient.Add(new IdentificationClientData() { ButtonClientContent = "NAGALO", ButtonClientTag = 2 });
-            //ResultatRecherche_identificationClient.Add(new IdentificationClientData() { ButtonClientContent = "NAGALO", ButtonClientTag = 2 });
-            //ResultatRecherche_identificationClient.Add(new IdentificationClientData() { ButtonClientContent = "NAGALO", ButtonClientTag = 2 });
+        //    //ResultatRecherche_identificationClient.Add(new IdentificationClientData() { ButtonClientContent = "NAGALO", ButtonClientTag = 2 });
+        //    //ResultatRecherche_identificationClient.Add(new IdentificationClientData() { ButtonClientContent = "NAGALO", ButtonClientTag = 2 });
+        //    //ResultatRecherche_identificationClient.Add(new IdentificationClientData() { ButtonClientContent = "NAGALO", ButtonClientTag = 2 });
 
-        }
+        //}
 
         public void rechercheBDD()
         {

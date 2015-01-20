@@ -18,11 +18,11 @@ namespace App_pressing_Loreau.ViewModel
     {
         #region attributs
 
-        List<Employe> listEmploye = null;
+        //List<Employe> listEmploye = null;
         private List<UnUtilisateurVM> _listeUtilisateurs;
         private String _txb_Utilisateur_Name;
 
-        private List<Employe> listeEmployer;
+        private List<Employe> listeEmploye=null;
         private Employe employee;
 
         private DelegateCommand<UnUtilisateurVM> _deleteUtilisateurs;
@@ -35,7 +35,7 @@ namespace App_pressing_Loreau.ViewModel
         public GestionnUtilisateursVM()
         {
             ListeUtilisateurs = new List<UnUtilisateurVM>();
-            listeEmployer = (List<Employe>)EmployeDAO.selectEmployes();
+           
 
             ajouterUser();
    
@@ -96,15 +96,15 @@ namespace App_pressing_Loreau.ViewModel
 
         public void ajouterUser()
         {
-          
+            listeEmploye = (List<Employe>)EmployeDAO.selectEmployes();
             employee = new Employe(this._txb_Utilisateur_Name,this._txb_Utilisateur_Name);
             if (employee != null)
             {
                 EmployeDAO.insertEmploye(employee);
             }
-            for (int i = 0; i < listeEmployer.Count; i++)
+            foreach (Employe em in listeEmploye)
             {
-                ListeUtilisateurs.Add(new UnUtilisateurVM() { NameUtilisateur = listeEmployer[i].nom, idEmployee = listeEmployer[i].id });
+                ListeUtilisateurs.Add(new UnUtilisateurVM() { NameUtilisateur = em.nom, idEmployee = em.id });
             }
         }
     

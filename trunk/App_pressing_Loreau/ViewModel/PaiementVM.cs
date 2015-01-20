@@ -8,6 +8,7 @@ using App_pressing_Loreau.Helper;
 using App_pressing_Loreau.Data.DAO;
 using App_pressing_Loreau.Model.DTO;
 using System.Windows.Input;
+using System.Collections.ObjectModel;
 
 namespace App_pressing_Loreau.ViewModel
 {
@@ -22,6 +23,14 @@ namespace App_pressing_Loreau.ViewModel
         private int _txb_paiement_montantRemise;
         #endregion
 
+
+        #region constructeur
+
+        public PaiementVM()
+        {
+            lePaiement();
+        }
+        #endregion
 
         #region Properties and command
 
@@ -104,10 +113,22 @@ namespace App_pressing_Loreau.ViewModel
         #region Methods
         public void lePaiement()
         {
-            int x = 18;
-            Label_paiement_prixHT = x + "  €";
-            Label_paiement_prixTTC = x + x / 5 + "  €";
-            Label_paiement_montant = x + x / 5 - Txb_paiement_montantRemise + "  €";
+           // NouvelleCommandeVM nc = new NouvelleCommandeVM();
+
+            //ObservableCollection<ArticlesVM> cmdDetail = (ObservableCollection<ArticlesVM>)NouvelleCommandeVM.getContentDetailCommande().ContentDetailCommande;
+
+            ObservableCollection<ArticlesVM> cmdDetail = ClasseGlobale._contentDetailCommande;
+
+            float prixHT = 0;
+            float prixTTC = 0;
+            foreach (ArticlesVM art in cmdDetail)
+            {
+                prixHT += art.article.HT;
+                prixTTC += art.article.HT*(1 + art.article.TVA/100);
+            }
+            Label_paiement_prixHT = prixHT + "  €";
+            Label_paiement_prixTTC = prixTTC + "  €";
+            Label_paiement_montant = prixTTC - Txb_paiement_montantRemise + "  €";
         }
         #endregion
         public String Name

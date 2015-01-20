@@ -38,6 +38,7 @@ namespace App_pressing_Loreau.Model.DTO
         //Constructeurs
         public Client()
         {
+            adresse = new Model.Adresse();
         }
         public Client(string nom, string prenom, string telfix, string telmob, Adresse adresse, DateTime dateNaissance, string email, DateTime dateInscription, int idCleanWay, bool contactMail, bool contactSms, int type)
         {

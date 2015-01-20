@@ -7,9 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="740">
 
-    <UserControl.DataContext>
+    <!--<UserControl.DataContext>
         <vm:PaiementVM/>
-    </UserControl.DataContext>
+    </UserControl.DataContext>-->
     <UserControl.Resources>
         <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
     </UserControl.Resources>

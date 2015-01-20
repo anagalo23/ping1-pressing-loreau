@@ -51,7 +51,7 @@ namespace App_pressing_Loreau.Data.DAO
         {
             try
             {
-
+                //nom.ToLower();
                 List<Client> retour = new List<Client>();
 
                 String sql = Bdd.seekClients;
@@ -80,20 +80,34 @@ namespace App_pressing_Loreau.Data.DAO
                 Client client;
                 while (msdr.Read())
                 {
+                    int clt_id = Int32.Parse(msdr["clt_id"].ToString());
+                    string clt_nom= msdr["clt_nom"].ToString();
+                    string clt_prenom = msdr["clt_prenom"].ToString();
+                    string clt_fix = msdr["clt_fix"].ToString();
+                    string clt_mob = msdr["clt_mob"].ToString();
+                    Adresse clt_adresse = Adresse.Parse(msdr["clt_adresse"].ToString());
+                    DateTime clt_dateNaissance = DateTime.Parse(msdr["clt_dateNaissance"].ToString());
+                    string clt_email = msdr["clt_email"].ToString();
+                    DateTime clt_dateInscription = DateTime.Parse(msdr["clt_dateInscription"].ToString());
+                    int clt_idCleanway = Int32.Parse(msdr["clt_idCleanway"].ToString());
+                    int clt_contactmail = ((msdr["clt_contactmail"].ToString()).Equals("False")) ? 0 : 1;
+                    int clt_contactsms = ((msdr["clt_contactsms"].ToString()).Equals("False")) ? 0 : 1;
+                    int clt_type = ((msdr["clt_type"].ToString()).Equals("False")) ? 0 : 1;
+
                     client = new Client(
-                        Int32.Parse(msdr["clt_id"].ToString()),
-                        msdr["clt_nom"].ToString(),
-                        msdr["clt_prenom"].ToString(),
-                        msdr["clt_fix"].ToString(),
-                        msdr["clt_mob"].ToString(),
-                        Adresse.Parse(msdr["clt_adresse"].ToString()),
-                        DateTime.Parse(msdr["clt_dateNaissance"].ToString()),
-                        msdr["clt_email"].ToString(),
-                        DateTime.Parse(msdr["clt_dateInscription"].ToString()),
-                        Int32.Parse(msdr["clt_idCleanway"].ToString()),
-                        Int32.Parse(msdr["clt_contactmail"].ToString()),
-                        Int32.Parse(msdr["clt_contactsms"].ToString()),
-                        Int32.Parse(msdr["clt_type"].ToString())
+                        clt_id,
+                        clt_nom,
+                        clt_prenom,
+                        clt_fix,
+                        clt_mob,
+                        clt_adresse,
+                        clt_dateNaissance,
+                        clt_email,
+                        clt_dateInscription,
+                        clt_idCleanway,
+                        clt_contactmail,
+                        clt_contactsms,
+                        clt_type
                         );
                     retour.Add(client);
                 }
@@ -116,14 +130,13 @@ namespace App_pressing_Loreau.Data.DAO
                 List<Client> retour = new List<Client>();
 
                 //connection à la base de données  
-                MySqlCommand cmd = new MySqlCommand(Bdd.selectArticleById, Bdd.connexion());
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectProClient, Bdd.connexion());
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
                 Client client;
                 while (msdr.Read())
                 {
-                    
                     int contactmail = ((msdr["clt_contactmail"].ToString()).Equals("False")) ? 0 : 1 ;
                     int clt_contactsms = ((msdr["clt_contactsms"].ToString()).Equals("False")) ? 0 : 1;
                     int clt_type = ((msdr["clt_type"].ToString()).Equals("False")) ? 0 : 1;
@@ -149,8 +162,6 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                LogExcel log = new LogExcel("Error BDD", "Erreur dans la recherche d'un client Pro", Ex.Message);
-                log.ajouterLog();
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données."));
                 return null;
             }
