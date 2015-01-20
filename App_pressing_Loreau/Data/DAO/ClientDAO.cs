@@ -116,14 +116,14 @@ namespace App_pressing_Loreau.Data.DAO
                 List<Client> retour = new List<Client>();
 
                 //connection à la base de données  
-                MySqlCommand cmd = new MySqlCommand(Bdd.selectProClient, Bdd.connexion());
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectArticleById, Bdd.connexion());
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
                 Client client;
                 while (msdr.Read())
                 {
-                    String test31 = msdr["clt_contactmail"].ToString();
+                    
                     int contactmail = ((msdr["clt_contactmail"].ToString()).Equals("False")) ? 0 : 1 ;
                     int clt_contactsms = ((msdr["clt_contactsms"].ToString()).Equals("False")) ? 0 : 1;
                     int clt_type = ((msdr["clt_type"].ToString()).Equals("False")) ? 0 : 1;
@@ -149,6 +149,8 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
+                LogExcel log = new LogExcel("Error BDD", "Erreur dans la recherche d'un client Pro", Ex.Message);
+                log.ajouterLog();
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données."));
                 return null;
             }
