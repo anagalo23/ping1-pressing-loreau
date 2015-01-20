@@ -21,12 +21,14 @@ namespace App_pressing_Loreau.Data.DAO
                 MySqlCommand cmd = new MySqlCommand(Bdd.insertClient, Bdd.connexion());
 
                 //ajout des parametres
+                DateTime dateNaissance = (client.dateNaissance != null) ? new DateTime(0001, 01, 01) : client.dateNaissance;
+
                 cmd.Parameters.AddWithValue("nom", client.nom);
                 cmd.Parameters.AddWithValue("prenom", client.prenom);
                 cmd.Parameters.AddWithValue("telfixe", client.telfix);
                 cmd.Parameters.AddWithValue("telport", client.telmob);
                 cmd.Parameters.AddWithValue("adresse", client.adresse.giveAdresse());
-                cmd.Parameters.AddWithValue("dateNaissance", client.dateNaissance);
+                cmd.Parameters.AddWithValue("dateNaissance", dateNaissance);
                 cmd.Parameters.AddWithValue("email", client.email);
                 cmd.Parameters.AddWithValue("idCleanWay", client.idCleanWay);
                 cmd.Parameters.AddWithValue("contactMail", client.contactMail);
@@ -51,7 +53,7 @@ namespace App_pressing_Loreau.Data.DAO
             {
 
                 List<Client> retour = new List<Client>();
-                
+
                 String sql = Bdd.seekClients;
 
                 #region complete la requete en fonction de la recherche voulue
@@ -65,8 +67,8 @@ namespace App_pressing_Loreau.Data.DAO
                 }
                 if (tel != null)
                 {
-                    sql = String.Format("{0}{1}{2}{3}", sql, " AND (clt_fix LIKE '%", tel , "%' OR clt_mob LIKE '%" , tel , "%')");
-                    
+                    sql = String.Format("{0}{1}{2}{3}", sql, " AND (clt_fix LIKE '%", tel, "%' OR clt_mob LIKE '%", tel, "%')");
+
                 }
                 #endregion
 
@@ -121,6 +123,11 @@ namespace App_pressing_Loreau.Data.DAO
                 Client client;
                 while (msdr.Read())
                 {
+                    String test31 = msdr["clt_contactmail"].ToString();
+                    int contactmail = ((msdr["clt_contactmail"].ToString()).Equals("False")) ? 0 : 1 ;
+                    int clt_contactsms = ((msdr["clt_contactsms"].ToString()).Equals("False")) ? 0 : 1;
+                    int clt_type = ((msdr["clt_type"].ToString()).Equals("False")) ? 0 : 1;
+
                     client = new Client(
                         Int32.Parse(msdr["clt_id"].ToString()),
                         msdr["clt_nom"].ToString(),
@@ -132,10 +139,9 @@ namespace App_pressing_Loreau.Data.DAO
                         msdr["clt_email"].ToString(),
                         DateTime.Parse(msdr["clt_dateInscription"].ToString()),
                         Int32.Parse(msdr["clt_idCleanway"].ToString()),
-                        Int32.Parse(msdr["clt_contactmail"].ToString()),
-                        Int32.Parse(msdr["clt_contactsms"].ToString()),
-                        Int32.Parse(msdr["clt_type"].ToString())
-                        );
+                        contactmail,
+                        clt_contactsms,
+                        clt_type);
                     retour.Add(client);
                 }
                 msdr.Dispose();
@@ -158,7 +164,7 @@ namespace App_pressing_Loreau.Data.DAO
             try
             {
                 Client retour = new Client();
-                
+
                 //connection à la base de données  
                 MySqlCommand cmd = new MySqlCommand(Bdd.selectClientById, Bdd.connexion());
 
@@ -189,7 +195,7 @@ namespace App_pressing_Loreau.Data.DAO
                 msdr.Dispose();
 
                 #region ajout des commandes
-                if(addCommandes)
+                if (addCommandes)
                 {
                     // Attention ! dernier parametre obligatoirement en false afin de ne pas boucler.
                     retour.listCommandes = CommandeDAO.selectCommandesByClient(retour.id, cmd_addPaiement, cmd_addArticles, false);
@@ -228,7 +234,7 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("idCleanWay", client.idCleanWay);
                 cmd.Parameters.AddWithValue("id", client.id);
 
-                
+
 
                 //Execute la commande
                 return cmd.ExecuteNonQuery();
