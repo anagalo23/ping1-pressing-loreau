@@ -17,7 +17,7 @@ namespace App_pressing_Loreau.ViewModel
 
         #region Variables
 
-        private ObservableCollection<IdentificationClientData> _resultatRecherche_identificationClient;
+        private List<IdentificationClientData> _resultatRecherche_identificationClient;
 
         //Client client = ClasseGlobale.client;
         private String _txt_identificationClient_nom;
@@ -25,6 +25,7 @@ namespace App_pressing_Loreau.ViewModel
         private String _txt_identificationClient_portable;
         private String _txt_identificationClient_adresse;
         private String _txt_identificationClient_date_naissance;
+
 
 
         #endregion
@@ -36,9 +37,8 @@ namespace App_pressing_Loreau.ViewModel
 
         public IdentificationClientVM()
         {
-            ResultatRecherche_identificationClient = new ObservableCollection<IdentificationClientData>();
+            rechercheBDD();
 
-            //rechercheBDD();
         }
 
         #region Properties
@@ -108,9 +108,8 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-
-
-        public ObservableCollection<IdentificationClientData> ResultatRecherche_identificationClient
+       
+        public List<IdentificationClientData> ResultatRecherche_identificationClient
         {
             get { return _resultatRecherche_identificationClient; }
             set
@@ -149,6 +148,8 @@ namespace App_pressing_Loreau.ViewModel
         {
             //On recherche dans la bdd en fonction des champs que l'utilisateur à entré
             Fields fields = AutoComplete.getFields();
+            ResultatRecherche_identificationClient = new List<IdentificationClientData>();
+
             List<Client> resultat = ClientDAO.seekClients(fields.nom, fields.prenom, fields.portable);
 
             //MessageBox.Show(fields.nom);
@@ -157,7 +158,7 @@ namespace App_pressing_Loreau.ViewModel
             {
                 foreach (Client clt in resultat)
                 {
-                    ResultatRecherche_identificationClient.Add(new IdentificationClientData() { ButtonClientContent = clt.nom, ButtonClientTag = clt.id });
+                    ResultatRecherche_identificationClient.Add(new IdentificationClientData() { Label_idenClient_nom = clt.nom, ButtonClientTag = clt.id, Label_idenClient_prenom=clt.prenom });
                 }
             }
             else

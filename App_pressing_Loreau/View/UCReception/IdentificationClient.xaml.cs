@@ -17,6 +17,7 @@ namespace App_pressing_Loreau.View
         public IdentificationClient()
         {
             InitializeComponent();
+            DataContext = new IdentificationClientVM();
             clientVm = new IdentificationClientVM();
         }
 
