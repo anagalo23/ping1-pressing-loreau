@@ -18,7 +18,7 @@ namespace App_pressing_Loreau.Model
 
         public string giveAdresse()
         {
-            return String.Format("{0}/{1}/{2}/{3}/{4}", numero, rue, codePostal, ville, complement);
+            return String.Format("{0}\\{1}\\{2}\\{3}\\{4}", numero, rue, codePostal, ville, complement);
         }
 
         public static Adresse Parse(string adresse)
