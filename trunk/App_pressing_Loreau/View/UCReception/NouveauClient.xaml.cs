@@ -24,11 +24,11 @@ namespace App_pressing_Loreau.View
     {
         NouveauClientVM nv;
 
-        public int parameter {get; set;}
+        //public int parameter {get; set;}
         public NouveauClient()
         {
             InitializeComponent();
-           
+            nv = (NouveauClientVM) (DataContext = new NouveauClientVM());
         }
 
         private void btn_nouveauClient_valider_inscription_Click(object sender, RoutedEventArgs e)
@@ -50,7 +50,8 @@ namespace App_pressing_Loreau.View
 
         private void btn_nouveauClient_enregistrer_Click(object sender, RoutedEventArgs e)
         {  
-            nv.enregisterClient();
+            //nv.enregisterClient();
+            //DataContext.enregisterClient();
             btn_nouveauClient_enregistrer.Background = Brushes.Teal;
         }
 

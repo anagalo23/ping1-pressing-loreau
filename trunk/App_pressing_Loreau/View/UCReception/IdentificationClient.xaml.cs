@@ -26,6 +26,7 @@ namespace App_pressing_Loreau.View
         {
             dp.Children.Clear();
             dp.Children.Add(new NouveauClient());
+            //MessageBox.Show("Salut");
         }
 
         private void btn_identClient_nouvelle_commande_Click(object sender, RoutedEventArgs e)
