@@ -111,7 +111,18 @@ namespace App_pressing_Loreau.ViewModel
 
         public int Txb_nouveauClient_numero
         {
-            get { return Int32.Parse(client.adresse.numero); }
+            get 
+            {
+                try
+                {
+                    return Int32.Parse(client.adresse.numero);
+                }
+                catch (Exception e)
+                {
+                    return 0;
+                }
+                 
+            }
             set
             {
                 if (value != Int32.Parse(client.adresse.numero))
@@ -224,6 +235,7 @@ namespace App_pressing_Loreau.ViewModel
                     p=> Txb_nouveauClient_nom!=null & Txb_nouveauClient_prenom!=null);
             }
         }
+
         #endregion
 
 

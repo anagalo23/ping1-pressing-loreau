@@ -121,14 +121,22 @@ namespace App_pressing_Loreau.ViewModel
 
             float prixHT = 0;
             float prixTTC = 0;
-            foreach (ArticlesVM art in cmdDetail)
+            try
             {
-                prixHT += art.article.HT;
-                prixTTC += art.article.HT*(1 + art.article.TVA/100);
+                foreach (ArticlesVM art in cmdDetail)
+                {
+                    prixHT += art.article.HT;
+                    prixTTC += art.article.HT * (1 + art.article.TVA / 100);
+                }
+                Label_paiement_prixHT = prixHT + "  €";
+                Label_paiement_prixTTC = prixTTC + "  €";
+                Label_paiement_montant = prixTTC - Txb_paiement_montantRemise + "  €";
             }
-            Label_paiement_prixHT = prixHT + "  €";
-            Label_paiement_prixTTC = prixTTC + "  €";
-            Label_paiement_montant = prixTTC - Txb_paiement_montantRemise + "  €";
+            catch (Exception e)
+            {
+                //Inscription en log
+            }
+            
         }
         #endregion
         public String Name
