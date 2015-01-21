@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace App_pressing_Loreau.Model
         private static Microsoft.Office.Interop.Excel.Application oXL;
         private static Microsoft.Office.Interop.Excel.Workbook mWorkBook;
         private static Microsoft.Office.Interop.Excel.Sheets mWorkSheets;
-        private static Microsoft.Office.Interop.Excel.Worksheet mWSheet1;
+        private static Microsoft.Office.Interop.Excel.Worksheet mWSheet;
 
         #endregion
 
@@ -33,34 +34,49 @@ namespace App_pressing_Loreau.Model
 
         public void ajouterLog()
         {
-            int index = 2;
+            int index = 3;
             int logCount;
 
-            //open the file
-            oXL = new Microsoft.Office.Interop.Excel.Application();
-            mWorkBook = oXL.Workbooks.Open(pattern_path + ".xlsx", 0, false, 5, "", "", false, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "", true, false, 0, true, false, false);
-            mWorkSheets = mWorkBook.Worksheets;
-            mWSheet1 = (Microsoft.Office.Interop.Excel.Worksheet)mWorkSheets.get_Item("Feuil1");
-            logCount = (mWSheet1.Cells[2, 1].Value == null) ? 0 : mWSheet1.Cells[2, 1].Value;
+            Application xlApp;
+            Workbook xlWorkBook;
+            Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
 
-            //add values
-            mWSheet1.Cells[logCount + index, 1].value = String.Format("{0:d/M/yyyy HH:mm:ss}", date);
-            mWSheet1.Cells[logCount + index, 2].value = type;
-            mWSheet1.Cells[logCount + index, 3].value = message;
-            mWSheet1.Cells[logCount + index, 4].value = complement;
-            mWSheet1.Cells[2, 1].value = logCount + 1;
+            xlApp = new Application();
+            xlWorkBook = xlApp.Workbooks.Open(pattern_path + ".xlsx", 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+            xlWorkSheet = (Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
+            logCount = (int) xlWorkSheet.Cells[1, 2].Value;
+            //mWSheet.Cells[1, index + logCount].value = String.Format("{0:d/M/yyyy HH:mm:ss}", date);
+            mWSheet.Cells[2, index + logCount] = type+"";
+            mWSheet.Cells[3, index + logCount] = message;
+            mWSheet.Cells[4, index + logCount] = complement;
+            mWSheet.Cells[1, index + logCount].value = logCount + 1;
 
-            //Save and close the file
-            mWorkBook.SaveAs("pattern_path", Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing,
-            false, false, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange,
-            Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-            mWorkBook.Close(); 
-            mWSheet1 = null;
-            mWorkBook = null;
-            oXL.Quit();
+            xlWorkBook.Close(true, misValue, misValue);
+
+            xlApp.Quit();
+            releaseObject(xlWorkSheet);
+            releaseObject(xlWorkBook);
+            releaseObject(xlApp);
         }
 
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+            }
+            finally
+            {
+                GC.Collect();
+            }
+        }
         #endregion
     }
 }

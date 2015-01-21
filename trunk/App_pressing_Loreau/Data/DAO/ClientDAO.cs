@@ -132,7 +132,7 @@ namespace App_pressing_Loreau.Data.DAO
                 List<Client> retour = new List<Client>();
 
                 //connection à la base de données  
-                MySqlCommand cmd = new MySqlCommand(Bdd.selectProClient, Bdd.connexion());
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectArticleById, Bdd.connexion());
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
@@ -164,6 +164,8 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
+                LogExcel log = new LogExcel("bdfvhk", "djsfbhh", "jhfsd");
+                log.ajouterLog();
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données."));
                 return null;
             }
