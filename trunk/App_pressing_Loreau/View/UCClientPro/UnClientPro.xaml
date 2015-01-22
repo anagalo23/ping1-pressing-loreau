@@ -14,11 +14,11 @@
 
         <Label Content="{Binding NombreCommande_clientPro, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="5"/>
         
-        <Button  Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path= DataContext.DetailCommandeCouranteClientPro}" Grid.Column="2" Margin="5">
+        <Button  Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path= DataContext.DetailCommandeCouranteClientPro}" Grid.Column="2" Margin="5" CommandParameter="{Binding ElementName=Button1}">
             <TextBlock>Voir le detail de la <LineBreak/> commande courante </TextBlock>
         </Button>
-        
-        <Button Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path= DataContext.DetailToutesLesCommandesClientPro}" Grid.Column="3" Margin="5">
+
+            <Button Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path= DataContext.DetailToutesLesCommandesClientPro}" Grid.Column="3" Margin="5" CommandParameter="{Binding ElementName=Button1}">
             <TextBlock> voir le detail de  <LineBreak/> toutes les commandes</TextBlock>
         </Button>
     </Grid>

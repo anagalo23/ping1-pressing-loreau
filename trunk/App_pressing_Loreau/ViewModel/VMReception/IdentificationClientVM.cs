@@ -37,7 +37,7 @@ namespace App_pressing_Loreau.ViewModel
 
         public IdentificationClientVM()
         {
-            rechercheBDD();
+            //rechercheBDD();
 
         }
 
@@ -108,7 +108,11 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-       
+
+        public ICommand Btn_idenClient_recherche
+        {
+            get { return new RelayCommand(p => rechercheBDD()); }
+        }
         public List<IdentificationClientData> ResultatRecherche_identificationClient
         {
             get { return _resultatRecherche_identificationClient; }

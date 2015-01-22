@@ -38,7 +38,7 @@ namespace App_pressing_Loreau.ViewModel
         private TypeArticle typeArticleDTO = null;
 
         private float _label_NouvelleCommande_prixTotal;
-        public float prixTotal { get; private set;}
+        public float prixTotal { get; private set; }
 
 
         ChoixCommentaire choixcom = new ChoixCommentaire();
@@ -63,7 +63,8 @@ namespace App_pressing_Loreau.ViewModel
 
             lArticles = new List<Article>();
 
-            defileDepartementSuivante();
+            defileDepartementPrecedente();
+            deselectButtons();
             prixTotal = 0;
 
             for (int i = 0; i < ContentDetailCommande.Count; i++)
@@ -92,15 +93,21 @@ namespace App_pressing_Loreau.ViewModel
 
 
         public ICommand CommandeSuivante
-        { get { return new RelayCommand(p => defileDepartementSuivante(),
-            p => ListeDepartements.Count!=5);
-        }
+        {
+            get
+            {
+                return new RelayCommand(p => defileDepartementSuivante(),
+                    p => ListeDepartements.Count != 4);
+            }
         }
 
         public ICommand CommandePrecedente
-        { get { return new RelayCommand(p => defileDepartementPrecedente(),
-            p => ListeDepartements.Count!=4);
-        }
+        {
+            get
+            {
+                return new RelayCommand(p => defileDepartementPrecedente(),
+                    p => ListeDepartements.Count != 5);
+            }
         }
 
         //Ajouter un article a la commande 
@@ -148,7 +155,7 @@ namespace App_pressing_Loreau.ViewModel
             {
                 if (value != _label_NouvelleCommande_prixTotal)
                 {
-                     _label_NouvelleCommande_prixTotal=value;
+                    _label_NouvelleCommande_prixTotal = value;
                     OnPropertyChanged("Label_NouvelleCommande_prixTotal");
                 }
             }
@@ -163,8 +170,8 @@ namespace App_pressing_Loreau.ViewModel
                     ClasseGlobale.initializeContentDetailCommande();
                 }
                 return ClasseGlobale._contentDetailCommande;
-                    //??
-                    //(ClasseGlobale._contentDetailCommande = new ObservableCollection<ArticlesVM>());
+                //??
+                //(ClasseGlobale._contentDetailCommande = new ObservableCollection<ArticlesVM>());
             }
 
             set
@@ -215,30 +222,31 @@ namespace App_pressing_Loreau.ViewModel
          **/
 
 
-        public void defileDepartementSuivante()
+        public void defileDepartementPrecedente()
         {
             ListeDepartements = new List<CategoryItem>();
             listeDepartementDTO = (List<Departement>)DepartementDAO.selectDepartements();
 
-           
-                if (listeDepartementDTO != null)
-                {
-                    for (int i = 0; i < 5; i++)
-                        ListeDepartements.Add(new CategoryItem() { ButtonContent = listeDepartementDTO[i].nom, ButtonTag = listeDepartementDTO[i].id });   
-                }
-            
+
+            if (listeDepartementDTO != null)
+            {
+                for (int i = 0; i < 5; i++)
+                    ListeDepartements.Add(new CategoryItem() { ButtonContent = listeDepartementDTO[i].nom, ButtonTag = listeDepartementDTO[i].id });
+            }
+
         }
-        public void defileDepartementPrecedente()
+       
+        public void defileDepartementSuivante()
         {
-             ListeDepartements = new List<CategoryItem>();
+            ListeDepartements = new List<CategoryItem>();
 
-                if (listeDepartementDTO != null)
-                {
+            if (listeDepartementDTO != null)
+            {
 
-                    for (int i = 5; i < listeDepartementDTO.Count; i++)
-                        ListeDepartements.Add(new CategoryItem() { ButtonContent = listeDepartementDTO[i].nom, ButtonTag = listeDepartementDTO[i].id });
-                }
-     
+                for (int i = 5; i < listeDepartementDTO.Count; i++)
+                    ListeDepartements.Add(new CategoryItem() { ButtonContent = listeDepartementDTO[i].nom, ButtonTag = listeDepartementDTO[i].id });
+            }
+
         }
 
         /**
@@ -250,23 +258,25 @@ namespace App_pressing_Loreau.ViewModel
             List<CategoryItem> listedesArticles = new List<CategoryItem>();
             articlesByDep = new List<TypeArticle>();
             articlesByDep = (List<TypeArticle>)TypeArticleDAO.selectTypeByDepId(Int32.Parse(clickedbutton.Tag.ToString()));
-
+            
             if (articlesByDep.Count > 0)
             {
                 if (clickedbutton != null)
                 {
-                    int x = 5, y = 5;
+                    int x = 15, y = 5;
+                    deselectButtons();
                     clickedbutton.Background = Brushes.Blue;
 
                     foreach (TypeArticle type in articlesByDep)
                     {
-                        if (x < 100) x = 190;
-                        else if (x < 200) { x = 400; }
-                        else x = 5;
-
                         listedesArticles.Add(new CategoryItem() { ButtonArticlesContent = type.nom, ButtonArticlesTag = type.id, X = x, Y = y });
-
-                        y += 23;
+                        if (x < 16) { x = 220; }
+                        else if (x < 221) { x = 425; }
+                        else if (x > 424)
+                        {
+                            x = 15;
+                            y += 70;
+                        }
                     }
                     ListeArticles = listedesArticles;
                 }
@@ -280,6 +290,14 @@ namespace App_pressing_Loreau.ViewModel
 
         }
 
+        /*Permet de deselectioner les boutons*/
+        public void deselectButtons()
+        {
+            foreach (CategoryItem ci in _listeDepartement)
+            {
+                ci.ButtonDepBackground = Brushes.White;
+            }
+        }
 
         public void AjouterArticles(object button)
         {
@@ -291,7 +309,7 @@ namespace App_pressing_Loreau.ViewModel
             lstCb.Add("Sang");
             lstCb.Add("Huile");
             lstCb.Add("produit");
-            lstCb.Add("Soude" );
+            lstCb.Add("Soude");
 
             typeArticleDTO = (TypeArticle)TypeArticleDAO.selectTypesById(Int32.Parse(clickedbutton.Tag.ToString()));
 
@@ -307,7 +325,7 @@ namespace App_pressing_Loreau.ViewModel
                     Cbb_Articles_Commentaire = lstCb
                 });
 
-                
+
                 //Ajout du même article à la liste d'article locale
                 //TypeArticle type = TypeArticleDAO.getTypeObjectByName(typeDelArticle);
                 //if (type != null)
@@ -336,11 +354,11 @@ namespace App_pressing_Loreau.ViewModel
                 {
                     Label_NouvelleCommande_prixTotal += (ContentDetailCommande[i].article.HT);
                 }
-               
+
 
             }
-          
-            
+
+
         }
 
 
@@ -422,12 +440,13 @@ namespace App_pressing_Loreau.ViewModel
             public string ButtonContent { get; set; }
             public string ButtonArticlesContent { get; set; }
 
+            public Brush ButtonDepBackground { get; set; }
             public int ButtonTag { get; set; }
             public int ButtonArticlesTag { get; set; }
 
             public int X { get; set; }
             public int Y { get; set; }
-         
+
 
         }
 

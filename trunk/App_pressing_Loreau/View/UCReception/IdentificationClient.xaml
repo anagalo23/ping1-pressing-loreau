@@ -58,13 +58,16 @@
                             <TextBox x:Name="txb_identificationClient_portable" Grid.Row="2" Grid.Column="1" Margin="10,4,13,4" 
                                      Text="{Binding Path=Txb_identificationClient_portable, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}" TextChanged="txb_identificationClient_portable_TextChanged"/>
                             
-                            <Label  Content="Adresse" Grid.Row="3" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
+                            <!--<Label  Content="Adresse" Grid.Row="3" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                             <TextBox x:Name="txb_identificationClient_adresse" Grid.Row="3" Grid.Column="1" Margin="10,4,13,4" 
-                                     Text="{Binding Path=Txb_identificationClient_adresse, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}" TextChanged="txb_identificationClient_adresse_TextChanged"/>
-                            <Label Content="Cleanway" Grid.Row="4" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
+                                     Text="{Binding Path=Txb_identificationClient_adresse, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}" TextChanged="txb_identificationClient_adresse_TextChanged"/>-->
+                            <Label Content="Id cleanway" Grid.Row="3" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                             
-                            <TextBox x:Name="txb_identificationClient_date_naissance" Grid.Row="4" Grid.Column="1" 
+                            <TextBox x:Name="txb_identificationClient_date_naissance" Grid.Row="3" Grid.Column="1" 
                                      Text="{Binding Path=Txb_identificationClient_date_naissance, UpdateSourceTrigger=PropertyChanged}" Margin="10,4,13,4" Style="{StaticResource vertiTextBox}" TextChanged="txb_identificationClient_date_naissance_TextChanged"/>
+                            <Button  Grid.Row="4" Grid.Column="1" Margin="30,5" BorderThickness="0" Background="Transparent" Command="{Binding Btn_idenClient_recherche}">
+                                <Image Source="/Resources/pics/Factures/loupederecherche.png"/>
+                            </Button>
 
                         </Grid>
                         <Button x:Name="btn_identClient_nouveau_client" Content="Nouveau client" Grid.Row="2" Margin="40,5" 
