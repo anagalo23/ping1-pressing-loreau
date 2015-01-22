@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="App_pressing_Loreau.View.AdministrationClientPro"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <DockPanel x:Name="dp">
+        <Grid Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Button x:Name="btn_administrationClientPro_nouvelleCommande" Content="Nouvelle Commande" Grid.Row="2" Margin="5" Style="{StaticResource personalisationbuton1}" Click="btn_administrationClientPro_nouvelleCommande_Click"/>
+
+                <Button x:Name="btn_administrationClientPro_retour" Content="Retour" Grid.Row="3" Margin="4" Style="{StaticResource personalisationbuton1}" Click="btn_administrationClientPro_retour_Click"  />
+
+            </Grid>
+        </Grid>
+    </DockPanel>
+</UserControl>

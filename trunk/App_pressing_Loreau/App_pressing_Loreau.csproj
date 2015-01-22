@@ -160,6 +160,9 @@
     <Compile Include="View\PaiementDeLaCommande.xaml.cs">
       <DependentUpon>PaiementDeLaCommande.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UCAdministrateur\AdministrationClientPro.xaml.cs">
+      <DependentUpon>AdministrationClientPro.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UCAdministrateur\AdministrationArticlesDepartements.xaml.cs">
       <DependentUpon>AdministrationArticlesDepartements.xaml</DependentUpon>
     </Compile>
@@ -258,6 +261,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PaiementDeLaCommande.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UCAdministrateur\AdministrationClientPro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

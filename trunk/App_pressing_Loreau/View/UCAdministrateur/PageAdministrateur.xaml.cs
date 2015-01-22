@@ -83,7 +83,8 @@ namespace App_pressing_Loreau.View
 
         private void btn_pageAdministrateur_administration_client_pro_Click(object sender, RoutedEventArgs e)
         {
-
+            dp.Children.Clear();
+            dp.Children.Add(new AdministrationClientPro());
         }
 
     }

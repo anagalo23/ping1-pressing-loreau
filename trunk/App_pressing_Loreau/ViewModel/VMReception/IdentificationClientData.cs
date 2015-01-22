@@ -14,8 +14,9 @@ namespace App_pressing_Loreau.ViewModel
 
         private String _label_idenClient_nom;
         private String _label_idenClient_prenom;
-
-        public String ButtonClientContent { get; set; }
+        private int _label_identCleint_idCleanway;
+        private String _label_identCleint_Adresse;
+        //public String ButtonClientContent { get; set; }
         public int ButtonClientTag { get; set; }
         #endregion
 
@@ -42,6 +43,32 @@ namespace App_pressing_Loreau.ViewModel
                 {
                     _label_idenClient_prenom = value;
                     RaisePropertyChanged("Label_idenClient_prenom");
+                }
+            }
+        }
+
+        public int Label_identCleint_idCleanway
+        {
+            get { return _label_identCleint_idCleanway; }
+            set
+            {
+                if (value != _label_identCleint_idCleanway)
+                {
+                    _label_identCleint_idCleanway = value;
+                    RaisePropertyChanged("Label_identCleint_idCleanway");
+                }
+            }
+        }
+
+        public String Label_identCleint_Adresse
+        {
+            get { return _label_identCleint_Adresse; }
+            set
+            {
+                if (value != _label_identCleint_Adresse)
+                {
+                    _label_identCleint_Adresse = value;
+                    RaisePropertyChanged("Label_identCleint_Adresse");
                 }
             }
         }

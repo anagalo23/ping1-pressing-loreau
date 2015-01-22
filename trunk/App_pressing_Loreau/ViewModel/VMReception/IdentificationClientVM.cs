@@ -162,7 +162,9 @@ namespace App_pressing_Loreau.ViewModel
             {
                 foreach (Client clt in resultat)
                 {
-                    ResultatRecherche_identificationClient.Add(new IdentificationClientData() { Label_idenClient_nom = clt.nom, ButtonClientTag = clt.id, Label_idenClient_prenom=clt.prenom });
+                    ResultatRecherche_identificationClient.Add(new IdentificationClientData() { Label_idenClient_nom = clt.nom, 
+                        ButtonClientTag = clt.id, Label_idenClient_prenom=clt.prenom,Label_identCleint_Adresse=clt.adresse.rue,
+                        Label_identCleint_idCleanway=clt.idCleanWay });
                 }
             }
             else

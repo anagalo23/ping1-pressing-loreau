@@ -65,7 +65,7 @@
                             
                             <TextBox x:Name="txb_identificationClient_date_naissance" Grid.Row="3" Grid.Column="1" 
                                      Text="{Binding Path=Txb_identificationClient_date_naissance, UpdateSourceTrigger=PropertyChanged}" Margin="10,4,13,4" Style="{StaticResource vertiTextBox}" TextChanged="txb_identificationClient_date_naissance_TextChanged"/>
-                            <Button  Grid.Row="4" Grid.Column="1" Margin="30,5" BorderThickness="0" Background="Transparent" Command="{Binding Btn_idenClient_recherche}">
+                            <Button  Grid.Row="4" Grid.Column="1" Margin="50,2" BorderThickness="0" Background="Transparent" Command="{Binding Btn_idenClient_recherche}">
                                 <Image Source="/Resources/pics/Factures/loupederecherche.png"/>
                             </Button>
 
@@ -117,10 +117,22 @@
                                                     <i:InvokeCommandAction Command="{Binding DataContext.EditPersonCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:IdentificationClient}}}" CommandParameter="{Binding}"/>
                                                 </i:EventTrigger>
                                             </i:Interaction.Triggers>
-                                            <StackPanel Orientation="Vertical">
-                                                <TextBlock Text="{Binding Label_idenClient_nom}" FontWeight="Bold" FontSize="13pt" Foreground="White" MinWidth="300" />
+                                            <Border BorderBrush="White" BorderThickness="1" CornerRadius="10">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="3*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="2*"/>
+                                                </Grid.ColumnDefinitions>
+                                            <StackPanel Orientation="Vertical" Grid.Column="0">
+                                                <TextBlock Text="{Binding Label_idenClient_nom}" FontWeight="Bold" FontSize="13pt" Foreground="Black" MinWidth="300" />
                                                 <TextBlock Text="{Binding Label_idenClient_prenom}" FontSize="11pt" Padding="10,0,0,3" Foreground="#FF525252" MinWidth="300"/>
                                             </StackPanel>
+                                                <Label Content="{Binding Label_identCleint_idCleanway}" Grid.Column="1" FontSize="13pt" />
+                                                <Label Content="{Binding Label_identCleint_Adresse}" Grid.Column="2" FontSize="12pt" />
+
+                                            </Grid>
+                                            </Border>
                                         </Grid>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>

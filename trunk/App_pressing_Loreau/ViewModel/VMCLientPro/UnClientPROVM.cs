@@ -10,7 +10,7 @@ using App_pressing_Loreau.Model.DTO;
 
 namespace App_pressing_Loreau.ViewModel
 {
-    class UnClientPROVM : ObservableObject, IPageViewModel
+    class UnClientPROVM : ObservableObject
     {
         #region Attributs 
 
@@ -47,9 +47,6 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
             
-        public String Name
-        {
-            get { return ""; }
-        }
+       
     }
 }
