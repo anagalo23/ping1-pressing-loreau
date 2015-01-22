@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using App_pressing_Loreau.ViewModel;
+
 namespace App_pressing_Loreau.View
 {
     /// <summary>
@@ -23,6 +25,7 @@ namespace App_pressing_Loreau.View
         public AdministrationClientPro()
         {
             InitializeComponent();
+            DataContext = new AdministrationClientProVM(); 
         }
 
         private void btn_administrationClientPro_retour_Click(object sender, RoutedEventArgs e)

@@ -22,7 +22,7 @@ namespace App_pressing_Loreau.ViewModel
         #region constructeur
         public ClientPROVM()
         {
-           // clientsPro();            
+            clientsPro();            
         }
         #endregion
 

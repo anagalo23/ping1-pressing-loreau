@@ -164,8 +164,8 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                LogExcel log = new LogExcel("bdfvhk", "djsfbhh", "jhfsd");
-                log.ajouterLog();
+                //LogExcel log = new LogExcel("bdfvhk", "djsfbhh", "jhfsd");
+                //log.ajouterLog();
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données."));
                 return null;
             }
