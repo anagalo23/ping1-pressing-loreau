@@ -334,17 +334,10 @@ namespace App_pressing_Loreau
         public void ClickSurUtilisateur(object User)
         {
             Button clickedbutton = User as Button;
-
             if (clickedbutton != null)
             {
-
-
                 clickedbutton.Background = Brushes.Red;
-
             }
-
-
-
         }
         public void UtilisateurListe()
         {
@@ -352,11 +345,11 @@ namespace App_pressing_Loreau
             if (listeEmployer != null)
             {
 
-            
-            foreach (Employe em in listeEmployer)
-            {
-                _listeUser.Add(new CategoryItem() { ButtonUserContent = em.nom, ButtonUserTag = em.id, ButtonUserBackground = Brushes.Teal });
-            }
+
+                foreach (Employe em in listeEmployer)
+                {
+                    _listeUser.Add(new CategoryItem() { ButtonUserContent = em.nom, ButtonUserTag = em.id, ButtonUserBackground = Brushes.Teal });
+                }
             }
             else
             {

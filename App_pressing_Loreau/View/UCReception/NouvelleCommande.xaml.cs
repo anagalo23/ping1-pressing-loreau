@@ -34,5 +34,11 @@ namespace App_pressing_Loreau.View
             dp.Children.Add(new Paiement());
         }
 
+        private void btn_nouvelleCommande_paiement_differe_Click(object sender, RoutedEventArgs e)
+        {
+            AccueilVM acvm = new AccueilVM();
+            acvm.accueilVM();
+        }
+
     }
 }

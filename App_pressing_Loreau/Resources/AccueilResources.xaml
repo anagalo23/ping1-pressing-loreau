@@ -169,7 +169,7 @@
     
 
     <DataTemplate x:Key="Utilisateurs" DataType="{x:Type local:AccueilVM}">
-        <Button x:Name="button1" Width="170" Height="60" Content="{Binding ButtonUserContent}" Tag="{Binding ButtonUserTag}" Background="{Binding ButtonUserBackground , Mode=TwoWay}" Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.LesUtilisateurs}"  Style="{StaticResource personalisationbuton}"
+        <Button x:Name="button1" Width="170" Height="60" Content="{Binding ButtonUserContent}" Tag="{Binding ButtonUserTag}" Background="{Binding ButtonUserBackground , Mode=TwoWay}" Command="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=DataContext.LesUtilisateurs}"  Style="{StaticResource personalisationbuton}"
                     CommandParameter="{Binding ElementName=button1}"/>
     </DataTemplate >
 
@@ -212,12 +212,11 @@
         </Style.Triggers>
     </Style>
 
-
+    <!--Background="{Binding ButtonDepBackground, Mode=TwoWay}"-->
 
 
     <DataTemplate x:Key="departement">
-        <Button x:Name="button1" Width="115" Height="55" Content="{Binding ButtonContent}" Tag="{Binding ButtonTag}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.OnButtonClickCommand}"  Style="{StaticResource departementsStyles}"
-                    CommandParameter="{Binding ElementName=button1}"/>
+        <Button x:Name="button1" Width="115" Height="55" Content="{Binding ButtonContent}"  Tag="{Binding ButtonTag}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.OnButtonClickCommand}"  Style="{StaticResource departementsStyles}" CommandParameter="{Binding ElementName=button1}"/>
     </DataTemplate>
     
 </ResourceDictionary>
