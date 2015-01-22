@@ -12,7 +12,7 @@
         <view:IdentificationClient/>
     </DataTemplate>
                     <!--binding contenu recherche client--> 
-    <DataTemplate DataType="{x:Type vm:IdentificationClientData}">
+    <!--<DataTemplate DataType="{x:Type vm:IdentificationClientData}">
         <Border>
 
             <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -37,7 +37,7 @@
 
             </Grid>
         </Border>
-    </DataTemplate>
+    </DataTemplate>-->
     
     
     <DataTemplate DataType="{x:Type vm:NouveauClientVM}">

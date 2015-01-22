@@ -69,7 +69,7 @@ namespace App_pressing_Loreau.ViewModel
 
             for (int i = 0; i < ContentDetailCommande.Count; i++)
             {
-                Label_NouvelleCommande_prixTotal += (ContentDetailCommande[i].article.HT);
+                Label_NouvelleCommande_prixTotal += (ContentDetailCommande[i].article.TTC);
             }
 
         }
@@ -110,13 +110,7 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-        //Ajouter un article a la commande 
-        ICommand listesArticlesCommandes;
-        public ICommand ListesArticlesCommandes
-        {
-            get { return listesArticlesCommandes ?? (listesArticlesCommandes = new RelayCommand(AjouterArticles)); }
 
-        }
 
         public List<CategoryItem> ListeDepartements
         {
@@ -299,6 +293,15 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
+        //Ajouter un article a la commande 
+        ICommand listesArticlesCommandes;
+        public ICommand ListesArticlesCommandes
+        {
+            get { return listesArticlesCommandes ?? (listesArticlesCommandes = new RelayCommand(AjouterArticles)); }
+
+        }
+
+
         public void AjouterArticles(object button)
         {
             Button clickedbutton = button as Button;
@@ -352,7 +355,7 @@ namespace App_pressing_Loreau.ViewModel
                 Label_NouvelleCommande_prixTotal = 0;
                 for (int i = 0; i < ContentDetailCommande.Count; i++)
                 {
-                    Label_NouvelleCommande_prixTotal += (ContentDetailCommande[i].article.HT);
+                    Label_NouvelleCommande_prixTotal += (ContentDetailCommande[i].article.TTC);
                 }
 
 
@@ -367,7 +370,7 @@ namespace App_pressing_Loreau.ViewModel
             if (ClasseGlobale._contentDetailCommande.Contains(obj))
             {
                 ClasseGlobale._contentDetailCommande.Remove(obj);
-                Label_NouvelleCommande_prixTotal -= obj.article.HT;
+                Label_NouvelleCommande_prixTotal -= obj.article.TTC;
             }
         }
 

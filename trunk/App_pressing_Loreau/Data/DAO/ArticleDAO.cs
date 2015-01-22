@@ -25,7 +25,7 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("commentaire", article.commentaire);
                 cmd.Parameters.AddWithValue("rendu", article.ifRendu);
                 cmd.Parameters.AddWithValue("TVA", article.TVA);
-                cmd.Parameters.AddWithValue("HT", article.HT);
+                cmd.Parameters.AddWithValue("TTC", article.TTC);
                 cmd.Parameters.AddWithValue("conv_id", article.convoyeur.id);
                 cmd.Parameters.AddWithValue("typ_id", article.type.id);
 
@@ -62,7 +62,7 @@ namespace App_pressing_Loreau.Data.DAO
                         msdr["art_commentaire"].ToString(),
                         bool.Parse(msdr["art_rendu"].ToString()),
                         float.Parse(msdr["art_TVA"].ToString()),
-                        float.Parse(msdr["art_HT"].ToString()),
+                        float.Parse(msdr["art_TTC"].ToString()),
                         new TypeArticle(Int32.Parse(msdr["art_typ_id"].ToString()), null, 0, 0, 0, null),
                         new PlaceConvoyeur(Int32.Parse(msdr[" art_conv_id"].ToString()), 0, 0));
                 }
@@ -109,7 +109,7 @@ namespace App_pressing_Loreau.Data.DAO
                         msdr["art_commentaire"].ToString(),
                         bool.Parse(msdr["art_rendu"].ToString()),
                         float.Parse(msdr["art_TVA"].ToString()),
-                        float.Parse(msdr["art_HT"].ToString()),
+                        float.Parse(msdr["art_TTC"].ToString()),
                         new TypeArticle(Int32.Parse(msdr["art_typ_id"].ToString()), null, 0, 0, 0, null),
                         new PlaceConvoyeur(Int32.Parse(msdr[" art_conv_id"].ToString()), 0, 0));
 
@@ -148,7 +148,7 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("commentaire", article.commentaire);
                 cmd.Parameters.AddWithValue("rendu", article.ifRendu);
                 cmd.Parameters.AddWithValue("TVA", article.TVA);
-                cmd.Parameters.AddWithValue("HT", article.HT);
+                cmd.Parameters.AddWithValue("TTC", article.TTC);
                 cmd.Parameters.AddWithValue("conv_id", article.convoyeur.id);
                 cmd.Parameters.AddWithValue("typ_id", article.type.id);
 

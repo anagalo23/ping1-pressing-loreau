@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `article` (
   `art_commentaire` text,
   `art_rendu` tinyint(1) NOT NULL,
   `art_TVA` float NOT NULL,
-  `art_HT` float NOT NULL,
+  `art_TTC` float NOT NULL,
   `art_conv_id` int(11) DEFAULT NULL,
   `art_cmd_id` int(11) NOT NULL,
   `art_typ_id` int(11) NOT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `client` (
 
 INSERT INTO `client` (`clt_type`, `clt_nom`, `clt_prenom`, `clt_dateInscription`, `clt_contactmail`, `clt_contactsms`, `clt_fix`, `clt_mob`, `clt_adresse`, `clt_dateNaissance`, `clt_email`, `clt_idCleanway`) VALUES
 
-( 0, 'Faye', 'Pauline', '2015-01-14 16:58:41', 0, 0, NULL, NULL, '12/Place des faienciers/76100/Rouen/', '1992-10-27', NULL, 12);
+( 0, 'Faye', 'Pauline', '2015-01-14 16:58:41', 0, 0, NULL, NULL, "12\\Place des faienciers\\76100\\Rouen\\", '1992-10-27', NULL, 12);
 
 -- --------------------------------------------------------
 
@@ -250,7 +250,7 @@ CREATE TABLE IF NOT EXISTS `type` (
   `typ_nom` varchar(45) CHARACTER SET utf8 NOT NULL,
   `typ_encombrement` float NOT NULL,
   `typ_TVA` float NOT NULL,
-  `typ_HT` float NOT NULL,
+  `typ_TTC` float NOT NULL,
   `typ_dep_id` int(11) NOT NULL,
   PRIMARY KEY (`typ_id`),
   KEY `fk_typ_departement_idx` (`typ_dep_id`)
@@ -260,7 +260,7 @@ CREATE TABLE IF NOT EXISTS `type` (
 -- Contenu de la table `type`
 --
 
-INSERT INTO `type` (`typ_nom`, `typ_encombrement`, `typ_TVA`, `typ_HT`, `typ_dep_id`) VALUES
+INSERT INTO `type` (`typ_nom`, `typ_encombrement`, `typ_TVA`, `typ_TTC`, `typ_dep_id`) VALUES
 ('Pantalon clair', 1, 20, 5.2, 10),
 ('Pantalon', 1, 20, 4.48, 10),
 ('Veste', 1.5, 20, 4.48, 10),

@@ -1,4 +1,5 @@
 ﻿using App_pressing_Loreau.ViewModel;
+using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,13 +13,14 @@ namespace App_pressing_Loreau.View
     /// </summary>
     public partial class IdentificationClient : UserControl
     {
-        IdentificationClientVM clientVm;
+        //IdentificationClientVM clientVm;
 
         public IdentificationClient()
         {
             InitializeComponent();
-            DataContext = new IdentificationClientVM();
-            clientVm = new IdentificationClientVM();
+           
+            //DataContext = new IdentificationClientVM();
+            //clientVm = new IdentificationClientVM();
         }
 
 
@@ -44,7 +46,8 @@ namespace App_pressing_Loreau.View
             //message();
             
             //clientVm
-            clientVm.rechercheBDD();
+            //ViewModel.IdentificationClientVM.rechercheBDD();
+            this.updateSearchResultPanel();
 
         }
 
@@ -89,7 +92,23 @@ namespace App_pressing_Loreau.View
                 "\ndateDeNaissance : " + fields.dateDeNaissance);
         }
 
+        private void updateSearchResultPanel()
+        {
+            //searchResultPanel.SetCurrentValue();
 
+            //dp.Children.Clear();
+            //dp.Children.Add(new IdentificationClient());
+
+            //IEnumerable ic = searchResultPanel.ItemsSource;
+            //ic.
+            //searchResultPanel.Initialized();
+
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
         
     }
 }

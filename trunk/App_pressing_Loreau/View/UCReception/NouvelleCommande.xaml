@@ -61,8 +61,13 @@
 
                                             <Border Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}">
                                                 <Grid>
-
-                                                    <Button x:Name="button1"  Width="160" Height="62" Margin="2" Content="{Binding ButtonArticlesContent}" Tag="{Binding ButtonArticlesTag}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ListesArticlesCommandes}"  Style="{StaticResource ArticlesStyles}" CommandParameter="{Binding ElementName=button1}"/>
+                                                    <Button x:Name="button1"  Width="160" Height="62" Margin="2" 
+                                                            Content="{Binding ButtonArticlesContent}"
+                                                            Tag="{Binding ButtonArticlesTag}" 
+                                                            Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ListesArticlesCommandes}"  
+                                                            CommandParameter="{Binding ElementName=button1}"
+                                                            Style="{StaticResource ArticlesStyles}" 
+                                                             />
                                                 </Grid>
                                             </Border>
                                         </Canvas>
@@ -100,7 +105,7 @@
                         </Grid.RowDefinitions>
                         <DockPanel Grid.Row="0">
 
-                            <ListBox Margin="5" Background="Transparent" BorderThickness="0"  ItemsSource="{Binding ContentDetailCommande}"  />
+                            <ListBox Margin="5" Background="Transparent" BorderThickness="0"  ItemsSource="{Binding ContentDetailCommande}" />
 
                         </DockPanel>
 

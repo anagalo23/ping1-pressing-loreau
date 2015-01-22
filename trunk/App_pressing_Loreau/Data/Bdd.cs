@@ -73,10 +73,10 @@ namespace App_pressing_Loreau.Data
          */
 
         //Article
-        public static String insertArticle = "INSERT INTO article(art_photo, art_commentaire, art_rendu, art_TVA, art_HT, art_conv_id, art_typ_id) VALUES (?,?,?,?,?,?,?)";
-        public static String selectArticleById = "SELECT art_id, art_photo, art_commentaire, art_rendu, art_TVA, art_HT, art_conv_id, art_typ_id FROM article WHERE art_id=?";
-        public static String selectArticleByIdCmd = "SELECT art_id, art_photo, art_commentaire, art_rendu, art_TVA, art_HT, art_conv_id, art_typ_id FROM article WHERE art_conv_id=?";
-        public static String updateArticle = "UPDATE article SET art_id=?,art_photo=?,art_commentaire=?,art_rendu=?,art_TVA=?,art_HT=?,art_conv_id=?,art_cmd_id=?,art_typ_id=? WHERE art_id=?";
+        public static String insertArticle = "INSERT INTO article(art_photo, art_commentaire, art_rendu, art_TVA, art_TTC, art_conv_id, art_typ_id) VALUES (?,?,?,?,?,?,?)";
+        public static String selectArticleById = "SELECT art_id, art_photo, art_commentaire, art_rendu, art_TVA, art_TTC, art_conv_id, art_typ_id FROM article WHERE art_id=?";
+        public static String selectArticleByIdCmd = "SELECT art_id, art_photo, art_commentaire, art_rendu, art_TVA, art_TTC, art_conv_id, art_typ_id FROM article WHERE art_conv_id=?";
+        public static String updateArticle = "UPDATE article SET art_id=?,art_photo=?,art_commentaire=?,art_rendu=?,art_TVA=?,art_TTC=?,art_conv_id=?,art_cmd_id=?,art_typ_id=? WHERE art_id=?";
         public static String deleteArticle = "DELETE FROM article WHERE art_id=?";
 
         //Client
@@ -127,11 +127,11 @@ namespace App_pressing_Loreau.Data
         public static String deletePlaceConvoyeur = "DELETE FROM convoyeur WHERE conv_id=?";
 
         //TypeArticle
-        public static String insertType = "INSERT INTO type(typ_nom, typ_encombrement, typ_TVA, typ_HT, typ_dep_id) VALUES (?,?,?,?,?)";
-        public static String selectTypes = "SELECT typ_id, typ_nom, typ_encombrement, typ_TVA, typ_HT, typ_dep_id FROM type";
-        public static String selectTypesById = "SELECT typ_id, typ_nom, typ_encombrement, typ_TVA, typ_HT, typ_dep_id FROM type WHERE typ_id=?";
-        public static String selectTypeByDepId = "SELECT typ_id, typ_nom, typ_encombrement, typ_TVA, typ_HT, typ_dep_id FROM type WHERE typ_dep_id=?";
-        public static String updateType = "UPDATE type SET typ_id=?,typ_nom=?,typ_encombrement=?,typ_TVA=?,typ_HT=?,typ_dep_id=? WHERE typ_id=?";
+        public static String insertType = "INSERT INTO type(typ_nom, typ_encombrement, typ_TVA, typ_TTC, typ_dep_id) VALUES (?,?,?,?,?)";
+        public static String selectTypes = "SELECT typ_id, typ_nom, typ_encombrement, typ_TVA, typ_TTC, typ_dep_id FROM type";
+        public static String selectTypesById = "SELECT typ_id, typ_nom, typ_encombrement, typ_TVA, typ_TTC, typ_dep_id FROM type WHERE typ_id=?";
+        public static String selectTypeByDepId = "SELECT typ_id, typ_nom, typ_encombrement, typ_TVA, typ_TTC, typ_dep_id FROM type WHERE typ_dep_id=?";
+        public static String updateType = "UPDATE type SET typ_id=?,typ_nom=?,typ_encombrement=?,typ_TVA=?,typ_TTC=?,typ_dep_id=? WHERE typ_id=?";
         public static String deleteType = "DELETE FROM type WHERE typ_id=?";
 
         //TypePayement

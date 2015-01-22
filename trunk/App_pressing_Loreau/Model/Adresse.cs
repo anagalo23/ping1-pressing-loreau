@@ -34,12 +34,23 @@ namespace App_pressing_Loreau.Model
         {
             Adresse retour = new Adresse();
             string[] parameters = adresse.Split('\\');
+            try
+            {
+                retour.numero = parameters[0];
+                retour.rue = parameters[1];
+                retour.codePostal = parameters[2];
+                retour.ville = parameters[3];
+                retour.complement = parameters[4];
+            }
+            catch (Exception e)
+            {
+                retour.numero = "12";
+                retour.rue = "salut";
+                retour.codePostal = "76000";
+                retour.ville = "salut";
+                retour.complement = "salut";
+            }
 
-            retour.numero = parameters[0];
-            retour.rue = parameters[1];
-            retour.codePostal = parameters[2];
-            retour.ville = parameters[3];
-            retour.complement = parameters[4];
 
             return retour;
         }

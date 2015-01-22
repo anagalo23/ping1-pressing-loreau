@@ -22,7 +22,7 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("nom", type.nom);
                 cmd.Parameters.AddWithValue("encombrement", type.encombrement);
                 cmd.Parameters.AddWithValue("TVA", type.TVA);
-                cmd.Parameters.AddWithValue("HT", type.HT);
+                cmd.Parameters.AddWithValue("TTC", type.TTC);
                 cmd.Parameters.AddWithValue("id_dep", type.departement.id);
 
                 //Execute la commande
@@ -55,7 +55,7 @@ namespace App_pressing_Loreau.Data.DAO
                         msdr["typ_nom"].ToString(),
                         float.Parse(msdr["typ_encombrement"].ToString()),
                         Int32.Parse(msdr["typ_TVA"].ToString()),
-                        Int32.Parse(msdr["typ_HT"].ToString()),
+                        Int32.Parse(msdr["typ_TTC"].ToString()),
                         new Departement(Int32.Parse(msdr["typ_dep_id"].ToString()), null));
                     retour.Add(type);
                 }
@@ -99,7 +99,7 @@ namespace App_pressing_Loreau.Data.DAO
                         msdr["typ_nom"].ToString(),
                         float.Parse(msdr["typ_encombrement"].ToString()),
                         float.Parse(msdr["typ_TVA"].ToString()),
-                        float.Parse(msdr["typ_HT"].ToString()),
+                        float.Parse(msdr["typ_TTC"].ToString()),
                         new Departement(Int32.Parse(msdr["typ_dep_id"].ToString()), null));
                 }
                 msdr.Dispose();
@@ -140,7 +140,7 @@ namespace App_pressing_Loreau.Data.DAO
                         msdr["typ_nom"].ToString(),
                         float.Parse(msdr["typ_encombrement"].ToString()),
                         float.Parse(msdr["typ_TVA"].ToString()),
-                        float.Parse(msdr["typ_HT"].ToString()),
+                        float.Parse(msdr["typ_TTC"].ToString()),
                         new Departement(Int32.Parse(msdr["typ_dep_id"].ToString()), null));
                     retour.Add(type);
                 }
@@ -175,7 +175,7 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("nom", type.nom);
                 cmd.Parameters.AddWithValue("encombrement", type.encombrement);
                 cmd.Parameters.AddWithValue("tva", type.TVA);
-                cmd.Parameters.AddWithValue("ht", type.HT);
+                cmd.Parameters.AddWithValue("ttc", type.TTC);
                 cmd.Parameters.AddWithValue("dep_id", type.departement.id);
                 cmd.Parameters.AddWithValue("id", type.id);
 
