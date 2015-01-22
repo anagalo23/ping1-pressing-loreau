@@ -241,8 +241,8 @@ namespace App_pressing_Loreau
             Btn_impressionColor = Brushes.Teal;
             Btn_administrateurColor = Brushes.Teal;
 
-            accessUserControl = new IdentificationClientVM();
-
+            accessUserControl = new IdentificationClientVM();//Problème avec le datacontext... la vm est liée via data context => ajouter view à dockpanel
+            //new IdentificationClient();
         }
         //Methodes des redirection vers le ViewModel de l'restitution client
         public void restitutionArticleVM()

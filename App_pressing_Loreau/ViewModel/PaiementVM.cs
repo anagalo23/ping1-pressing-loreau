@@ -125,8 +125,8 @@ namespace App_pressing_Loreau.ViewModel
             {
                 foreach (ArticlesVM art in cmdDetail)
                 {
-                    prixHT += art.article.HT;
-                    prixTTC += art.article.HT * (1 + art.article.TVA / 100);
+                    prixTTC += art.article.TTC;
+                    prixHT += art.article.TTC * (1 - art.article.TVA / 100);
                 }
                 Label_paiement_prixHT = prixHT + "  €";
                 Label_paiement_prixTTC = prixTTC + "  €";

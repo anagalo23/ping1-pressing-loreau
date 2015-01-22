@@ -22,7 +22,7 @@ namespace App_pressing_Loreau.ViewModel
     {
         #region Attributes 
 
-        private string _txb_Articles_Commentaire;
+        //private string _txb_Articles_Commentaire;
         private ImageSource _changedPhoto;
         private string _changedPhotoFileName = null;
         private String _selected_Articles_Commentaire;

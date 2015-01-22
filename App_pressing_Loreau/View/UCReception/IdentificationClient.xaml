@@ -108,7 +108,8 @@
                            
                         </Border>-->
                         <Border  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="10" Grid.Row="1">
-                            <ListBox ItemsSource="{Binding ResultatRecherche_identificationClient}" Background="Transparent" BorderThickness="0">
+                            <ListBox x:Name="searchResultPanel" ItemsSource="{Binding ResultatRecherche_identificationClient}" 
+                                     Background="Transparent" BorderThickness="0" >
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>

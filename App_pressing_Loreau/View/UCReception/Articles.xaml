@@ -23,7 +23,7 @@
             
             <Image Grid.Column="2" Source="{Binding ElementName=_window,Path=DataContext.SelectedPhoto }" Margin="5" Width="60"  MinHeight="20"/>
             <Button Content="Charger la photo" Grid.Column="3" Command="{Binding Btn_Articles_ChargerPhoto}" Margin="5"  />
-            
+
             <Button  Margin="5" Grid.Column="4" BorderThickness="0" Background="Transparent"  Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path= DataContext.DeleteArticles}" CommandParameter="{Binding}">
                 <Image Source="/Resources/pics/Admin1/logo_exit.png"/>
             </Button>
