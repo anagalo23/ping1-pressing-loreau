@@ -9,17 +9,48 @@ using App_pressing_Loreau.Helper;
 
 namespace App_pressing_Loreau.ViewModel
 {
-    class DetailCommandeVM : ObservableObject, IPageViewModel
+    class DetailCommandeVM : ObservableObject
     {
         #region attributs
-        private String _afficheDetailCommande;
+       
+
+        private List<ArticlesRestitutionVM> _afficheDetailCommande;
 
         #endregion
 
-        public String Name
+        #region Constructeur
+        public DetailCommandeVM()
         {
-            get { return ""; }
+            LaCommande();
         }
+            
+        #endregion
+
+        #region properties and Commands
+
+        public List<ArticlesRestitutionVM> AfficheDetailCommande
+        {
+            get { return _afficheDetailCommande; }
+            set
+            {
+                if (value != _afficheDetailCommande)
+                {
+                    _afficheDetailCommande = value;
+                    RaisePropertyChanged("AfficheDetailCommande");
+                }
+            }
+        }
+        #endregion
+
+        #region Methods
+        public void LaCommande()
+        {
+            AfficheDetailCommande = new List<ArticlesRestitutionVM>();
+
+            _afficheDetailCommande.Add(new ArticlesRestitutionVM() { ArticlesNameRes = "Bonjour" });
+
+        }
+        #endregion
 
     }
 }

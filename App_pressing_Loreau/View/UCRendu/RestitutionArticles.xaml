@@ -86,9 +86,15 @@
                                     <RowDefinition Height="82*"/>
                                 </Grid.RowDefinitions>
                                 <Label Background="AliceBlue" Content="Résultat de la recherche" Style="{StaticResource vertilabel25}"/>
-                                <DockPanel Grid.Row="1">
-                                    <ContentControl Margin="5"  Content="{Binding Path=Dp_content_affiche_select}" />
-                                </DockPanel>
+                                <Border Grid.Row="1" Margin="2" BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="10">
+                                    <ListBox Margin="2" Background="Transparent" BorderThickness="0"  ItemsSource="{Binding Path=ListeRechercheClient}">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Button Content="{Binding ContentButtonClientRA}" Tag="{Binding TagButtonClientRA}" BorderThickness="0" Height="30"/>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </Border>
                             </Grid>
                         </Border>
                     </Grid>
@@ -103,7 +109,7 @@
                         <RowDefinition Height="7*"/>
                     </Grid.RowDefinitions>
                     <Label Content="La commande concernant" Grid.Row="0" Style="{StaticResource Titre}"/>
-                    <Border Margin="5" Grid.Row="1" >
+                    <Border Margin="5" Grid.Row="1" BorderThickness="2" BorderBrush="AliceBlue" CornerRadius="10" >
 
                         <ContentControl ContentTemplate="{StaticResource UneCommande}" Content="{Binding Path=ContentCommandeConcernant}"/>
 
