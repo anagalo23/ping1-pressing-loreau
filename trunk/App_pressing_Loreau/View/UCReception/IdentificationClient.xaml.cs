@@ -55,33 +55,37 @@ namespace App_pressing_Loreau.View
         private void txb_identificationClient_prenom_TextChanged(object sender, TextChangedEventArgs e)
         {
             Fields fields = AutoComplete.getFields();
-            fields.prenom = AutoComplete.parseFromClassToMessage(sender.ToString());
+            fields.prenom = txb_identificationClient_prenom.Text;
             //message();
+
+            this.updateSearchResultPanel();
         }
 
         private void txb_identificationClient_portable_TextChanged(object sender, TextChangedEventArgs e)
         {
             Fields fields = AutoComplete.getFields();
-            fields.portable = AutoComplete.parseFromClassToMessage(sender.ToString());
+            fields.portable = txb_identificationClient_portable.Text;
             //MessageBox.Show(fields.nom);
             //message();
 
+            this.updateSearchResultPanel();
+
         }
 
-        private void txb_identificationClient_adresse_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            Fields fields = AutoComplete.getFields();
-            fields.adresse = AutoComplete.parseFromClassToMessage(sender.ToString());
-            //tactacttac
-            //message();
-        }
+        //private void txb_identificationClient_adresse_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    Fields fields = AutoComplete.getFields();
+        //    fields.adresse = AutoComplete.parseFromClassToMessage(sender.ToString());
+        //    //tactacttac
+        //    //message();
+        //}
 
-        private void txb_identificationClient_date_naissance_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            Fields fields = AutoComplete.getFields();
-            fields.dateDeNaissance = AutoComplete.parseFromClassToMessage(sender.ToString());
-            //message();
-        }
+        //private void txb_identificationClient_date_naissance_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    Fields fields = AutoComplete.getFields();
+        //    fields.dateDeNaissance = AutoComplete.parseFromClassToMessage(sender.ToString());
+        //    //message();
+        //}
 
         private void message(){
             Fields fields = AutoComplete.getFields();
@@ -105,7 +109,9 @@ namespace App_pressing_Loreau.View
 
         }
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+       
+
+        private void txb_identificationClient_id_cleanway_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }

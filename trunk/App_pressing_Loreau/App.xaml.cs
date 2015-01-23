@@ -20,6 +20,7 @@ namespace App_pressing_Loreau
         }
         protected override void OnStartup(StartupEventArgs e)
         {
+           
             base.OnStartup(e);
             // chargement de la page accueil
             Accueil acc = new Accueil();
