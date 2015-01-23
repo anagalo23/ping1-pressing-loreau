@@ -41,6 +41,13 @@ namespace App_pressing_Loreau.View
 
         }
 
+        private void btn_adminclientPro_nouveauclientPro_Click(object sender, RoutedEventArgs e)
+        {
+            dp.Children.Clear();
+            dp.Children.Add(new NouveauClientPro());
+
+        }
+
         
     }
 }

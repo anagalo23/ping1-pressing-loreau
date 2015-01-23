@@ -9,6 +9,8 @@ using App_pressing_Loreau.Data.DAO;
 using App_pressing_Loreau.Model.DTO;
 using System.Windows;
 using System.Collections.ObjectModel;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace App_pressing_Loreau.ViewModel
 {
@@ -127,26 +129,30 @@ namespace App_pressing_Loreau.ViewModel
         }
 
 
-        //public ICommand ResultatRechercheClient
-        //{
-        //    get { return new RelayCommand(P => resultatName()); }
-        //}
+
+        ICommand resultatRechercheClient;
+        public ICommand ResultatRechercheClient
+        {
+            get { return resultatRechercheClient ?? (resultatRechercheClient = new RelayCommand(choixClient)); }
+        }
+       
 
         #endregion
 
 
         #region methodes
 
-        //private void resultatName()
-        //{
+        private void choixClient(object button)
+        {
+            Button clickedbutton = button as Button;
 
-        //    //ResultatRecherche_identificationClient = new List<IdentificationClientData>();
-
-        //    //ResultatRecherche_identificationClient.Add(new IdentificationClientData() { ButtonClientContent = "NAGALO", ButtonClientTag = 2 });
-        //    //ResultatRecherche_identificationClient.Add(new IdentificationClientData() { ButtonClientContent = "NAGALO", ButtonClientTag = 2 });
-        //    //ResultatRecherche_identificationClient.Add(new IdentificationClientData() { ButtonClientContent = "NAGALO", ButtonClientTag = 2 });
-
-        //}
+            if (clickedbutton != null)
+            {
+                string msg = string.Format("You Pressed : {0} button", clickedbutton.Tag);
+                MessageBox.Show(msg);
+                clickedbutton.Background = Brushes.Red;
+            }
+        }
 
         public void rechercheBDD()
         {

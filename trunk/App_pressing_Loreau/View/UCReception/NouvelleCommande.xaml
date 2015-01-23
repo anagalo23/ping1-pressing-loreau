@@ -40,7 +40,7 @@
                         <DockPanel Margin="2">
 
                             <Border DockPanel.Dock="Top" Height="56">
-                                <ListBox  ScrollViewer.HorizontalScrollBarVisibility="Hidden" BorderThickness="0" Background="Transparent" ItemsSource="{Binding ListeDepartements}" ItemTemplate="{StaticResource departement}" Margin="0,0,0,-11"  >
+                                <ListBox  ScrollViewer.HorizontalScrollBarVisibility="Hidden" BorderThickness="0" Background="Transparent" ItemsSource="{Binding ListeDepartements}" ItemTemplate="{StaticResource departement}"  >
                                     <ListBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <VirtualizingStackPanel Orientation="Horizontal"/>
@@ -49,7 +49,7 @@
                                 </ListBox>
                             </Border>
                             <!-- <ContentControl  Content="{Binding ContentCommande}"/>-->
-                            <ItemsControl x:Name="Collection" ItemsSource="{Binding  ListeArticles}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2,20,2,2">
+                            <ItemsControl x:Name="Collection" ItemsSource="{Binding  ListeArticles}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2,10,2,2">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
@@ -61,12 +61,7 @@
 
                                             <Border Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}">
                                                 <Grid>
-                                                    <Button x:Name="button1"  Width="160" Height="62" Margin="2" 
-                                                            Content="{Binding ButtonArticlesContent}"
-                                                            Tag="{Binding ButtonArticlesTag}" 
-                                                            Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ListesArticlesCommandes}"  
-                                                            CommandParameter="{Binding ElementName=button1}"
-                                                            Style="{StaticResource ArticlesStyles}" 
+                                                    <Button x:Name="button1"  Width="160" Height="62" Margin="2"         Content="{Binding ButtonArticlesContent}"                                                           Tag="{Binding ButtonArticlesTag}"                                                            Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ListesArticlesCommandes}"                                                       CommandParameter="{Binding ElementName=button1}"                                                   Style="{StaticResource ArticlesStyles}" 
                                                              />
                                                 </Grid>
                                             </Border>

@@ -38,7 +38,7 @@
 
                         <Button x:Name="btn_accueil_facture" Content="Factures" Grid.Column="2" Margin="5" Background="{Binding Btn_factureColor}" Command="{Binding Btn_accueil_facture}" Style="{StaticResource personalisationbuton}" />
 
-                        <Button x:Name="btn_accueil_client_pro" Content="client Pro" Grid.Column="4" Margin="5" Background="{Binding Btn_clientProColor}" Command="{Binding Btn_accueil_client_pro}"  Style="{StaticResource personalisationbuton}"/>
+                        <Button x:Name="btn_accueil_client_pro" Content="Client Pro" Grid.Column="4" Margin="5" Background="{Binding Btn_clientProColor}" Command="{Binding Btn_accueil_client_pro}"  Style="{StaticResource personalisationbuton}"/>
 
                         <Button x:Name="btn_accueil_impression"  Content="Impressions" Grid.Column="5" Margin="5" Background="{Binding Btn_impressionColor}" Command="{Binding Btn_accueil_impression}" CommandParameter=""  Style="{StaticResource personalisationbuton}" />
 

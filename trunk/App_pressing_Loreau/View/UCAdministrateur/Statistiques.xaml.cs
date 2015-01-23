@@ -44,5 +44,7 @@ namespace App_pressing_Loreau.View
             dp.Children.Clear();
             dp.Children.Add(new PageAdministrateur());
         }
+
+       
     }
 }
