@@ -14,7 +14,7 @@ namespace App_pressing_Loreau.ViewModel
 {
     class AdministrateurConnexionVM : ObservableObject, IPageViewModel
     {
-        AccueilVM acVM = new AccueilVM();
+        //AccueilVM acVM = new AccueilVM();
         private IPageViewModel _accessUserControl;
 
         public String Name
@@ -22,15 +22,15 @@ namespace App_pressing_Loreau.ViewModel
             get { return ""; }
         }
 
-        public ICommand Btn_identificationAdmin_connectee
-        {
-            get
-            {
-                return new RelayCommand(
-                      p => suivant());
-            }
+        //public ICommand Btn_identificationAdmin_connectee
+        //{
+        //    get
+        //    {
+        //        return new RelayCommand(
+        //              p => suivant());
+        //    }
 
-        }
+        //}
 
         public IPageViewModel accessUserControl
         {
@@ -52,10 +52,10 @@ namespace App_pressing_Loreau.ViewModel
 
 
 
-        public void suivant()
-        {
-            accessUserControl=null;
-            accessUserControl = new PageAdministrateurVM();
-        }
+        //public void suivant()
+        //{
+        //    accessUserControl=null;
+        //    accessUserControl = new PageAdministrateurVM();
+        //}
     }
 }

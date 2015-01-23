@@ -18,127 +18,149 @@
     <DockPanel x:Name="dp">
         <Grid Margin="5">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="37*"/>
-                <ColumnDefinition Width="36*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="97*"/>
-                <RowDefinition Height="97*"/>
-            </Grid.RowDefinitions>
-            <Border HorizontalAlignment="Stretch" BorderBrush="AliceBlue" BorderThickness="1" Margin="10" Grid.Row="0" Grid.Column="0">
-                <Grid >
+           
+            <Border Grid.Column="0">
+                <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="39*"/>
-                        <RowDefinition Height="184*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Content="Informations de base" Background="AliceBlue" Style="{StaticResource Titre}" />
-                    <Grid Grid.Row="1" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="164*"/>
-                            <ColumnDefinition Width="173*"/>
-                        </Grid.ColumnDefinitions>
+                
+                <Border BorderBrush="AliceBlue" BorderThickness="1" Margin="10" Grid.Row="0"  CornerRadius="10">
+                    <Grid >
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="25*"/>
-                            <RowDefinition Height="25*"/>
-                            <RowDefinition Height="25*"/>
-                            <RowDefinition Height="25*"/>
-
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="8*"/>
                         </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Content="Informations de base" Background="AliceBlue" Style="{StaticResource Titre}" />
+                        <Grid Grid.Row="1" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
 
-                        <Label Content="Nom de la société * :" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel25}" />
-                        <TextBox x:Name="txb_nouveauClientPro_nom" Grid.Row="1" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}" Text="{Binding Path=Txb_nouveauClientPro_nomSociete, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Content="Nom de la société * :" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel25}" />
+                            <TextBox x:Name="txb_nouveauClientPro_nom" Grid.Row="1" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}" Text="{Binding Path=Txb_nouveauClientPro_nomSociete, UpdateSourceTrigger=PropertyChanged}"/>
 
 
 
 
+                        </Grid>
                     </Grid>
+                </Border>
+
+
+
+                    <Border BorderBrush="AliceBlue" BorderThickness="1" Margin="10" Grid.Row="1" Grid.Column="0" CornerRadius="10">
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="39*"/>
+                                <RowDefinition Height="184*"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Content="Adresses" Style="{StaticResource Titre}" />
+                            <Grid Grid.Row="1" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+
+                                </Grid.RowDefinitions>
+
+                                <Label Content="Numéro adresse :" Grid.Row="0" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
+                                <TextBox x:Name="txb_nouveauClientPro_numero" Grid.Row="0" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}" Text="{Binding Path=Txb_nouveauClientPro_numeroAdresse, UpdateSourceTrigger=PropertyChanged}" />
+
+                                <Label Content="Rue, voie :" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
+                                <TextBox x:Name="txb_nouveauClientPro_rue_voie" Grid.Row="1" Grid.Column="1" Margin="10" Text="{Binding Path=Txb_nouveauClientPro_rue_voie, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}"/>
+
+                                <Label Content="BP :" Grid.Row="2" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
+                                <TextBox x:Name="txb_nouveauClientPro_bp" Grid.Row="2" Grid.Column="1" Margin="10" Text="{Binding Path=Txb_nouveauClientPro_bp, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}"/>
+
+                                <Label Content="Ville" Grid.Row="3" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
+                                <TextBox x:Name="txb_nouveauClientPro_ville" Grid.Row="3" Grid.Column="1" Margin="10" Text="{Binding Path=Txb_nouveauClientPro_ville, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}"/>
+
+                            </Grid>
+                        </Grid>
+
+                    </Border>
+
                 </Grid>
             </Border>
 
-            <Border HorizontalAlignment="Stretch" BorderBrush="AliceBlue" BorderThickness="1" Margin="10" Grid.Row="1" Grid.Column="0">
-                <Grid >
+            <Border Grid.Column="1">
+                
+                <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="39*"/>
-                        <RowDefinition Height="184*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Content="Adresses" Style="{StaticResource Titre}" />
-                    <Grid Grid.Row="1" >
+                    <Border BorderBrush="AliceBlue" BorderThickness="2" Margin="10" Grid.Row="0" CornerRadius="10">
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="8*"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Content="Communication avec le client " Background="AliceBlue" Style="{StaticResource Titre}" />
+                            <Grid Grid.Row="1" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="107*"/>
+                                    <ColumnDefinition Width="62*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="49*"/>
+                                    <RowDefinition Height="49*"/>
+                                    <RowDefinition Height="49*"/>
+
+
+                                </Grid.RowDefinitions>
+                                <Label Content="Numéro fixe:" Grid.Row="0" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
+                                <TextBox x:Name="txb_nouveauClientPro_numeroFixe" Grid.Row="0" Grid.Column="1" Margin="5,15" Text="{Binding Path=Txb_nouveauClientPro_numeroFixe, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}" />
+
+
+                                <Label Content="Numéro Portable :" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
+                                <TextBox x:Name="txb_nouveauClientPro_numeroportable" Grid.Row="1" Grid.Column="1" Margin="5,15"  Text="{Binding Path=Txb_nouveauClientPro_numeroPortable, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}" />
+
+                                <Label Content="Email:" Grid.Row="2" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
+                                <TextBox x:Name="txb_nouveauClientPro_email" Grid.Row="2" Grid.Column="1" Margin="5,15"  Text="{Binding Path=Txb_nouveauClientPro_email, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}"/>
+
+                            </Grid>
+                        </Grid>
+
+
+                    </Border>
+
+                    <Grid Grid.Column="1" Grid.Row="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="164*"/>
-                            <ColumnDefinition Width="173*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="4*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="45*"/>
-                            <RowDefinition Height="45*"/>
-                            <RowDefinition Height="45*"/>
-                            <RowDefinition Height="45*"/>
-
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
+                        <Button Content="Enregistrer " Margin="10,40" Grid.Column="1" Command="{Binding Btn_nouveauClientPro_enregistrer}" />
 
-                        <Label Content="Numéro adresse :" Grid.Row="0" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
-                        <TextBox x:Name="txb_nouveauClientPro_numero" Grid.Row="0" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}" Text="{Binding Path=Txb_nouveauClientPro_numeroAdresse, UpdateSourceTrigger=PropertyChanged}" />
-
-                        <Label Content="Rue, voie :" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
-                        <TextBox x:Name="txb_nouveauClientPro_rue_voie" Grid.Row="1" Grid.Column="1" Margin="10" Text="{Binding Path=Txb_nouveauClientPro_rue_voie, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}"/>
-
-                        <Label Content="BP :" Grid.Row="2" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
-                        <TextBox x:Name="txb_nouveauClientPro_bp" Grid.Row="2" Grid.Column="1" Margin="10" Text="{Binding Path=Txb_nouveauClientPro_bp, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}"/>
-
-                        <Label Content="Ville" Grid.Row="3" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
-                        <TextBox x:Name="txb_nouveauClientPro_ville" Grid.Row="3" Grid.Column="1" Margin="10" Text="{Binding Path=Txb_nouveauClientPro_ville, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}"/>
-
+                        <Button x:Name="btn_nouveauClientPro_retour" Content="Retour" Grid.Row="1" Margin="10,40" Grid.Column="1"  Style="{StaticResource personalisationbuton}" Click="btn_nouveauClientPro_retour_Click"/>
                     </Grid>
                 </Grid>
-
             </Border>
-
-            <Border HorizontalAlignment="Stretch" BorderBrush="AliceBlue" BorderThickness="1" Margin="10" Grid.Row="0" Grid.Column="1">
-                <Grid >
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="39*"/>
-                        <RowDefinition Height="184*"/>
-                    </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Content="Communication avec le client " Background="AliceBlue" Style="{StaticResource Titre}" />
-                    <Grid Grid.Row="1" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="107*"/>
-                            <ColumnDefinition Width="62*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="49*"/>
-                            <RowDefinition Height="49*"/>
-                            <RowDefinition Height="49*"/>
-
-
-                        </Grid.RowDefinitions>
-                        <Label Content="Numéro fixe:" Grid.Row="0" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
-                        <TextBox x:Name="txb_nouveauClientPro_numeroFixe" Grid.Row="0" Grid.Column="1" Margin="5,15" Text="{Binding Path=Txb_nouveauClientPro_numeroFixe, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}" />
-
-
-                        <Label Content="Numéro Portable :" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
-                        <TextBox x:Name="txb_nouveauClientPro_numeroportable" Grid.Row="1" Grid.Column="1" Margin="5,15"  Text="{Binding Path=Txb_nouveauClientPro_numeroPortable, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}" />
-
-                        <Label Content="Email:" Grid.Row="2" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
-                        <TextBox x:Name="txb_nouveauClientPro_email" Grid.Row="2" Grid.Column="1" Margin="5,15"  Text="{Binding Path=Txb_nouveauClientPro_email, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}"/>
-
-                    </Grid>
-                </Grid>
-
-
-            </Border>
-            <Grid Grid.Column="1" Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="3*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition Height="2*"/>
-                </Grid.RowDefinitions>
-                <Button Content="Enregistrer " Margin="10,40" Grid.Column="1" Command="{Binding Btn_nouveauClientPro_enregistrer}" />
-
-                <Button x:Name="btn_nouveauClientPro_retour" Content="Retour" Grid.Row="1" Margin="10,40" Grid.Column="1"  Style="{StaticResource personalisationbuton}" Click="btn_nouveauClientPro_retour_Click"/>
-            </Grid>
+            
+          
+           
         </Grid>
     </DockPanel>
 

@@ -40,7 +40,9 @@
             </Grid.RowDefinitions>
             <Label Content="Ticket X" Style="{StaticResource Titre}"/>
             <DockPanel Grid.Row="1" Margin="5">
+                <Border CornerRadius="10" BorderBrush="AliceBlue" BorderThickness="2">
                 <ContentControl Content="{Binding Path=Ticket_X_Impression}"/>
+                </Border>
             </DockPanel>
         </Grid>
     </Grid>

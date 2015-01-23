@@ -25,23 +25,23 @@
                 <RowDefinition Height="97*"/>
                 <RowDefinition Height="97*"/>
             </Grid.RowDefinitions>
-            <Border HorizontalAlignment="Stretch" BorderBrush="AliceBlue" BorderThickness="1" Margin="10" Grid.Row="0" Grid.Column="0">
+            <Border  BorderBrush="AliceBlue" BorderThickness="1" Margin="10" Grid.Row="0" Grid.Column="0" CornerRadius="10">
                 <Grid >
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="39*"/>
-                        <RowDefinition Height="184*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="4*"/>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" Content="Informations de base" Background="AliceBlue" Style="{StaticResource Titre}" />
                     <Grid Grid.Row="1" >
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="164*"/>
-                            <ColumnDefinition Width="173*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="25*"/>
-                            <RowDefinition Height="25*"/>
-                            <RowDefinition Height="25*"/>
-                            <RowDefinition Height="25*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
 
                         </Grid.RowDefinitions>
 
@@ -61,23 +61,23 @@ Text="{Binding Path=Txb_nouveauClient_idCleanway, UpdateSourceTrigger=PropertyCh
                 </Grid>
             </Border>
 
-            <Border HorizontalAlignment="Stretch" BorderBrush="AliceBlue" BorderThickness="1" Margin="10" Grid.Row="1" Grid.Column="0">
+            <Border BorderBrush="AliceBlue" BorderThickness="1" Margin="10" Grid.Row="1" Grid.Column="0" CornerRadius="10">
                 <Grid >
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="39*"/>
-                        <RowDefinition Height="184*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="4*"/>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" Content="Adresses" Style="{StaticResource Titre}" />
                     <Grid Grid.Row="1" >
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="164*"/>
-                            <ColumnDefinition Width="173*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="45*"/>
-                            <RowDefinition Height="45*"/>
-                            <RowDefinition Height="45*"/>
-                            <RowDefinition Height="45*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
 
                         </Grid.RowDefinitions>
 
@@ -102,17 +102,17 @@ Text="{Binding Path=Txb_nouveauClient_ville, UpdateSourceTrigger=PropertyChanged
 
             </Border>
 
-            <Border HorizontalAlignment="Stretch" BorderBrush="AliceBlue" BorderThickness="1" Margin="10" Grid.Row="0" Grid.Column="1">
+            <Border  BorderBrush="AliceBlue" BorderThickness="1" Margin="10" Grid.Row="0" Grid.Column="1" CornerRadius="10">
                 <Grid >
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="39*"/>
-                        <RowDefinition Height="184*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="4*"/>
                     </Grid.RowDefinitions>
                     <Label Grid.Row="0" Content="Communication avec le client " Background="AliceBlue" Style="{StaticResource Titre}" />
                     <Grid Grid.Row="1" >
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="107*"/>
-                            <ColumnDefinition Width="62*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="49*"/>
