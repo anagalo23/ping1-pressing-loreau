@@ -91,6 +91,14 @@ namespace App_pressing_Loreau.ViewModel
             get { return onButtonClickCommand ?? (onButtonClickCommand = new RelayCommand(Contenudepartement)); }
         }
 
+        //Ajouter un article a la commande 
+        ICommand listesArticlesCommandes;
+        public ICommand ListesArticlesCommandes
+        {
+            get { return listesArticlesCommandes ?? (listesArticlesCommandes = new RelayCommand(AjouterArticles)); }
+
+        }
+
 
         public ICommand CommandeSuivante
         {
@@ -206,11 +214,6 @@ namespace App_pressing_Loreau.ViewModel
         #region Méthodes
 
 
-        //public static NouvelleCommandeVM getContentDetailCommande()
-        //{
-        //    return singleton;
-        //}
-
         /**
          * Permet le défilement des départements 
          **/
@@ -293,14 +296,7 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-        //Ajouter un article a la commande 
-        ICommand listesArticlesCommandes;
-        public ICommand ListesArticlesCommandes
-        {
-            get { return listesArticlesCommandes ?? (listesArticlesCommandes = new RelayCommand(AjouterArticles)); }
-
-        }
-
+       
 
         public void AjouterArticles(object button)
         {

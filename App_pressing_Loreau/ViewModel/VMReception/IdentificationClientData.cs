@@ -16,11 +16,13 @@ namespace App_pressing_Loreau.ViewModel
         private String _label_idenClient_prenom;
         private int _label_identCleint_idCleanway;
         private String _label_identCleint_Adresse;
-        //public String ButtonClientContent { get; set; }
         public int ButtonClientTag { get; set; }
+
+
         #endregion
 
-
+        #region Properties 
+       
         public String Label_idenClient_nom
         {
             get { return _label_idenClient_nom; }
@@ -72,5 +74,6 @@ namespace App_pressing_Loreau.ViewModel
                 }
             }
         }
+        #endregion
     }
 }

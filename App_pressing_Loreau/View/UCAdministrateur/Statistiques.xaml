@@ -11,7 +11,7 @@
     <UserControl.DataContext>
         <local:StatistiquesVM />
     </UserControl.DataContext>
-    
+
     <DockPanel x:Name="dp">
         <Grid>
             <Grid.RowDefinitions>
@@ -27,15 +27,83 @@
                     <ColumnDefinition Width="100*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="btn_statistique_du_jour" Command="{Binding Btn_statistique_du_jour}" Content="Du jour"    Style="{StaticResource choixbouton30}"/>
+                <Button x:Name="btn_statistique_du_jour" Command="{Binding Btn_statistique_du_jour,RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding }" Content="Du jour"    Style="{StaticResource choixbouton30}"/>
                 <Button x:Name="btn_statistique_de_la_semaine" Command="{Binding Btn_statistique_de_la_semaine}"  Content="De la semaine" Grid.Column="1" Style="{StaticResource choixbouton30}"/>
                 <Button x:Name="btn_statistique_du_mois" Command="{Binding Btn_statistique_du_mois}" Content="Du mois" Grid.Column="2" 
                         Style="{StaticResource choixbouton30}"/>
-                <Button x:Name="btn_statistique_des_derniers_mois" Command="{Binding Btn_statistique_des_derniers_mois}" Content="Des 14 derniers mois" Grid.Column="3" Style="{StaticResource choixbouton30}" />
+                <Button x:Name="btn_statistique_annee" Command="{Binding Btn_statistique_de_lannee}" Content="De l' annnée" Grid.Column="3" Style="{StaticResource choixbouton30}" />
 
             </Grid>
 
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1" Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" BorderThickness="2" BorderBrush="AliceBlue" CornerRadius="10" Margin="5">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="chiffre d'affaire Total:"  Grid.Row="0" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                        <Label x:Name="label_catotal" Content="{Binding Label_statistique_catotal, UpdateSourceTrigger=PropertyChanged , Mode=TwoWay}" Style="{StaticResource statistiqueLabel}" Grid.Row="0" Grid.Column="1"/>
+
+                        <Label Content="chiffre d'affaire par département :" Grid.Row="1" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                        <Label Content="{Binding Label_statistique_cadep}"  Grid.Row="1" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+
+                        <Label Content="Nombre de clients venus deposer des articles :"  Grid.Row="2" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                        <Label Content="{Binding Label_statistique_nbrClientsDepoArt}"  Grid.Row="2" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+
+                        <Label Content="Nombre de clients venus récupérer des articles :"  Grid.Row="3" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                        <Label Content="{Binding Label_statistique_nbrClientsRecupArt}"  Grid.Row="3" Grid.Column="1"/>
+
+                        <Label Content="Nombre de clients qui ont payé immédiatement :"  Grid.Row="4" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                        <Label Content="{Binding Label_statistique_nbrClientspayeimediatement}" Grid.Row="4" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+                    </Grid>
+
+                </Border>
+                <Border Grid.Column="1" Margin="5" BorderThickness="2" BorderBrush="AliceBlue" CornerRadius="10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Nombre de clients qui ont payé en différé:"  Grid.Row="0" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                        <Label Content="{Binding Label_statistique_nbrClientspayediffere}" Grid.Row="0" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+
+                        <Label Content="Nombre d'articles pressing et blanchisserie :"  Grid.Row="1" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                        <Label Content="{Binding Label_statistique_nbrArticlesPressBlanchi}" Grid.Row="1" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+
+                        <Label Content="Nombre  de couettes :"  Grid.Row="2" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                        <Label Content="{Binding Label_statistique_nbrCouettes}" Grid.Row="2" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+
+                        <Label Content="Nombre de chemises :"  Grid.Row="3" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                        <Label Content="{Binding Label_statistique_nbrChemises}" Grid.Row="3" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+
+
+                        <Button  x:Name="btn_statistiques_retour" Content="Retour" Margin="15,10" Style="{StaticResource personalisationbuton1}" Grid.Row="4" Grid.Column="1" Click="btn_statistiques_retour_Click"/>
+
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!--<Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -70,7 +138,9 @@
                             
                             
                             <Grid x:Name="LayoutRoot" Background="White" Margin="5">
-                                 <!--D3 markup starts here-->
+                                 -->
+            <!--D3 markup starts here-->
+            <!--
 
                                 <Path Stroke="Black" StrokeThickness="1">
                                     <Path.Data>
@@ -119,7 +189,7 @@
 
                     </Grid>
                 </Border>
-            </Grid>
+            </Grid>-->
 
         </Grid>
     </DockPanel>

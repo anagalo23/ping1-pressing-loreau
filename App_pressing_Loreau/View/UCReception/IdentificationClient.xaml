@@ -13,7 +13,9 @@
         <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
     </UserControl.Resources>
     
-    
+    <UserControl.DataContext>
+        <vm:IdentificationClientVM/>
+    </UserControl.DataContext>
 
     <DockPanel x:Name="dp">
         <Border>
@@ -111,13 +113,9 @@
                             <ListBox x:Name="searchResultPanel" ItemsSource="{Binding ResultatRecherche_identificationClient}" 
                                      Background="Transparent" BorderThickness="0" >
                                 <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <i:Interaction.Triggers>
-                                                <i:EventTrigger EventName="MouseLeftButtonDown">
-                                                    <i:InvokeCommandAction Command="{Binding DataContext.EditPersonCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:IdentificationClient}}}" CommandParameter="{Binding}"/>
-                                                </i:EventTrigger>
-                                            </i:Interaction.Triggers>
+                                    <DataTemplate DataType="{x:Type vm:IdentificationClientVM}">
+                                        <Button BorderThickness="0" Background="Transparent" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ResultatRechercheClient}"   CommandParameter="{Binding }" Tag="{Binding ButtonClientTag}">
+                                            
                                             <Border BorderBrush="White" BorderThickness="1" CornerRadius="10">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
@@ -125,16 +123,15 @@
                                                     <ColumnDefinition Width="1*"/>
                                                     <ColumnDefinition Width="2*"/>
                                                 </Grid.ColumnDefinitions>
-                                            <StackPanel Orientation="Vertical" Grid.Column="0">
-                                                <TextBlock Text="{Binding Label_idenClient_nom}" FontWeight="Bold" FontSize="13pt" Foreground="Black" MinWidth="300" />
-                                                <TextBlock Text="{Binding Label_idenClient_prenom}" FontSize="11pt" Padding="10,0,0,3" Foreground="#FF525252" MinWidth="300"/>
-                                            </StackPanel>
-                                                <Label Content="{Binding Label_identCleint_idCleanway}" Grid.Column="1" FontSize="13pt" />
+                                                    <StackPanel Orientation="Vertical" Grid.Column="0">
+                                                        <TextBlock Text="{Binding Label_idenClient_nom}" FontWeight="Bold" FontSize="13pt" Foreground="Black" MinWidth="300" />
+                                                        <TextBlock Text="{Binding Label_idenClient_prenom}" FontSize="11pt" Padding="10,0,0,3" Foreground="#FF525252" MinWidth="300"/>
+                                                    </StackPanel>
+                                                <Label Content="{Binding Label_identCleint_idCleanway}" Grid.Column="1" FontSize="13pt"/>
                                                 <Label Content="{Binding Label_identCleint_Adresse}" Grid.Column="2" FontSize="12pt" />
-
-                                            </Grid>
+                                                </Grid>
                                             </Border>
-                                        </Grid>
+                                        </Button>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
