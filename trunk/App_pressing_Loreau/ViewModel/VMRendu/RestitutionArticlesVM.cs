@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using App_pressing_Loreau.Helper;
 using App_pressing_Loreau.Data.DAO;
 using App_pressing_Loreau.Model.DTO;
+using System.Windows;
 
 
 namespace App_pressing_Loreau.ViewModel
@@ -19,7 +20,7 @@ namespace App_pressing_Loreau.ViewModel
     /// </summary>
     class RestitutionArticlesVM : ObservableObject, IPageViewModel
     {
-        #region Attributs 
+        #region Attributs
         Departement dep;
 
         private int _txb_restitutionArticles_idFactures;
@@ -30,7 +31,7 @@ namespace App_pressing_Loreau.ViewModel
         public List<ChoixBox> Cbb_restitutionClient_choix_theme { get; set; }
 
         public CommandeConcernantRA_DATA _contentCommandeConcernant;
-        public CommandeConcernantRA_DATA _dp_content_affiche_select;
+        public List<CommandeConcernantRA_DATA> _listeRechercheClient;
 
         #endregion
         public String Name
@@ -38,7 +39,7 @@ namespace App_pressing_Loreau.ViewModel
             get { return ""; }
 
         }
-        #region Constructeur 
+        #region Constructeur
         public RestitutionArticlesVM()
         {
             Cbb_restitutionClient_choix_theme = choixbox.ListeChamp();
@@ -54,11 +55,11 @@ namespace App_pressing_Loreau.ViewModel
             get { return _txb_restitutionArticles_idFactures; }
             set
             {
-               
-                    _txb_restitutionArticles_idFactures = value;
-                    OnPropertyChanged("Txb_restitutionArticles_idFactures");
-                
-              
+
+                _txb_restitutionArticles_idFactures = value;
+                OnPropertyChanged("Txb_restitutionArticles_idFactures");
+
+
             }
         }
 
@@ -72,7 +73,7 @@ namespace App_pressing_Loreau.ViewModel
             }
 
         }
-        
+
 
         public ChoixBox Selected_restitutionClient_choix_theme
         {
@@ -83,7 +84,7 @@ namespace App_pressing_Loreau.ViewModel
                 RaisePropertyChanged("Selected_restitutionClient_choix_theme");
             }
         }
-        
+
         public ICommand Btn_restitutionArticles_ok
         {
             get
@@ -97,9 +98,11 @@ namespace App_pressing_Loreau.ViewModel
 
         public ICommand Btn_restitutionArticles_valider
         {
-            get { return new RelayCommand(
-                p => ContenuDeLaRecherche(),
-                p=> Txb_restitutionArticles_choix!=null);
+            get
+            {
+                return new RelayCommand(
+                    p => ContenuDeLaRecherche(),
+                    p => Txb_restitutionArticles_choix != null);
             }
         }
 
@@ -116,14 +119,14 @@ namespace App_pressing_Loreau.ViewModel
             }
 
         }
-       
-        public CommandeConcernantRA_DATA Dp_content_affiche_select
+
+        public List<CommandeConcernantRA_DATA> ListeRechercheClient
         {
-            get { return _dp_content_affiche_select; }
+            get { return _listeRechercheClient; }
             set
             {
-                _dp_content_affiche_select = value;
-                OnPropertyChanged("Dp_content_affiche_select");
+                _listeRechercheClient = value;
+                OnPropertyChanged("ListeRechercheClient");
             }
         }
 
@@ -133,13 +136,13 @@ namespace App_pressing_Loreau.ViewModel
         public void ContenuDeLaCommande()
         {
             ObservableCollection<ArticlesRestitutionVM> listeArt = new ObservableCollection<ArticlesRestitutionVM>();
-        
+
             dep = (Departement)DepartementDAO.selectDepartementById(2);
             CommandeConcernantRA_DATA ccd = new CommandeConcernantRA_DATA();
             ccd.Label_restitutionArticles_Name = "Alexis";
             ccd.Label_restitutionArticles_Reference = "23678";
-            listeArt.Add(new ArticlesRestitutionVM(){ArticlesNameRes=Txb_restitutionArticles_idFactures+"pt", Txb_ArticlesRes_etat="Fini"});
-            listeArt.Add(new ArticlesRestitutionVM() { ArticlesNameRes = Txb_restitutionArticles_idFactures+"pj", Txb_ArticlesRes_etat = "encours" });
+            listeArt.Add(new ArticlesRestitutionVM() { ArticlesNameRes = Txb_restitutionArticles_idFactures + "pt", Txb_ArticlesRes_etat = "Fini" });
+            listeArt.Add(new ArticlesRestitutionVM() { ArticlesNameRes = Txb_restitutionArticles_idFactures + "pj", Txb_ArticlesRes_etat = "encours" });
 
             ccd.ListeArticlesRestitution = listeArt;
             ccd.Label_restitutionArticles_NombreArticles = Txb_restitutionArticles_idFactures;
@@ -148,12 +151,43 @@ namespace App_pressing_Loreau.ViewModel
 
         public void ContenuDeLaRecherche()
         {
-            CommandeConcernantRA_DATA cdata = new CommandeConcernantRA_DATA();
-            cdata.Label_restitutionArticles_Name = "repassage";
-            cdata.Label_restitutionArticles_Reference = "Pantalon";
-            //cdata.Label_restitutionArticles_NombreArticles =Int32.Parse(Txb_restitutionArticles_choix);
+            ListeRechercheClient = new List<CommandeConcernantRA_DATA>();
+            List<Client> resultat = null;
+            if (Selected_restitutionClient_choix_theme != null)
+            {
 
-            Dp_content_affiche_select = cdata;
+
+                if (Selected_restitutionClient_choix_theme.NameCbb.Equals("Nom"))
+                {
+                    resultat = ClientDAO.seekClients(Txb_restitutionArticles_choix, null, null);
+                }
+                else if (Selected_restitutionClient_choix_theme.NameCbb.Equals("Prenom"))
+                {
+                    resultat = ClientDAO.seekClients(null, Txb_restitutionArticles_choix, null);
+                }
+                else resultat = null;
+
+                if (resultat != null)
+                {
+                    foreach (Client clt in resultat)
+                    {
+                        ListeRechercheClient.Add(new CommandeConcernantRA_DATA()
+                        {
+                            ContentButtonClientRA = clt.nom + " " + clt.prenom,
+                            TagButtonClientRA = clt.id
+                        });
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Pas de resultat ");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Choisissez un élement ");
+            }
+
 
         }
 
@@ -171,11 +205,8 @@ namespace App_pressing_Loreau.ViewModel
             {
                 List<ChoixBox> lstCb = new List<ChoixBox>();
 
-                lstCb.Add(new ChoixBox() { cbbId=1, NameCbb="Nom" });
+                lstCb.Add(new ChoixBox() { cbbId = 1, NameCbb = "Nom" });
                 lstCb.Add(new ChoixBox() { cbbId = 2, NameCbb = "Prenom" });
-                lstCb.Add(new ChoixBox() { cbbId = 3, NameCbb = "IdCleanWay" });
-                lstCb.Add(new ChoixBox() { cbbId = 4, NameCbb = "Salut" });
-
 
                 return lstCb;
             }

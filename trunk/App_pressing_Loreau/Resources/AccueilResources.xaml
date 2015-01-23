@@ -160,11 +160,11 @@
     </DataTemplate>
 
 
-    <DataTemplate x:Key="detailArticles" DataType="{x:Type vm:DetailCommandeVM}">
+    <!--<DataTemplate x:Key="detailArticles" DataType="{x:Type vm:DetailCommandeVM}">
 
         <ListBox Background="Bisque" Margin="5" ItemsSource="{Binding AfficheDetailCommande}"  />
 
-    </DataTemplate>
+    </DataTemplate>-->
     
     
 

@@ -21,6 +21,9 @@ namespace App_pressing_Loreau.ViewModel
         private String _label_restitutionArticles_Name;
         private int _label_restitutionArticles_NombreArticles;
 
+        public String ContentButtonClientRA { get; set; }
+        public int TagButtonClientRA { get; set; }
+
         private ObservableCollection<ArticlesRestitutionVM> _listeArticlesRestitution;
         public string Name
         {
