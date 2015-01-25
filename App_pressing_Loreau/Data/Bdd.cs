@@ -95,6 +95,13 @@ namespace App_pressing_Loreau.Data
         public static String updateCommande = "UPDATE commande SET cmd_id=?,cmd_date=?,cmd_payee=?,cmd_clt_id=?,cmd_remise=? WHERE cmd_id=?";
         public static String deleteCommande = "DELETE FROM commande WHERE cmd_id=?";
 
+        //Commentaire
+        public static String insertCommentaire = "INSERT INTO commentaire(com_com) VALUES (?)";
+        public static String selectCommentaire = "SELECT com_id, com_com FROM commentaire";
+        public static String selectCommentaireById = "SELECT com_id, com_com FROM commentaire WHERE com_id=?";
+        public static String updateCommentaire = "UPDATE commentaire SET com_id=?,com_com=? WHERE com_id=?";
+        public static String deleteCommentaire = "DELETE FROM commentaire WHERE com_id=?";
+
         //Département
         public static String insertDepartement = "INSERT INTO departement(dep_nom) VALUES (?)";
         public static String selectDepartements = "SELECT dep_id, dep_nom FROM departement";
