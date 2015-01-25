@@ -83,30 +83,13 @@
                     <Grid Margin="2">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="6*"/>
-                            <RowDefinition Height="30*"/>
+                            <RowDefinition Height="25*"/>
+                            <RowDefinition Height="5*"/>
                             <RowDefinition Height="5*"/>
                         </Grid.RowDefinitions>
 
                         <Label Content="Résultat de la recherche" Style="{StaticResource  Titre}" Grid.Row="0" />
                         
-                        <!--<Border Grid.Row="1">
-                            <ListBox x:Name="Collection" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Background="Transparent" ItemsSource="{Binding  ResultatRecherche_identificationClient}" BorderThickness="0"  >
-                                <ListBox.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <VirtualizingStackPanel Orientation="Vertical"/>
-                                    </ItemsPanelTemplate>
-                                </ListBox.ItemsPanel>
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate DataType="{x:Type vm:IdentificationClientData}">
-                                        <Grid>
-                                            <Button x:Name="button1"  Width="120" Height="30" Margin="2" Content="{Binding ButtonClientContent}" Tag="{Binding ButtonClientTag}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ResultatRechercheClient}"   CommandParameter="{Binding ElementName=button1}" Background="Coral"/>
-                                        </Grid>
-                                          
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ListBox>
-                           
-                        </Border>-->
                         <Border  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="10" Grid.Row="1">
                             <ListBox x:Name="searchResultPanel" ItemsSource="{Binding ResultatRecherche_identificationClient}" 
                                      Background="Transparent" BorderThickness="0" >
@@ -117,15 +100,19 @@
                                             <Border BorderBrush="White" BorderThickness="1" CornerRadius="10">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="3*"/>
+                                                    <ColumnDefinition Width="2*"/>
                                                     <ColumnDefinition Width="1*"/>
                                                     <ColumnDefinition Width="2*"/>
                                                 </Grid.ColumnDefinitions>
-                                                    <StackPanel Orientation="Vertical" Grid.Column="0">
-                                                        <TextBlock Text="{Binding Label_idenClient_nom}" FontWeight="Bold" FontSize="13pt" Foreground="Black" MinWidth="300" />
-                                                        <TextBlock Text="{Binding Label_idenClient_prenom}" FontSize="11pt" Padding="10,0,0,3" Foreground="#FF525252" MinWidth="300"/>
+                                                    <StackPanel Orientation="Vertical" Grid.Column="0" MinWidth="160" Margin="2">
+                                                        <TextBlock Text="{Binding Label_idenClient_nom}" FontWeight="Bold" FontSize="13pt" Foreground="Black"  />
+                                                        <TextBlock Text="{Binding Label_idenClient_prenom}" FontSize="11pt" Padding="10,0,0,3" Foreground="#FF525252" />
                                                     </StackPanel>
-                                                <Label Content="{Binding Label_identCleint_idCleanway}" Grid.Column="1" FontSize="13pt"/>
+                                                    <StackPanel Orientation="Vertical" Grid.Column="1" MinWidth="100">
+                                                        <TextBlock Text="Id CleanWay" FontWeight="Bold" FontSize="8pt" Foreground="SteelBlue" />
+                                                        <TextBlock Text="{Binding Label_identCleint_idCleanway}" FontSize="12pt" Padding="10,0,0,3" Foreground="#FF525252" />
+                                                    </StackPanel>
+                                                  
                                                 <Label Content="{Binding Label_identCleint_Adresse}" Grid.Column="2" FontSize="12pt" />
                                                 </Grid>
                                             </Border>
@@ -134,8 +121,9 @@
                                 </ListBox.ItemTemplate>
                             </ListBox>
                         </Border>
-
-                        <Button x:Name="btn_identClient_nouvelle_commande" Content="Nouvelle commande" Grid.Row="2" Margin="40,5" 
+                        <Label  Content="{Binding Label_identClient_choix,Mode=TwoWay}" Grid.Row="2" Style="{StaticResource vertilabel25}"/>
+                        
+                        <Button x:Name="btn_identClient_nouvelle_commande" Content="Nouvelle commande" Grid.Row="3" Margin="40,5" 
                             Command="{Binding OnCollectionChangeCommand }" CommandParameter="btnIdentifiantNouveauClient" Style="{StaticResource personalisationbuton}" Click="btn_identClient_nouvelle_commande_Click" />
 
                     </Grid>

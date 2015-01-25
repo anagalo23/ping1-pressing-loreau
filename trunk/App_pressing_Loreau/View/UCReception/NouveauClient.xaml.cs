@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using App_pressing_Loreau.ViewModel;
+using App_pressing_Loreau.Helper;
 
 namespace App_pressing_Loreau.View
 {
@@ -33,18 +34,18 @@ namespace App_pressing_Loreau.View
 
         private void btn_nouveauClient_valider_inscription_Click(object sender, RoutedEventArgs e)
         {
-            //nv = new NouveauClientVM();
-            //if (NouveauClientVM.index != 0)
-            //{
+
+            if (ClasseGlobale.client!= null)
+            {
                 dp.Children.Clear();
 
                 dp.Children.Add(new NouvelleCommande());
-            //}
-            //else
-            //{
-              //  MessageBox.Show("Client non enregistré");
+            }
+            else
+            {
+                MessageBox.Show("Client non enregistré");
 
-            //}
+            }
            
         }
 

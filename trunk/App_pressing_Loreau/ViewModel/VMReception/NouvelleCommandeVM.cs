@@ -29,8 +29,6 @@ namespace App_pressing_Loreau.ViewModel
 
 
         #region Attributs
-
-
         private List<CategoryItem> _listeDepartement;
         private List<CategoryItem> _listeArticles;
         private List<Departement> listeDepartementDTO = null;
@@ -40,13 +38,7 @@ namespace App_pressing_Loreau.ViewModel
         private float _label_NouvelleCommande_prixTotal;
         public float prixTotal { get; private set; }
 
-
-      
-        //private  ObservableCollection<ArticlesVM> _contentDetailCommande;
         private DelegateCommand<ArticlesVM> _deleteArticles;
-
-        //private static NouvelleCommandeVM singleton;
-
         private List<Article> lArticles;
 
         #endregion
@@ -64,14 +56,17 @@ namespace App_pressing_Loreau.ViewModel
             lArticles = new List<Article>();
 
             defileDepartementPrecedente();
-            deselectButtons();
+            //deselectButtons();
             prixTotal = 0;
-
-            for (int i = 0; i < ContentDetailCommande.Count; i++)
+            if (ContentDetailCommande != null)
             {
-                Label_NouvelleCommande_prixTotal += (ContentDetailCommande[i].article.TTC);
-            }
+                for (int i = 0; i < ContentDetailCommande.Count; i++)
+                {
+                    Label_NouvelleCommande_prixTotal += (ContentDetailCommande[i].article.TTC);
+                }
 
+            }
+            
         }
 
         #endregion
@@ -164,14 +159,12 @@ namespace App_pressing_Loreau.ViewModel
         {
             get
             {
-                //ClasseGlobale._contentDetailCommande
                 if (ClasseGlobale._contentDetailCommande == null)
                 {
                     ClasseGlobale.initializeContentDetailCommande();
                 }
                 return ClasseGlobale._contentDetailCommande;
-                //??
-                //(ClasseGlobale._contentDetailCommande = new ObservableCollection<ArticlesVM>());
+               
             }
 
             set
@@ -194,15 +187,15 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-        public ICommand Btn_nouvellecommande_valider
-        {
-            get
-            {
-                return new RelayCommand(
-                    p => EnregistrerCommande(),
-                    p => ContentDetailCommande.Count() > 0);
-            }
-        }
+        //public ICommand Btn_nouvellecommande_valider
+        //{
+        //    get
+        //    {
+        //        return new RelayCommand(
+        //            p => EnregistrerCommande(),
+        //            p => ContentDetailCommande.Count() > 0);
+        //    }
+        //}
 
         #endregion
 
@@ -212,11 +205,9 @@ namespace App_pressing_Loreau.ViewModel
 
         #region Méthodes
 
-
         /**
          * Permet le défilement des départements 
          **/
-
 
         public void defileDepartementPrecedente()
         {
@@ -260,8 +251,8 @@ namespace App_pressing_Loreau.ViewModel
                 if (clickedbutton != null)
                 {
                     int x = 15, y = 5;
-                    deselectButtons();
-                    clickedbutton.Background = Brushes.Blue;
+                   //deselectButtons();
+                    //clickedbutton.Background = Brushes.Blue;
 
                     foreach (TypeArticle type in articlesByDep)
                     {
@@ -286,15 +277,6 @@ namespace App_pressing_Loreau.ViewModel
 
         }
 
-        /*Permet de deselectioner les boutons*/
-        public void deselectButtons()
-        {
-            foreach (CategoryItem ci in _listeDepartement)
-            {
-                ci.ButtonDepBackground = Brushes.White;
-            }
-        }
-
        
 
         public void AjouterArticles(object button)
@@ -304,38 +286,13 @@ namespace App_pressing_Loreau.ViewModel
 
             if (clickedbutton != null)
             {
-                //String typeDelArticle = clickedbutton.Tag.ToString();
-                //Ajout de l'article à l'interface graphique
-                //article=typeArticleDTO;
+
                 ClasseGlobale._contentDetailCommande.Add(new ArticlesVM()
                 {
                     article = typeArticleDTO,
-                    ArticlesName = typeArticleDTO.nom
+                    ArticlesName = typeArticleDTO.nom,
+
                 });
-
-
-                //Ajout du même article à la liste d'article locale
-                //TypeArticle type = TypeArticleDAO.getTypeObjectByName(typeDelArticle);
-                //if (type != null)
-                //{
-                //    float TVA = type.TVA;
-                //    float HT = type.HT;
-
-                //    //Récupération du lien de la photo et du commentaire
-                //    string photo = null;
-                //    string commentaire = null;
-                //    bool ifRendu = false;
-
-
-                //    PlaceConvoyeur convoyeur = PlaceConvoyeurDAO.getFirstPlace(type.encombrement);
-
-                //    lArticles.Add(new Article(photo, commentaire, ifRendu, TVA, HT, type, convoyeur));
-                //}
-                //else
-                //{
-                //    // Problème de récupération du type
-                //    // Cette erreur ne devrait jamais arriver puisque les types d'articles sont constants et inscrits en BDD
-                //}
 
                 Label_NouvelleCommande_prixTotal = 0;
                 for (int i = 0; i < ContentDetailCommande.Count; i++)
@@ -359,66 +316,7 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-        public void EnregistrerCommande()
-        {
-
-            Commande commande = new Commande();
-            //Parcours des articles de la commande et stockage de ceux-ci dans l'objet commande
-            foreach (Article art in lArticles)
-            {
-                commande.addArticle(art);
-            }
-            //  -   each articles (List of articles)
-            //  -   the client
-
-            // Steps for add the command in the Databases
-            //  -   Assert each field of the object command is fill in, except client ids
-            //  -   Initialize the field 'payee'
-            //  -   Save the command in Database
-            //  -   Get his id
-            //  -   Complete 'articles' objects
-            //  -   We don't care the 'paiement', by default it's not paid
-
-            //Initialize the command field 'payee' to false
-            commande.payee = false;
-
-            //Get the client id
-            //int idClt;
-            //idClt = commande.client.id;
-
-
-
-            //CommandeDAO.open();
-
-            //Assert the integrity ------------------> TODO
-
-            //Add the command in the dataBase
-            CommandeDAO.insertCommande(commande);
-
-            //Get the command id ------------------> TODO
-            // Good question
-            // Check commande.id = ?
-            //int fk_cmd = CommandeDAO.lastId();
-            //Set paiement  ------------------------> TODO
-
-
-            //Set articles --> Review architecture, theses lines have not to be here
-            // perhaps : public static int insertArticles(List<Article> articles);
-            //ArticleDAO.insertArticles(listArticles);
-            List<Article> listArticles = commande.listArticles;
-            //for (int i = 0; i < listArticles.Count; i++)
-            //{
-            //    ArticleDAO.insertArticle(listArticles[i]);
-            //}
-            // Better ;-)
-            foreach (Article article in listArticles)
-            {
-                //article.fk_commande = fk_cmd;
-                ArticleDAO.insertArticle(article);
-            }
-
-            //Bdd.deconnexion();
-        }
+       
         #endregion
 
 

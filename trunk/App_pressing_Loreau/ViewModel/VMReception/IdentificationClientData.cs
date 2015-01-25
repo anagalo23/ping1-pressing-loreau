@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 using App_pressing_Loreau.Helper;
+using App_pressing_Loreau.Data.DAO;
+using App_pressing_Loreau.Model.DTO;
+using App_pressing_Loreau.Model;
 
 namespace App_pressing_Loreau.ViewModel
 {
@@ -12,12 +15,10 @@ namespace App_pressing_Loreau.ViewModel
     {
         #region Variables
 
-        private String _label_idenClient_nom;
-        private String _label_idenClient_prenom;
-        private int _label_identCleint_idCleanway;
         private String _label_identCleint_Adresse;
         public int ButtonClientTag { get; set; }
 
+        public Client clt;
 
         #endregion
 
@@ -25,52 +26,53 @@ namespace App_pressing_Loreau.ViewModel
        
         public String Label_idenClient_nom
         {
-            get { return _label_idenClient_nom; }
+            get { return this.clt.nom; }
             set
             {
-                if (value != _label_idenClient_nom)
+                if (!string.IsNullOrEmpty(value))
                 {
-                    _label_idenClient_nom = value;
-                    RaisePropertyChanged("Label_idenClient_nom");
+                    this.clt.nom = value;
+                    OnPropertyChanged("Label_idenClient_nom");
                 }
             }
         }
 
         public String Label_idenClient_prenom
         {
-            get { return _label_idenClient_prenom; }
+            get { return this.clt.prenom; }
             set
             {
-                if (value != _label_idenClient_prenom)
+                if (!string.IsNullOrEmpty(value))
                 {
-                    _label_idenClient_prenom = value;
-                    RaisePropertyChanged("Label_idenClient_prenom");
+                    this.clt.prenom = value;
+                    OnPropertyChanged("Label_idenClient_prenom");
                 }
             }
         }
 
         public int Label_identCleint_idCleanway
         {
-            get { return _label_identCleint_idCleanway; }
+            get { return this.clt.idCleanWay; }
             set
             {
-                if (value != _label_identCleint_idCleanway)
+                if  (value!=this.clt.idCleanWay)
                 {
-                    _label_identCleint_idCleanway = value;
-                    RaisePropertyChanged("Label_identCleint_idCleanway");
+                    this.clt.idCleanWay = value;
+                    OnPropertyChanged("Label_identCleint_idCleanway");
                 }
             }
         }
 
         public String Label_identCleint_Adresse
         {
-            get { return _label_identCleint_Adresse; }
+            get { return this.clt.adresse.giveAdresse(); }
             set
             {
-                if (value != _label_identCleint_Adresse)
+                if (value != this.clt.adresse.giveAdresse())
                 {
+                    _label_identCleint_Adresse = this.clt.adresse.giveAdresse();
                     _label_identCleint_Adresse = value;
-                    RaisePropertyChanged("Label_identCleint_Adresse");
+                    OnPropertyChanged("Label_identCleint_Adresse");
                 }
             }
         }
