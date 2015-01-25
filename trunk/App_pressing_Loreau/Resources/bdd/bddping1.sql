@@ -352,6 +352,36 @@ INSERT INTO `typepaiement` (`tpp_nom`) VALUES
 ('Cheque'),
 ('Nature');
 
+
+
+
+
+
+--
+-- Structure de la table `commentaire`
+--
+
+CREATE TABLE IF NOT EXISTS `commentaire` (
+  `com_id` int(11) NOT NULL AUTO_INCREMENT,
+  `com_com` varchar(45) NOT NULL,
+  PRIMARY KEY (`com_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Contenu de la table ``
+--
+
+INSERT INTO `commentaire` (`com_com`) VALUES
+('tâche de sang'),
+("tâche d\'huile"),
+('un truc'),
+('ché pô'),
+('Nature');
+
+
+
+
+
 --
 -- Contraintes pour les tables exportées
 --
