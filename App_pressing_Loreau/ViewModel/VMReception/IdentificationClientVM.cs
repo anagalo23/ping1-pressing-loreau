@@ -24,11 +24,6 @@ namespace App_pressing_Loreau.ViewModel
 
 
         private String _label_identClient_choix;
-        //private String _txt_identificationClient_prenom;
-        //private String _txt_identificationClient_portable;
-        //private String _txt_identificationClient_adresse;
-        //private String _txt_identificationClient_date_naissance;
-
         private DelegateCommand<IdentificationClientData> _resultatRechercheClient;
 
         #endregion
@@ -59,59 +54,7 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-        //public String Txb_identificationClient_prenom
-        //{
-        //    get { return _txt_identificationClient_prenom; }
-        //    set
-        //    {
-        //        if (value != _txt_identificationClient_prenom)
-        //        {
-        //            _txt_identificationClient_prenom = value;
-        //            OnPropertyChanged("Txb_identificationClient_prenom");
-        //        }
-        //    }
-        //}
-
-        //public String Txb_identificationClient_portable
-        //{
-        //    get { return _txt_identificationClient_portable; }
-        //    set
-        //    {
-        //        if (value != _txt_identificationClient_portable)
-        //        {
-        //            _txt_identificationClient_portable = value;
-        //            OnPropertyChanged("Txb_identificationClient_portable");
-        //        }
-        //    }
-        //}
-
-        //public String Txb_identificationClient_adresse
-        //{
-        //    get { return _txt_identificationClient_adresse; }
-        //    set
-        //    {
-        //        if (value != _txt_identificationClient_adresse)
-        //        {
-        //            _txt_identificationClient_adresse = value;
-        //            OnPropertyChanged("Txb_identificationClient_adresse");
-        //        }
-        //    }
-        //}
-
-        //public String Txb_identificationClient_date_naissance
-        //{
-        //    get { return _txt_identificationClient_date_naissance; }
-        //    set
-        //    {
-        //        if (value != _txt_identificationClient_date_naissance)
-        //        {
-        //            _txt_identificationClient_date_naissance = value;
-        //            OnPropertyChanged("Txb_identificationClient_date_naissance");
-        //        }
-        //    }
-        //}
-
-
+       
         public ICommand Btn_idenClient_recherche
         {
             get { return new RelayCommand(p => rechercheBDD()); }
@@ -150,7 +93,7 @@ namespace App_pressing_Loreau.ViewModel
 
         private void ExecuteAddClient(IdentificationClientData obj)
         {
-            //Label_identClient_choix = new String(obj.clt.nom + " " + obj.clt.prenom , 10);
+
             if (ClasseGlobale.client!=obj.clt)
                 
             {
@@ -165,27 +108,15 @@ namespace App_pressing_Loreau.ViewModel
         }
 
 
-        private void choixClient(object button)
-        {
-            Button clickedbutton = button as Button;
-
-            if (clickedbutton != null)
-            {
-                string msg = string.Format("You Pressed : {0} button", clickedbutton.Tag);
-                MessageBox.Show(msg);
-                clickedbutton.Background = Brushes.Red;
-            }
-        }
-
         public void rechercheBDD()
         {
             //On recherche dans la bdd en fonction des champs que l'utilisateur à entré
             Fields fields = AutoComplete.getFields();
             ResultatRecherche_identificationClient = new List<IdentificationClientData>();
 
-            List<Client> resultat = ClientDAO.seekClients(fields.nom, fields.prenom, fields.portable);
+            List<Client> resultat = ClientDAO.seekClients(fields.nom, fields.prenom, fields.portable,fields.idCleaWay);
 
-            //MessageBox.Show(fields.nom);
+
             //On affiche le résultat dans le doc Panel
             if (resultat != null)
             {
@@ -198,16 +129,9 @@ namespace App_pressing_Loreau.ViewModel
             {
                 MessageBox.Show("recherche infructueuse");
             }
-
-
         }
-
-
         #endregion
 
-
-
-        //Suite 
     }
 
 

@@ -187,16 +187,7 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-        //public ICommand Btn_nouvellecommande_valider
-        //{
-        //    get
-        //    {
-        //        return new RelayCommand(
-        //            p => EnregistrerCommande(),
-        //            p => ContentDetailCommande.Count() > 0);
-        //    }
-        //}
-
+      
         #endregion
 
 

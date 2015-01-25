@@ -2,25 +2,20 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Border BorderBrush="White" BorderThickness="2" CornerRadius="10">
-    <Grid Width="550">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
-        
-        <Label Content="{Binding NomSociete_clientPro, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
+        <Button BorderThickness="0" Background="Transparent" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path= DataContext.DetailCommandeCouranteClientPro}" Grid.Column="2" Margin="5" CommandParameter="{Binding }">
+            <Grid Width="550">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
 
-        <Label Content="{Binding NombreCommande_clientPro, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="5"/>
-        
-        <Button  Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path= DataContext.DetailCommandeCouranteClientPro}" Grid.Column="2" Margin="5" CommandParameter="{Binding ElementName=Button1}">
-            <TextBlock>Voir le detail de la <LineBreak/> commande courante </TextBlock>
-        </Button>
+                <Label Content="{Binding NomSociete_clientPro, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
 
-            <Button Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path= DataContext.DetailToutesLesCommandesClientPro}" Grid.Column="3" Margin="5" CommandParameter="{Binding ElementName=Button1}">
-            <TextBlock> voir le detail de  <LineBreak/> toutes les commandes</TextBlock>
+                <Label Content="{Binding NombreCommande_clientPro, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="5"/>
+
+            </Grid>
         </Button>
-    </Grid>
     </Border>
 </UserControl>

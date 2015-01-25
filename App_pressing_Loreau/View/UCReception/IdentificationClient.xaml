@@ -64,7 +64,8 @@
                             <Label Content="Id cleanway" Grid.Row="3" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                             
                             <TextBox x:Name="txb_identificationClient_id_cleanway" Grid.Row="3" Grid.Column="1" 
-                                     Text="{Binding Path=Txb_identificationClient_date_naissance, UpdateSourceTrigger=PropertyChanged}" Margin="10,4,13,4" Style="{StaticResource vertiTextBox}" TextChanged="txb_identificationClient_id_cleanway_TextChanged"/>
+                                     Text="{Binding Path=Txb_identificationClient_date_naissance, UpdateSourceTrigger=PropertyChanged}" Margin="10,4,13,4" Style="{StaticResource vertiTextBox}" TextChanged="txb_identificationClient_id_cleanway_TextChanged" KeyDown="txb_identificationClient_id_cleanway_KeyDown"/>
+                            
                             <Button  Grid.Row="4" Grid.Column="1" Margin="50,2" BorderThickness="0" Background="Transparent" Command="{Binding Btn_idenClient_recherche}">
                                 <Image Source="/Resources/pics/Factures/loupederecherche.png"/>
                             </Button>

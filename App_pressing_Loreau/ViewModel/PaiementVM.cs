@@ -19,8 +19,8 @@ namespace App_pressing_Loreau.ViewModel
         private String _label_paiement_prixTTC;
         private String _label_paiement_montant;
 
-        private int _txb_paiement_montantParmoyenPaiement;
-        private int _txb_paiement_montantRemise;
+        private float _txb_paiement_montantParmoyenPaiement;
+        private float _txb_paiement_montantRemise;
 
         Payement paiement;
         #endregion
@@ -75,7 +75,7 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-        public int Txb_paiement_montantRemise
+        public float Txb_paiement_montantRemise
         {
             get { return _txb_paiement_montantRemise; }
             set
@@ -88,7 +88,7 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-        public int Txb_paiement_montantParMoyenPaiement
+        public float Txb_paiement_montantParMoyenPaiement
         {
             get { return _txb_paiement_montantParmoyenPaiement; }
             set

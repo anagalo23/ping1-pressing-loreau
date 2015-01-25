@@ -14,19 +14,27 @@ namespace App_pressing_Loreau.ViewModel
     {
         #region Attributs 
 
-        private String _nomSociete_clientPro;
+        //private String _nomSociete_clientPro;
         private String _nombreCommande_clientPro;
 
+        public Client clt;
+        #endregion
+
+        #region Constructeurs
+        public UnClientPROVM()
+        {
+
+        }
         #endregion
 
         public String NomSociete_clientPro
         {
-            get { return _nomSociete_clientPro; }
+            get { return this.clt.nom; }
             set
             {
-                if (value != _nomSociete_clientPro)
+                if (!String.IsNullOrEmpty(value))
                 {
-                    _nomSociete_clientPro = value;
+                    this.clt.nom = value;
                     OnPropertyChanged("NomSociete_clientPro");
                 }
             }
