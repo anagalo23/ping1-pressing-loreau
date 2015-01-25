@@ -10,6 +10,7 @@ using App_pressing_Loreau.Helper;
 using App_pressing_Loreau.Data.DAO;
 using App_pressing_Loreau.Model.DTO;
 using System.Windows;
+using Microsoft.Practices.Prism.Commands;
 
 
 namespace App_pressing_Loreau.ViewModel
@@ -33,6 +34,7 @@ namespace App_pressing_Loreau.ViewModel
         public CommandeConcernantRA_DATA _contentCommandeConcernant;
         public List<CommandeConcernantRA_DATA> _listeRechercheClient;
 
+        private DelegateCommand<CommandeConcernantRA_DATA> _getButtonRecherche;
         #endregion
         public String Name
         {
@@ -130,9 +132,24 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
+        public DelegateCommand<CommandeConcernantRA_DATA> GetButtonRecherche
+        {
+            get
+            {
+                return this._getButtonRecherche ?? (this._getButtonRecherche = new DelegateCommand<CommandeConcernantRA_DATA>(
+                                                                       this.ExecuteResultatRechercheClient,
+                                                                       (arg) => true));
+            }
+        }
+
         #endregion
 
         #region Méthodes
+        private void ExecuteResultatRechercheClient(CommandeConcernantRA_DATA obj)
+        {
+            MessageBox.Show("resultat: " + obj.clt.nom + " et Id = " + obj.clt.id);
+        }
+        
         public void ContenuDeLaCommande()
         {
             ObservableCollection<ArticlesRestitutionVM> listeArt = new ObservableCollection<ArticlesRestitutionVM>();
@@ -173,8 +190,7 @@ namespace App_pressing_Loreau.ViewModel
                     {
                         ListeRechercheClient.Add(new CommandeConcernantRA_DATA()
                         {
-                            ContentButtonClientRA = clt.nom + " " + clt.prenom,
-                            TagButtonClientRA = clt.id
+                            clt=clt
                         });
                     }
                 }

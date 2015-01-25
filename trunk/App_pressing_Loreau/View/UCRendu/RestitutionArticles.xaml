@@ -90,7 +90,14 @@
                                     <ListBox Margin="2" Background="Transparent" BorderThickness="0"  ItemsSource="{Binding Path=ListeRechercheClient}">
                                         <ListBox.ItemTemplate>
                                             <DataTemplate>
-                                                <Button Content="{Binding ContentButtonClientRA}" Tag="{Binding TagButtonClientRA}" BorderThickness="0" Height="30"/>
+                                                
+                                                <Button  Tag="{Binding TagButtonClientRA}"  Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.GetButtonRecherche}"   CommandParameter="{Binding }" BorderThickness="0" Height="30">
+                                               
+                                                    <StackPanel Orientation="Vertical" MinWidth="160" Margin="2">
+                                                        <TextBlock Text="{Binding Label_restitutionArticles_NomClient}" FontWeight="Bold" FontSize="13pt" Foreground="Black"  />
+                                                        <TextBlock Text="{Binding Label_restitutionArticles_PrenomClient}" FontSize="11pt" Padding="10,0,0,3" Foreground="#FF525252" />
+                                                    </StackPanel>
+                                                </Button>
                                             </DataTemplate>
                                         </ListBox.ItemTemplate>
                                     </ListBox>

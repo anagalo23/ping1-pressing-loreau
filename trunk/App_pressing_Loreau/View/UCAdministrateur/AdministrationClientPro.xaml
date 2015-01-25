@@ -24,8 +24,8 @@
                     <ListBox Background="Transparent" Margin="5" ItemsSource="{Binding ListeClientPro}" BorderThickness="0">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Button BorderThickness="0" Content="Bonjour" Background="Transparent" Command="{Binding CommandeClientPro}" CommandParameter="{Binding}"/>
-                                    <!--<Grid>
+                                <Button BorderThickness="0"  Background="Transparent" Command="{Binding CommandeClientPro}" CommandParameter="{Binding}">
+                                    <Grid>
                                         <Border BorderBrush="White" BorderThickness="1" CornerRadius="10">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
@@ -42,7 +42,7 @@
                                             </Grid>
                                         </Border>
                                     </Grid>
-                                </Button>-->
+                                </Button>
                                 
                             </DataTemplate>
                         </ListBox.ItemTemplate>

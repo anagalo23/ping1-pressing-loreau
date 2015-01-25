@@ -1,4 +1,5 @@
 ﻿using App_pressing_Loreau.Helper;
+using App_pressing_Loreau.Model.DTO;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,25 +16,57 @@ namespace App_pressing_Loreau.ViewModel
     /// </summary>
 
 
-    class CommandeConcernantRA_DATA : ObservableObject, IPageViewModel
+    class CommandeConcernantRA_DATA : ObservableObject
     {
+        #region Attributs
         private String _label_restitutionArticles_Reference;
         private String _label_restitutionArticles_Name;
         private int _label_restitutionArticles_NombreArticles;
 
-        public String ContentButtonClientRA { get; set; }
-        public int TagButtonClientRA { get; set; }
-
+        private String _label_restitutionArticles_NomClient;
         private ObservableCollection<ArticlesRestitutionVM> _listeArticlesRestitution;
-        public string Name
-        {
-            get { return ""; }
-        }
+        #endregion
+
+        #region Constructeur
+
         public CommandeConcernantRA_DATA()
         {
 
         }
+        #endregion
 
+        #region Properties and commands
+
+        public String ContentButtonClientRA { get; set; }
+        public int TagButtonClientRA { get; set; }
+        public Client clt;
+
+        public String Label_restitutionArticles_NomClient
+        {
+            get { return this.clt.nom; }
+            set
+            {
+                if (!String.IsNullOrEmpty(value))
+                {
+                             this.clt.nom = value;
+                    OnPropertyChanged("Label_restitutionArticles_NomClient");
+                }
+            }
+        }
+
+        public String Label_restitutionArticles_PrenomClient
+        {
+            get { return this.clt.prenom; }
+            set
+            {
+                if (!String.IsNullOrEmpty(value))
+                {
+                     this.clt.prenom = value;
+                    OnPropertyChanged("Label_restitutionArticles_PrenomClient");
+                }
+            }
+        }
+        #region Contenu Commande du client
         public String Label_restitutionArticles_Reference
         {
             get { return _label_restitutionArticles_Reference; }
@@ -53,7 +86,7 @@ namespace App_pressing_Loreau.ViewModel
             get { return _label_restitutionArticles_Name; }
             set
             {
-                if (value!=_label_restitutionArticles_Name)
+                if (value != _label_restitutionArticles_Name)
                 {
                     _label_restitutionArticles_Name = value;
                     OnPropertyChanged("Label_restitutionArticles_Name");
@@ -92,6 +125,8 @@ namespace App_pressing_Loreau.ViewModel
                 }
             }
         }
-     
+        #endregion
+
+        #endregion
     }
 }
