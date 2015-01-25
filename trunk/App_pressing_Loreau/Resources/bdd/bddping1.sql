@@ -372,12 +372,22 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
 --
 
 INSERT INTO `commentaire` (`com_com`) VALUES
-('tâche de sang'),
-("tâche d\'huile"),
-('un truc'),
-('ché pô'),
-('Nature');
-
+('Sang'),
+('Chocolat'),
+('Urine'),
+('Décolaration'),
+('Gras'),
+('Troué'),
+('Bouton manquant'),
+('Ceinture'),
+('Boucle dans poche'),
+('Fruit'),
+('Vin'),
+('Herbe'),
+('transpiration'),
+('Lait'),
+('Stylo'),
+('Autres');
 
 
 

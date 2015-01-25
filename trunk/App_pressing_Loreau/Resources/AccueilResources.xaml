@@ -216,7 +216,7 @@
 
 
     <DataTemplate x:Key="departement">
-        <Button x:Name="button1" Width="115" Height="55" Content="{Binding ButtonContent}"  Tag="{Binding ButtonTag}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.OnButtonClickCommand}"  Style="{StaticResource departementsStyles}" CommandParameter="{Binding ElementName=button1}"/>
+        <Button x:Name="button1" Width="115" Height="52" Content="{Binding ButtonContent}"  Tag="{Binding ButtonTag}" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.OnButtonClickCommand}"  Style="{StaticResource departementsStyles}" CommandParameter="{Binding ElementName=button1}"/>
     </DataTemplate>
     
 </ResourceDictionary>

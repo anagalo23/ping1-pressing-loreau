@@ -39,7 +39,7 @@
 
                         <DockPanel Margin="2">
 
-                            <Border DockPanel.Dock="Top" Height="56">
+                            <Border DockPanel.Dock="Top" Height="62">
                                 <ListBox  ScrollViewer.HorizontalScrollBarVisibility="Hidden" BorderThickness="0" Background="Transparent" ItemsSource="{Binding ListeDepartements}" ItemTemplate="{StaticResource departement}"  >
                                     <ListBox.ItemsPanel>
                                         <ItemsPanelTemplate>
