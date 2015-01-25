@@ -31,10 +31,10 @@ namespace App_pressing_Loreau.ViewModel
         #endregion
         #region Properties and commands
 
-        ICommand commandeCLientPro;
-        public ICommand CommandeCLientPro
+        ICommand commandeClientPro;
+        public ICommand CommandeClientPro
         {
-            get { return commandeCLientPro ?? (commandeCLientPro = new RelayCommand(validerClientPro)); }
+            get { return commandeClientPro ?? (commandeClientPro = new RelayCommand(validerClientPro)); }
         }
         public List<UnClientProItem> ListeClientPro
         {

@@ -19,9 +19,11 @@
 
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Text="{Binding ArticlesName}" Margin="5" Width="170" />
-            <ComboBox Grid.Column="1" Margin="5" Text="{Binding Path=Cbb_Articles_Commentaire}" Width="70"  MinHeight="20" SelectedItem="{Binding Selected_Articles_Commentaire}" DisplayMemberPath="NameCbbArt"/>
+
+            <ComboBox Grid.Column="1" Margin="5" ItemsSource="{Binding Path=Cbb_Articles_Commentaire}" Width="90"  MinHeight="20" SelectedItem="{Binding Selected_Articles_Commentaire}" DisplayMemberPath="NameCbbArt"/>
             
-            <Image Grid.Column="2" Source="{Binding ElementName=_window,Path=DataContext.SelectedPhoto }" Margin="5" Width="60"  MinHeight="20"/>
+            <TextBlock Grid.Column="2" Text="{Binding SelectedPhoto,Mode=TwoWay}" Margin="5" Width="70"  MinHeight="20"/>
+            
             <Button Content="Charger la photo" Grid.Column="3" Command="{Binding Btn_Articles_ChargerPhoto}" Margin="5"  />
 
             <Button  Margin="5" Grid.Column="4" BorderThickness="0" Background="Transparent"  Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path= DataContext.DeleteArticles}" CommandParameter="{Binding}">

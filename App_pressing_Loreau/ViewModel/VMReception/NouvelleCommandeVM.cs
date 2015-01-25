@@ -41,7 +41,7 @@ namespace App_pressing_Loreau.ViewModel
         public float prixTotal { get; private set; }
 
 
-        ChoixCommentaire choixcom = new ChoixCommentaire();
+      
         //private  ObservableCollection<ArticlesVM> _contentDetailCommande;
         private DelegateCommand<ArticlesVM> _deleteArticles;
 
@@ -117,8 +117,6 @@ namespace App_pressing_Loreau.ViewModel
                     p => ListeDepartements.Count != 5);
             }
         }
-
-
 
         public List<CategoryItem> ListeDepartements
         {
@@ -205,6 +203,7 @@ namespace App_pressing_Loreau.ViewModel
                     p => ContentDetailCommande.Count() > 0);
             }
         }
+
         #endregion
 
 
@@ -301,15 +300,6 @@ namespace App_pressing_Loreau.ViewModel
         public void AjouterArticles(object button)
         {
             Button clickedbutton = button as Button;
-
-            List<String> lstCb = new List<String>();
-
-            //*********************************** ATTENTION
-            lstCb.Add("Sang");
-            lstCb.Add("Huile");
-            lstCb.Add("produit");
-            lstCb.Add("Soude");
-
             typeArticleDTO = (TypeArticle)TypeArticleDAO.selectTypesById(Int32.Parse(clickedbutton.Tag.ToString()));
 
             if (clickedbutton != null)
@@ -320,8 +310,7 @@ namespace App_pressing_Loreau.ViewModel
                 ClasseGlobale._contentDetailCommande.Add(new ArticlesVM()
                 {
                     article = typeArticleDTO,
-                    ArticlesName = typeArticleDTO.nom,
-                    Cbb_Articles_Commentaire = lstCb
+                    ArticlesName = typeArticleDTO.nom
                 });
 
 
@@ -448,28 +437,6 @@ namespace App_pressing_Loreau.ViewModel
 
 
         }
-
-
-
-        public class ChoixCommentaire
-        {
-            public String NameCbbArt { get; set; }
-            public int cbbId { get; set; }
-
-            public List<ChoixCommentaire> ListeChamp()
-            {
-                List<ChoixCommentaire> lstCb = new List<ChoixCommentaire>();
-
-                lstCb.Add(new ChoixCommentaire() { cbbId = 1, NameCbbArt = "Sang" });
-                lstCb.Add(new ChoixCommentaire() { cbbId = 2, NameCbbArt = "Huile" });
-                lstCb.Add(new ChoixCommentaire() { cbbId = 3, NameCbbArt = "produit" });
-                lstCb.Add(new ChoixCommentaire() { cbbId = 4, NameCbbArt = "Soude" });
-
-
-                return lstCb;
-            }
-        }
-
 
         #endregion
     }

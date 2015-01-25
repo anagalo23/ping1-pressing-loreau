@@ -13,33 +13,35 @@ using System.Windows;
 
 using App_pressing_Loreau.Helper;
 using App_pressing_Loreau.Model.DTO;
+using App_pressing_Loreau.Data.DAO;
 
 
 
 namespace App_pressing_Loreau.ViewModel
 {
-    class ArticlesVM : ObservableObject, IPageViewModel
+    class ArticlesVM : ObservableObject
     {
         #region Attributes 
 
-        //private string _txb_Articles_Commentaire;
-        private ImageSource _changedPhoto;
-        private string _changedPhotoFileName = null;
-        private String _selected_Articles_Commentaire;
+     
+        private String _changedPhoto;
+              
+        private ComboComm _selected_Articles_Commentaire;
+        ComboComm comboComm = new ComboComm();
 
-        public List<String> Cbb_Articles_Commentaire { get; set; }
-
-
-        private ConvertToImage convert = new ConvertToImage();
         public TypeArticle article;        
         #endregion
 
         public ArticlesVM()
         {
-            
+
+
+            Cbb_Articles_Commentaire = comboComm.ListeComm();
         }
 
         #region Propietés et commandes 
+
+        public List<ComboComm> Cbb_Articles_Commentaire { get; set; }
         public string ArticlesName
         {
             get
@@ -57,9 +59,8 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-      
 
-        public String Selected_Articles_Commentaire
+        public ComboComm Selected_Articles_Commentaire
         {
             get { return _selected_Articles_Commentaire; }
             set
@@ -69,22 +70,18 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
         public ICommand Btn_Articles_ChargerPhoto
-        { get { return new RelayCommand(P => ChangePhoto()); } }
+        { get { return new RelayCommand(P => ExecuteOpenFileDialog()); } }
 
    
 
-        public ImageSource SelectedPhoto
+        public String SelectedPhoto
         {
             get {  return _changedPhoto; }
             set
             {
-                if (_changedPhoto == null)
+                if (_changedPhoto != value)
                 {
-                    //_changedPhoto = (ImageSource)convert.Convert(
-                    //    value,
-                    //    typeof(ImageSource),
-                    //    null,
-                    //    Thread.CurrentThread.CurrentUICulture);
+                    _changedPhoto = value;
                     OnPropertyChanged("SelectedPhoto");
                 }
             }
@@ -96,40 +93,33 @@ namespace App_pressing_Loreau.ViewModel
             dialog.Multiselect = false;
             dialog.Filter = "Image Files|*.jpg;*.png;*.bmp";
             dialog.ShowDialog();
-            //SelectFile = dialog.FileName;
+            SelectedPhoto = dialog.SafeFileName;
         }
-        private void ChangePhoto()
-        {
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Multiselect = false;
-            dlg.Filter = "Image Files|*.jpg;*.png;*.bmp";
-            if (dlg.ShowDialog() == true)
-            {
-                BitmapImage bi = new BitmapImage();
-                //the input stream will be disposed at the end to avoid wpf lock / file access exceptions 
-                using (Stream inputStream = File.OpenRead(dlg.FileName))
-                {
-                    bi.BeginInit();
-                    bi.StreamSource = inputStream;
-                    //load the image now so we can immediately dispose of the stream
-                    bi.CacheOption = BitmapCacheOption.OnLoad;
-                    bi.EndInit();
-                }
-                _changedPhotoFileName = dlg.FileName;
-                _changedPhoto = bi;
-                OnPropertyChanged("SelectedPhoto");
-            }
-        }
+      
         #endregion
 
-
-
-        public string Name
-        {
-            get { return ""; }
-        }
     }
 
+    #region Class
 
-   
+    class ComboComm
+    {
+        public String NameCbbArt { get; set; }
+        public int cbbArtId { get; set; }
+        List<Commentaire> com = (List<Commentaire>) CommentaireDAO.selectCommentaire(); 
+        public List<ComboComm> ListeComm()
+        {
+            List<ComboComm> lstCb = new List<ComboComm>();
+
+            foreach (Commentaire cc in com)
+            {
+                lstCb.Add(new ComboComm() {NameCbbArt=cc.com,cbbArtId=cc.id });
+            }
+         
+            return lstCb;
+        }
+    }
+    #endregion
+
+
 }
