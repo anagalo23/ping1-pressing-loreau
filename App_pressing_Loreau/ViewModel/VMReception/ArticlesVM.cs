@@ -34,8 +34,6 @@ namespace App_pressing_Loreau.ViewModel
 
         public ArticlesVM()
         {
-
-
             Cbb_Articles_Commentaire = comboComm.ListeComm();
         }
 

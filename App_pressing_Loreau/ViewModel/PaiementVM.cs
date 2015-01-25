@@ -21,6 +21,8 @@ namespace App_pressing_Loreau.ViewModel
 
         private int _txb_paiement_montantParmoyenPaiement;
         private int _txb_paiement_montantRemise;
+
+        Payement paiement;
         #endregion
 
 

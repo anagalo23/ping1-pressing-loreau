@@ -242,28 +242,18 @@ namespace App_pressing_Loreau.ViewModel
         #region Méthodes
         public void enregisterClient()
         {
-            //ClasseGlobale.client = new Client();
-            //client.nom = this._txb_nouveauClient_nom;
-            //client.prenom = Txb_nouveauClient_prenom;
-            //client.dateNaissance = Txb_nouveauClient_date_naissance;
-            //client.idCleanWay = Txb_nouveauClient_idCleanway;
-            //client.type = 0;
-            //client.adresse = new Model.Adresse();
-            //client.adresse.numero = Txb_nouveauClient_numero + "";
-            //client.adresse.rue = Txb_nouveauClient_rue_voie;
-            //client.adresse.codePostal = Txb_nouveauClient_bp;
-            //client.adresse.ville = Txb_nouveauClient_ville;
-
-            //client.contactSms = Ckb_nouveauClient_sms;
-            //client.telmob = Txb_nouveauClient_portable;
-            //client.contactMail = Ckb_nouveauClient_mail;
-            //client.email = Txb_nouveauClient_mail;
-            
-
-            index= ClientDAO.insertClient(client);
-
-            if (index == 0)
+            if (client != null)
             {
+                index = ClientDAO.insertClient(client);
+            }
+
+            if (index != null)
+            {
+                ClasseGlobale.client = null;
+                ClasseGlobale.client = client;
+            }else if (index == 0)
+            {
+                ClasseGlobale.client = null;
                 MessageBox.Show("Problème d'enregistrement du client dans la base de données");
             }
 

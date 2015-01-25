@@ -3,6 +3,8 @@ using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
 
+using App_pressing_Loreau.Model;
+using App_pressing_Loreau.Helper;
 
 namespace App_pressing_Loreau.View
 {
@@ -31,24 +33,24 @@ namespace App_pressing_Loreau.View
 
         private void btn_identClient_nouvelle_commande_Click(object sender, RoutedEventArgs e)
         {
-            dp.Children.Clear();
-            dp.Children.Add(new NouvelleCommande());
+            if (ClasseGlobale.client != null)
+            {
+                dp.Children.Clear();
+                dp.Children.Add(new NouvelleCommande());
+            }
+            else { MessageBox.Show("Choisissez un client ou clicquez sur un nouveau client"); }
+           
         }
 
         private void txb_identificationClient_nom_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //MessageBox.Show("salut");
+       
             Fields fields = AutoComplete.getFields();
-            //MessageBox.Show(sender.ToString());
+       
 
             fields.nom = txb_identificationClient_nom.Text; 
-                //AutoComplete.parseFromClassToMessage(sender.ToString());
-            //message();
-            
-            //clientVm
-            //ViewModel.IdentificationClientVM.rechercheBDD();
-            this.updateSearchResultPanel();
-
+    
+          
         }
 
 
@@ -56,9 +58,8 @@ namespace App_pressing_Loreau.View
         {
             Fields fields = AutoComplete.getFields();
             fields.prenom = txb_identificationClient_prenom.Text;
-            //message();
-
-            this.updateSearchResultPanel();
+           
+           
         }
 
         private void txb_identificationClient_portable_TextChanged(object sender, TextChangedEventArgs e)
@@ -68,24 +69,10 @@ namespace App_pressing_Loreau.View
             //MessageBox.Show(fields.nom);
             //message();
 
-            this.updateSearchResultPanel();
 
         }
 
-        //private void txb_identificationClient_adresse_TextChanged(object sender, TextChangedEventArgs e)
-        //{
-        //    Fields fields = AutoComplete.getFields();
-        //    fields.adresse = AutoComplete.parseFromClassToMessage(sender.ToString());
-        //    //tactacttac
-        //    //message();
-        //}
-
-        //private void txb_identificationClient_date_naissance_TextChanged(object sender, TextChangedEventArgs e)
-        //{
-        //    Fields fields = AutoComplete.getFields();
-        //    fields.dateDeNaissance = AutoComplete.parseFromClassToMessage(sender.ToString());
-        //    //message();
-        //}
+      
 
         private void message(){
             Fields fields = AutoComplete.getFields();
@@ -95,21 +82,7 @@ namespace App_pressing_Loreau.View
                 "\nadresse : " + fields.adresse +
                 "\ndateDeNaissance : " + fields.dateDeNaissance);
         }
-
-        private void updateSearchResultPanel()
-        {
-            //searchResultPanel.SetCurrentValue();
-
-            //dp.Children.Clear();
-            //dp.Children.Add(new IdentificationClient());
-
-            //IEnumerable ic = searchResultPanel.ItemsSource;
-            //ic.
-            //searchResultPanel.Initialized();
-
-        }
-
-       
+  
 
         private void txb_identificationClient_id_cleanway_TextChanged(object sender, TextChangedEventArgs e)
         {

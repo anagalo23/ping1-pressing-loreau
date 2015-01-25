@@ -1,4 +1,5 @@
-﻿using App_pressing_Loreau.ViewModel;
+﻿using App_pressing_Loreau.Helper;
+using App_pressing_Loreau.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,14 +31,20 @@ namespace App_pressing_Loreau.View
 
         private void btn_nouvelleCommande_paiement_immediat_Click(object sender, RoutedEventArgs e)
         {
-            dp.Children.Clear();
-            dp.Children.Add(new Paiement());
+            if (ClasseGlobale._contentDetailCommande != null)
+            {
+                dp.Children.Clear();
+                dp.Children.Add(new Paiement());
+            }
+            else { MessageBox.Show("Ajoutez des articles"); }
+            
         }
 
         private void btn_nouvelleCommande_paiement_differe_Click(object sender, RoutedEventArgs e)
         {
-            AccueilVM acvm = new AccueilVM();
-            acvm.accueilVM();
+            //MessageBox.Show(ClasseGlobale._contentDetailCommande[0].SelectedPhoto);
+            //AccueilVM acvm = new AccueilVM();
+            //acvm.accueilVM();
         }
 
     }
