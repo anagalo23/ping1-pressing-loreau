@@ -47,7 +47,7 @@ namespace App_pressing_Loreau.Data.DAO
 
 
         //Selectionner l'ensemble des clients de la base de données a partir du nom, du prenom et/ou du numéro de telephone
-        public static List<Client> seekClients(String nom, String prenom, String tel)
+        public static List<Client> seekClients(String nom, String prenom, String tel, int idcleanway)
         {
             List<Client> retour = new List<Client>();
             try
@@ -69,7 +69,10 @@ namespace App_pressing_Loreau.Data.DAO
                 if (tel != null)
                 {
                     sql = String.Format("{0}{1}{2}{3}", sql, " AND (clt_fix LIKE '%", tel, "%' OR clt_mob LIKE '%", tel, "%')");
-
+                }
+                if (idcleanway != 0)
+                {
+                    sql = String.Format("{0}{1}{2}", sql, " AND clt_idCleanway=", idcleanway);
                 }
                 #endregion
 
@@ -82,7 +85,7 @@ namespace App_pressing_Loreau.Data.DAO
                 while (msdr.Read())
                 {
                     int clt_id = Int32.Parse(msdr["clt_id"].ToString());
-                    string clt_nom= msdr["clt_nom"].ToString();
+                    string clt_nom = msdr["clt_nom"].ToString();
                     string clt_prenom = msdr["clt_prenom"].ToString();
                     string clt_fix = msdr["clt_fix"].ToString();
                     string clt_mob = msdr["clt_mob"].ToString();
@@ -139,7 +142,7 @@ namespace App_pressing_Loreau.Data.DAO
                 Client client;
                 while (msdr.Read())
                 {
-                    int contactmail = ((msdr["clt_contactmail"].ToString()).Equals("False")) ? 0 : 1 ;
+                    int contactmail = ((msdr["clt_contactmail"].ToString()).Equals("False")) ? 0 : 1;
                     int clt_contactsms = ((msdr["clt_contactsms"].ToString()).Equals("False")) ? 0 : 1;
                     int clt_type = ((msdr["clt_type"].ToString()).Equals("False")) ? 0 : 1;
 
@@ -164,8 +167,8 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogExcel log = new LogExcel("bdfvhk", "djsfbhh", "jhfsd");
-                //log.ajouterLog();
+                LogExcel log = new LogExcel("bdfvhk", "djsfbhh", "jhfsd");
+                log.ajouterLog();
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données."));
                 return null;
             }
