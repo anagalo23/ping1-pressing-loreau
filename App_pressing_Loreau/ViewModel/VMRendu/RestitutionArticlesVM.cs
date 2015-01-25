@@ -159,11 +159,11 @@ namespace App_pressing_Loreau.ViewModel
 
                 if (Selected_restitutionClient_choix_theme.NameCbb.Equals("Nom"))
                 {
-                    resultat = ClientDAO.seekClients(Txb_restitutionArticles_choix, null, null);
+                    resultat = ClientDAO.seekClients(Txb_restitutionArticles_choix, null, null, 0);
                 }
                 else if (Selected_restitutionClient_choix_theme.NameCbb.Equals("Prenom"))
                 {
-                    resultat = ClientDAO.seekClients(null, Txb_restitutionArticles_choix, null);
+                    resultat = ClientDAO.seekClients(null, Txb_restitutionArticles_choix, null, 0);
                 }
                 else resultat = null;
 
