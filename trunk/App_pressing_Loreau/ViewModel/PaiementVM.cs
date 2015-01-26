@@ -109,6 +109,13 @@ namespace App_pressing_Loreau.ViewModel
                     p => Txb_paiement_montantRemise > 0 & Txb_paiement_montantRemise < 6);
             }
         }
+
+        //public ICommand Btn_paiement_cb
+        //{
+
+        //}
+
+        //public ICommand Btn_paiement_Espece { }
         #endregion
 
 

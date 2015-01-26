@@ -442,6 +442,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\bdd\bddping1.sql" />
+    <Resource Include="Resources\pics\Paiements\AmericanExpress.png" />
     <Resource Include="Resources\pics\Paiements\carte_bleue.png" />
     <Resource Include="Resources\pics\Paiements\Paiement_cheques.png" />
     <Resource Include="Resources\pics\Paiements\paiement_especes.png" />

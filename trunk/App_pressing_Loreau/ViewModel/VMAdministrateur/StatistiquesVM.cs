@@ -10,6 +10,7 @@ using App_pressing_Loreau.Model.DTO;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Windows;
+using Microsoft.Practices.Prism.Commands;
 
 namespace App_pressing_Loreau.ViewModel
 {
@@ -26,6 +27,10 @@ namespace App_pressing_Loreau.ViewModel
         private float _label_statistique_nbrArticlesPressBlanchi;
         private float _label_statistique_nbrCouettes;
         private float _label_statistique_nbrChemises;
+
+
+
+        private DelegateCommand<StatistiquesVM> _btn_statistique_du_jour;
         #endregion
 
 
@@ -33,7 +38,7 @@ namespace App_pressing_Loreau.ViewModel
         public StatistiquesVM()
         {
 
-           // statisticsByDays();
+            // statisticsByDays();
         }
 
         #endregion
@@ -149,9 +154,14 @@ namespace App_pressing_Loreau.ViewModel
         }
 
 
-        public ICommand Btn_statistique_du_jour
+        public DelegateCommand<StatistiquesVM> Btn_statistique_du_jour
         {
-            get { return new RelayCommand(p => statisticsByDays()); }
+            get
+            {
+                return this._btn_statistique_du_jour ?? (this._btn_statistique_du_jour = new DelegateCommand<StatistiquesVM>(
+                    this.statisticsByDays,
+                    (arg) => true));
+            }
         }
 
         public ICommand Btn_statistique_de_la_semaine
@@ -169,15 +179,15 @@ namespace App_pressing_Loreau.ViewModel
         #endregion
 
         #region methods
-        public void statisticsByDays()
+        public void statisticsByDays(StatistiquesVM obj)
         {
-            _label_statistique_catotal = 10;
+            _label_statistique_cadep = 10;
         }
 
         public void statisticsByWeek()
         {
             _label_statistique_catotal = 100;
-            //MessageBox.Show("" + _label_statistique_catotal);
+            MessageBox.Show("" + _label_statistique_catotal);
         }
 
         public void statisticsByMonth()

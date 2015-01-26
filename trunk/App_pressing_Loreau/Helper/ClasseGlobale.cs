@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using App_pressing_Loreau.ViewModel;
 using System.Collections.ObjectModel;
 using App_pressing_Loreau.Model.DTO;
+using App_pressing_Loreau.Data.DAO;
 
 namespace App_pressing_Loreau.Helper
 {
@@ -31,5 +32,12 @@ namespace App_pressing_Loreau.Helper
 
         //*********************************************************************************GESTION D
 
+        //*******************************************************************************GESTION DE LA LISTE DES EMPLOYES
+
+        public static List<Employe> listeEmployes { get; set; }
+        public static void getAllEmployee()
+        {
+            listeEmployes= (List<Employe>)EmployeDAO.selectEmployes();
+        }
     }
 }

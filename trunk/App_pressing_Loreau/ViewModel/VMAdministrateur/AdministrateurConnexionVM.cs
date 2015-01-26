@@ -22,40 +22,6 @@ namespace App_pressing_Loreau.ViewModel
             get { return ""; }
         }
 
-        //public ICommand Btn_identificationAdmin_connectee
-        //{
-        //    get
-        //    {
-        //        return new RelayCommand(
-        //              p => suivant());
-        //    }
 
-        //}
-
-        public IPageViewModel accessUserControl
-        {
-            get
-            {
-                return _accessUserControl;
-            }
-            set
-            {
-                if (_accessUserControl != value)
-                {
-                 
-                    _accessUserControl = value;
-                    OnPropertyChanged("accessUserControl");
-                }
-            }
-        }
-
-
-
-
-        //public void suivant()
-        //{
-        //    accessUserControl=null;
-        //    accessUserControl = new PageAdministrateurVM();
-        //}
     }
 }

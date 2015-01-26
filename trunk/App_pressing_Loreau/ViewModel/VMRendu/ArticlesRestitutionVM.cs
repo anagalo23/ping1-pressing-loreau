@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using App_pressing_Loreau.Helper;
+using App_pressing_Loreau.Model.DTO;
 
 namespace App_pressing_Loreau.ViewModel
 {
@@ -17,6 +18,8 @@ namespace App_pressing_Loreau.ViewModel
         private string _txb_ArticlesRes_photo;
         private string _txb_ArticlesRes_etat;
 
+        private bool _isSelectedArticle;
+        public Article ar;
         #endregion
 
         public String Name
@@ -95,6 +98,20 @@ namespace App_pressing_Loreau.ViewModel
 
         }
 
+
+        public bool IsSelectedArticle
+        {
+            get { return _isSelectedArticle; }
+            set
+            {
+                if (value != _isSelectedArticle)
+                {
+                    _isSelectedArticle = value;
+                    OnPropertyChanged("IsSelectedArticle");
+                }
+            }
+
+        }
         #endregion
     }
 }
