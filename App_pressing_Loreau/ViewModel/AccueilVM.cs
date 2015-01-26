@@ -62,8 +62,6 @@ namespace App_pressing_Loreau
             Btn_administrateurColor = Brushes.Teal;
 
 
-
-
         }
 
         #endregion
@@ -341,12 +339,12 @@ namespace App_pressing_Loreau
         }
         public void UtilisateurListe()
         {
-            listeEmployer = (List<Employe>)EmployeDAO.selectEmployes();
-            if (listeEmployer != null)
+            ClasseGlobale.listeEmployes = (List<Employe>)EmployeDAO.selectEmployes();
+            if (ClasseGlobale.listeEmployes != null)
             {
 
 
-                foreach (Employe em in listeEmployer)
+                foreach (Employe em in ClasseGlobale.listeEmployes)
                 {
                     _listeUser.Add(new CategoryItem() { ButtonUserContent = em.nom, ButtonUserTag = em.id, ButtonUserBackground = Brushes.Teal });
                 }
@@ -380,8 +378,7 @@ namespace App_pressing_Loreau
             ClasseGlobale._contentDetailCommande = null;
             ClasseGlobale.client = null;
 
-            //ClasseGlobale.initializeContentDetailCommande();
-            //ClasseGlobale.initializeClient();
+         
             accessUserControl = null;
         }
         #endregion

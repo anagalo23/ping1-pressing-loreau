@@ -102,7 +102,7 @@ namespace App_pressing_Loreau.ViewModel
             {
                 EmployeDAO.insertEmploye(employee);
             }
-            foreach (Employe em in listeEmploye)
+            foreach (Employe em in ClasseGlobale.listeEmployes)
             {
                 ListeUtilisateurs.Add(new UnUtilisateurVM() { NameUtilisateur = em.nom, idEmployee = em.id });
             }
@@ -112,10 +112,10 @@ namespace App_pressing_Loreau.ViewModel
         {
             employee = (Employe)EmployeDAO.selectEmployeById(obj.idEmployee);
             EmployeDAO.deleteEmploye(employee);
-            if (this._listeUtilisateurs.Contains(obj))
-            {
-                this._listeUtilisateurs.Remove(obj);
-            }
+            //if (this._listeUtilisateurs.Contains(obj))
+            //{
+            //    this._listeUtilisateurs.Remove(obj);
+            //}
 
         }
         #endregion

@@ -8,9 +8,13 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="740">
 
-    <UserControl.DataContext>
+    <!--<UserControl.DataContext>
         <local:StatistiquesVM />
-    </UserControl.DataContext>
+    </UserControl.DataContext>-->
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
+    </UserControl.Resources>
+
 
     <DockPanel x:Name="dp">
         <Grid>
@@ -28,170 +32,85 @@
                 </Grid.ColumnDefinitions>
 
                 <Button x:Name="btn_statistique_du_jour" Command="{Binding Btn_statistique_du_jour,RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding }" Content="Du jour"    Style="{StaticResource choixbouton30}"/>
+                
                 <Button x:Name="btn_statistique_de_la_semaine" Command="{Binding Btn_statistique_de_la_semaine}"  Content="De la semaine" Grid.Column="1" Style="{StaticResource choixbouton30}"/>
                 <Button x:Name="btn_statistique_du_mois" Command="{Binding Btn_statistique_du_mois}" Content="Du mois" Grid.Column="2" 
                         Style="{StaticResource choixbouton30}"/>
                 <Button x:Name="btn_statistique_annee" Command="{Binding Btn_statistique_de_lannee}" Content="De l' annnée" Grid.Column="3" Style="{StaticResource choixbouton30}" />
 
             </Grid>
+            <Border Grid.Row="1" Margin="5">
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="1" Margin="5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="3*"/>
-                </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" BorderThickness="2" BorderBrush="AliceBlue" CornerRadius="10" Margin="5">
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Label Content="chiffre d'affaire Total:"  Grid.Row="0" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                            <Label x:Name="label_catotal" Content="{Binding Label_statistique_catotal, UpdateSourceTrigger=PropertyChanged , Mode=TwoWay}" Style="{StaticResource statistiqueLabel}" Grid.Row="0" Grid.Column="1"/>
 
-                <Border Grid.Column="0" BorderThickness="2" BorderBrush="AliceBlue" CornerRadius="10" Margin="5">
-                    <Grid >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-                        <Label Content="chiffre d'affaire Total:"  Grid.Row="0" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
-                        <Label x:Name="label_catotal" Content="{Binding Label_statistique_catotal, UpdateSourceTrigger=PropertyChanged , Mode=TwoWay}" Style="{StaticResource statistiqueLabel}" Grid.Row="0" Grid.Column="1"/>
+                            <Label Content="chiffre d'affaire par département :" Grid.Row="1" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="{Binding Label_statistique_cadep}"  Grid.Row="1" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
 
-                        <Label Content="chiffre d'affaire par département :" Grid.Row="1" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
-                        <Label Content="{Binding Label_statistique_cadep}"  Grid.Row="1" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="Nombre de clients venus deposer des articles :"  Grid.Row="2" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="{Binding Label_statistique_nbrClientsDepoArt}"  Grid.Row="2" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
 
-                        <Label Content="Nombre de clients venus deposer des articles :"  Grid.Row="2" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
-                        <Label Content="{Binding Label_statistique_nbrClientsDepoArt}"  Grid.Row="2" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="Nombre de clients venus récupérer des articles :"  Grid.Row="3" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
 
-                        <Label Content="Nombre de clients venus récupérer des articles :"  Grid.Row="3" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
-                        <Label Content="{Binding Label_statistique_nbrClientsRecupArt}"  Grid.Row="3" Grid.Column="1"/>
+                            <Label Content="{Binding Label_statistique_nbrClientsRecupArt}"  Grid.Row="3" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
 
-                        <Label Content="Nombre de clients qui ont payé immédiatement :"  Grid.Row="4" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
-                        <Label Content="{Binding Label_statistique_nbrClientspayeimediatement}" Grid.Row="4" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
-                    </Grid>
+                            <Label Content="Nombre de clients qui ont payé immédiatement :"  Grid.Row="4" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="{Binding Label_statistique_nbrClientspayeimediatement}" Grid.Row="4" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+                        </Grid>
 
-                </Border>
-                <Border Grid.Column="1" Margin="5" BorderThickness="2" BorderBrush="AliceBlue" CornerRadius="10">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-                        <Label Content="Nombre de clients qui ont payé en différé:"  Grid.Row="0" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
-                        <Label Content="{Binding Label_statistique_nbrClientspayediffere}" Grid.Row="0" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+                    </Border>
+                    <Border Grid.Column="1" Margin="5" BorderThickness="2" BorderBrush="AliceBlue" CornerRadius="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Label Content="Nombre de clients qui ont payé en différé:"  Grid.Row="0" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="{Binding Label_statistique_nbrClientspayediffere}" Grid.Row="0" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
 
-                        <Label Content="Nombre d'articles pressing et blanchisserie :"  Grid.Row="1" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
-                        <Label Content="{Binding Label_statistique_nbrArticlesPressBlanchi}" Grid.Row="1" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="Nombre d'articles pressing et blanchisserie :"  Grid.Row="1" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="{Binding Label_statistique_nbrArticlesPressBlanchi}" Grid.Row="1" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
 
-                        <Label Content="Nombre  de couettes :"  Grid.Row="2" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
-                        <Label Content="{Binding Label_statistique_nbrCouettes}" Grid.Row="2" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="Nombre  de couettes :"  Grid.Row="2" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="{Binding Label_statistique_nbrCouettes}" Grid.Row="2" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
 
-                        <Label Content="Nombre de chemises :"  Grid.Row="3" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
-                        <Label Content="{Binding Label_statistique_nbrChemises}" Grid.Row="3" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="Nombre de chemises :"  Grid.Row="3" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="{Binding Label_statistique_nbrChemises}" Grid.Row="3" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
 
 
-                        <Button  x:Name="btn_statistiques_retour" Content="Retour" Margin="15,10" Style="{StaticResource personalisationbuton1}" Grid.Row="4" Grid.Column="1" Click="btn_statistiques_retour_Click"/>
+                            <Button  x:Name="btn_statistiques_retour" Content="Retour" Margin="15,10" Style="{StaticResource personalisationbuton1}" Grid.Row="4" Grid.Column="1" Click="btn_statistiques_retour_Click"/>
 
-                    </Grid>
-                </Border>
-            </Grid>
-
-            <!--<Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="26*"/>
-                    <RowDefinition Height="25*"/>
-                </Grid.RowDefinitions>
-                <Border Grid.Column="1" Grid.Row="1">
-
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="63*"/>
-                            <RowDefinition Height="62*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100*"/>
-                            <ColumnDefinition Width="100*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button x:Name="btn_statistiques_retour" Content="Retour" Grid.Row="1" Grid.Column="1" Margin="15" 
-                        Click="btn_statistiques_retour_Click" Style="{StaticResource choixbouton30}"/>
-                    </Grid>
-                </Border>
-
-                <Border Grid.Column="0" Grid.Row="0">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="100*"/>
-                            <RowDefinition Height="27*"/>
-                        </Grid.RowDefinitions>
-                        <Border>
-                            
-                            
-                            <Grid x:Name="LayoutRoot" Background="White" Margin="5">
-                                 -->
-            <!--D3 markup starts here-->
-            <!--
-
-                                <Path Stroke="Black" StrokeThickness="1">
-                                    <Path.Data>
-                                        <PathGeometry>
-                                            <PathGeometry.Figures>
-                                                <PathFigureCollection>
-                                                    <PathFigure StartPoint="0,100">
-                                                        <PathFigure.Segments>
-                                                            <PathSegmentCollection>
-                                                                <BezierSegment Point1="0,0"  Point2="200,200" Point3="300,100" />
-                                                            </PathSegmentCollection>
-                                                        </PathFigure.Segments>
-                                                    </PathFigure>
-                                                </PathFigureCollection>
-                                            </PathGeometry.Figures>
-                                        </PathGeometry>
-                                    </Path.Data>
-                                </Path>
-                            </Grid>
-
-                        </Border>
-                        <Label Content="Graphes du CA par type d'article" Grid.Row="1" Style="{StaticResource vertilabel18}"/>
-                    </Grid>
-                </Border>
-                <Border Grid.Column="0" Grid.Row="1">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="13*"/>
-                            <RowDefinition Height="5*"/>
-                        </Grid.RowDefinitions>
-
-                        <Rectangle Fill="#FFF4F4F5" Margin="35,10,35,0" Stroke="Black" />
-                        <Label Content="Graphes du CA par département" Grid.Row="1" Style="{StaticResource vertilabel18}"/>
-                    </Grid>
-
-                </Border>
-                <Border Grid.Column="1" Grid.Row="0">
-
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="10*"/>
-                            <RowDefinition Height="3*"/>
-                        </Grid.RowDefinitions>
-                        <Rectangle Fill="#FFF4F4F5" Margin="10" Stroke="Black" />
-                        <Label Content="Graphes du CA par ville" Grid.Row="1" Style="{StaticResource vertilabel18}"/>
-
-                    </Grid>
-                </Border>
-            </Grid>-->
-
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
         </Grid>
+            
     </DockPanel>
 
 </UserControl>
