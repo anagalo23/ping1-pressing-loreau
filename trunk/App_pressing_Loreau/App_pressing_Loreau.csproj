@@ -400,6 +400,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Resources\PatternExcel\FacturePattern.xlsx" />
     <None Include="Resources\PatternExcel\LogPattern.xlsx" />
   </ItemGroup>
   <ItemGroup>
