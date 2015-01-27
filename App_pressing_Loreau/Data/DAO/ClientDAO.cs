@@ -135,7 +135,7 @@ namespace App_pressing_Loreau.Data.DAO
                 List<Client> retour = new List<Client>();
 
                 //connection à la base de données  
-                MySqlCommand cmd = new MySqlCommand(/*Bdd.selectProClient*/Bdd.insertLog, Bdd.connexion());
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectProClient, Bdd.connexion());
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
@@ -167,18 +167,18 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                Client clt = new Client("Jean", "LaRue", "0658789201", "4152658952", Adresse.Parse("53\\rue st gervais\\76000\\Rouen\\"), DateTime.Now, "monemail@bouh.com", DateTime.Now, 45, true, true, 0);
-                ClientDAO.insertClient(clt);
-                Commande cmd = new Commande(DateTime.Now, false, 3/2, ClientDAO.lastClient());
-                CommandeDAO.insertCommande(cmd);
-                Article article = new Article(null, null, false, 20, 6, TypeArticleDAO.selectTypesById(1), PlaceConvoyeurDAO.selectConvoyeurById(4), CommandeDAO.lastCommande().id);
-                cmd = CommandeDAO.lastCommande();
-                ArticleDAO.insertArticle(article);
-                ArticleDAO.insertArticle(article);
-                ArticleDAO.insertArticle(article);
-                ArticleDAO.insertArticle(article);
-                Payement paiement = new Payement(DateTime.Now, 4/3, TypePayementDAO.selectTypePayementById(1).nom, cmd.id);
-                PayementDAO.insertPaiement(paiement);
+                //Client clt = new Client("Jean", "LaRue", "0658789201", "4152658952", Adresse.Parse("53\\rue st gervais\\76000\\Rouen\\"), DateTime.Now, "monemail@bouh.com", DateTime.Now, 45, true, true, 0);
+                //ClientDAO.insertClient(clt);
+                //Commande cmd = new Commande(DateTime.Now, false, 3/2, ClientDAO.lastClient());
+                //CommandeDAO.insertCommande(cmd);
+                //Article article = new Article(null, null, false, 20, 6, TypeArticleDAO.selectTypesById(1), PlaceConvoyeurDAO.selectConvoyeurById(4), CommandeDAO.lastCommande().id);
+                //cmd = CommandeDAO.lastCommande();
+                //ArticleDAO.insertArticle(article);
+                //ArticleDAO.insertArticle(article);
+                //ArticleDAO.insertArticle(article);
+                //ArticleDAO.insertArticle(article);
+                //Payement paiement = new Payement(DateTime.Now, 4/3, TypePayementDAO.selectTypePayementById(1).nom, cmd.id);
+                //PayementDAO.insertPaiement(paiement);
 
                 
 

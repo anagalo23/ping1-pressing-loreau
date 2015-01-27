@@ -135,7 +135,7 @@
 
                         <Button x:Name="btn_nouvelleCommande_paiement_immediat" Content="Paiement immédiat" Grid.Column="0"
                                 Margin="5" Click="btn_nouvelleCommande_paiement_immediat_Click" Style="{StaticResource personalisationbuton1}"/>
-                        <Button x:Name="btn_nouvelleCommande_paiement_differe" Content="Paiement différé"  Grid.Column="1" Margin="5"  Style="{StaticResource personalisationbuton1}" Click="btn_nouvelleCommande_paiement_differe_Click"/>
+                        <Button x:Name="btn_nouvelleCommande_paiement_differe" Background="Beige" Content="Paiement différé"  Grid.Column="1" Margin="5"  Style="{StaticResource personalisationbuton1}" Command="{Binding Btn_PaiementDiffere}"/>
 
                     </Grid>
 
