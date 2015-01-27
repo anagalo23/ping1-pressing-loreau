@@ -13,7 +13,7 @@ namespace App_pressing_Loreau.Data.DAO
     class ArticleDAO
     {
         //Inserer un article dans la base de données
-        public static int insertArticle(Article article, int cmd_id)
+        public static int insertArticle(Article article)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("TTC", article.TTC);
                 cmd.Parameters.AddWithValue("conv_id", article.convoyeur.id);
                 cmd.Parameters.AddWithValue("typ_id", article.type.id);
-                cmd.Parameters.AddWithValue("art_cmd_id", cmd_id);
+                cmd.Parameters.AddWithValue("art_cmd_id", article.fk_commande);
 
                 //Execute la commande
                 return cmd.ExecuteNonQuery();
@@ -65,7 +65,8 @@ namespace App_pressing_Loreau.Data.DAO
                         float.Parse(msdr["art_TVA"].ToString()),
                         float.Parse(msdr["art_TTC"].ToString()),
                         new TypeArticle(Int32.Parse(msdr["art_typ_id"].ToString()), null, 0, 0, 0, null),
-                        new PlaceConvoyeur(Int32.Parse(msdr[" art_conv_id"].ToString()), 0, 0));
+                        new PlaceConvoyeur(Int32.Parse(msdr[" art_conv_id"].ToString()), 0, 0),
+                        Int32.Parse(msdr["art_cmd_id"].ToString()));
                 }
                 msdr.Dispose();
 
@@ -112,7 +113,8 @@ namespace App_pressing_Loreau.Data.DAO
                         float.Parse(msdr["art_TVA"].ToString()),
                         float.Parse(msdr["art_TTC"].ToString()),
                         new TypeArticle(Int32.Parse(msdr["art_typ_id"].ToString()), null, 0, 0, 0, null),
-                        new PlaceConvoyeur(Int32.Parse(msdr[" art_conv_id"].ToString()), 0, 0));
+                        new PlaceConvoyeur(Int32.Parse(msdr[" art_conv_id"].ToString()), 0, 0),
+                        Int32.Parse(msdr["art_cmd_id"].ToString()));
 
                     retour.Add(article);
                 }

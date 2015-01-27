@@ -20,29 +20,12 @@ namespace App_pressing_Loreau.Data.DAO
                 MySqlCommand cmd = new MySqlCommand(Bdd.insertCommande, Bdd.connexion());
 
                 //ajout des parametres
-                cmd.Parameters.AddWithValue("date", commande.date);
                 int payee = (commande.payee) ? 1 : 0;
                 cmd.Parameters.AddWithValue("payee", payee); 
                 cmd.Parameters.AddWithValue("remise", commande.remise);
                 cmd.Parameters.AddWithValue("clt_id", commande.client.id);
 
                 return cmd.ExecuteNonQuery();
-
-                /*#region Insert Articles
-                if (commande.listArticles.Count != 0 && commande.listArticles != null)
-                {
-                    foreach (Article article in commande.listArticles)
-                        ArticleDAO.insertArticle(article);
-                }
-                #endregion*/
-
-                /*#region Insert payement
-                if (commande.listPayements.Count != 0 && commande.listPayements != null)
-                {
-                    foreach (Payement payement in commande.listPayements)
-                        PayementDAO.insertPaiement(payement, commande.id);
-                }
-                #endregion*/
             }
             catch (Exception Ex)
             {
@@ -287,7 +270,7 @@ namespace App_pressing_Loreau.Data.DAO
             }
         }
 
-        public static Commande lastCommande(MySqlConnection connection)
+        public static Commande lastCommande()
         {
             int cmd_id = 0;
             try

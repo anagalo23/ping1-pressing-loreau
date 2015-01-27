@@ -11,7 +11,7 @@ namespace App_pressing_Loreau.Data.DAO
     class PayementDAO
     {
         //Inserer un payement dans la base de données
-        public static int insertPaiement(Payement paiement, int id_commande)
+        public static int insertPaiement(Payement paiement)
         {
             try
             {
@@ -22,7 +22,7 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("datePaiement", paiement.date);
                 cmd.Parameters.AddWithValue("montant", paiement.montant);
                 cmd.Parameters.AddWithValue("name", paiement.typePaiement);
-                cmd.Parameters.AddWithValue("commande_id", id_commande);
+                cmd.Parameters.AddWithValue("commande_id", paiement.fk_cmd_id);
 
                 //Execute la commande
                 return cmd.ExecuteNonQuery();
@@ -56,7 +56,8 @@ namespace App_pressing_Loreau.Data.DAO
                         Int32.Parse(msdr["pai_id"].ToString()),
                         DateTime.Parse(msdr["pai_date"].ToString()),
                         float.Parse(msdr["pai_montant"].ToString()),
-                        msdr["pai_name"].ToString());
+                        msdr["pai_name"].ToString(),
+                        Int32.Parse(msdr["pai_cmd_id"].ToString()));
                         retour.Add(payement);
                 }
                 msdr.Dispose();
@@ -91,7 +92,8 @@ namespace App_pressing_Loreau.Data.DAO
                         Int32.Parse(msdr["pai_id"].ToString()),
                         DateTime.Parse(msdr["pai_date"].ToString()),
                         float.Parse(msdr["pai_montant"].ToString()),
-                        msdr["pai_name"].ToString());
+                        msdr["pai_name"].ToString(),
+                        Int32.Parse(msdr["pai_cmd_id"].ToString()));
                         retour.Add(payement);
                 }
                 msdr.Dispose();
@@ -105,7 +107,7 @@ namespace App_pressing_Loreau.Data.DAO
         }
 
         //Update un paiement
-        public static int updatePaiement(Payement paiement, int commandeId)
+        public static int updatePaiement(Payement paiement)
         {
             try
             {
@@ -117,7 +119,7 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("date", paiement.date);
                 cmd.Parameters.AddWithValue("montant", paiement.montant);
                 cmd.Parameters.AddWithValue("type", paiement.typePaiement);
-                cmd.Parameters.AddWithValue("pai_cmd_id", commandeId);
+                cmd.Parameters.AddWithValue("pai_cmd_id", paiement.fk_cmd_id);
                 cmd.Parameters.AddWithValue("id", paiement.id);
 
                 //Execute la commande

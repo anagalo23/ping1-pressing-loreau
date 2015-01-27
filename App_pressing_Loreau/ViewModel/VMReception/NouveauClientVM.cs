@@ -250,7 +250,7 @@ namespace App_pressing_Loreau.ViewModel
             if (index != null)
             {
                 ClasseGlobale.client = null;
-                ClasseGlobale.client = client;
+                ClasseGlobale.client = ClientDAO.lastClient();
             }else if (index == 0)
             {
                 ClasseGlobale.client = null;

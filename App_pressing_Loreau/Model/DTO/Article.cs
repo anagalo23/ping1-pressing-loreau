@@ -23,7 +23,7 @@ namespace App_pressing_Loreau.Model.DTO
         #region classes
 
         public Article() { }
-        public Article(string photo, string commentaire, bool ifRendu, float TVA, float TTC, TypeArticle type, PlaceConvoyeur convoyeur)
+        public Article(string photo, string commentaire, bool ifRendu, float TVA, float TTC, TypeArticle type, PlaceConvoyeur convoyeur, int fk_commande)
         {
             id = 0;
             this.photo = photo;
@@ -33,9 +33,10 @@ namespace App_pressing_Loreau.Model.DTO
             this.TTC = TTC;
             this.type = type;
             this.convoyeur = convoyeur;
+            this.fk_commande = fk_commande;
 
         }
-        public Article(int id, string photo, string commentaire, bool ifRendu, float TVA, float TTC, TypeArticle type, PlaceConvoyeur convoyeur)
+        public Article(int id, string photo, string commentaire, bool ifRendu, float TVA, float TTC, TypeArticle type, PlaceConvoyeur convoyeur, int fk_commande)
         {
             this.id = id;
             this.photo = photo;
@@ -45,6 +46,7 @@ namespace App_pressing_Loreau.Model.DTO
             this.TTC = TTC;
             this.type = type;
             this.convoyeur = convoyeur;
+            this.fk_commande = fk_commande;
         }
         #endregion
     }
