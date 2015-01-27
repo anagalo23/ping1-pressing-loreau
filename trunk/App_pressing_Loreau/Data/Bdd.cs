@@ -123,7 +123,7 @@ namespace App_pressing_Loreau.Data
         public static String insertLog = "INSERT INTO Log(log_date, log_message, log_emp_id) VALUES (?,?,?)";
 
         //Payement
-        public static String insertPaiement = "INSERT INTO paiement (pai_date, pai_montant, pai_name ,pai_cmd_id) VALUES (?,?,?,?)";
+        public static String insertPaiement = "INSERT INTO paiement (pai_montant, pai_type ,pai_cmd_id) VALUES (?,?,?)";
         public static String selectPayementByCommande = "SELECT pai_id, pai_date, pai_name, pai_montant, pai_cmd_id FROM paiement WHERE pai_cmd_id=?";
         public static String updatePaiement = "UPDATE paiement SET pai_id=?,pai_date=?,pai_montant=?,pai_cmd_id=?,pai_tpp_id=? WHERE pai_id=?";
         public static String deletePaiement = "DELETE FROM paiement WHERE pai_id=?";

@@ -172,11 +172,13 @@ namespace App_pressing_Loreau.Data.DAO
                 Commande cmd = new Commande(DateTime.Now, false, 3/2, ClientDAO.lastClient());
                 CommandeDAO.insertCommande(cmd);
                 Article article = new Article(null, null, false, 20, 6, TypeArticleDAO.selectTypesById(1), PlaceConvoyeurDAO.selectConvoyeurById(4), CommandeDAO.lastCommande().id);
+                cmd = CommandeDAO.lastCommande();
                 ArticleDAO.insertArticle(article);
                 ArticleDAO.insertArticle(article);
                 ArticleDAO.insertArticle(article);
                 ArticleDAO.insertArticle(article);
-                Payement paiement = new Payement(DateTime.Now, 4/3, "CB", cmd.id);
+                Payement paiement = new Payement(DateTime.Now, 4/3, TypePayementDAO.selectTypePayementById(1).nom, cmd.id);
+                PayementDAO.insertPaiement(paiement);
 
                 
 
