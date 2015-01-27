@@ -9,6 +9,8 @@ using App_pressing_Loreau.Data.DAO;
 using App_pressing_Loreau.Model.DTO;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
+//using System.Windows.Controls.Button;
+//using System.Windows.Forms;
 
 namespace App_pressing_Loreau.ViewModel
 {
@@ -26,7 +28,8 @@ namespace App_pressing_Loreau.ViewModel
         //Prends en param : le moyen de paiement et le montant correspondant à ce moyen de paiement
         //private Dictionary<string, float> _txb_paiement_montantParmoyenPaiement = new Dictionary<string, float>();
 
-        ListePaiement montantParmoyenPaiement = new ListePaiement();
+        private ListePaiement montantParMoyenPaiement = new ListePaiement();
+        private String _mode_de_paiement;
 
 
 
@@ -135,12 +138,23 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-        //public ICommand Btn_paiement_cb
-        //{
 
-        //}
+        //Permet de faire réagir le bouton
+        ICommand btn_paiement;
+        public ICommand Btn_paiement
+        {
+            get { return btn_paiement ?? (btn_paiement = new RelayCommand(getModeDePaiement)); }
+        }
+        private void getModeDePaiement(object button)
+        {
+            System.Windows.Controls.Button clickedbutton = button as System.Windows.Controls.Button;
+            _mode_de_paiement = clickedbutton.Tag.ToString();
+            //System.Windows.Forms.MessageBox.Show("Salut bb");
+        }
 
-        //public ICommand Btn_paiement_Espece { }
+
+
+
         #endregion
 
 
