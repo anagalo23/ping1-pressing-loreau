@@ -34,8 +34,23 @@ namespace App_pressing_Loreau.Model.DTO
             this.type = type;
             this.convoyeur = convoyeur;
             this.fk_commande = fk_commande;
+        }
+
+        //Attention! Constructeur à n'utiliser que pour la creation d'un article non selectionné. (TVA & TTC différent apres insertion.
+        public Article(string photo, string commentaire, bool ifRendu, TypeArticle type, PlaceConvoyeur convoyeur, int fk_commande)
+        {
+            id = 0;
+            this.photo = photo;
+            this.commentaire = commentaire;
+            this.ifRendu = ifRendu;
+            this.TVA = type.TVA;
+            this.TTC = type.TVA;
+            this.type = type;
+            this.convoyeur = convoyeur;
+            this.fk_commande = fk_commande;
 
         }
+
         public Article(int id, string photo, string commentaire, bool ifRendu, float TVA, float TTC, TypeArticle type, PlaceConvoyeur convoyeur, int fk_commande)
         {
             this.id = id;
