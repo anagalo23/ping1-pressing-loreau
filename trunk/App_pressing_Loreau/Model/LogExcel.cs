@@ -15,7 +15,7 @@ namespace App_pressing_Loreau.Model
         public String type { get; set; }
         public String message { get; set; }
         public String complement { get; set; }
-        public static String pattern_path = "C:\\Users\\syncrase\\Documents\\Visual Studio 2013\\Projects\\loreau_project\\App_pressing_Loreau\\Resources\\PatternExcel\\LogPattern";
+        public static String pattern_path = "I:\\PING\\App_pressing_loreau\\App_pressing_Loreau\\Resources\\PatternExcel\\LogPattern";
         private static Microsoft.Office.Interop.Excel.Application oXL;
         private static Microsoft.Office.Interop.Excel.Workbook mWorkBook;
         private static Microsoft.Office.Interop.Excel.Sheets mWorkSheets;
@@ -47,11 +47,13 @@ namespace App_pressing_Loreau.Model
             xlWorkSheet = (Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
             logCount = (int) xlWorkSheet.Cells[1, 2].Value;
-            //mWSheet.Cells[1, index + logCount].value = String.Format("{0:d/M/yyyy HH:mm:ss}", date);
-            mWSheet.Cells[2, index + logCount] = type+"";
-            mWSheet.Cells[3, index + logCount] = message;
-            mWSheet.Cells[4, index + logCount] = complement;
-            mWSheet.Cells[1, index + logCount].value = logCount + 1;
+            xlWorkSheet.Cells[1, 2] = logCount + 1;
+
+            xlWorkSheet.Cells[index + logCount, 1] = String.Format("{0:d/M/yyyy HH:mm:ss}", date);
+            xlWorkSheet.Cells[index + logCount, 2] = type + "";
+            xlWorkSheet.Cells[index + logCount, 3] = message;
+            xlWorkSheet.Cells[index + logCount, 4] = complement;
+            xlWorkSheet.Cells[index + logCount, 5].value = logCount + 1;
 
             xlWorkBook.Close(true, misValue, misValue);
 
