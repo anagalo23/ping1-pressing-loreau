@@ -112,6 +112,7 @@
     <Compile Include="Helper\ClasseGlobale.cs" />
     <Compile Include="Helper\IPageViewModel.cs" />
     <Compile Include="Model\DTO\Commentaire.cs" />
+    <Compile Include="Model\FactureExcel.cs" />
     <Compile Include="Model\LogExcel.cs" />
     <Compile Include="ViewModel\ObservableObject.cs" />
     <Compile Include="Helper\RelayCommand.cs" />
