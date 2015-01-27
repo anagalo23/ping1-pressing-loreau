@@ -98,19 +98,19 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button x:Name="btn_paiement_cartebleue" Command="{Binding Btn_paiement_cb}" Margin="5" Background="Transparent"  BorderThickness="0" Grid.Column="0"  >
+                        <Button x:Name="btn_paiement_cartebleue" Tag="{Binding tagCB}" Command="{Binding Btn_paiement}" Margin="5" Background="Transparent"  BorderThickness="0" Grid.Column="0"  >
                             <Image Source="/Resources/pics/paiements/carte_bleue.png" Width="80" Height="60"  />
                         </Button>
-                        <Button x:Name="btn_paiement_especes" Command="{Binding Btn_paiement_Espece}"  Background="Transparent"  BorderThickness="0" Grid.Column="1" Margin="5">
+                        <Button x:Name="btn_paiement_especes" Tag="{Binding tagEspece}"  Command="{Binding Btn_paiement}"  Background="Transparent"  BorderThickness="0" Grid.Column="1" Margin="5">
                             <Image Source="/Resources/pics/paiements/paiement_especes.png"  Width="80" Height="60"  />
                         </Button>
-                        <Button x:Name="btn_paiement_cheques" Command="{Binding Btn_paiement_cheque}"  Background="Transparent"  BorderThickness="0" Grid.Column="2" >
+                        <Button x:Name="btn_paiement_cheques" Tag="{Binding tagCheque}"  Command="{Binding Btn_paiement}"  Background="Transparent"  BorderThickness="0" Grid.Column="2" >
                             <Image Source="/Resources/pics/paiements/Paiement_cheques.png"  Width="80" Height="60"  />
                         </Button>
-                        <Button x:Name="btn_paiement_americanExpress" Command="{Binding Btn_paiement_americanExpress}"  Background="Transparent"  BorderThickness="0" Grid.Column="3" >
+                        <Button x:Name="btn_paiement_americanExpress" Tag="{Binding tagAE}"  Command="{Binding Btn_paiement}"  Background="Transparent"  BorderThickness="0" Grid.Column="3" >
                             <Image Source="/Resources/pics/paiements/AmericanExpress.png"  Width="80" Height="60"  />
                         </Button>
-                        <Button x:Name="btn_paiement_cleanway" Content="Cleanway" Command="{Binding Btn_paiement_cleanway}"   BorderThickness="0" Grid.Column="4" Margin="5"  />
+                        <Button x:Name="btn_paiement_cleanway" Content="Cleanway" Tag="{Binding tagCW}"  Command="{Binding Btn_paiement}"   BorderThickness="0" Grid.Column="4" Margin="5"  />
 
                     </Grid>
                 </Border>
@@ -125,6 +125,9 @@
 
                         <Label  Content="Montant pour cette carte" Style="{StaticResource vertilabel25}"/>
                         <TextBox  Grid.Column="2" Margin="5" Style="{StaticResource vertiTextBox}" Text="{Binding Txb_paiement_montantParMoyenPaiement, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Button Grid.Column="3" BorderThickness="0" Background="Transparent" Command="{Binding Btn_paiment_validerMode}">
+                            <Image Source="/Resources/pics/paiements/valider.png" />
+                        </Button>
                     </Grid>
 
                 </Border>
