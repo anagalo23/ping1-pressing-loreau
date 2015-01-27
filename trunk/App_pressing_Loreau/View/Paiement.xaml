@@ -34,7 +34,7 @@
                         </Grid>
                     </Border>
                 <Border Height="200" Margin="4" BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="10">
-                        <ListBox ScrollViewer.HorizontalScrollBarVisibility="Hidden" Margin="4" Background="Transparent" BorderThickness="0"  ItemsSource="{Binding MontantParMoyenPaiement}">
+                        <ListBox  Margin="4" Background="Transparent" BorderThickness="0"  ItemsSource="{Binding Path=ItemsMontantParMoyenPaiement}">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <VirtualizingStackPanel Orientation="Horizontal"/>

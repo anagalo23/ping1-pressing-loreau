@@ -16,7 +16,7 @@ using System.Windows;
 
 namespace App_pressing_Loreau.ViewModel
 {
-    class PaiementVM : ObservableObject, IPageViewModel
+    class PaiementVM : ObservableObject
     {
         #region Attributs
         private String _label_paiement_prixHT;
@@ -33,6 +33,7 @@ namespace App_pressing_Loreau.ViewModel
         private ListePaiement montantParMoyenPaiement = new ListePaiement();
         private String _mode_de_paiement;
 
+        private List<GetPaiement> _itemsMontantParMoyenPaiement;
 
 
         //Payement paiement;
@@ -40,13 +41,12 @@ namespace App_pressing_Loreau.ViewModel
 
 
         #region constructeur
-
         public PaiementVM()
         {
             lePaiement();
             _txb_paiement_montantParMoyenPaiement = new float();
 
-
+            _itemsMontantParMoyenPaiement = new List<GetPaiement>();
 
             //Label_NouvelleCommande_prixTotal = 0;
             //for (int i = 0; i < ContentDetailCommande.Count; i++)
@@ -59,11 +59,21 @@ namespace App_pressing_Loreau.ViewModel
             Txb_paiement_montantParMoyenPaiement = float.Parse(Label_paiement_montant.Split(' ')[0]);
 
             //Txb_paiement_montantParMoyenPaiement = float.Parse(Label_paiement_montant.Split(' ')[0]);
-                //float.Parse(_label_paiement_prixTTC);
+            //float.Parse(_label_paiement_prixTTC);
         }
         #endregion
 
         #region Properties and command
+
+        public List<GetPaiement> ItemsMontantParMoyenPaiement
+        {
+            get { return _itemsMontantParMoyenPaiement; }
+            set
+            {
+                _itemsMontantParMoyenPaiement = value;
+                OnPropertyChanged("ItemsMontantParMoyenPaiement");
+            }
+        }
 
         public String Label_paiement_prixHT
         {
@@ -169,7 +179,7 @@ namespace App_pressing_Loreau.ViewModel
             //System.Windows.Forms.MessageBox.Show(_mode_de_paiement);
         }
 
-        
+
         //Gère les boutons de mode de paiement
         ICommand btn_paiement_validerMode;
         public ICommand Btn_paiement_validerMode
@@ -187,12 +197,19 @@ namespace App_pressing_Loreau.ViewModel
 
             //get Le montant
 
-            MontantParMoyenPaiement = new ListePaiement();
+            //MontantParMoyenPaiement = new ListePaiement();
             //Ajouter à la liste
             if (_mode_de_paiement != "" && Txb_paiement_montantParMoyenPaiement != 0)
             {
-                MontantParMoyenPaiement[_mode_de_paiement] = Txb_paiement_montantParMoyenPaiement;
-                //MontantParMoyenPaiement.
+                //MontantParMoyenPaiement[_mode_de_paiement] = Txb_paiement_montantParMoyenPaiement;
+
+
+                this._itemsMontantParMoyenPaiement.Add(new GetPaiement()
+                {
+                    Label_MontantPayerParMode = this.Txb_paiement_montantParMoyenPaiement,
+                    Label_nomModePaiement = this._mode_de_paiement
+                });
+               
                 //Réinitialisation des champs pour éviter les erreurs et doublons
                 Txb_paiement_montantParMoyenPaiement = 0;
                 _mode_de_paiement = "";
@@ -202,7 +219,7 @@ namespace App_pressing_Loreau.ViewModel
             {
                 MessageBox.Show("Veuillez choisir un mode de paiement et le montant");
             }
-            
+
         }
 
         #endregion
@@ -211,7 +228,7 @@ namespace App_pressing_Loreau.ViewModel
         #region Methods
         public void lePaiement()
         {
-           // NouvelleCommandeVM nc = new NouvelleCommandeVM();
+            // NouvelleCommandeVM nc = new NouvelleCommandeVM();
 
             //ObservableCollection<ArticlesVM> cmdDetail = (ObservableCollection<ArticlesVM>)NouvelleCommandeVM.getContentDetailCommande().ContentDetailCommande;
 
@@ -234,13 +251,17 @@ namespace App_pressing_Loreau.ViewModel
             {
                 //Inscription en log
             }
-            
+
         }
         #endregion
-        public String Name
-        {
-            get { return ""; }
-        }
+
+    }
+    public class GetPaiement
+    {
+
+        public String Label_nomModePaiement { get; set; }
+
+        public float Label_MontantPayerParMode { get; set; }
     }
 
     class ListePaiement
@@ -248,7 +269,7 @@ namespace App_pressing_Loreau.ViewModel
 
         private readonly IDictionary<string, float> maListeDePaiement = new Dictionary<string, float>();
 
-        
+
         public float this[string key]
         {
             get
@@ -268,23 +289,11 @@ namespace App_pressing_Loreau.ViewModel
                 {
                     maListeDePaiement.Add(key, value);
                 }
-                Label_nomModePaiement = key;
-                Label_MontantPayerParMode = value;
+
             }
         }
 
 
-        public String Label_nomModePaiement
-        {
-            get;
-            set;
-        }
-
-        public float Label_MontantPayerParMode
-        {
-            get;
-            set;
-        }
     }
 
 }
