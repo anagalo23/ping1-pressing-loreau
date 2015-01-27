@@ -97,6 +97,8 @@ namespace App_pressing_Loreau.Data
         public static String updateCommande = "UPDATE commande SET cmd_id=?,cmd_date=?,cmd_payee=?,cmd_clt_id=?,cmd_remise=? WHERE cmd_id=?";
         public static String deleteCommande = "DELETE FROM commande WHERE cmd_id=?";
         public static String lastCommande = "SELECT MAX(cmd_id) AS cmd_id FROM commande";
+        public static String totalTTCCommandeById = "SELECT SUM(art_TTC) AS total FROM article WHERE art_cmd_id=?";
+        public static String totalPayedCommandeById = "SELECT SUM(pai_montant) AS total FROM paiement WHERE pai_cmd_id=?";
 
         //Commentaire
         public static String insertCommentaire = "INSERT INTO commentaire(com_com) VALUES (?)";
