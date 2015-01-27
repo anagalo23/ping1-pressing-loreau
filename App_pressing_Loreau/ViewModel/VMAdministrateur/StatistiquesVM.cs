@@ -30,7 +30,7 @@ namespace App_pressing_Loreau.ViewModel
 
 
 
-        private DelegateCommand<StatistiquesVM> _btn_statistique_du_jour;
+        //private DelegateCommand<StatistiquesVM> _btn_statistique_du_jour;
         #endregion
 
 
@@ -38,7 +38,7 @@ namespace App_pressing_Loreau.ViewModel
         public StatistiquesVM()
         {
 
-            // statisticsByDays();
+            Label_statistique_cadep = new float();
         }
 
         #endregion
@@ -154,13 +154,11 @@ namespace App_pressing_Loreau.ViewModel
         }
 
 
-        public DelegateCommand<StatistiquesVM> Btn_statistique_du_jour
+        public ICommand Btn_statistique_du_jour
         {
             get
             {
-                return this._btn_statistique_du_jour ?? (this._btn_statistique_du_jour = new DelegateCommand<StatistiquesVM>(
-                    this.statisticsByDays,
-                    (arg) => true));
+                return new RelayCommand(p => statisticsByDays());
             }
         }
 
@@ -179,25 +177,27 @@ namespace App_pressing_Loreau.ViewModel
         #endregion
 
         #region methods
-        public void statisticsByDays(StatistiquesVM obj)
+        public void statisticsByDays()
         {
-            _label_statistique_cadep = 10;
+            Label_statistique_cadep = 10;
+            //MessageBox.Show("" + _label_statistique_catotal);
         }
 
         public void statisticsByWeek()
         {
-            _label_statistique_catotal = 100;
-            MessageBox.Show("" + _label_statistique_catotal);
+           
+            Label_statistique_cadep = 100;
+            //MessageBox.Show("" + _label_statistique_catotal);
         }
 
         public void statisticsByMonth()
         {
-
+            Label_statistique_cadep = 160;
         }
 
         public void statisticsByYear()
         {
-
+            Label_statistique_cadep = 380;
         }
         #endregion
     }

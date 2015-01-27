@@ -20,8 +20,44 @@
                 <ColumnDefinition Width="75*"/>
 
             </Grid.ColumnDefinitions>
-
-            <Grid  >
+            <DockPanel Grid.Column="0">
+                <DockPanel  DockPanel.Dock="Bottom">
+                    <Border  DockPanel.Dock="Bottom" Height="50">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Reste à payer" Style="{StaticResource vertilabel18}"  Grid.Column="0" />
+                            <Label  Content="{Binding Label_ResteAPayer}" Style="{StaticResource vertilabel18}" Grid.Column="1"/>
+                        </Grid>
+                    </Border>
+                <Border Height="200" Margin="4" BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="10">
+                    <ListBox ScrollViewer.HorizontalScrollBarVisibility="Hidden" Margin="4" Background="Transparent" BorderThickness="0"  ItemsSource="{Binding ItemsMontantParModePaiement}">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                        <Label Content="{Binding Label_nomModePaiement}" Style="{StaticResource vertilabel18}" Grid.Column="0"/>
+                                        <Label Content="{Binding Label_MontantPayerParMode}"  Style="{StaticResource vertilabel18}" Grid.Column="1"/>
+                                   
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Border>
+                </DockPanel>
+                <Grid  >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="19*"/>
                     <ColumnDefinition Width="27*"/>
@@ -31,7 +67,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
-                    <RowDefinition Height="3*"/>
+                   
                 </Grid.RowDefinitions>
 
                 <Label Content="Prix HT :" Style="{StaticResource vertilabel25}" Grid.Row="0" Grid.Column="0" />
@@ -43,7 +79,8 @@
                 <Label Content="Remise :" Style="{StaticResource vertilabel25}" Grid.Row="3" Grid.Column="0"/>
                 <TextBox x:Name="txb_paiement_remise" Grid.Row="3" Text="{Binding Txb_paiement_montantRemise, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="10,4" Style="{StaticResource vertiTextBox}" />
             </Grid>
-
+               
+            </DockPanel>
             <Grid Grid.Column="1" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
