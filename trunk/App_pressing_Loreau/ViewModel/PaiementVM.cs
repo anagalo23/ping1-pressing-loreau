@@ -17,12 +17,20 @@ namespace App_pressing_Loreau.ViewModel
         #region Attributs
         private String _label_paiement_prixHT;
         private String _label_paiement_prixTTC;
-        private String _label_paiement_montant;
-
-        private float _txb_paiement_montantParmoyenPaiement;
         private float _txb_paiement_montantRemise;
+        private String _label_paiement_montant;//Prix ttc - remise
 
-        Payement paiement;
+        //Correspond à la valeur du testbox prix à payer (pour 1 et seulement 1 moyen de paiement)
+        private float _txb_paiement_montantParMoyenPaiement;
+
+        //Prends en param : le moyen de paiement et le montant correspondant à ce moyen de paiement
+        //private Dictionary<string, float> _txb_paiement_montantParmoyenPaiement = new Dictionary<string, float>();
+
+        ListePaiement montantParmoyenPaiement = new ListePaiement();
+
+
+
+        //Payement paiement;
         #endregion
 
 
@@ -31,6 +39,22 @@ namespace App_pressing_Loreau.ViewModel
         public PaiementVM()
         {
             lePaiement();
+            _txb_paiement_montantParMoyenPaiement = new float();
+
+
+
+            //Label_NouvelleCommande_prixTotal = 0;
+            //for (int i = 0; i < ContentDetailCommande.Count; i++)
+            //{
+            //    Label_NouvelleCommande_prixTotal += (ContentDetailCommande[i].article.TTC);
+            //}
+
+
+            //Txb_paiement_montantParMoyenPaiement = Label_NouvelleCommande_prixTotal;
+            Txb_paiement_montantParMoyenPaiement = float.Parse(Label_paiement_montant.Split(' ')[0]);
+
+            //Txb_paiement_montantParMoyenPaiement = float.Parse(Label_paiement_montant.Split(' ')[0]);
+                //float.Parse(_label_paiement_prixTTC);
         }
         #endregion
 
@@ -90,16 +114,17 @@ namespace App_pressing_Loreau.ViewModel
 
         public float Txb_paiement_montantParMoyenPaiement
         {
-            get { return _txb_paiement_montantParmoyenPaiement; }
+            get { return _txb_paiement_montantParMoyenPaiement; }
             set
             {
-                if (value != _txb_paiement_montantParmoyenPaiement)
+                if (value != _txb_paiement_montantParMoyenPaiement)
                 {
-                    _txb_paiement_montantParmoyenPaiement = value;
+                    _txb_paiement_montantParMoyenPaiement = value;
                     OnPropertyChanged("Txb_paiement_montantParMoyenPaiement");
                 }
             }
         }
+
         public ICommand Btn_paiment_valider
         {
             get
@@ -153,4 +178,33 @@ namespace App_pressing_Loreau.ViewModel
             get { return ""; }
         }
     }
+
+    class ListePaiement
+    {
+
+        private readonly IDictionary<string, float> maListeDePaiement = new Dictionary<string, float>();
+
+        public float this[string key]
+        {
+            get
+            {
+                return maListeDePaiement[key];
+            }
+
+            // Je mets la nouvelle valeur pour ce mode de paiement, attention le calcul (- et + une certaine somme) se fait à l'extérieur
+            set
+            {
+                //maListeDePaiement[key] = value;
+                if (maListeDePaiement.ContainsKey(key))
+                {
+                    maListeDePaiement[key] = value;
+                }
+                else
+                {
+                    maListeDePaiement.Add(key, value);
+                }
+            }
+        }
+    }
+
 }

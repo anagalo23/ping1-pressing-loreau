@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `client` (
   `clt_email` varchar(50) DEFAULT NULL,
   `clt_idCleanway` int(11) DEFAULT NULL,
   PRIMARY KEY (`clt_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Contenu de la table `client`
@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `convoyeur` (
   `conv_emplacement` int(11) NOT NULL,
   `conv_encombrement` float NOT NULL,
   PRIMARY KEY (`conv_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=51 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Contenu de la table `convoyeur`
@@ -170,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `departement` (
   `dep_id` int(11) NOT NULL AUTO_INCREMENT,
   `dep_nom` varchar(45) NOT NULL,
   PRIMARY KEY (`dep_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Contenu de la table `departement`
@@ -198,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `employe` (
   `emp_nom` varchar(45) NOT NULL,
   `emp_prenom` varchar(45) NOT NULL,
   PRIMARY KEY (`emp_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Contenu de la table `employe`
@@ -254,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `type` (
   `typ_dep_id` int(11) NOT NULL,
   PRIMARY KEY (`typ_id`),
   KEY `fk_typ_departement_idx` (`typ_dep_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=153 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Contenu de la table `type`
@@ -338,7 +338,7 @@ CREATE TABLE IF NOT EXISTS `typepaiement` (
   `tpp_id` int(11) NOT NULL AUTO_INCREMENT,
   `tpp_nom` varchar(45) NOT NULL,
   PRIMARY KEY (`tpp_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Contenu de la table `typepaiement`
