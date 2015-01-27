@@ -19,7 +19,6 @@ namespace App_pressing_Loreau.Data.DAO
                 MySqlCommand cmd = new MySqlCommand(Bdd.insertPaiement, Bdd.connexion());
 
                 //ajout des parametres
-                cmd.Parameters.AddWithValue("datePaiement", paiement.date);
                 cmd.Parameters.AddWithValue("montant", paiement.montant);
                 cmd.Parameters.AddWithValue("name", paiement.typePaiement);
                 cmd.Parameters.AddWithValue("commande_id", paiement.fk_cmd_id);
