@@ -13,6 +13,7 @@ namespace App_pressing_Loreau.Helper
 {
     class ClasseGlobale
     {
+        
 
         //*********************************************************************************GESTION DE LA LISTE DE COMMANDE
         public static ObservableCollection<ArticlesVM> _contentDetailCommande { get; set; }
@@ -30,7 +31,7 @@ namespace App_pressing_Loreau.Helper
             client = new Client();
         }
 
-        //*********************************************************************************GESTION D
+        
 
         //*******************************************************************************GESTION DE LA LISTE DES EMPLOYES
 
@@ -38,6 +39,14 @@ namespace App_pressing_Loreau.Helper
         public static void getAllEmployee()
         {
             listeEmployes= (List<Employe>)EmployeDAO.selectEmployes();
+        }
+
+
+        //*********************************************************************************GESTION DE LA LISTE DES PAIEMENTS DESIRES
+        public static ObservableCollection<PaiementListeVM> _contenuListePaiement;
+        internal static void initializeContenuListePaiement()
+        {
+            _contenuListePaiement = new ObservableCollection<PaiementListeVM>();
         }
     }
 }

@@ -57,7 +57,12 @@
     <!--  Menu bouton liste des departement -->
 
 
+      <!--Utile à l'affichage des prix dans la liste--> 
+    <DataTemplate DataType="{x:Type vm:PaiementListeVM}">
+        <view:PaiementParMode/>
+    </DataTemplate>
 
+    
     <!-- Articles ajoutés-->
 
     <DataTemplate DataType="{x:Type vm:ArticlesVM}">

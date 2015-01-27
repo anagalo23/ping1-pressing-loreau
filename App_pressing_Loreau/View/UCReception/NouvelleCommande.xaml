@@ -61,7 +61,13 @@
 
                                             <Border Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}">
                                                 <Grid>
-                                                    <Button x:Name="button1"  Width="160" Height="62" Margin="2"         Content="{Binding ButtonArticlesContent}"                                                           Tag="{Binding ButtonArticlesTag}"                                                            Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ListesArticlesCommandes}"                                                       CommandParameter="{Binding ElementName=button1}"                                                   Style="{StaticResource ArticlesStyles}" 
+                                                    <Button x:Name="button1"  Width="160" Height="62" Margin="2"         
+                                                            Content="{Binding ButtonArticlesContent}"
+                                                            Tag="{Binding ButtonArticlesTag}"
+                                                            Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ListesArticlesCommandes}"
+                                                            CommandParameter="{Binding ElementName=button1}"
+                                                            Style="{StaticResource ArticlesStyles}"
+                                                            
                                                              />
                                                 </Grid>
                                             </Border>
@@ -69,7 +75,7 @@
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
-                          
+
                         </DockPanel>
 
                     </Border>
@@ -120,13 +126,13 @@
                     </Grid>
 
                     <Grid Grid.Row="2">
-                     
+
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="118*"/>
                             <ColumnDefinition Width="133*"/>
                         </Grid.ColumnDefinitions>
 
-                      
+
                         <Button x:Name="btn_nouvelleCommande_paiement_immediat" Content="Paiement immédiat" Grid.Column="0"
                                 Margin="5" Click="btn_nouvelleCommande_paiement_immediat_Click" Style="{StaticResource personalisationbuton1}"/>
                         <Button x:Name="btn_nouvelleCommande_paiement_differe" Content="Paiement différé"  Grid.Column="1" Margin="5"  Style="{StaticResource personalisationbuton1}" Click="btn_nouvelleCommande_paiement_differe_Click"/>

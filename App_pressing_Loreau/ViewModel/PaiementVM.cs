@@ -10,6 +10,7 @@ using App_pressing_Loreau.Model.DTO;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
 
 //using System.Windows.Controls.Button;
 //using System.Windows.Forms;
@@ -35,7 +36,7 @@ namespace App_pressing_Loreau.ViewModel
 
         private List<GetPaiement> _itemsMontantParMoyenPaiement;
 
-
+        private ObservableCollection<PaiementListeVM> _contenuListePaiement;
         //Payement paiement;
         #endregion
 
@@ -60,6 +61,8 @@ namespace App_pressing_Loreau.ViewModel
 
             //Txb_paiement_montantParMoyenPaiement = float.Parse(Label_paiement_montant.Split(' ')[0]);
             //float.Parse(_label_paiement_prixTTC);
+
+            
         }
         #endregion
 
@@ -188,7 +191,7 @@ namespace App_pressing_Loreau.ViewModel
         }
         private void completeLaListeDesModesDePaiement(object button)
         {
-            //System.Windows.Controls.Button clickedbutton = button as System.Windows.Controls.Button;
+            Button clickedbutton = button as Button;
             //_mode_de_paiement = clickedbutton.Tag.ToString();
             //System.Windows.Forms.MessageBox.Show(_mode_de_paiement);
 
@@ -199,17 +202,24 @@ namespace App_pressing_Loreau.ViewModel
 
             //MontantParMoyenPaiement = new ListePaiement();
             //Ajouter à la liste
-            if (_mode_de_paiement != "" && Txb_paiement_montantParMoyenPaiement != 0)
+            if (_mode_de_paiement != "" && Txb_paiement_montantParMoyenPaiement != 0 && clickedbutton != null)
             {
                 //MontantParMoyenPaiement[_mode_de_paiement] = Txb_paiement_montantParMoyenPaiement;
 
 
-                this._itemsMontantParMoyenPaiement.Add(new GetPaiement()
+                //ItemsMontantParMoyenPaiement.Add(new GetPaiement()
+                //{
+                //    Label_MontantPayerParMode = Txb_paiement_montantParMoyenPaiement,
+                //    Label_nomModePaiement = _mode_de_paiement
+                //});
+
+                ClasseGlobale._contenuListePaiement.Add(new PaiementListeVM()
                 {
-                    Label_MontantPayerParMode = this.Txb_paiement_montantParMoyenPaiement,
-                    Label_nomModePaiement = this._mode_de_paiement
+                    ModeDePaiement = _mode_de_paiement,
+                    Montant = Txb_paiement_montantParMoyenPaiement.ToString(),
+
                 });
-               
+
                 //Réinitialisation des champs pour éviter les erreurs et doublons
                 Txb_paiement_montantParMoyenPaiement = 0;
                 _mode_de_paiement = "";
@@ -217,9 +227,45 @@ namespace App_pressing_Loreau.ViewModel
             }
             else
             {
-                MessageBox.Show("Veuillez choisir un mode de paiement et le montant");
+                String erreur="Veuillez s'il vous plait : ";
+                if(_mode_de_paiement == ""){
+                    erreur += "\t- sélectionner un mode de paiement";
+                }
+                if(Txb_paiement_montantParMoyenPaiement == 0){
+                    erreur += "\t- saisir le montant désiré";
+                }
+                if (clickedbutton == null)
+                {
+                    erreur += "\tERREUR LOGICIEL : le bouton cliqué est null";
+                }
+                MessageBox.Show(erreur);
             }
 
+        }
+
+
+        public ObservableCollection<PaiementListeVM> ContenuListePaiement
+        {
+            get
+            {
+                if (_contenuListePaiement == null)//ClasseGlobale.
+                {
+                    ClasseGlobale.initializeContenuListePaiement();
+                    //_contenuListePaiement = new ObservableCollection<PaiementListeVM>();
+                }
+                return ClasseGlobale._contenuListePaiement;
+
+            }
+
+            set
+            {
+                if (value != null)
+                {
+                    ClasseGlobale._contenuListePaiement = value;
+                    //_contenuListePaiement = value;
+                    OnPropertyChanged("ContenuListePaiement");
+                }
+            }
         }
 
         #endregion
