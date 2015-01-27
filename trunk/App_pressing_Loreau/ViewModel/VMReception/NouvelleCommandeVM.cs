@@ -187,10 +187,44 @@ namespace App_pressing_Loreau.ViewModel
         #endregion
 
 
+        #region paiement diferé
+        public ICommand Btn_PaiementDiffere
+        {
+            get {return new RelayCommand(p => paiementDifferer()); }
+        }
+        #endregion
         #endregion
 
 
         #region Méthodes
+
+
+        private void paiementDifferer()
+        {
+            if (ClasseGlobale._contentDetailCommande == null)
+            {
+                MessageBox.Show("Selectionnez des articles");
+            }
+            else
+            {
+                Commande cmd = new Commande(DateTime.Now,false, 2F, ClasseGlobale.client);
+                int inser= CommandeDAO.insertCommande(cmd);
+                ObservableCollection<ArticlesVM> listeArticles = ClasseGlobale._contentDetailCommande;
+                if (inser != 0)
+                {
+                    cmd = CommandeDAO.lastCommande();
+                    foreach(ArticlesVM art in ClasseGlobale._contentDetailCommande)
+                    {
+                        Article article = new Article(art.SelectedPhoto, art.Selected_Articles_Commentaire.NameCbbArt, false, art.article.TVA, art.article.TTC, art.article, PlaceConvoyeurDAO.selectConvoyeurById(4), cmd.id);
+                        //Article article2 = new Article(art.SelectedPhoto, art.Selected_Articles_Commentaire, false, art.article.TVA, art.article.TTC, art.article, 3, 3);
+                        ArticleDAO.insertArticle(article);
+                    }
+                }
+               
+                //ArticleDAO.insertArticle(article);
+            }
+           
+        }
 
         /**
          * Permet le défilement des départements 
