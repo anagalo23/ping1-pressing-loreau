@@ -64,7 +64,7 @@
                         <ColumnDefinition Width="119*"/>
 
                     </Grid.ColumnDefinitions>
-                    <ListBox  ScrollViewer.HorizontalScrollBarVisibility="Hidden" VerticalAlignment="Center" Margin="5" Cursor="Hand"  BorderThickness="0" Background="Transparent" ItemsSource="{Binding ListeUser}" ItemTemplate="{StaticResource Utilisateurs}"  TextOptions.TextHintingMode="Animated">
+                    <ListBox  ScrollViewer.HorizontalScrollBarVisibility="Hidden" VerticalAlignment="Center" Margin="5" Cursor="Hand"  BorderThickness="0" Background="Transparent" ItemsSource="{Binding ListeUser}" ItemTemplate="{StaticResource Utilisateurs}" >
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <VirtualizingStackPanel Orientation="Horizontal"/>

@@ -31,7 +31,7 @@
                     <ColumnDefinition Width="100*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="btn_statistique_du_jour" Command="{Binding Btn_statistique_du_jour,RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding }" Content="Du jour"    Style="{StaticResource choixbouton30}"/>
+                <Button x:Name="btn_statistique_du_jour" Command="{Binding Btn_statistique_du_jour}" Content="Du jour"    Style="{StaticResource choixbouton30}"/>
                 
                 <Button x:Name="btn_statistique_de_la_semaine" Command="{Binding Btn_statistique_de_la_semaine}"  Content="De la semaine" Grid.Column="1" Style="{StaticResource choixbouton30}"/>
                 <Button x:Name="btn_statistique_du_mois" Command="{Binding Btn_statistique_du_mois}" Content="Du mois" Grid.Column="2" 

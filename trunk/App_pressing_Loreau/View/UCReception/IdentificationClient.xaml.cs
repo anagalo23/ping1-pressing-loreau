@@ -85,7 +85,7 @@ namespace App_pressing_Loreau.View
         private void txb_identificationClient_id_cleanway_TextChanged(object sender, TextChangedEventArgs e)
         {
             Fields fields = AutoComplete.getFields();
-            fields.idCleaWay = Int16.Parse(txb_identificationClient_id_cleanway.Text);
+            fields.idCleaWay = Int32.Parse(txb_identificationClient_id_cleanway.Text);
 
         }
         private void txb_identificationClient_id_cleanway_KeyDown(object sender, KeyEventArgs e)
