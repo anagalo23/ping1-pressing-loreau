@@ -9,6 +9,8 @@ using App_pressing_Loreau.Data.DAO;
 using App_pressing_Loreau.Model.DTO;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
+using System.Windows;
+
 //using System.Windows.Controls.Button;
 //using System.Windows.Forms;
 
@@ -128,6 +130,21 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
+
+        public ListePaiement MontantParMoyenPaiement
+        {
+            get { return montantParMoyenPaiement; }
+            set
+            {
+                if (value != montantParMoyenPaiement)
+                {
+                    montantParMoyenPaiement = value;
+                    OnPropertyChanged("MontantParMoyenPaiement");
+                }
+            }
+        }
+
+
         public ICommand Btn_paiment_valider
         {
             get
@@ -139,7 +156,7 @@ namespace App_pressing_Loreau.ViewModel
         }
 
 
-        //Permet de faire réagir le bouton
+        //Gère les boutons de mode de paiement
         ICommand btn_paiement;
         public ICommand Btn_paiement
         {
@@ -149,11 +166,44 @@ namespace App_pressing_Loreau.ViewModel
         {
             System.Windows.Controls.Button clickedbutton = button as System.Windows.Controls.Button;
             _mode_de_paiement = clickedbutton.Tag.ToString();
-            //System.Windows.Forms.MessageBox.Show("Salut bb");
+            //System.Windows.Forms.MessageBox.Show(_mode_de_paiement);
         }
 
+        
+        //Gère les boutons de mode de paiement
+        ICommand btn_paiement_validerMode;
+        public ICommand Btn_paiement_validerMode
+        {
+            get { return btn_paiement_validerMode ?? (btn_paiement_validerMode = new RelayCommand(completeLaListeDesModesDePaiement)); }
+        }
+        private void completeLaListeDesModesDePaiement(object button)
+        {
+            //System.Windows.Controls.Button clickedbutton = button as System.Windows.Controls.Button;
+            //_mode_de_paiement = clickedbutton.Tag.ToString();
+            //System.Windows.Forms.MessageBox.Show(_mode_de_paiement);
+
+            //get le mode de paiement
 
 
+            //get Le montant
+
+            MontantParMoyenPaiement = new ListePaiement();
+            //Ajouter à la liste
+            if (_mode_de_paiement != "" && Txb_paiement_montantParMoyenPaiement != 0)
+            {
+                MontantParMoyenPaiement[_mode_de_paiement] = Txb_paiement_montantParMoyenPaiement;
+                //MontantParMoyenPaiement.
+                //Réinitialisation des champs pour éviter les erreurs et doublons
+                Txb_paiement_montantParMoyenPaiement = 0;
+                _mode_de_paiement = "";
+
+            }
+            else
+            {
+                MessageBox.Show("Veuillez choisir un mode de paiement et le montant");
+            }
+            
+        }
 
         #endregion
 
@@ -198,6 +248,7 @@ namespace App_pressing_Loreau.ViewModel
 
         private readonly IDictionary<string, float> maListeDePaiement = new Dictionary<string, float>();
 
+        
         public float this[string key]
         {
             get
@@ -217,7 +268,22 @@ namespace App_pressing_Loreau.ViewModel
                 {
                     maListeDePaiement.Add(key, value);
                 }
+                Label_nomModePaiement = key;
+                Label_MontantPayerParMode = value;
             }
+        }
+
+
+        public String Label_nomModePaiement
+        {
+            get;
+            set;
+        }
+
+        public float Label_MontantPayerParMode
+        {
+            get;
+            set;
         }
     }
 
