@@ -27,7 +27,7 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("prenom", client.prenom);
                 cmd.Parameters.AddWithValue("telfixe", client.telfix);
                 cmd.Parameters.AddWithValue("telport", client.telmob);
-                cmd.Parameters.AddWithValue("adresse", client.adresse.giveAdresse());
+                cmd.Parameters.AddWithValue("adresse", client.adresse.giveAdresse().Replace("//", "///"));
                 cmd.Parameters.AddWithValue("dateNaissance", dateNaissance);
                 cmd.Parameters.AddWithValue("email", client.email);
                 cmd.Parameters.AddWithValue("idCleanWay", client.idCleanWay);
@@ -135,7 +135,7 @@ namespace App_pressing_Loreau.Data.DAO
                 List<Client> retour = new List<Client>();
 
                 //connection à la base de données  
-                MySqlCommand cmd = new MySqlCommand(Bdd.selectProClient, Bdd.connexion());
+                MySqlCommand cmd = new MySqlCommand(/*Bdd.selectProClient*/Bdd.insertLog, Bdd.connexion());
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
@@ -167,12 +167,19 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                /*Client clt = new Client("Jean", "LaRue", "0658789201", "4152658952", Adresse.Parse("53\\rue st gervais\\76000\\Rouen\\"), DateTime.Now, "monemail@bouh.com", DateTime.Now, 45, true, true, 0);
+                Client clt = new Client("Jean", "LaRue", "0658789201", "4152658952", Adresse.Parse("53\\rue st gervais\\76000\\Rouen\\"), DateTime.Now, "monemail@bouh.com", DateTime.Now, 45, true, true, 0);
                 ClientDAO.insertClient(clt);
-                Commande cmd = new Commande(DateTime.Now, false, 3/2, ClientDAO.selectClientById(ClientDAO.lastId(), false, false, false));
+                Commande cmd = new Commande(DateTime.Now, false, 3/2, ClientDAO.lastClient());
                 CommandeDAO.insertCommande(cmd);
-                Article article = new Article(null, null, false, 20, 6, TypeArticleDAO.selectTypesById(1), PlaceConvoyeurDAO.selectConvoyeurById(4));
-                ArticleDAO.insertArticle(article);*/
+                Article article = new Article(null, null, false, 20, 6, TypeArticleDAO.selectTypesById(1), PlaceConvoyeurDAO.selectConvoyeurById(4), CommandeDAO.lastCommande().id);
+                ArticleDAO.insertArticle(article);
+                ArticleDAO.insertArticle(article);
+                ArticleDAO.insertArticle(article);
+                ArticleDAO.insertArticle(article);
+                Payement paiement = new Payement(DateTime.Now, 4/3, "CB", cmd.id);
+
+                
+
 
 
                 //LogExcel log = new LogExcel("bdfvhk", "djsfbhh", "jhfsd");
@@ -201,10 +208,9 @@ namespace App_pressing_Loreau.Data.DAO
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
-                Client client;
                 while (msdr.Read())
                 {
-                    client = new Client(
+                    retour = new Client(
                         Int32.Parse(msdr["clt_id"].ToString()),
                         msdr["clt_nom"].ToString(),
                         msdr["clt_prenom"].ToString(),
@@ -215,8 +221,8 @@ namespace App_pressing_Loreau.Data.DAO
                         msdr["clt_email"].ToString(),
                         DateTime.Parse(msdr["clt_dateInscription"].ToString()),
                         Int32.Parse(msdr["clt_idCleanway"].ToString()),
-                        Int32.Parse(msdr["clt_contactmail"].ToString()),
-                        Int32.Parse(msdr["clt_contactsms"].ToString()),
+                        bool.Parse(msdr["clt_contactmail"].ToString()),
+                        bool.Parse(msdr["clt_contactsms"].ToString()),
                         Int32.Parse(msdr["clt_type"].ToString())
                         );
                 }
