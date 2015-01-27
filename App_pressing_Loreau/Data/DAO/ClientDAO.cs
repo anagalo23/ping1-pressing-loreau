@@ -169,7 +169,7 @@ namespace App_pressing_Loreau.Data.DAO
             {
                 /*Client clt = new Client("Jean", "LaRue", "0658789201", "4152658952", Adresse.Parse("53\\rue st gervais\\76000\\Rouen\\"), DateTime.Now, "monemail@bouh.com", DateTime.Now, 45, true, true, 0);
                 ClientDAO.insertClient(clt);
-                Commande cmd = new Commande(DateTime.Now, false, 3/2, (ClientDAO.seekClients("Jean","LaRue",null,0))[0]);
+                Commande cmd = new Commande(DateTime.Now, false, 3/2, ClientDAO.selectClientById(ClientDAO.lastId(), false, false, false));
                 CommandeDAO.insertCommande(cmd);
                 Article article = new Article(null, null, false, 20, 6, TypeArticleDAO.selectTypesById(1), PlaceConvoyeurDAO.selectConvoyeurById(4));
                 ArticleDAO.insertArticle(article);*/
@@ -296,27 +296,28 @@ namespace App_pressing_Loreau.Data.DAO
         }
 
         //Last Client Inserted
-        public static int lastId()
+        public static Client lastClient()
         {
-            int retour = 0;
             try
             {
+                int clt_id = 0;
+
                 //connection à la base de données  
-                MySqlCommand cmd = new MySqlCommand(Bdd.clientLastId, Bdd.connexion());
+                MySqlCommand cmd = new MySqlCommand(Bdd.lastClient, Bdd.connexion());
 
                 //Execute la commandekkke
                 MySqlDataReader msdr = cmd.ExecuteReader();
                 while (msdr.Read())
                 {
-                    retour = Int32.Parse(msdr["clt_id"].ToString());
+                    clt_id = Int32.Parse(msdr["clt_id"].ToString());
                 }
                 msdr.Dispose();
-                return retour;
+                return ClientDAO.selectClientById(clt_id, false, false, false);
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
-                return 0;
+                return null;
             }
         }
     }

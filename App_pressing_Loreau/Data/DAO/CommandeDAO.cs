@@ -287,27 +287,27 @@ namespace App_pressing_Loreau.Data.DAO
             }
         }
 
-        public static int lastId(MySqlConnection connection)
+        public static Commande lastCommande(MySqlConnection connection)
         {
-            int retour = 0;
+            int cmd_id = 0;
             try
             {
                 //connection à la base de données  
-                MySqlCommand cmd = new MySqlCommand(Bdd.commandeLastId, Bdd.connexion());
+                MySqlCommand cmd = new MySqlCommand(Bdd.lastCommande, Bdd.connexion());
 
                 //Execute la commandekkke
                 MySqlDataReader msdr = cmd.ExecuteReader();
                 while (msdr.Read())
                 {
-                    retour = Int32.Parse(msdr["cmd_id"].ToString());
+                    cmd_id = Int32.Parse(msdr["cmd_id"].ToString());
                 }
                 msdr.Dispose();
-                return retour;
+                return CommandeDAO.selectCommandeById(cmd_id, false, false);
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
-                return 0;
+                return null;
             }
         }
 
