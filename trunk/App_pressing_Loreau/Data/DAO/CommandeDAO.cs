@@ -223,6 +223,62 @@ namespace App_pressing_Loreau.Data.DAO
             }
         }
 
+        //Give the total price of the command
+        public static float totalTTCCommandeById(int id_cmd)
+        {
+            try
+            {
+                float retour = -1;
+
+                //connection à la base de données  
+                MySqlCommand cmd = new MySqlCommand(Bdd.totalTTCCommandeById, Bdd.connexion());
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("cmd_id", id_cmd);
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                while (msdr.Read())
+                {
+                    retour = float.Parse(msdr["total"].ToString());
+                }
+                return retour;
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                return -2;
+            }
+        }
+
+        //Give the total payed of the command
+        public static float totalPayedCommandeById(int id_cmd)
+        {
+            try
+            {
+                float retour = -1;
+
+                //connection à la base de données  
+                MySqlCommand cmd = new MySqlCommand(Bdd.totalPayedCommandeById, Bdd.connexion());
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("cmd_id", id_cmd);
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                while (msdr.Read())
+                {
+                    retour = float.Parse(msdr["total"].ToString());
+                }
+                return retour;
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                return -2;
+            }
+        }
+
         //Inserer une commande dans la base de données
         public static int updateCommande(Commande commande)
         {
