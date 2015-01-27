@@ -23,7 +23,7 @@
             <DockPanel Grid.Column="0">
                 <DockPanel  DockPanel.Dock="Bottom">
                     <Border  DockPanel.Dock="Bottom" Height="50">
-                        <Grid>
+                        <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
@@ -155,7 +155,7 @@
                 </Border>
                 <Border  Grid.Row="3"  Margin="20,5">
                     <Button x:Name="btn_paiment_valider" Content="Valider" Margin="100,10"
-                        FontFamily="Arial" FontSize="30" FontWeight="SemiBold" Command="{Binding Btn_paiment_valider}"/>
+                        FontFamily="Arial" FontSize="30" FontWeight="SemiBold" Command="{Binding Btn_valider_paiement_commande}"/>
                 </Border>
             </Grid>
 

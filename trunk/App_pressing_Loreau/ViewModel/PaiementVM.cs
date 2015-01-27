@@ -31,12 +31,12 @@ namespace App_pressing_Loreau.ViewModel
         //Prends en param : le moyen de paiement et le montant correspondant à ce moyen de paiement
         //private Dictionary<string, float> _txb_paiement_montantParmoyenPaiement = new Dictionary<string, float>();
 
-        private ListePaiement montantParMoyenPaiement = new ListePaiement();
+        private ListePaiement listeDeMontantParMoyenPaiement = new ListePaiement();
         private String _mode_de_paiement;
 
         private List<GetPaiement> _itemsMontantParMoyenPaiement;
 
-        private ObservableCollection<PaiementListeVM> _contenuListePaiement;
+        //private ObservableCollection<PaiementListeVM> _contenuListePaiement;
 
         private float _reste_a_payer;
         //Payement paiement;
@@ -64,6 +64,7 @@ namespace App_pressing_Loreau.ViewModel
             //Txb_paiement_montantParMoyenPaiement = float.Parse(Label_paiement_montant.Split(' ')[0]);
             //float.Parse(_label_paiement_prixTTC);
             _mode_de_paiement = "";
+            ClasseGlobale.initializeContenuListePaiement();
             
         }
         #endregion
@@ -125,7 +126,7 @@ namespace App_pressing_Loreau.ViewModel
 
         public String Reste_a_payer_String
         {
-            get { return _reste_a_payer.ToString();  }
+            get { return Reste_a_payer.ToString(); }
         }
 
 
@@ -182,21 +183,21 @@ namespace App_pressing_Loreau.ViewModel
         }
 
 
-        public ListePaiement MontantParMoyenPaiement
-        {
-            get { return montantParMoyenPaiement; }
-            set
-            {
-                if (value != montantParMoyenPaiement)
-                {
-                    montantParMoyenPaiement = value;
-                    OnPropertyChanged("MontantParMoyenPaiement");
-                }
-            }
-        }
+        //public ListePaiement MontantParMoyenPaiement
+        //{
+        //    get { return listeDeMontantParMoyenPaiement; }
+        //    set
+        //    {
+        //        if (value != listeDeMontantParMoyenPaiement)
+        //        {
+        //            listeDeMontantParMoyenPaiement = value;
+        //            OnPropertyChanged("MontantParMoyenPaiement");
+        //        }
+        //    }
+        //}
 
 
-        public ICommand Btn_paiment_valider
+        public ICommand Btn_valider_paiement_commande
         {
             get
             {
@@ -242,7 +243,7 @@ namespace App_pressing_Loreau.ViewModel
             //Ajouter à la liste
             if (Mode_de_paiement != "" && clickedbutton != null)
             {
-                //MontantParMoyenPaiement[_mode_de_paiement] = Txb_paiement_montantParMoyenPaiement;
+
 
 
                 //ItemsMontantParMoyenPaiement.Add(new GetPaiement()
@@ -251,12 +252,47 @@ namespace App_pressing_Loreau.ViewModel
                 //    Label_nomModePaiement = _mode_de_paiement
                 //});
 
-                ClasseGlobale._contenuListePaiement.Add(new PaiementListeVM()
-                {
-                    ModeDePaiement = Mode_de_paiement,
-                    Montant = Txb_paiement_montantParMoyenPaiement.ToString(),
 
-                });
+
+                listeDeMontantParMoyenPaiement[Mode_de_paiement] = Txb_paiement_montantParMoyenPaiement;
+                
+                System.Collections.Generic.ICollection<String> liste_des_moyens_de_paiement = listeDeMontantParMoyenPaiement.dico.Keys;
+                String mes = "";
+                foreach (String monMoyenDePaiement in liste_des_moyens_de_paiement)
+                {
+                    mes += listeDeMontantParMoyenPaiement[monMoyenDePaiement] + " en " + monMoyenDePaiement + " \n";
+                    //ModeDePaiement = monMoyenDePaiement,
+                    //        Montant = listeDeMontantParMoyenPaiement[monMoyenDePaiement].ToString(),
+
+                }
+                MessageBox.Show(mes);
+
+                ObservableCollection<PaiementListeVM> contenuListePaiementTampon = new ObservableCollection<PaiementListeVM>() ;
+
+                ClasseGlobale.initializeContenuListePaiement();
+                foreach (String monMoyenDePaiement in liste_des_moyens_de_paiement)
+                {
+
+                    //ModeDePaiement = monMoyenDePaiement,
+                    //        Montant = listeDeMontantParMoyenPaiement[monMoyenDePaiement].ToString(),
+                    contenuListePaiementTampon.Add(new PaiementListeVM()
+                    {
+                        ModeDePaiement = monMoyenDePaiement,
+                        Montant = listeDeMontantParMoyenPaiement[monMoyenDePaiement].ToString(),
+
+                    });
+                }
+
+                ContenuListePaiement = contenuListePaiementTampon;
+
+                //ContenuListePaiement.Add(new PaiementListeVM()
+                //{
+                //    ModeDePaiement = Mode_de_paiement,
+                //    Montant = Txb_paiement_montantParMoyenPaiement.ToString(),
+
+                //});
+
+
 
                 //Réinitialisation des champs pour éviter les erreurs et doublons
                 Txb_paiement_montantParMoyenPaiement = Reste_a_payer - Txb_paiement_montantParMoyenPaiement;
@@ -285,7 +321,7 @@ namespace App_pressing_Loreau.ViewModel
         {
             get
             {
-                if (_contenuListePaiement == null)//ClasseGlobale.
+                if (ClasseGlobale._contenuListePaiement == null)//ClasseGlobale.
                 {
                     ClasseGlobale.initializeContenuListePaiement();
                     //_contenuListePaiement = new ObservableCollection<PaiementListeVM>();
@@ -352,6 +388,13 @@ namespace App_pressing_Loreau.ViewModel
 
         private readonly IDictionary<string, float> maListeDePaiement = new Dictionary<string, float>();
 
+        public IDictionary<string, float> dico
+        {
+            get
+            {
+                return maListeDePaiement;
+            }
+        }
 
         public float this[string key]
         {
@@ -366,7 +409,7 @@ namespace App_pressing_Loreau.ViewModel
                 //maListeDePaiement[key] = value;
                 if (maListeDePaiement.ContainsKey(key))
                 {
-                    maListeDePaiement[key] = value;
+                    maListeDePaiement[key] += value;
                 }
                 else
                 {
