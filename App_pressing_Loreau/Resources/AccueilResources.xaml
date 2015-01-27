@@ -78,6 +78,7 @@
     <DataTemplate DataType="{x:Type vm:FactureVM}">
         <view:Factures/>
     </DataTemplate>
+    
     <DataTemplate DataType="{x:Type vm:FactureFinaleVM}">
         <view:FactureFinale/>
     </DataTemplate>
