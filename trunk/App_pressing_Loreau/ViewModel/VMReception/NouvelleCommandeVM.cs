@@ -86,13 +86,7 @@ namespace App_pressing_Loreau.ViewModel
             get { return onButtonClickCommand ?? (onButtonClickCommand = new RelayCommand(Contenudepartement)); }
         }
 
-        //Ajouter un article a la commande 
-        ICommand listesArticlesCommandes;
-        public ICommand ListesArticlesCommandes
-        {
-            get { return listesArticlesCommandes ?? (listesArticlesCommandes = new RelayCommand(AjouterArticles)); }
 
-        }
 
 
         public ICommand CommandeSuivante
@@ -155,6 +149,8 @@ namespace App_pressing_Loreau.ViewModel
                 }
             }
         }
+
+
         public ObservableCollection<ArticlesVM> ContentDetailCommande
         {
             get
@@ -268,16 +264,25 @@ namespace App_pressing_Loreau.ViewModel
 
         }
 
-       
+
+
+        //Ajouter un article a la commande 
+        ICommand listesArticlesCommandes;
+        public ICommand ListesArticlesCommandes
+        {
+            get { return listesArticlesCommandes ?? (listesArticlesCommandes = new RelayCommand(AjouterArticles)); }
+
+        }
+
 
         public void AjouterArticles(object button)
         {
             Button clickedbutton = button as Button;
-            typeArticleDTO = (TypeArticle)TypeArticleDAO.selectTypesById(Int32.Parse(clickedbutton.Tag.ToString()));
+           
 
             if (clickedbutton != null)
             {
-
+                typeArticleDTO = (TypeArticle)TypeArticleDAO.selectTypesById(Int32.Parse(clickedbutton.Tag.ToString()));
                 ClasseGlobale._contentDetailCommande.Add(new ArticlesVM()
                 {
                     article = typeArticleDTO,
