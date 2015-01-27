@@ -13,7 +13,7 @@ namespace App_pressing_Loreau.Data.DAO
     class ArticleDAO
     {
         //Inserer un article dans la base de données
-        public static int insertArticle(Article article)
+        public static int insertArticle(Article article, int cmd_id)
         {
             try
             {
@@ -28,6 +28,7 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("TTC", article.TTC);
                 cmd.Parameters.AddWithValue("conv_id", article.convoyeur.id);
                 cmd.Parameters.AddWithValue("typ_id", article.type.id);
+                cmd.Parameters.AddWithValue("art_cmd_id", cmd_id);
 
                 //Execute la commande
                 return cmd.ExecuteNonQuery();
@@ -184,27 +185,27 @@ namespace App_pressing_Loreau.Data.DAO
         }
 
         //Last Article Inserted
-        public static int lastId()
+        public static Article lastArticle()
         {
-            int retour = 0;
+            int art_id = 0;
             try
             {
                 //connection à la base de données  
-                MySqlCommand cmd = new MySqlCommand(Bdd.articleLastId, Bdd.connexion());
+                MySqlCommand cmd = new MySqlCommand(Bdd.lastArticle, Bdd.connexion());
 
                 //Execute la commandekkke
                 MySqlDataReader msdr = cmd.ExecuteReader();
                 while (msdr.Read())
                 {
-                    retour = Int32.Parse(msdr["art_id"].ToString());
+                    art_id = Int32.Parse(msdr["art_id"].ToString());
                 }
                 msdr.Dispose();
-                return retour;
+                return ArticleDAO.selectArticleById(art_id);
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
-                return 0;
+                return null;
             }
         }
     }
