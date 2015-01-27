@@ -167,6 +167,14 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
+                /*Client clt = new Client("Jean", "LaRue", "0658789201", "4152658952", Adresse.Parse("53\\rue st gervais\\76000\\Rouen\\"), DateTime.Now, "monemail@bouh.com", DateTime.Now, 45, true, true, 0);
+                ClientDAO.insertClient(clt);
+                Commande cmd = new Commande(DateTime.Now, false, 3/2, (ClientDAO.seekClients("Jean","LaRue",null,0))[0]);
+                CommandeDAO.insertCommande(cmd);
+                Article article = new Article(null, null, false, 20, 6, TypeArticleDAO.selectTypesById(1), PlaceConvoyeurDAO.selectConvoyeurById(4));
+                ArticleDAO.insertArticle(article);*/
+
+
                 //LogExcel log = new LogExcel("bdfvhk", "djsfbhh", "jhfsd");
                 //log.ajouterLog();
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données."));
@@ -279,6 +287,31 @@ namespace App_pressing_Loreau.Data.DAO
 
                 //Execute la commande
                 return cmd.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
+                return 0;
+            }
+        }
+
+        //Last Client Inserted
+        public static int lastId()
+        {
+            int retour = 0;
+            try
+            {
+                //connection à la base de données  
+                MySqlCommand cmd = new MySqlCommand(Bdd.clientLastId, Bdd.connexion());
+
+                //Execute la commandekkke
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                while (msdr.Read())
+                {
+                    retour = Int32.Parse(msdr["clt_id"].ToString());
+                }
+                msdr.Dispose();
+                return retour;
             }
             catch (Exception Ex)
             {

@@ -182,5 +182,30 @@ namespace App_pressing_Loreau.Data.DAO
                 return 0;
             }
         }
+
+        //Last Article Inserted
+        public static int lastId()
+        {
+            int retour = 0;
+            try
+            {
+                //connection à la base de données  
+                MySqlCommand cmd = new MySqlCommand(Bdd.articleLastId, Bdd.connexion());
+
+                //Execute la commandekkke
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                while (msdr.Read())
+                {
+                    retour = Int32.Parse(msdr["art_id"].ToString());
+                }
+                msdr.Dispose();
+                return retour;
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
+                return 0;
+            }
+        }
     }
 }

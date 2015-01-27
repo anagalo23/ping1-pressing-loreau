@@ -289,27 +289,24 @@ namespace App_pressing_Loreau.Data.DAO
 
         public static int lastId(MySqlConnection connection)
         {
-            String sql = "";
-
-            //connection à la base de données  
-
-            MySqlCommand cmd = new MySqlCommand(sql, Bdd.MSConnexion);
-            // Le langage d'insertion en bdd est le sql
-            cmd.CommandText = sql;
-            //ajout des parametres
-
-
-            int id_de_la_derniere_commande_enregistree;
-
-
+            int retour = 0;
             try
             {
-                id_de_la_derniere_commande_enregistree = cmd.ExecuteNonQuery();
-                connection.Close();
-                return id_de_la_derniere_commande_enregistree;
+                //connection à la base de données  
+                MySqlCommand cmd = new MySqlCommand(Bdd.commandeLastId, Bdd.connexion());
+
+                //Execute la commandekkke
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                while (msdr.Read())
+                {
+                    retour = Int32.Parse(msdr["cmd_id"].ToString());
+                }
+                msdr.Dispose();
+                return retour;
             }
-            catch
+            catch (Exception Ex)
             {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
                 return 0;
             }
         }
