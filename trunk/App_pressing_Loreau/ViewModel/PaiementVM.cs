@@ -37,6 +37,8 @@ namespace App_pressing_Loreau.ViewModel
         private List<GetPaiement> _itemsMontantParMoyenPaiement;
 
         private ObservableCollection<PaiementListeVM> _contenuListePaiement;
+
+        private float _reste_a_payer;
         //Payement paiement;
         #endregion
 
@@ -58,10 +60,10 @@ namespace App_pressing_Loreau.ViewModel
 
             //Txb_paiement_montantParMoyenPaiement = Label_NouvelleCommande_prixTotal;
             Txb_paiement_montantParMoyenPaiement = float.Parse(Label_paiement_montant.Split(' ')[0]);
-
+            Reste_a_payer = Txb_paiement_montantParMoyenPaiement;
             //Txb_paiement_montantParMoyenPaiement = float.Parse(Label_paiement_montant.Split(' ')[0]);
             //float.Parse(_label_paiement_prixTTC);
-
+            _mode_de_paiement = "";
             
         }
         #endregion
@@ -90,6 +92,42 @@ namespace App_pressing_Loreau.ViewModel
                 }
             }
         }
+
+
+        public String Mode_de_paiement
+        {
+            get { return _mode_de_paiement; }
+            set
+            {
+                if (value != _mode_de_paiement)
+                {
+                    _mode_de_paiement = value;
+                    OnPropertyChanged("Mode_de_paiement");
+                }
+            }
+        }
+
+
+
+
+        public float Reste_a_payer
+        {
+            get { return _reste_a_payer; }
+            set
+            {
+                if (value != _reste_a_payer)
+                {
+                    _reste_a_payer = value;
+                    OnPropertyChanged("Reste_a_payer");
+                }
+            }
+        }
+
+        public String Reste_a_payer_String
+        {
+            get { return _reste_a_payer.ToString();  }
+        }
+
 
         public String Label_paiement_prixTTC
         {
@@ -184,10 +222,10 @@ namespace App_pressing_Loreau.ViewModel
 
 
         //Gère les boutons de mode de paiement
-        ICommand btn_paiement_validerMode;
-        public ICommand Btn_paiement_validerMode
+        ICommand btn_paiement_valider;
+        public ICommand Btn_paiement_valider
         {
-            get { return btn_paiement_validerMode ?? (btn_paiement_validerMode = new RelayCommand(completeLaListeDesModesDePaiement)); }
+            get { return btn_paiement_valider ?? (btn_paiement_valider = new RelayCommand(completeLaListeDesModesDePaiement)); }
         }
         private void completeLaListeDesModesDePaiement(object button)
         {
@@ -202,7 +240,7 @@ namespace App_pressing_Loreau.ViewModel
 
             //MontantParMoyenPaiement = new ListePaiement();
             //Ajouter à la liste
-            if (_mode_de_paiement != "" && Txb_paiement_montantParMoyenPaiement != 0 && clickedbutton != null)
+            if (Mode_de_paiement != "" && clickedbutton != null)
             {
                 //MontantParMoyenPaiement[_mode_de_paiement] = Txb_paiement_montantParMoyenPaiement;
 
@@ -215,24 +253,23 @@ namespace App_pressing_Loreau.ViewModel
 
                 ClasseGlobale._contenuListePaiement.Add(new PaiementListeVM()
                 {
-                    ModeDePaiement = _mode_de_paiement,
+                    ModeDePaiement = Mode_de_paiement,
                     Montant = Txb_paiement_montantParMoyenPaiement.ToString(),
 
                 });
 
                 //Réinitialisation des champs pour éviter les erreurs et doublons
-                Txb_paiement_montantParMoyenPaiement = 0;
-                _mode_de_paiement = "";
+                Txb_paiement_montantParMoyenPaiement = Reste_a_payer - Txb_paiement_montantParMoyenPaiement;
+                Reste_a_payer = Txb_paiement_montantParMoyenPaiement;
+                Mode_de_paiement = "";
 
             }
             else
             {
                 String erreur="Veuillez s'il vous plait : ";
-                if(_mode_de_paiement == ""){
+                if (Mode_de_paiement == "")
+                {
                     erreur += "\t- sélectionner un mode de paiement";
-                }
-                if(Txb_paiement_montantParMoyenPaiement == 0){
-                    erreur += "\t- saisir le montant désiré";
                 }
                 if (clickedbutton == null)
                 {
