@@ -11,6 +11,7 @@ namespace App_pressing_Loreau.Model.DTO
         #region attributs
         public int id { get; set; }
         public DateTime date { get; set; }
+        public DateTime date_rendu { get; set; }
         public Boolean payee { get; set; }
         public float remise { get; set; }
         public Client client { get; set; }
@@ -28,6 +29,7 @@ namespace App_pressing_Loreau.Model.DTO
         {
             id = 0;
             this.date = date;
+            date_rendu = DateTime.MinValue;
             this.payee = payee;
             this.remise = remise;
             this.client = client;
@@ -39,6 +41,7 @@ namespace App_pressing_Loreau.Model.DTO
         {
             this.id = id;
             this.date = date;
+            date_rendu = DateTime.MinValue;
             this.payee = payee;
             this.remise = remise;
             this.client = null;
@@ -50,6 +53,7 @@ namespace App_pressing_Loreau.Model.DTO
         {
             this.id = id;
             this.date = date;
+            date_rendu = DateTime.MinValue;
             this.payee = payee;
             this.remise = remise;
             this.client = client;
