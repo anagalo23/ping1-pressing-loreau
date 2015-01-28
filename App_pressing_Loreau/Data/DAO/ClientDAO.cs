@@ -169,7 +169,7 @@ namespace App_pressing_Loreau.Data.DAO
             {
                 Client clt = new Client("Jean", "LaRue", "0658789201", "4152658952", Adresse.Parse("53\\rue st gervais\\76000\\Rouen\\"), DateTime.Now, "monemail@bouh.com", DateTime.Now, 45, true, true, 0);
                 ClientDAO.insertClient(clt);
-                Commande cmd = new Commande(DateTime.Now, false, 3 / 2, ClientDAO.lastClient());
+                Commande cmd = new Commande(DateTime.Now, false, 3/2F, ClientDAO.lastClient());
                 CommandeDAO.insertCommande(cmd);
                 cmd = CommandeDAO.lastCommande();
                 Article article = new Article(null, null, false, 20, 6, TypeArticleDAO.selectTypesById(1), PlaceConvoyeurDAO.selectConvoyeurById(4), cmd.id);
@@ -177,7 +177,7 @@ namespace App_pressing_Loreau.Data.DAO
                 ArticleDAO.insertArticle(article);
                 ArticleDAO.insertArticle(article);
                 ArticleDAO.insertArticle(article);
-                Payement paiement = new Payement(DateTime.Now, 4 / 3, TypePayementDAO.selectTypePayementById(1).nom, cmd.id);
+                Payement paiement = new Payement(DateTime.Now, 4 / 3F, TypePayementDAO.selectTypePayementById(1).nom, cmd.id);
                 PayementDAO.insertPaiement(paiement);
 
                 FactureExcel fe = new FactureExcel(CommandeDAO.selectCommandeById(cmd.id,true, true, true));
