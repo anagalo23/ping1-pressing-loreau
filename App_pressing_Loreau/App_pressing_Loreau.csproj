@@ -410,6 +410,7 @@
     </None>
     <AppDesigner Include="Properties\" />
     <None Include="Resources\PatternExcel\FacturePattern.xlsx" />
+    <None Include="Resources\PatternExcel\LectureXPattern.xlsx" />
     <None Include="Resources\PatternExcel\LogPattern.xlsx" />
   </ItemGroup>
   <ItemGroup>
