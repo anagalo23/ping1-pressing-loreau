@@ -84,12 +84,14 @@ INSERT INTO `client` (`clt_type`, `clt_nom`, `clt_prenom`, `clt_dateInscription`
 CREATE TABLE IF NOT EXISTS `commande` (
   `cmd_id` int(11) NOT NULL AUTO_INCREMENT,
   `cmd_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `cmd_date_rendu` timestamp NULL DEFAULT NULL,
   `cmd_payee` tinyint(1) NOT NULL,
   `cmd_clt_id` int(11) NOT NULL,
   `cmd_remise` float DEFAULT NULL,
   PRIMARY KEY (`cmd_id`),
   KEY `fk_commande_client1_idx` (`cmd_clt_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
 
 -- --------------------------------------------------------
 
