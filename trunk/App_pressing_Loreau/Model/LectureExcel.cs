@@ -21,8 +21,7 @@ namespace App_pressing_Loreau.Model
         List<float> caTTCDep;
 
         //informations moyen de paiement
-        List<TypePayement> listUsedTypePaiement;
-        List<float> caTTCpaiement;
+        List<Payement> listUsedTypePaiement;
 
         //informations type article
         List<TypeArticle> listUsedTypeArticle;
@@ -47,7 +46,8 @@ namespace App_pressing_Loreau.Model
         public LectureExcel(int type)
         {
             this.type = type;
-            listUsedTypePaiement = PayementDAO.;
+            listUsedTypePaiement = PayementDAO.listSommePaiementToday();
+
         }
 
         
