@@ -13,8 +13,8 @@ namespace App_pressing_Loreau.Model
         #region parametres LogExcel
 
         public Commande commande;
-        
-        public static String pattern_path = "I:\\PING\\App_pressing_loreau\\App_pressing_Loreau\\Resources\\PatternExcel\\FactureExcel";
+
+        public static String pattern_path = "I:\\PING\\App_pressing_loreau\\App_pressing_Loreau\\Resources\\PatternExcel\\FacturePattern";
         private Microsoft.Office.Interop.Excel.Application oXL;
         private Microsoft.Office.Interop.Excel.Workbook mWorkBook;
         private Microsoft.Office.Interop.Excel.Worksheet mWorkSheets;
@@ -63,9 +63,9 @@ namespace App_pressing_Loreau.Model
             mWorkSheets.Cells[index, 7] = "TVA :";
             mWorkSheets.Cells[index, 9] = tva;
             mWorkSheets.Cells[index+1, 7] = "Remise :";
-            mWorkSheets.Cells[index, 9] = commande.remise;
+            mWorkSheets.Cells[index + 1, 9] = commande.remise;
             mWorkSheets.Cells[index + 2, 7] = "Total :";
-            mWorkSheets.Cells[index, 9] = total + tva - commande.remise;
+            mWorkSheets.Cells[index + 2, 9] = total + tva - commande.remise;
 
         }
 
@@ -85,7 +85,10 @@ namespace App_pressing_Loreau.Model
             mWorkSheets.PrintOut(1, 1, 1, false, misValue, false, false, misValue);
             
             //close files
+            mWorkBook.Close(false, misValue, misValue);
             oXL.Quit();
+
+            //release file
             releaseObject(mWorkSheets);
             releaseObject(mWorkBook);
             releaseObject(oXL);

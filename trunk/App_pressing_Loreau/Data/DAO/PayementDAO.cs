@@ -91,7 +91,7 @@ namespace App_pressing_Loreau.Data.DAO
                         Int32.Parse(msdr["pai_id"].ToString()),
                         DateTime.Parse(msdr["pai_date"].ToString()),
                         float.Parse(msdr["pai_montant"].ToString()),
-                        msdr["pai_name"].ToString(),
+                        msdr["pai_type"].ToString(),
                         Int32.Parse(msdr["pai_cmd_id"].ToString()));
                         retour.Add(payement);
                 }
