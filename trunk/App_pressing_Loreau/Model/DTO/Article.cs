@@ -63,6 +63,15 @@ namespace App_pressing_Loreau.Model.DTO
             this.convoyeur = convoyeur;
             this.fk_commande = fk_commande;
         }
+
+        public Article(string photo, string commentaire, TypeArticle type)
+        {
+            this.photo = photo;
+            this.commentaire = commentaire;
+            this.TVA = type.TVA;
+            this.TTC = type.TVA;
+            this.type = type;
+        }
         #endregion
     }
 }
