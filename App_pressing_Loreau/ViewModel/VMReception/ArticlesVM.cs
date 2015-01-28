@@ -29,7 +29,7 @@ namespace App_pressing_Loreau.ViewModel
         private ComboComm _selected_Articles_Commentaire;
         ComboComm comboComm = new ComboComm();
 
-        public TypeArticle article;        
+        public TypeArticle typeArticle;        
         #endregion
 
         public ArticlesVM()
@@ -44,14 +44,14 @@ namespace App_pressing_Loreau.ViewModel
         {
             get
             {
-                return this.article.nom;
+                return this.typeArticle.nom;
             }
 
             set
             {
                 if (!string.IsNullOrEmpty(value))
                 {
-                    this.article.nom = value;
+                    this.typeArticle.nom = value;
                     OnPropertyChanged("ArticlesName");
                 }
             }
@@ -96,6 +96,15 @@ namespace App_pressing_Loreau.ViewModel
       
         #endregion
 
+
+        #region methodes
+        public Article getArticle(int cmd_id)
+        {
+            Article article = new Article(_changedPhoto, "Commentaire", typeArticle, cmd_id);
+
+            return article;
+        }
+        #endregion
     }
 
     #region Class
@@ -117,6 +126,8 @@ namespace App_pressing_Loreau.ViewModel
             return lstCb;
         }
     }
+
+
     #endregion
 
 
