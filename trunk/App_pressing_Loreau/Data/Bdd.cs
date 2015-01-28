@@ -134,7 +134,7 @@ namespace App_pressing_Loreau.Data
         public static String insertConvoyeur = "INSERT INTO convoyeur(conv_emplacement, conv_encombrement) VALUES (?,?)";
         public static String selectConvoyeurs = "SELECT conv_id, conv_emplacement, conv_encombrement FROM convoyeur";
         public static String selectConvoyeurById = "SELECT conv_id, conv_emplacement, conv_encombrement FROM convoyeur WHERE conv_id=?";
-        public static String selectConvoyeursEmpty = "SELECT conv_id, conv_emplacement, conv_encombrement FROM convoyeur WHERE conv_emplacement=0";
+        public static String selectConvoyeursEmpty = "SELECT conv_id, conv_emplacement, conv_encombrement FROM convoyeur WHERE conv_encombrement=0";
         public static String updatePlaceConvoyeur = "UPDATE convoyeur SET conv_id=?,conv_emplacement=?,conv_encombrement=? WHERE conv_id=?";
         public static String deletePlaceConvoyeur = "DELETE FROM convoyeur WHERE conv_id=?";
 
