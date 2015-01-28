@@ -175,7 +175,7 @@ namespace App_pressing_Loreau.Data.DAO
          * @param addPaiement : True pour insérer les paiements dans l'object commande
          * @param addArticles : True pour insérer les Articles dans l'objet Commande
          */
-        public static Commande selectCommandeById(int id_cmd, Boolean addPaiement, Boolean addArticles)
+        public static Commande selectCommandeById(int id_cmd, Boolean addPaiement, Boolean addArticles, Boolean addClient)
         {
             try
             {
@@ -189,6 +189,9 @@ namespace App_pressing_Loreau.Data.DAO
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
+
+                int id_clt = -1;
+
                 while (msdr.Read())
                 {
                     retour = new Commande(
@@ -196,6 +199,7 @@ namespace App_pressing_Loreau.Data.DAO
                         DateTime.Parse(msdr["cmd_date"].ToString()),
                         Boolean.Parse(msdr["cmd_payee"].ToString()),
                         float.Parse(msdr["cmd_remise"].ToString()));
+                    id_clt = Int32.Parse(msdr["cmd_clt_id"].ToString());
                 }
                 msdr.Dispose();
 
@@ -210,6 +214,14 @@ namespace App_pressing_Loreau.Data.DAO
                 if (addArticles)
                 {
                         retour.listArticles = ArticleDAO.selectArticleByIdCmd(retour.id);
+                }
+                #endregion
+
+                #region ajout du client
+                if (addClient)
+                {
+                    if (id_clt >= 0)
+                    retour.client = ClientDAO.selectClientById(id_clt, false, false, false);
                 }
                 #endregion
 
@@ -341,7 +353,7 @@ namespace App_pressing_Loreau.Data.DAO
                     cmd_id = Int32.Parse(msdr["cmd_id"].ToString());
                 }
                 msdr.Dispose();
-                return CommandeDAO.selectCommandeById(cmd_id, false, false);
+                return CommandeDAO.selectCommandeById(cmd_id, false, false, false);
             }
             catch (Exception Ex)
             {
