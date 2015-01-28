@@ -113,7 +113,7 @@ namespace App_pressing_Loreau.Data.DAO
                         float.Parse(msdr["art_TVA"].ToString()),
                         float.Parse(msdr["art_TTC"].ToString()),
                         new TypeArticle(Int32.Parse(msdr["art_typ_id"].ToString()), null, 0, 0, 0, null),
-                        new PlaceConvoyeur(Int32.Parse(msdr[" art_conv_id"].ToString()), 0, 0),
+                        new PlaceConvoyeur(Int32.Parse(msdr["art_conv_id"].ToString()), 0, 0),
                         Int32.Parse(msdr["art_cmd_id"].ToString()));
 
                     retour.Add(article);
@@ -121,7 +121,7 @@ namespace App_pressing_Loreau.Data.DAO
                 msdr.Dispose();
 
                 #region ajout des types, des departements et des places convoyeurs
-                foreach(Article art in retour)
+                foreach (Article art in retour)
                 {
                     art.type = TypeArticleDAO.selectTypesById(art.type.id);
                     art.convoyeur = PlaceConvoyeurDAO.selectConvoyeurById(art.convoyeur.id);

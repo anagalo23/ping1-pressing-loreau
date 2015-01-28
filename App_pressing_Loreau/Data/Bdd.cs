@@ -75,7 +75,7 @@ namespace App_pressing_Loreau.Data
         //Article
         public static String insertArticle = "INSERT INTO article(art_photo, art_commentaire, art_rendu, art_TVA, art_TTC, art_conv_id, art_typ_id, art_cmd_id) VALUES (?,?,?,?,?,?,?,?)";
         public static String selectArticleById = "SELECT art_id, art_photo, art_commentaire, art_rendu, art_TVA, art_TTC, art_conv_id, art_typ_id, art_cmd_id FROM article WHERE art_id=?";
-        public static String selectArticleByIdCmd = "SELECT art_id, art_photo, art_commentaire, art_rendu, art_TVA, art_TTC, art_conv_id, art_typ_id, art_cmd_id FROM article WHERE art_conv_id=?";
+        public static String selectArticleByIdCmd = "SELECT art_id, art_photo, art_commentaire, art_rendu, art_TVA, art_TTC, art_conv_id, art_typ_id, art_cmd_id FROM article WHERE art_cmd_id=?";
         public static String updateArticle = "UPDATE article SET art_id=?,art_photo=?,art_commentaire=?,art_rendu=?,art_TVA=?,art_TTC=?,art_conv_id=?,art_cmd_id=?,art_typ_id=?, art_cmd_id=? WHERE art_id=?";
         public static String deleteArticle = "DELETE FROM article WHERE art_id=?";
         public static String lastArticle = "SELECT MAX(art_id) AS art_id FROM article";
@@ -126,8 +126,8 @@ namespace App_pressing_Loreau.Data
 
         //Payement
         public static String insertPaiement = "INSERT INTO paiement (pai_montant, pai_type ,pai_cmd_id) VALUES (?,?,?)";
-        public static String selectPayementByCommande = "SELECT pai_id, pai_date, pai_name, pai_montant, pai_cmd_id FROM paiement WHERE pai_cmd_id=?";
-        public static String updatePaiement = "UPDATE paiement SET pai_id=?,pai_date=?,pai_montant=?,pai_cmd_id=?,pai_tpp_id=? WHERE pai_id=?";
+        public static String selectPayementByCommande = "SELECT pai_id, pai_date, pai_type, pai_montant, pai_cmd_id FROM paiement WHERE pai_cmd_id=?";
+        public static String updatePaiement = "UPDATE paiement SET pai_id=?,pai_date=?,pai_montant=?,pai_type=?, pai_cmd_id=?,pai_tpp_id=? WHERE pai_id=?";
         public static String deletePaiement = "DELETE FROM paiement WHERE pai_id=?";
 
         //PlaceConvoyeur
