@@ -100,7 +100,7 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de types dans la base de données."));
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de types dans la base de données."));
                 return null;
             }
         }
@@ -149,6 +149,38 @@ namespace App_pressing_Loreau.Data.DAO
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
                 return 0;
+            }
+        }
+
+        //Liste des paiement effectués dans la journée, rassemblé par type
+        public static List<Payement> listSommePaiementToday()
+        {
+            try
+            {
+                List<Payement> retour = new List<Payement>();
+
+                //connection à la base de données  
+                MySqlCommand cmd = new MySqlCommand(Bdd.listSommePaiementToday, Bdd.connexion());
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0));
+                cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                Payement payement;
+                while (msdr.Read())
+                {
+                    payement = new Payement(DateTime.Now, float.Parse(msdr["pai_montant"].ToString()), msdr["pai_type"].ToString(), -1);
+                    retour.Add(payement);
+                }
+                msdr.Dispose();
+                return retour;
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de types dans la base de données."));
+                return null;
             }
         }
     }

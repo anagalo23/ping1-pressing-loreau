@@ -129,6 +129,7 @@ namespace App_pressing_Loreau.Data
         public static String selectPayementByCommande = "SELECT pai_id, pai_date, pai_type, pai_montant, pai_cmd_id FROM paiement WHERE pai_cmd_id=?";
         public static String updatePaiement = "UPDATE paiement SET pai_id=?,pai_date=?,pai_montant=?,pai_type=?, pai_cmd_id=?,pai_tpp_id=? WHERE pai_id=?";
         public static String deletePaiement = "DELETE FROM paiement WHERE pai_id=?";
+        public static String listSommePaiementToday = "SELECT SUM(pai_montant) AS pai_montant, pai_type FROM paiement WHERE pai_date between ? and ? GROUP BY pai_type";
 
         //PlaceConvoyeur
         public static String insertConvoyeur = "INSERT INTO convoyeur(conv_emplacement, conv_encombrement) VALUES (?,?)";
