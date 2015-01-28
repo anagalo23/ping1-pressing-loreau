@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App_pressing_Loreau.Data.DAO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -64,13 +65,16 @@ namespace App_pressing_Loreau.Model.DTO
             this.fk_commande = fk_commande;
         }
 
-        public Article(string photo, string commentaire, TypeArticle type)
+        public Article(string photo, string commentaire, TypeArticle type, int cmd_id)
         {
             this.photo = photo;
             this.commentaire = commentaire;
             this.TVA = type.TVA;
-            this.TTC = type.TVA;
+            this.TTC = type.TTC;
             this.type = type;
+            this.fk_commande = cmd_id;
+            this.ifRendu = false;
+            this.convoyeur = PlaceConvoyeurDAO.selectConvoyeursEmpty()[0];//OUT of range !!!!    new PlaceConvoyeur() ne fonctionne pas non plus
         }
         #endregion
     }

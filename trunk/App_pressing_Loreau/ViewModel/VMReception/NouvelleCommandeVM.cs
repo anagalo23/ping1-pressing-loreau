@@ -62,7 +62,7 @@ namespace App_pressing_Loreau.ViewModel
             {
                 for (int i = 0; i < ContentDetailCommande.Count; i++)
                 {
-                    Label_NouvelleCommande_prixTotal += (ContentDetailCommande[i].article.TTC);
+                    Label_NouvelleCommande_prixTotal += (ContentDetailCommande[i].typeArticle.TTC);
                 }
 
             }
@@ -215,7 +215,7 @@ namespace App_pressing_Loreau.ViewModel
                     cmd = CommandeDAO.lastCommande();
                     foreach(ArticlesVM art in ClasseGlobale._contentDetailCommande)
                     {
-                        Article article = new Article(art.SelectedPhoto, art.Selected_Articles_Commentaire.NameCbbArt, false, art.article.TVA, art.article.TTC, art.article, PlaceConvoyeurDAO.selectConvoyeurById(4), cmd.id);
+                        Article article = new Article(art.SelectedPhoto, art.Selected_Articles_Commentaire.NameCbbArt, false, art.typeArticle.TVA, art.typeArticle.TTC, art.typeArticle, PlaceConvoyeurDAO.selectConvoyeurById(4), cmd.id);
                         //Article article2 = new Article(art.SelectedPhoto, art.Selected_Articles_Commentaire, false, art.article.TVA, art.article.TTC, art.article, 3, 3);
                         ArticleDAO.insertArticle(article);
                     }
@@ -319,7 +319,7 @@ namespace App_pressing_Loreau.ViewModel
                 typeArticleDTO = (TypeArticle)TypeArticleDAO.selectTypesById(Int32.Parse(clickedbutton.Tag.ToString()));
                 ClasseGlobale._contentDetailCommande.Add(new ArticlesVM()
                 {
-                    article = typeArticleDTO,
+                    typeArticle = typeArticleDTO,
                     ArticlesName = typeArticleDTO.nom,
 
                 });
@@ -327,7 +327,7 @@ namespace App_pressing_Loreau.ViewModel
                 Label_NouvelleCommande_prixTotal = 0;
                 for (int i = 0; i < ContentDetailCommande.Count; i++)
                 {
-                    Label_NouvelleCommande_prixTotal += (ContentDetailCommande[i].article.TTC);
+                    Label_NouvelleCommande_prixTotal += (ContentDetailCommande[i].typeArticle.TTC);
                 }
 
 
@@ -342,7 +342,7 @@ namespace App_pressing_Loreau.ViewModel
             if (ClasseGlobale._contentDetailCommande.Contains(obj))
             {
                 ClasseGlobale._contentDetailCommande.Remove(obj);
-                Label_NouvelleCommande_prixTotal -= obj.article.TTC;
+                Label_NouvelleCommande_prixTotal -= obj.typeArticle.TTC;
             }
         }
 
