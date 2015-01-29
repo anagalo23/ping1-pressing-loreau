@@ -198,7 +198,9 @@ namespace App_pressing_Loreau.Data.DAO
                         Int32.Parse(msdr["cmd_id"].ToString()),
                         DateTime.Parse(msdr["cmd_date"].ToString()),
                         Boolean.Parse(msdr["cmd_payee"].ToString()),
-                        float.Parse(msdr["cmd_remise"].ToString()));
+                        float.Parse(msdr["cmd_remise"].ToString())
+                        );
+
                     id_clt = Int32.Parse(msdr["cmd_clt_id"].ToString());
                 }
                 msdr.Dispose();

@@ -21,13 +21,13 @@ namespace App_pressing_Loreau.Data.DAO
                 MySqlCommand cmd = new MySqlCommand(Bdd.insertArticle, Bdd.connexion());
 
                 //ajout des parametres
-                cmd.Parameters.AddWithValue("photo", article.photo);
-                cmd.Parameters.AddWithValue("commentaire", article.commentaire);
-                cmd.Parameters.AddWithValue("rendu", article.ifRendu);
-                cmd.Parameters.AddWithValue("TVA", article.TVA);
-                cmd.Parameters.AddWithValue("TTC", article.TTC);
-                cmd.Parameters.AddWithValue("conv_id", article.convoyeur.id);
-                cmd.Parameters.AddWithValue("typ_id", article.type.id);
+                cmd.Parameters.AddWithValue("art_photo", article.photo);
+                cmd.Parameters.AddWithValue("art_commentaire", article.commentaire);
+                cmd.Parameters.AddWithValue("art_rendu", article.ifRendu);
+                cmd.Parameters.AddWithValue("art_TVA", article.TVA);
+                cmd.Parameters.AddWithValue("art_TTC", article.TTC);
+                cmd.Parameters.AddWithValue("art_conv_id", article.convoyeur.id);//*
+                cmd.Parameters.AddWithValue("art_typ_id", article.type.id);
                 cmd.Parameters.AddWithValue("art_cmd_id", article.fk_commande);
 
                 //Execute la commande

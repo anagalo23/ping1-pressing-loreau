@@ -243,15 +243,15 @@ namespace App_pressing_Loreau.ViewModel
         }
 
 
-        public ICommand BtnNouveauClientFinish
-        {
-            get
-            {
-                return new RelayCommand(
-                    p => enregisterClient(),
-                    p => Txb_nouveauClient_nom != null & Txb_nouveauClient_prenom != null);
-            }
-        }
+        //public ICommand BtnNouveauClientFinish
+        //{
+        //    get
+        //    {
+        //        return new RelayCommand(
+        //            p => enregisterClient(),
+        //            p => Txb_nouveauClient_nom != null & Txb_nouveauClient_prenom != null);
+        //    }
+        //}
         #endregion
 
 
@@ -259,6 +259,7 @@ namespace App_pressing_Loreau.ViewModel
 
         public void enregisterClient()
         {
+            index = 0;
             if (ClasseGlobale.Client != null)
             {
                 index = ClientDAO.insertClient(ClasseGlobale.Client);
@@ -269,7 +270,8 @@ namespace App_pressing_Loreau.ViewModel
                 //ClasseGlobale.initializeClient();
                 MessageBox.Show("Nouveau client enregistré avec succès");
                 Client client = ClientDAO.lastClient();
-                if (ClasseGlobale.Client == null)
+                //if ()
+                if (client == null)
                 {
                     MessageBox.Show("Problème de récupération du dernier ClasseGlobale.client");
                 }

@@ -47,5 +47,10 @@ namespace App_pressing_Loreau.View
             //acvm.accueilVM();
         }
 
+        private void btn_nouvelleCommande_paiement_differe_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }

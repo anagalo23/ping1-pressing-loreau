@@ -219,7 +219,7 @@ namespace App_pressing_Loreau.Data.DAO
 
                 //client.id = Int32.Parse(msdr["id_client"].ToString());
                 //int test = (int)msdr["id_client"];
-
+                msdr.Read();
                 client.id = Int32.Parse(msdr["clt_id"].ToString());
                 client.nom = msdr["clt_nom"].ToString();
                 client.prenom = msdr["clt_prenom"].ToString();
@@ -234,8 +234,36 @@ namespace App_pressing_Loreau.Data.DAO
                 client.contactMail = false;// bool.Parse(msdr["clt_contactmail"].ToString());
                 client.contactSms = false;//bool.Parse(msdr["clt_contactsms"].ToString());
 
-                client.type = Int32.Parse(msdr["clt_type"].ToString());
 
+                if (msdr["clt_contactmail"].ToString() == "False")
+                {
+                    client.contactMail = false;
+                }
+                else
+                {
+                    client.contactMail = true;
+                }
+
+                if (msdr["clt_contactsms"].ToString() == "False")
+                {
+                    client.contactSms = false;
+                }
+                else
+                {
+                    client.contactSms = true;
+                }
+
+
+                //client.type = Int32.Parse(msdr["clt_type"].ToString());
+                if (msdr["clt_type"].ToString() == "False")
+                {
+                    client.type = 0;
+                }
+                else
+                {
+                    client.type = 1;
+                }
+                //MessageBox.Show();
                 //while (msdr.Read())
                 //{
                 //    retour = new Client(
