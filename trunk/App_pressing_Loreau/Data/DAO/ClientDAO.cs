@@ -33,26 +33,29 @@ namespace App_pressing_Loreau.Data.DAO
                     }
                 }
                 
-                dateNaissance += " 00:00:00";
+                //dateNaissance += " 00:00:00";
                 //MessageBox.Show(dateNaissance);
                 //try
 
+                
                 //DateTime.Parse(dateNaissance);
                 //MessageBox.Show(DateTime.Parse(dateNaissance).ToString());
                 //DateTime date = new DateTime();
-                DateTime myDate = DateTime.ParseExact(dateNaissance, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.CurrentCulture);
+               // DateTime myDate = DateTime.ParseExact(dateNaissance, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.CurrentCulture);
 
-                MessageBox.Show("TODO");
+                //MessageBox.Show("TODO");
 
                 //date.
-                dateNaissance = (client.dateNaissance != null) ? (new DateTime(0001, 01, 01)).ToString() : dateNaissance;//client.dateNaissance+" 00:00:00"
+                //dateNaissance = (client.dateNaissance != null) ? (new DateTime(0001, 01, 01)).ToString() : dateNaissance;//client.dateNaissance+" 00:00:00"
+                
+                DateTime myDate = Convert.ToDateTime(dateNaissance);
 
                 cmd.Parameters.AddWithValue("nom", client.nom);
                 cmd.Parameters.AddWithValue("prenom", client.prenom);
                 cmd.Parameters.AddWithValue("telfixe", client.telfix);
                 cmd.Parameters.AddWithValue("telport", client.telmob);
                 cmd.Parameters.AddWithValue("adresse", client.adresse.giveAdresse().Replace("//", "///"));
-                cmd.Parameters.AddWithValue("dateNaissance", dateNaissance);
+                cmd.Parameters.AddWithValue("dateNaissance", myDate);
                 cmd.Parameters.AddWithValue("email", client.email);
                 cmd.Parameters.AddWithValue("idCleanWay", client.idCleanWay);
                 cmd.Parameters.AddWithValue("contactMail", client.contactMail);
