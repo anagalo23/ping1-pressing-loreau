@@ -196,25 +196,31 @@ namespace App_pressing_Loreau.ViewModel
 
         private void paiementDifferer()
         {
+            int insertArt = 0;
             if (ClasseGlobale._contentDetailCommande == null)
             {
                 MessageBox.Show("Selectionnez des articles");
             }
             else
             {
-                Commande cmd = new Commande(DateTime.Now,false, 2F, ClasseGlobale.Client);
+                Commande cmd = new Commande(DateTime.Now,false, 0, ClasseGlobale.Client);
                 int inser= CommandeDAO.insertCommande(cmd);
                 ObservableCollection<ArticlesVM> listeArticles = ClasseGlobale._contentDetailCommande;
                 if (inser != 0)
                 {
                     cmd = CommandeDAO.lastCommande();
-                    foreach(ArticlesVM art in ClasseGlobale._contentDetailCommande)
+                    ObservableCollection<ArticlesVM> cmdDetail = ClasseGlobale._contentDetailCommande;
+                    foreach (ArticlesVM artVM in cmdDetail)
                     {
-                        Article article = new Article(art.SelectedPhoto, art.Selected_Articles_Commentaire.NameCbbArt, false, art.typeArticle.TVA, art.typeArticle.TTC, art.typeArticle, PlaceConvoyeurDAO.selectConvoyeurById(4), cmd.id);
-                        ArticleDAO.insertArticle(article);
+                        insertArt=ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
                     }
                 }
                
+            }
+
+            if (insertArt != 0)
+            {
+                MessageBox.Show("Commande enregistrée \n paiement differé");
             }
            
         }

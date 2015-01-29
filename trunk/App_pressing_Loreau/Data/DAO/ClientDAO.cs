@@ -20,18 +20,22 @@ namespace App_pressing_Loreau.Data.DAO
             {
                 //connection à la base de données
                 MySqlCommand cmd = new MySqlCommand(Bdd.insertClient, Bdd.connexion());
-
+                string dateNaissance=null;
                 //ajout des parametres
-                string[] tab = (client.dateNaissance).Split('/');
-                string dateNaissance = "";
-                for (int i = 2; i >= 0; i--)
+                if (client.dateNaissance != null)
                 {
-                    dateNaissance += tab[i];
-                    if (i != 0)
+                    string[] tab = (client.dateNaissance).Split('/');
+                    dateNaissance = "";
+                    for (int i = 2; i >= 0; i--)
                     {
-                        dateNaissance += "-";
+                        dateNaissance += tab[i];
+                        if (i != 0)
+                        {
+                            dateNaissance += "-";
+                        }
                     }
                 }
+                
                 
                 //dateNaissance += " 00:00:00";
                 //MessageBox.Show(dateNaissance);
