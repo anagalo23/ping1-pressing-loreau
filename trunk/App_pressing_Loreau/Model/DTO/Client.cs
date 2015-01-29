@@ -44,14 +44,14 @@ namespace App_pressing_Loreau.Model.DTO
             prenom ="";
             telfix ="";
             telmob ="";
-            adresse = new Model.Adresse();
+            //adresse = new Model.Adresse();
             dateNaissance = new DateTime();
             email ="";
             dateInscription = new DateTime();
-            idCleanWay = 0123456789 ;
+            idCleanWay = 0 ;
             contactMail = false ;
             contactSms = false;
-            type = 256;
+            type = 0;
 
         }
         public Client(string nom, string prenom, string telfix, string telmob, Adresse adresse, DateTime dateNaissance, string email, DateTime dateInscription, int idCleanWay, bool contactMail, bool contactSms, int type)

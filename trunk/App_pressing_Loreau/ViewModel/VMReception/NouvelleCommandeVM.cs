@@ -207,7 +207,7 @@ namespace App_pressing_Loreau.ViewModel
             }
             else
             {
-                Commande cmd = new Commande(DateTime.Now,false, 2F, ClasseGlobale.client);
+                Commande cmd = new Commande(DateTime.Now,false, 2F, ClasseGlobale.Client);
                 int inser= CommandeDAO.insertCommande(cmd);
                 ObservableCollection<ArticlesVM> listeArticles = ClasseGlobale._contentDetailCommande;
                 if (inser != 0)

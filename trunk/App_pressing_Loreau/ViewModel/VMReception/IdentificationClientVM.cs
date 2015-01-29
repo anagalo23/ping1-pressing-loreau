@@ -94,16 +94,16 @@ namespace App_pressing_Loreau.ViewModel
         private void ExecuteAddClient(IdentificationClientData obj)
         {
 
-            if (ClasseGlobale.client!=obj.clt)
+            if (ClasseGlobale.Client!=obj.clt)
                 
             {
-                ClasseGlobale.client = obj.clt;
+                ClasseGlobale.Client = obj.clt;
                 
             }
 
-            if (ClasseGlobale.client != null)
+            if (ClasseGlobale.Client != null)
             {
-                Label_identClient_choix = "Choix = " + ClasseGlobale.client.nom + " " + ClasseGlobale.client.prenom;
+                Label_identClient_choix = "Choix = " + ClasseGlobale.Client.nom + " " + ClasseGlobale.Client.prenom;
             }
         }
 

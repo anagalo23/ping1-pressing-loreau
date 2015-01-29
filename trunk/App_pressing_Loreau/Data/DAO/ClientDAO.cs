@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 using App_pressing_Loreau.Model.DTO;
 using App_pressing_Loreau.Model;
+using System.Windows;
 
 namespace App_pressing_Loreau.Data.DAO
 {
@@ -169,7 +170,7 @@ namespace App_pressing_Loreau.Data.DAO
             {
                 Client clt = new Client("Jean", "LaRue", "0658789201", "4152658952", Adresse.Parse("53\\rue st gervais\\76000\\Rouen\\"), DateTime.Now, "monemail@bouh.com", DateTime.Now, 45, true, true, 0);
                 ClientDAO.insertClient(clt);
-                Commande cmd = new Commande(DateTime.Now, false, 3/2F, ClientDAO.lastClient());
+                Commande cmd = new Commande(DateTime.Now, false, 3 / 2F, ClientDAO.lastClient());
                 CommandeDAO.insertCommande(cmd);
                 cmd = CommandeDAO.lastCommande();
                 Article article = new Article(null, null, false, 20, 6, TypeArticleDAO.selectTypesById(1), PlaceConvoyeurDAO.selectConvoyeurById(4), cmd.id);
@@ -180,10 +181,10 @@ namespace App_pressing_Loreau.Data.DAO
                 Payement paiement = new Payement(DateTime.Now, 4 / 3F, TypePayementDAO.selectTypePayementById(1).nom, cmd.id);
                 PayementDAO.insertPaiement(paiement);
 
-                FactureExcel fe = new FactureExcel(CommandeDAO.selectCommandeById(cmd.id,true, true, true));
+                FactureExcel fe = new FactureExcel(CommandeDAO.selectCommandeById(cmd.id, true, true, true));
                 fe.printFacture();
 
-                
+
 
 
 
@@ -209,28 +210,50 @@ namespace App_pressing_Loreau.Data.DAO
                 MySqlCommand cmd = new MySqlCommand(Bdd.selectClientById, Bdd.connexion());
 
                 //ajout des parametres
-                cmd.Parameters.AddWithValue("id_client", client_id);
+                cmd.Parameters.AddWithValue("clt_id", client_id);
 
                 //Execute la commande
-                MySqlDataReader msdr = cmd.ExecuteReader();
-                while (msdr.Read())
-                {
-                    retour = new Client(
-                        Int32.Parse(msdr["clt_id"].ToString()),
-                        msdr["clt_nom"].ToString(),
-                        msdr["clt_prenom"].ToString(),
-                        msdr["clt_fix"].ToString(),
-                        msdr["clt_mob"].ToString(),
-                        Adresse.Parse(msdr["clt_adresse"].ToString()),
-                        DateTime.Parse(msdr["clt_dateNaissance"].ToString()),
-                        msdr["clt_email"].ToString(),
-                        DateTime.Parse(msdr["clt_dateInscription"].ToString()),
-                        Int32.Parse(msdr["clt_idCleanway"].ToString()),
-                        bool.Parse(msdr["clt_contactmail"].ToString()),
-                        bool.Parse(msdr["clt_contactsms"].ToString()),
-                        Int32.Parse(msdr["clt_type"].ToString())
-                        );
-                }
+                MySqlDataReader msdr = cmd.ExecuteReader();//Le msdr contient bien toutes les infos du client
+
+                Client client = new Client();
+
+                //client.id = Int32.Parse(msdr["id_client"].ToString());
+                //int test = (int)msdr["id_client"];
+
+                client.id = Int32.Parse(msdr["clt_id"].ToString());
+                client.nom = msdr["clt_nom"].ToString();
+                client.prenom = msdr["clt_prenom"].ToString();
+                client.telfix = msdr["clt_fix"].ToString();
+                client.telmob = msdr["clt_mob"].ToString();
+                client.adresse = Adresse.Parse(msdr["clt_adresse"].ToString());
+                client.dateNaissance = DateTime.Parse(msdr["clt_dateNaissance"].ToString());
+                client.email = msdr["clt_email"].ToString();
+                client.dateInscription = DateTime.Parse(msdr["clt_dateInscription"].ToString());
+                client.idCleanWay = Int32.Parse(msdr["clt_idCleanway"].ToString());
+
+                client.contactMail = false;// bool.Parse(msdr["clt_contactmail"].ToString());
+                client.contactSms = false;//bool.Parse(msdr["clt_contactsms"].ToString());
+
+                client.type = Int32.Parse(msdr["clt_type"].ToString());
+
+                //while (msdr.Read())
+                //{
+                //    retour = new Client(
+                //        clt_id,
+                //        nom,
+                //        prenom,
+                //        fix,
+                //        mob,
+                //        adresse,
+                //        dateNaissance,
+                //        email,
+                //        dateInscription,
+                //        idCleanway,
+                //        contactMail,
+                //        contactSms,
+                //        typeClient
+                //        );
+                //}
                 msdr.Dispose();
 
                 #region ajout des commandes
@@ -241,11 +264,12 @@ namespace App_pressing_Loreau.Data.DAO
                 }
                 #endregion
 
-                return retour;
+                return client;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données."));
+                MessageBox.Show(Ex.InnerException.ToString());
                 return null;
             }
         }
@@ -323,7 +347,9 @@ namespace App_pressing_Loreau.Data.DAO
                     clt_id = Int32.Parse(msdr["clt_id"].ToString());
                 }
                 msdr.Dispose();
-                return ClientDAO.selectClientById(clt_id, false, false, false);
+                Client client = new Client();
+                client = ClientDAO.selectClientById(clt_id, false, false, false);
+                return client;
             }
             catch (Exception Ex)
             {

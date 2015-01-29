@@ -36,7 +36,7 @@ namespace App_pressing_Loreau.View
 
         private void btn_identClient_nouvelle_commande_Click(object sender, RoutedEventArgs e)
         {
-            if (ClasseGlobale.client != null)
+            if (ClasseGlobale.Client != null)
             {
                 dp.Children.Clear();
                 dp.Children.Add(new NouvelleCommande());
