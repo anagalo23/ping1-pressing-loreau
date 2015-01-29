@@ -385,7 +385,7 @@ namespace App_pressing_Loreau.ViewModel
             //***Enregistrement en base de données***
 
             //Enregistrement de la commande
-            Commande cmd = new Commande(DateTime.Now, false, Txb_paiement_montantRemise, client);
+            Commande cmd = new Commande(DateTime.Now, true, Txb_paiement_montantRemise, client);
             CommandeDAO.insertCommande(cmd);
             cmd = CommandeDAO.lastCommande();
 
