@@ -24,7 +24,7 @@ namespace App_pressing_Loreau.ViewModel
     /// <summary>
     /// ViewModel pour la vue NouvelleCommande.xaml
     /// </summary>
-    class NouvelleCommandeVM : ObservableObject, IPageViewModel
+    class NouvelleCommandeVM : ObservableObject
     {
 
 
@@ -43,11 +43,6 @@ namespace App_pressing_Loreau.ViewModel
 
         #endregion
 
-
-        public String Name
-        {
-            get { return ""; }
-        }
 
         #region Constructeur
         public NouvelleCommandeVM()
@@ -216,12 +211,10 @@ namespace App_pressing_Loreau.ViewModel
                     foreach(ArticlesVM art in ClasseGlobale._contentDetailCommande)
                     {
                         Article article = new Article(art.SelectedPhoto, art.Selected_Articles_Commentaire.NameCbbArt, false, art.typeArticle.TVA, art.typeArticle.TTC, art.typeArticle, PlaceConvoyeurDAO.selectConvoyeurById(4), cmd.id);
-                        //Article article2 = new Article(art.SelectedPhoto, art.Selected_Articles_Commentaire, false, art.article.TVA, art.article.TTC, art.article, 3, 3);
                         ArticleDAO.insertArticle(article);
                     }
                 }
                
-                //ArticleDAO.insertArticle(article);
             }
            
         }

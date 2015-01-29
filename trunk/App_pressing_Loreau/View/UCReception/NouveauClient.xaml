@@ -155,7 +155,8 @@ Text="{Binding Path=Txb_nouveauClient_mail, UpdateSourceTrigger=PropertyChanged}
                 </Grid.RowDefinitions>
                 <Button x:Name="btn_nouveauClient_enregistrer" Content="Enregistrer "  Margin="10,40" Grid.Column="1" Command="{Binding BtnNouveauClientEnregistrer}"  />
                 <!--Style="{StaticResource personalisationbuton}" Click="btn_nouveauClient_enregistrer_Click"-->
-                <Button x:Name="btn_nouveauClient_nouvelle_commande" Content="Nouvelle Commande" Grid.Row="1" Margin="10,40" Grid.Column="1" Command="{Binding BtnNouveauClientFinish}" Style="{StaticResource personalisationbuton}"/>
+                <!--Command="{Binding BtnNouveauClientFinish}"-->
+                <Button x:Name="btn_nouveauClient_nouvelle_commande" Content="Nouvelle Commande" Grid.Row="1" Margin="10,40" Grid.Column="1"  Style="{StaticResource personalisationbuton}" Click="btn_nouveauClient_nouvelle_commande_Click"/>
             </Grid>
         </Grid>
     </DockPanel>

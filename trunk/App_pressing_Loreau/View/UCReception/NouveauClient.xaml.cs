@@ -35,6 +35,12 @@ namespace App_pressing_Loreau.View
         private void btn_nouveauClient_valider_inscription_Click(object sender, RoutedEventArgs e)
         {
 
+           
+        }
+
+        private void btn_nouveauClient_nouvelle_commande_Click(object sender, RoutedEventArgs e)
+        {
+
             if (ClasseGlobale.Client != null)
             {
                 dp.Children.Clear();
@@ -46,7 +52,6 @@ namespace App_pressing_Loreau.View
                 MessageBox.Show("Client non enregistré");
 
             }
-           
         }
 
 
