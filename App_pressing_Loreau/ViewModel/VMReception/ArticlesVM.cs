@@ -28,7 +28,7 @@ namespace App_pressing_Loreau.ViewModel
               
         private ComboComm _selected_Articles_Commentaire;
         ComboComm comboComm = new ComboComm();
-
+        //private float Btn_Articles_PrixArticles;
         public TypeArticle typeArticle;        
         #endregion
 
@@ -70,8 +70,19 @@ namespace App_pressing_Loreau.ViewModel
         public ICommand Btn_Articles_ChargerPhoto
         { get { return new RelayCommand(P => ExecuteOpenFileDialog()); } }
 
-   
 
+        public float Btn_Articles_PrixArticles
+        {
+            get { return typeArticle.TTC; }
+            set
+            {
+                if (value != typeArticle.TTC)
+                {
+                    typeArticle.TTC = value;
+                    OnPropertyChanged("Btn_Articles_PrixArticles");
+                }
+            }
+        } 
         public String SelectedPhoto
         {
             get {  return _changedPhoto; }

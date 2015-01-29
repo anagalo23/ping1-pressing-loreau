@@ -137,33 +137,34 @@
     <DataTemplate DataType="{x:Type vm:CommandeConcernantRA_DATA }" x:Key="UneCommande">
         <Border CornerRadius="10" BorderBrush="AliceBlue" BorderThickness="1">
             <DockPanel >
-                <Border DockPanel.Dock="Top" BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="10">
+                <Button DockPanel.Dock="Top" BorderBrush="AliceBlue" BorderThickness="0" Command="{Binding CommandeParIdFacture}">
                     <Grid >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
 
-                        <Label Content="Reference de la commande :" Grid.Row="0" Grid.Column="0" />
-                        <Label Content="{Binding Label_restitutionArticles_Reference}" Grid.Row="0" Grid.Column="1"/>
+                        <StackPanel Orientation="Vertical" Grid.Column="0" MinWidth="160" Margin="2">
+                            <Label Content="Reference de la commande :" FontWeight="Bold" FontSize="11pt" Foreground="Black"  />
+                            <Label Content="{Binding Label_restitutionArticles_Reference}" FontSize="9pt" Padding="10,0,0,3" Foreground="#FF525252" />
+                        </StackPanel>
 
-                        <Label Content="Nom du proprietaire : " Grid.Row="1" Grid.Column="0" />
-                        <Label Content="{Binding Label_restitutionArticles_Name}" Grid.Row="1" Grid.Column="1"/>
 
-                        <Label Content="Nombre d'articles :" Grid.Row="2" Grid.Column="0" />
-                        <Label Content="{Binding Label_restitutionArticles_NombreArticles}" Grid.Row="2" Grid.Column="1"/>
+
+                        <StackPanel Orientation="Vertical" Grid.Column="2" MinWidth="160" Margin="2">
+                            <Label Content="Date de la commande:" FontWeight="Bold" FontSize="11pt" Foreground="Black"  />
+                            <Label Content="{Binding Label_restitutionArticles_DateCommande}" FontSize="9pt" Padding="10,0,0,3" Foreground="#FF525252" />
+                        </StackPanel>
+                    
+
 
                     </Grid>
-                </Border>
+                </Button>
 
-                <Border>
+                <!--<Border>
                     <ListBox Background="Transparent" BorderThickness="0" Margin="5" ItemsSource="{Binding ListeArticlesRestitution}"  />
-                </Border>
+                </Border>-->
             </DockPanel>
         </Border>
     </DataTemplate>
