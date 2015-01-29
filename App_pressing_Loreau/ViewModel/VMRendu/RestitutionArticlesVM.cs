@@ -32,7 +32,7 @@ namespace App_pressing_Loreau.ViewModel
 
         public List<CommandeConcernantRA_DATA> _contentCommandeConcernant;
         public List<CommandeConcernantRA_DATA> _listeRechercheClient;
-
+        private DelegateCommand<CommandeConcernantRA_DATA> commandeParIdFacture;
         private DelegateCommand<CommandeConcernantRA_DATA> _getButtonRecherche;
 
         private String _label_commandeSelectionner;
@@ -156,7 +156,6 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-        private DelegateCommand<CommandeConcernantRA_DATA> commandeParIdFacture;
         public DelegateCommand<CommandeConcernantRA_DATA> CommandeParIdFacture
         {
             get
@@ -196,8 +195,6 @@ namespace App_pressing_Loreau.ViewModel
 
 
         }
-
-
         private void ValiderCetteCommande(CommandeConcernantRA_DATA obj)
         {
             //MessageBox.Show(obj.commande.id +"");
@@ -205,9 +202,6 @@ namespace App_pressing_Loreau.ViewModel
             Label_CommandeSelectionner = ClasseGlobale._renduCommande.commande.id.ToString();
             //MessageBox.Show();
         }
-
-
-
         public void ContenuDeLaCommande()
         {
             if (Txb_restitutionArticles_idFactures > 0 & Txb_restitutionArticles_idFactures <= CommandeDAO.selectCommandes(false, false, false).Count)
@@ -235,9 +229,6 @@ namespace App_pressing_Loreau.ViewModel
                 MessageBox.Show("Cette Commande n existe pas ");
             }
         }
-
-
-
         public void ContenuDeLaRecherche()
         {
             ListeRechercheClient = new List<CommandeConcernantRA_DATA>();

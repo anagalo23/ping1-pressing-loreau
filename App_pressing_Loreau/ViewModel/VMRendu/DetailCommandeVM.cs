@@ -20,6 +20,7 @@ namespace App_pressing_Loreau.ViewModel
         private List<ArticlesRestitutionVM> _afficheDetailCommande;
 
         private float _label_prixTTC;
+        private String _label_EtatPaiementCommande;
         #endregion
 
         #region Constructeur
@@ -41,6 +42,19 @@ namespace App_pressing_Loreau.ViewModel
                 {
                     _label_prixTTC = value;
                     RaisePropertyChanged("Label_prixTTC");
+                }
+            }
+        }
+
+        public String Label_EtatPaiementCommande
+        {
+            get { return _label_EtatPaiementCommande; }
+            set
+            {
+                if (value != _label_EtatPaiementCommande)
+                {
+                    _label_EtatPaiementCommande = value;
+                    OnPropertyChanged("Label_EtatPaiementCommande");
                 }
             }
         }
@@ -106,10 +120,25 @@ namespace App_pressing_Loreau.ViewModel
                     AfficheDetailCommande.Add(new ArticlesRestitutionVM() { ar=art, ArticlesNameRes=art.type.nom});
                 }
             }
+            if (com.payee == false)
+            {
+                Label_EtatPaiementCommande = "Commande non réglée";
+                Label_prixTTC = 0;
+             
+                foreach (Article arti in com.listArticles)
+                {
+                    Label_prixTTC += (arti.TTC);
+                }
+            }
+            else
+            {
+                Label_EtatPaiementCommande = "Commande  réglée";
+                 Label_prixTTC=0;
 
+            }
           
             //AfficheDetailCommande.Add(new ArticlesRestitutionVM() { ArticlesNameRes = "Slt", IsSelectedArticle = false });
-            Label_prixTTC = 10;
+         
         }
         #endregion
 
