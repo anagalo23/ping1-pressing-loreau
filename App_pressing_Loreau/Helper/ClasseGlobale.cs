@@ -24,11 +24,27 @@ namespace App_pressing_Loreau.Helper
         }
 
         //*********************************************************************************GESTION DU CLIENT EN COURS
-        public static Client client { get; set; }
+        private static Client _client;
+        public static Client Client
+        {
+            get
+            {
+                if (_client == null)
+                {
+                    initializeClient();
+                }
+                return _client;
+            }
+            set
+            {
+                _client = value;
+            }
+        }
+
 
         public static void initializeClient()
         {
-            client = new Client();
+            Client = new Client();
         }
 
         

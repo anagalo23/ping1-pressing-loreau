@@ -18,9 +18,14 @@ namespace App_pressing_Loreau.ViewModel
 
         #region Variables locales
 
-        //Client client = new Client();
-        Client client;
-        //Client client = ClasseGlobale.client;
+        //Client ClasseGlobale.client = new Client();
+
+
+        //Client ClasseGlobale.client;//On travaille avec le ClasseGlobale.client de la classe globale
+
+
+
+        //Client ClasseGlobale.client = ClasseGlobale.ClasseGlobale.client;
 
         //private String _txb_nouveauClient_nom;
         //private String _txb_nouveauClient_prenom;
@@ -42,8 +47,8 @@ namespace App_pressing_Loreau.ViewModel
         public NouveauClientVM()
         {
             ClasseGlobale.initializeClient();
-            client = ClasseGlobale.client;
-            client.type = 0;//Client particulier
+            //ClasseGlobale.client = ClasseGlobale.client;
+            ClasseGlobale.Client.type = 0;//Client particulier
 
         }
         #endregion
@@ -55,14 +60,15 @@ namespace App_pressing_Loreau.ViewModel
 
 
         #region Properties / Commands
+
         public String Txb_nouveauClient_nom
         {
-            get { return client.nom; }
+            get { return ClasseGlobale.Client.nom; }
             set
             {
-                if (value != client.nom)
+                if (value != ClasseGlobale.Client.nom)
                 {
-                    client.nom = value;
+                    ClasseGlobale.Client.nom = value;
                     OnPropertyChanged("Txb_nouveauClient_nom");
                 }
             }
@@ -70,12 +76,12 @@ namespace App_pressing_Loreau.ViewModel
 
         public String Txb_nouveauClient_prenom
         {
-            get { return client.prenom; }
+            get { return ClasseGlobale.Client.prenom; }
             set
             {
-                if (value != client.prenom)
+                if (value != ClasseGlobale.Client.prenom)
                 {
-                    client.prenom = value;
+                    ClasseGlobale.Client.prenom = value;
                     OnPropertyChanged("Txb_nouveauClient_prenom");
                 }
             }
@@ -83,12 +89,12 @@ namespace App_pressing_Loreau.ViewModel
 
         public DateTime Txb_nouveauClient_date_naissance
         {
-            get { return client.dateNaissance; }
+            get { return ClasseGlobale.Client.dateNaissance; }
             set
             {
-                if (value != client.dateNaissance)
+                if (value != ClasseGlobale.Client.dateNaissance)
                 {
-                    client.dateNaissance = value;
+                    ClasseGlobale.Client.dateNaissance = value;
                     OnPropertyChanged("Txb_nouveauClient_date_naissance");
                 }
             }
@@ -98,12 +104,12 @@ namespace App_pressing_Loreau.ViewModel
 
         public int Txb_nouveauClient_idCleanway
         {
-            get { return client.idCleanWay; }
+            get { return ClasseGlobale.Client.idCleanWay; }
             set
             {
-                if (value != client.idCleanWay)
+                if (value != ClasseGlobale.Client.idCleanWay)
                 {
-                    client.idCleanWay = value;
+                    ClasseGlobale.Client.idCleanWay = value;
                     OnPropertyChanged("Txb_nouveauClient_idCleanway");
                 }
             }
@@ -111,23 +117,23 @@ namespace App_pressing_Loreau.ViewModel
 
         public int Txb_nouveauClient_numero
         {
-            get 
+            get
             {
                 try
                 {
-                    return Int32.Parse(client.adresse.numero);
+                    return Int32.Parse(ClasseGlobale.Client.adresse.numero);
                 }
                 catch (Exception e)
                 {
                     return 0;
                 }
-                 
+
             }
             set
             {
-                if (value != Int32.Parse(client.adresse.numero))
+                if (value != Int32.Parse(ClasseGlobale.Client.adresse.numero))
                 {
-                    client.adresse.numero = String.Format("{0}", value);
+                    ClasseGlobale.Client.adresse.numero = String.Format("{0}", value);
                     OnPropertyChanged("Txb_nouveauClient_numero");
                 }
             }
@@ -135,12 +141,12 @@ namespace App_pressing_Loreau.ViewModel
 
         public String Txb_nouveauClient_rue_voie
         {
-            get { return client.adresse.rue; }
+            get { return ClasseGlobale.Client.adresse.rue; }
             set
             {
-                if (value != client.adresse.rue)
+                if (value != ClasseGlobale.Client.adresse.rue)
                 {
-                    client.adresse.rue = value;
+                    ClasseGlobale.Client.adresse.rue = value;
                     OnPropertyChanged("Txb_nouveauClient_rue_voie");
                 }
             }
@@ -148,12 +154,12 @@ namespace App_pressing_Loreau.ViewModel
 
         public String Txb_nouveauClient_bp
         {
-            get { return client.adresse.codePostal; }
+            get { return ClasseGlobale.Client.adresse.codePostal; }
             set
             {
-                if (value != client.adresse.codePostal)
+                if (value != ClasseGlobale.Client.adresse.codePostal)
                 {
-                    client.adresse.codePostal = value;
+                    ClasseGlobale.Client.adresse.codePostal = value;
                     OnPropertyChanged("Txb_nouveauClient_bp");
                 }
             }
@@ -161,12 +167,12 @@ namespace App_pressing_Loreau.ViewModel
 
         public String Txb_nouveauClient_ville
         {
-            get { return client.adresse.ville; }
+            get { return ClasseGlobale.Client.adresse.ville; }
             set
             {
-                if (value != client.adresse.ville)
+                if (value != ClasseGlobale.Client.adresse.ville)
                 {
-                    client.adresse.ville = value;
+                    ClasseGlobale.Client.adresse.ville = value;
                     OnPropertyChanged("Txb_nouveauClient_ville");
 
                 }
@@ -175,24 +181,24 @@ namespace App_pressing_Loreau.ViewModel
 
         public bool Ckb_nouveauClient_sms
         {
-            get { return client.contactSms; }
+            get { return ClasseGlobale.Client.contactSms; }
             set
             {
-                if (value != client.contactSms)
+                if (value != ClasseGlobale.Client.contactSms)
                 {
-                    client.contactSms = value;
+                    ClasseGlobale.Client.contactSms = value;
                     OnPropertyChanged("Ckb_nouveauClient_sms");
                 }
             }
         }
         public String Txb_nouveauClient_portable
         {
-            get { return client.telmob; }
+            get { return ClasseGlobale.Client.telmob; }
             set
             {
-                if (value != client.telmob)
+                if (value != ClasseGlobale.Client.telmob)
                 {
-                    client.telmob = value;
+                    ClasseGlobale.Client.telmob = value;
                     OnPropertyChanged("Txb_nouveauClient_portable");
                 }
             }
@@ -201,12 +207,12 @@ namespace App_pressing_Loreau.ViewModel
 
         public bool Ckb_nouveauClient_mail
         {
-            get { return client.contactMail; }
+            get { return ClasseGlobale.Client.contactMail; }
             set
             {
-                if (value != client.contactMail)
+                if (value != ClasseGlobale.Client.contactMail)
                 {
-                    client.contactMail = value;
+                    ClasseGlobale.Client.contactMail = value;
                     OnPropertyChanged("Ckb_nouveauClient_mail");
                 }
             }
@@ -214,12 +220,12 @@ namespace App_pressing_Loreau.ViewModel
 
         public String Txb_nouveauClient_mail
         {
-            get { return client.email; }
+            get { return ClasseGlobale.Client.email; }
             set
             {
-                if (value != client.email)
+                if (value != ClasseGlobale.Client.email)
                 {
-                    client.email = value;
+                    ClasseGlobale.Client.email = value;
                     OnPropertyChanged("Txb_nouveauClient_mail");
                 }
             }
@@ -232,32 +238,54 @@ namespace App_pressing_Loreau.ViewModel
             {
                 return new RelayCommand(
                     p => enregisterClient(),
-                    p=> Txb_nouveauClient_nom!=null & Txb_nouveauClient_prenom!=null);
+                    p => Txb_nouveauClient_nom != null & Txb_nouveauClient_prenom != null);
             }
         }
 
+
+        public ICommand BtnNouveauClientFinish
+        {
+            get
+            {
+                return new RelayCommand(
+                    p => enregisterClient(),
+                    p => Txb_nouveauClient_nom != null & Txb_nouveauClient_prenom != null);
+            }
+        }
         #endregion
 
 
         #region Méthodes
+
         public void enregisterClient()
         {
-            if (client != null)
+            if (ClasseGlobale.Client != null)
             {
-                index = ClientDAO.insertClient(client);
+                index = ClientDAO.insertClient(ClasseGlobale.Client);
             }
 
-            if (index != null)
+            if (index != 0)
             {
-                ClasseGlobale.client = null;
-                ClasseGlobale.client = ClientDAO.lastClient();
-            }else if (index == 0)
-            {
-                ClasseGlobale.client = null;
-                MessageBox.Show("Problème d'enregistrement du client dans la base de données");
+                //ClasseGlobale.initializeClient();
+                MessageBox.Show("Nouveau client enregistré avec succès");
+                Client client = ClientDAO.lastClient();
+                if (ClasseGlobale.Client == null)
+                {
+                    MessageBox.Show("Problème de récupération du dernier ClasseGlobale.client");
+                }
+                else
+                {
+                    ClasseGlobale.Client = client;
+                }
+                
             }
-
+            else
+            {
+                MessageBox.Show("Problème d'enregistrement du ClasseGlobale.client dans la base de données");
+            }
+            //ClasseGlobale.ClasseGlobale.client = null;//le test ClasseGlobale.client != null est effectué pour vérifier que celui est bien enregistré
         }
+
         #endregion
 
     }

@@ -24,6 +24,7 @@ namespace App_pressing_Loreau.ViewModel
         private String _label_paiement_prixHT;
         private String _label_paiement_prixTTC;
         private float _txb_paiement_montantRemise;
+        private float[] checkRemise;
         private String _label_paiement_montant;//Prix ttc - remise
 
         //Correspond à la valeur du testbox prix à payer (pour 1 et seulement 1 moyen de paiement)
@@ -66,7 +67,7 @@ namespace App_pressing_Loreau.ViewModel
             //float.Parse(_label_paiement_prixTTC);
             _mode_de_paiement = "";
             ClasseGlobale.initializeContenuListePaiement();
-
+            checkRemise = new float[2]{0F,0F};
         }
 
         #endregion
@@ -75,7 +76,12 @@ namespace App_pressing_Loreau.ViewModel
 
         public String Reste_a_payer_String
         {
-            get { return Reste_a_payer.ToString(); }
+            get { return _reste_a_payer.ToString(); }
+            set
+            {
+                _reste_a_payer = float.Parse(value);
+                OnPropertyChanged("Reste_a_payer_String");
+            }
         }
 
 
@@ -166,6 +172,7 @@ namespace App_pressing_Loreau.ViewModel
                 {
                     _txb_paiement_montantRemise = value;
                     OnPropertyChanged("Txb_paiement_montantRemise");
+                    //OnPropertyChanged("Txb_paiement_montantParMoyenPaiement");
                 }
             }
         }
@@ -257,7 +264,7 @@ namespace App_pressing_Loreau.ViewModel
                 //    //        Montant = listeDeMontantParMoyenPaiement[monMoyenDePaiement].ToString(),
 
                 //}
-                //MessageBox.Show(mes);
+                //MessageBox.Show("ma remise vaut : " + Txb_paiement_montantRemise);
 
                 ObservableCollection<PaiementListeVM> contenuListePaiementTampon = new ObservableCollection<PaiementListeVM>();
                 //initialisation de la liste de paiement en globale
@@ -271,12 +278,29 @@ namespace App_pressing_Loreau.ViewModel
                         Montant = listeDeMontantParMoyenPaiement[monMoyenDePaiement].ToString(),
                     });
                 }
-                //On donne une nouvelle référence à notre liste globale de client
+                //On donne une nouvelle référence à notre liste globale de client    checkRemise
                 ContenuListePaiement = contenuListePaiementTampon;
+                
 
                 //Réinitialisation des champs pour éviter les erreurs et doublons
-                Txb_paiement_montantParMoyenPaiement = Reste_a_payer - Txb_paiement_montantParMoyenPaiement;
+
+                if (checkRemise[0] == Txb_paiement_montantRemise)//Si j'ai déjà appliqué la remise
+                {
+                    Txb_paiement_montantParMoyenPaiement = Reste_a_payer - Txb_paiement_montantParMoyenPaiement;
+                }
+                else//enlève la remise précédente et applique la nouvelle remise
+                {
+                    checkRemise[1] = checkRemise[0];//met le montant de l'ancienne à la place de la nouvelle
+                    checkRemise[0] = Txb_paiement_montantRemise;
+                    Txb_paiement_montantParMoyenPaiement = Reste_a_payer - Txb_paiement_montantParMoyenPaiement + checkRemise[0] - checkRemise[1];
+                    checkRemise[0] = checkRemise[1];
+                    checkRemise[1] = 0;
+
+                }
+                
+
                 Reste_a_payer = Txb_paiement_montantParMoyenPaiement;
+                MessageBox.Show("ma remise vaut : " + Txb_paiement_montantRemise + "\nprix du paiement : " + Txb_paiement_montantParMoyenPaiement + "\n Reste_a_payer : " + Reste_a_payer);
                 Mode_de_paiement = "";
             }
             else
@@ -354,47 +378,23 @@ namespace App_pressing_Loreau.ViewModel
 
         private void enregistrerCommande()
         {
-            String stgTest = "";
             //Récupération des articles de la commande, du client, et du paiement et enregistrement en bdd
-            
 
-            Client client = ClasseGlobale.client;
-            //stgTest += "Nom du client : "+ client.nom+"\n";
-
-
-
-            
-
-
-            //stgTest += "Articles : \n";
-            
-
-
-            //MessageBox.Show(stgTest);
+            Client client = ClasseGlobale.Client;
 
             //***Enregistrement en base de données***
 
-
             //Enregistrement de la commande
-            Commande cmd = new Commande(DateTime.Now, false, 3 / 2, client);
+            Commande cmd = new Commande(DateTime.Now, false, Txb_paiement_montantRemise, client);
             CommandeDAO.insertCommande(cmd);
             cmd = CommandeDAO.lastCommande();
 
             //Enregistrement des articles
-
             ObservableCollection<ArticlesVM> cmdDetail = ClasseGlobale._contentDetailCommande;
             foreach (ArticlesVM artVM in cmdDetail)
             {
                 ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
-
             }
-
-            //Article article = new Article(null, null, false, 20, 6, TypeArticleDAO.selectTypesById(1), PlaceConvoyeurDAO.selectConvoyeurById(4), cmd.id);
-            //ArticleDAO.insertArticle(article);
-            //ArticleDAO.insertArticle(article);
-            //ArticleDAO.insertArticle(article);
-            //ArticleDAO.insertArticle(article);
-
 
             Payement paiement;
             System.Collections.Generic.ICollection<String> liste_des_moyens_de_paiement = listeDeMontantParMoyenPaiement.dico.Keys;

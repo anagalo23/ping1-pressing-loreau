@@ -30,7 +30,7 @@
 
                             </Grid.ColumnDefinitions>
                             <Label Content="Reste à payer" Style="{StaticResource vertilabel18}"  Grid.Column="0" />
-                            <Label  Content="{Binding Reste_a_payer_String}" Style="{StaticResource vertilabel18}" Grid.Column="1"/>
+                            <Label  Content="{Binding Txb_paiement_montantParMoyenPaiement}" Style="{StaticResource vertilabel18}" Grid.Column="1"/>
                         </Grid>
                     </Border>
                     <Border Height="200" Margin="4" BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="10">

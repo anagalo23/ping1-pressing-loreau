@@ -35,7 +35,7 @@ namespace App_pressing_Loreau.View
         private void btn_nouveauClient_valider_inscription_Click(object sender, RoutedEventArgs e)
         {
 
-            if (ClasseGlobale.client!= null)
+            if (ClasseGlobale.Client != null)
             {
                 dp.Children.Clear();
 
@@ -49,12 +49,6 @@ namespace App_pressing_Loreau.View
            
         }
 
-        private void btn_nouveauClient_enregistrer_Click(object sender, RoutedEventArgs e)
-        {  
-            //nv.enregisterClient();
-            //DataContext.enregisterClient();
-            btn_nouveauClient_enregistrer.Background = Brushes.Teal;
-        }
 
     }
 }
