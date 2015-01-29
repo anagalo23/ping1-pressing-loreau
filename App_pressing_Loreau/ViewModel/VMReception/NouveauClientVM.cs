@@ -243,15 +243,7 @@ namespace App_pressing_Loreau.ViewModel
         }
 
 
-        //public ICommand BtnNouveauClientFinish
-        //{
-        //    get
-        //    {
-        //        return new RelayCommand(
-        //            p => enregisterClient(),
-        //            p => Txb_nouveauClient_nom != null & Txb_nouveauClient_prenom != null);
-        //    }
-        //}
+
         #endregion
 
 
@@ -267,7 +259,6 @@ namespace App_pressing_Loreau.ViewModel
 
             if (index != 0)
             {
-                //ClasseGlobale.initializeClient();
                 MessageBox.Show("Nouveau client enregistré avec succès");
                 Client client = ClientDAO.lastClient();
                 //if ()

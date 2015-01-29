@@ -67,7 +67,7 @@ namespace App_pressing_Loreau.ViewModel
             //float.Parse(_label_paiement_prixTTC);
             _mode_de_paiement = "";
             ClasseGlobale.initializeContenuListePaiement();
-            checkRemise = new float[2]{0F,0F};
+            checkRemise = new float[2] { 0F, 0F };
         }
 
         #endregion
@@ -280,7 +280,7 @@ namespace App_pressing_Loreau.ViewModel
                 }
                 //On donne une nouvelle référence à notre liste globale de client    checkRemise
                 ContenuListePaiement = contenuListePaiementTampon;
-                
+
 
                 //Réinitialisation des champs pour éviter les erreurs et doublons
 
@@ -297,7 +297,7 @@ namespace App_pressing_Loreau.ViewModel
                     checkRemise[1] = 0;
 
                 }
-                
+
 
                 Reste_a_payer = Txb_paiement_montantParMoyenPaiement;
                 MessageBox.Show("ma remise vaut : " + Txb_paiement_montantRemise + "\nprix du paiement : " + Txb_paiement_montantParMoyenPaiement + "\n Reste_a_payer : " + Reste_a_payer);
@@ -380,20 +380,21 @@ namespace App_pressing_Loreau.ViewModel
         {
             //Récupération des articles de la commande, du client, et du paiement et enregistrement en bdd
 
+            int i = 0, j = 0, k = 0;
             Client client = ClasseGlobale.Client;
 
             //***Enregistrement en base de données***
 
             //Enregistrement de la commande
             Commande cmd = new Commande(DateTime.Now, true, Txb_paiement_montantRemise, client);
-            CommandeDAO.insertCommande(cmd);
+            i = CommandeDAO.insertCommande(cmd);
             cmd = CommandeDAO.lastCommande();
 
             //Enregistrement des articles
             ObservableCollection<ArticlesVM> cmdDetail = ClasseGlobale._contentDetailCommande;
             foreach (ArticlesVM artVM in cmdDetail)
             {
-                ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
+                j = ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
             }
 
             Payement paiement;
@@ -403,10 +404,32 @@ namespace App_pressing_Loreau.ViewModel
                 //stgTest += listeDeMontantParMoyenPaiement[monMoyenDePaiement] + " en " + monMoyenDePaiement + " \n";
 
                 paiement = new Payement(DateTime.Now, listeDeMontantParMoyenPaiement[monMoyenDePaiement], monMoyenDePaiement, cmd.id);
-                PayementDAO.insertPaiement(paiement);
+                k = PayementDAO.insertPaiement(paiement);
             }
 
 
+            if (i != 0 & j != 0 & k != 0)
+            {
+                MessageBox.Show("Commande enregistrée \n retour à l accueil");
+            }
+            else if (i != 0 & j == 0 & k != 0)
+            {
+                MessageBox.Show("Erreur d'enregistrement des articles");
+            }
+            else if (i != 0 & j != 0 & k == 0)
+            {
+                MessageBox.Show("Erreur de paiement");
+            }
+            else if (i != 0 & j == 0 & k == 0)
+            {
+                MessageBox.Show("Erreur d'enregistrement des articles \n Erreur de paiement");
+
+            }
+            else if (i == 0)
+            {
+                MessageBox.Show("Erreur d'enregistrement de la commande");
+
+            }
 
             //paiement = new Payement(DateTime.Now, 4 / 3, TypePayementDAO.selectTypePayementById(1).nom, cmd.id);
             //PayementDAO.insertPaiement(paiement);
