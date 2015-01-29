@@ -137,7 +137,7 @@
     <DataTemplate DataType="{x:Type vm:CommandeConcernantRA_DATA }" x:Key="UneCommande">
         <Border CornerRadius="10" BorderBrush="AliceBlue" BorderThickness="1">
             <DockPanel >
-                <Button DockPanel.Dock="Top" BorderBrush="AliceBlue" BorderThickness="0" Command="{Binding CommandeParIdFacture}">
+                <Button DockPanel.Dock="Top" Background="Transparent" BorderBrush="AliceBlue" BorderThickness="0" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.CommandeParIdFacture}" CommandParameter="{Binding }">
                     <Grid >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -150,7 +150,10 @@
                             <Label Content="{Binding Label_restitutionArticles_Reference}" FontSize="9pt" Padding="10,0,0,3" Foreground="#FF525252" />
                         </StackPanel>
 
-
+                        <StackPanel Orientation="Vertical" Grid.Column="1" MinWidth="160" Margin="2">
+                            <Label Content="Nom du client:" FontWeight="Bold" FontSize="11pt" Foreground="Black"  />
+                            <Label Content="{Binding Label_restitutionArticles_nomDuClient}" FontSize="9pt" Padding="10,0,0,3" Foreground="#FF525252" />
+                        </StackPanel>
 
                         <StackPanel Orientation="Vertical" Grid.Column="2" MinWidth="160" Margin="2">
                             <Label Content="Date de la commande:" FontWeight="Bold" FontSize="11pt" Foreground="Black"  />

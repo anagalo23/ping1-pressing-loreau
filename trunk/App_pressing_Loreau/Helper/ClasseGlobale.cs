@@ -64,5 +64,9 @@ namespace App_pressing_Loreau.Helper
         {
             _contenuListePaiement = new ObservableCollection<PaiementListeVM>();
         }
+
+        //*********************************************************************************GESTION DES RENDU COMMANDE
+
+        public static CommandeConcernantRA_DATA _renduCommande { get; set; }
     }
 }

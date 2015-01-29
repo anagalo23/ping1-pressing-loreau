@@ -22,7 +22,6 @@ namespace App_pressing_Loreau.ViewModel
     class RestitutionArticlesVM : ObservableObject, IPageViewModel
     {
         #region Attributs
-        Departement dep;
 
         private int _txb_restitutionArticles_idFactures;
         private string _txb_restitutionArticles_choix;
@@ -35,6 +34,8 @@ namespace App_pressing_Loreau.ViewModel
         public List<CommandeConcernantRA_DATA> _listeRechercheClient;
 
         private DelegateCommand<CommandeConcernantRA_DATA> _getButtonRecherche;
+
+        private String _label_commandeSelectionner;
         #endregion
         public String Name
         {
@@ -45,6 +46,7 @@ namespace App_pressing_Loreau.ViewModel
         public RestitutionArticlesVM()
         {
             Cbb_restitutionClient_choix_theme = choixbox.ListeChamp();
+            ClasseGlobale._renduCommande = null;
         }
 
 
@@ -65,6 +67,18 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
+        public String Label_CommandeSelectionner
+        {
+            get { return _label_commandeSelectionner; }
+            set
+            {
+                if (value != _label_commandeSelectionner)
+                {
+                    _label_commandeSelectionner = value;
+                    OnPropertyChanged("Label_CommandeSelectionner");
+                }
+            }
+        }
         public String Txb_restitutionArticles_choix
         {
             get { return _txb_restitutionArticles_choix; }
@@ -157,27 +171,72 @@ namespace App_pressing_Loreau.ViewModel
         #region Méthodes
         private void ExecuteResultatRechercheClient(CommandeConcernantRA_DATA obj)
         {
-            MessageBox.Show("resultat: " + obj.clt.nom + " et Id = " + obj.clt.id);
+            //MessageBox.Show("resultat: " + obj.clt.nom + " et Id = " + obj.clt.id);
+
+            ContentCommandeConcernant = new List<CommandeConcernantRA_DATA>();
+
+            List<Commande> listeCommande = (List<Commande>)CommandeDAO.selectCommandesByClient(obj.clt.id, true, true, false);
+            if (listeCommande != null)
+            {
+                foreach (Commande com in listeCommande)
+                {
+                    ContentCommandeConcernant.Add(new CommandeConcernantRA_DATA()
+                    {
+                        Label_restitutionArticles_Reference = com.id,
+                        Label_restitutionArticles_DateCommande = com.date.ToString(),
+                        commande = com,
+                        Label_restitutionArticles_nomDuClient = com.client.nom + "  " + com.client.prenom
+                    });
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ce client n'a pas de commande");
+            }
+
+
         }
 
 
         private void ValiderCetteCommande(CommandeConcernantRA_DATA obj)
         {
-            MessageBox.Show(obj.command.id +"");
+            //MessageBox.Show(obj.commande.id +"");
+            ClasseGlobale._renduCommande = obj;
+            Label_CommandeSelectionner = ClasseGlobale._renduCommande.commande.id.ToString();
+            //MessageBox.Show();
         }
+
+
+
         public void ContenuDeLaCommande()
         {
-            ContentCommandeConcernant = new List<CommandeConcernantRA_DATA>();
-
-            Commande commandeRendre = (Commande)CommandeDAO.selectCommandeById(Txb_restitutionArticles_idFactures, false,true,true);
-
-            if (commandeRendre != null)
+            if (Txb_restitutionArticles_idFactures > 0 & Txb_restitutionArticles_idFactures <= CommandeDAO.selectCommandes(false, false, false).Count)
             {
-                ContentCommandeConcernant.Add(new CommandeConcernantRA_DATA() { Label_restitutionArticles_Reference = commandeRendre.id,
-                    Label_restitutionArticles_Name =commandeRendre.client.nom,Label_restitutionArticles_DateCommande=commandeRendre.date.ToString() });
 
+
+                ContentCommandeConcernant = new List<CommandeConcernantRA_DATA>();
+
+                Commande commandeRendre = (Commande)CommandeDAO.selectCommandeById(Txb_restitutionArticles_idFactures, false, true, true);
+
+                if (commandeRendre != null)
+                {
+                    ContentCommandeConcernant.Add(new CommandeConcernantRA_DATA()
+                    {
+                        Label_restitutionArticles_Reference = commandeRendre.id,
+                        Label_restitutionArticles_DateCommande = commandeRendre.date.ToString(),
+                        commande = commandeRendre,
+                        Label_restitutionArticles_nomDuClient = commandeRendre.client.nom + "  " + commandeRendre.client.prenom
+                    });
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Cette Commande n existe pas ");
             }
         }
+
+
 
         public void ContenuDeLaRecherche()
         {
@@ -203,7 +262,7 @@ namespace App_pressing_Loreau.ViewModel
                     {
                         ListeRechercheClient.Add(new CommandeConcernantRA_DATA()
                         {
-                            clt=clt
+                            clt = clt
                         });
                     }
                 }

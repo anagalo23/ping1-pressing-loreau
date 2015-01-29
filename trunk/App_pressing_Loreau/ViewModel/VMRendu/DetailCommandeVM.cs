@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 using App_pressing_Loreau.Helper;
 using Microsoft.Practices.Prism.Commands;
+using App_pressing_Loreau.Model.DTO;
 
 namespace App_pressing_Loreau.ViewModel
 {
@@ -97,8 +98,17 @@ namespace App_pressing_Loreau.ViewModel
         {
             AfficheDetailCommande = new List<ArticlesRestitutionVM>();
 
-            AfficheDetailCommande.Add(new ArticlesRestitutionVM() { ArticlesNameRes = "Bonjour", IsSelectedArticle = false });
-            AfficheDetailCommande.Add(new ArticlesRestitutionVM() { ArticlesNameRes = "Slt", IsSelectedArticle = false });
+            Commande com = ClasseGlobale._renduCommande.commande;
+            if (com != null)
+            {
+                foreach (Article art in com.listArticles)
+                {
+                    AfficheDetailCommande.Add(new ArticlesRestitutionVM() { ar=art, ArticlesNameRes=art.type.nom});
+                }
+            }
+
+          
+            //AfficheDetailCommande.Add(new ArticlesRestitutionVM() { ArticlesNameRes = "Slt", IsSelectedArticle = false });
             Label_prixTTC = 10;
         }
         #endregion
