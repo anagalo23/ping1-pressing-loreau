@@ -87,7 +87,7 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-        public DateTime Txb_nouveauClient_date_naissance
+        public String Txb_nouveauClient_date_naissance
         {
             get { return ClasseGlobale.Client.dateNaissance; }
             set

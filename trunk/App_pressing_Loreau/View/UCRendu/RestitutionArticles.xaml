@@ -95,7 +95,7 @@
                                                
                                                     <StackPanel Orientation="Vertical" MinWidth="160" Margin="2">
                                                         <TextBlock Text="{Binding Label_restitutionArticles_NomClient}" FontWeight="Bold" FontSize="13pt" Foreground="Black"  />
-                                                        <TextBlock Text="{Binding Label_restitutionArticles_PrenomClient}" FontSize="11pt" Padding="10,0,0,3" Foreground="#FF525252" />
+                                                        <TextBlock Text="{Binding Label_restitutionArticles_PrenomClient}" FontSize="11pt" Padding="50,0,0,0" Foreground="#FF525252" />
                                                     </StackPanel>
                                                 </Button>
                                             </DataTemplate>
@@ -118,7 +118,7 @@
                     <Label Content="La commande concernant" Grid.Row="0" Style="{StaticResource Titre}"/>
                     <Border Margin="5" Grid.Row="1" BorderThickness="2" BorderBrush="AliceBlue" CornerRadius="10" >
 
-                        <ContentControl ContentTemplate="{StaticResource UneCommande}" Content="{Binding Path=ContentCommandeConcernant}"/>
+                        <ListBox ItemTemplate="{StaticResource UneCommande}" Background="Transparent" BorderThickness="0" Margin="5" ItemsSource="{Binding Path=ContentCommandeConcernant}"/>
 
                     </Border>
                     <Grid Grid.Row="2">

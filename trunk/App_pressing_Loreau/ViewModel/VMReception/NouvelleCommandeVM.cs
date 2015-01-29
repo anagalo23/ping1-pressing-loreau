@@ -318,9 +318,9 @@ namespace App_pressing_Loreau.ViewModel
                 });
 
                 Label_NouvelleCommande_prixTotal = 0;
-                for (int i = 0; i < ContentDetailCommande.Count; i++)
+                foreach (ArticlesVM artVm in  ClasseGlobale._contentDetailCommande)
                 {
-                    Label_NouvelleCommande_prixTotal += (ContentDetailCommande[i].typeArticle.TTC);
+                    Label_NouvelleCommande_prixTotal += (artVm.typeArticle.TTC);
                 }
 
 

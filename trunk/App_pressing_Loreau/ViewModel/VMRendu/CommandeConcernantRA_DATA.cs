@@ -21,10 +21,10 @@ namespace App_pressing_Loreau.ViewModel
         #region Attributs
         private String _label_restitutionArticles_Reference;
         private String _label_restitutionArticles_Name;
-        private int _label_restitutionArticles_NombreArticles;
+        private String _label_restitutionArticles_DateCommande;
 
-        private String _label_restitutionArticles_NomClient;
-        private ObservableCollection<ArticlesRestitutionVM> _listeArticlesRestitution;
+        
+        
         #endregion
 
         #region Constructeur
@@ -40,6 +40,7 @@ namespace App_pressing_Loreau.ViewModel
         public String ContentButtonClientRA { get; set; }
         public int TagButtonClientRA { get; set; }
         public Client clt;
+        public Commande command;
 
         public String Label_restitutionArticles_NomClient
         {
@@ -67,16 +68,16 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
         #region Contenu Commande du client
-        public String Label_restitutionArticles_Reference
+        public int Label_restitutionArticles_Reference
         {
-            get { return _label_restitutionArticles_Reference; }
+            get { return command.id; }
             set
             {
-                if (value != _label_restitutionArticles_Reference)
-                {
-                    _label_restitutionArticles_Reference = value;
-                    OnPropertyChanged("Label_restitutionArticles_Reference");
-                }
+                //if (value != command.id)
+                //{
+                    //command.id = value;
+                    //OnPropertyChanged("Label_restitutionArticles_Reference");
+                //}
             }
         }
 
@@ -94,37 +95,38 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-        public int Label_restitutionArticles_NombreArticles
+        public String Label_restitutionArticles_DateCommande
         {
-            get { return _label_restitutionArticles_NombreArticles; }
+            get { return command.date.ToString(); }
             set
             {
-                if (value != _label_restitutionArticles_NombreArticles)
+                if (!String.IsNullOrEmpty(value))
                 {
-                    _label_restitutionArticles_NombreArticles = value;
-                    OnPropertyChanged("Label_restitutionArticles_NombreArticles");
+                    String s = command.date.ToString();
+                    s = value;
+                    OnPropertyChanged("Label_restitutionArticles_DateCommande");
                 }
             }
         }
 
 
-        public ObservableCollection<ArticlesRestitutionVM> ListeArticlesRestitution
-        {
-            get
-            {
-                return this._listeArticlesRestitution ??
-                    (this._listeArticlesRestitution = new ObservableCollection<ArticlesRestitutionVM>());
-            }
+        //public ObservableCollection<ArticlesRestitutionVM> ListeArticlesRestitution
+        //{
+        //    get
+        //    {
+        //        return this._listeArticlesRestitution ??
+        //            (this._listeArticlesRestitution = new ObservableCollection<ArticlesRestitutionVM>());
+        //    }
 
-            set
-            {
-                if (value != null)
-                {
-                    this._listeArticlesRestitution = value;
-                    OnPropertyChanged("ListeArticlesRestitution");
-                }
-            }
-        }
+        //    set
+        //    {
+        //        if (value != null)
+        //        {
+        //            this._listeArticlesRestitution = value;
+        //            OnPropertyChanged("ListeArticlesRestitution");
+        //        }
+        //    }
+        //}
         #endregion
 
         #endregion

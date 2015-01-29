@@ -22,7 +22,30 @@ namespace App_pressing_Loreau.Data.DAO
                 MySqlCommand cmd = new MySqlCommand(Bdd.insertClient, Bdd.connexion());
 
                 //ajout des parametres
-                DateTime dateNaissance = (client.dateNaissance != null) ? new DateTime(0001, 01, 01) : client.dateNaissance;
+                string[] tab = (client.dateNaissance).Split('/');
+                string dateNaissance = "";
+                for (int i = 2; i >= 0; i--)
+                {
+                    dateNaissance += tab[i];
+                    if (i != 0)
+                    {
+                        dateNaissance += "-";
+                    }
+                }
+                
+                dateNaissance += " 00:00:00";
+                //MessageBox.Show(dateNaissance);
+                //try
+
+                //DateTime.Parse(dateNaissance);
+                //MessageBox.Show(DateTime.Parse(dateNaissance).ToString());
+                //DateTime date = new DateTime();
+                DateTime myDate = DateTime.ParseExact(dateNaissance, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.CurrentCulture);
+
+                MessageBox.Show("TODO");
+
+                //date.
+                dateNaissance = (client.dateNaissance != null) ? (new DateTime(0001, 01, 01)).ToString() : dateNaissance;//client.dateNaissance+" 00:00:00"
 
                 cmd.Parameters.AddWithValue("nom", client.nom);
                 cmd.Parameters.AddWithValue("prenom", client.prenom);
@@ -95,8 +118,8 @@ namespace App_pressing_Loreau.Data.DAO
                     string clt_email = msdr["clt_email"].ToString();
                     DateTime clt_dateInscription = DateTime.Parse(msdr["clt_dateInscription"].ToString());
                     int clt_idCleanway = Int32.Parse(msdr["clt_idCleanway"].ToString());
-                    int clt_contactmail = ((msdr["clt_contactmail"].ToString()).Equals("False")) ? 0 : 1;
-                    int clt_contactsms = ((msdr["clt_contactsms"].ToString()).Equals("False")) ? 0 : 1;
+                    bool clt_contactmail = ((msdr["clt_contactmail"].ToString()).Equals("False")) ? false : true;
+                    bool clt_contactsms = ((msdr["clt_contactsms"].ToString()).Equals("False")) ? false : true;
                     int clt_type = ((msdr["clt_type"].ToString()).Equals("False")) ? 0 : 1;
 
                     client = new Client(
@@ -141,11 +164,18 @@ namespace App_pressing_Loreau.Data.DAO
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
                 Client client;
+                bool contactmail = false;
+                bool clt_contactsms;
+                int clt_type;
+
                 while (msdr.Read())
                 {
-                    int contactmail = ((msdr["clt_contactmail"].ToString()).Equals("False")) ? 0 : 1;
-                    int clt_contactsms = ((msdr["clt_contactsms"].ToString()).Equals("False")) ? 0 : 1;
-                    int clt_type = ((msdr["clt_type"].ToString()).Equals("False")) ? 0 : 1;
+                    contactmail = ((msdr["clt_contactmail"].ToString()).Equals("False")) ? false : true;
+                    clt_contactsms = ((msdr["clt_contactsms"].ToString()).Equals("False")) ? false : true;
+                    clt_type = ((msdr["clt_type"].ToString()).Equals("False")) ? 0 : 1;
+
+                    //if(){
+
 
                     client = new Client(
                         Int32.Parse(msdr["clt_id"].ToString()),
@@ -162,27 +192,30 @@ namespace App_pressing_Loreau.Data.DAO
                         clt_contactsms,
                         clt_type);
                     retour.Add(client);
+
+                    
+                    
                 }
                 msdr.Dispose();
                 return retour;
             }
             catch (Exception Ex)
             {
-                Client clt = new Client("Jean", "LaRue", "0658789201", "4152658952", Adresse.Parse("53\\rue st gervais\\76000\\Rouen\\"), DateTime.Now, "monemail@bouh.com", DateTime.Now, 45, true, true, 0);
-                ClientDAO.insertClient(clt);
-                Commande cmd = new Commande(DateTime.Now, false, 3 / 2F, ClientDAO.lastClient());
-                CommandeDAO.insertCommande(cmd);
-                cmd = CommandeDAO.lastCommande();
-                Article article = new Article(null, null, false, 20, 6, TypeArticleDAO.selectTypesById(1), PlaceConvoyeurDAO.selectConvoyeurById(4), cmd.id);
-                ArticleDAO.insertArticle(article);
-                ArticleDAO.insertArticle(article);
-                ArticleDAO.insertArticle(article);
-                ArticleDAO.insertArticle(article);
-                Payement paiement = new Payement(DateTime.Now, 4 / 3F, TypePayementDAO.selectTypePayementById(1).nom, cmd.id);
-                PayementDAO.insertPaiement(paiement);
+                //Client clt = new Client("Jean", "LaRue", "0658789201", "4152658952", Adresse.Parse("53\\rue st gervais\\76000\\Rouen\\"), DateTime.Now, "monemail@bouh.com", DateTime.Now, 45, true, true, 0);
+                //ClientDAO.insertClient(clt);
+                //Commande cmd = new Commande(DateTime.Now, false, 3 / 2F, ClientDAO.lastClient());
+                //CommandeDAO.insertCommande(cmd);
+                //cmd = CommandeDAO.lastCommande();
+                //Article article = new Article(null, null, false, 20, 6, TypeArticleDAO.selectTypesById(1), PlaceConvoyeurDAO.selectConvoyeurById(4), cmd.id);
+                //ArticleDAO.insertArticle(article);
+                //ArticleDAO.insertArticle(article);
+                //ArticleDAO.insertArticle(article);
+                //ArticleDAO.insertArticle(article);
+                //Payement paiement = new Payement(DateTime.Now, 4 / 3F, TypePayementDAO.selectTypePayementById(1).nom, cmd.id);
+                //PayementDAO.insertPaiement(paiement);
 
-                FactureExcel fe = new FactureExcel(CommandeDAO.selectCommandeById(cmd.id, true, true, true));
-                fe.printFacture();
+                //FactureExcel fe = new FactureExcel(CommandeDAO.selectCommandeById(cmd.id, true, true, true));
+                //fe.printFacture();
 
 
 
@@ -226,7 +259,7 @@ namespace App_pressing_Loreau.Data.DAO
                 client.telfix = msdr["clt_fix"].ToString();
                 client.telmob = msdr["clt_mob"].ToString();
                 client.adresse = Adresse.Parse(msdr["clt_adresse"].ToString());
-                client.dateNaissance = DateTime.Parse(msdr["clt_dateNaissance"].ToString());
+                client.dateNaissance = msdr["clt_dateNaissance"].ToString();//DateTime.Parse(
                 client.email = msdr["clt_email"].ToString();
                 client.dateInscription = DateTime.Parse(msdr["clt_dateInscription"].ToString());
                 client.idCleanWay = Int32.Parse(msdr["clt_idCleanway"].ToString());

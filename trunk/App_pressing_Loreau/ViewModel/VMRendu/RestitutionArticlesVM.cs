@@ -31,7 +31,7 @@ namespace App_pressing_Loreau.ViewModel
         private ChoixBox _selected_restitutionClient_choix_theme;
         public List<ChoixBox> Cbb_restitutionClient_choix_theme { get; set; }
 
-        public CommandeConcernantRA_DATA _contentCommandeConcernant;
+        public List<CommandeConcernantRA_DATA> _contentCommandeConcernant;
         public List<CommandeConcernantRA_DATA> _listeRechercheClient;
 
         private DelegateCommand<CommandeConcernantRA_DATA> _getButtonRecherche;
@@ -108,7 +108,7 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-        public CommandeConcernantRA_DATA ContentCommandeConcernant
+        public List<CommandeConcernantRA_DATA> ContentCommandeConcernant
         {
             get { return _contentCommandeConcernant; }
             set
@@ -142,6 +142,16 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
+        private DelegateCommand<CommandeConcernantRA_DATA> commandeParIdFacture;
+        public DelegateCommand<CommandeConcernantRA_DATA> CommandeParIdFacture
+        {
+            get
+            {
+                return this.commandeParIdFacture ?? (this.commandeParIdFacture = new DelegateCommand<CommandeConcernantRA_DATA>(
+                   this.ValiderCetteCommande,
+                   (arg) => true));
+            }
+        }
         #endregion
 
         #region Méthodes
@@ -149,21 +159,24 @@ namespace App_pressing_Loreau.ViewModel
         {
             MessageBox.Show("resultat: " + obj.clt.nom + " et Id = " + obj.clt.id);
         }
-        
+
+
+        private void ValiderCetteCommande(CommandeConcernantRA_DATA obj)
+        {
+            MessageBox.Show(obj.command.id +"");
+        }
         public void ContenuDeLaCommande()
         {
-            ObservableCollection<ArticlesRestitutionVM> listeArt = new ObservableCollection<ArticlesRestitutionVM>();
+            ContentCommandeConcernant = new List<CommandeConcernantRA_DATA>();
 
-            dep = (Departement)DepartementDAO.selectDepartementById(2);
-            CommandeConcernantRA_DATA ccd = new CommandeConcernantRA_DATA();
-            ccd.Label_restitutionArticles_Name = "Alexis";
-            ccd.Label_restitutionArticles_Reference = "23678";
-            listeArt.Add(new ArticlesRestitutionVM() { ArticlesNameRes = Txb_restitutionArticles_idFactures + "pt", Txb_ArticlesRes_etat = "Fini" });
-            listeArt.Add(new ArticlesRestitutionVM() { ArticlesNameRes = Txb_restitutionArticles_idFactures + "pj", Txb_ArticlesRes_etat = "encours" });
+            Commande commandeRendre = (Commande)CommandeDAO.selectCommandeById(Txb_restitutionArticles_idFactures, false,true,true);
 
-            ccd.ListeArticlesRestitution = listeArt;
-            ccd.Label_restitutionArticles_NombreArticles = Txb_restitutionArticles_idFactures;
-            ContentCommandeConcernant = ccd;
+            if (commandeRendre != null)
+            {
+                ContentCommandeConcernant.Add(new CommandeConcernantRA_DATA() { Label_restitutionArticles_Reference = commandeRendre.id,
+                    Label_restitutionArticles_Name =commandeRendre.client.nom,Label_restitutionArticles_DateCommande=commandeRendre.date.ToString() });
+
+            }
         }
 
         public void ContenuDeLaRecherche()
