@@ -19,12 +19,12 @@ namespace App_pressing_Loreau.ViewModel
     class CommandeConcernantRA_DATA : ObservableObject
     {
         #region Attributs
-        private String _label_restitutionArticles_Reference;
+        private int _label_restitutionArticles_Reference;
         private String _label_restitutionArticles_Name;
         private String _label_restitutionArticles_DateCommande;
 
-        
-        
+
+
         #endregion
 
         #region Constructeur
@@ -36,11 +36,11 @@ namespace App_pressing_Loreau.ViewModel
         #endregion
 
         #region Properties and commands
-
+        #region recherche client
         public String ContentButtonClientRA { get; set; }
         public int TagButtonClientRA { get; set; }
         public Client clt;
-        public Commande command;
+
 
         public String Label_restitutionArticles_NomClient
         {
@@ -49,11 +49,12 @@ namespace App_pressing_Loreau.ViewModel
             {
                 if (!String.IsNullOrEmpty(value))
                 {
-                             this.clt.nom = value;
+                    this.clt.nom = value;
                     OnPropertyChanged("Label_restitutionArticles_NomClient");
                 }
             }
         }
+
 
         public String Label_restitutionArticles_PrenomClient
         {
@@ -62,48 +63,52 @@ namespace App_pressing_Loreau.ViewModel
             {
                 if (!String.IsNullOrEmpty(value))
                 {
-                     this.clt.prenom = value;
+                    this.clt.prenom = value;
                     OnPropertyChanged("Label_restitutionArticles_PrenomClient");
                 }
             }
         }
+        #endregion
+
         #region Contenu Commande du client
+
+        public Commande commande;
+        private String nom;
         public int Label_restitutionArticles_Reference
         {
-            get { return command.id; }
+            get { return _label_restitutionArticles_Reference; }
             set
             {
-                //if (value != command.id)
-                //{
-                    //command.id = value;
-                    //OnPropertyChanged("Label_restitutionArticles_Reference");
-                //}
+                if (value != _label_restitutionArticles_Reference)
+                {
+                    _label_restitutionArticles_Reference = value;
+                    OnPropertyChanged("Label_restitutionArticles_Reference");
+                }
             }
         }
 
 
-        public String Label_restitutionArticles_Name
+        public String Label_restitutionArticles_nomDuClient
         {
             get { return _label_restitutionArticles_Name; }
             set
             {
-                if (value != _label_restitutionArticles_Name)
+                if (!String.IsNullOrEmpty(value))
                 {
                     _label_restitutionArticles_Name = value;
-                    OnPropertyChanged("Label_restitutionArticles_Name");
+                    OnPropertyChanged("Label_restitutionArticles_nomDuClient");
                 }
             }
         }
 
         public String Label_restitutionArticles_DateCommande
         {
-            get { return command.date.ToString(); }
+            get { return _label_restitutionArticles_DateCommande; }
             set
             {
                 if (!String.IsNullOrEmpty(value))
                 {
-                    String s = command.date.ToString();
-                    s = value;
+                    _label_restitutionArticles_DateCommande = value;
                     OnPropertyChanged("Label_restitutionArticles_DateCommande");
                 }
             }

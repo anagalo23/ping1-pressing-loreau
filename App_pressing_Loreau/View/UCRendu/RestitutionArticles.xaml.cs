@@ -6,6 +6,7 @@ using System;
 using App_pressing_Loreau.Model.DTO;
 using App_pressing_Loreau.Data.DAO;
 using System.Windows.Input;
+using App_pressing_Loreau.Helper;
 
 
 
@@ -26,8 +27,16 @@ namespace App_pressing_Loreau.View
 
         private void btn_restitutionArticles_suivant_Click(object sender, RoutedEventArgs e)
         {
-            dp.Children.Clear();
-            dp.Children.Add(new DetailCommande());
+            if (ClasseGlobale._renduCommande != null)
+            {
+                dp.Children.Clear();
+                dp.Children.Add(new DetailCommande());
+            }
+            else
+            {
+                MessageBox.Show("Selectionner une commande");
+            }
+          
         }
 
         private void btn_restitutionArticles_ok_Click(object sender, RoutedEventArgs e)

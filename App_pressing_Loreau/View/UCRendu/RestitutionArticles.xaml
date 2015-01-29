@@ -15,7 +15,7 @@
         <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
     </UserControl.Resources>
 
-    
+
     <DockPanel x:Name="dp" >
         <Grid>
             <Grid.ColumnDefinitions>
@@ -90,9 +90,9 @@
                                     <ListBox Margin="2" Background="Transparent" BorderThickness="0"  ItemsSource="{Binding Path=ListeRechercheClient}">
                                         <ListBox.ItemTemplate>
                                             <DataTemplate>
-                                                
+
                                                 <Button  Tag="{Binding TagButtonClientRA}"  Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.GetButtonRecherche}"   CommandParameter="{Binding }" BorderThickness="0" Height="30">
-                                               
+
                                                     <StackPanel Orientation="Vertical" MinWidth="160" Margin="2">
                                                         <TextBlock Text="{Binding Label_restitutionArticles_NomClient}" FontWeight="Bold" FontSize="13pt" Foreground="Black"  />
                                                         <TextBlock Text="{Binding Label_restitutionArticles_PrenomClient}" FontSize="11pt" Padding="50,0,0,0" Foreground="#FF525252" />
@@ -112,7 +112,8 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="9*"/>
-                        <RowDefinition Height="45*"/>
+                        <RowDefinition Height="39*"/>
+                        <RowDefinition Height="6*"/>
                         <RowDefinition Height="7*"/>
                     </Grid.RowDefinitions>
                     <Label Content="La commande concernant" Grid.Row="0" Style="{StaticResource Titre}"/>
@@ -122,6 +123,14 @@
 
                     </Border>
                     <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Commandes selectionner" Style="{StaticResource vertilabel18}" />
+                        <Label Content="{Binding Label_CommandeSelectionner}" Style="{StaticResource vertilabel18}" Grid.Column="1" />
+                    </Grid>
+                    <Grid Grid.Row="3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
