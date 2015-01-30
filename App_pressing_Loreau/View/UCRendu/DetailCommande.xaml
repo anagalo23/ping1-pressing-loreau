@@ -8,9 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="740">
     
     <!-- les données à affichier dans la liste de commande-->
-    <UserControl.DataContext>
-        <vm:DetailCommandeVM/>
-    </UserControl.DataContext>
+ 
     <UserControl.Resources>
         <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
     </UserControl.Resources>

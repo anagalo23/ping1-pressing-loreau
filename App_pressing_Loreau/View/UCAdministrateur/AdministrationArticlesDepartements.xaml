@@ -5,49 +5,89 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="740">
+
+
+
     <DockPanel x:Name="dp">
-        <Border DockPanel.Dock="Top">
-            <Label Content="Ajouter d'un articles " Style="{StaticResource Titre}"/>
+        <Border DockPanel.Dock="Top" Height="60">
+            <Label Content="Edition  d'articles " Style="{StaticResource Titre}"/>
         </Border>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0" CornerRadius="10" Margin="5" >
-            <DockPanel  >
-                <Border DockPanel.Dock="Top">
-                    <Label Content="Ajouter un article"/>
-                </Border>
-                <Grid >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="59*"/>
-                        <ColumnDefinition Width="81*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        
-                    </Grid.RowDefinitions>
-                    <Label Content="Type de l'article" Grid.Row="0" Grid.Column="0"/>
-                    <TextBox x:Name="txb_adminArtDep_typeArticles" Grid.Row="0" Grid.Column="1" Margin="3"/>
-                    <Label Content="PrixHT" Grid.Row="1" Grid.Column="0"/>
+            <Border Grid.Column="0" CornerRadius="10" Margin="5" BorderThickness="2" BorderBrush="AliceBlue">
+                <DockPanel  >
+                    <Border DockPanel.Dock="Top">
+                        <Label Content="Ajouter un article" Style="{StaticResource Titre}" Margin="5"/>
+                    </Border>
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Choisir le departement" Grid.Row="0" Grid.Column="0" Style="{StaticResource vertilabel18}" />
+                        <ComboBox  x:Name="cbb_adminArt_choixDepart" HorizontalContentAlignment="Center" FontWeight="SemiBold" VerticalContentAlignment="Center" ItemsSource="{Binding ListeDepartementChoix}" SelectedItem="{Binding Selected_adminArt_ChoixDepart}" Grid.Row="0" Grid.Column="1" Margin="20,5" DisplayMemberPath="NameDepart" />
 
-                    <TextBox x:Name="txb_adminArtDep_prixHT" Margin="3"  Grid.Row="1" Grid.Column="1"/>
-                    <Label Content=" Choisir le departement" Grid.Row="2" Grid.Column="0" />
-                    <ComboBox  ItemsSource="{Binding ListeDepartementChoix}"  Grid.Row="2" Grid.Column="1" Margin="5"/>
+                        <Label Content="Type de l'article" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel18}"/>
+                        <TextBox x:Name="txb_adminArtDep_typeArticles" Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Txt_adminArt_TypeArt, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
 
-                        <Button  Content="Ajouter l'article" Grid.Row="3" Grid.Column="1" Margin="5"/>
+                        <Label Content="PrixTTC" Grid.Row="2" Grid.Column="0" Style="{StaticResource vertilabel18}"/>
+                        <TextBox x:Name="txb_adminArtDep_prixTTC" Margin="3"  Grid.Row="2" Grid.Column="1"  Text="{Binding Txt_adminArt_PrixTTC, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+
+                        <Label Content="Encombrement" Grid.Row="3" Grid.Column="0" Style="{StaticResource vertilabel18}"/>
+                        <TextBox x:Name="txb_adminArtDep_encombrement" Margin="3"  Grid.Row="3" Grid.Column="1"  Text="{Binding Txt_adminArt_Encombrement, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+
+
+
+                        <Button  Content="Ajouter l'article" Grid.Row="4" Grid.Column="1" Margin="5" Style="{StaticResource choixbouton30}"/>
 
                     </Grid>
-                <!--<Border DockPanel.Dock="Bottom" Height="10" >
-                    <Button Content="rzedflksef"/>
-                </Border>-->
-            </DockPanel>
+                </DockPanel>
             </Border>
-            
+
+            <Border Grid.Column="1" CornerRadius="10" BorderBrush="AliceBlue" BorderThickness="2" Margin="5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.Row="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Choisir le departement" Grid.Row="0" Grid.Column="0" Style="{StaticResource vertilabel18}" />
+                            <ComboBox  x:Name="cbb_adminArt_choixDepartDelete" HorizontalContentAlignment="Center" FontWeight="SemiBold" VerticalContentAlignment="Center" ItemsSource="{Binding ListeDepartementChoixDelete}" SelectedValue="{Binding Path=Selected_adminArt_ChoixDepartDetele,Mode=TwoWay}" Grid.Row="0" Grid.Column="1" Margin="20,5" DisplayMemberPath="NameDepart" />
+
+                            <Label Content="Choisir l'article" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel18}" />
+                            <ComboBox  x:Name="cbb_adminArt_choixArticlesDelete" HorizontalContentAlignment="Center" FontWeight="SemiBold" VerticalContentAlignment="Center" ItemsSource="{Binding ListeArticlesDelete}" SelectedItem="{Binding Selected_adminArt_ChoixArticlesDelete}" Grid.Row="1" Grid.Column="1" Margin="20,5" DisplayMemberPath="NameArticles" />
+                            
+                            <Button Content="Supprimer" Grid.Row="2" Grid.Column="1" Margin="10,4" BorderThickness="0"/>
+
+                        </Grid>
+                    </Border>
+
+                    <Button x:Name="btn_adminArt_retour" Content="Retour" Style="{StaticResource choixbouton30}" Grid.Row="3" Margin="20,3" Click="btn_adminArt_retour_Click"/>
+                </Grid>
+            </Border>
         </Grid>
     </DockPanel>
 </UserControl>

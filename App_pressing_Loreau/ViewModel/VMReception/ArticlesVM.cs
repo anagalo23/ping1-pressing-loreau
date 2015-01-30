@@ -28,7 +28,7 @@ namespace App_pressing_Loreau.ViewModel
 
         private ComboComm _selected_Articles_Commentaire;
         ComboComm comboComm = new ComboComm();
-        //private float Btn_Articles_PrixArticles;
+
         public TypeArticle typeArticle;        
         #endregion
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App_pressing_Loreau.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,13 @@ namespace App_pressing_Loreau.View
         public AdministrationArticlesDepartements()
         {
             InitializeComponent();
+            DataContext = new AdministrationArticlesDepartementsVM();
+        }
+
+        private void btn_adminArt_retour_Click(object sender, RoutedEventArgs e)
+        {
+            dp.Children.Clear();
+            dp.Children.Add( new PageAdministrateur());
         }
     }
 }
