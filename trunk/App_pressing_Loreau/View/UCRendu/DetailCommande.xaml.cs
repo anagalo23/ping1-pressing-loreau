@@ -1,4 +1,5 @@
 ﻿using App_pressing_Loreau.View;
+using App_pressing_Loreau.ViewModel;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +14,7 @@ namespace App_pressing_Loreau
         public DetailCommande()
         {
             InitializeComponent();
+            DataContext = new DetailCommandeVM();
         }
 
         private void btn_detailCommande_rendre_articles_selectionnes_Click(object sender, RoutedEventArgs e)
