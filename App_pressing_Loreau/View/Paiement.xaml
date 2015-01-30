@@ -155,7 +155,7 @@
                 </Border>
                 <Border  Grid.Row="3"  Margin="20,5">
                     <Button x:Name="btn_paiment_valider" Content="Valider" Margin="100,10"
-                        FontFamily="Arial" FontSize="30" FontWeight="SemiBold" Command="{Binding Btn_valider_paiement_commande}"/>
+                        FontFamily="Arial" FontSize="30" FontWeight="SemiBold" Command="{Binding Btn_valider_paiement_commande}" Click="btn_paiment_valider_Click"/>
                 </Border>
             </Grid>
 

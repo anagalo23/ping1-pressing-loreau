@@ -21,6 +21,7 @@ namespace App_pressing_Loreau.ViewModel
     {
         #region Attributs
 
+        public static int commandePayee = 0;
         private String _label_paiement_prixHT;
         private String _label_paiement_prixTTC;
         private float _txb_paiement_montantRemise;
@@ -53,6 +54,7 @@ namespace App_pressing_Loreau.ViewModel
 
             _itemsMontantParMoyenPaiement = new List<GetPaiement>();
 
+            
             //Label_NouvelleCommande_prixTotal = 0;
             //for (int i = 0; i < ContentDetailCommande.Count; i++)
             //{
@@ -411,6 +413,7 @@ namespace App_pressing_Loreau.ViewModel
             if (i != 0 & j != 0 & k != 0)
             {
                 MessageBox.Show("Commande enregistrée \n retour à l accueil");
+                commandePayee = 1;
             }
             else if (i != 0 & j == 0 & k != 0)
             {

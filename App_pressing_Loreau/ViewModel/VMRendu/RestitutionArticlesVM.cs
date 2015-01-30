@@ -174,7 +174,7 @@ namespace App_pressing_Loreau.ViewModel
 
             ContentCommandeConcernant = new List<CommandeConcernantRA_DATA>();
 
-            List<Commande> listeCommande = (List<Commande>)CommandeDAO.selectCommandesByClient(obj.clt.id, true, true, false);
+            List<Commande> listeCommande = (List<Commande>)CommandeDAO.selectCommandesByClient(obj.clt.id, false, true, true);
             if (listeCommande != null)
             {
                 foreach (Commande com in listeCommande)
