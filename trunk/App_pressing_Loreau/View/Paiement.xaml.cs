@@ -1,6 +1,7 @@
 ﻿using App_pressing_Loreau.ViewModel;
 using System;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 
 namespace App_pressing_Loreau.View
@@ -14,6 +15,16 @@ namespace App_pressing_Loreau.View
         {
             InitializeComponent();
             DataContext = new PaiementVM();
+        }
+
+        private void btn_paiment_valider_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (PaiementVM.commandePayee != 0)
+            {
+                dp.Children.Clear();
+                //AccueilVM ac = new AccueilVM();
+                //ac.Btn_receptionColor = Brushes.Teal;
+            }
         }
 
     }

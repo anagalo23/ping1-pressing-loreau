@@ -25,7 +25,7 @@ namespace App_pressing_Loreau.ViewModel
 
      
         private String _changedPhoto;
-              
+
         private ComboComm _selected_Articles_Commentaire;
         ComboComm comboComm = new ComboComm();
         //private float Btn_Articles_PrixArticles;
@@ -63,8 +63,12 @@ namespace App_pressing_Loreau.ViewModel
             get { return _selected_Articles_Commentaire; }
             set
             {
-                _selected_Articles_Commentaire = value;
-                RaisePropertyChanged("Selected_Articles_Commentaire");
+                if (value != _selected_Articles_Commentaire)
+                {
+                    _selected_Articles_Commentaire = value;
+                    RaisePropertyChanged("Selected_Articles_Commentaire");
+                }
+                
             }
         }
         public ICommand Btn_Articles_ChargerPhoto
@@ -111,7 +115,12 @@ namespace App_pressing_Loreau.ViewModel
         #region methodes
         public Article getArticle(int cmd_id)
         {
-            Article article = new Article(_changedPhoto, "Commentaire", typeArticle, cmd_id);
+            String selection = null;
+
+            if (_selected_Articles_Commentaire == null) selection = null;
+            else selection = _selected_Articles_Commentaire.NameCbbArt;
+
+            Article article = new Article(_changedPhoto, selection, typeArticle, cmd_id);
 
             return article;
         }

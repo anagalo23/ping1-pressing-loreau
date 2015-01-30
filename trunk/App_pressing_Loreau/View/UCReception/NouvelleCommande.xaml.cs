@@ -31,7 +31,7 @@ namespace App_pressing_Loreau.View
 
         private void btn_nouvelleCommande_paiement_immediat_Click(object sender, RoutedEventArgs e)
         {
-            if (ClasseGlobale._contentDetailCommande != null)
+            if (ClasseGlobale._contentDetailCommande.Count != 0)
             {
                 dp.Children.Clear();
                 dp.Children.Add(new Paiement());
@@ -49,7 +49,10 @@ namespace App_pressing_Loreau.View
 
         private void btn_nouvelleCommande_paiement_differe_Click_1(object sender, RoutedEventArgs e)
         {
-
+            if (NouvelleCommandeVM.payeDifferer != 0)
+            {
+                dp.Children.Clear();
+            }
         }
 
     }

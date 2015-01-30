@@ -19,16 +19,16 @@ namespace App_pressing_Loreau.ViewModel
 
         Client client = new Client();
 
-        private String _txb_nouveauClientPro_nomSociete;
+        //private String _txb_nouveauClientPro_nomSociete;
 
-        private int _txb_nouveauClientPro_numeroAdresse;
-        private String _txb_nouveauClientPro_rue_voie;
-        private String _txb_nouveauClientPro_bp;
-        private String _txb_nouveauClientPro_ville;
+        //private int _txb_nouveauClientPro_numeroAdresse;
+        //private String _txb_nouveauClientPro_rue_voie;
+        //private String _txb_nouveauClientPro_bp;
+        //private String _txb_nouveauClientPro_ville;
        
-        private String _txb_nouveauClientPro_numeroFixe;
-        private String _txb_nouveauClientPro_numeroPortable;
-        private String _txb_nouveauClientPro_email;
+        //private String _txb_nouveauClientPro_numeroFixe;
+        //private String _txb_nouveauClientPro_numeroPortable;
+        //private String _txb_nouveauClientPro_email;
 
         public static int index { get; private set; }
         #endregion

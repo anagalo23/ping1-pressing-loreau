@@ -49,14 +49,14 @@ namespace App_pressing_Loreau.ViewModel
         {
             get
             {
-                return this._txb_ArticlesRes_CommentaireArticles;
+                return this.ar.commentaire;
             }
 
             set
             {
                 if (!string.IsNullOrEmpty(value))
                 {
-                    this._txb_ArticlesRes_CommentaireArticles = value;
+                    this.ar.commentaire = value;
                     OnPropertyChanged("Txb_ArticlesRes_CommentaireArticles");
                 }
             }
@@ -67,14 +67,14 @@ namespace App_pressing_Loreau.ViewModel
         {
             get
             {
-                return this._txb_ArticlesRes_photo;
+                return this.ar.photo;
             }
 
             set
             {
                 if (!string.IsNullOrEmpty(value))
                 {
-                    this._txb_ArticlesRes_photo = value;
+                    this.ar.photo = value;
                     OnPropertyChanged("Txb_ArticlesRes_photo");
                 }
             }

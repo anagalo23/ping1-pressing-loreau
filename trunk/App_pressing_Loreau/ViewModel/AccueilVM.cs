@@ -222,8 +222,6 @@ namespace App_pressing_Loreau
 
         #endregion
 
-
-
         #region Méthodes
 
 
@@ -382,9 +380,6 @@ namespace App_pressing_Loreau
             accessUserControl = null;
         }
         #endregion
-
-
-
 
         #region Class
         public class CategoryItem

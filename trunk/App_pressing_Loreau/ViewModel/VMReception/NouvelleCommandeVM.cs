@@ -29,6 +29,9 @@ namespace App_pressing_Loreau.ViewModel
 
 
         #region Attributs
+
+        public static int payeDifferer = 0;
+
         private List<CategoryItem> _listeDepartement;
         private List<CategoryItem> _listeArticles;
         private List<Departement> listeDepartementDTO = null;
@@ -199,7 +202,7 @@ namespace App_pressing_Loreau.ViewModel
             int insertArt = 0;
             if (ClasseGlobale._contentDetailCommande == null)
             {
-                MessageBox.Show("Selectionnez des articles");
+                MessageBox.Show("Ajoutez des articles");
             }
             else
             {
@@ -221,6 +224,7 @@ namespace App_pressing_Loreau.ViewModel
             if (insertArt != 0)
             {
                 MessageBox.Show("Commande enregistrée \n paiement differé");
+                payeDifferer = 1;
             }
            
         }
@@ -271,9 +275,7 @@ namespace App_pressing_Loreau.ViewModel
                 if (clickedbutton != null)
                 {
                     int x = 15, y = 5;
-                   //deselectButtons();
-                    //clickedbutton.Background = Brushes.Blue;
-
+                  
                     foreach (TypeArticle type in articlesByDep)
                     {
                         listedesArticles.Add(new CategoryItem() { ButtonArticlesContent = type.nom, ButtonArticlesTag = type.id, X = x, Y = y });
@@ -319,7 +321,7 @@ namespace App_pressing_Loreau.ViewModel
                 ClasseGlobale._contentDetailCommande.Add(new ArticlesVM()
                 {
                     typeArticle = typeArticleDTO,
-                    ArticlesName = typeArticleDTO.nom,
+                    ArticlesName = typeArticleDTO.nom
 
                 });
 
