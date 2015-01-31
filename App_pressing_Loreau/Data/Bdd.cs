@@ -99,6 +99,7 @@ namespace App_pressing_Loreau.Data
         public static String lastCommande = "SELECT MAX(cmd_id) AS cmd_id FROM commande";
         public static String totalTTCCommandeById = "SELECT SUM(art_TTC) AS total FROM article WHERE art_cmd_id=?";
         public static String totalPayedCommandeById = "SELECT SUM(pai_montant) AS total FROM paiement WHERE pai_cmd_id=?";
+        public static String listCommandeRenduToday = "SELECT com_id, cmd_clt_id, cmd_date, cmd_payee, cmd_remise, cmd_date_rendu FROM commentaire WHERE cmd_date_rendu BETWEEN ? AND ?";
 
         //Commentaire
         public static String insertCommentaire = "INSERT INTO commentaire(com_com) VALUES (?)";
