@@ -50,7 +50,29 @@ namespace App_pressing_Loreau.Model
 
         }
 
-        
+        public List<Tuple<TypeArticle, int>> TypeArticlesRendu(List<Commande> commandes)
+        {
+            List<Tuple<TypeArticle, int>> retour = new List<Tuple<TypeArticle, int>>();
+            Tuple<TypeArticle, int> tuple;
+            foreach (Commande cmd in commandes)
+            {
+                foreach(Article art in cmd.listArticles)
+                {
+                    foreach(Tuple<TypeArticle, int> listType in retour)
+                    {
+                        if (listType.Item1.nom.Equals(art.type.nom))
+                        {
+                            //listType.Item2 = listType.Item2 + 1;
+                        }
+                    }
+                    tuple = new Tuple<TypeArticle, int>(art.type, 1);
+                }
+                
+            }
+
+
+            return retour;
+        }
         #endregion
     }
 }
