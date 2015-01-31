@@ -14,6 +14,7 @@ namespace App_pressing_Loreau.Model.DTO
         public string photo { get; set; }
         public string commentaire { get; set; }
         public bool ifRendu { get; set; }
+        public DateTime date_rendu { get; set; }
         public float TVA { get; set; }
         public float TTC { get; set; }
         public int fk_commande { get; set; }
