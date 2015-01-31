@@ -181,8 +181,6 @@ namespace App_pressing_Loreau.Data.DAO
                     clt_contactsms = ((msdr["clt_contactsms"].ToString()).Equals("False")) ? false : true;
                     clt_type = ((msdr["clt_type"].ToString()).Equals("False")) ? 0 : 1;
 
-                    //if(){
-
 
                     client = new Client(
                         Int32.Parse(msdr["clt_id"].ToString()),
@@ -338,6 +336,91 @@ namespace App_pressing_Loreau.Data.DAO
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données."));
                 MessageBox.Show(Ex.InnerException.ToString());
+                return null;
+            }
+        }
+
+        //Give the amount command open today
+        /* @Param plage date :
+            * 1 : par jour
+            * 2 : par semaine
+            * 3 : par mois
+            * 4 : par année
+         */
+        public static List<Client> listClientAddToday(int plageDate)
+        {
+            try
+            {
+                List<Client> retour = new List<Client>();
+                List<int> cltList = new List<int>();
+
+                //connection à la base de données  
+                MySqlCommand cmd = new MySqlCommand(Bdd.listClientAddToday, Bdd.connexion());
+
+                //ajout des parametres
+                switch (plageDate)
+                {
+                    //par jour
+                    case 1:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par semaine
+                    case 2:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(SecondaryDateTime.GetMonday(DateTime.Now).Year, SecondaryDateTime.GetMonday(DateTime.Now).Month, SecondaryDateTime.GetMonday(DateTime.Now).Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par mois
+                    case 3:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par année
+                    case 4:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                }
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                Client client;
+                bool contactmail = false;
+                bool clt_contactsms;
+                int clt_type;
+
+                while (msdr.Read())
+                {
+                    contactmail = ((msdr["clt_contactmail"].ToString()).Equals("False")) ? false : true;
+                    clt_contactsms = ((msdr["clt_contactsms"].ToString()).Equals("False")) ? false : true;
+                    clt_type = ((msdr["clt_type"].ToString()).Equals("False")) ? 0 : 1;
+
+
+                    client = new Client(
+                        Int32.Parse(msdr["clt_id"].ToString()),
+                        msdr["clt_nom"].ToString(),
+                        msdr["clt_prenom"].ToString(),
+                        msdr["clt_fix"].ToString(),
+                        msdr["clt_mob"].ToString(),
+                        Adresse.Parse(msdr["clt_adresse"].ToString()),
+                        DateTime.Parse(msdr["clt_dateNaissance"].ToString()),
+                        msdr["clt_email"].ToString(),
+                        DateTime.Parse(msdr["clt_dateInscription"].ToString()),
+                        Int32.Parse(msdr["clt_idCleanway"].ToString()),
+                        contactmail,
+                        clt_contactsms,
+                        clt_type);
+                    retour.Add(client);
+
+
+
+                }
+                msdr.Dispose();
+                return retour;
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
                 return null;
             }
         }

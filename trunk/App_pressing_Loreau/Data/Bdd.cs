@@ -79,6 +79,7 @@ namespace App_pressing_Loreau.Data
         public static String updateArticle = "UPDATE article SET art_id=?,art_photo=?,art_commentaire=?,art_rendu=?,art_TVA=?,art_TTC=?,art_conv_id=?,art_cmd_id=?,art_typ_id=?, art_cmd_id=? WHERE art_id=?";
         public static String deleteArticle = "DELETE FROM article WHERE art_id=?";
         public static String lastArticle = "SELECT MAX(art_id) AS art_id FROM article";
+        public static String selectArticleRenduByDate = "SELECT art_id, art_photo, art_commentaire, art_rendu, art_TVA, art_TTC, art_conv_id, art_typ_id, art_cmd_id FROM article WHERE art_date_rendu BETWEEN ? AND ?";
 
         //Client
         public static String insertClient = "INSERT INTO client(clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_idCleanway, clt_contactmail, clt_contactsms, clt_type) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
@@ -88,6 +89,7 @@ namespace App_pressing_Loreau.Data
         public static String updateClient = "UPDATE client SET clt_id=?,clt_type=?,clt_nom=?,clt_prenom=?,clt_contactmail=?,clt_contactsms=?,clt_fix=?,clt_mob=?,clt_adresse=?,clt_dateNaissance=?,clt_email=?,clt_idCleanway=? WHERE clt_id=?";
         public static String deleteClient = "DELETE FROM client WHERE clt_id=?";
         public static String lastClient = "SELECT MAX(clt_id) AS clt_id FROM client";
+        public static String listClientAddToday = "SELECT clt_id, clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway, clt_contactmail, clt_contactsms, clt_type FROM client  WHERE clt_dateInscription BETWEEN ? AND ?";
 
         //Commande
         public static String insertCommande = "INSERT INTO commande(cmd_payee, cmd_remise, cmd_clt_id) VALUES (?,?,?)";
@@ -99,7 +101,7 @@ namespace App_pressing_Loreau.Data
         public static String lastCommande = "SELECT MAX(cmd_id) AS cmd_id FROM commande";
         public static String totalTTCCommandeById = "SELECT SUM(art_TTC) AS total FROM article WHERE art_cmd_id=?";
         public static String totalPayedCommandeById = "SELECT SUM(pai_montant) AS total FROM paiement WHERE pai_cmd_id=?";
-        public static String listCommandeRenduToday = "SELECT com_id, cmd_clt_id, cmd_date, cmd_payee, cmd_remise, cmd_date_rendu FROM commentaire WHERE cmd_date_rendu BETWEEN ? AND ?";
+        public static String listCommandeRecuToday = "SELECT com_id, cmd_clt_id, cmd_date, cmd_payee, cmd_remise, cmd_date_rendu FROM commentaire WHERE cmd_date BETWEEN ? AND ?";
 
         //Commentaire
         public static String insertCommentaire = "INSERT INTO commentaire(com_com) VALUES (?)";

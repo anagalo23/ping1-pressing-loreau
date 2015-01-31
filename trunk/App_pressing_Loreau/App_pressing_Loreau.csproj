@@ -115,6 +115,7 @@
     <Compile Include="Model\FactureExcel.cs" />
     <Compile Include="Model\LectureExcel.cs" />
     <Compile Include="Model\LogExcel.cs" />
+    <Compile Include="Model\SecondaryDateTime.cs" />
     <Compile Include="ViewModel\ObservableObject.cs" />
     <Compile Include="Helper\RelayCommand.cs" />
     <Compile Include="Model\Adresse.cs" />
