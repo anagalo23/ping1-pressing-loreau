@@ -68,5 +68,7 @@ namespace App_pressing_Loreau.Helper
         //*********************************************************************************GESTION DES RENDU COMMANDE
 
         public static CommandeConcernantRA_DATA _renduCommande { get; set; }
+
+        public static CommandeConcernantRA_DATA _rendreArticlesSelectionnes { get; set; }
     }
 }

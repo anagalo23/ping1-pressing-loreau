@@ -39,6 +39,7 @@ namespace App_pressing_Loreau.ViewModel
         {
 
             Label_statistique_cadep = new float();
+            Label_statistique_catotal = new float();
         }
 
         #endregion
@@ -187,7 +188,7 @@ namespace App_pressing_Loreau.ViewModel
                 ChiffreAffaireDuJour += paye.montant;
             }
 
-            Label_statistique_cadep = ChiffreAffaireDuJour;
+            Label_statistique_catotal = ChiffreAffaireDuJour;
             //MessageBox.Show("" + _label_statistique_catotal);
         }
 

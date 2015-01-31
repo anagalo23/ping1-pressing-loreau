@@ -47,6 +47,7 @@ namespace App_pressing_Loreau.ViewModel
         {
             Cbb_restitutionClient_choix_theme = choixbox.ListeChamp();
             ClasseGlobale._renduCommande = null;
+            ClasseGlobale._contentDetailCommande = null;
         }
 
 
