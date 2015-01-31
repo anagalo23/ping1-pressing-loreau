@@ -293,6 +293,62 @@ namespace App_pressing_Loreau.Data.DAO
             }
         }
 
+        //Give the amount command ending today
+        public static List<Commande> listCommandeRenduToday()
+        {
+            try
+            {
+                List<Commande> retour = new List<Commande>();
+                List<int> cltList = new List<int>();
+
+                //connection à la base de données  
+                MySqlCommand cmd = new MySqlCommand(Bdd.listCommandeRenduToday, Bdd.connexion());
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0));
+                cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                Commande commande;
+                int id_clt;
+                while (msdr.Read())
+                {
+                    commande = new Commande(
+                        Int32.Parse(msdr["cmd_id"].ToString()),
+                        DateTime.Parse(msdr["cmd_date"].ToString()),
+                        Boolean.Parse(msdr["cmd_payee"].ToString()),
+                        float.Parse(msdr["cmd_remise"].ToString()));
+                    commande.date_rendu = DateTime.Parse(msdr["cmd_date_rendu"].ToString());
+                    id_clt = Int32.Parse(msdr["cmd_clt_id"].ToString());
+                    retour.Add(commande);
+                    cltList.Add(id_clt);
+                }
+
+                #region ajout article
+                
+                    foreach (Commande comm in retour)
+                        comm.listArticles = ArticleDAO.selectArticleByIdCmd(comm.id);
+                
+                #endregion
+
+                #region ajout client
+                    for(int i = 0; i<retour.Count; i++) {
+                        //parametres en false afin de ne pas boucler
+                        retour[i].client = ClientDAO.selectClientById(cltList[i], false, false, false);
+                    }
+                #endregion
+
+                return retour;
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                return null;
+            }
+        }
+
+
         //Inserer une commande dans la base de données
         public static int updateCommande(Commande commande)
         {
