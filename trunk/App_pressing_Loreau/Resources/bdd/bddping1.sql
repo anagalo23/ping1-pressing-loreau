@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `article` (
   `art_photo` varchar(150) DEFAULT NULL,
   `art_commentaire` text,
   `art_rendu` tinyint(1) NOT NULL,
+  `art_date_rendu` timestamp NULL DEFAULT NULL,
   `art_TVA` float NOT NULL,
   `art_TTC` float NOT NULL,
   `art_conv_id` int(11) DEFAULT NULL,
