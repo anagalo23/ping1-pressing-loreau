@@ -375,23 +375,55 @@ namespace App_pressing_Loreau.ViewModel
             //On récupère la classe globale contenant les articles et on calcul le prix
             ObservableCollection<ArticlesVM> cmdDetail = ClasseGlobale._contentDetailCommande;
 
+             Commande CommandeRendue = ClasseGlobale._renduCommande.commande;
+              Commande comRenduPaye = (Commande) CommandeDAO.selectCommandeById(CommandeRendue.id, true, true, false);
             float prixHT = 0;
             float prixTTC = 0;
-            try
+            float prixTTCrendu = 0;
+            float prixHTrendu = 0;
+            if (cmdDetail != null)
             {
-                foreach (ArticlesVM art in cmdDetail)
+                try
                 {
-                    prixTTC += art.typeArticle.TTC;
-                    prixHT += art.typeArticle.TTC * (1 - art.typeArticle.TVA / 100);
+                    foreach (ArticlesVM art in cmdDetail)
+                    {
+                        prixTTC += art.typeArticle.TTC;
+                        prixHT += art.typeArticle.TTC * (1 - art.typeArticle.TVA / 100);
+                    }
+                    Label_paiement_prixHT = prixHT + "  €";
+                    Label_paiement_prixTTC = prixTTC + "  €";
+                    Label_paiement_montant = prixTTC - Txb_paiement_montantRemise + "  €";
                 }
-                Label_paiement_prixHT = prixHT + "  €";
-                Label_paiement_prixTTC = prixTTC + "  €";
-                Label_paiement_montant = prixTTC - Txb_paiement_montantRemise + "  €";
+                catch (Exception e)
+                {
+                    //Inscription en log
+                }
             }
-            catch (Exception e)
+            else if (comRenduPaye != null)
             {
-                //Inscription en log
+                try
+                {
+                    foreach (Payement paye in comRenduPaye.listPayements)
+                    {
+                        prixTTC += paye.montant;
+                        prixHT += paye.montant * (1 - comRenduPaye.listArticles[0].TVA / 100);
+                    }
+
+                    foreach (Article artic in comRenduPaye.listArticles)
+                    {
+                        prixTTCrendu += artic.TTC;
+                        prixHTrendu += artic.TTC * (1 - artic.TVA / 100);
+                    }
+                    Label_paiement_prixHT = prixHTrendu - prixHT + "  €";
+                    Label_paiement_prixTTC = prixTTCrendu-prixTTC + "  €";
+                    Label_paiement_montant = prixTTCrendu-prixTTC - Txb_paiement_montantRemise + "  €";
+                }
+                catch (Exception e)
+                {
+                    //Inscription en log
+                }
             }
+            
 
         }
 

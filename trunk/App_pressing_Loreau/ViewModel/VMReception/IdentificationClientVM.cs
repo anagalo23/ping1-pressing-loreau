@@ -35,7 +35,7 @@ namespace App_pressing_Loreau.ViewModel
 
         public IdentificationClientVM()
         {
-           
+            ClasseGlobale.initializeContentDetailCommande();
 
         }
 

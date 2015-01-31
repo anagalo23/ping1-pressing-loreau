@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using App_pressing_Loreau.Helper;
 using Microsoft.Practices.Prism.Commands;
 using App_pressing_Loreau.Model.DTO;
+using App_pressing_Loreau.Data.DAO;
 
 namespace App_pressing_Loreau.ViewModel
 {
@@ -28,7 +29,7 @@ namespace App_pressing_Loreau.ViewModel
         {
             LaCommande();
         }
-            
+
         #endregion
 
         #region properties and Commands
@@ -113,32 +114,41 @@ namespace App_pressing_Loreau.ViewModel
             AfficheDetailCommande = new List<ArticlesRestitutionVM>();
 
             Commande com = ClasseGlobale._renduCommande.commande;
+            Commande comPaye = (Commande)CommandeDAO.selectCommandeById(com.id, true, false, false);
             if (com != null)
             {
                 foreach (Article art in com.listArticles)
                 {
-                    AfficheDetailCommande.Add(new ArticlesRestitutionVM() { ar=art, ArticlesNameRes=art.type.nom});
+                    AfficheDetailCommande.Add(new ArticlesRestitutionVM() { ar = art, ArticlesNameRes = art.type.nom });
                 }
             }
             if (com.payee == false)
             {
                 Label_EtatPaiementCommande = "Commande non réglée";
                 Label_prixTTC = 0;
-             
+                float prixTotal = 0;
+                float prixPaye = 0;
+
                 foreach (Article arti in com.listArticles)
                 {
-                    Label_prixTTC += (arti.TTC);
+                    prixTotal += (arti.TTC);
                 }
+
+                foreach (Payement p in comPaye.listPayements)
+                {
+                    prixPaye += p.montant;
+                }
+
+                Label_prixTTC = prixTotal - prixPaye;
             }
             else
             {
                 Label_EtatPaiementCommande = "Commande  réglée";
-                 Label_prixTTC=0;
+                Label_prixTTC = 0;
 
             }
-          
-            //AfficheDetailCommande.Add(new ArticlesRestitutionVM() { ArticlesNameRes = "Slt", IsSelectedArticle = false });
-         
+
+
         }
         #endregion
 
