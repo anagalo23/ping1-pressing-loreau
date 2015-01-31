@@ -24,7 +24,7 @@ namespace App_pressing_Loreau.Model
         List<Payement> listUsedTypePaiement;
 
         //informations type article
-        List<TypeArticle> listUsedTypeArticle;
+        List<String> listUsedTypeArticle;
         List<int> reçutArticle;
         List<int> renduArticle;
 
@@ -46,32 +46,64 @@ namespace App_pressing_Loreau.Model
         public LectureExcel(int type)
         {
             this.type = type;
+            
             listUsedTypePaiement = PayementDAO.listSommePaiementToday();
-
+            List<Commande> listCommandeRecuToday = CommandeDAO.listCommandeRecuToday(1);
+            TypeArticlesRendu(ArticleDAO.selectArticleRenduByDate(1),listCommandeRecuToday);
+            nbNewCommande = listCommandeRecuToday.Count;
+            nbNewClient = ClientDAO.listClientAddToday(1).Count;
         }
 
-        public List<Tuple<TypeArticle, int>> TypeArticlesRendu(List<Commande> commandes)
+        public void TypeArticlesRendu(List<Article> articlesrendu, List<Commande> articlesrendurecu)
         {
-            List<Tuple<TypeArticle, int>> retour = new List<Tuple<TypeArticle, int>>();
-            Tuple<TypeArticle, int> tuple;
-            foreach (Commande cmd in commandes)
+            IDictionary<string, float> retour;
+            Boolean ifExist;
+
+            foreach (Article art in articlesrendu)
             {
-                foreach(Article art in cmd.listArticles)
+                ifExist = false;
+                //Jusque là on a déroulé tout les articles de toute les commandes
+                //recherche d'articles déja entrés
+                for (int i = 0; i < listUsedTypeArticle.Count; i++)
                 {
-                    foreach(Tuple<TypeArticle, int> listType in retour)
+                    if (listUsedTypeArticle[i].Contains(art.type.nom))
                     {
-                        if (listType.Item1.nom.Equals(art.type.nom))
+                        renduArticle[i]++;
+                        ifExist = true;
+                        break;
+                    }
+                }
+
+                if (!ifExist)
+                {
+                    listUsedTypeArticle.Add(art.type.nom);
+                    renduArticle.Add(1);
+                    reçutArticle.Add(0);
+                }
+            }
+            foreach (Commande cmd in articlesrendurecu)
+                foreach (Article art in cmd.listArticles)
+                {
+                    ifExist = false;
+                    //Jusque là on a déroulé tout les articles de toute les commandes
+                    //recherche d'articles déja entrés
+                    for (int i = 0; i < listUsedTypeArticle.Count; i++)
+                    {
+                        if (listUsedTypeArticle[i].Contains(art.type.nom))
                         {
-                            //listType.Item2 = listType.Item2 + 1;
+                            reçutArticle[i]++;
+                            ifExist = true;
+                            break;
                         }
                     }
-                    tuple = new Tuple<TypeArticle, int>(art.type, 1);
+
+                    if (!ifExist)
+                    {
+                        listUsedTypeArticle.Add(art.type.nom);
+                        renduArticle.Add(0);
+                        reçutArticle.Add(1);
+                    }
                 }
-                
-            }
-
-
-            return retour;
         }
         #endregion
     }

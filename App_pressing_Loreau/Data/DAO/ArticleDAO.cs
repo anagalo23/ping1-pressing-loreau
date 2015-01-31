@@ -7,6 +7,7 @@ using MySql.Data.MySqlClient;
 
 using App_pressing_Loreau.Model.DTO;
 using App_pressing_Loreau.Data;
+using App_pressing_Loreau.Model;
 
 namespace App_pressing_Loreau.Data.DAO
 {
@@ -99,6 +100,85 @@ namespace App_pressing_Loreau.Data.DAO
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("id", cmd_id);
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                Article article;
+                while (msdr.Read())
+                {
+                    article = new Article(
+                        Int32.Parse(msdr["art_id"].ToString()),
+                        msdr["art_photo"].ToString(),
+                        msdr["art_commentaire"].ToString(),
+                        bool.Parse(msdr["art_rendu"].ToString()),
+                        float.Parse(msdr["art_TVA"].ToString()),
+                        float.Parse(msdr["art_TTC"].ToString()),
+                        new TypeArticle(Int32.Parse(msdr["art_typ_id"].ToString()), null, 0, 0, 0, null),
+                        new PlaceConvoyeur(Int32.Parse(msdr["art_conv_id"].ToString()), 0, 0),
+                        Int32.Parse(msdr["art_cmd_id"].ToString()));
+
+                    retour.Add(article);
+                }
+                msdr.Dispose();
+
+                #region ajout des types, des departements et des places convoyeurs
+                foreach (Article art in retour)
+                {
+                    art.type = TypeArticleDAO.selectTypesById(art.type.id);
+                    art.convoyeur = PlaceConvoyeurDAO.selectConvoyeurById(art.convoyeur.id);
+                }
+                #endregion
+
+                return retour;
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un article dans la base de données."));
+                return null;
+            }
+        }
+
+        /*
+         * Selectionner les articles rendu en fonction de la date
+         * @Param plage date :
+         * 1 : par jour
+         * 2 : par semaine
+         * 3 : par mois
+         * 4 : par année
+         */
+        public static List<Article> selectArticleRenduByDate(int plageDate)
+        {
+            try
+            {
+                List<Article> retour = new List<Article>();
+
+                //connection à la base de données
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectArticleRenduByDate, Bdd.connexion());
+
+                //ajout des parametres
+                switch (plageDate)
+                {
+                    //par jour
+                    case 1:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par semaine
+                    case 2:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(SecondaryDateTime.GetMonday(DateTime.Now).Year, SecondaryDateTime.GetMonday(DateTime.Now).Month, SecondaryDateTime.GetMonday(DateTime.Now).Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par mois
+                    case 3:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par année
+                    case 4:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                }
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();

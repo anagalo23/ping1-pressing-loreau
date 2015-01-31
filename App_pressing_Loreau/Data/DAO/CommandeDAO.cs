@@ -21,7 +21,7 @@ namespace App_pressing_Loreau.Data.DAO
 
                 //ajout des parametres
                 int payee = (commande.payee) ? 1 : 0;
-                cmd.Parameters.AddWithValue("payee", payee); 
+                cmd.Parameters.AddWithValue("payee", payee);
                 cmd.Parameters.AddWithValue("remise", commande.remise);
                 cmd.Parameters.AddWithValue("clt_id", commande.client.id);
 
@@ -44,7 +44,7 @@ namespace App_pressing_Loreau.Data.DAO
             try
             {
                 List<Commande> retour = new List<Commande>();
-                
+
                 //connection à la base de données  
                 MySqlCommand cmd = new MySqlCommand(Bdd.selectCommandes, Bdd.connexion());
 
@@ -66,7 +66,7 @@ namespace App_pressing_Loreau.Data.DAO
                 msdr.Dispose();
 
                 #region ajout paiement
-                if(addPaiement)
+                if (addPaiement)
                 {
                     foreach (Commande comm in retour)
                         comm.listPayements = PayementDAO.selectPayementByCommande(comm.id);
@@ -74,7 +74,7 @@ namespace App_pressing_Loreau.Data.DAO
                 #endregion
 
                 #region ajout article
-                if(addArticles)
+                if (addArticles)
                 {
                     foreach (Commande comm in retour)
                         comm.listArticles = ArticleDAO.selectArticleByIdCmd(comm.id);
@@ -87,7 +87,7 @@ namespace App_pressing_Loreau.Data.DAO
                     foreach (Commande comm in retour)
                         //parametres en false afin de ne pas boucler
                         comm.client = ClientDAO.selectClientById(comm.client.id, false, false, false);
-                    
+
                 }
                 #endregion
 
@@ -208,14 +208,14 @@ namespace App_pressing_Loreau.Data.DAO
                 #region ajout paiement
                 if (addPaiement)
                 {
-                        retour.listPayements = PayementDAO.selectPayementByCommande(retour.id);
+                    retour.listPayements = PayementDAO.selectPayementByCommande(retour.id);
                 }
                 #endregion
 
                 #region ajout article
                 if (addArticles)
                 {
-                        retour.listArticles = ArticleDAO.selectArticleByIdCmd(retour.id);
+                    retour.listArticles = ArticleDAO.selectArticleByIdCmd(retour.id);
                 }
                 #endregion
 
@@ -223,7 +223,7 @@ namespace App_pressing_Loreau.Data.DAO
                 if (addClient)
                 {
                     if (id_clt >= 0)
-                    retour.client = ClientDAO.selectClientById(id_clt, false, false, false);
+                        retour.client = ClientDAO.selectClientById(id_clt, false, false, false);
                 }
                 #endregion
 
@@ -293,8 +293,14 @@ namespace App_pressing_Loreau.Data.DAO
             }
         }
 
-        //Give the amount command ending today
-        public static List<Commande> listCommandeRenduToday()
+        //Give the amount command open today
+        /* @Param plage date :
+            * 1 : par jour
+            * 2 : par semaine
+            * 3 : par mois
+            * 4 : par année
+         */
+        public static List<Commande> listCommandeRecuToday(int plageDate)
         {
             try
             {
@@ -302,11 +308,32 @@ namespace App_pressing_Loreau.Data.DAO
                 List<int> cltList = new List<int>();
 
                 //connection à la base de données  
-                MySqlCommand cmd = new MySqlCommand(Bdd.listCommandeRenduToday, Bdd.connexion());
+                MySqlCommand cmd = new MySqlCommand(Bdd.listCommandeRecuToday, Bdd.connexion());
 
                 //ajout des parametres
-                cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0));
-                cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                switch (plageDate)
+                {
+                    //par jour
+                    case 1:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par semaine
+                    case 2:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(SecondaryDateTime.GetMonday(DateTime.Now).Year, SecondaryDateTime.GetMonday(DateTime.Now).Month, SecondaryDateTime.GetMonday(DateTime.Now).Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par mois
+                    case 3:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par année
+                    case 4:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                }
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
@@ -326,17 +353,18 @@ namespace App_pressing_Loreau.Data.DAO
                 }
 
                 #region ajout article
-                
-                    foreach (Commande comm in retour)
-                        comm.listArticles = ArticleDAO.selectArticleByIdCmd(comm.id);
-                
+
+                foreach (Commande comm in retour)
+                    comm.listArticles = ArticleDAO.selectArticleByIdCmd(comm.id);
+
                 #endregion
 
                 #region ajout client
-                    for(int i = 0; i<retour.Count; i++) {
-                        //parametres en false afin de ne pas boucler
-                        retour[i].client = ClientDAO.selectClientById(cltList[i], false, false, false);
-                    }
+                for (int i = 0; i < retour.Count; i++)
+                {
+                    //parametres en false afin de ne pas boucler
+                    retour[i].client = ClientDAO.selectClientById(cltList[i], false, false, false);
+                }
                 #endregion
 
                 return retour;
@@ -365,7 +393,7 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("clt_id", commande.client.id);
                 cmd.Parameters.AddWithValue("remise", commande.remise);
                 cmd.Parameters.AddWithValue("id", commande.id);
-                
+
 
                 return cmd.ExecuteNonQuery();
             }
