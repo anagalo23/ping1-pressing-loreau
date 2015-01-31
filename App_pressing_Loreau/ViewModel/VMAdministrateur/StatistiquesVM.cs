@@ -179,7 +179,15 @@ namespace App_pressing_Loreau.ViewModel
         #region methods
         public void statisticsByDays()
         {
-            Label_statistique_cadep = 10;
+            float ChiffreAffaireDuJour = 0;
+
+            List<Payement> listePaiement = (List<Payement>)PayementDAO.listSommePaiementToday();
+            foreach (Payement paye in listePaiement)
+            {
+                ChiffreAffaireDuJour += paye.montant;
+            }
+
+            Label_statistique_cadep = ChiffreAffaireDuJour;
             //MessageBox.Show("" + _label_statistique_catotal);
         }
 

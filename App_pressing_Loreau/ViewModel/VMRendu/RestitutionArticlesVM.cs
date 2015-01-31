@@ -204,7 +204,7 @@ namespace App_pressing_Loreau.ViewModel
         }
         public void ContenuDeLaCommande()
         {
-            if (Txb_restitutionArticles_idFactures > 0 & Txb_restitutionArticles_idFactures <= CommandeDAO.selectCommandes(false, false, false).Count)
+            if (Txb_restitutionArticles_idFactures > 0 & Txb_restitutionArticles_idFactures <= CommandeDAO.lastCommande().id)
             {
 
 

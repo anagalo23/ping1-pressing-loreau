@@ -5,9 +5,9 @@
         xmlns:dz="http://schemas.devzest.com/presentation/docking"
         WindowState="Maximized"
         WindowStyle="ToolWindow"
-        ResizeMode="NoResize" 
+      
         ShowInTaskbar="False">
-
+    <!--ResizeMode="NoResize"-->
     <Window.Resources>
         <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
     </Window.Resources>
