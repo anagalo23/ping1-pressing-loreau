@@ -33,7 +33,7 @@ namespace App_pressing_Loreau.Model
         int nbNewClient;
 
         //Excel Interop
-        public static String pattern_path = "I:\\PING\\App_pressing_loreau\\App_pressing_Loreau\\Resources\\PatternExcel\\LecturePattern";
+        public static String pattern_path = "I:\\PING\\App_pressing_loreau\\App_pressing_Loreau\\Resources\\PatternFile\\LecturePattern";
         private Microsoft.Office.Interop.Excel.Application oXL;
         private Microsoft.Office.Interop.Excel.Workbook mWorkBook;
         private Microsoft.Office.Interop.Excel.Worksheet mWorkSheets;
