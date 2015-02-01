@@ -49,6 +49,7 @@ namespace App_pressing_Loreau.Model
             this.type = type;
             listUsedTypePaiement = PayementDAO.listSommePaiementToday();
             List<Commande> listCommandeRecuToday = CommandeDAO.listCommandeRecuToday(1);
+            listUsedTypeArticle = new List<string>();
             TypeArticlesRendu(ArticleDAO.selectArticleRenduByDate(1), listCommandeRecuToday);
             nbNewCommande = listCommandeRecuToday.Count;
             nbNewClient = ClientDAO.listClientAddToday(1).Count;
@@ -152,7 +153,6 @@ namespace App_pressing_Loreau.Model
 
         public void TypeArticlesRendu(List<Article> articlesrendu, List<Commande> articlesrendurecu)
         {
-            IDictionary<string, float> retour;
             Boolean ifExist;
 
             foreach (Article art in articlesrendu)
