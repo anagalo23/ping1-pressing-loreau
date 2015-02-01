@@ -352,7 +352,7 @@ namespace App_pressing_Loreau.Data.DAO
                 retour.Add(commande);
                 cltList.Add(id_clt);
             }
-
+            msdr.Dispose();
             #region ajout article
 
             foreach (Commande comm in retour)

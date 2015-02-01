@@ -206,19 +206,8 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //Commande cmd = new Commande(DateTime.Now, false, 3 / 2F, ClientDAO.lastClient());
-                //CommandeDAO.insertCommande(cmd);
-                //cmd = CommandeDAO.lastCommande();
-                //Article article = new Article(null, null, false, 20, 6, TypeArticleDAO.selectTypesById(1), PlaceConvoyeurDAO.selectConvoyeurById(4), cmd.id);
-                //ArticleDAO.insertArticle(article);
-                //ArticleDAO.insertArticle(article);
-                //ArticleDAO.insertArticle(article);
-                //ArticleDAO.insertArticle(article);
-                //Payement paiement = new Payement(DateTime.Now, 4 / 3F, TypePayementDAO.selectTypePayementById(1).nom, cmd.id);
-                //PayementDAO.insertPaiement(paiement);
-
-                //LectureExcel le = new LectureExcel(0);
-                //le.printLecture();
+                LectureExcel le = new LectureExcel(0);
+                le.printLecture();
 
 
 
@@ -238,8 +227,8 @@ namespace App_pressing_Loreau.Data.DAO
          */
         public static Client selectClientById(int client_id, Boolean addCommandes, Boolean cmd_addPaiement, Boolean cmd_addArticles)
         {
-            try
-            {
+            /*try
+            {*/
                 Client retour = new Client();
 
                 //connection à la base de données  
@@ -329,13 +318,13 @@ namespace App_pressing_Loreau.Data.DAO
                 #endregion
 
                 return client;
-            }
+            /*}
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données."));
                 MessageBox.Show(Ex.InnerException.ToString());
                 return null;
-            }
+            }*/
         }
 
         //Give the amount command open today
