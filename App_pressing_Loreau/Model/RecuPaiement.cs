@@ -27,54 +27,60 @@ namespace App_pressing_Loreau.Model
 
         public void printRecu()
         {
-            if (System.IO.File.Exists(copy_path + ".txt"))
+            try
+            {
+                if (System.IO.File.Exists(copy_path + ".txt"))
+                    System.IO.File.Delete(copy_path + ".txt");
+                System.IO.File.Copy(pattern_path + ".txt", copy_path + ".txt");
+
+
+                float total_TTC = 0;
+                float total_payee = 0;
+                foreach (Article art in commande.listArticles)
+                {
+                    total_TTC = total_TTC + art.TTC;
+                }
+                foreach (Payement paie in commande.listPayements)
+                {
+                    total_payee = total_payee + paie.montant;
+                }
+
+                File.AppendAllText(copy_path + ".txt", commande.client.nom + " " + commande.client.prenom + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", Environment.NewLine);
+
+                File.AppendAllText(copy_path + ".txt", DateTime.Now.ToString() + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "N° de commande : " + commande.id + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "Déposée le : " + commande.date.ToString("dd/MM/yyyy") + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "Total TTC : " + total_TTC + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "Total payé : " + total_payee + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "Commande : " + commande.listArticles.Count + " articles" + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", Environment.NewLine);
+
+                foreach (Article art in commande.listArticles)
+                {
+                    File.AppendAllText(copy_path + ".txt", "~ " + art.type.nom + Environment.NewLine);
+                }
+
+                File.AppendAllText(copy_path + ".txt", Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", Environment.NewLine);
+
+                PrintOff();
                 System.IO.File.Delete(copy_path + ".txt");
-            System.IO.File.Copy(pattern_path + ".txt", copy_path + ".txt");
-
-
-            float total_TTC = 0;
-            float total_payee = 0;
-            foreach (Article art in commande.listArticles)
-            {
-                total_TTC = total_TTC + art.TTC;
             }
-            foreach (Payement paie in commande.listPayements)
+            catch (Exception e)
             {
-                total_payee = total_payee + paie.montant;
+
             }
-
-            File.AppendAllText(copy_path + ".txt", commande.client.nom + " " + commande.client.prenom + Environment.NewLine);
-            File.AppendAllText(copy_path + ".txt", Environment.NewLine);
-
-            File.AppendAllText(copy_path + ".txt", DateTime.Now.ToString() + Environment.NewLine);
-            File.AppendAllText(copy_path + ".txt", Environment.NewLine);
-            File.AppendAllText(copy_path + ".txt", "N° de commande : " + commande.id + Environment.NewLine);
-            File.AppendAllText(copy_path + ".txt", "Déposée le : " + commande.date.ToString("dd/MM/yyyy") + Environment.NewLine);
-            File.AppendAllText(copy_path + ".txt", "Total TTC : " + total_TTC + Environment.NewLine);
-            File.AppendAllText(copy_path + ".txt", "Total payé : " + total_payee + Environment.NewLine);
-            File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
-            File.AppendAllText(copy_path + ".txt", Environment.NewLine);
-            File.AppendAllText(copy_path + ".txt", "Commande : " + commande.listArticles.Count + " articles" + Environment.NewLine);
-            File.AppendAllText(copy_path + ".txt", Environment.NewLine);
-
-            foreach (Article art in commande.listArticles)
-            {
-                File.AppendAllText(copy_path + ".txt", "~ " + art.type.nom + Environment.NewLine);
-            }
-
-            File.AppendAllText(copy_path + ".txt", Environment.NewLine);
-            File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
-            File.AppendAllText(copy_path + ".txt", Environment.NewLine);
-
-            Print();
-            System.IO.File.Delete(copy_path + ".txt");
-
 
         }
 
         //Print the document
         //source : http://www.c-sharpcorner.com/UploadFile/mahesh/printfile06062007133250PM/printfile.aspx
-        public void Print()
+        public void PrintOff()
         {
             string filename = copy_path + ".txt";
             //Create a StreamReader object
