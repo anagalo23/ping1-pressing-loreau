@@ -166,7 +166,7 @@ namespace App_pressing_Loreau.Data.DAO
                 List<Client> retour = new List<Client>();
 
                 //connection à la base de données  
-                MySqlCommand cmd = new MySqlCommand(/*Bdd.selectProClient*/Bdd.insertArticle, Bdd.connexion());
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectProClient, Bdd.connexion());
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
@@ -208,6 +208,8 @@ namespace App_pressing_Loreau.Data.DAO
             {
                 //LectureExcel le = new LectureExcel(1);
                 //le.printLecture();
+                //RecuPaiement rp = new RecuPaiement(CommandeDAO.selectCommandeById(1, true, true, true)); ;
+                //rp.printRecu();
 
 
 

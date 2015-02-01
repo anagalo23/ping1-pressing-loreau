@@ -115,6 +115,7 @@
     <Compile Include="Model\FactureExcel.cs" />
     <Compile Include="Model\LectureExcel.cs" />
     <Compile Include="Model\LogExcel.cs" />
+    <Compile Include="Model\RecuPaiement.cs" />
     <Compile Include="Model\SecondaryDateTime.cs" />
     <Compile Include="ViewModel\ObservableObject.cs" />
     <Compile Include="Helper\RelayCommand.cs" />
@@ -465,6 +466,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\bdd\bddping1.sql" />
+    <Resource Include="Resources\PatternFile\RecuPaiement.txt" />
     <Resource Include="Resources\pics\Paiements\valider.png" />
     <Resource Include="Resources\pics\Paiements\AmericanExpress.png" />
     <Resource Include="Resources\pics\Paiements\carte_bleue.png" />
@@ -490,6 +492,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Temp\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
