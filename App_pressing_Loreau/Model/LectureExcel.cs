@@ -47,12 +47,18 @@ namespace App_pressing_Loreau.Model
         public LectureExcel(int type)
         {
             this.type = type;
-            listUsedTypePaiement = PayementDAO.listSommePaiementToday();
+
+            listUsedDepartements = new List<Departement>();
+            caTTCDep = new List<float>();
+            listUsedTypePaiement = PayementDAO.listSommePaiementToday(1);
+            DepartmentTTC(ArticleDAO.selectArticleRenduByDate(1));
+
             List<Commande> listCommandeRecuToday = CommandeDAO.listCommandeRecuToday(1);
             listUsedTypeArticle = new List<string>();
             reçutArticle = new List<int>();
             renduArticle = new List<int>();
             TypeArticlesRendu(ArticleDAO.selectArticleRenduByDate(1), listCommandeRecuToday);
+
             nbNewCommande = listCommandeRecuToday.Count;
             nbNewClient = ClientDAO.listClientAddToday(1).Count;
         }
@@ -71,9 +77,21 @@ namespace App_pressing_Loreau.Model
                 mWorkSheets.Cells[index, 1] = "Lecture X - " + DateTime.Now.ToString("dd/MM/yyyy");
             if (type == 1)
                 mWorkSheets.Cells[index, 1] = "Lecture Z - " + DateTime.Now.ToString("dd/MM/yyyy");
+            //Inscription des TTC par département
+            index = 10;
+            float totalDep = 0;
+            for (int i = 0; i < listUsedTypePaiement.Count; i++)
+            {
+                mWorkSheets.Cells[index, 8] = listUsedDepartements[i].nom;
+                mWorkSheets.Cells[index, 12] = caTTCDep[i];
+                totalDep = totalDep + caTTCDep[i];
+                index++;
+            }
+            index = 22;
+            mWorkSheets.Cells[index, 12] = totalDep;
 
             //Inscription des Types de payements
-            index = index + 3;
+            index = 10;
             float total_payements = 0;
             foreach (Payement paie in listUsedTypePaiement)
             {
@@ -160,7 +178,7 @@ namespace App_pressing_Loreau.Model
             }
         }
 
-        public void TypeArticlesRendu(List<Article> articlesrendu, List<Commande> articlesrendurecu)
+        public void TypeArticlesRendu(List<Article> articlesrendu, List<Commande> articlesrecu)
         {
             Boolean ifExist;
 
@@ -186,7 +204,7 @@ namespace App_pressing_Loreau.Model
                     reçutArticle.Add(0);
                 }
             }
-            foreach (Commande cmd in articlesrendurecu)
+            foreach (Commande cmd in articlesrecu)
                 foreach (Article art in cmd.listArticles)
                 {
                     ifExist = false;
@@ -209,6 +227,33 @@ namespace App_pressing_Loreau.Model
                         reçutArticle.Add(1);
                     }
                 }
+        }
+
+        public void DepartmentTTC(List<Article> articlesrendu)
+        {
+            Boolean ifExist;
+
+            foreach (Article art in articlesrendu)
+            {
+                ifExist = false;
+                //Jusque là on a déroulé tout les articles
+                //recherche de départements déja entrés
+                for (int i = 0; i < listUsedDepartements.Count; i++)
+                {
+                    if (listUsedDepartements[i].nom.Contains(art.type.departement.nom))
+                    {
+                        caTTCDep[i] = caTTCDep[i] + art.TTC;
+                        ifExist = true;
+                        break;
+                    }
+                }
+
+                if (!ifExist)
+                {
+                    listUsedDepartements.Add(art.type.departement);
+                    caTTCDep.Add(art.TTC);
+                }
+            }
         }
         #endregion
     }
