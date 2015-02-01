@@ -12,31 +12,55 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows;
 using System.Windows.Interactivity;
+using Microsoft.Practices.Prism.Commands;
 
 namespace App_pressing_Loreau.ViewModel
 {
     class AdministrationClientProVM : ObservableObject
     {
         #region Atrributs
-        private List<UnClientProItem> _listeClientPro;
+        private List<UnClientProVM> _listeClientPro;
         private List<Client> listedesclientproDTO = null;
 
+        private String _label_identClientPro_choix;
         #endregion
 
-        #region
+        #region Constructeur
         public AdministrationClientProVM()
         {
             clientsPro();
         }
         #endregion
+
         #region Properties and commands
 
-        ICommand commandeClientPro;
-        public ICommand CommandeClientPro
+        public String Label_identClientPro_choix
         {
-            get { return commandeClientPro ?? (commandeClientPro = new RelayCommand(validerClientPro)); }
+            get { return _label_identClientPro_choix; }
+            set
+            {
+                if (value != _label_identClientPro_choix)
+                {
+                    _label_identClientPro_choix = value;
+                    OnPropertyChanged("Label_identClientPro_choix");
+                }
+            }
+
         }
-        public List<UnClientProItem> ListeClientPro
+
+        private DelegateCommand<UnClientProVM> commandeClientPro;
+
+        public DelegateCommand<UnClientProVM> CommandeClientPro
+        {
+            get
+            {
+                return this.commandeClientPro ?? (this.commandeClientPro = new DelegateCommand<UnClientProVM>(
+                                                                       this.validerClientPro,
+                                                                       (arg) => true));
+            }
+        }
+
+        public List<UnClientProVM> ListeClientPro
         {
             get { return _listeClientPro; }
 
@@ -49,48 +73,43 @@ namespace App_pressing_Loreau.ViewModel
         }
 
         #endregion
-        public void validerClientPro(object cltpro)
+        public void validerClientPro(UnClientProVM obj)
         {
-            InvokeCommandAction clikebutton = cltpro as InvokeCommandAction;
-
-            if (clikebutton != null)
+            if (ClasseGlobale.Client != obj.client)
             {
-                MessageBox.Show("Bon jour");
-               // clikebutton. = Brushes.Red;
-                
+                ClasseGlobale.Client = obj.client;
+
             }
+
+            if (ClasseGlobale.Client != null)
+            {
+                Label_identClientPro_choix = "Choix = " + ClasseGlobale.Client.nom ;
+            }
+
+            //MessageBox.Show(ClasseGlobale.Client.nom + "  " + ClasseGlobale.Client.id);
+            // clikebutton. = Brushes.Red;
+
         }
         public void clientsPro()
         {
-            ListeClientPro = new List<UnClientProItem>();
+            ListeClientPro = new List<UnClientProVM>();
 
             listedesclientproDTO = (List<Client>)ClientDAO.selectProClient();
             if (listedesclientproDTO != null)
             {
                 foreach (Client cl in listedesclientproDTO)
                 {
-                    ListeClientPro.Add(new UnClientProItem() { Label_idenClientPRO_nomSociete = cl.nom, idClientPro = 10 });
+                    ListeClientPro.Add(new UnClientProVM() { client = cl });
                 }
 
             }
             else
             {
-                ListeClientPro.Add(new UnClientProItem() { Label_idenClientPRO_nomSociete = "Esigelec", idClientPro = 10  });
-                ListeClientPro.Add(new UnClientProItem() { Label_idenClientPRO_nomSociete = "SNCF", idClientPro = 10  });
+                //ListeClientPro.Add(new UnClientProItem() { Label_idenClientPRO_nomSociete = "Esigelec", idClientPro = 10  });
+                //ListeClientPro.Add(new UnClientProItem() { Label_idenClientPRO_nomSociete = "SNCF", idClientPro = 10  });
 
             }
         }
-       
+
     }
-
-
-
-    #region Class
-    class UnClientProItem
-    {
-        public String Label_idenClientPRO_nomSociete { get; set; }
-        public String Label_identCleint_siret { get; set; }
-        public int idClientPro { get; set; }
-    }
-    #endregion
 }

@@ -1,0 +1,144 @@
+﻿<UserControl x:Class="App_pressing_Loreau.View.NouvelleCommandeClientPro"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:App_pressing_Loreau.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="740">
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
+    </UserControl.Resources>
+
+    <!-- Contenu du code-->
+
+    <DockPanel x:Name="dp">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <Border  Grid.Column="0" Margin="10"  BorderThickness="2" BorderBrush="AliceBlue">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="13*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Bouton precedent-->
+                    <Button  Background="Beige" Command="{Binding  CommandePrecedente }" BorderThickness="0" CommandParameter=" ">
+                        <Image Source="/Resources/pics/precedent.png" Height="25"/>
+                    </Button>
+
+                    <!-- tous les articles par departement-->
+                    <Border BorderBrush="Aqua" BorderThickness="2" Grid.Column="1" CornerRadius="15">
+
+                        <DockPanel Margin="2">
+
+                            <Border DockPanel.Dock="Top" Height="62">
+                                <ListBox  ScrollViewer.HorizontalScrollBarVisibility="Hidden" BorderThickness="0" Background="Transparent" ItemsSource="{Binding ListeDepartements}" ItemTemplate="{StaticResource departement}"  >
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <VirtualizingStackPanel Orientation="Horizontal"/>
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                </ListBox>
+                            </Border>
+                            <!-- <ContentControl  Content="{Binding ContentCommande}"/>-->
+                            <ItemsControl x:Name="Collection" ItemsSource="{Binding  ListeArticles}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2,10,2,2">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type vm:ArticlesVM}">
+                                        <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+                                            <Border Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}">
+                                                <Grid>
+                                                    <Button x:Name="button1"  Width="160" Height="62" Margin="2"         
+                                                            Content="{Binding ButtonArticlesContent}"
+                                                            Tag="{Binding ButtonArticlesTag}"
+                                                            Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ListesArticlesCommandes}"
+                                                            CommandParameter="{Binding ElementName=button1}"
+                                                            Style="{StaticResource ArticlesStyles}"
+                                                            
+                                                             />
+                                                </Grid>
+                                            </Border>
+                                        </Canvas>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                        </DockPanel>
+
+                    </Border>
+                    <Button Grid.Column="2"  Background="Beige" BorderThickness="0" Command="{Binding  CommandeSuivante }"  CommandParameter="">
+                        <Image Source="/Resources/pics/suivant.png"/>
+                    </Button>
+
+
+                </Grid>
+
+            </Border>
+
+            <Border Grid.Column="1" Margin="10" CornerRadius="10" BorderBrush="AliceBlue" BorderThickness="2">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="6*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Contenu de la commande" Style="{StaticResource Titre}"/>
+
+                    <!-- Contenu de la commande -->
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="6*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <DockPanel Grid.Row="0">
+
+                            <ListBox Margin="5" Background="Transparent" BorderThickness="0"  ItemsSource="{Binding ContentDetailCommande}" />
+
+                        </DockPanel>
+
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1*"/>
+
+                            </Grid.ColumnDefinitions>
+                            <!--<Button x:Name="btn_nouvellecommande_valider" Grid.Column="0" Content="Valider commande" Command="{Binding Btn_nouvellecommande_valider}" Margin="3"/>-->
+                            <Label Content="Total à payer :" Style="{StaticResource vertilabel25}" Grid.Column="0" HorizontalContentAlignment="Left"/>
+                            <Label Content="{Binding Label_NouvelleCommande_prixTotal}" Style="{StaticResource vertilabel25}"  Grid.Column="1" />
+
+                        </Grid>
+
+                    </Grid>
+
+                    <Grid Grid.Row="2">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <Button x:Name="btn_nouvelleCommandeClientPro_EnregistrerCommande" Content="Enregistrer Commande" Grid.Column="0"
+                                Margin="5"  Style="{StaticResource personalisationbuton1}" Command="{Binding Btn_nouvelleCommandeClientPro_EnregistrerCommande}"/>
+                        <Button x:Name="btn_nouvelleCommandeClientPro_Retour" Background="Beige" Content="Retour"  Grid.Column="1" Margin="5"  Style="{StaticResource personalisationbuton1}" Click="btn_nouvelleCommandeClientPro_Retour_Click" />
+
+                    </Grid>
+
+                </Grid>
+            </Border>
+
+        </Grid>
+    </DockPanel>
+</UserControl>

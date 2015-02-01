@@ -37,7 +37,7 @@ namespace App_pressing_Loreau.View
         private void btn_administrationClientPro_nouvelleCommande_Click(object sender, RoutedEventArgs e)
         {
             dp.Children.Clear();
-            dp.Children.Add(new NouvelleCommande());
+            dp.Children.Add(new NouvelleCommandeClientPro());
 
         }
 

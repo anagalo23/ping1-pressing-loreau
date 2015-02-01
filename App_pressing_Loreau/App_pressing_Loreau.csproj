@@ -147,7 +147,9 @@
     <Compile Include="ViewModel\VMAdministrateur\AdministrationCaisseVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\AdministrationClientProVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\GestionUtilisateursVM.cs" />
+    <Compile Include="ViewModel\VMAdministrateur\NouvelleCommandeClientProVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\PageAdministrateurVM.cs" />
+    <Compile Include="ViewModel\VMAdministrateur\UnClientProVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\UnUtilisateurVM.cs" />
     <Compile Include="ViewModel\VMCLientPro\ClientPROVM.cs" />
     <Compile Include="ViewModel\ConvoyeurVM.cs" />
@@ -184,6 +186,9 @@
     </Compile>
     <Compile Include="View\UCAdministrateur\AdministrationConvoyeur.xaml.cs">
       <DependentUpon>AdministrationConvoyeur.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UCAdministrateur\NouvelleCommandeClientPro.xaml.cs">
+      <DependentUpon>NouvelleCommandeClientPro.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UCAdministrateur\ParametreAffichage.xaml.cs">
       <DependentUpon>ParametreAffichage.xaml</DependentUpon>
@@ -295,6 +300,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UCAdministrateur\AdministrationConvoyeur.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UCAdministrateur\NouvelleCommandeClientPro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
