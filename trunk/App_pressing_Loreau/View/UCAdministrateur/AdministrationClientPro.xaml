@@ -6,7 +6,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="740">
     <DockPanel x:Name="dp">
         <Grid Margin="5">
             <Grid.ColumnDefinitions>
@@ -21,10 +21,11 @@
                 </Grid.RowDefinitions>
                 <Label Content="Liste des clients Pro" Style="{StaticResource Titre}" Grid.Column="0" Grid.Row="0"/>
                 <DockPanel Grid.Row="1">
+                    <Border BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="10" Margin="5">
                     <ListBox Background="Transparent" Margin="5" ItemsSource="{Binding ListeClientPro}" BorderThickness="0">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Button BorderThickness="0"  Background="Transparent" Command="{Binding CommandeClientPro}" CommandParameter="{Binding}">
+                                    <Button BorderThickness="0"  Background="Transparent" Command="{Binding  RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.CommandeClientPro}" CommandParameter="{Binding}">
                                     <Grid>
                                         <Border BorderBrush="White" BorderThickness="1" CornerRadius="10">
                                             <Grid>
@@ -47,7 +48,7 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-
+                    </Border>
                 </DockPanel>
                 <Button  x:Name="btn_adminclientPro_nouveauclientPro" Grid.Row="2" Margin="5" Content="Nouveu client pro"  Style="{StaticResource personalisationbuton1}" Click="btn_adminclientPro_nouveauclientPro_Click"  />
             </Grid>
@@ -57,10 +58,14 @@
                     <RowDefinition Height="7*"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <Button x:Name="btn_administrationClientPro_nouvelleCommande" Content="Nouvelle Commande" Grid.Row="2" Margin="100,5" Style="{StaticResource personalisationbuton1}" Click="btn_administrationClientPro_nouvelleCommande_Click"/>
+                <Border Grid.Row="2" >
+                    <Label  Content="{Binding Label_identClientPro_choix,Mode=TwoWay}" Grid.Row="2" Style="{StaticResource vertilabel25}"/>
+                </Border>
+                <Button x:Name="btn_administrationClientPro_nouvelleCommande" Content="Nouvelle Commande" Grid.Row="3" Margin="100,1" Style="{StaticResource personalisationbuton1}" Click="btn_administrationClientPro_nouvelleCommande_Click"/>
 
-                <Button x:Name="btn_administrationClientPro_retour" Content="Retour" Grid.Row="3" Margin="100,5" Style="{StaticResource personalisationbuton1}" Click="btn_administrationClientPro_retour_Click"  />
+                <Button x:Name="btn_administrationClientPro_retour" Content="Retour" Grid.Row="4" Margin="100,1" Style="{StaticResource personalisationbuton1}" Click="btn_administrationClientPro_retour_Click"  />
 
             </Grid>
         </Grid>
