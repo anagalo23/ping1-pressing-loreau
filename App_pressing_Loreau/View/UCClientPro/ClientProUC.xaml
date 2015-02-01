@@ -43,8 +43,32 @@
                 <Label  Content="Détail des commandes par client" Style="{StaticResource Titre}" Grid.Row="0"/>
                 <DockPanel Grid.Row="1" Margin="3">
                     <Border BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="10">
-                                      
-                    <ListBox Background="Transparent" BorderThickness="0"  Margin="5" ItemsSource="{Binding DetailCommandeClientPro}" />
+
+                        <ListBox Background="Transparent" BorderThickness="0"  Margin="5" ItemsSource="{Binding DetailCommandeClientPro}">
+                            
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path= DataContext.DetailButtonCommandeClientPro}" CommandParameter="{Binding }" Background="Transparent" BorderThickness="0">
+                                        <Border BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="10">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition MinWidth="70" />
+                                                    <ColumnDefinition  MinWidth="40"/>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <Label Content="{Binding Label_datail_nomSociete}" Style="{StaticResource vertilabel18}" Grid.Column="0" />
+
+                                                <StackPanel Orientation="Vertical" Grid.Column="2" MinWidth="160" Margin="2">
+                                                    <TextBlock Text="Date de reception" FontWeight="Bold" FontSize="9pt" Foreground="Black"  />
+                                                    <TextBlock Text="{Binding Label_Detail_dateReception}" FontSize="13pt" Padding="0,0,0,3" Foreground="#525252" />
+                                                </StackPanel>
+                                            </Grid>
+                                        </Border>
+                                    </Button>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </Border>
                 </DockPanel>
                 <Grid Grid.Row="2">

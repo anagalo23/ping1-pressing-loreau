@@ -194,19 +194,19 @@ namespace App_pressing_Loreau.ViewModel
 
         public void statisticsByWeek()
         {
-           
-            Label_statistique_cadep = 100;
+
+            Label_statistique_catotal = 100;
             //MessageBox.Show("" + _label_statistique_catotal);
         }
 
         public void statisticsByMonth()
         {
-            Label_statistique_cadep = 160;
+            Label_statistique_catotal = 160;
         }
 
         public void statisticsByYear()
         {
-            Label_statistique_cadep = 380;
+            Label_statistique_catotal = 380;
         }
         #endregion
     }
