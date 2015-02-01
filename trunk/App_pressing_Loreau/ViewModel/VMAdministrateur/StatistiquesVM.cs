@@ -182,7 +182,7 @@ namespace App_pressing_Loreau.ViewModel
         {
             float ChiffreAffaireDuJour = 0;
 
-            List<Payement> listePaiement = (List<Payement>)PayementDAO.listSommePaiementToday();
+            List<Payement> listePaiement = (List<Payement>)PayementDAO.listSommePaiementToday(1);
             foreach (Payement paye in listePaiement)
             {
                 ChiffreAffaireDuJour += paye.montant;
@@ -194,19 +194,41 @@ namespace App_pressing_Loreau.ViewModel
 
         public void statisticsByWeek()
         {
+            float ChiffreAffaireDuJour = 0;
 
-            Label_statistique_catotal = 100;
-            //MessageBox.Show("" + _label_statistique_catotal);
+            List<Payement> listePaiement = (List<Payement>)PayementDAO.listSommePaiementToday(2);
+            foreach (Payement paye in listePaiement)
+            {
+                ChiffreAffaireDuJour += paye.montant;
+            }
+
+            Label_statistique_catotal = ChiffreAffaireDuJour;
         }
 
         public void statisticsByMonth()
         {
-            Label_statistique_catotal = 160;
+            float ChiffreAffaireDuJour = 0;
+
+            List<Payement> listePaiement = (List<Payement>)PayementDAO.listSommePaiementToday(3);
+            foreach (Payement paye in listePaiement)
+            {
+                ChiffreAffaireDuJour += paye.montant;
+            }
+
+            Label_statistique_catotal = ChiffreAffaireDuJour;
         }
 
         public void statisticsByYear()
         {
-            Label_statistique_catotal = 380;
+            float ChiffreAffaireDuJour = 0;
+
+            List<Payement> listePaiement = (List<Payement>)PayementDAO.listSommePaiementToday(4);
+            foreach (Payement paye in listePaiement)
+            {
+                ChiffreAffaireDuJour += paye.montant;
+            }
+
+            Label_statistique_catotal = ChiffreAffaireDuJour;
         }
         #endregion
     }

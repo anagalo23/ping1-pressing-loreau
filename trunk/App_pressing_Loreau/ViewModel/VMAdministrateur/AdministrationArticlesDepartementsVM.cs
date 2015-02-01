@@ -1,10 +1,14 @@
 ﻿using App_pressing_Loreau.Data.DAO;
+using App_pressing_Loreau.Helper;
 using App_pressing_Loreau.Model.DTO;
+using Microsoft.Practices.Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace App_pressing_Loreau.ViewModel
 {
@@ -16,6 +20,7 @@ namespace App_pressing_Loreau.ViewModel
         private ComboDepart _selected_adminArt_ChoixDepartDetele;
         private ComboArticles _selected_adminArt_ChoixArticlesDelete;
 
+        private DelegateCommand<AdministrationArticlesDepartementsVM> _supprimerArticles;
         private List<ComboArticles> _listeArticlesDelete;
 
         ComboDepart comboDepart = new ComboDepart();
@@ -33,14 +38,14 @@ namespace App_pressing_Loreau.ViewModel
             ListeDepartementChoixDelete = comboDepart.ListeDep();
 
             getArticles();
-           
+
         }
         #endregion
 
         #region Properties and commands
 
         #region Ajout articles
-       
+
         public List<ComboDepart> ListeDepartementChoix { get; set; }
 
         public ComboDepart Selected_adminArt_ChoixDepart
@@ -91,17 +96,31 @@ namespace App_pressing_Loreau.ViewModel
         #endregion
 
 
-        #region Supprimer article
+        #region Supprimer /Modifier  article
 
-       
-        public List<ComboDepart> ListeDepartementChoixDelete{get;set;}
-         public List<ComboArticles> ListeArticlesDelete 
+
+        public ICommand Btn_ValiderDepartement
+        {
+            get { return new RelayCommand(p => getArticles()); }
+
+        }
+        public List<ComboDepart> ListeDepartementChoixDelete { get; set; }
+        public List<ComboArticles> ListeArticlesDelete
         {
             get { return _listeArticlesDelete; }
             set
             {
                 _listeArticlesDelete = value;
                 RaisePropertyChanged("ListeArticlesDelete");
+            }
+        }
+        public DelegateCommand<AdministrationArticlesDepartementsVM> SupprimerArticles
+        {
+            get
+            {
+                return this._supprimerArticles ?? (this._supprimerArticles = new DelegateCommand<AdministrationArticlesDepartementsVM>(
+                                                                       this.ExecuteDeleteArticles,
+                                                                       (arg) => true));
             }
         }
 
@@ -113,9 +132,19 @@ namespace App_pressing_Loreau.ViewModel
                 if (value != _selected_adminArt_ChoixDepartDetele)
                 {
                     _selected_adminArt_ChoixDepartDetele = value;
-                    //getArticles();
                     RaisePropertyChanged("Selected_adminArt_ChoixDepartDetele");
                 }
+            }
+        }
+
+        public ComboArticles Selected_adminArt_ChoixArticlesDelete
+        {
+            get { return _selected_adminArt_ChoixArticlesDelete; }
+            set
+            {
+                _selected_adminArt_ChoixArticlesDelete = value;
+                OnPropertyChanged("Selected_adminArt_ChoixArticlesDelete");
+
             }
         }
 
@@ -123,6 +152,15 @@ namespace App_pressing_Loreau.ViewModel
         #endregion
 
         #region Methods
+
+        private void ExecuteDeleteArticles(AdministrationArticlesDepartementsVM obj)
+        {
+            if (obj.Selected_adminArt_ChoixArticlesDelete != null)
+            {
+                MessageBox.Show(obj.Selected_adminArt_ChoixArticlesDelete.NameArticles);
+            }
+
+        }
 
         public TypeArticle getTypeArticle()
         {
@@ -135,7 +173,7 @@ namespace App_pressing_Loreau.ViewModel
 
         private void getArticles()
         {
-            if (Selected_adminArt_ChoixDepartDetele!=null)
+            if (Selected_adminArt_ChoixDepartDetele != null)
             {
                 ListeArticlesDelete = comboArt.ListeArt(this._selected_adminArt_ChoixDepartDetele.cbbDepId);
 
