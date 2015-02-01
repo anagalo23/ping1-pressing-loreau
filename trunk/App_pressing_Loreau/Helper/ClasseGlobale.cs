@@ -13,7 +13,7 @@ namespace App_pressing_Loreau.Helper
 {
     class ClasseGlobale
     {
-        
+
 
         //*********************************************************************************GESTION DE LA LISTE DE COMMANDE
         public static ObservableCollection<ArticlesVM> _contentDetailCommande { get; set; }
@@ -47,14 +47,14 @@ namespace App_pressing_Loreau.Helper
             Client = new Client();
         }
 
-        
+
 
         //*******************************************************************************GESTION DE LA LISTE DES EMPLOYES
 
         public static List<Employe> listeEmployes { get; set; }
         public static void getAllEmployee()
         {
-            listeEmployes= (List<Employe>)EmployeDAO.selectEmployes();
+            listeEmployes = (List<Employe>)EmployeDAO.selectEmployes();
         }
 
 
@@ -69,6 +69,37 @@ namespace App_pressing_Loreau.Helper
 
         public static CommandeConcernantRA_DATA _renduCommande { get; set; }
 
-        public static CommandeConcernantRA_DATA _rendreArticlesSelectionnes { get; set; }
+
+        //*********************************************************************************GESTION DES PLACES LIBRES DU CONVOYEUR
+        public static ConvoyeurPlacesLibres _placesLibres;
+        public static void _initializePlacesLibres()
+        {
+            _placesLibres = new ConvoyeurPlacesLibres();
+        }
+
+
+    }
+
+    class ConvoyeurPlacesLibres
+    {
+
+        public static List<PlaceConvoyeur> _placesConvoyeurLibres;
+
+        public static void _initializePlacesLibres()
+        {
+            _placesConvoyeurLibres = new List<PlaceConvoyeur>();
+        }
+
+        public PlaceConvoyeur this[int index]
+        {
+            get
+            {
+                return _placesConvoyeurLibres[index];
+            }
+            set
+            {
+                    _placesConvoyeurLibres[index] = value;
+            }
+        }
     }
 }
