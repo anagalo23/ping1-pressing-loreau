@@ -67,8 +67,15 @@ namespace App_pressing_Loreau.Helper
 
         //*********************************************************************************GESTION DES RENDU COMMANDE
 
-        public static CommandeConcernantRA_DATA _renduCommande { get; set; }
+        public static Commande _renduCommande { get; set; }
 
+
+        public static CommandeConcernantRA_DATA _rendreArticlesSelectionnes { get; set; }
+
+
+        //*********************************************************************************GESTION COMMANDES CLIENT PRO
+
+        public static Commande _renduCommandeClientPro { get; set; }
 
         //*********************************************************************************GESTION DES PLACES LIBRES DU CONVOYEUR
         public static ConvoyeurPlacesLibres _placesLibres;
@@ -76,6 +83,7 @@ namespace App_pressing_Loreau.Helper
         {
             _placesLibres = new ConvoyeurPlacesLibres();
         }
+
 
 
     }
