@@ -113,7 +113,7 @@ namespace App_pressing_Loreau.ViewModel
         {
             AfficheDetailCommande = new List<ArticlesRestitutionVM>();
 
-            Commande com = ClasseGlobale._renduCommande.commande;
+            Commande com = ClasseGlobale._renduCommande;
             Commande comPaye = (Commande)CommandeDAO.selectCommandeById(com.id, true, false, false);
             if (com != null)
             {
