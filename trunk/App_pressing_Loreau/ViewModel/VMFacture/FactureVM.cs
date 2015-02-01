@@ -10,6 +10,7 @@ using App_pressing_Loreau.Helper;
 using App_pressing_Loreau.View;
 using App_pressing_Loreau.Data.DAO;
 using App_pressing_Loreau.Model.DTO;
+using App_pressing_Loreau.Model;
 
 namespace App_pressing_Loreau.ViewModel
 {
@@ -23,15 +24,17 @@ namespace App_pressing_Loreau.ViewModel
         #region Attributes
         private int _txb_factures_idCommande;
 
-        FactureFinaleVM ffVM = null;
+       
         
         private FactureFinaleVM _apercu_facture;
+
+        Commande commande;
         #endregion
 
 
         public FactureVM()
         {
-            ffVM = new FactureFinaleVM();
+            
         }
 
 
@@ -96,28 +99,46 @@ namespace App_pressing_Loreau.ViewModel
 
         public void FactureApercu()
         {
-            int ht=20;
-            List<CategoryArticle> listeArticles= new List<CategoryArticle>();
-            ffVM.LabelReferenceFacture = "Ref: " + 277777 + Txb_factures_idCommande;
-            ffVM.LabelDetailTotal= ht*1.2 +" €";
+            FactureFinaleVM ffVM = new FactureFinaleVM();
+            float prixTTCTotal = 0;
+            float prixHTTotal = 0;
+            
 
-            listeArticles.Add(new CategoryArticle() { LabelNameArticle = "Pantalon", LabelPrixArticle = 100 + "€" });
-            listeArticles.Add(new CategoryArticle() { LabelNameArticle = "Pantalon", LabelPrixArticle = 100 + "€" });
+            commande = (Commande)CommandeDAO.selectCommandeById(Txb_factures_idCommande,false, true, true);
+            if (commande != null)
+            {
+                foreach (Article art in commande.listArticles)
+                {
+                    prixTTCTotal += art.TTC;
+                   
+                }
+                prixHTTotal = prixTTCTotal * (1 - commande.listArticles[0].TVA / 100);
 
-            ffVM.ListBoxDetailFacture = listeArticles;
-            ffVM.LabelDetailTauxTVA = 20 + "%";
-            ffVM.LabelDetailMontantHT = ht + "€";
-            ffVM.LabelDetailMontantTVA = ht * 20 / 100 + " €";
-            ApercuFacture= ffVM;
+                ffVM.commande = commande;
+                ffVM.LabelDetailPrixTotalTTC = prixTTCTotal;
+                ffVM.LabelDetailMontantHT = prixHTTotal;
+                ffVM.LabelDetailMontantTVA = prixTTCTotal - prixHTTotal;
+                ffVM.RemplirArticles(commande);
+            }
+
+            
+            ApercuFacture = ffVM;
+
         }
 
         public void impression()
         {
-            PrintDialog dialog = new PrintDialog();
-            FactureFinale fenetreFacture = new FactureFinale();
-            if (dialog.ShowDialog() == true)
+            //PrintDialog dialog = new PrintDialog();
+            //FactureFinale fenetreFacture = new FactureFinale();
+            //if (dialog.ShowDialog() == true)
+            //{
+            //    dialog.PrintVisual(fenetreFacture, "fenetreFacture");
+            //}
+            if (commande != null)
             {
-                dialog.PrintVisual(fenetreFacture, "fenetreFacture");
+                FactureExcel fe = new FactureExcel(commande);
+
+                fe.printFacture();
             }
         }
         

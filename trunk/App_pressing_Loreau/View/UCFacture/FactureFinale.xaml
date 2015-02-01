@@ -25,10 +25,18 @@
                 <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
             <Label Content="PRESSING DU LOREAU" Grid.Row="0" FontWeight="Bold" FontSize="20"/>
-            <TextBlock Text="{Binding LabelReferenceFacture}" Grid.Row="1" />
-            <Label  Grid.Row="2">
-                <TextBlock Width="280"> PLACE SAINT MARC <LineBreak/> CC INTERMARCHE CENTRE VILLE <LineBreak/> 76100 ROUEN <LineBreak/> Tel : 0235892619</TextBlock>
-            </Label>
+            <Border Grid.Row="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="La reference de la commande" Style="{StaticResource vertilabel18}"/>
+                    <Label Content="{Binding LabelReferenceFacture}" Grid.Column="1" Style="{StaticResource vertilabel18}" />
+
+                </Grid>
+            </Border>
+            <Label  Grid.Row="2" Content="{Binding Label_Adresse}"/>
         </Grid>
         <DockPanel Grid.Row="1">
             
@@ -53,7 +61,7 @@
                     <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
             <Label Content="TOTAL " Grid.Column="0"/>
-                <TextBlock Text="{Binding LabelDetailTotal}" Grid.Column="1" />
+                <TextBlock Text="{Binding LabelDetailPrixTotalTTC}" Grid.Column="1" />
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.RowDefinitions>
@@ -65,10 +73,12 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Label Content="Taux TVA" Grid.Row="0" Grid.Column="0"/>
-                <Label Content="{Binding LabelDetailTauxTVA}" Grid.Row="1" Grid.Column="0"/>
-                <Label Content="Montant H.T." Grid.Row="0" Grid.Column="1"/>
-                <Label Content="{Binding LabelDetailMontantHT}" Grid.Row="1" Grid.Column="1"/>
+                <Label Content="Montant H.T." Grid.Row="0" Grid.Column="0"/>
+                <Label Content="{Binding LabelDetailMontantHT}" Grid.Row="1" Grid.Column="0"/>
+                
+                <Label Content="Taux TVA" Grid.Row="0" Grid.Column="1"/>
+                <Label Content="{Binding LabelDetailTauxTVA}" Grid.Row="1" Grid.Column="1"/>
+              
                 <Label Content="T.V.A." Grid.Row="0" Grid.Column="3"/>
                 <Label Content="{Binding LabelDetailMontantTVA}" Grid.Row="1" Grid.Column="2" />
             </Grid>

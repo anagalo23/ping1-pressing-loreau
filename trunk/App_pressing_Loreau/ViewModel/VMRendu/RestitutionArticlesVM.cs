@@ -46,8 +46,12 @@ namespace App_pressing_Loreau.ViewModel
         public RestitutionArticlesVM()
         {
             Cbb_restitutionClient_choix_theme = choixbox.ListeChamp();
+            ClasseGlobale.Client = null;
+            ClasseGlobale._renduCommandeClientPro = null;
             ClasseGlobale._renduCommande = null;
+            ClasseGlobale._renduCommandeClientPro = null;
             ClasseGlobale._contentDetailCommande = null;
+
         }
 
 
@@ -203,8 +207,9 @@ namespace App_pressing_Loreau.ViewModel
         private void ValiderCetteCommande(CommandeConcernantRA_DATA obj)
         {
             //MessageBox.Show(obj.commande.id +"");
-            ClasseGlobale._renduCommande = obj;
-            Label_CommandeSelectionner = ClasseGlobale._renduCommande.commande.id.ToString();
+            ClasseGlobale._renduCommande = obj.commande;
+            ClasseGlobale.Client = obj.clt;
+            Label_CommandeSelectionner = ClasseGlobale._renduCommande.id.ToString();
             //MessageBox.Show();
         }
         public void ContenuDeLaCommande()
@@ -219,6 +224,7 @@ namespace App_pressing_Loreau.ViewModel
 
                 if (commandeRendre != null & commandeRendre.client.type==0)
                 {
+                   
                     ContentCommandeConcernant.Add(new CommandeConcernantRA_DATA()
                     {
                         Label_restitutionArticles_Reference = commandeRendre.id,

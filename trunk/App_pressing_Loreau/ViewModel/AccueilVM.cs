@@ -61,6 +61,11 @@ namespace App_pressing_Loreau
             Btn_impressionColor = Brushes.Teal;
             Btn_administrateurColor = Brushes.Teal;
 
+            ClasseGlobale.Client = null;
+            ClasseGlobale._renduCommandeClientPro = null;
+            ClasseGlobale._renduCommande = null;
+            ClasseGlobale._renduCommandeClientPro = null;
+            ClasseGlobale._contentDetailCommande = null;
 
         }
 
@@ -373,8 +378,12 @@ namespace App_pressing_Loreau
             {
                 utilisateur.ButtonUserBackground = Brushes.Teal;
             }
-            ClasseGlobale._contentDetailCommande = null;
+
             ClasseGlobale.Client = null;
+            ClasseGlobale._renduCommandeClientPro = null;
+            ClasseGlobale._renduCommande = null;
+            ClasseGlobale._renduCommandeClientPro = null;
+            ClasseGlobale._contentDetailCommande = null;
 
          
             accessUserControl = null;

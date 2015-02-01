@@ -35,7 +35,11 @@ namespace App_pressing_Loreau.ViewModel
 
         public IdentificationClientVM()
         {
-            ClasseGlobale.initializeContentDetailCommande();
+            ClasseGlobale.Client = null;
+            ClasseGlobale._renduCommandeClientPro = null;
+            ClasseGlobale._renduCommande = null;
+            ClasseGlobale._renduCommandeClientPro = null;
+            ClasseGlobale._contentDetailCommande = null;
 
         }
 

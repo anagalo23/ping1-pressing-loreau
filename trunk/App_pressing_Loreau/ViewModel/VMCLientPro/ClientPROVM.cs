@@ -28,6 +28,10 @@ namespace App_pressing_Loreau.ViewModel
         public ClientPROVM()
         {
             clientsPro();
+            ClasseGlobale.Client = null;
+            ClasseGlobale._renduCommandeClientPro = null;
+            ClasseGlobale._renduCommande = null;
+            ClasseGlobale._renduCommandeClientPro = null;
         }
         #endregion
 
@@ -78,7 +82,9 @@ namespace App_pressing_Loreau.ViewModel
 
         private void ExecuteCommandeClientPro(UnClientPROVM obj)
         {
-            MessageBox.Show(obj.commande.date.ToString());
+            //MessageBox.Show(obj.commande.date.ToString());
+            ClasseGlobale._renduCommandeClientPro = obj.commande;
+            ClasseGlobale.Client = obj.clt;
         }
         private void ExecuteClientProCommandeCourante(UnClientPROVM obj)
         {

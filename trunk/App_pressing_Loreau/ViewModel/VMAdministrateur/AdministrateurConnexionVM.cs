@@ -14,13 +14,22 @@ namespace App_pressing_Loreau.ViewModel
 {
     class AdministrateurConnexionVM : ObservableObject, IPageViewModel
     {
-        //AccueilVM acVM = new AccueilVM();
-        private IPageViewModel _accessUserControl;
 
+        public AdministrateurConnexionVM()
+        {
+            ClasseGlobale.Client = null;
+            ClasseGlobale._renduCommandeClientPro = null;
+            ClasseGlobale._renduCommande = null;
+            ClasseGlobale._renduCommandeClientPro = null;
+            ClasseGlobale._contentDetailCommande = null;
+
+        }
         public String Name
         {
             get { return ""; }
         }
+
+
 
 
     }

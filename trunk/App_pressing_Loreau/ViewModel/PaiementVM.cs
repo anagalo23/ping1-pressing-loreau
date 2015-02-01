@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using App_pressing_Loreau.Model;
 
 //using System.Windows.Controls.Button;
 //using System.Windows.Forms;
@@ -60,7 +61,7 @@ namespace App_pressing_Loreau.ViewModel
             //Label_NouvelleCommande_prixTotal = 0;
             //for (int i = 0; i < ContentDetailCommande.Count; i++)
             //{
-            //    Label_NouvelleCommande_prixTotal += (ContentDetailCommande[i].article.TTC);
+            // Label_NouvelleCommande_prixTotal += (ContentDetailCommande[i].article.TTC);
             //}
 
 
@@ -198,15 +199,15 @@ namespace App_pressing_Loreau.ViewModel
 
         //public ListePaiement MontantParMoyenPaiement
         //{
-        //    get { return listeDeMontantParMoyenPaiement; }
-        //    set
-        //    {
-        //        if (value != listeDeMontantParMoyenPaiement)
-        //        {
-        //            listeDeMontantParMoyenPaiement = value;
-        //            OnPropertyChanged("MontantParMoyenPaiement");
-        //        }
-        //    }
+        // get { return listeDeMontantParMoyenPaiement; }
+        // set
+        // {
+        // if (value != listeDeMontantParMoyenPaiement)
+        // {
+        // listeDeMontantParMoyenPaiement = value;
+        // OnPropertyChanged("MontantParMoyenPaiement");
+        // }
+        // }
         //}
 
 
@@ -220,7 +221,7 @@ namespace App_pressing_Loreau.ViewModel
             get
             {
                 return new RelayCommand(
-                    p => enregistrerCommande());
+                p => enregistrerCommande());
             }
         }
 
@@ -275,7 +276,7 @@ namespace App_pressing_Loreau.ViewModel
                             Montant = listeDeMontantParMoyenPaiement[monMoyenDePaiement].ToString(),
                         });
                     }
-                    //On donne une nouvelle référence à notre liste globale de client    checkRemise
+                    //On donne une nouvelle référence à notre liste globale de client checkRemise
                     ContenuListePaiement = contenuListePaiementTampon;
 
 
@@ -283,18 +284,18 @@ namespace App_pressing_Loreau.ViewModel
                     //Si la valeur du champ remise n'a pas changé, je ne la considère pas
                     //if (checkRemise[0] == Txb_paiement_montantRemise)//Si j'ai déjà appliqué la remise
                     //{
-                        //Je met dans le text box le nouveau reste à payer
-                        Txb_paiement_montantParMoyenPaiement = Reste_a_payer - Txb_paiement_montantParMoyenPaiement;
+                    //Je met dans le text box le nouveau reste à payer
+                    Txb_paiement_montantParMoyenPaiement = Reste_a_payer - Txb_paiement_montantParMoyenPaiement;
                     //}
-                    //else//Sinon oui. 
+                    //else//Sinon oui.
                     //{
-                        ////enlève la remise précédente et applique la nouvelle remise
-                        //checkRemise[1] = checkRemise[0];//met le montant de l'ancienne à la place de la nouvelle
-                        //checkRemise[0] = Txb_paiement_montantRemise;
-                        //Txb_paiement_montantParMoyenPaiement = Reste_a_payer - Txb_paiement_montantParMoyenPaiement + checkRemise[0] - checkRemise[1];
-                        ////checkRemise[0] = checkRemise[1];
-                        ////Réinitialise l'ancienne valeur
-                        //checkRemise[1] = 0;
+                    ////enlève la remise précédente et applique la nouvelle remise
+                    //checkRemise[1] = checkRemise[0];//met le montant de l'ancienne à la place de la nouvelle
+                    //checkRemise[0] = Txb_paiement_montantRemise;
+                    //Txb_paiement_montantParMoyenPaiement = Reste_a_payer - Txb_paiement_montantParMoyenPaiement + checkRemise[0] - checkRemise[1];
+                    ////checkRemise[0] = checkRemise[1];
+                    ////Réinitialise l'ancienne valeur
+                    //checkRemise[1] = 0;
 
                     //}
 
@@ -305,17 +306,17 @@ namespace App_pressing_Loreau.ViewModel
                 }
                 //else
                 //{
-                //    erreurDeManip = true;
-                //    String erreur = "Veuillez s'il vous plait : ";
-                //    if (Mode_de_paiement == "")
-                //    {
-                //        erreur += "\t- sélectionner un mode de paiement";
-                //    }
-                //    if (clickedbutton == null)
-                //    {
-                //        erreur += "\tERREUR LOGICIEL : le bouton cliqué est null";
-                //    }
-                //    MessageBox.Show(erreur);
+                // erreurDeManip = true;
+                // String erreur = "Veuillez s'il vous plait : ";
+                // if (Mode_de_paiement == "")
+                // {
+                // erreur += "\t- sélectionner un mode de paiement";
+                // }
+                // if (clickedbutton == null)
+                // {
+                // erreur += "\tERREUR LOGICIEL : le bouton cliqué est null";
+                // }
+                // MessageBox.Show(erreur);
                 //}
                 //Si je n'ai pas sélectionné de mode de paiement mais que la remise à changée, j'applique la remise
                 if (Mode_de_paiement == "" && checkRemise[0] != Txb_paiement_montantRemise)
@@ -323,7 +324,7 @@ namespace App_pressing_Loreau.ViewModel
                     //enlève la remise précédente et applique la nouvelle remise
                     checkRemise[1] = checkRemise[0];//met le montant de l'ancienne à la place de la nouvelle
                     checkRemise[0] = Txb_paiement_montantRemise;
-                    Txb_paiement_montantParMoyenPaiement = Reste_a_payer  - checkRemise[0] + checkRemise[1];//- Txb_paiement_montantParMoyenPaiement
+                    Txb_paiement_montantParMoyenPaiement = Reste_a_payer - checkRemise[0] + checkRemise[1];//- Txb_paiement_montantParMoyenPaiement
                     Reste_a_payer = Txb_paiement_montantParMoyenPaiement;
                     //checkRemise[0] = checkRemise[1];
                     //Réinitialise l'ancienne valeur
@@ -331,7 +332,7 @@ namespace App_pressing_Loreau.ViewModel
                 }
                 //else
                 //{
-                //    erreurDeManip = true;
+                // erreurDeManip = true;
                 //}
 
             }
@@ -375,8 +376,7 @@ namespace App_pressing_Loreau.ViewModel
             //On récupère la classe globale contenant les articles et on calcul le prix
             ObservableCollection<ArticlesVM> cmdDetail = ClasseGlobale._contentDetailCommande;
 
-             Commande CommandeRendue = ClasseGlobale._renduCommande.commande;
-              Commande comRenduPaye = (Commande) CommandeDAO.selectCommandeById(CommandeRendue.id, true, true, false);
+            Commande CommandeRendue = ClasseGlobale._renduCommande;
             float prixHT = 0;
             float prixTTC = 0;
             float prixTTCrendu = 0;
@@ -390,17 +390,19 @@ namespace App_pressing_Loreau.ViewModel
                         prixTTC += art.typeArticle.TTC;
                         prixHT += art.typeArticle.TTC * (1 - art.typeArticle.TVA / 100);
                     }
-                    Label_paiement_prixHT = prixHT + "  €";
-                    Label_paiement_prixTTC = prixTTC + "  €";
-                    Label_paiement_montant = prixTTC - Txb_paiement_montantRemise + "  €";
+                    Label_paiement_prixHT = prixHT + " €";
+                    Label_paiement_prixTTC = prixTTC + " €";
+                    Label_paiement_montant = prixTTC - Txb_paiement_montantRemise + " €";
                 }
                 catch (Exception e)
                 {
                     //Inscription en log
                 }
             }
-            else if (comRenduPaye != null)
+            else if (CommandeRendue != null)
             {
+                Commande comRenduPaye = (Commande)CommandeDAO.selectCommandeById(CommandeRendue.id, true, true, false);
+
                 try
                 {
                     foreach (Payement paye in comRenduPaye.listPayements)
@@ -414,16 +416,16 @@ namespace App_pressing_Loreau.ViewModel
                         prixTTCrendu += artic.TTC;
                         prixHTrendu += artic.TTC * (1 - artic.TVA / 100);
                     }
-                    Label_paiement_prixHT = prixHTrendu - prixHT + "  €";
-                    Label_paiement_prixTTC = prixTTCrendu-prixTTC + "  €";
-                    Label_paiement_montant = prixTTCrendu-prixTTC - Txb_paiement_montantRemise + "  €";
+                    Label_paiement_prixHT = prixHTrendu - prixHT + " €";
+                    Label_paiement_prixTTC = prixTTCrendu - prixTTC + " €";
+                    Label_paiement_montant = prixTTCrendu - prixTTC - Txb_paiement_montantRemise + " €";
                 }
                 catch (Exception e)
                 {
                     //Inscription en log
                 }
             }
-            
+
 
         }
 
@@ -438,7 +440,7 @@ namespace App_pressing_Loreau.ViewModel
             //***Enregistrement en base de données***
 
             //Enregistrement de la commande
-            bool payee= false;
+            bool payee = false;
             if (Reste_a_payer == 0)
             {
                 payee = true;
@@ -492,7 +494,10 @@ namespace App_pressing_Loreau.ViewModel
                 MessageBox.Show("Erreur d'enregistrement de la commande");
 
             }
+            Commande cmdTota = CommandeDAO.selectCommandeById(cmd.id,true,true,true);
 
+            RecuPaiement rp = new RecuPaiement(cmdTota);
+            rp.printRecu();
             //paiement = new Payement(DateTime.Now, 4 / 3, TypePayementDAO.selectTypePayementById(1).nom, cmd.id);
             //PayementDAO.insertPaiement(paiement);
 

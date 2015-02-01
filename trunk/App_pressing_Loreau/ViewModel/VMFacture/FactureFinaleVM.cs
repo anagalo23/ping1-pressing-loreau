@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using App_pressing_Loreau.Helper;
+using App_pressing_Loreau.Model.DTO;
 
 namespace App_pressing_Loreau.ViewModel
 {
@@ -12,68 +13,73 @@ namespace App_pressing_Loreau.ViewModel
     {
         #region Attributes
 
-        private string _labelReferenceFacture;
-        private string _labelDetailTotal;
-        private string _labelDetailTauxTVA;
-        private string _labelDetailMontantHT;
-        private string _labelDetailMontantTVA;
+        //private string _labelReferenceFacture;
+        private float _labelDetailPrixTotalTTC;
+        //private string _labelDetailTauxTVA;
+        private float _labelDetailMontantHT;
+        private float _labelDetailMontantTVA;
 
-        private List<CategoryArticle> _listBoxDetailFacture;
+        public Commande commande;
+       private List<CategoryArticle> _listBoxDetailFacture;
 
         #endregion 
 
         public FactureFinaleVM()
         {
-
+            //commande = null;
+            LabelDetailPrixTotalTTC = new float();
+            LabelDetailMontantHT = new float();
+            LabelDetailMontantTVA = new float();
+           //RemplirArticles(commande);
         }
 
         #region Propriétés et commandes
-        public string LabelReferenceFacture 
+        public int LabelReferenceFacture 
         {
-            get {  return this._labelReferenceFacture;}
+            get { return this.commande.id; }
             set
             {
-                if (!string.IsNullOrEmpty(value))
+                if (value!=this.commande.id)
                 {
-                    this._labelReferenceFacture = value;
+                    this.commande.id = value;
                     OnPropertyChanged("LabelReferenceFacture");
                 }
             }
         }
 
-        public string LabelDetailTotal
+        public float LabelDetailPrixTotalTTC
         {
-            get { return this._labelDetailTotal;  }
+            get { return this._labelDetailPrixTotalTTC; }
             set
             {
-                if (!string.IsNullOrEmpty(value))
+                if (value != _labelDetailPrixTotalTTC)
                 {
-                    this._labelDetailTotal = value;
-                    OnPropertyChanged("LabelDetailTotal");
+                    this._labelDetailPrixTotalTTC = value;
+                    OnPropertyChanged("LabelDetailPrixTotalTTC");
                 }
             }
         }
 
 
-        public string LabelDetailTauxTVA
+        public float LabelDetailTauxTVA
         {
-            get { return this._labelDetailTauxTVA; }
+            get { return this.commande.listArticles[0].TVA; }
             set
             {
-                if (!string.IsNullOrEmpty(value))
+                if (this.commande.listArticles[0].TVA!=value)
                 {
-                    this._labelDetailTauxTVA = value;
+                    this.commande.listArticles[0].TVA = value;
                     OnPropertyChanged("LabelDetailTauxTVA");
                 }
             }
         }
 
-        public string LabelDetailMontantHT
+        public float LabelDetailMontantHT
         {
             get {  return this._labelDetailMontantHT; }
             set
             {
-                if (!string.IsNullOrEmpty(value))
+                if (value!=_labelDetailMontantHT)
                 {
                     this._labelDetailMontantHT = value;
                     OnPropertyChanged("LabelDetailMontantHT");
@@ -81,16 +87,27 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-        public string LabelDetailMontantTVA
+        public float LabelDetailMontantTVA
         {
             get {  return this._labelDetailMontantTVA; }
             set
             {
-                if (!string.IsNullOrEmpty(value))
+                if (value!=_labelDetailMontantTVA)
                 {
                     this._labelDetailMontantTVA = value;
                     OnPropertyChanged("LabelDetailMontantTVA");
                 }
+            }
+        }
+
+        public String Label_Adresse
+        {
+            get { return this.commande.client.adresse.giveAdresse(); }
+            set
+            {
+                String adresse =this.commande.client.adresse.giveAdresse();
+                adresse = value;
+                OnPropertyChanged("Label_Adresse");
             }
         }
 
@@ -106,6 +123,15 @@ namespace App_pressing_Loreau.ViewModel
         }
         #endregion
 
+        public void RemplirArticles(Commande com)
+        {
+            ListBoxDetailFacture = new List<CategoryArticle>();
+            foreach (Article art in com.listArticles)
+            {
+                ListBoxDetailFacture.Add(new CategoryArticle() { LabelNameArticle = art.type.nom, LabelPrixArticle = art.TTC });
+            }
+        }
+
         public string Name
         {
             get { return ""; }
@@ -118,7 +144,7 @@ namespace App_pressing_Loreau.ViewModel
     public class CategoryArticle
     {
           public string LabelNameArticle { get; set;}
-          public string LabelPrixArticle { get; set; }
+          public float LabelPrixArticle { get; set; }
     }
 
     #endregion
