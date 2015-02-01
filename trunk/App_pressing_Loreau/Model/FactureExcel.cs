@@ -52,7 +52,7 @@ namespace App_pressing_Loreau.Model
             foreach (Article art in commande.listArticles)
             {
                 mWorkSheets.Cells[index, 2] = art.type.nom;
-                mWorkSheets.Cells[index, 9] = art.TTC*(1-art.TVA/100);
+                mWorkSheets.Cells[index, 9] = art.TTC * (1 - art.TVA / 100);
                 total = total + art.TTC * (1 - art.TVA / 100);
                 tva = tva + art.TTC * (art.TVA / 100);
 
@@ -62,7 +62,7 @@ namespace App_pressing_Loreau.Model
             index += 2;
             mWorkSheets.Cells[index, 7] = "TVA :";
             mWorkSheets.Cells[index, 9] = tva;
-            mWorkSheets.Cells[index+1, 7] = "Remise :";
+            mWorkSheets.Cells[index + 1, 7] = "Remise :";
             mWorkSheets.Cells[index + 1, 9] = commande.remise;
             mWorkSheets.Cells[index + 2, 7] = "Total :";
             mWorkSheets.Cells[index + 2, 9] = total + tva - commande.remise;
@@ -71,27 +71,33 @@ namespace App_pressing_Loreau.Model
 
         public void printFacture()
         {
-            createFacture();
-            /*
-             *@param From : The number of the page at which to start printing. If this argument is omitted, printing starts at the beginning.
-             *@param To : The number of the last page to print. If this argument is omitted, printing ends with the last page.
-             *@param Copies : The number of copies to print. If this argument is omitted, one copy is printed.
-             *@param Preview : True to have Microsoft Excel invoke print preview before printing the object. False (or omitted) to print the object immediately
-             *@param ActivePrinter : Sets the name of the active printer.
-             *@param PrintToFile : True to print to a file. If PrToFileName is not specified, Microsoft Excel prompts the user to enter the name of the output file.
-             *@param Collate : True to collate multiple copies.
-             *@param PrToFileName : If PrintToFile is set to True, this argument specifies the name of the file you want to print to.
-             */
-            mWorkSheets.PrintOut(1, 1, 1, false, misValue, false, false, misValue);
-            
-            //close files
-            mWorkBook.Close(false, misValue, misValue);
-            oXL.Quit();
+            try
+            {
+                createFacture();
+                /*
+                 *@param From : The number of the page at which to start printing. If this argument is omitted, printing starts at the beginning.
+                 *@param To : The number of the last page to print. If this argument is omitted, printing ends with the last page.
+                 *@param Copies : The number of copies to print. If this argument is omitted, one copy is printed.
+                 *@param Preview : True to have Microsoft Excel invoke print preview before printing the object. False (or omitted) to print the object immediately
+                 *@param ActivePrinter : Sets the name of the active printer.
+                 *@param PrintToFile : True to print to a file. If PrToFileName is not specified, Microsoft Excel prompts the user to enter the name of the output file.
+                 *@param Collate : True to collate multiple copies.
+                 *@param PrToFileName : If PrintToFile is set to True, this argument specifies the name of the file you want to print to.
+                 */
+                mWorkSheets.PrintOut(1, 1, 1, false, misValue, false, false, misValue);
 
-            //release file
-            releaseObject(mWorkSheets);
-            releaseObject(mWorkBook);
-            releaseObject(oXL);
+                //close files
+                mWorkBook.Close(false, misValue, misValue);
+                oXL.Quit();
+
+                //release file
+                releaseObject(mWorkSheets);
+                releaseObject(mWorkBook);
+                releaseObject(oXL);
+            }
+            catch (Exception e)
+            { }
+
         }
 
         private void releaseObject(object obj)

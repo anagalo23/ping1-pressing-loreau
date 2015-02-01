@@ -113,27 +113,34 @@ namespace App_pressing_Loreau.Model
 
         public void printLecture()
         {
-            createLecture();
-            /*
-             *@param From : The number of the page at which to start printing. If this argument is omitted, printing starts at the beginning.
-             *@param To : The number of the last page to print. If this argument is omitted, printing ends with the last page.
-             *@param Copies : The number of copies to print. If this argument is omitted, one copy is printed.
-             *@param Preview : True to have Microsoft Excel invoke print preview before printing the object. False (or omitted) to print the object immediately
-             *@param ActivePrinter : Sets the name of the active printer.
-             *@param PrintToFile : True to print to a file. If PrToFileName is not specified, Microsoft Excel prompts the user to enter the name of the output file.
-             *@param Collate : True to collate multiple copies.
-             *@param PrToFileName : If PrintToFile is set to True, this argument specifies the name of the file you want to print to.
-             */
-            mWorkSheets.PrintOut(1, 1, 1, false, misValue, false, false, misValue);
+            try
+            {
+                createLecture();
+                /*
+                 *@param From : The number of the page at which to start printing. If this argument is omitted, printing starts at the beginning.
+                 *@param To : The number of the last page to print. If this argument is omitted, printing ends with the last page.
+                 *@param Copies : The number of copies to print. If this argument is omitted, one copy is printed.
+                 *@param Preview : True to have Microsoft Excel invoke print preview before printing the object. False (or omitted) to print the object immediately
+                 *@param ActivePrinter : Sets the name of the active printer.
+                 *@param PrintToFile : True to print to a file. If PrToFileName is not specified, Microsoft Excel prompts the user to enter the name of the output file.
+                 *@param Collate : True to collate multiple copies.
+                 *@param PrToFileName : If PrintToFile is set to True, this argument specifies the name of the file you want to print to.
+                 */
+                mWorkSheets.PrintOut(1, 1, 1, false, misValue, false, false, misValue);
 
-            //close files
-            mWorkBook.Close(false, misValue, misValue);
-            oXL.Quit();
+                //close files
+                mWorkBook.Close(false, misValue, misValue);
+                oXL.Quit();
 
-            //release file
-            releaseObject(mWorkSheets);
-            releaseObject(mWorkBook);
-            releaseObject(oXL);
+                //release file
+                releaseObject(mWorkSheets);
+                releaseObject(mWorkBook);
+                releaseObject(oXL);
+            }
+            catch (Exception e)
+            {
+
+            }
         }
 
         private void releaseObject(object obj)
