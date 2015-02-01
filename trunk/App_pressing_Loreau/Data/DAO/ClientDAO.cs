@@ -206,8 +206,8 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                LectureExcel le = new LectureExcel(0);
-                le.printLecture();
+                //LectureExcel le = new LectureExcel(1);
+                //le.printLecture();
 
 
 
