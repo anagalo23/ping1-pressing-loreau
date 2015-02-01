@@ -50,6 +50,8 @@ namespace App_pressing_Loreau.Model
             listUsedTypePaiement = PayementDAO.listSommePaiementToday();
             List<Commande> listCommandeRecuToday = CommandeDAO.listCommandeRecuToday(1);
             listUsedTypeArticle = new List<string>();
+            reçutArticle = new List<int>();
+            renduArticle = new List<int>();
             TypeArticlesRendu(ArticleDAO.selectArticleRenduByDate(1), listCommandeRecuToday);
             nbNewCommande = listCommandeRecuToday.Count;
             nbNewClient = ClientDAO.listClientAddToday(1).Count;
@@ -125,7 +127,7 @@ namespace App_pressing_Loreau.Model
             mWorkSheets.PrintOut(1, 1, 1, false, misValue, false, false, misValue);
 
             //close files
-            mWorkBook.Close(true, misValue, misValue);
+            mWorkBook.Close(false, misValue, misValue);
             oXL.Quit();
 
             //release file
