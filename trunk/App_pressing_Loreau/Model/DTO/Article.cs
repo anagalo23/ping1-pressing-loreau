@@ -75,7 +75,7 @@ namespace App_pressing_Loreau.Model.DTO
             this.type = type;
             this.fk_commande = cmd_id;
             this.ifRendu = false;
-            this.convoyeur = PlaceConvoyeurDAO.selectConvoyeursEmpty()[0];//OUT of range !!!!    new PlaceConvoyeur() ne fonctionne pas non plus
+            this.convoyeur = new PlaceConvoyeur();//OUT of range !!!!    new PlaceConvoyeur() ne fonctionne pas non plus
         }
         #endregion
     }

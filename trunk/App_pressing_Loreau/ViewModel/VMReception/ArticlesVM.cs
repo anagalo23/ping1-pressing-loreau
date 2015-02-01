@@ -23,13 +23,16 @@ namespace App_pressing_Loreau.ViewModel
     {
         #region Attributes 
 
-     
+        
         private String _changedPhoto;
 
         private ComboComm _selected_Articles_Commentaire;
         ComboComm comboComm = new ComboComm();
 
-        public TypeArticle typeArticle;        
+        public TypeArticle typeArticle;   
+        private PlaceConvoyeur _placeConvoyeur;
+
+
         #endregion
 
         public ArticlesVM()
@@ -57,6 +60,7 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
+        public PlaceConvoyeur PlaceConvoyeur { get; set; }
 
         public ComboComm Selected_Articles_Commentaire
         {
@@ -121,7 +125,8 @@ namespace App_pressing_Loreau.ViewModel
             else selection = _selected_Articles_Commentaire.NameCbbArt;
 
             Article article = new Article(_changedPhoto, selection, typeArticle, cmd_id);
-
+            //Article article = new Article
+            article.convoyeur = PlaceConvoyeur;
             return article;
         }
         #endregion

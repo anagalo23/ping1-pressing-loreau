@@ -78,7 +78,27 @@ namespace App_pressing_Loreau.Helper
         public static Commande _renduCommandeClientPro { get; set; }
 
         //*********************************************************************************GESTION DES PLACES LIBRES DU CONVOYEUR
-        public static ConvoyeurPlacesLibres _placesLibres;
+        private static ConvoyeurPlacesLibres _placesLibres;
+
+        public static ConvoyeurPlacesLibres PlacesLibres
+        {
+            get 
+            {
+                if (_placesLibres == null)
+                {
+                    _initializePlacesLibres();
+                }
+                return _placesLibres;
+            }
+            set
+            {
+                if (_placesLibres == null)
+                {
+                    _initializePlacesLibres();
+                }
+                _placesLibres = value;
+            }
+        }
         public static void _initializePlacesLibres()
         {
             _placesLibres = new ConvoyeurPlacesLibres();
@@ -88,6 +108,7 @@ namespace App_pressing_Loreau.Helper
 
     }
 
+    //Contient la liste des places convoyeur qui sont libres est permet la manipulation dans la liste
     class ConvoyeurPlacesLibres
     {
 
@@ -108,6 +129,15 @@ namespace App_pressing_Loreau.Helper
             {
                     _placesConvoyeurLibres[index] = value;
             }
+        }
+
+        public List<PlaceConvoyeur> getList()
+        {
+            return _placesConvoyeurLibres;
+        }
+        public void setList(List<PlaceConvoyeur> list)
+        {
+            _placesConvoyeurLibres = list;
         }
     }
 }

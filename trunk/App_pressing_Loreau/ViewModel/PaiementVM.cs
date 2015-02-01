@@ -460,6 +460,7 @@ namespace App_pressing_Loreau.ViewModel
                 j = ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
             }
 
+            //Enregistrement du/des paiement(s)
             Payement paiement;
             System.Collections.Generic.ICollection<String> liste_des_moyens_de_paiement = listeDeMontantParMoyenPaiement.dico.Keys;
             foreach (String monMoyenDePaiement in liste_des_moyens_de_paiement)
@@ -470,30 +471,37 @@ namespace App_pressing_Loreau.ViewModel
                 k = PayementDAO.insertPaiement(paiement);
             }
 
+            //Mise à jour de la table convoyeur
+            foreach (PlaceConvoyeur place in ClasseGlobale.PlacesLibres.getList())
+            {
+                PlaceConvoyeurDAO.updatePlaceConvoyeur(place);
+            }
 
-            if (i != 0 & j != 0 & k != 0)
-            {
-                MessageBox.Show("Commande enregistrée \n retour à l accueil");
-                commandePayee = 1;
-            }
-            else if (i != 0 & j == 0 & k != 0)
-            {
-                MessageBox.Show("Erreur d'enregistrement des articles");
-            }
-            else if (i != 0 & j != 0 & k == 0)
-            {
-                MessageBox.Show("Erreur de paiement");
-            }
-            else if (i != 0 & j == 0 & k == 0)
-            {
-                MessageBox.Show("Erreur d'enregistrement des articles \n Erreur de paiement");
 
-            }
-            else if (i == 0)
-            {
-                MessageBox.Show("Erreur d'enregistrement de la commande");
 
-            }
+            //if (i != 0 & j != 0 & k != 0)
+            //{
+            //    MessageBox.Show("Commande enregistrée \n retour à l accueil");
+            //    commandePayee = 1;
+            //}
+            //else if (i != 0 & j == 0 & k != 0)
+            //{
+            //    MessageBox.Show("Erreur d'enregistrement des articles");
+            //}
+            //else if (i != 0 & j != 0 & k == 0)
+            //{
+            //    MessageBox.Show("Erreur de paiement");
+            //}
+            //else if (i != 0 & j == 0 & k == 0)
+            //{
+            //    MessageBox.Show("Erreur d'enregistrement des articles \n Erreur de paiement");
+
+            //}
+            //else if (i == 0)
+            //{
+            //    MessageBox.Show("Erreur d'enregistrement de la commande");
+
+            //}
             Commande cmdTota = CommandeDAO.selectCommandeById(cmd.id,true,true,true);
 
             RecuPaiement rp = new RecuPaiement(cmdTota);
