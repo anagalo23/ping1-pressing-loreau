@@ -148,8 +148,8 @@ namespace App_pressing_Loreau.Data.DAO
          */
         public static List<Article> selectArticleRenduByDate(int plageDate)
         {
-            try
-            {
+            /*try
+            {*/
                 List<Article> retour = new List<Article>();
 
                 //connection à la base de données
@@ -209,12 +209,12 @@ namespace App_pressing_Loreau.Data.DAO
                 #endregion
 
                 return retour;
-            }
+            /*}
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un article dans la base de données."));
                 return null;
-            }
+            }*/
         }
 
         //Update un article dans la base de données
