@@ -1,4 +1,5 @@
-﻿using App_pressing_Loreau.Model.DTO;
+﻿using App_pressing_Loreau.Model;
+using App_pressing_Loreau.Model.DTO;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -153,7 +154,7 @@ namespace App_pressing_Loreau.Data.DAO
         }
 
         //Liste des paiement effectués dans la journée, rassemblé par type
-        public static List<Payement> listSommePaiementToday()
+        public static List<Payement> listSommePaiementToday(int plageDate)
         {
             try
             {
@@ -163,8 +164,29 @@ namespace App_pressing_Loreau.Data.DAO
                 MySqlCommand cmd = new MySqlCommand(Bdd.listSommePaiementToday, Bdd.connexion());
 
                 //ajout des parametres
-                cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0));
-                cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                switch (plageDate)
+                {
+                    //par jour
+                    case 1:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par semaine
+                    case 2:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(SecondaryDateTime.GetMonday(DateTime.Now).Year, SecondaryDateTime.GetMonday(DateTime.Now).Month, SecondaryDateTime.GetMonday(DateTime.Now).Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par mois
+                    case 3:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par année
+                    case 4:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                }
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
