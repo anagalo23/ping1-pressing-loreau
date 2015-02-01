@@ -64,15 +64,16 @@ namespace App_pressing_Loreau.ViewModel
                 }
 
             }
-            
+
+            //Initialisation de la liste d'emplacements vides
+            ClasseGlobale.PlacesLibres.setList(PlaceConvoyeurDAO.selectConvoyeursEmpty());
+
         }
 
         #endregion
 
 
         #region Proprietés et Commandes
-
-
 
         //gestion du choix des articles
 
@@ -160,7 +161,6 @@ namespace App_pressing_Loreau.ViewModel
                 return ClasseGlobale._contentDetailCommande;
                
             }
-
             set
             {
                 if (value != null)
@@ -191,6 +191,7 @@ namespace App_pressing_Loreau.ViewModel
             get {return new RelayCommand(p => paiementDifferer()); }
         }
         #endregion
+        
         #endregion
 
 
@@ -313,17 +314,54 @@ namespace App_pressing_Loreau.ViewModel
         public void AjouterArticles(object button)
         {
             Button clickedbutton = button as Button;
-           
+            
 
             if (clickedbutton != null)
             {
                 typeArticleDTO = (TypeArticle)TypeArticleDAO.selectTypesById(Int32.Parse(clickedbutton.Tag.ToString()));
-                ClasseGlobale._contentDetailCommande.Add(new ArticlesVM()
+
+                //Récupère les places libres dans le convoyeur
+                //List<PlaceConvoyeur> list = PlaceConvoyeurDAO.selectConvoyeursEmpty();///FAUX : récupérer dans la classe globale!!!!!
+                //List<PlaceConvoyeur> list = ClasseGlobale.PlacesLibres.getList();                                                          ///
+
+                PlaceConvoyeur place = new PlaceConvoyeur();
+                int i = 0;
+                //Placement ou non dans le convoyeur
+                if (typeArticleDTO.encombrement == 0 || typeArticleDTO.encombrement > 3)
+                {
+                    //Cet article ne va pas dans le convoyeur
+                    place = null;
+                    MessageBox.Show("Cet article ne va pas dans le convoyeur.");
+                }
+                else
+                {
+                    //On cherche un emplacement libre
+                    
+                    //Récupère la première place où l'article pourra rentrer
+                    //Tant que mon encombrement est supèrieur à celui disponible, je continue
+                    while (ClasseGlobale.PlacesLibres.getList()[i].encombrement > (3 - typeArticleDTO.encombrement)) { i++; }//ATTENTION, pas vraiment fonctionnel!!! Condition sur l'encombrement à ajouter
+
+                    //Ajout du nouvel encombrement dans la liste
+                    //list[i].encombrement += typeArticleDTO.encombrement;
+                    ClasseGlobale.PlacesLibres[i].encombrement += typeArticleDTO.encombrement;
+                    
+                    //Je rajoute l'encombrement qui va bien
+                    //list[i].encombrement = 1.5F;//ATTENTION, pas vraiment fonctionnel!!! Il faudra mettre l'encombrement de l'objet
+                    place = ClasseGlobale.PlacesLibres.getList()[i];
+                    
+                }
+
+
+                //On construit un nouvel ArticlesVM
+                ArticlesVM articleVmAAjouter = new ArticlesVM()
                 {
                     typeArticle = typeArticleDTO,
-                    ArticlesName = typeArticleDTO.nom
+                    ArticlesName = typeArticleDTO.nom,
+                    PlaceConvoyeur = place
+                };
+                
 
-                });
+                ClasseGlobale._contentDetailCommande.Add(articleVmAAjouter);
 
                 Label_NouvelleCommande_prixTotal = 0;
                 foreach (ArticlesVM artVm in  ClasseGlobale._contentDetailCommande)
@@ -344,6 +382,7 @@ namespace App_pressing_Loreau.ViewModel
             {
                 ClasseGlobale._contentDetailCommande.Remove(obj);
                 Label_NouvelleCommande_prixTotal -= obj.typeArticle.TTC;
+                
             }
         }
 

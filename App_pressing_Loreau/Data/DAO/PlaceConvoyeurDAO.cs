@@ -138,7 +138,7 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("id", conv.id);
                 cmd.Parameters.AddWithValue("emplacement", conv.emplacement);
                 cmd.Parameters.AddWithValue("encombrement", conv.encombrement);
-                cmd.Parameters.AddWithValue("id", conv.id);
+                cmd.Parameters.AddWithValue("id2", conv.id);
 
                 //Execute la commande
                 return cmd.ExecuteNonQuery();
