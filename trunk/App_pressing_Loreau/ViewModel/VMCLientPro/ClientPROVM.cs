@@ -17,6 +17,7 @@ namespace App_pressing_Loreau.ViewModel
     {
         #region Attributs
         private DelegateCommand<UnClientPROVM> _detailCommandeCouranteClientPro;
+        private DelegateCommand<UnClientPROVM> _detailButtonClientPro;
 
         private List<UnClientPROVM> _listeClientPro;
         private List<UnClientPROVM> _detailCommandeClientPro;
@@ -61,17 +62,42 @@ namespace App_pressing_Loreau.ViewModel
                                                                        (arg) => true));
             }
         }
-       
+
+        public DelegateCommand<UnClientPROVM> DetailButtonCommandeClientPro
+        {
+            get
+            {
+                return this._detailButtonClientPro ?? (this._detailButtonClientPro = new DelegateCommand<UnClientPROVM>(
+                  this.ExecuteCommandeClientPro,
+                (arg) => true));
+            }
+        }
         #endregion
 
         #region Methods
 
-        public void ExecuteClientProCommandeCourante(UnClientPROVM obj)
+        private void ExecuteCommandeClientPro(UnClientPROVM obj)
         {
-            MessageBox.Show(obj.clt.id + " " + obj.clt.nom);
+            MessageBox.Show(obj.commande.date.ToString());
+        }
+        private void ExecuteClientProCommandeCourante(UnClientPROVM obj)
+        {
+            DetailCommandeClientPro = new List<UnClientPROVM>();
+
+            if (obj.clt.type == 1)
+            {
+                List<Commande> listeCommandeClientPro = (List<Commande>)CommandeDAO.selectCommandesByClient(obj.clt.id, false, true, true);
+
+                foreach (Commande com in listeCommandeClientPro)
+                {
+                    DetailCommandeClientPro.Add(new UnClientPROVM() { commande = com });
+                }
+
+            }
+            //MessageBox.Show(obj.clt.id + " " + obj.clt.nom);
         }
 
-       
+
         public void clientsPro()
         {
             ListeClientPro = new List<UnClientPROVM>();

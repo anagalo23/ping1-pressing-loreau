@@ -175,24 +175,28 @@ namespace App_pressing_Loreau.ViewModel
 
             ContentCommandeConcernant = new List<CommandeConcernantRA_DATA>();
 
-            List<Commande> listeCommande = (List<Commande>)CommandeDAO.selectCommandesByClient(obj.clt.id, false, true, true);
-            if (listeCommande != null)
+            if (obj.clt.type == 0)
             {
-                foreach (Commande com in listeCommande)
+                List<Commande> listeCommande = (List<Commande>)CommandeDAO.selectCommandesByClient(obj.clt.id, false, true, true);
+                if (listeCommande != null)
                 {
-                    ContentCommandeConcernant.Add(new CommandeConcernantRA_DATA()
+                    foreach (Commande com in listeCommande)
                     {
-                        Label_restitutionArticles_Reference = com.id,
-                        Label_restitutionArticles_DateCommande = com.date.ToString(),
-                        commande = com,
-                        Label_restitutionArticles_nomDuClient = com.client.nom + "  " + com.client.prenom
-                    });
+                        ContentCommandeConcernant.Add(new CommandeConcernantRA_DATA()
+                        {
+                            Label_restitutionArticles_Reference = com.id,
+                            Label_restitutionArticles_DateCommande = com.date.ToString(),
+                            commande = com,
+                            Label_restitutionArticles_nomDuClient = com.client.nom + "  " + com.client.prenom
+                        });
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ce client n'a pas de commande");
                 }
             }
-            else
-            {
-                MessageBox.Show("Ce client n'a pas de commande");
-            }
+            
 
 
         }
@@ -213,7 +217,7 @@ namespace App_pressing_Loreau.ViewModel
 
                 Commande commandeRendre = (Commande)CommandeDAO.selectCommandeById(Txb_restitutionArticles_idFactures, false, true, true);
 
-                if (commandeRendre != null)
+                if (commandeRendre != null & commandeRendre.client.type==0)
                 {
                     ContentCommandeConcernant.Add(new CommandeConcernantRA_DATA()
                     {

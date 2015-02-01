@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using App_pressing_Loreau.ViewModel;
+using App_pressing_Loreau.Helper;
 
 namespace App_pressing_Loreau.View
 {
@@ -25,7 +26,8 @@ namespace App_pressing_Loreau.View
         public AdministrationClientPro()
         {
             InitializeComponent();
-            DataContext = new AdministrationClientProVM(); 
+            DataContext = new AdministrationClientProVM();
+            ClasseGlobale.Client = null;
         }
 
         private void btn_administrationClientPro_retour_Click(object sender, RoutedEventArgs e)
@@ -36,8 +38,12 @@ namespace App_pressing_Loreau.View
 
         private void btn_administrationClientPro_nouvelleCommande_Click(object sender, RoutedEventArgs e)
         {
-            dp.Children.Clear();
-            dp.Children.Add(new NouvelleCommandeClientPro());
+            if (ClasseGlobale.Client.nom != "")
+            {
+                dp.Children.Clear();
+                dp.Children.Add(new NouvelleCommandeClientPro());
+            }
+       
 
         }
 

@@ -18,6 +18,7 @@ namespace App_pressing_Loreau.ViewModel
         private String _nombreCommande_clientPro;
 
         public Client clt;
+        public Commande commande;
         #endregion
 
         #region Constructeurs
@@ -27,6 +28,9 @@ namespace App_pressing_Loreau.ViewModel
         }
         #endregion
 
+        #region Properties and commands
+
+        #region affichages client pro
         public String NomSociete_clientPro
         {
             get { return this.clt.nom; }
@@ -54,7 +58,39 @@ namespace App_pressing_Loreau.ViewModel
 
             }
         }
-            
-       
+        #endregion
+
+        #region Details commande client pro
+
+        public String Label_datail_nomSociete
+        {
+            get { return commande.client.nom; }
+            set
+            {
+                if (!String.IsNullOrEmpty(value))
+                {
+                    commande.client.nom = value;
+                    OnPropertyChanged("Label_datail_nomSociete");
+                }
+            }
+        }
+
+
+        public String Label_Detail_dateReception
+        {
+            get { return commande.date.ToString(); }
+            set
+            {
+                if (!String.IsNullOrEmpty(value))
+                {
+                    String date = commande.date.ToString();
+                    date = value;
+                    OnPropertyChanged("Label_Detail_dateReception");
+                }
+            }
+        }
+        #endregion
+        #endregion
+
     }
 }
