@@ -14,8 +14,8 @@ namespace App_pressing_Loreau.ViewModel
         #region Attributes
 
         private string _articlesNameRes;
-        private string _txb_ArticlesRes_CommentaireArticles;
-        private string _txb_ArticlesRes_photo;
+       // private string _txb_ArticlesRes_CommentaireArticles;
+       // private string _txb_ArticlesRes_photo;
         private string _txb_ArticlesRes_etat;
 
         private bool _isSelectedArticle;
