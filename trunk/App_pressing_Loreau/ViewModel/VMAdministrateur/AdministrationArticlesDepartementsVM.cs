@@ -21,6 +21,8 @@ namespace App_pressing_Loreau.ViewModel
         private ComboArticles _selected_adminArt_ChoixArticlesDelete;
 
         private DelegateCommand<AdministrationArticlesDepartementsVM> _supprimerArticles;
+        private DelegateCommand<AdministrationArticlesDepartementsVM> _modifierArticles;
+
         private List<ComboArticles> _listeArticlesDelete;
 
         ComboDepart comboDepart = new ComboDepart();
@@ -28,6 +30,14 @@ namespace App_pressing_Loreau.ViewModel
 
         public TypeArticle typeArticle;
 
+
+        //Modifier articles
+
+        private String _txb_adminArt_modifTypeNom;
+        private float _txb_adminArt_modifTypeTTC;
+        private float _txb_adminArt_modifTypeTVA;
+        private float _txb_adminArt_modifTypeEncombrement;
+        private TypeArticle typeModif = new TypeArticle();
         #endregion
 
         #region Constructeur
@@ -36,15 +46,20 @@ namespace App_pressing_Loreau.ViewModel
             ListeDepartementChoix = comboDepart.ListeDep();
 
             ListeDepartementChoixDelete = comboDepart.ListeDep();
+            typeArticle = new TypeArticle();
 
-            getArticles();
-
+            Txb_adminArt_modifTypeEncombrement = new float();
+            Txb_adminArt_modifTypeTVA = new float();
+            Txb_adminArt_modifTypeTTC = new float();
         }
+
+        
         #endregion
 
         #region Properties and commands
 
         #region Ajout articles
+
 
         public List<ComboDepart> ListeDepartementChoix { get; set; }
 
@@ -84,6 +99,16 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
+        public float Txt_adminArt_TauxTVA
+        {
+            get { return this.typeArticle.TVA; }
+            set
+            {
+                this.typeArticle.TVA = value;
+                OnPropertyChanged("Txt_adminArt_TauxTVA");
+
+            }
+        }
         public float Txt_adminArt_Encombrement
         {
             get { return this.typeArticle.encombrement; }
@@ -91,6 +116,15 @@ namespace App_pressing_Loreau.ViewModel
             {
                 this.typeArticle.encombrement = value;
                 OnPropertyChanged("Txt_adminArt_Encombrement");
+            }
+        }
+
+
+        public ICommand Btn_adminArt_AjoutArticle
+        {
+            get { return new RelayCommand(p => addArticles(),
+                p => Selected_adminArt_ChoixDepart != null & Txt_adminArt_TypeArt!=null
+                & Txt_adminArt_PrixTTC != 0 & Txt_adminArt_TauxTVA!=0);
             }
         }
         #endregion
@@ -101,7 +135,7 @@ namespace App_pressing_Loreau.ViewModel
 
         public ICommand Btn_ValiderDepartement
         {
-            get { return new RelayCommand(p => getArticles()); }
+            get { return new RelayCommand(p => getListeArticles()); }
 
         }
         public List<ComboDepart> ListeDepartementChoixDelete { get; set; }
@@ -124,6 +158,16 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
+        public DelegateCommand<AdministrationArticlesDepartementsVM> ModifierArticles
+        {
+            get
+            {
+                return this._modifierArticles ?? (this._modifierArticles = new DelegateCommand<AdministrationArticlesDepartementsVM>(
+                                                                       this.ExecuteModifArticle,
+                                                                       (arg) => true));
+            }
+
+        }
         public ComboDepart Selected_adminArt_ChoixDepartDetele
         {
             get { return _selected_adminArt_ChoixDepartDetele; }
@@ -148,30 +192,128 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
+
+        #region Modifier Articles
+
+        public ICommand Btn_adminArt_ModifTypeArt
+        {
+            get { return new RelayCommand(p => modifArticle() 
+               ); }
+        }
+         //p=>Txb_adminArt_modifTypeNom!=null&
+                //Txb_adminArt_modifTypeTTC!=0 & Txb_adminArt_modifTypeTVA!=0
+        public String Txb_adminArt_modifTypeNom
+        {
+            get { return _txb_adminArt_modifTypeNom; }
+            set
+            {
+                if (!String.IsNullOrEmpty(value))
+                {
+                    _txb_adminArt_modifTypeNom = value;
+                    OnPropertyChanged("Txb_adminArt_modifTypeNom");
+                }
+            }
+        }
+
+        public float Txb_adminArt_modifTypeTTC
+        {
+            get { return _txb_adminArt_modifTypeTTC; }
+            set
+            {
+                if (value != _txb_adminArt_modifTypeTTC)
+                {
+                    _txb_adminArt_modifTypeTTC = value;
+                    OnPropertyChanged("Txb_adminArt_modifTypeTTC");
+                }
+            }
+
+        }
+        public float Txb_adminArt_modifTypeTVA
+        {
+            get { return _txb_adminArt_modifTypeTVA; }
+            set
+            {
+                if (value != _txb_adminArt_modifTypeTVA)
+                {
+                    _txb_adminArt_modifTypeTVA = value;
+                    OnPropertyChanged("Txb_adminArt_modifTypeTVA");
+                }
+            }
+
+        }
+        public float Txb_adminArt_modifTypeEncombrement
+        {
+            get { return _txb_adminArt_modifTypeEncombrement; }
+            set
+            {
+                if (value != _txb_adminArt_modifTypeEncombrement)
+                {
+                    _txb_adminArt_modifTypeEncombrement = value;
+                    OnPropertyChanged("Txb_adminArt_modifTypeEncombrement");
+                }
+            }
+
+        }
+
         #endregion
+
+
+        #endregion
+
+
         #endregion
 
         #region Methods
 
         private void ExecuteDeleteArticles(AdministrationArticlesDepartementsVM obj)
         {
-            if (obj.Selected_adminArt_ChoixArticlesDelete != null)
+            if (obj.Selected_adminArt_ChoixArticlesDelete != null &
+                obj.Selected_adminArt_ChoixArticlesDelete.cbbDepId==obj.Selected_adminArt_ChoixDepartDetele.cbbDepId)
             {
-                MessageBox.Show(obj.Selected_adminArt_ChoixArticlesDelete.NameArticles);
+                //MessageBox.Show(obj.Selected_adminArt_ChoixArticlesDelete.NameArticles);
+                TypeArticle artType = TypeArticleDAO.selectTypesById(obj.Selected_adminArt_ChoixArticlesDelete.cbbArtId);
+
+                if (artType != null)
+                {
+                    int ind = TypeArticleDAO.deleteType(artType);
+                    if (ind != 0)
+                    {
+                        MessageBox.Show("l'article " + obj.Selected_adminArt_ChoixArticlesDelete.NameArticles + " est supprimé");
+                        initializeFieldsDelete();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Choissez un departement ou un article de ce departement");
             }
 
         }
 
-        public TypeArticle getTypeArticle()
+        private void ExecuteModifArticle(AdministrationArticlesDepartementsVM obj)
         {
-            Departement dep = new Departement(Selected_adminArt_ChoixDepart.cbbDepId, Selected_adminArt_ChoixDepart.NameDepart);
+            if (obj.Selected_adminArt_ChoixArticlesDelete != null &
+                obj.Selected_adminArt_ChoixArticlesDelete.cbbDepId == obj.Selected_adminArt_ChoixDepartDetele.cbbDepId)
+            {
+                typeModif = TypeArticleDAO.selectTypesById(obj.Selected_adminArt_ChoixArticlesDelete.cbbArtId);
+                if (typeModif != null)
+                {
+                    Txb_adminArt_modifTypeNom = typeModif.nom;
+                    Txb_adminArt_modifTypeTTC = typeModif.TTC;
+                    Txb_adminArt_modifTypeTVA = typeModif.TVA;
+                    Txb_adminArt_modifTypeEncombrement = typeModif.encombrement;
 
-            TypeArticle tArticle = new TypeArticle(Txt_adminArt_TypeArt, Txt_adminArt_Encombrement, typeArticle.TVA, Txt_adminArt_PrixTTC, dep);
+                    //initializeFieldsModif();
+                }
 
-            return tArticle;
+            }
+            else
+            {
+                MessageBox.Show("Choissez un departement ou un article de ce departement");
+            }
+           
         }
-
-        private void getArticles()
+        private void getListeArticles()
         {
             if (Selected_adminArt_ChoixDepartDetele != null)
             {
@@ -179,21 +321,70 @@ namespace App_pressing_Loreau.ViewModel
 
             }
         }
-        #endregion
 
-        #region INotifyPropertyChanged Members
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        private void RaisePropertyChangedDep(string propertyName)
+        private void addArticles()
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            Departement dep = new Departement(Selected_adminArt_ChoixDepart.cbbDepId, Selected_adminArt_ChoixDepart.NameDepart);
+            TypeArticle TArt = new TypeArticle(typeArticle.nom, typeArticle.encombrement, typeArticle.TVA, typeArticle.TTC, dep);
+            //MessageBox.Show(TArt.nom);
 
-            if (propertyName == "Selected_adminArt_ChoixDepartDetele")
-                getArticles();
+            int index = TypeArticleDAO.insertType(TArt);
+            if (index != 0)
+            {
+
+                MessageBox.Show("Enregistrement "+TArt.nom+" reussi");
+
+                initializeFieldsAdd();
+            }
         }
+
+        private void modifArticle()
+        {
+            //Departement dep = new Departement(S.cbbDepId, Selected_adminArt_ChoixDepart.NameDepart);
+            if (typeModif != null)
+            {
+                TypeArticle TArtModif = new TypeArticle(typeModif.id, Txb_adminArt_modifTypeNom, Txb_adminArt_modifTypeEncombrement, _txb_adminArt_modifTypeTTC, Txb_adminArt_modifTypeTVA, typeModif.departement);
+                //MessageBox.Show(TArt.nom);
+
+                int index = TypeArticleDAO.updateType(TArtModif);
+                if (index != 0)
+                {
+
+                    MessageBox.Show("Modification " + TArtModif.nom + " reussie");
+
+                    initializeFieldsModif();
+                }
+            }
+           
+        }
+
+     
+        private void initializeFieldsAdd()
+        {
+            Selected_adminArt_ChoixDepart = null;
+            Txt_adminArt_TypeArt = null;
+            Txt_adminArt_PrixTTC = 0;
+            Txt_adminArt_TauxTVA = 0;
+            Txt_adminArt_Encombrement = 0;
+        }
+        private void initializeFieldsDelete()
+        {
+
+            Selected_adminArt_ChoixDepartDetele = null;
+            Selected_adminArt_ChoixArticlesDelete = null;
+        }
+
+        private void initializeFieldsModif()
+        {
+            Txb_adminArt_modifTypeNom = null;
+            Txb_adminArt_modifTypeTTC = 0;
+            Txb_adminArt_modifTypeTVA = 0;
+            Txb_adminArt_modifTypeEncombrement = 0;
+            typeModif = null;
+        }
+         
         #endregion
+
 
 
         #region Class

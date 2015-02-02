@@ -177,7 +177,7 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("tva", type.TVA);
                 cmd.Parameters.AddWithValue("ttc", type.TTC);
                 cmd.Parameters.AddWithValue("dep_id", type.departement.id);
-                cmd.Parameters.AddWithValue("id", type.id);
+                cmd.Parameters.AddWithValue("idT", type.id);
 
                 //Execute la commande
                 return cmd.ExecuteNonQuery();

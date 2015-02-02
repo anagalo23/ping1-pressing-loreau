@@ -33,22 +33,27 @@
                             <RowDefinition Height="1*"/>
                             <RowDefinition Height="1*"/>
                             <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
                         <Label Content="Choisir le departement" Grid.Row="0" Grid.Column="0" Style="{StaticResource vertilabel18}" />
                         <ComboBox  x:Name="cbb_adminArt_choixDepart" HorizontalContentAlignment="Center" FontWeight="SemiBold" VerticalContentAlignment="Center" ItemsSource="{Binding ListeDepartementChoix}" SelectedItem="{Binding Selected_adminArt_ChoixDepart}" Grid.Row="0" Grid.Column="1" Margin="20,5" DisplayMemberPath="NameDepart" />
 
                         <Label Content="Type de l'article" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel18}"/>
-                        <TextBox x:Name="txb_adminArtDep_typeArticles" Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding Txt_adminArt_TypeArt, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                        <TextBox x:Name="txb_adminArtDep_typeArticles" Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding Txt_adminArt_TypeArt, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
 
                         <Label Content="PrixTTC" Grid.Row="2" Grid.Column="0" Style="{StaticResource vertilabel18}"/>
-                        <TextBox x:Name="txb_adminArtDep_prixTTC" Margin="3"  Grid.Row="2" Grid.Column="1"  Text="{Binding Txt_adminArt_PrixTTC, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                        <TextBox x:Name="txb_adminArtDep_prixTTC" Margin="5"  Grid.Row="2" Grid.Column="1"  Text="{Binding Txt_adminArt_PrixTTC, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
 
-                        <Label Content="Encombrement" Grid.Row="3" Grid.Column="0" Style="{StaticResource vertilabel18}"/>
-                        <TextBox x:Name="txb_adminArtDep_encombrement" Margin="3"  Grid.Row="3" Grid.Column="1"  Text="{Binding Txt_adminArt_Encombrement, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                        <Label Content="Taux TVA" Grid.Row="3" Grid.Column="0" Style="{StaticResource vertilabel18}"/>
+                        <TextBox x:Name="txb_adminArtDep_tauxTVA" Margin="5"  Grid.Row="3" Grid.Column="1"  Text="{Binding Txt_adminArt_TauxTVA, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+
+
+                        <Label Content="Encombrement" Grid.Row="4" Grid.Column="0" Style="{StaticResource vertilabel18}"/>
+                        <TextBox x:Name="txb_adminArtDep_encombrement" Margin="5"  Grid.Row="4" Grid.Column="1"  Text="{Binding Txt_adminArt_Encombrement, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
 
 
 
-                        <Button  Content="Ajouter l'article" Grid.Row="4" Grid.Column="1" Margin="5" Style="{StaticResource choixbouton30}"/>
+                        <Button  Content="Ajouter l'article" Grid.Row="5" Grid.Column="1" Command="{Binding Btn_adminArt_AjoutArticle}" Margin="5" Style="{StaticResource choixbouton30}"/>
 
                     </Grid>
                 </DockPanel>
@@ -60,7 +65,7 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="4*"/>
                         <RowDefinition Height="4*"/>
-                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <Label Content="Supprimer un article" Style="{StaticResource Titre}" />
                     <Border Grid.Row="1">
@@ -83,35 +88,52 @@
                             <ComboBox  x:Name="cbb_adminArt_choixArticlesDelete" HorizontalContentAlignment="Center" FontWeight="SemiBold" VerticalContentAlignment="Center" ItemsSource="{Binding ListeArticlesDelete}" SelectedItem="{Binding Selected_adminArt_ChoixArticlesDelete}" Grid.Row="1" Grid.Column="1" Margin="20,5" DisplayMemberPath="NameArticles" />
 
                             <Button Content="Modifier" Grid.Row="3" Grid.Column="1" Margin="10,4"  Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ModifierArticles}" CommandParameter="{Binding }" BorderThickness="0"/>
-                            
+
                             <Button Content="Supprimer" Grid.Row="3" Grid.Column="2" Margin="10,4"  Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.SupprimerArticles}"                     CommandParameter="{Binding }" BorderThickness="0"/>
 
                         </Grid>
                     </Border>
 
-                    <Border Grid.Row="2">
-                        <!--<DockPanel>
-                            <Border DockPanel.Dock="Top" >
-                                <Label Content="Modifier la TVA" Style="{StaticResource Titre}"/>
-                            </Border>
-                            <Border>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
-                                    </Grid.ColumnDefinitions>
-                                    
-                                    <Label Content="Saisir nouvelle TVA" Style="{StaticResource vertilabel18}"/>
-                                    <TextBox Grid.Column="1" Margin="4" />
-                                    <Button  Grid.Column="2" Margin="10,8" Content="Valider" BorderThickness="0"/>
+                    <DockPanel Grid.Row="2">
+                        <Label Content="Modifier un article" DockPanel.Dock="Top" Style="{StaticResource Titre}"/>
+                        
+                    <Border  BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                             
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                                <StackPanel Grid.Row="0" Grid.Column="0" MinWidth="100">
+                                    <Label  Content="Type" Width="50"/>
+                                    <TextBox  x:Name="txb_adminArt_modifTypeNom" Margin="20,0" Text="{Binding Txb_adminArt_modifTypeNom, UpdateSourceTrigger=PropertyChanged}"/>
+                                </StackPanel>
+                            
+                                <StackPanel Grid.Row="0" Grid.Column="1" MinWidth="100">
+                                    <Label  Content="Prix TTC" Width="50"/>
+                                    <TextBox  x:Name="txb_adminArt_modifTypeTTC" Margin="20,0" Text="{Binding Txb_adminArt_modifTypeTTC, UpdateSourceTrigger=PropertyChanged}"/>
+                                </StackPanel>
+                            
+                                <StackPanel Grid.Row="0" Grid.Column="2" MinWidth="100">
+                                    <Label  Content="Taux TVA" Width="60"/>
+                                    <TextBox  x:Name="txb_adminArt_modifTypeTVA" Margin="20,0" Text="{Binding Txb_adminArt_modifTypeTVA, UpdateSourceTrigger=PropertyChanged}"/>
+                                </StackPanel>
+                            
+                                <StackPanel Grid.Row="1" Grid.Column="0" MinWidth="100">
+                                    <Label  Content="Encombrement" Width="90"/>
+                                    <TextBox  x:Name="txb_adminArt_modifTypeEncombrement" Margin="20,0" Text="{Binding Txb_adminArt_modifTypeEncombrement,UpdateSourceTrigger=PropertyChanged}"/>
+                                </StackPanel>
 
-                                </Grid>
-                            </Border>
-                        </DockPanel>-->
-
+                                <Button  Grid.Row="1" Grid.Column="3" Margin="20,5" Content="Enregistrer" Command="{Binding Btn_adminArt_ModifTypeArt}"/>
+                            </Grid>
                     </Border>
-                    <Button x:Name="btn_adminArt_retour" Content="Retour" Style="{StaticResource choixbouton30}" Grid.Row="3" Margin="20,3" Click="btn_adminArt_retour_Click"/>
+                    </DockPanel>
+                    <Button x:Name="btn_adminArt_retour" Content="Retour" Style="{StaticResource choixbouton30}" Grid.Row="3" Margin="70,8" Click="btn_adminArt_retour_Click"/>
                 </Grid>
             </Border>
         </Grid>

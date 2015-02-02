@@ -87,7 +87,7 @@
                                 </Grid.RowDefinitions>
                                 <Label Background="AliceBlue" Content="Résultat de la recherche" Style="{StaticResource vertilabel25}"/>
                                 <Border Grid.Row="1" Margin="2" BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="10">
-                                    <ListBox Margin="2" Background="Transparent" BorderThickness="0"  ItemsSource="{Binding Path=ListeRechercheClient}">
+                                    <ListBox Margin="-2,-2,6,6" Background="Transparent" BorderThickness="0"  ItemsSource="{Binding Path=ListeRechercheClient}">
                                         <ListBox.ItemTemplate>
                                             <DataTemplate>
 
@@ -97,13 +97,13 @@
                                                             <ColumnDefinition/>
                                                             <ColumnDefinition/>
                                                         </Grid.ColumnDefinitions>
-                                                  
-                                                    <StackPanel Orientation="Vertical" MinWidth="140" Margin="2" Grid.Column="0">
-                                                        <TextBlock Text="{Binding Label_restitutionArticles_NomClient}" FontWeight="Bold" FontSize="13pt" Foreground="Black"  />
-                                                            </StackPanel>
+
+                                                        <StackPanel Orientation="Vertical" MinWidth="140" Margin="2" Grid.Column="0">
+                                                            <TextBlock Text="{Binding Label_restitutionArticles_NomClient}" FontWeight="Bold" FontSize="13pt" Foreground="Black"  />
+                                                        </StackPanel>
                                                         <StackPanel Orientation="Vertical" MinWidth="140" Margin="2" Grid.Column="1">
                                                             <TextBlock Text="{Binding Label_restitutionArticles_PrenomClient}" FontSize="11pt" Foreground="#FF525252" />
-                                                    </StackPanel>
+                                                        </StackPanel>
                                                     </Grid>
                                                 </Button>
                                             </DataTemplate>

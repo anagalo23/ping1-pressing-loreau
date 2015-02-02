@@ -18,9 +18,11 @@ namespace App_pressing_Loreau.ViewModel
         
         #region Attributes 
 
-        private int _txb_Convoyeur_nbPlace;
+        private int _label_Convoyeur_nbPlace;
         private int _label_convoyeur_diponibles;
-        private String _contenuConvoyeur;
+        private int _txb_Convoyeur_idCommande;
+
+        private List<ItemEmplacement> _contenuConvoyeur;
 
         List<PlaceConvoyeur> listePlace = null;
 
@@ -36,26 +38,44 @@ namespace App_pressing_Loreau.ViewModel
         public ConvoyeurVM()
         {
             listePlace=(List<PlaceConvoyeur>)PlaceConvoyeurDAO.selectConvoyeurs();
-            //Label_convoyeur_diponibles = listePlace.Count;
 
+            List<PlaceConvoyeur> comptePlaceLibre = (List<PlaceConvoyeur>)PlaceConvoyeurDAO.selectConvoyeursEmpty();
+
+            Label_convoyeur_diponibles = comptePlaceLibre.Count;
+            Label_Convoyeur_nbPlace = listePlace.Count;
+
+     
         
            
         }
 
         #region Properties and commands
 
-        public int Txb_Convoyeur_nbPlace
+        public int Label_Convoyeur_nbPlace
         {
-            get { return _txb_Convoyeur_nbPlace; }
+            get { return _label_Convoyeur_nbPlace; }
             set
             {
-                if (value != _txb_Convoyeur_nbPlace)
+                if (value != _label_Convoyeur_nbPlace)
                 {
-                    _txb_Convoyeur_nbPlace = value;
-                    OnPropertyChanged("Txb_Convoyeur_nbPlace");
+                    _label_Convoyeur_nbPlace = value;
+                    OnPropertyChanged("Label_Convoyeur_nbPlace");
                 }
             }
 
+        }
+
+        public int Txb_Convoyeur_idCommande
+        {
+            get { return _txb_Convoyeur_idCommande; }
+            set
+            {
+                if (value != _txb_Convoyeur_idCommande)
+                {
+                    _txb_Convoyeur_idCommande = value;
+                    OnPropertyChanged("Txb_Convoyeur_idCommande");
+                }
+            }
         }
 
 
@@ -73,7 +93,7 @@ namespace App_pressing_Loreau.ViewModel
 
         }
 
-        public String ContenuConvoyeur
+        public List<ItemEmplacement> ContenuConvoyeur
         {
             get { return _contenuConvoyeur; }
             set
@@ -83,11 +103,11 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-        public ICommand Btn_convoyeur_validerRecherche
+        public ICommand Btn_Convoyeur_ok
         {
             get { return new RelayCommand(
-                p=>convoyeurContenu(),
-                p=>Txb_Convoyeur_nbPlace>0 & Txb_Convoyeur_nbPlace<30); }
+                p=>convoyeurContenu());
+            }
         }
 
         #endregion
@@ -99,12 +119,40 @@ namespace App_pressing_Loreau.ViewModel
         public void convoyeurContenu()
         {
 
+            ContenuConvoyeur = new List<ItemEmplacement>();
+            if (Txb_Convoyeur_idCommande != 0)
+            {
+                Commande commande = CommandeDAO.selectCommandeById(Txb_Convoyeur_idCommande, false, true, false);
 
-            place = (PlaceConvoyeur)PlaceConvoyeurDAO.selectConvoyeurById(Txb_Convoyeur_nbPlace);
-            //ContenuConvoyeur = new List<string>();
-            //ContenuConvoyeur=place.emplacement.ToString()+" et l' id est: " +place.id;
- 
+                foreach (Article art in commande.listArticles)
+                {
+                    ContenuConvoyeur.Add(new ItemEmplacement() { Label_Convoyeur_NomArticle = art.type.nom, Label_Convoyeur_Emplacement = art.convoyeur.emplacement });
+                }
+
+            }
+            else
+            {
+                Commande com = CommandeDAO.lastCommande();
+
+                Commande commande = CommandeDAO.selectCommandeById(com.id, false, true, false);
+                foreach (Article art in commande.listArticles)
+                {
+                    ContenuConvoyeur.Add(new ItemEmplacement() { Label_Convoyeur_NomArticle = art.type.nom, Label_Convoyeur_Emplacement = art.convoyeur.emplacement });
+                }
+
+            }
+            
         }
         #endregion
     }
+
+    #region Class
+
+    public class ItemEmplacement
+    {
+        public String Label_Convoyeur_NomArticle { get; set; }
+        public int Label_Convoyeur_Emplacement { get; set; }
+
+    }
+    #endregion
 }
