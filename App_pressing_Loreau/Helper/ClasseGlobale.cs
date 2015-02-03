@@ -13,7 +13,24 @@ namespace App_pressing_Loreau.Helper
 {
     class ClasseGlobale
     {
+        public static void INITIALIZE_ALL()
+        {
+            initializeContentDetailCommande();
+            initializeClient();
+            initializeContenuListePaiement();
+            _initializePlacesLibres();
+        }
 
+        public static void SET_ALL_NULL()
+        {
+            _contentDetailCommande = null;
+            Client = null;
+            _contenuListePaiement = null;
+            _renduCommandeClientPro = null;
+            _renduCommande = null;
+            _rendreArticlesSelectionnes = null;
+            PlacesLibres = null;
+        }
 
         //*********************************************************************************GESTION DE LA LISTE DE COMMANDE
         public static ObservableCollection<ArticlesVM> _contentDetailCommande { get; set; }
@@ -82,7 +99,7 @@ namespace App_pressing_Loreau.Helper
 
         public static ConvoyeurPlacesLibres PlacesLibres
         {
-            get 
+            get
             {
                 if (_placesLibres == null)
                 {
@@ -127,7 +144,7 @@ namespace App_pressing_Loreau.Helper
             }
             set
             {
-                    _placesConvoyeurLibres[index] = value;
+                _placesConvoyeurLibres[index] = value;
             }
         }
 
