@@ -314,41 +314,37 @@ namespace App_pressing_Loreau.ViewModel
         public void AjouterArticles(object button)
         {
             Button clickedbutton = button as Button;
-            
-
             if (clickedbutton != null)
             {
                 typeArticleDTO = (TypeArticle)TypeArticleDAO.selectTypesById(Int32.Parse(clickedbutton.Tag.ToString()));
 
-                //Récupère les places libres dans le convoyeur
-                //List<PlaceConvoyeur> list = PlaceConvoyeurDAO.selectConvoyeursEmpty();///FAUX : récupérer dans la classe globale!!!!!
-                //List<PlaceConvoyeur> list = ClasseGlobale.PlacesLibres.getList();                                                          ///
-
                 PlaceConvoyeur place = new PlaceConvoyeur();
-                int i = 0;
-                //Placement ou non dans le convoyeur
+                place = null;
                 if (typeArticleDTO.encombrement == 0 || typeArticleDTO.encombrement > 3)
                 {
                     //Cet article ne va pas dans le convoyeur
-                    place = null;
-                    MessageBox.Show("Cet article ne va pas dans le convoyeur.");
+                    //MessageBox.Show("Cet article ne va pas dans le convoyeur.");
                 }
                 else
                 {
-                    //On cherche un emplacement libre
-                    
-                    //Récupère la première place où l'article pourra rentrer
-                    //Tant que mon encombrement est supèrieur à celui disponible, je continue
-                    while (ClasseGlobale.PlacesLibres.getList()[i].encombrement > (3 - typeArticleDTO.encombrement)) { i++; }//ATTENTION, pas vraiment fonctionnel!!! Condition sur l'encombrement à ajouter
-
-                    //Ajout du nouvel encombrement dans la liste
-                    //list[i].encombrement += typeArticleDTO.encombrement;
-                    ClasseGlobale.PlacesLibres[i].encombrement += typeArticleDTO.encombrement;
-                    
-                    //Je rajoute l'encombrement qui va bien
-                    //list[i].encombrement = 1.5F;//ATTENTION, pas vraiment fonctionnel!!! Il faudra mettre l'encombrement de l'objet
-                    place = ClasseGlobale.PlacesLibres.getList()[i];
-                    
+                    //Je parcours la liste pour trouver une place convoyeur pouvant accueillir l'article
+                    int finDeListe = ClasseGlobale.PlacesLibres.getList().Count();
+                    for (int i = 0; i < finDeListe; i++)
+                    {
+                        //si l'encombrement du convoyeur est permet de recevoir l'article
+                        if(ClasseGlobale.PlacesLibres.getList()[i].encombrement <= (3 - typeArticleDTO.encombrement)){
+                            //Je modifie l'encombrement de la place convoyeur
+                            ClasseGlobale.PlacesLibres[i].encombrement += typeArticleDTO.encombrement;
+                            //Je récupère la place convoyeur concernée
+                            place = ClasseGlobale.PlacesLibres.getList()[i];
+                            break;
+                        }
+                        if (i == finDeListe -1 )
+                        {
+                            MessageBox.Show("Cet article ne trouve pas sa place dans le convoyeur.\n"+
+                            "Peut-être n'y a t-il plus de place ou cet article est trop volumineux pour les emplacements restants.");
+                        }
+                    }
                 }
 
 
@@ -360,19 +356,13 @@ namespace App_pressing_Loreau.ViewModel
                     PlaceConvoyeur = place
                 };
                 
-
                 ClasseGlobale._contentDetailCommande.Add(articleVmAAjouter);
-
                 Label_NouvelleCommande_prixTotal = 0;
                 foreach (ArticlesVM artVm in  ClasseGlobale._contentDetailCommande)
                 {
                     Label_NouvelleCommande_prixTotal += (artVm.typeArticle.TTC);
                 }
-
-
             }
-
-
         }
 
 

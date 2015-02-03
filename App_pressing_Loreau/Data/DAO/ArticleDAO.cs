@@ -27,7 +27,14 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("art_rendu", article.ifRendu);
                 cmd.Parameters.AddWithValue("art_TVA", article.TVA);
                 cmd.Parameters.AddWithValue("art_TTC", article.TTC);
-                cmd.Parameters.AddWithValue("art_conv_id", article.convoyeur.id);//*
+                if (article.convoyeur != null)
+                {
+                    cmd.Parameters.AddWithValue("art_conv_id", article.convoyeur.id);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("art_conv_id", null);
+                }
                 cmd.Parameters.AddWithValue("art_typ_id", article.type.id);
                 cmd.Parameters.AddWithValue("art_cmd_id", article.fk_commande);
 

@@ -131,11 +131,17 @@ namespace App_pressing_Loreau.ViewModel
             }
             set
             {
-                if (value != Int32.Parse(ClasseGlobale.Client.adresse.numero))
+                try
                 {
-                    ClasseGlobale.Client.adresse.numero = String.Format("{0}", value);
-                    OnPropertyChanged("Txb_nouveauClient_numero");
+                    if (value != Int32.Parse(ClasseGlobale.Client.adresse.numero))
+                    {
+                        ClasseGlobale.Client.adresse.numero = String.Format("{0}", value);
+                        OnPropertyChanged("Txb_nouveauClient_numero");
+                    }
+                }catch(Exception e){
+                    MessageBox.Show("Le clavier numérique ne fonctionne pas");
                 }
+               
             }
         }
 
