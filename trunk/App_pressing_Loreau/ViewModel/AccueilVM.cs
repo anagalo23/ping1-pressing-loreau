@@ -379,11 +379,8 @@ namespace App_pressing_Loreau
                 utilisateur.ButtonUserBackground = Brushes.Teal;
             }
 
-            ClasseGlobale.Client = null;
-            ClasseGlobale._renduCommandeClientPro = null;
-            ClasseGlobale._renduCommande = null;
-            ClasseGlobale._renduCommandeClientPro = null;
-            ClasseGlobale._contentDetailCommande = null;
+
+            ClasseGlobale.SET_ALL_NULL();
 
          
             accessUserControl = null;

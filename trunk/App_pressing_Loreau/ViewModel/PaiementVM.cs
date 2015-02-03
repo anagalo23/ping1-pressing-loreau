@@ -478,7 +478,6 @@ namespace App_pressing_Loreau.ViewModel
             }
 
 
-
             //if (i != 0 & j != 0 & k != 0)
             //{
             //    MessageBox.Show("Commande enregistrée \n retour à l accueil");
