@@ -28,26 +28,18 @@ namespace App_pressing_Loreau.Model
         public RecuPaiement(Commande commande)
         {
             this.commande = commande;
-
-            
-            //String[] tab = s.Split('/');
-            //s = "";
-            //for (int i = 0; i < tab.Length - 2; i++)
-            //{
-            //    s+=
-            //}
-
         }
 
         public void printRecu()
         {
             try
             {
+                //creation du fichier temporaire dans resource/temp
                 if (System.IO.File.Exists(copy_path + ".txt"))
                     System.IO.File.Delete(copy_path + ".txt");
                 System.IO.File.Copy(pattern_path + ".txt", copy_path + ".txt");
 
-
+                //calcul des totals
                 float total_TTC = 0;
                 float total_payee = 0;
                 foreach (Article art in commande.listArticles)
@@ -59,6 +51,7 @@ namespace App_pressing_Loreau.Model
                     total_payee = total_payee + paie.montant;
                 }
 
+                //Ajout du contenue du ticket
                 File.AppendAllText(copy_path + ".txt", commande.client.nom + " " + commande.client.prenom + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", Environment.NewLine);
 
@@ -73,11 +66,13 @@ namespace App_pressing_Loreau.Model
                 File.AppendAllText(copy_path + ".txt", "Commande : " + commande.listArticles.Count + " articles" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", Environment.NewLine);
 
+                //ajout des articles
                 foreach (Article art in commande.listArticles)
                 {
                     File.AppendAllText(copy_path + ".txt", "~ " + art.type.nom + Environment.NewLine);
                 }
 
+                //fin du ticket
                 File.AppendAllText(copy_path + ".txt", Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", Environment.NewLine);

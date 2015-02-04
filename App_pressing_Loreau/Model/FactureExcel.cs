@@ -32,6 +32,7 @@ namespace App_pressing_Loreau.Model
 
         public void createFacture()
         {
+            //Ouvre le fichier excel
             oXL = new Microsoft.Office.Interop.Excel.Application();
             mWorkBook = oXL.Workbooks.Open(pattern_path, 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
             mWorkSheets = (Worksheet)mWorkBook.Worksheets.get_Item(1);
@@ -60,6 +61,7 @@ namespace App_pressing_Loreau.Model
                 index++;
             }
 
+            //ajout du total
             index += 2;
             mWorkSheets.Cells[index, 7] = "TVA :";
             mWorkSheets.Cells[index, 9] = tva;
