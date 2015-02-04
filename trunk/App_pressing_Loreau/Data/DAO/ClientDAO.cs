@@ -423,7 +423,6 @@ namespace App_pressing_Loreau.Data.DAO
                 MySqlCommand cmd = new MySqlCommand(Bdd.updateClient, Bdd.connexion());
 
                 //ajout des parametres
-                cmd.Parameters.AddWithValue("id", client.id);
                 cmd.Parameters.AddWithValue("type", client.type);
                 cmd.Parameters.AddWithValue("nom", client.nom);
                 cmd.Parameters.AddWithValue("prenom", client.prenom);
