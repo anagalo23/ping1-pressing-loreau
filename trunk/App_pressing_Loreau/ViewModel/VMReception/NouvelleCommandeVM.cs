@@ -355,13 +355,19 @@ namespace App_pressing_Loreau.ViewModel
                     ArticlesName = typeArticleDTO.nom,
                     PlaceConvoyeur = place
                 };
-                
                 ClasseGlobale._contentDetailCommande.Add(articleVmAAjouter);
+
+
                 Label_NouvelleCommande_prixTotal = 0;
+                decimal tampon = 0;
                 foreach (ArticlesVM artVm in  ClasseGlobale._contentDetailCommande)
                 {
-                    Label_NouvelleCommande_prixTotal += (artVm.typeArticle.TTC);
+                    //MessageBox.Show("ajout de " + artVm.typeArticle.TTC);
+                    //Label_NouvelleCommande_prixTotal += (artVm.typeArticle.TTC);
+                    tampon += (decimal)(artVm.typeArticle.TTC);
                 }
+                //MessageBox.Show(tampon.ToString());
+                Label_NouvelleCommande_prixTotal = (float)tampon;
             }
         }
 
