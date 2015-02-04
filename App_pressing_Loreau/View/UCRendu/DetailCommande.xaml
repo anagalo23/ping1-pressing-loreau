@@ -69,8 +69,9 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="4*"/>
                                 <RowDefinition Height="19*"/>
+                                <RowDefinition Height="2*"/>
                             </Grid.RowDefinitions>
-                            <Label Content="Les commandes en cours" Style="{StaticResource Titre}" Margin="10,5"/>
+                            <Label Content="Les commandes en cours" Style="{StaticResource Titre}" Margin="10,3"/>
                             <DockPanel Grid.Row="1">
                                 <Border  BorderBrush="AliceBlue" Margin="5" BorderThickness="2" CornerRadius="10">
 
@@ -80,6 +81,16 @@
                       
                             </DockPanel>
 
+                            <Border Grid.Row="2">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Content="Valider selection" Grid.Column="1" Margin="15,4" Command="{Binding Btn_ValiderSelect}" />
+
+                                </Grid>
+                            </Border>
                         </Grid>
                     </Grid>
 

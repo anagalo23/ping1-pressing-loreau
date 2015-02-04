@@ -14,8 +14,8 @@ namespace App_pressing_Loreau.Model
     class RecuPaiement
     {
         public Commande commande { get; set; }
-        public static String pattern_path = "I:\\PING\\App_pressing_loreau\\App_pressing_Loreau\\Resources\\PatternFile\\RecuPaiement";
-        public static String copy_path = "I:\\PING\\App_pressing_loreau\\App_pressing_Loreau\\Resources\\Temp\\RecuPaiement";
+        public static String pattern_path = "D:\\matlab\\3ème année\\Ping1_2\\ProjetPing\\ProjetIngenieur\\App_pressing_Loreau\\Resources\\PatternFile\\RecuPaiement";
+        public static String copy_path = "D:\\matlab\\3ème année\\Ping1_2\\ProjetPing\\ProjetIngenieur\\App_pressing_Loreau\\Resources\\Temp\\RecuPaiement";
 
         Font verdana10Font;
         StreamReader reader;

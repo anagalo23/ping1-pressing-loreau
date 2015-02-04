@@ -114,10 +114,12 @@ namespace App_pressing_Loreau.ViewModel
 
         public void rechercheBDD()
         {
+          
             //On recherche dans la bdd en fonction des champs que l'utilisateur à entré
             Fields fields = AutoComplete.getFields();
             ResultatRecherche_identificationClient = new List<IdentificationClientData>();
 
+        
             List<Client> resultat = ClientDAO.seekClients(fields.nom, fields.prenom, fields.portable,fields.idCleaWay);
 
 
@@ -131,7 +133,7 @@ namespace App_pressing_Loreau.ViewModel
             }
             else
             {
-                MessageBox.Show("recherche infructueuse");
+                //MessageBox.Show("recherche infructueuse");
             }
         }
         #endregion

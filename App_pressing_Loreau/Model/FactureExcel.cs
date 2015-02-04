@@ -14,7 +14,7 @@ namespace App_pressing_Loreau.Model
 
         public Commande commande;
 
-        public static String pattern_path = "I:\\PING\\App_pressing_loreau\\App_pressing_Loreau\\Resources\\PatternFile\\FacturePattern";
+        public static String pattern_path = "D:\\matlab\\3ème année\\Ping1_2\\ProjetPing\\ProjetIngenieur\\App_pressing_Loreau\\Resources\\PatternFile\\FacturePattern";
         private Microsoft.Office.Interop.Excel.Application oXL;
         private Microsoft.Office.Interop.Excel.Workbook mWorkBook;
         private Microsoft.Office.Interop.Excel.Worksheet mWorkSheets;
