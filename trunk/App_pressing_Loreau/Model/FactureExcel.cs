@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace App_pressing_Loreau.Model
 {
@@ -14,7 +15,7 @@ namespace App_pressing_Loreau.Model
 
         public Commande commande;
 
-        public static String pattern_path = "D:\\matlab\\3ème année\\Ping1_2\\ProjetPing\\ProjetIngenieur\\App_pressing_Loreau\\Resources\\PatternFile\\FacturePattern";
+        public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\FacturePattern";
         private Microsoft.Office.Interop.Excel.Application oXL;
         private Microsoft.Office.Interop.Excel.Workbook mWorkBook;
         private Microsoft.Office.Interop.Excel.Worksheet mWorkSheets;
@@ -27,11 +28,12 @@ namespace App_pressing_Loreau.Model
         public FactureExcel(Commande commandeWithClient)
         {
             commande = commandeWithClient;
+            MessageBox.Show(pattern_path);
         }
 
         public void createFacture()
         {
-            oXL = new Application();
+            oXL = new Microsoft.Office.Interop.Excel.Application();
             mWorkBook = oXL.Workbooks.Open(pattern_path + ".xlsx", 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
             mWorkSheets = (Worksheet)mWorkBook.Worksheets.get_Item(1);
 

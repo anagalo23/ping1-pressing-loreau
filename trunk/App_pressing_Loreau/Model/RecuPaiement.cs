@@ -1,4 +1,5 @@
-﻿using App_pressing_Loreau.Model.DTO;
+﻿using App_pressing_Loreau.Data.DAO;
+using App_pressing_Loreau.Model.DTO;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,14 +9,18 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace App_pressing_Loreau.Model
 {
     class RecuPaiement
     {
         public Commande commande { get; set; }
-        public static String pattern_path = "D:\\matlab\\3ème année\\Ping1_2\\ProjetPing\\ProjetIngenieur\\App_pressing_Loreau\\Resources\\PatternFile\\RecuPaiement";
-        public static String copy_path = "D:\\matlab\\3ème année\\Ping1_2\\ProjetPing\\ProjetIngenieur\\App_pressing_Loreau\\Resources\\Temp\\RecuPaiement";
+        public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\RecuPaiement";
+        public static String copy_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10)+"Resources\\Temp\\RecuPaiement";
+
+        
+        
 
         Font verdana10Font;
         StreamReader reader;
@@ -23,6 +28,15 @@ namespace App_pressing_Loreau.Model
         public RecuPaiement(Commande commande)
         {
             this.commande = commande;
+
+            
+            //String[] tab = s.Split('/');
+            //s = "";
+            //for (int i = 0; i < tab.Length - 2; i++)
+            //{
+            //    s+=
+            //}
+
         }
 
         public void printRecu()

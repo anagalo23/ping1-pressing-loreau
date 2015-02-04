@@ -15,6 +15,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Media;
+using System.IO;
 
 
 
@@ -63,6 +64,7 @@ namespace App_pressing_Loreau
 
             ClasseGlobale.SET_ALL_NULL();
 
+            
         }
 
         #endregion
