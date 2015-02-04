@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="App_pressing_Loreau.View.UCAdministrateur.AdministrationClient"
+﻿<UserControl x:Class="App_pressing_Loreau.View.AdministrationClient"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +7,200 @@
              d:DesignHeight="300" d:DesignWidth="740">
     <DockPanel x:Name="dp">
         <Grid>
-            
-    </Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="8*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <DockPanel Grid.Row="0">
+                        <Label Content="Modification Client " DockPanel.Dock="Top" Style="{StaticResource Titre}" Height="40"/>
+                        <Border   BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="4*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+
+                                <Border>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30*"/>
+                                            <RowDefinition Height="109*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Label Content="Adresse" Style="{StaticResource vertilabel18}"/>
+                                        <Grid Grid.Row="1">
+
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="1*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Label  Content="Numero rue/voie" />
+                                            <TextBox  x:Name="txb_adminClient_modifNumAdresse" Grid.Row="0" Grid.Column="1" Margin="10,5" Text="{Binding Txb_adminClient_modifNumAdresse, UpdateSourceTrigger=PropertyChanged}"/>
+
+                                            <Label  Content="Nom rue/voie" Grid.Row="1" Grid.Column="0" />
+                                            <TextBox  x:Name="txb_adminClient_modifNameAdresse" Grid.Row="1" Grid.Column="1" Margin="10,5" Text="{Binding Txb_adminClient_modifNameAdresse, UpdateSourceTrigger=PropertyChanged}"/>
+
+                                            <Label  Content="BP" Grid.Row="2" Grid.Column="0" />
+                                            <TextBox  x:Name="txb_adminClient_modifBP" Grid.Row="2" Grid.Column="1" Margin="10,5" Text="{Binding Txb_adminClient_modifBP, UpdateSourceTrigger=PropertyChanged}"/>
+
+                                            <Label  Content="Ville" Grid.Row="3" Grid.Column="0" />
+                                            <TextBox  x:Name="txb_adminClient_modifVille" Grid.Row="3" Grid.Column="1" Margin="10,5" Text="{Binding Txb_adminClient_modifVille, UpdateSourceTrigger=PropertyChanged}"/>
+                                        </Grid>
+
+
+                                    </Grid>
+                                </Border>
+
+                                <Border Grid.Column="1">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1*"/>
+                                            <RowDefinition Height="1*"/>
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Grid.Row="0">
+                                            <Label  Content="N° téléphone" Style="{StaticResource vertilabel18}"/>
+                                            <TextBox  x:Name="txb_adminClient_modifTypeTelephone" Margin="20,2" Height="30"  Text="{Binding Txb_adminClient_modifTypeTelephone,UpdateSourceTrigger=PropertyChanged}"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Row="1" >
+                                            <Label  Content="ID Cleanway" Style="{StaticResource vertilabel18}"/>
+                                            <TextBox  x:Name="txb_adminClient_modifTypeIdCleanway" Margin="20,2" Height="30" Text="{Binding Txb_adminClient_modifTypeIdCleanway,UpdateSourceTrigger=PropertyChanged}"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+
+
+                                <Button  Grid.Row="1" Grid.Column="3" Margin="20,5" Content="Enregistrer" Command="{Binding Btn_adminArt_ModifTypeArt}"/>
+
+                            </Grid>
+                        </Border>
+                    </DockPanel>
+
+                    <Border Grid.Row="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="1" Content="Retour" x:Name="btn_retour" Margin="10,5" Click="btn_retour_Click" />
+
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="9*"/>
+                </Grid.RowDefinitions>
+                <Label Content="Recherche du client" Grid.Row="0" Margin="1" Style="{StaticResource Titre}"/>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="10">
+
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Definition du champ de selection combo box-->
+                            <ComboBox x:Name="cbb_administrationClient_choix_theme" Grid.Column="0" Grid.Row="1" FontFamily="Arial" FontWeight="SemiBold" HorizontalContentAlignment="Center" Margin="10"  VerticalContentAlignment="Center" ItemsSource="{Binding Cbb_AdministrationClient_choix_theme}" SelectedItem="{Binding Selected_administrationClient_choix_theme}" DisplayMemberPath="NameCbb" />
+
+                            <TextBox x:Name="txb_administrationClient_choix" Margin="10,20" Grid.Row="1" Grid.Column="1" Style="{StaticResource vertiTextBox}" Text="{Binding Txb_administrationClient_choix, UpdateSourceTrigger=PropertyChanged }"  KeyDown="txb_administrationClient_choix_KeyDown"/>
+
+
+                            <Button x:Name="btn_administrationClient_valider" Content="valider" Grid.Column="1" Grid.Row="3" Command="{Binding Btn_administrationClient_valider}" Margin="10,8"/>
+
+                        </Grid>
+                    </Border>
+
+                    <Border Margin="1" BorderBrush="AliceBlue" BorderThickness="1" Grid.Column="1" >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="7*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Background="AliceBlue" Content="Résultat de la recherche" Style="{StaticResource vertilabel25}"/>
+
+                            <Label  Content="{Binding Label_adminIdentClient_choix,Mode=TwoWay}" Grid.Row="2" Style="{StaticResource vertilabel25}"/>
+
+                            <Border Grid.Row="1" Margin="2" BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="10">
+                                <ListBox Margin="2" Background="Transparent" BorderThickness="0"  ItemsSource="{Binding Path=ListeRechercheClient}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+
+                                            <Button  Tag="{Binding TagButtonClientRA}"  Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.GetButtonRecherche}"   CommandParameter="{Binding }" BorderThickness="0" Height="30">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition/>
+                                                        <ColumnDefinition/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <StackPanel Orientation="Vertical" MinWidth="140" Margin="2" Grid.Column="0">
+                                                        <TextBlock Text="{Binding Label_administrationClient_NomClient}" FontWeight="Bold" FontSize="13pt" Foreground="Black"  />
+                                                    </StackPanel>
+                                                    <StackPanel Orientation="Vertical" MinWidth="140" Margin="2" Grid.Column="1">
+                                                        <TextBlock Text="{Binding Label_administrationClient_PrenomClient}" FontSize="11pt" Foreground="#FF525252" />
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Button>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </Border>
+
+                            <Border Grid.Row="3">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Button Content="mofifier" Grid.Column="0" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ModifierClient}" CommandParameter="{Binding }" Margin="10,8"/>
+
+                                    <Button Content="supprimer" Grid.Column="1" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.SupprimerClient}" CommandParameter="{Binding }" Margin="10,8"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+            </Grid>
+        </Grid>
     </DockPanel>
 </UserControl>

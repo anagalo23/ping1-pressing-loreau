@@ -41,7 +41,7 @@ namespace App_pressing_Loreau.View
         private void btn_nouveauClient_nouvelle_commande_Click(object sender, RoutedEventArgs e)
         {
 
-            if (ClasseGlobale.Client != null)
+            if (ClasseGlobale.Client.nom!="")
             {
                 dp.Children.Clear();
 
@@ -52,6 +52,15 @@ namespace App_pressing_Loreau.View
                 MessageBox.Show("Client non enregistré");
 
             }
+        }
+
+        private void txb_NouveauClient_adNum_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+            if (e.Key >= Key.D0 && e.Key <= Key.D9) ; // it`s number
+            else if (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) ; // it`s number
+            else
+                e.Handled = true; // the key will sappressed
         }
 
 

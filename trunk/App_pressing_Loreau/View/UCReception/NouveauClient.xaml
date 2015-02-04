@@ -83,7 +83,7 @@ Text="{Binding Path=Txb_nouveauClient_idCleanway, UpdateSourceTrigger=PropertyCh
 
                         <Label Content="Numéro :" Grid.Row="0" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_numero" Grid.Row="0" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}"
-Text="{Binding Path=Txb_nouveauClient_numero, UpdateSourceTrigger=PropertyChanged}" />
+Text="{Binding Path=Txb_nouveauClient_numero, UpdateSourceTrigger=PropertyChanged}" KeyDown="txb_NouveauClient_adNum_KeyDown"/>
 
                         <Label Content="Rue, voie :" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_rue_voie" Grid.Row="1" Grid.Column="1" Margin="10"

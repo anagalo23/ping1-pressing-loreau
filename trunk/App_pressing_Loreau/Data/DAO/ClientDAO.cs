@@ -22,7 +22,7 @@ namespace App_pressing_Loreau.Data.DAO
                 MySqlCommand cmd = new MySqlCommand(Bdd.insertClient, Bdd.connexion());
                 string dateNaissance=null;
                 //ajout des parametres
-                if (client.dateNaissance != null)
+                if (client.dateNaissance != "")
                 {
                     string[] tab = (client.dateNaissance).Split('/');
                     dateNaissance = "";
@@ -435,7 +435,7 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("dateNaissance", client.dateNaissance);
                 cmd.Parameters.AddWithValue("email", client.email);
                 cmd.Parameters.AddWithValue("idCleanWay", client.idCleanWay);
-                cmd.Parameters.AddWithValue("id", client.id);
+                cmd.Parameters.AddWithValue("idC", client.id);
 
 
 
