@@ -144,7 +144,7 @@ namespace App_pressing_Loreau.Model
                  *@param Collate : True to collate multiple copies.
                  *@param PrToFileName : If PrintToFile is set to True, this argument specifies the name of the file you want to print to.
                  */
-                mWorkSheets.PrintOut(1, 1, 1, false, misValue, false, false, misValue);
+                mWorkSheets.PrintOut(1, 1, 1, false, "Canon MG2400 series", false, false, misValue);
 
                 //close files
                 mWorkBook.Close(false, misValue, misValue);
