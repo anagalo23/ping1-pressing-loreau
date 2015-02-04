@@ -76,7 +76,7 @@ namespace App_pressing_Loreau.Data
         public static String insertArticle = "INSERT INTO article(art_photo, art_commentaire, art_rendu, art_TVA, art_TTC, art_conv_id, art_typ_id, art_cmd_id) VALUES (?,?,?,?,?,?,?,?)";
         public static String selectArticleById = "SELECT art_id, art_photo, art_commentaire, art_rendu, art_TVA, art_TTC, art_conv_id, art_typ_id, art_cmd_id FROM article WHERE art_id=?";
         public static String selectArticleByIdCmd = "SELECT art_id, art_photo, art_commentaire, art_rendu, art_TVA, art_TTC, art_conv_id, art_typ_id, art_cmd_id FROM article WHERE art_cmd_id=?";
-        public static String updateArticle = "UPDATE article SET art_id=?,art_photo=?,art_commentaire=?,art_rendu=?,art_TVA=?,art_TTC=?,art_conv_id=?,art_cmd_id=?,art_typ_id=?, art_cmd_id=? WHERE art_id=?";
+        public static String updateArticle = "UPDATE article SET art_id=?,art_photo=?,art_commentaire=?,art_rendu=?,art_TVA=?,art_TTC=?,art_conv_id=?,art_cmd_id=?,art_typ_id=?, art_cmd_id=?, art_date_rendu=? WHERE art_id=?";
         public static String deleteArticle = "DELETE FROM article WHERE art_id=?";
         public static String lastArticle = "SELECT MAX(art_id) AS art_id FROM article";
         public static String selectArticleRenduByDate = "SELECT art_id, art_photo, art_commentaire, art_rendu, art_TVA, art_TTC, art_conv_id, art_typ_id, art_cmd_id FROM article WHERE art_date_rendu BETWEEN ? AND ?";
@@ -96,7 +96,7 @@ namespace App_pressing_Loreau.Data
         public static String selectCommandes = "SELECT cmd_id, cmd_date, cmd_payee, cmd_clt_id, cmd_remise FROM commande";
         public static String selectCommandeById = "SELECT cmd_id, cmd_date, cmd_payee, cmd_clt_id, cmd_remise FROM commande WHERE cmd_id=?";
         public static String selectCommandesByClient = "SELECT cmd_id, cmd_date, cmd_payee, cmd_clt_id, cmd_remise FROM commande WHERE cmd_clt_id=?";
-        public static String updateCommande = "UPDATE commande SET cmd_id=?,cmd_date=?,cmd_payee=?,cmd_clt_id=?,cmd_remise=? WHERE cmd_id=?";
+        public static String updateCommande = "UPDATE commande SET cmd_id=?,cmd_date=?,cmd_payee=?,cmd_clt_id=?,cmd_remise=?, cmd_date_rendu=? WHERE cmd_id=?";
         public static String deleteCommande = "DELETE FROM commande WHERE cmd_id=?";
         public static String lastCommande = "SELECT MAX(cmd_id) AS cmd_id FROM commande";
         public static String totalTTCCommandeById = "SELECT SUM(art_TTC) AS total FROM article WHERE art_cmd_id=?";
