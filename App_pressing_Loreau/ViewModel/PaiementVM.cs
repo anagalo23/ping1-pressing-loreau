@@ -473,7 +473,7 @@ namespace App_pressing_Loreau.ViewModel
 
             //Enregistrement du/des paiement(s)
             Payement paiement;
-            System.Collections.Generic.ICollection<String> liste_des_moyens_de_paiement = listeDeMontantParMoyenPaiement.dico.Keys;
+            ICollection<String> liste_des_moyens_de_paiement = listeDeMontantParMoyenPaiement.dico.Keys;
             foreach (String monMoyenDePaiement in liste_des_moyens_de_paiement)
             {
                 //stgTest += listeDeMontantParMoyenPaiement[monMoyenDePaiement] + " en " + monMoyenDePaiement + " \n";
@@ -528,11 +528,26 @@ namespace App_pressing_Loreau.ViewModel
                 ///////
                 Commande comdRendu = ClasseGlobale._renduCommande;
 
+                //Commande updateComande= new Commande(null,)
                 foreach (Article art in ListeSelectArt)
                 {
                     //int id, string photo, string commentaire, bool ifRendu, float TVA, float TTC, TypeArticle type, PlaceConvoyeur convoyeur, int fk_commande
+                    //DateTime dateRendu = DateTime.Now;
                     Article artAdd = new Article(art.id,art.photo,art.commentaire,true,art.TVA,art.TTC,art.type,null,comdRendu.id);
+                    artAdd.date_rendu = DateTime.Now;
                     j = ArticleDAO.updateArticle(art);
+                }
+
+
+                //Enregistrement du/des paiement(s)
+                Payement paiement;
+                ICollection<String> liste_des_moyens_de_paiement = listeDeMontantParMoyenPaiement.dico.Keys;
+                foreach (String monMoyenDePaiement in liste_des_moyens_de_paiement)
+                {
+                    //stgTest += listeDeMontantParMoyenPaiement[monMoyenDePaiement] + " en " + monMoyenDePaiement + " \n";
+
+                    paiement = new Payement(DateTime.Now, listeDeMontantParMoyenPaiement[monMoyenDePaiement], monMoyenDePaiement, comdRendu.id);
+                    k = PayementDAO.insertPaiement(paiement);
                 }
             }
 

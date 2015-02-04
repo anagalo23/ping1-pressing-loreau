@@ -15,7 +15,7 @@ namespace App_pressing_Loreau.Model
 
         public Commande commande;
 
-        public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\FacturePattern";
+        public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\FacturePattern.xlsx";
         private Microsoft.Office.Interop.Excel.Application oXL;
         private Microsoft.Office.Interop.Excel.Workbook mWorkBook;
         private Microsoft.Office.Interop.Excel.Worksheet mWorkSheets;
@@ -28,13 +28,12 @@ namespace App_pressing_Loreau.Model
         public FactureExcel(Commande commandeWithClient)
         {
             commande = commandeWithClient;
-            MessageBox.Show(pattern_path);
         }
 
         public void createFacture()
         {
             oXL = new Microsoft.Office.Interop.Excel.Application();
-            mWorkBook = oXL.Workbooks.Open(pattern_path + ".xlsx", 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+            mWorkBook = oXL.Workbooks.Open(pattern_path, 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
             mWorkSheets = (Worksheet)mWorkBook.Worksheets.get_Item(1);
 
             //Ajout de la référence
@@ -86,7 +85,7 @@ namespace App_pressing_Loreau.Model
                  *@param Collate : True to collate multiple copies.
                  *@param PrToFileName : If PrintToFile is set to True, this argument specifies the name of the file you want to print to.
                  */
-                mWorkSheets.PrintOut(1, 1, 1, false, misValue, false, false, misValue);
+                mWorkSheets.PrintOut(1, 1, 1, false, "Canon MG2400 series", false, false, misValue);
 
                 //close files
                 mWorkBook.Close(false, misValue, misValue);

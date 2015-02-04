@@ -25,6 +25,7 @@ namespace App_pressing_Loreau.ViewModel
         public List<RechercheClient> _listeRechercheClient;
 
         Client choixClient = new Client();
+        Client clientModif = new Client();
         public List<ComboTheme> Cbb_administrationClient_choix_theme { get; set; }
 
         ComboTheme comboTheme = new ComboTheme();
@@ -220,20 +221,20 @@ namespace App_pressing_Loreau.ViewModel
 
         private void EnregistrerModifClient()
         {
-            Client cl = new Client();
-            cl.id = this.choixClient.id;
-            cl.adresse.numero = Txb_adminClient_modifNumAdresse;
-            cl.adresse.rue = Txb_adminClient_modifNameAdresse;
-            cl.adresse.codePostal = Txb_adminClient_modifBP;
-            cl.adresse.ville = _txb_adminClient_modifVille;
 
-            cl.telmob = _txb_adminClient_modifTypeTelephone;
-            cl.idCleanWay = Txb_adminClient_modifTypeIdCleanway;
+            clientModif.id = this.choixClient.id;
+            clientModif.adresse.numero = Txb_adminClient_modifNumAdresse;
+            clientModif.adresse.rue = Txb_adminClient_modifNameAdresse;
+            clientModif.adresse.codePostal = Txb_adminClient_modifBP;
+            clientModif.adresse.ville = _txb_adminClient_modifVille;
 
-            int x = ClientDAO.updateClient(cl);
+            clientModif.telmob = _txb_adminClient_modifTypeTelephone;
+            clientModif.idCleanWay = Txb_adminClient_modifTypeIdCleanway;
+
+            int x = ClientDAO.updateClient(clientModif);
             if (x != 0)
             {
-                MessageBox.Show("Modification de l'adresse \n de " + cl.nom + " " + cl.prenom + " effectué");
+                MessageBox.Show("Modification de l'adresse \n de " + clientModif.nom + " " + clientModif.prenom + " effectué");
             }
         }
         private void ExecuteDeleteClient(AdministrationClientVM obj)
