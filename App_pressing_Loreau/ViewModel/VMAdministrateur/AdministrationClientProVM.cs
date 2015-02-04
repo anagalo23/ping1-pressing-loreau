@@ -11,7 +11,6 @@ using App_pressing_Loreau.Helper;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows;
-using System.Windows.Interactivity;
 using Microsoft.Practices.Prism.Commands;
 
 namespace App_pressing_Loreau.ViewModel

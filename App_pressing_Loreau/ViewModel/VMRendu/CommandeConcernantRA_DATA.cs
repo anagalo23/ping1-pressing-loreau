@@ -115,23 +115,6 @@ namespace App_pressing_Loreau.ViewModel
         }
 
 
-        //public ObservableCollection<ArticlesRestitutionVM> ListeArticlesRestitution
-        //{
-        //    get
-        //    {
-        //        return this._listeArticlesRestitution ??
-        //            (this._listeArticlesRestitution = new ObservableCollection<ArticlesRestitutionVM>());
-        //    }
-
-        //    set
-        //    {
-        //        if (value != null)
-        //        {
-        //            this._listeArticlesRestitution = value;
-        //            OnPropertyChanged("ListeArticlesRestitution");
-        //        }
-        //    }
-        //}
         #endregion
 
         #endregion

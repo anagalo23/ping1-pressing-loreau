@@ -18,28 +18,6 @@ namespace App_pressing_Loreau.ViewModel
 
         #region Variables locales
 
-        //Client ClasseGlobale.client = new Client();
-
-
-        //Client ClasseGlobale.client;//On travaille avec le ClasseGlobale.client de la classe globale
-
-
-
-        //Client ClasseGlobale.client = ClasseGlobale.ClasseGlobale.client;
-
-        //private String _txb_nouveauClient_nom;
-        //private String _txb_nouveauClient_prenom;
-        //private DateTime _txb_nouveauClient_date_naissance;
-        //private int _txb_nouveauClient_idCleanway;
-        //private int _txb_nouveauClient_numero;
-        //private String _txb_nouveauClient_rue_voie;
-        //private String _txb_nouveauClient_bp;
-        //private String _txb_nouveauClient_ville;
-        //private bool _ckb_nouveauClient_sms;
-        //private String _txb_nouveauClient_portable;
-        //private bool _ckb_nouveauClient_mail;
-        //private String _txt_nouveauClient_mail;
-
         public static int index { get; private set; }
         #endregion
 
@@ -115,33 +93,27 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-        public int Txb_nouveauClient_numero
+        public String Txb_nouveauClient_numero
         {
             get
             {
                 try
                 {
-                    return Int32.Parse(ClasseGlobale.Client.adresse.numero);
+                    return ClasseGlobale.Client.adresse.numero;
                 }
                 catch (Exception e)
                 {
-                    return 0;
+                    return null;
                 }
 
             }
             set
             {
-                try
+                if (value != ClasseGlobale.Client.adresse.numero)
                 {
-                    if (value != Int32.Parse(ClasseGlobale.Client.adresse.numero))
-                    {
-                        ClasseGlobale.Client.adresse.numero = String.Format("{0}", value);
-                        OnPropertyChanged("Txb_nouveauClient_numero");
-                    }
-                }catch(Exception e){
-                    MessageBox.Show("Le clavier numérique ne fonctionne pas");
+                    ClasseGlobale.Client.adresse.numero=value;
+                    OnPropertyChanged("Txb_nouveauClient_numero");
                 }
-               
             }
         }
 
@@ -282,7 +254,6 @@ namespace App_pressing_Loreau.ViewModel
             {
                 MessageBox.Show("Problème d'enregistrement du ClasseGlobale.client dans la base de données");
             }
-            //ClasseGlobale.ClasseGlobale.client = null;//le test ClasseGlobale.client != null est effectué pour vérifier que celui est bien enregistré
         }
 
         #endregion
