@@ -65,6 +65,7 @@ namespace App_pressing_Loreau.Model
 
         public void createLecture()
         {
+            //ouverture de l'excel
             oXL = new Application();
             mWorkBook = oXL.Workbooks.Open(pattern_path + ".xlsx", 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
             mWorkSheets = (Worksheet)mWorkBook.Worksheets.get_Item(1);
@@ -72,7 +73,7 @@ namespace App_pressing_Loreau.Model
             #region Inscription sur le fichier Excel
             int index = 7;
 
-            //Titre
+            //Ajout du Titre
             if (type == 0)
                 mWorkSheets.Cells[index, 1] = "Lecture X - " + DateTime.Now.ToString("dd/MM/yyyy");
             if (type == 1)
