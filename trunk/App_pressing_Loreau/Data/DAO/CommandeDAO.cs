@@ -394,6 +394,7 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("clt_id", commande.client.id);
                 cmd.Parameters.AddWithValue("remise", commande.remise);
                 cmd.Parameters.AddWithValue("id", commande.id);
+                cmd.Parameters.AddWithValue("date_rendu", commande.date_rendu);
 
 
                 return cmd.ExecuteNonQuery();

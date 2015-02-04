@@ -241,6 +241,7 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("TTC", article.TTC);
                 cmd.Parameters.AddWithValue("conv_id", article.convoyeur.id);
                 cmd.Parameters.AddWithValue("typ_id", article.type.id);
+                cmd.Parameters.AddWithValue("date_rendu", article.date_rendu);
 
                 //Execute la commande
                 return cmd.ExecuteNonQuery();
