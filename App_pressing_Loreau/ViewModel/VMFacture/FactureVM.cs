@@ -119,11 +119,17 @@ namespace App_pressing_Loreau.ViewModel
                 prixHTTotal = (float)tamponHT;
                 //prixHTTotal = prixTTCTotal * (1 - commande.listArticles[0].TVA / 100);
 
+                //Arrondi
+                prixHTTotal = (float)Math.Round(prixHTTotal, 2, MidpointRounding.AwayFromZero);
+                prixTTCTotal = (float)Math.Round(prixTTCTotal, 2, MidpointRounding.AwayFromZero);
+                prixHTTotal = (float)Math.Round(prixHTTotal, 2, MidpointRounding.AwayFromZero);
+
                 ffVM.commande = commande;
                 ffVM.LabelDetailPrixTotalTTC = prixTTCTotal;
                 ffVM.LabelDetailMontantHT = prixHTTotal;
                 ffVM.LabelDetailMontantTVA = (float)((decimal)prixTTCTotal - (decimal)prixHTTotal);
                 ffVM.RemplirArticles(commande);
+
             }
 
             
