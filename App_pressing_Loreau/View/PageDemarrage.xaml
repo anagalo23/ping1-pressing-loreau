@@ -1,0 +1,126 @@
+﻿<Window x:Class="App_pressing_Loreau.View.PageDemarrage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Pressing de Loreau" Height="500" Width="750"
+        xmlns:dz="http://schemas.devzest.com/presentation/docking"
+        WindowState="Maximized"
+        WindowStyle="ToolWindow"
+        ShowInTaskbar="False">
+
+    <DockPanel x:Name="dpDemarrage">
+        <Border DockPanel.Dock="Top">
+            <Label Content="Vérification du fond de caisse" Style="{StaticResource Titre}" />
+        </Border>
+        <Border Margin="15">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Background="Aqua">
+                        <Image Source="/Resources/pics/pagePrincipale/100euro.png"  Width="120" Height="60"/>
+                        </Label>
+                        <TextBox Grid.Row="0" Grid.Column="1"  Margin="10"/>
+
+                        <Image Source="/Resources/pics/pagePrincipale/50euro.png" Grid.Row="1" Grid.Column="0" Width="120" Height="60"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Margin="10"/>
+
+
+                        <Image Source="/Resources/pics/pagePrincipale/20euro.png" Grid.Row="2" Grid.Column="0" Width="120" Height="60"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Margin="10"/>
+
+
+                        <Image Source="/Resources/pics/pagePrincipale/10euro.png" Grid.Row="3" Grid.Column="0" Width="120" Height="60"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Margin="10"/>
+
+
+                        <Image Source="/Resources/pics/pagePrincipale/5euro.png" Grid.Row="4" Grid.Column="0" Width="120" Height="60"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Margin="10"/>
+
+                        <TextBlock Grid.Row="5" Grid.Column="0" >
+                        <Image Source="/Resources/pics/pagePrincipale/2euro.png" Width="120" Height="60"/>
+                        </TextBlock>
+                        <TextBox Grid.Row="5" Grid.Column="1" Margin="10"/>
+
+
+                    </Grid>
+                </Border>
+
+                <Border Grid.Column="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Source="/Resources/pics/pagePrincipale/1euro.png" Grid.Row="0" Grid.Column="0" Width="120" Height="60"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Margin="10"/>
+
+
+                        <Image Source="/Resources/pics/pagePrincipale/50c.png" Grid.Row="1"  Grid.Column="0" Width="120" Height="60"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Margin="10"/>
+
+
+                        <Image Source="/Resources/pics/pagePrincipale/20c.png" Grid.Row="2" Grid.Column="0" Width="120" Height="60"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Margin="10"/>
+
+
+                        <Image Source="/Resources/pics/pagePrincipale/10c.png" Grid.Row="3" Grid.Column="0" Width="120" Height="60"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Margin="10"/>
+
+
+                        <Image Source="/Resources/pics/pagePrincipale/5C.png" Grid.Row="4" Grid.Column="0" Width="120" Height="60"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Margin="10"/>
+
+                        <Image Source="/Resources/pics/pagePrincipale/2c.png" Grid.Row="5" Grid.Column="0" Width="120" Height="60"/>
+                        <TextBox Grid.Row="5" Grid.Column="1" Margin="10"/>
+
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="1" Grid.Column="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Content="Total "  Style="{StaticResource vertilabel18}"/>
+                        
+                        <Label Grid.Column="1"/>
+                    </Grid>
+                </Border>
+                
+                <Button x:Name="btn_accessApplication"  Content="Acceder à l'application" Grid.Row="1" Grid.Column="1" Margin="10,3" Click="btn_accessApplication_Click"/>
+
+            </Grid>
+        </Border>
+    </DockPanel>
+</Window>

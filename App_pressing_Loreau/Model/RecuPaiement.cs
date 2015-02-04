@@ -101,6 +101,7 @@ namespace App_pressing_Loreau.Model
             //Add PrintPage event handler
             pd.PrintPage += new PrintPageEventHandler(this.PrintTextFileHandler);
             //Call Print Method
+            pd.PrinterSettings.PrinterName = "EPSON TM-T20 Receipt";
             pd.Print();
             //Close the reader
             if (reader != null)

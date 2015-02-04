@@ -549,6 +549,11 @@ namespace App_pressing_Loreau.ViewModel
                     paiement = new Payement(DateTime.Now, listeDeMontantParMoyenPaiement[monMoyenDePaiement], monMoyenDePaiement, comdRendu.id);
                     k = PayementDAO.insertPaiement(paiement);
                 }
+
+                Commande cmdTota = CommandeDAO.selectCommandeById(comdRendu.id, true, true, true);
+
+                RecuPaiement rp = new RecuPaiement(cmdTota);
+                rp.printRecu();
             }
 
 

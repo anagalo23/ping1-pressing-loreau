@@ -102,7 +102,7 @@ namespace App_pressing_Loreau.ViewModel
             get
             {
                 return new RelayCommand(p => defileDepartementPrecedente(),
-                    p => ListeDepartements.Count != 5);
+                    p => ListeDepartements.Count != 6);
             }
         }
 
@@ -242,7 +242,7 @@ namespace App_pressing_Loreau.ViewModel
 
             if (listeDepartementDTO != null)
             {
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 6; i++)
                     ListeDepartements.Add(new CategoryItem() { ButtonContent = listeDepartementDTO[i].nom, ButtonTag = listeDepartementDTO[i].id });
             }
 
@@ -255,7 +255,7 @@ namespace App_pressing_Loreau.ViewModel
             if (listeDepartementDTO != null)
             {
 
-                for (int i = 5; i < listeDepartementDTO.Count; i++)
+                for (int i = 6; i < listeDepartementDTO.Count; i++)
                     ListeDepartements.Add(new CategoryItem() { ButtonContent = listeDepartementDTO[i].nom, ButtonTag = listeDepartementDTO[i].id });
             }
 
