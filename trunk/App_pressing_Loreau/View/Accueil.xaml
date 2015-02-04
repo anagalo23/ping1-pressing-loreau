@@ -1,16 +1,11 @@
-﻿<Window x:Class="App_pressing_Loreau.Accueil"
+﻿<UserControl x:Class="App_pressing_Loreau.Accueil"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Pressing de Loreau" Height="500" Width="750"
-        xmlns:dz="http://schemas.devzest.com/presentation/docking"
-        WindowState="Maximized"
-        WindowStyle="ToolWindow"
-      
-        ShowInTaskbar="False">
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        
     <!--ResizeMode="NoResize"-->
-    <Window.Resources>
+    <UserControl.Resources>
         <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
-    </Window.Resources>
+    </UserControl.Resources>
 
     <Grid Margin="10" >
         <Grid.RowDefinitions >
@@ -81,4 +76,4 @@
         </Border>
     </Grid>
 
-</Window>
+</UserControl>

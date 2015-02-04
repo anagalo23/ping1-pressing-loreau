@@ -15,6 +15,12 @@ using Microsoft.Practices.Prism.Commands;
 
 namespace App_pressing_Loreau.ViewModel
 {
+
+    /// <summary>
+    /// Classe Identification client
+    /// Cete classe permettra d afficher un client à travers son nom, prenom , idCleanWay ou telephone 
+    /// Ensuite on pourra passer la commande d un client ou creer un nouveau client 
+    /// </summary>
     class IdentificationClientVM : ObservableObject, IPageViewModel
     {
 
@@ -38,13 +44,14 @@ namespace App_pressing_Loreau.ViewModel
             ClasseGlobale.Client = null;
             ClasseGlobale._renduCommandeClientPro = null;
             ClasseGlobale._renduCommande = null;
-            ClasseGlobale._renduCommandeClientPro = null;
             ClasseGlobale._contentDetailCommande = null;
 
         }
 
         #region Properties
 
+
+        // Affichage du client choisi
         public String Label_identClient_choix
         {
             get { return _label_identClient_choix; }
@@ -58,12 +65,15 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-       
+
+        //Action de la commande  button recherche 
         public ICommand Btn_idenClient_recherche
         {
             get { return new RelayCommand(p => rechercheBDD()); }
         }
 
+
+        //la liste de la recherche
         public List<IdentificationClientData> ResultatRecherche_identificationClient
         {
             get { return _resultatRecherche_identificationClient; }
@@ -77,6 +87,8 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
+
+        // L action sur le resultat de la recherche
         public DelegateCommand<IdentificationClientData> ResultatRechercheClient
         {
             get
@@ -87,22 +99,19 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-     
-       
-
         #endregion
 
 
         #region methodes
 
+        //Ajout d un client a la proprieté global Client
         private void ExecuteAddClient(IdentificationClientData obj)
         {
 
-            if (ClasseGlobale.Client!=obj.clt)
-                
+            if (ClasseGlobale.Client != obj.clt)
             {
                 ClasseGlobale.Client = obj.clt;
-                
+
             }
 
             if (ClasseGlobale.Client != null)
@@ -114,26 +123,28 @@ namespace App_pressing_Loreau.ViewModel
 
         public void rechercheBDD()
         {
-          
-            //On recherche dans la bdd en fonction des champs que l'utilisateur à entré
+            //On recherche dans la bdd en fonction des champs que l'utilisateur a entrés
+            List<Client> resultat = null;
             Fields fields = AutoComplete.getFields();
-            ResultatRecherche_identificationClient = new List<IdentificationClientData>();
 
-        
-            List<Client> resultat = ClientDAO.seekClients(fields.nom, fields.prenom, fields.portable,fields.idCleaWay);
-
-
-            //On affiche le résultat dans le doc Panel
-            if (resultat != null)
+            if (fields != null)
             {
-                foreach (Client c in resultat)
+
+                ResultatRecherche_identificationClient = new List<IdentificationClientData>();
+                resultat = ClientDAO.seekClients(fields.nom, fields.prenom, fields.portable, fields.idCleaWay);
+
+                //On affiche le résultat dans le doc Panel
+                if (resultat != null)
                 {
-                    ResultatRecherche_identificationClient.Add(new IdentificationClientData() {clt=c});
+                    foreach (Client c in resultat)
+                    {
+                        ResultatRecherche_identificationClient.Add(new IdentificationClientData() { clt = c });
+                    }
                 }
-            }
-            else
-            {
-                //MessageBox.Show("recherche infructueuse");
+                else
+                {
+                    //MessageBox.Show("recherche infructueuse");
+                }
             }
         }
         #endregion

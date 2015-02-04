@@ -27,7 +27,7 @@
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
-    <ApplicationRevision>13</ApplicationRevision>
+    <ApplicationRevision>16</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -188,6 +188,9 @@
     <Compile Include="ViewModel\VMRendu\CommandeConcernantRA_DATA.cs" />
     <Compile Include="ViewModel\VMRendu\DetailCommandeVM.cs" />
     <Compile Include="ViewModel\VMRendu\RestitutionArticlesVM.cs" />
+    <Compile Include="View\PageDemarrage.xaml.cs">
+      <DependentUpon>PageDemarrage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PaiementDeLaCommande.xaml.cs">
       <DependentUpon>PaiementDeLaCommande.xaml</DependentUpon>
     </Compile>
@@ -294,6 +297,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Resources\AccueilResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PageDemarrage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -489,6 +496,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\bdd\bddping1.sql" />
+    <Content Include="Resources\pics\pagePrincipale\100euro.png" />
+    <Content Include="Resources\pics\pagePrincipale\1euro.png" />
+    <Content Include="Resources\pics\pagePrincipale\10C.png" />
+    <Content Include="Resources\pics\pagePrincipale\5euro.png" />
+    <Content Include="Resources\pics\pagePrincipale\10euro.png" />
+    <Content Include="Resources\pics\pagePrincipale\20euro.png" />
+    <Content Include="Resources\pics\pagePrincipale\50euro.png" />
+    <Content Include="Resources\pics\pagePrincipale\2euro.png" />
+    <Content Include="Resources\pics\pagePrincipale\50c.png" />
+    <Content Include="Resources\pics\pagePrincipale\20c.png" />
+    <Content Include="Resources\pics\pagePrincipale\5c.png" />
+    <Content Include="Resources\pics\pagePrincipale\2c.png" />
     <Resource Include="Resources\PatternFile\RecuPaiement.txt" />
     <Resource Include="Resources\pics\Paiements\valider.png" />
     <Resource Include="Resources\pics\Paiements\AmericanExpress.png" />

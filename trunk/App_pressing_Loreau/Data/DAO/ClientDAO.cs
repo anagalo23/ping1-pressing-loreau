@@ -154,6 +154,7 @@ namespace App_pressing_Loreau.Data.DAO
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données."));
                 return null;
             }
+            Bdd.deconnexion();
             return retour;
         }
 
