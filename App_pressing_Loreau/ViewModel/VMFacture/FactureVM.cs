@@ -107,17 +107,22 @@ namespace App_pressing_Loreau.ViewModel
             commande = (Commande)CommandeDAO.selectCommandeById(Txb_factures_idCommande,false, true, true);
             if (commande != null)
             {
+                decimal tamponTTC = 0;
+                decimal tamponHT = 0;
                 foreach (Article art in commande.listArticles)
                 {
-                    prixTTCTotal += art.TTC;
-                   
+                    //prixTTCTotal += art.TTC;
+                    tamponTTC += (decimal)art.TTC;
+                    tamponHT = tamponTTC * ((decimal)(1 - art.TVA / 100));
                 }
-                prixHTTotal = prixTTCTotal * (1 - commande.listArticles[0].TVA / 100);
+                prixTTCTotal = (float)tamponTTC;
+                prixHTTotal = (float)tamponHT;
+                //prixHTTotal = prixTTCTotal * (1 - commande.listArticles[0].TVA / 100);
 
                 ffVM.commande = commande;
                 ffVM.LabelDetailPrixTotalTTC = prixTTCTotal;
                 ffVM.LabelDetailMontantHT = prixHTTotal;
-                ffVM.LabelDetailMontantTVA = prixTTCTotal - prixHTTotal;
+                ffVM.LabelDetailMontantTVA = (float)((decimal)prixTTCTotal - (decimal)prixHTTotal);
                 ffVM.RemplirArticles(commande);
             }
 
