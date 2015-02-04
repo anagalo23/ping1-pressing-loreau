@@ -3,7 +3,9 @@ using App_pressing_Loreau.Model.DTO;
 using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,7 +35,7 @@ namespace App_pressing_Loreau.Model
         int nbNewClient;
 
         //Excel Interop
-        public static String pattern_path = "I:\\PING\\App_pressing_loreau\\App_pressing_Loreau\\Resources\\PatternFile\\LecturePattern";
+        public static String pattern_path = "D:\\matlab\\3ème année\\Ping1_2\\ProjetPing\\ProjetIngenieur\\App_pressing_Loreau\\Resources\\PatternFile\\LecturePattern";
         private Microsoft.Office.Interop.Excel.Application oXL;
         private Microsoft.Office.Interop.Excel.Workbook mWorkBook;
         private Microsoft.Office.Interop.Excel.Worksheet mWorkSheets;
@@ -47,18 +49,12 @@ namespace App_pressing_Loreau.Model
         public LectureExcel(int type)
         {
             this.type = type;
-
-            listUsedDepartements = new List<Departement>();
-            caTTCDep = new List<float>();
             listUsedTypePaiement = PayementDAO.listSommePaiementToday(1);
-            DepartmentTTC(ArticleDAO.selectArticleRenduByDate(1));
-
             List<Commande> listCommandeRecuToday = CommandeDAO.listCommandeRecuToday(1);
             listUsedTypeArticle = new List<string>();
             reçutArticle = new List<int>();
             renduArticle = new List<int>();
             TypeArticlesRendu(ArticleDAO.selectArticleRenduByDate(1), listCommandeRecuToday);
-
             nbNewCommande = listCommandeRecuToday.Count;
             nbNewClient = ClientDAO.listClientAddToday(1).Count;
         }
@@ -77,21 +73,9 @@ namespace App_pressing_Loreau.Model
                 mWorkSheets.Cells[index, 1] = "Lecture X - " + DateTime.Now.ToString("dd/MM/yyyy");
             if (type == 1)
                 mWorkSheets.Cells[index, 1] = "Lecture Z - " + DateTime.Now.ToString("dd/MM/yyyy");
-            //Inscription des TTC par département
-            index = 10;
-            float totalDep = 0;
-            for (int i = 0; i < listUsedTypePaiement.Count; i++)
-            {
-                mWorkSheets.Cells[index, 8] = listUsedDepartements[i].nom;
-                mWorkSheets.Cells[index, 12] = caTTCDep[i];
-                totalDep = totalDep + caTTCDep[i];
-                index++;
-            }
-            index = 22;
-            mWorkSheets.Cells[index, 12] = totalDep;
 
             //Inscription des Types de payements
-            index = 10;
+            index = index + 3;
             float total_payements = 0;
             foreach (Payement paie in listUsedTypePaiement)
             {
@@ -178,7 +162,7 @@ namespace App_pressing_Loreau.Model
             }
         }
 
-        public void TypeArticlesRendu(List<Article> articlesrendu, List<Commande> articlesrecu)
+        public void TypeArticlesRendu(List<Article> articlesrendu, List<Commande> articlesrendurecu)
         {
             Boolean ifExist;
 
@@ -204,7 +188,7 @@ namespace App_pressing_Loreau.Model
                     reçutArticle.Add(0);
                 }
             }
-            foreach (Commande cmd in articlesrecu)
+            foreach (Commande cmd in articlesrendurecu)
                 foreach (Article art in cmd.listArticles)
                 {
                     ifExist = false;
@@ -227,33 +211,6 @@ namespace App_pressing_Loreau.Model
                         reçutArticle.Add(1);
                     }
                 }
-        }
-
-        public void DepartmentTTC(List<Article> articlesrendu)
-        {
-            Boolean ifExist;
-
-            foreach (Article art in articlesrendu)
-            {
-                ifExist = false;
-                //Jusque là on a déroulé tout les articles
-                //recherche de départements déja entrés
-                for (int i = 0; i < listUsedDepartements.Count; i++)
-                {
-                    if (listUsedDepartements[i].nom.Contains(art.type.departement.nom))
-                    {
-                        caTTCDep[i] = caTTCDep[i] + art.TTC;
-                        ifExist = true;
-                        break;
-                    }
-                }
-
-                if (!ifExist)
-                {
-                    listUsedDepartements.Add(art.type.departement);
-                    caTTCDep.Add(art.TTC);
-                }
-            }
         }
         #endregion
     }

@@ -9,6 +9,8 @@ using App_pressing_Loreau.Helper;
 using Microsoft.Practices.Prism.Commands;
 using App_pressing_Loreau.Model.DTO;
 using App_pressing_Loreau.Data.DAO;
+using System.Windows.Input;
+using System.Windows;
 
 namespace App_pressing_Loreau.ViewModel
 {
@@ -20,6 +22,8 @@ namespace App_pressing_Loreau.ViewModel
         private DelegateCommand<ArticlesRestitutionVM> _btn_detailCommande_deselectionner_tout;
         private List<ArticlesRestitutionVM> _afficheDetailCommande;
 
+        List<Article> ArtSelec=null;
+            //ClasseGlobale._rendreArticlesSelectionnes;
         private float _label_prixTTC;
         private String _label_EtatPaiementCommande;
         #endregion
@@ -28,6 +32,7 @@ namespace App_pressing_Loreau.ViewModel
         public DetailCommandeVM()
         {
             LaCommande();
+            //ClasseGlobale._rendreArticlesSelectionnes = ArtSelec;
         }
 
         #endregion
@@ -90,15 +95,66 @@ namespace App_pressing_Loreau.ViewModel
                 }
             }
         }
+
+        public ICommand Btn_ValiderSelect
+        {
+            get { return new RelayCommand(p => ValiderSelection()); }
+        } 
         #endregion
 
         #region Methods
 
+        private void ValiderSelection()
+        {
+            ArtSelec = new List<Article>();
+
+            foreach (ArticlesRestitutionVM artVM in AfficheDetailCommande)
+            {
+               
+                if (artVM.IsSelectedArticle)
+                {
+     
+                    ArtSelec.Add(artVM.ar);
+                }
+               
+            }
+
+
+            if (ClasseGlobale._renduCommande.payee == false)
+            {
+
+
+                if (ArtSelec.Count != 0)
+                {
+                    Label_prixTTC = 0;
+                    foreach (Article arti in ArtSelec)
+                    {
+                        Label_prixTTC += (arti.TTC);
+                    }
+                }
+                else
+                {
+                    Label_prixTTC = 0;
+                }
+
+                //Label_prixTTC = prixTotal;
+            }
+            else
+            {
+                Label_prixTTC = 0;
+            }
+
+
+            ClasseGlobale._rendreArticlesSelectionnes = ArtSelec;
+            //MessageBox.Show(ClasseGlobale._rendreArticlesSelectionnes.Count +"");
+            
+        }
         private void ExecuteSelectAllArticles(ArticlesRestitutionVM obj)
         {
             foreach (ArticlesRestitutionVM art in AfficheDetailCommande)
             {
                 art.IsSelectedArticle = true;
+                //ArtSelec.Add(art.ar);
             }
         }
 
@@ -107,13 +163,20 @@ namespace App_pressing_Loreau.ViewModel
             foreach (ArticlesRestitutionVM art in AfficheDetailCommande)
             {
                 art.IsSelectedArticle = false;
+                //ArtSelec.Remove(art.ar);
+
             }
         }
+
+        
         private void LaCommande()
         {
             AfficheDetailCommande = new List<ArticlesRestitutionVM>();
 
             Commande com = ClasseGlobale._renduCommande;
+
+            //Commande comdSelec = ClasseGlobale._rendreArticlesSelectionnes;
+            //foreach(Article art in com.)
             Commande comPaye = (Commande)CommandeDAO.selectCommandeById(com.id, true, false, false);
             if (com != null)
             {
@@ -125,26 +188,30 @@ namespace App_pressing_Loreau.ViewModel
             if (com.payee == false)
             {
                 Label_EtatPaiementCommande = "Commande non réglée";
-                Label_prixTTC = 0;
-                float prixTotal = 0;
-                float prixPaye = 0;
+                //Label_prixTTC = 0;
+                //float prixTotal = 0;
 
-                foreach (Article arti in com.listArticles)
-                {
-                    prixTotal += (arti.TTC);
-                }
+                ////float prixPaye = 0;
+                //if (ArtSelec.Count != 0)
+                //{
+                //    foreach (Article arti in ArtSelec)
+                //    {
+                //        prixTotal += (arti.TTC);
+                //    }
+                //}
+               
 
-                foreach (Payement p in comPaye.listPayements)
-                {
-                    prixPaye += p.montant;
-                }
+                ////foreach (Payement p in comPaye.listPayements)
+                ////{
+                ////    prixPaye += p.montant;
+                ////}
 
-                Label_prixTTC = prixTotal - prixPaye;
+                //Label_prixTTC = prixTotal;
             }
             else
             {
                 Label_EtatPaiementCommande = "Commande  réglée";
-                Label_prixTTC = 0;
+              
 
             }
 

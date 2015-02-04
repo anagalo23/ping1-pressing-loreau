@@ -22,6 +22,13 @@ namespace App_pressing_Loreau.ViewModel
         public Article ar;
         #endregion
 
+        #region Constructeur
+
+        public ArticlesRestitutionVM()
+        {
+            ar = new Article();
+        }
+        #endregion
         public String Name
         {
             get { return ""; }

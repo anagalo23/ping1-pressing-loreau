@@ -8,6 +8,7 @@ using App_pressing_Loreau.ViewModel;
 using System.Collections.ObjectModel;
 using App_pressing_Loreau.Model.DTO;
 using App_pressing_Loreau.Data.DAO;
+using System.Windows.Media;
 
 namespace App_pressing_Loreau.Helper
 {
@@ -30,6 +31,8 @@ namespace App_pressing_Loreau.Helper
             _renduCommande = null;
             _rendreArticlesSelectionnes = null;
             PlacesLibres = null;
+
+            //Btn_receptionColor= Br
         }
 
         //*********************************************************************************GESTION DE LA LISTE DE COMMANDE
@@ -87,7 +90,7 @@ namespace App_pressing_Loreau.Helper
         public static Commande _renduCommande { get; set; }
 
 
-        public static CommandeConcernantRA_DATA _rendreArticlesSelectionnes { get; set; }
+        public static List<Article> _rendreArticlesSelectionnes { get; set; }
 
 
         //*********************************************************************************GESTION COMMANDES CLIENT PRO
@@ -156,5 +159,12 @@ namespace App_pressing_Loreau.Helper
         {
             _placesConvoyeurLibres = list;
         }
+
+
+
+
+        //Couleur des button Accueil
+        public static Brush Btn_receptionColor { get; set; }
+       
     }
 }

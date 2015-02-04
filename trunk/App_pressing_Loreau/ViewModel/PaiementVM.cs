@@ -399,19 +399,19 @@ namespace App_pressing_Loreau.ViewModel
                     //Inscription en log
                 }
             }
-            else if (CommandeRendue != null)
+            else if (ClasseGlobale._rendreArticlesSelectionnes != null)
             {
-                Commande comRenduPaye = (Commande)CommandeDAO.selectCommandeById(CommandeRendue.id, true, true, false);
+                //Commande comRenduPaye = (Commande)CommandeDAO.selectCommandeById(CommandeRendue.id, true, true, false);
 
                 try
                 {
-                    foreach (Payement paye in comRenduPaye.listPayements)
-                    {
-                        prixTTC += paye.montant;
-                        prixHT += paye.montant * (1 - comRenduPaye.listArticles[0].TVA / 100);
-                    }
+                    //foreach (Payement paye in comRenduPaye.listPayements)
+                    //{
+                    //    prixTTC += paye.montant;
+                    //    prixHT += paye.montant * (1 - comRenduPaye.listArticles[0].TVA / 100);
+                    //}
 
-                    foreach (Article artic in comRenduPaye.listArticles)
+                    foreach (Article artic in ClasseGlobale._rendreArticlesSelectionnes)
                     {
                         prixTTCrendu += artic.TTC;
                         prixHTrendu += artic.TTC * (1 - artic.TVA / 100);
@@ -449,12 +449,23 @@ namespace App_pressing_Loreau.ViewModel
             {
                 payee = false;
             }
+            ObservableCollection<ArticlesVM> cmdDetail = ClasseGlobale._contentDetailCommande;
+
+            List<Article> ListeSelectArt = ClasseGlobale._rendreArticlesSelectionnes;
+            //Ajouter ??????????????????????????????????????????????????????????????????????????????????????????????????????????
+            if (cmdDetail != null)
+            {
+
             Commande cmd = new Commande(DateTime.Now, payee, Txb_paiement_montantRemise, client);
             i = CommandeDAO.insertCommande(cmd);
             cmd = CommandeDAO.lastCommande();
 
             //Enregistrement des articles
-            ObservableCollection<ArticlesVM> cmdDetail = ClasseGlobale._contentDetailCommande;
+           
+
+           
+
+        
             foreach (ArticlesVM artVM in cmdDetail)
             {
                 j = ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
@@ -510,6 +521,20 @@ namespace App_pressing_Loreau.ViewModel
 
             //FactureExcel fe = new FactureExcel(CommandeDAO.selectCommandeById(cmd.id, true, true, true));
             //fe.printFacture();
+            }
+            else if (ListeSelectArt != null)
+            {
+                ////////
+                ///////
+                Commande comdRendu = ClasseGlobale._renduCommande;
+
+                foreach (Article art in ListeSelectArt)
+                {
+                    //int id, string photo, string commentaire, bool ifRendu, float TVA, float TTC, TypeArticle type, PlaceConvoyeur convoyeur, int fk_commande
+                    Article artAdd = new Article(art.id,art.photo,art.commentaire,true,art.TVA,art.TTC,art.type,null,comdRendu.id);
+                    j = ArticleDAO.updateArticle(art);
+                }
+            }
 
 
         }

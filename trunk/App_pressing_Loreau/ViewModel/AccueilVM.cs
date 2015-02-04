@@ -70,6 +70,8 @@ namespace App_pressing_Loreau
         #region Propriétés et Commandes
 
 
+        #region Accesseur de classe 
+        #endregion
         public IPageViewModel accessUserControl
         {
             get { return _accessUserControl; }
