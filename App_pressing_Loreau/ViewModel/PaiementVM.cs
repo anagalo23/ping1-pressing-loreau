@@ -244,7 +244,7 @@ namespace App_pressing_Loreau.ViewModel
         }
         #endregion
 
-        #region Bouton valider le montant par mode de paiement
+        #region Bouton valider le montant par mode de paiement ou valider la remise
         //Gère les boutons de mode de paiement
         ICommand btn_paiement_valider;
         public ICommand Btn_paiement_valider
