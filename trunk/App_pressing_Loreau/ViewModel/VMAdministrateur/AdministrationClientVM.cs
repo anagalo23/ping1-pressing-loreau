@@ -222,7 +222,9 @@ namespace App_pressing_Loreau.ViewModel
         private void EnregistrerModifClient()
         {
 
-            clientModif.id = this.choixClient.id;
+            //clientModif.id = this.choixClient.id;
+            clientModif = ClientDAO.selectClientById(this.choixClient.id,false, false,false);
+
             clientModif.adresse.numero = Txb_adminClient_modifNumAdresse;
             clientModif.adresse.rue = Txb_adminClient_modifNameAdresse;
             clientModif.adresse.codePostal = Txb_adminClient_modifBP;
