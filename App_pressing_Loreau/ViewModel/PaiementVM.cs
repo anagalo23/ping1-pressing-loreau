@@ -12,6 +12,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using App_pressing_Loreau.Model;
+using App_pressing_Loreau.View;
 
 //using System.Windows.Controls.Button;
 //using System.Windows.Forms;
@@ -371,6 +372,7 @@ namespace App_pressing_Loreau.ViewModel
         #endregion
 
         #region Methods
+        //initialisation de la page de paiement
         public void lePaiement()
         {
             //On récupère la classe globale contenant les articles et on calcul le prix
@@ -381,6 +383,7 @@ namespace App_pressing_Loreau.ViewModel
             float prixTTC = 0;
             float prixTTCrendu = 0;
             float prixHTrendu = 0;
+            //Si je viens de la page de création de la commande
             if (cmdDetail != null)
             {
                 try
@@ -399,18 +402,11 @@ namespace App_pressing_Loreau.ViewModel
                     //Inscription en log
                 }
             }
+            //Si je viens de la page de sélection des articles à payer
             else if (ClasseGlobale._rendreArticlesSelectionnes != null)
             {
-                //Commande comRenduPaye = (Commande)CommandeDAO.selectCommandeById(CommandeRendue.id, true, true, false);
-
                 try
                 {
-                    //foreach (Payement paye in comRenduPaye.listPayements)
-                    //{
-                    //    prixTTC += paye.montant;
-                    //    prixHT += paye.montant * (1 - comRenduPaye.listArticles[0].TVA / 100);
-                    //}
-
                     foreach (Article artic in ClasseGlobale._rendreArticlesSelectionnes)
                     {
                         prixTTCrendu += artic.TTC;
@@ -440,125 +436,88 @@ namespace App_pressing_Loreau.ViewModel
             //***Enregistrement en base de données***
 
             //Enregistrement de la commande
-            bool payee = false;
+
             if (Reste_a_payer == 0)
             {
-                payee = true;
+
+                ObservableCollection<ArticlesVM> cmdDetail = ClasseGlobale._contentDetailCommande;
+
+                List<Article> ListeSelectArt = ClasseGlobale._rendreArticlesSelectionnes;
+                //Ajouter ??????????????????????????????????????????????????????????????????????????????????????????????????????????
+                if (cmdDetail != null)
+                {
+
+                    Commande cmd = new Commande(DateTime.Now, true, Txb_paiement_montantRemise, client);
+                    CommandeDAO.insertCommande(cmd);
+                    cmd = CommandeDAO.lastCommande();
+
+                    //Enregistrement des articles
+                    foreach (ArticlesVM artVM in cmdDetail)
+                    {
+                        ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
+                    }
+
+                    //Enregistrement du/des paiement(s)
+                    Payement paiement;
+                    ICollection<String> liste_des_moyens_de_paiement = listeDeMontantParMoyenPaiement.dico.Keys;
+                    foreach (String monMoyenDePaiement in liste_des_moyens_de_paiement)
+                    {
+                        paiement = new Payement(DateTime.Now, listeDeMontantParMoyenPaiement[monMoyenDePaiement], monMoyenDePaiement, cmd.id);
+                        PayementDAO.insertPaiement(paiement);
+                    }
+
+                    //Mise à jour de la table convoyeur
+                    foreach (PlaceConvoyeur place in ClasseGlobale.PlacesLibres.getList())
+                    {
+                        PlaceConvoyeurDAO.updatePlaceConvoyeur(place);
+                    }
+
+
+                    Commande cmdTota = CommandeDAO.selectCommandeById(cmd.id, true, true, true);
+                    RecuPaiement rp = new RecuPaiement(cmdTota);
+                    rp.printRecu();
+
+                    //FactureExcel fe = new FactureExcel(CommandeDAO.selectCommandeById(cmd.id, true, true, true));
+                    //fe.printFacture();
+                }
+                else if (ListeSelectArt != null)
+                {
+                    Commande comdRendu = ClasseGlobale._renduCommande;
+
+                    foreach (Article art in ListeSelectArt)
+                    {
+                        Article artAdd = new Article(art.id, art.photo, art.commentaire, true, art.TVA, art.TTC, art.type, null, comdRendu.id);
+                        artAdd.date_rendu = DateTime.Now;
+                        ArticleDAO.updateArticle(art);
+                    }
+
+
+                    //Enregistrement du/des paiement(s)
+                    Payement paiement;
+                    ICollection<String> liste_des_moyens_de_paiement = listeDeMontantParMoyenPaiement.dico.Keys;
+                    foreach (String monMoyenDePaiement in liste_des_moyens_de_paiement)
+                    {
+                        paiement = new Payement(DateTime.Now, listeDeMontantParMoyenPaiement[monMoyenDePaiement], monMoyenDePaiement, comdRendu.id);
+                        PayementDAO.insertPaiement(paiement);
+                    }
+
+                    Commande cmdTota = CommandeDAO.selectCommandeById(comdRendu.id, true, true, true);
+
+                    RecuPaiement rp = new RecuPaiement(cmdTota);
+                    rp.printRecu();
+                }
+
+                //Accueil page2Obj = new Accueil(); //Create object of Page2
+                //page2Obj.Show(); //Show page2
+                //this.Close();
+                
             }
             else
             {
-                payee = false;
+                MessageBox.Show("Toute la commande n'a pas été payée. Veuillez s'il vous plait compléter l'intégralité du paiement.");
             }
-            ObservableCollection<ArticlesVM> cmdDetail = ClasseGlobale._contentDetailCommande;
-
-            List<Article> ListeSelectArt = ClasseGlobale._rendreArticlesSelectionnes;
-            //Ajouter ??????????????????????????????????????????????????????????????????????????????????????????????????????????
-            if (cmdDetail != null)
-            {
-
-            Commande cmd = new Commande(DateTime.Now, payee, Txb_paiement_montantRemise, client);
-            i = CommandeDAO.insertCommande(cmd);
-            cmd = CommandeDAO.lastCommande();
-
-            //Enregistrement des articles
-           
-
-           
-
-        
-            foreach (ArticlesVM artVM in cmdDetail)
-            {
-                j = ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
-            }
-
-            //Enregistrement du/des paiement(s)
-            Payement paiement;
-            ICollection<String> liste_des_moyens_de_paiement = listeDeMontantParMoyenPaiement.dico.Keys;
-            foreach (String monMoyenDePaiement in liste_des_moyens_de_paiement)
-            {
-                //stgTest += listeDeMontantParMoyenPaiement[monMoyenDePaiement] + " en " + monMoyenDePaiement + " \n";
-
-                paiement = new Payement(DateTime.Now, listeDeMontantParMoyenPaiement[monMoyenDePaiement], monMoyenDePaiement, cmd.id);
-                k = PayementDAO.insertPaiement(paiement);
-            }
-
-            //Mise à jour de la table convoyeur
-            foreach (PlaceConvoyeur place in ClasseGlobale.PlacesLibres.getList())
-            {
-                PlaceConvoyeurDAO.updatePlaceConvoyeur(place);
-            }
-
-
-            //if (i != 0 & j != 0 & k != 0)
-            //{
-            //    MessageBox.Show("Commande enregistrée \n retour à l accueil");
-            //    commandePayee = 1;
-            //}
-            //else if (i != 0 & j == 0 & k != 0)
-            //{
-            //    MessageBox.Show("Erreur d'enregistrement des articles");
-            //}
-            //else if (i != 0 & j != 0 & k == 0)
-            //{
-            //    MessageBox.Show("Erreur de paiement");
-            //}
-            //else if (i != 0 & j == 0 & k == 0)
-            //{
-            //    MessageBox.Show("Erreur d'enregistrement des articles \n Erreur de paiement");
-
-            //}
-            //else if (i == 0)
-            //{
-            //    MessageBox.Show("Erreur d'enregistrement de la commande");
-
-            //}
-            Commande cmdTota = CommandeDAO.selectCommandeById(cmd.id,true,true,true);
-
-            RecuPaiement rp = new RecuPaiement(cmdTota);
-            rp.printRecu();
-            //paiement = new Payement(DateTime.Now, 4 / 3, TypePayementDAO.selectTypePayementById(1).nom, cmd.id);
-            //PayementDAO.insertPaiement(paiement);
-
-            //FactureExcel fe = new FactureExcel(CommandeDAO.selectCommandeById(cmd.id, true, true, true));
-            //fe.printFacture();
-            }
-            else if (ListeSelectArt != null)
-            {
-                ////////
-                ///////
-                Commande comdRendu = ClasseGlobale._renduCommande;
-
-                //Commande updateComande= new Commande(null,)
-                foreach (Article art in ListeSelectArt)
-                {
-                    //int id, string photo, string commentaire, bool ifRendu, float TVA, float TTC, TypeArticle type, PlaceConvoyeur convoyeur, int fk_commande
-                    //DateTime dateRendu = DateTime.Now;
-                    Article artAdd = new Article(art.id,art.photo,art.commentaire,true,art.TVA,art.TTC,art.type,null,comdRendu.id);
-                    artAdd.date_rendu = DateTime.Now;
-                    j = ArticleDAO.updateArticle(art);
-                }
-
-
-                //Enregistrement du/des paiement(s)
-                Payement paiement;
-                ICollection<String> liste_des_moyens_de_paiement = listeDeMontantParMoyenPaiement.dico.Keys;
-                foreach (String monMoyenDePaiement in liste_des_moyens_de_paiement)
-                {
-                    //stgTest += listeDeMontantParMoyenPaiement[monMoyenDePaiement] + " en " + monMoyenDePaiement + " \n";
-
-                    paiement = new Payement(DateTime.Now, listeDeMontantParMoyenPaiement[monMoyenDePaiement], monMoyenDePaiement, comdRendu.id);
-                    k = PayementDAO.insertPaiement(paiement);
-                }
-
-                Commande cmdTota = CommandeDAO.selectCommandeById(comdRendu.id, true, true, true);
-
-                RecuPaiement rp = new RecuPaiement(cmdTota);
-                rp.printRecu();
-            }
-
 
         }
-
 
 
         #endregion
