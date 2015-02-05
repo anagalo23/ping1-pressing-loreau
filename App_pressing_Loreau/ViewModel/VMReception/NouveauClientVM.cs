@@ -9,6 +9,7 @@ using App_pressing_Loreau.Helper;
 using App_pressing_Loreau.Data.DAO;
 using App_pressing_Loreau.Model.DTO;
 using System.Windows;
+using App_pressing_Loreau.Data;
 
 
 namespace App_pressing_Loreau.ViewModel
@@ -254,6 +255,7 @@ namespace App_pressing_Loreau.ViewModel
             {
                 MessageBox.Show("Problème d'enregistrement du ClasseGlobale.client dans la base de données");
             }
+            Bdd.deconnexion();
         }
 
         #endregion
