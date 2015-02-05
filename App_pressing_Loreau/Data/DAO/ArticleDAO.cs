@@ -65,6 +65,9 @@ namespace App_pressing_Loreau.Data.DAO
                 MySqlDataReader msdr = cmd.ExecuteReader();
                 while (msdr.Read())
                 {
+                    new PlaceConvoyeur(Int32.Parse(msdr["art_conv_id"].ToString()), 0, 0);
+                    Int32.Parse(msdr["art_cmd_id"].ToString());
+
                     retour = new Article(
                         Int32.Parse(msdr["art_id"].ToString()),
                         msdr["art_photo"].ToString(),
@@ -73,8 +76,10 @@ namespace App_pressing_Loreau.Data.DAO
                         float.Parse(msdr["art_TVA"].ToString()),
                         float.Parse(msdr["art_TTC"].ToString()),
                         new TypeArticle(Int32.Parse(msdr["art_typ_id"].ToString()), null, 0, 0, 0, null),
-                        new PlaceConvoyeur(Int32.Parse(msdr[" art_conv_id"].ToString()), 0, 0),
+                        new PlaceConvoyeur(Int32.Parse(msdr["art_conv_id"].ToString()), 0, 0),
                         Int32.Parse(msdr["art_cmd_id"].ToString()));
+                    if (!msdr["art_date_rendu"].ToString().Equals(""))
+                        retour.date_rendu = DateTime.Parse(msdr["art_date_rendu"].ToString());
                 }
                 msdr.Dispose();
 
@@ -123,6 +128,8 @@ namespace App_pressing_Loreau.Data.DAO
                         new TypeArticle(Int32.Parse(msdr["art_typ_id"].ToString()), null, 0, 0, 0, null),
                         new PlaceConvoyeur(Int32.Parse(msdr["art_conv_id"].ToString()), 0, 0),
                         Int32.Parse(msdr["art_cmd_id"].ToString()));
+                    if (!msdr["art_date_rendu"].ToString().Equals(""))
+                        article.date_rendu = DateTime.Parse(msdr["art_date_rendu"].ToString());
 
                     retour.Add(article);
                 }
@@ -157,65 +164,65 @@ namespace App_pressing_Loreau.Data.DAO
         {
             /*try
             {*/
-                List<Article> retour = new List<Article>();
+            List<Article> retour = new List<Article>();
 
-                //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(Bdd.selectArticleRenduByDate, Bdd.connexion());
+            //connection à la base de données
+            MySqlCommand cmd = new MySqlCommand(Bdd.selectArticleRenduByDate, Bdd.connexion());
 
-                //ajout des parametres
-                switch (plageDate)
-                {
-                    //par jour
-                    case 1:
-                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0));
-                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
-                        break;
-                    //par semaine
-                    case 2:
-                        cmd.Parameters.AddWithValue("startTime", new DateTime(SecondaryDateTime.GetMonday(DateTime.Now).Year, SecondaryDateTime.GetMonday(DateTime.Now).Month, SecondaryDateTime.GetMonday(DateTime.Now).Day, 0, 0, 0));
-                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
-                        break;
-                    //par mois
-                    case 3:
-                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0));
-                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
-                        break;
-                    //par année
-                    case 4:
-                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0));
-                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
-                        break;
-                }
+            //ajout des parametres
+            switch (plageDate)
+            {
+                //par jour
+                case 1:
+                    cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0));
+                    cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                    break;
+                //par semaine
+                case 2:
+                    cmd.Parameters.AddWithValue("startTime", new DateTime(SecondaryDateTime.GetMonday(DateTime.Now).Year, SecondaryDateTime.GetMonday(DateTime.Now).Month, SecondaryDateTime.GetMonday(DateTime.Now).Day, 0, 0, 0));
+                    cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                    break;
+                //par mois
+                case 3:
+                    cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0));
+                    cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                    break;
+                //par année
+                case 4:
+                    cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0));
+                    cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                    break;
+            }
 
-                //Execute la commande
-                MySqlDataReader msdr = cmd.ExecuteReader();
-                Article article;
-                while (msdr.Read())
-                {
-                    article = new Article(
-                        Int32.Parse(msdr["art_id"].ToString()),
-                        msdr["art_photo"].ToString(),
-                        msdr["art_commentaire"].ToString(),
-                        bool.Parse(msdr["art_rendu"].ToString()),
-                        float.Parse(msdr["art_TVA"].ToString()),
-                        float.Parse(msdr["art_TTC"].ToString()),
-                        new TypeArticle(Int32.Parse(msdr["art_typ_id"].ToString()), null, 0, 0, 0, null),
-                        new PlaceConvoyeur(Int32.Parse(msdr["art_conv_id"].ToString()), 0, 0),
-                        Int32.Parse(msdr["art_cmd_id"].ToString()));
+            //Execute la commande
+            MySqlDataReader msdr = cmd.ExecuteReader();
+            Article article;
+            while (msdr.Read())
+            {
+                article = new Article(
+                    Int32.Parse(msdr["art_id"].ToString()),
+                    msdr["art_photo"].ToString(),
+                    msdr["art_commentaire"].ToString(),
+                    bool.Parse(msdr["art_rendu"].ToString()),
+                    float.Parse(msdr["art_TVA"].ToString()),
+                    float.Parse(msdr["art_TTC"].ToString()),
+                    new TypeArticle(Int32.Parse(msdr["art_typ_id"].ToString()), null, 0, 0, 0, null),
+                    new PlaceConvoyeur(Int32.Parse(msdr["art_conv_id"].ToString()), 0, 0),
+                    Int32.Parse(msdr["art_cmd_id"].ToString()));
 
-                    retour.Add(article);
-                }
-                msdr.Dispose();
+                retour.Add(article);
+            }
+            msdr.Dispose();
 
-                #region ajout des types, des departements et des places convoyeurs
-                foreach (Article art in retour)
-                {
-                    art.type = TypeArticleDAO.selectTypesById(art.type.id);
-                    art.convoyeur = PlaceConvoyeurDAO.selectConvoyeurById(art.convoyeur.id);
-                }
-                #endregion
+            #region ajout des types, des departements et des places convoyeurs
+            foreach (Article art in retour)
+            {
+                art.type = TypeArticleDAO.selectTypesById(art.type.id);
+                art.convoyeur = PlaceConvoyeurDAO.selectConvoyeurById(art.convoyeur.id);
+            }
+            #endregion
 
-                return retour;
+            return retour;
             /*}
             catch (Exception Ex)
             {
@@ -230,18 +237,30 @@ namespace App_pressing_Loreau.Data.DAO
             try
             {
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(Bdd.insertArticle, Bdd.connexion());
+                MySqlCommand cmd = new MySqlCommand(Bdd.updateArticle, Bdd.connexion());
 
                 //ajout des parametres
-                cmd.Parameters.AddWithValue("id", article.id);
-                cmd.Parameters.AddWithValue("photo", article.photo);
-                cmd.Parameters.AddWithValue("commentaire", article.commentaire);
+                if (article.photo.Equals(""))
+                    cmd.Parameters.AddWithValue("photo", null);
+                else
+                    cmd.Parameters.AddWithValue("photo", article.photo);
+
+                if (article.commentaire.Equals(""))
+                    cmd.Parameters.AddWithValue("commentaire", null);
+                else
+                    cmd.Parameters.AddWithValue("commentaire", article.commentaire);
+
                 cmd.Parameters.AddWithValue("rendu", article.ifRendu);
                 cmd.Parameters.AddWithValue("TVA", article.TVA);
                 cmd.Parameters.AddWithValue("TTC", article.TTC);
                 cmd.Parameters.AddWithValue("conv_id", article.convoyeur.id);
+                cmd.Parameters.AddWithValue("cmd_id", article.fk_commande);
                 cmd.Parameters.AddWithValue("typ_id", article.type.id);
-                cmd.Parameters.AddWithValue("date_rendu", article.date_rendu);
+                if (article.date_rendu.Equals(DateTime.MinValue))
+                    cmd.Parameters.AddWithValue("date_rendu", null);
+                else
+                    cmd.Parameters.AddWithValue("date_rendu", article.date_rendu);
+                cmd.Parameters.AddWithValue("id", article.id);
 
                 //Execute la commande
                 return cmd.ExecuteNonQuery();
