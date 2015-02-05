@@ -137,6 +137,7 @@
     <Compile Include="Model\LogExcel.cs" />
     <Compile Include="Model\RecuPaiement.cs" />
     <Compile Include="Model\SecondaryDateTime.cs" />
+    <Compile Include="Model\TicketVetement.cs" />
     <Compile Include="ViewModel\ObservableObject.cs" />
     <Compile Include="Helper\RelayCommand.cs" />
     <Compile Include="Model\Adresse.cs" />
@@ -496,6 +497,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\bdd\bddping1.sql" />
+    <Resource Include="Resources\PatternFile\TicketVetement.txt" />
     <Content Include="Resources\pics\pagePrincipale\100euro.png" />
     <Content Include="Resources\pics\pagePrincipale\1euro.png" />
     <Content Include="Resources\pics\pagePrincipale\10C.png" />

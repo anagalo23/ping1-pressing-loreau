@@ -13,26 +13,33 @@ using System.Windows;
 
 namespace App_pressing_Loreau.Model
 {
-    class RecuPaiement
+    class TicketVetement
     {
-        private static String printerName = "EPSON TM-T20 Receipt";
 
-        public Commande commande { get; set; }
-        public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\RecuPaiement";
-        public static String copy_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10)+"Resources\\Temp\\RecuPaiement";
+        private static String printerName = "";
+        public Commande cmd { get; set; }
+        public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\TicketVetement";
+        public static String copy_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10)+"Resources\\Temp\\TicketVetement";
 
         
         
 
-        Font verdana10Font;
-        StreamReader reader;
+        private static Font verdana10Font;
+        private static StreamReader reader;
 
-        public RecuPaiement(Commande commande)
+        public TicketVetement(Commande cmdWithClientArticles)
         {
-            this.commande = commande;
+            cmd = cmdWithClientArticles;
         }
 
-        public void printRecu()
+        public void printAllArticleCmd()
+        {
+            foreach(Article art in cmd.listArticles)
+            {
+                printRecu(art, cmd.id, cmd.client);
+            }
+        }
+        public void printRecu(Article art, int cmd_id, Client clt)
         {
             try
             {
@@ -41,43 +48,16 @@ namespace App_pressing_Loreau.Model
                     System.IO.File.Delete(copy_path + ".txt");
                 System.IO.File.Copy(pattern_path + ".txt", copy_path + ".txt");
 
-                //calcul des totals
-                float total_TTC = 0;
-                float total_payee = 0;
-                foreach (Article art in commande.listArticles)
-                {
-                    total_TTC = total_TTC + art.TTC;
-                }
-                foreach (Payement paie in commande.listPayements)
-                {
-                    total_payee = total_payee + paie.montant;
-                }
-
                 //Ajout du contenue du ticket
-                File.AppendAllText(copy_path + ".txt", commande.client.nom + " " + commande.client.prenom + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", Environment.NewLine);
-
+                File.AppendAllText(copy_path + ".txt", clt.nom + " " + clt.prenom + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", DateTime.Now.ToString() + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "N° de commande : " + commande.id + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "Déposée le : " + commande.date.ToString("dd/MM/yyyy") + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "Total TTC : " + total_TTC + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "Total payé : " + total_payee + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "Commande : " + commande.listArticles.Count + " articles" + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", Environment.NewLine);
-
-                //ajout des articles
-                foreach (Article art in commande.listArticles)
-                {
-                    File.AppendAllText(copy_path + ".txt", "~ " + art.type.nom + Environment.NewLine);
-                }
-
-                //fin du ticket
-                File.AppendAllText(copy_path + ".txt", Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "Commande " + cmd_id + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "N° article : " + art.id + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "Département " + art.type.departement.nom + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", " ~" + art.type.nom +Environment.NewLine);
 
                 PrintOff();
                 System.IO.File.Delete(copy_path + ".txt");
