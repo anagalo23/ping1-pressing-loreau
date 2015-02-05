@@ -15,7 +15,7 @@ namespace App_pressing_Loreau.Model
 {
     class RecuPaiement
     {
-        private static String printerName = "EPSON TM-T20 Receipt";
+        private static String printerName = "EPSON TM-T20II";
 
         public Commande commande { get; set; }
         public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\RecuPaiement";
