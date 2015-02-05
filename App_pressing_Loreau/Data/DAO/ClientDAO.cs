@@ -35,23 +35,6 @@ namespace App_pressing_Loreau.Data.DAO
                         }
                     }
                 }
-                
-                
-                //dateNaissance += " 00:00:00";
-                //MessageBox.Show(dateNaissance);
-                //try
-
-                
-                //DateTime.Parse(dateNaissance);
-                //MessageBox.Show(DateTime.Parse(dateNaissance).ToString());
-                //DateTime date = new DateTime();
-               // DateTime myDate = DateTime.ParseExact(dateNaissance, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.CurrentCulture);
-
-                //MessageBox.Show("TODO");
-
-                //date.
-                //dateNaissance = (client.dateNaissance != null) ? (new DateTime(0001, 01, 01)).ToString() : dateNaissance;//client.dateNaissance+" 00:00:00"
-                
                 DateTime myDate = Convert.ToDateTime(dateNaissance);
 
                 cmd.Parameters.AddWithValue("nom", client.nom);
@@ -71,7 +54,7 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
+                MessageBox.Show("ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données.");
                 return 0;
             }
         }
@@ -83,9 +66,6 @@ namespace App_pressing_Loreau.Data.DAO
             List<Client> retour = new List<Client>();
             try
             {
-                //nom.ToLower();
-                //List<Client> retour = new List<Client>();
-
                 String sql = Bdd.seekClients;
 
                 #region complete la requete en fonction de la recherche voulue
@@ -147,15 +127,14 @@ namespace App_pressing_Loreau.Data.DAO
                     retour.Add(client);
                 }
                 msdr.Dispose();
-                //return retour;
+                return retour;
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données."));
+                MessageBox.Show("ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données.");
                 return null;
             }
-            Bdd.deconnexion();
-            return retour;
+            
         }
 
         //Selectionner l'ensemble des clients pro
@@ -182,7 +161,6 @@ namespace App_pressing_Loreau.Data.DAO
                     clt_contactsms = ((msdr["clt_contactsms"].ToString()).Equals("False")) ? false : true;
                     clt_type = ((msdr["clt_type"].ToString()).Equals("False")) ? 0 : 1;
 
-
                     client = new Client(
                         Int32.Parse(msdr["clt_id"].ToString()),
                         msdr["clt_nom"].ToString(),
@@ -197,16 +175,14 @@ namespace App_pressing_Loreau.Data.DAO
                         contactmail,
                         clt_contactsms,
                         clt_type);
-                    retour.Add(client);
-
-                    
-                    
+                    retour.Add(client);    
                 }
                 msdr.Dispose();
                 return retour;
             }
             catch (Exception Ex)
             {
+                MessageBox.Show("ERREUR BDD : Impossible de selectionner une liste de clients pro dans la base de données.");
                 return null;
             }
         }
@@ -233,8 +209,6 @@ namespace App_pressing_Loreau.Data.DAO
 
                 Client client = new Client();
 
-                //client.id = Int32.Parse(msdr["id_client"].ToString());
-                //int test = (int)msdr["id_client"];
                 msdr.Read();
                 client.id = Int32.Parse(msdr["clt_id"].ToString());
                 client.nom = msdr["clt_nom"].ToString();
@@ -249,7 +223,6 @@ namespace App_pressing_Loreau.Data.DAO
 
                 client.contactMail = false;// bool.Parse(msdr["clt_contactmail"].ToString());
                 client.contactSms = false;//bool.Parse(msdr["clt_contactsms"].ToString());
-
 
                 if (msdr["clt_contactmail"].ToString() == "False")
                 {
@@ -294,8 +267,7 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données."));
-                MessageBox.Show(Ex.InnerException.ToString());
+                MessageBox.Show("ERREUR BDD : Impossible de selectionner un client à l'aide de son ID.");
                 return null;
             }
         }
@@ -371,16 +343,13 @@ namespace App_pressing_Loreau.Data.DAO
                         clt_contactsms,
                         clt_type);
                     retour.Add(client);
-
-
-
                 }
                 msdr.Dispose();
                 return retour;
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                MessageBox.Show("ERREUR BDD : Impossible de selectionner une liste des clients ."); 
                 return null;
             }
         }
