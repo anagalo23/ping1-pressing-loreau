@@ -441,6 +441,11 @@ namespace App_pressing_Loreau.Data.DAO
                 return null;
             }
         }
+
+        public static bool verificationNomEtPrenom(String nom, String prenom)
+        {
+            return false;
+        }
     }
 }
 
