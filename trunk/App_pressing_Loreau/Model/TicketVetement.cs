@@ -16,7 +16,7 @@ namespace App_pressing_Loreau.Model
     class TicketVetement
     {
 
-        private static String printerName = "";
+        private static String printerName = "EPSON TM-T20II Receipt5";
         public Commande cmd { get; set; }
         public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\TicketVetement";
         public static String copy_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10)+"Resources\\Temp\\TicketVetement";

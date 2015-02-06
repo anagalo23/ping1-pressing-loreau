@@ -41,7 +41,7 @@ namespace App_pressing_Loreau.ViewModel
 
             List<PlaceConvoyeur> comptePlaceLibre = (List<PlaceConvoyeur>)PlaceConvoyeurDAO.selectConvoyeursEmpty();
 
-            //Label_convoyeur_diponibles = comptePlaceLibre.Count;
+            Label_convoyeur_diponibles = comptePlaceLibre.Count;
             Label_Convoyeur_nbPlace = listePlace.Count;
 
      
