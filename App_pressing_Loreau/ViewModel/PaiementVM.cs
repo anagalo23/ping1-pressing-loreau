@@ -417,8 +417,17 @@ namespace App_pressing_Loreau.ViewModel
                     ClasseGlobale.INITIALIZE_ALL();
 
                     Commande cmdTota = CommandeDAO.selectCommandeById(cmd.id, true, true, true);
-                    RecuPaiement rp = new RecuPaiement(cmdTota);
-                    rp.printRecu();
+                   
+                    try
+                    { 
+                        RecuPaiement rp = new RecuPaiement(cmdTota);
+                        rp.printRecu();
+                    }
+                    catch (Exception )
+                    {
+                        MessageBox.Show("Impression refusée");
+                    }
+                    
 
                     //FactureExcel fe = new FactureExcel(CommandeDAO.selectCommandeById(cmd.id, true, true, true));
                     //fe.printFacture();
@@ -446,8 +455,15 @@ namespace App_pressing_Loreau.ViewModel
 
                     Commande cmdTota = CommandeDAO.selectCommandeById(comdRendu.id, true, true, true);
 
-                    RecuPaiement rp = new RecuPaiement(cmdTota);
-                    rp.printRecu();
+                    try
+                    { 
+                        RecuPaiement rp = new RecuPaiement(cmdTota);
+                        rp.printRecu();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Impression refusée");
+                    }
                 }
 
                 //Accueil page2Obj = new Accueil(); //Create object of Page2

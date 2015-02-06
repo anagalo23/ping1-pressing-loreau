@@ -124,14 +124,14 @@ namespace App_pressing_Loreau.ViewModel
         public void rechercheBDD()
         {
             //On recherche dans la bdd en fonction des champs que l'utilisateur a entrés
-            List<Client> resultat = null;
+            //List<Client> resultat = null;
             Fields fields = AutoComplete.getFields();
 
             if (fields != null)
             {
 
                 ResultatRecherche_identificationClient = new List<IdentificationClientData>();
-                resultat = ClientDAO.seekClients(fields.nom, fields.prenom, fields.portable, fields.idCleaWay);
+                List<Client> resultat = ClientDAO.seekClients(fields.nom, fields.prenom, fields.portable, fields.idCleaWay);
 
                 //On affiche le résultat dans le doc Panel
                 if (resultat != null)

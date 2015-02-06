@@ -115,9 +115,10 @@ namespace App_pressing_Loreau.Data.DAO
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
-                Article article;
+               
                 while (msdr.Read())
                 {
+                    Article article;
                     article = new Article(
                         Int32.Parse(msdr["art_id"].ToString()),
                         msdr["art_photo"].ToString(),
@@ -128,7 +129,7 @@ namespace App_pressing_Loreau.Data.DAO
                         new TypeArticle(Int32.Parse(msdr["art_typ_id"].ToString()), null, 0, 0, 0, null),
                         new PlaceConvoyeur(Int32.Parse(msdr["art_conv_id"].ToString()), 0, 0),
                         Int32.Parse(msdr["art_cmd_id"].ToString()));
-                    if (!msdr["art_date_rendu"].ToString().Equals(""))
+                    if (msdr["art_date_rendu"].ToString().Equals(null))
                         article.date_rendu = DateTime.Parse(msdr["art_date_rendu"].ToString());
 
                     retour.Add(article);

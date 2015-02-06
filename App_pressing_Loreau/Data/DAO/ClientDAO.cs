@@ -96,9 +96,10 @@ namespace App_pressing_Loreau.Data.DAO
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
-                Client client;
+               
                 while (msdr.Read())
                 {
+                    Client client;
                     int clt_id = Int32.Parse(msdr["clt_id"].ToString());
                     string clt_nom = msdr["clt_nom"].ToString();
                     string clt_prenom = msdr["clt_prenom"].ToString();
