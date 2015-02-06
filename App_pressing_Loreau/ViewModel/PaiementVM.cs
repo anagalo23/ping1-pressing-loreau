@@ -222,7 +222,8 @@ namespace App_pressing_Loreau.ViewModel
             get
             {
                 return new RelayCommand(
-                p => enregistrerCommande());
+                p => enregistrerCommande(),
+                    p => ClasseGlobale.Client != null);
             }
         }
 
@@ -388,7 +389,7 @@ namespace App_pressing_Loreau.ViewModel
                 {
 
                     Commande cmd = new Commande(DateTime.Now, true, Txb_paiement_montantRemise, client);
-                    CommandeDAO.insertCommande(cmd);
+                    int tain = CommandeDAO.insertCommande(cmd);
                     cmd = CommandeDAO.lastCommande();
 
                     //Enregistrement des articles
@@ -412,6 +413,8 @@ namespace App_pressing_Loreau.ViewModel
                         PlaceConvoyeurDAO.updatePlaceConvoyeur(place);
                     }
 
+                    //initialise tout
+                    ClasseGlobale.INITIALIZE_ALL();
 
                     Commande cmdTota = CommandeDAO.selectCommandeById(cmd.id, true, true, true);
                     RecuPaiement rp = new RecuPaiement(cmdTota);
@@ -450,7 +453,7 @@ namespace App_pressing_Loreau.ViewModel
                 //Accueil page2Obj = new Accueil(); //Create object of Page2
                 //page2Obj.Show(); //Show page2
                 //this.Close();
-                
+
             }
             else
             {
@@ -460,7 +463,8 @@ namespace App_pressing_Loreau.ViewModel
         }
 
 
-        private void applyModeDePaiement(){
+        private void applyModeDePaiement()
+        {
             //Ajout de mon montant et du mode de paiement dans le dico
             listeDeMontantParMoyenPaiement[Mode_de_paiement] = Txb_paiement_montantParMoyenPaiement;
             //On récupère tous les modes de paiements

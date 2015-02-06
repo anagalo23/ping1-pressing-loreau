@@ -310,7 +310,6 @@ namespace App_pressing_Loreau.ViewModel
                         {
                             if (ClientDAO.insertClient(Client) == 1)
                             {
-                                MessageBox.Show("Nouveau client enregistré avec succès");
                                 Client client = ClientDAO.lastClient();
                                 Bdd.deconnexion();
                                 if (client == null)
@@ -320,6 +319,7 @@ namespace App_pressing_Loreau.ViewModel
                                 else
                                 {
                                     ClasseGlobale.Client = client;
+                                    MessageBox.Show("Nouveau client enregistré avec succès.\nCliquez sur Nouvelle commande pour accéder à l'écran suivant");
                                 }
                             }
                             else
