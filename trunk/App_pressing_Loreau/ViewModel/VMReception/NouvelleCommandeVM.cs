@@ -197,7 +197,7 @@ namespace App_pressing_Loreau.ViewModel
 
         #region Méthodes
 
-
+        // Insersion de la commande et des articles concernants dans la bdd pour un paiment différé
         private void paiementDifferer()
         {
             int insertArt = 0;
@@ -224,8 +224,23 @@ namespace App_pressing_Loreau.ViewModel
 
             if (insertArt != 0)
             {
+                try
+                {
+                    Commande m = CommandeDAO.lastCommande();
+                    Commande cmdTota = CommandeDAO.selectCommandeById(m.id,true,true,true);
+                    RecuPaiement rp = new RecuPaiement(cmdTota);
+                    rp.printRecu();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Impression refusée");
+                }
                 MessageBox.Show("Commande enregistrée \n paiement differé");
+
+              
+                    
                 payeDifferer = 1;
+
             }
            
         }

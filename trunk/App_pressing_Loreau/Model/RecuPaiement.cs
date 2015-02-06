@@ -17,6 +17,7 @@ namespace App_pressing_Loreau.Model
     {
         private static String printerName = "EPSON TM-T20II";
 
+         //"EPSON TM-T20II Receipt5";
         public Commande commande { get; set; }
         public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\RecuPaiement";
         public static String copy_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10)+"Resources\\Temp\\RecuPaiement";
@@ -84,7 +85,7 @@ namespace App_pressing_Loreau.Model
             }
             catch (Exception e)
             {
-
+                MessageBox.Show("Erreur imprimante");
             }
 
         }
