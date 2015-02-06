@@ -308,6 +308,11 @@ namespace App_pressing_Loreau.ViewModel
                     {
                         if (check == false)//Si je n'ai pas rencontré de problème au niveau de la date de naissance
                         {
+                            //Formatage des champs => évite les problèmes de comparaison de chaines
+                            Client.adresse = Client.adresse.ToLower();
+                            Client.prenom = Client.prenom.Substring(0, 1).ToUpper() + Client.prenom.Substring(1, Client.prenom.Length-1).ToLower();
+                            Client.nom = Client.nom.ToUpper();
+
                             if (ClientDAO.insertClient(Client) == 1)
                             {
                                 Client client = ClientDAO.lastClient();
