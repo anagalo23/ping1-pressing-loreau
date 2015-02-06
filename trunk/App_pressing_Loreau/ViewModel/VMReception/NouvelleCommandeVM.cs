@@ -185,7 +185,7 @@ namespace App_pressing_Loreau.ViewModel
         #endregion
 
 
-        #region paiement diferé
+        #region paiement differé
         public ICommand Btn_PaiementDiffere
         {
             get {return new RelayCommand(p => paiementDifferer()); }
