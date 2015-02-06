@@ -23,7 +23,7 @@ namespace App_pressing_Loreau.ViewModel
     {
         #region Attributs
 
-        public static int commandePayee = 0;
+        //public static int commandePayee = 0;
         private String _label_paiement_prixHT;
         private String _label_paiement_prixTTC;
         private float _txb_paiement_montantRemise;
@@ -45,7 +45,7 @@ namespace App_pressing_Loreau.ViewModel
 
         private float _reste_a_payer;
 
-        private bool erreurDeManip;
+        //private bool erreurDeManip;
         //Payement paiement;
         #endregion
 
@@ -75,33 +75,33 @@ namespace App_pressing_Loreau.ViewModel
             ClasseGlobale.initializeContenuListePaiement();
             checkRemise = new float[2] { 0F, 0F };
 
-            erreurDeManip = false;
+            //erreurDeManip = false;
         }
 
         #endregion
 
         #region Accesseurs et mutateurs
 
-        public String Reste_a_payer_String
-        {
-            get { return _reste_a_payer.ToString(); }
-            set
-            {
-                _reste_a_payer = float.Parse(value);
-                OnPropertyChanged("Reste_a_payer_String");
-            }
-        }
+        //public String Reste_a_payer_String
+        //{
+        //    get { return _reste_a_payer.ToString(); }
+        //    set
+        //    {
+        //        _reste_a_payer = float.Parse(value);
+        //        OnPropertyChanged("Reste_a_payer_String");
+        //    }
+        //}
 
 
-        public List<GetPaiement> ItemsMontantParMoyenPaiement
-        {
-            get { return _itemsMontantParMoyenPaiement; }
-            set
-            {
-                _itemsMontantParMoyenPaiement = value;
-                OnPropertyChanged("ItemsMontantParMoyenPaiement");
-            }
-        }
+        //public List<GetPaiement> ItemsMontantParMoyenPaiement
+        //{
+        //    get { return _itemsMontantParMoyenPaiement; }
+        //    set
+        //    {
+        //        _itemsMontantParMoyenPaiement = value;
+        //        OnPropertyChanged("ItemsMontantParMoyenPaiement");
+        //    }
+        //}
 
 
         public String Label_paiement_prixHT
@@ -260,81 +260,21 @@ namespace App_pressing_Loreau.ViewModel
                 //Si j'ai sélectionné un mode de paiement et que la remise n'a pas bougée
                 if (Mode_de_paiement != "" && checkRemise[0] == Txb_paiement_montantRemise)
                 {
-                    //Ajout de mon montant et du mode de paiement dans le dico
-                    listeDeMontantParMoyenPaiement[Mode_de_paiement] = Txb_paiement_montantParMoyenPaiement;
-                    //On récupère tous les modes de paiements
-                    System.Collections.Generic.ICollection<String> liste_des_moyens_de_paiement = listeDeMontantParMoyenPaiement.dico.Keys;
-
-                    ObservableCollection<PaiementListeVM> contenuListePaiementTampon = new ObservableCollection<PaiementListeVM>();
-                    //initialisation de la liste de paiement en globale
-                    ClasseGlobale.initializeContenuListePaiement();
-                    //Reconstruction à partir du dico mis à jour
-                    foreach (String monMoyenDePaiement in liste_des_moyens_de_paiement)
-                    {
-                        contenuListePaiementTampon.Add(new PaiementListeVM()
-                        {
-                            ModeDePaiement = monMoyenDePaiement,
-                            Montant = listeDeMontantParMoyenPaiement[monMoyenDePaiement].ToString(),
-                        });
-                    }
-                    //On donne une nouvelle référence à notre liste globale de client checkRemise
-                    ContenuListePaiement = contenuListePaiementTampon;
-
-
-
-                    //Si la valeur du champ remise n'a pas changé, je ne la considère pas
-                    //if (checkRemise[0] == Txb_paiement_montantRemise)//Si j'ai déjà appliqué la remise
-                    //{
-                    //Je met dans le text box le nouveau reste à payer
-                    Txb_paiement_montantParMoyenPaiement = Reste_a_payer - Txb_paiement_montantParMoyenPaiement;
-                    //}
-                    //else//Sinon oui.
-                    //{
-                    ////enlève la remise précédente et applique la nouvelle remise
-                    //checkRemise[1] = checkRemise[0];//met le montant de l'ancienne à la place de la nouvelle
-                    //checkRemise[0] = Txb_paiement_montantRemise;
-                    //Txb_paiement_montantParMoyenPaiement = Reste_a_payer - Txb_paiement_montantParMoyenPaiement + checkRemise[0] - checkRemise[1];
-                    ////checkRemise[0] = checkRemise[1];
-                    ////Réinitialise l'ancienne valeur
-                    //checkRemise[1] = 0;
-
-                    //}
-
-                    //Redéfinition du reste à payer
-                    Reste_a_payer = Txb_paiement_montantParMoyenPaiement;
-                    MessageBox.Show("ma remise vaut : " + Txb_paiement_montantRemise + "\nprix du paiement : " + Txb_paiement_montantParMoyenPaiement + "\n Reste_a_payer : " + Reste_a_payer);
-                    Mode_de_paiement = "";
+                    applyModeDePaiement();
                 }
-                //else
-                //{
-                // erreurDeManip = true;
-                // String erreur = "Veuillez s'il vous plait : ";
-                // if (Mode_de_paiement == "")
-                // {
-                // erreur += "\t- sélectionner un mode de paiement";
-                // }
-                // if (clickedbutton == null)
-                // {
-                // erreur += "\tERREUR LOGICIEL : le bouton cliqué est null";
-                // }
-                // MessageBox.Show(erreur);
-                //}
+
                 //Si je n'ai pas sélectionné de mode de paiement mais que la remise à changée, j'applique la remise
-                if (Mode_de_paiement == "" && checkRemise[0] != Txb_paiement_montantRemise)
+                else if (Mode_de_paiement == "" && checkRemise[0] != Txb_paiement_montantRemise)
                 {
-                    //enlève la remise précédente et applique la nouvelle remise
-                    checkRemise[1] = checkRemise[0];//met le montant de l'ancienne à la place de la nouvelle
-                    checkRemise[0] = Txb_paiement_montantRemise;
-                    Txb_paiement_montantParMoyenPaiement = Reste_a_payer - checkRemise[0] + checkRemise[1];//- Txb_paiement_montantParMoyenPaiement
-                    Reste_a_payer = Txb_paiement_montantParMoyenPaiement;
-                    //checkRemise[0] = checkRemise[1];
-                    //Réinitialise l'ancienne valeur
-                    checkRemise[1] = 0;
+                    applyRemise();
                 }
-                //else
-                //{
-                // erreurDeManip = true;
-                //}
+                else
+                {
+                    //MessageBox.Show("Veuillez d'abord appliquer votre remise, puis le paiement.\nInfo : ");
+                    applyRemise();
+                    applyModeDePaiement();
+
+                }
 
             }
 
@@ -519,6 +459,49 @@ namespace App_pressing_Loreau.ViewModel
 
         }
 
+
+        private void applyModeDePaiement(){
+            //Ajout de mon montant et du mode de paiement dans le dico
+            listeDeMontantParMoyenPaiement[Mode_de_paiement] = Txb_paiement_montantParMoyenPaiement;
+            //On récupère tous les modes de paiements
+            System.Collections.Generic.ICollection<String> liste_des_moyens_de_paiement = listeDeMontantParMoyenPaiement.dico.Keys;
+
+            ObservableCollection<PaiementListeVM> contenuListePaiementTampon = new ObservableCollection<PaiementListeVM>();
+            //initialisation de la liste de paiement en globale
+            ClasseGlobale.initializeContenuListePaiement();
+            //Reconstruction à partir du dico mis à jour
+            foreach (String monMoyenDePaiement in liste_des_moyens_de_paiement)
+            {
+                contenuListePaiementTampon.Add(new PaiementListeVM()
+                {
+                    ModeDePaiement = monMoyenDePaiement,
+                    Montant = listeDeMontantParMoyenPaiement[monMoyenDePaiement].ToString(),
+                });
+            }
+            //On donne une nouvelle référence à notre liste globale de client checkRemise
+            ContenuListePaiement = contenuListePaiementTampon;
+
+            //Je met dans le text box le nouveau reste à payer
+            Txb_paiement_montantParMoyenPaiement = Reste_a_payer - Txb_paiement_montantParMoyenPaiement;
+
+            //Redéfinition du reste à payer
+            Reste_a_payer = Txb_paiement_montantParMoyenPaiement;
+            //MessageBox.Show("ma remise vaut : " + Txb_paiement_montantRemise + "\nprix du paiement : " + Txb_paiement_montantParMoyenPaiement + "\n Reste_a_payer : " + Reste_a_payer);
+            Mode_de_paiement = "";
+        }
+
+
+        private void applyRemise()
+        {
+            //enlève la remise précédente et applique la nouvelle remise
+            checkRemise[1] = checkRemise[0];//met le montant de l'ancienne à la place de la nouvelle
+            checkRemise[0] = Txb_paiement_montantRemise;
+            Txb_paiement_montantParMoyenPaiement = Reste_a_payer - checkRemise[0] + checkRemise[1];
+            Reste_a_payer = Txb_paiement_montantParMoyenPaiement;
+
+            //Réinitialise l'ancienne valeur
+            checkRemise[1] = 0;
+        }
 
         #endregion
 

@@ -38,6 +38,5 @@ namespace App_pressing_Loreau.View
                 //ac.Btn_receptionColor = Brushes.Teal;
             }
         }
-
     }
 }

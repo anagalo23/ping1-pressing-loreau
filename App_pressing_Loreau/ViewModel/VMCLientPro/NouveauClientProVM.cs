@@ -172,7 +172,7 @@ namespace App_pressing_Loreau.ViewModel
             //client.nom = Txb_nouveauClientPro_nomSociete;
             client.prenom = Txb_nouveauClientPro_nomSociete;
             client.type = 1;
-            client.dateNaissance = null;
+            //client.dateNaissance = null;
             //client.adresse = new Model.Adresse();
             //client.adresse.numero = Txb_nouveauClientPro_numeroAdresse + "";
             //client.adresse.rue = Txb_nouveauClientPro_rue_voie;
