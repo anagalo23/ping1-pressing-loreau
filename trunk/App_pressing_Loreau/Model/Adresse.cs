@@ -55,5 +55,13 @@ namespace App_pressing_Loreau.Model
             return retour;
         }
 
+        public Adresse ToLower()
+        {
+            complement = complement.ToLower();
+            rue = rue.ToLower();
+            ville = ville.ToLower();
+            return this;
+        }
+
     }
 }
