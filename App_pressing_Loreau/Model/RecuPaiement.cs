@@ -15,7 +15,7 @@ namespace App_pressing_Loreau.Model
 {
     class RecuPaiement
     {
-        private static String printerName = "EPSON TM-T20II";
+        private static String printerName = "PrintTicketClient";
 
          //"EPSON TM-T20II Receipt5";
         public Commande commande { get; set; }
@@ -70,9 +70,9 @@ namespace App_pressing_Loreau.Model
                 File.AppendAllText(copy_path + ".txt", Environment.NewLine);
 
                 //ajout des articles
-                foreach (Article art in commande.listArticles)
+                foreach (Article arti in commande.listArticles)
                 {
-                    File.AppendAllText(copy_path + ".txt", "~ " + art.type.nom + Environment.NewLine);
+                    File.AppendAllText(copy_path + ".txt", "~ " + arti.type.nom + Environment.NewLine);
                 }
 
                 //fin du ticket

@@ -10,6 +10,8 @@ using App_pressing_Loreau.Model.DTO;
 using System.Collections.ObjectModel;
 using Microsoft.Practices.Prism.Commands;
 using System.Windows;
+using System.Windows.Input;
+using App_pressing_Loreau.Model;
 
 namespace App_pressing_Loreau.ViewModel
 {
@@ -27,7 +29,7 @@ namespace App_pressing_Loreau.ViewModel
         #region constructeur
         public ClientPROVM()
         {
-            clientsPro();
+            //clientsPro();
             ClasseGlobale.Client = null;
             ClasseGlobale._renduCommandeClientPro = null;
             ClasseGlobale._renduCommande = null;
@@ -76,9 +78,35 @@ namespace App_pressing_Loreau.ViewModel
                 (arg) => true));
             }
         }
+
+
+        public ICommand TestImprimante
+        {
+            get { return new RelayCommand(p => testPrint()); }
+        }
         #endregion
 
         #region Methods
+
+        private void testPrint()
+        {
+            Client c = new Client(1,"NAGALO","Alexis","","",null,DateTime.Now,"",DateTime.Now,10,false,false,0);
+            Commande comTest = new Commande(2,DateTime.Now, false, 0, c);
+            Departement dep = new Departement(1,"Classique");
+            TypeArticle t = new TypeArticle(1,"Veste",1,20,5,dep);
+            Article a1 = new Article(1, "", "", false, 20, 5,t, null, 2);
+            Article a2 = new Article(2, "", "", false, 20, 50, null, null, 2);
+            Article a3 = new Article(3, "", "", false, 20, 25, null, null, 2);
+            comTest.addArticle(a1);
+            comTest.addArticle(a2);
+            comTest.addArticle(a3);
+
+            //RecuPaiement rp = new RecuPaiement(com);
+            //rp.printRecu();
+
+            TicketVetement tv = new TicketVetement(comTest);
+            tv.printRecu(a1, comTest.id, c);
+        }
 
         private void ExecuteCommandeClientPro(UnClientPROVM obj)
         {

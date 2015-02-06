@@ -79,7 +79,7 @@
                     </Grid.ColumnDefinitions>
                     <Label Content="Total à payer" Style="{StaticResource vertilabel25}" Grid.Column="0" />
                     <Label Grid.Column="1" Content="{Binding Label_ClientProUC_TotalAPayer}" />
-                    <Button Content="Réglement" Style="{StaticResource ButtonSansBck}" Grid.Column="2" Margin="10"/>
+                    <Button Content="Teste Imprimante" Command="{Binding TestImprimante}" Style="{StaticResource ButtonSansBck}" Grid.Column="2" Margin="10"/>
                 </Grid>
 
             </Grid>
