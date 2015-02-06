@@ -344,10 +344,15 @@ namespace App_pressing_Loreau.ViewModel
                 {
                     //Je parcours la liste pour trouver une place convoyeur pouvant accueillir l'article
                     int finDeListe = ClasseGlobale.PlacesLibres.getList().Count();
+                    float encombrement_occupe_pour_cette_place;
+                    float encombrement_maximum = 3 - typeArticleDTO.encombrement;
                     for (int i = 0; i < finDeListe; i++)
                     {
                         //si l'encombrement du convoyeur est permet de recevoir l'article
-                        if(ClasseGlobale.PlacesLibres.getList()[i].encombrement <= (3 - typeArticleDTO.encombrement)){
+                        encombrement_occupe_pour_cette_place = ClasseGlobale.PlacesLibres.getList()[i].encombrement;
+
+                        if (encombrement_occupe_pour_cette_place <= encombrement_maximum)
+                        {
                             //Je modifie l'encombrement de la place convoyeur
                             ClasseGlobale.PlacesLibres[i].encombrement += typeArticleDTO.encombrement;
                             //Je récupère la place convoyeur concernée
