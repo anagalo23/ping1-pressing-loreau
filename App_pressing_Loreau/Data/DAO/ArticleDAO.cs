@@ -118,8 +118,7 @@ namespace App_pressing_Loreau.Data.DAO
                
                 while (msdr.Read())
                 {
-                    Article article;
-                    article = new Article(
+                    Article article = new Article(
                         Int32.Parse(msdr["art_id"].ToString()),
                         msdr["art_photo"].ToString(),
                         msdr["art_commentaire"].ToString(),
