@@ -20,23 +20,24 @@ namespace App_pressing_Loreau.View
 
         private void btn_paiment_valider_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (true)
-            {
-                dp.Children.Clear();
-                //On retourne à l'accueil
-                //AccueilVM ac = new AccueilVM();
-                MessageBox.Show("salut");
-                try
-                {
-                    dp.Children.Add(new Accueil());
-                }
-                catch (InvalidOperationException ioe)
-                {
+            //if (true)
+            //{
+            //    dp.Children.Clear();
+            //    //On retourne à l'accueil
+            //    //AccueilVM ac = new AccueilVM();
+            //    MessageBox.Show("salut");
+            //    try
+            //    {
+                    
+            //        dp.Children.Add(new Accueil());
+            //    }
+            //    catch (InvalidOperationException ioe)
+            //    {
 
-                }
+            //    }
                 
-                //ac.Btn_receptionColor = Brushes.Teal;
-            }
+            //    //ac.Btn_receptionColor = Brushes.Teal;
+            //}
         }
     }
 }
