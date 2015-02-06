@@ -236,8 +236,7 @@ namespace App_pressing_Loreau.ViewModel
             get
             {
                 return new RelayCommand(
-                    p => enregisterClient(),
-                    p => Txb_nouveauClient_nom != null & Txb_nouveauClient_prenom != null);
+                    p => enregisterClient());
             }
         }
 
@@ -350,8 +349,6 @@ namespace App_pressing_Loreau.ViewModel
                 MessageBox.Show("Le client n'a pas été initialisée, cette erreur logiciel n'est pas censée arriver. Cf code NouveauClientVM.cs l~341");
             }
 
-           
-            //
         }
 
         #endregion

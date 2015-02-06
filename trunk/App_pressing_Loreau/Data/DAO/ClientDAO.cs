@@ -198,83 +198,83 @@ namespace App_pressing_Loreau.Data.DAO
          */
         public static Client selectClientById(int client_id, Boolean addCommandes, Boolean cmd_addPaiement, Boolean cmd_addArticles)
         {
-            //try
-            //{
+            try
+            {
                 Client retour = new Client();
 
-            //    //connection à la base de données  
-            //    MySqlCommand cmd = new MySqlCommand(Bdd.selectClientById, Bdd.connexion());
+                //connection à la base de données  
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectClientById, Bdd.connexion());
 
-            //    //ajout des parametres
-            //    cmd.Parameters.AddWithValue("clt_id", client_id);
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("clt_id", client_id);
 
-            //    //Execute la commande
-            //    MySqlDataReader msdr = cmd.ExecuteReader();//Le msdr contient bien toutes les infos du client
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();//Le msdr contient bien toutes les infos du client
 
-            //    Client client = new Client();
+                Client client = new Client();
 
-            //    msdr.Read();
-            //    client.id = Int32.Parse(msdr["clt_id"].ToString());
-            //    client.nom = msdr["clt_nom"].ToString();
-            //    client.prenom = msdr["clt_prenom"].ToString();
-            //    client.telfix = msdr["clt_fix"].ToString();
-            //    client.telmob = msdr["clt_mob"].ToString();
-            //    client.adresse = Adresse.Parse(msdr["clt_adresse"].ToString());
-            //    client.dateNaissance = msdr["clt_dateNaissance"].ToString();//DateTime.Parse(
-            //    client.email = msdr["clt_email"].ToString();
-            //    client.dateInscription = DateTime.Parse(msdr["clt_dateInscription"].ToString());
-            //    client.idCleanWay = Int32.Parse(msdr["clt_idCleanway"].ToString());
+                msdr.Read();
+                client.id = Int32.Parse(msdr["clt_id"].ToString());
+                client.nom = msdr["clt_nom"].ToString();
+                client.prenom = msdr["clt_prenom"].ToString();
+                client.telfix = msdr["clt_fix"].ToString();
+                client.telmob = msdr["clt_mob"].ToString();
+                client.adresse = Adresse.Parse(msdr["clt_adresse"].ToString());
+                client.dateNaissance = DateTime.Parse(msdr["clt_dateNaissance"].ToString());//DateTime.Parse(
+                client.email = msdr["clt_email"].ToString();
+                client.dateInscription = DateTime.Parse(msdr["clt_dateInscription"].ToString());
+                client.idCleanWay = Int32.Parse(msdr["clt_idCleanway"].ToString());
 
-            //    client.contactMail = false;// bool.Parse(msdr["clt_contactmail"].ToString());
-            //    client.contactSms = false;//bool.Parse(msdr["clt_contactsms"].ToString());
+                //client.contactMail = false;// bool.Parse(msdr["clt_contactmail"].ToString());
+                //client.contactSms = false;//bool.Parse(msdr["clt_contactsms"].ToString());
 
-            //    if (msdr["clt_contactmail"].ToString() == "False")
-            //    {
-            //        client.contactMail = false;
-            //    }
-            //    else
-            //    {
-            //        client.contactMail = true;
-            //    }
+                if (msdr["clt_contactmail"].ToString() == "False")
+                {
+                    client.contactMail = false;
+                }
+                else
+                {
+                    client.contactMail = true;
+                }
 
-            //    if (msdr["clt_contactsms"].ToString() == "False")
-            //    {
-            //        client.contactSms = false;
-            //    }
-            //    else
-            //    {
-            //        client.contactSms = true;
-            //    }
+                if (msdr["clt_contactsms"].ToString() == "False")
+                {
+                    client.contactSms = false;
+                }
+                else
+                {
+                    client.contactSms = true;
+                }
 
 
-            //    //client.type = Int32.Parse(msdr["clt_type"].ToString());
-            //    if (msdr["clt_type"].ToString() == "False")
-            //    {
-            //        client.type = 0;
-            //    }
-            //    else
-            //    {
-            //        client.type = 1;
-            //    }
+                //client.type = Int32.Parse(msdr["clt_type"].ToString());
+                if (msdr["clt_type"].ToString() == "False")
+                {
+                    client.type = 0;
+                }
+                else
+                {
+                    client.type = 1;
+                }
 
-            //    msdr.Dispose();
+                msdr.Dispose();
 
-            //    #region ajout des commandes
-            //    if (addCommandes)
-            //    {
-            //        // Attention ! dernier parametre obligatoirement en false afin de ne pas boucler.
-            //        retour.listCommandes = CommandeDAO.selectCommandesByClient(retour.id, cmd_addPaiement, cmd_addArticles, false);
-            //    }
-            //    #endregion
+                #region ajout des commandes
+                if (addCommandes)
+                {
+                    // Attention ! dernier parametre obligatoirement en false afin de ne pas boucler.
+                    retour.listCommandes = CommandeDAO.selectCommandesByClient(retour.id, cmd_addPaiement, cmd_addArticles, false);
+                }
+                #endregion
 
-            //    return client;
-            //}
-            //catch (Exception Ex)
-            //{
-            //    MessageBox.Show("ERREUR BDD : Impossible de selectionner un client à l'aide de son ID.");
-            //    return null;
-            //}
+                return client;
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("ERREUR BDD : Impossible de selectionner un client à l'aide de son ID.");
                 return null;
+            }
+
         }
 
         //Give the amount command open today
