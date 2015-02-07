@@ -517,25 +517,31 @@ namespace App_pressing_Loreau.ViewModel
                 //On vérifie que le montant est positif
                 if (Txb_paiement_montantParMoyenPaiement >= 0)
                 {
+                    //S'il n'a rien mis dans le text box, on ne fait rien et on le signale à l'utilisateur
                     if (Txb_paiement_montantParMoyenPaiement != 0)
                     {
                         //On vérifie que le montant désiré est inférieur ou égal au reste à payer
                         if (Txb_paiement_montantParMoyenPaiement <= Reste_a_payer)
                         {
-                            //Ajout de mon montant et du mode de paiement dans le dico
-                            listeDeMontantParMoyenPaiement[Mode_de_paiement] = Txb_paiement_montantParMoyenPaiement;
+                            //Vérifie s'il n'y a pas de problème de paiement cleanway
+                            //Lorsqu'une commande est payée en cleanway, elle n'eest payée qu'en cleanway
+                            if (CleanWayOK())
+                            {
+                                //Ajout de mon montant et du mode de paiement dans le dico
+                                listeDeMontantParMoyenPaiement[Mode_de_paiement] = Txb_paiement_montantParMoyenPaiement;
 
-                            InitialiseLaListeDePaiement();
+                                InitialiseLaListeDePaiement();
 
-                            //Je met dans le text box le nouveau reste à payer. Le mélange decimal float permet de ne pas avoir de plroblème de précision
-                            //comme 15.56668879 ou autre
-                            Txb_paiement_montantParMoyenPaiement = (float)((decimal)Reste_a_payer - (decimal)Txb_paiement_montantParMoyenPaiement);
+                                //Je met dans le text box le nouveau reste à payer. Le mélange decimal/float permet de ne pas avoir de problème de précision
+                                //comme 15.56668879 ou autre
+                                Txb_paiement_montantParMoyenPaiement = (float)((decimal)Reste_a_payer - (decimal)Txb_paiement_montantParMoyenPaiement);
 
-                            //Redéfinition du reste à payer
-                            Reste_a_payer = Txb_paiement_montantParMoyenPaiement;
+                                //Redéfinition du reste à payer
+                                Reste_a_payer = Txb_paiement_montantParMoyenPaiement;
 
-                            //MessageBox.Show("ma remise vaut : " + Txb_paiement_montantRemise + "\nprix du paiement : " + Txb_paiement_montantParMoyenPaiement + "\n Reste_a_payer : " + Reste_a_payer);
-                            Mode_de_paiement = "";
+                                //MessageBox.Show("ma remise vaut : " + Txb_paiement_montantRemise + "\nprix du paiement : " + Txb_paiement_montantParMoyenPaiement + "\n Reste_a_payer : " + Reste_a_payer);
+                                Mode_de_paiement = "";
+                            }
                         }
                         else
                         {
@@ -563,6 +569,43 @@ namespace App_pressing_Loreau.ViewModel
 
 
 
+        }
+
+        private bool CleanWayOK()
+        {
+            //Si je désire payer en CleanWay, je vérifie que ma liste de paiement ne contient pas de paiement autre que cleanway
+            //Sinon, on vérifie qu'aucun paiement cleanway n'a été effectué
+            if (Mode_de_paiement == "CleanWay")
+            {
+                //Si mon seul paiement est en cleanWay ou si j'en ai pas return true
+                if (listeDeMontantParMoyenPaiement.dico.Count == 1 && listeDeMontantParMoyenPaiement.dico.Keys.Contains("CleanWay")
+                    ||
+                    listeDeMontantParMoyenPaiement.dico.Count == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Vous ne pouvez pas ajouter de paiement par cleanway, supprimez d'abord les autres paiements");
+                    return false;
+                }
+            }
+            else
+            {
+                if (listeDeMontantParMoyenPaiement.dico.Keys.Contains("CleanWay"))
+                {
+                    MessageBox.Show("Vous ne pouvez pas ajouter de paiement autre que cleanway.");
+                    return false;
+                }
+                else
+                {
+                    //Aucun paiement cleanway => roulez jeunesse
+                    return true;
+                }
+
+                
+            }
+            
         }
 
         private void InitialiseLaListeDePaiement()
