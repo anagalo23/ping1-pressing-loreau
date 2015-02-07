@@ -63,5 +63,10 @@ namespace App_pressing_Loreau.Model
             return this;
         }
 
+
+        public override String ToString()
+        {
+            return numero+", "+rue+"\n"+codePostal+" "+ville;
+        }
     }
 }

@@ -65,12 +65,12 @@ namespace App_pressing_Loreau.ViewModel
 
         public String Label_identCleint_Adresse
         {
-            get { return this.clt.adresse.giveAdresse(); }
+            get { return this.clt.adresse.ToString(); }
             set
             {
-                if (value != this.clt.adresse.giveAdresse())
+                if (value != this.clt.adresse.ToString())
                 {
-                    _label_identCleint_Adresse = this.clt.adresse.giveAdresse();
+                    _label_identCleint_Adresse = this.clt.adresse.ToString();
                     _label_identCleint_Adresse = value;
                     OnPropertyChanged("Label_identCleint_Adresse");
                 }
