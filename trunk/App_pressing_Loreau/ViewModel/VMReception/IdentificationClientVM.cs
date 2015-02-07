@@ -146,7 +146,7 @@ namespace App_pressing_Loreau.ViewModel
                     {
                         ResultatRecherche_identificationClient.Add(new IdentificationClientData() { clt = c });
                     }
-                    MessageBox.Show(resultat.Count() + " résultats");
+                    MessageBox.Show(ResultatRecherche_identificationClient.Count() + " résultats");
                 }
                 else
                 {
