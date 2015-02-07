@@ -190,7 +190,7 @@ namespace App_pressing_Loreau.ViewModel
                 {
                     if (artRestVm.IsSelectedArticle == true)
                     {
-
+                        ClasseGlobale._rendreArticlesSelectionnes.Add(artRestVm.ar);
                     }
                 }
 
