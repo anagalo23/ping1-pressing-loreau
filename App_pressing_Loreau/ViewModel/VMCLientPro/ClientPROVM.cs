@@ -12,6 +12,7 @@ using Microsoft.Practices.Prism.Commands;
 using System.Windows;
 using System.Windows.Input;
 using App_pressing_Loreau.Model;
+using System.Drawing.Printing;
 
 namespace App_pressing_Loreau.ViewModel
 {
@@ -23,7 +24,7 @@ namespace App_pressing_Loreau.ViewModel
 
         private List<UnClientPROVM> _listeClientPro;
         private List<UnClientPROVM> _detailCommandeClientPro;
-
+       
         #endregion
 
         #region constructeur
@@ -88,24 +89,41 @@ namespace App_pressing_Loreau.ViewModel
 
         #region Methods
 
+        //public  PrinterSettings.StringCollection inPrint { get; }
+
         private void testPrint()
         {
-            Client c = new Client(1,"NAGALO","Alexis","","",null,DateTime.Now,"",DateTime.Now,10,false,false,0);
-            Commande comTest = new Commande(2,DateTime.Now, false, 0, c);
-            Departement dep = new Departement(1,"Classique");
-            TypeArticle t = new TypeArticle(1,"Veste",1,20,5,dep);
-            Article a1 = new Article(1, "", "", false, 20, 5,t, null, 2);
-            Article a2 = new Article(2, "", "", false, 20, 50, null, null, 2);
-            Article a3 = new Article(3, "", "", false, 20, 25, null, null, 2);
+
+            Client c = new Client(1, "TRAORE", "Mami", "", "", null, DateTime.Now, "", DateTime.Now, 10, false, false, 0);
+            Commande comTest = new Commande(2, DateTime.Now, false, 0, c);
+            Departement dep = new Departement(1, "Classique");
+            TypeArticle t = new TypeArticle(1, "jupe", 1, 20, 5, dep);
+            TypeArticle t2 = new TypeArticle(2, "robe", 1, 20, 50, dep);
+            TypeArticle t3 = new TypeArticle(3, "habit", 1, 20, 25, dep);
+
+            Article a1 = new Article(1, "", "", false, 20, 5, t, null, 2);
+            Article a2 = new Article(2, "", "", false, 20, 50, t2, null, 2);
+            Article a3 = new Article(3, "", "", false, 20, 25, t3, null, 2);
             comTest.addArticle(a1);
             comTest.addArticle(a2);
             comTest.addArticle(a3);
 
-            //RecuPaiement rp = new RecuPaiement(com);
-            //rp.printRecu();
 
-            TicketVetement tv = new TicketVetement(comTest);
-            tv.printRecu(a1, comTest.id, c);
+            RecuPaiement rp = new RecuPaiement(comTest);
+            rp.printRecu();
+
+           // MessageBox.Show( + "");
+            //TicketVetement tv = new TicketVetement(comTest);
+            //tv.printRecu(a1, comTest.id, c);
+            //String s=null;
+
+            //for (int i = 0; i < PrinterSettings.InstalledPrinters.Count; i++)
+            //{
+            //    s += PrinterSettings.InstalledPrinters[i] + "\n";
+               
+            //}
+
+            //MessageBox.Show(s);
         }
 
         private void ExecuteCommandeClientPro(UnClientPROVM obj)

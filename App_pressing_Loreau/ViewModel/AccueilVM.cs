@@ -362,11 +362,10 @@ namespace App_pressing_Loreau
         }
         public void UtilisateurListe()
         {
+            ClasseGlobale.listeEmployes = null;
             ClasseGlobale.listeEmployes = (List<Employe>)EmployeDAO.selectEmployes();
             if (ClasseGlobale.listeEmployes != null)
             {
-
-
                 foreach (Employe em in ClasseGlobale.listeEmployes)
                 {
                     _listeUser.Add(new CategoryItem() { ButtonUserContent = em.nom, ButtonUserTag = em.id, ButtonUserBackground = Brushes.Teal });
@@ -375,16 +374,16 @@ namespace App_pressing_Loreau
             else
             {
                 _listeUser.Add(new CategoryItem() { ButtonUserContent = "David", ButtonUserBackground = Brushes.Teal });
-
             }
-
-
-
         }
+
+
+        
+
         public void accueilVM()
         {
-            listeEmployer = null;
-            listeEmployer = (List<Employe>)EmployeDAO.selectEmployes();
+            
+            UtilisateurListe();
 
             Btn_receptionColor = Brushes.Teal;
             Btn_renduColor = Brushes.Teal;
@@ -394,10 +393,10 @@ namespace App_pressing_Loreau
             Btn_impressionColor = Brushes.Teal;
             Btn_administrateurColor = Brushes.Teal;
 
-            foreach (CategoryItem utilisateur in _listeUser)
-            {
-                utilisateur.ButtonUserBackground = Brushes.Teal;
-            }
+            //foreach (CategoryItem utilisateur in _listeUser)
+            //{
+            //    utilisateur.ButtonUserBackground = Brushes.Teal;
+            //}
 
 
             ClasseGlobale.SET_ALL_NULL();
