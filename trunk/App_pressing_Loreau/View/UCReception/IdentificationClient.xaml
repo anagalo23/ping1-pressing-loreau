@@ -92,8 +92,7 @@
                         <Label Content="Résultat de la recherche" Style="{StaticResource  Titre}" Grid.Row="0" />
                         
                         <Border  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="10" Grid.Row="1">
-                            <ListBox Margin="4" Background="Transparent" BorderThickness="0"  ItemsSource="{Binding ResultatRecherche_identificationClient}" />
-                            <!--<ListBox x:Name="searchResultPanel" ItemsSource="{Binding ResultatRecherche_identificationClient}" 
+                            <ListBox x:Name="searchResultPanel" ItemsSource="{Binding ResultatRecherche_identificationClient}" 
                                      Background="Transparent" BorderThickness="0" >
                                 <ListBox.ItemTemplate>
                                     <DataTemplate DataType="{x:Type vm:IdentificationClientVM}">
@@ -121,7 +120,7 @@
                                         </Button>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
-                            </ListBox>-->
+                            </ListBox>
                         </Border>
                         <Label  Content="{Binding Label_identClient_choix,Mode=TwoWay}" Grid.Row="2" Style="{StaticResource vertilabel25}"/>
                         
