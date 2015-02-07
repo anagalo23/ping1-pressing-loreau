@@ -96,10 +96,19 @@ namespace App_pressing_Loreau.Model
             float total_payements = 0;
             foreach (Payement paie in listUsedTypePaiement)
             {
-                mWorkSheets.Cells[index, 8] = paie.typePaiement;
-                mWorkSheets.Cells[index, 12] = paie.montant;
-                total_payements = total_payements + paie.montant;
-                index++;
+                
+                if (!paie.typePaiement.Equals("CleanWay"))
+                {
+                    mWorkSheets.Cells[index, 8] = paie.typePaiement;
+                    mWorkSheets.Cells[index, 12] = paie.montant;
+                    total_payements = total_payements + paie.montant;
+                    index++;
+                }
+                //cas du payement cleanway
+                else
+                {
+                    mWorkSheets.Cells[index, 12] = paie.montant;
+                }
             }
             index = 22;
             mWorkSheets.Cells[index, 12] = total_payements;
@@ -148,7 +157,7 @@ namespace App_pressing_Loreau.Model
                 mWorkSheets.PrintOut(1, 1, 1, false, "Canon MG2400 series", false, false, misValue);
 
                 //close files
-                mWorkBook.Close(false, misValue, misValue);
+                mWorkBook.Close(true, misValue, misValue);
                 oXL.Quit();
 
                 //release file
@@ -236,23 +245,27 @@ namespace App_pressing_Loreau.Model
 
             foreach (Article art in articlesrendu)
             {
-                ifExist = false;
-                //Jusque là on a déroulé tout les articles
-                //recherche de départements déja entrés
-                for (int i = 0; i < listUsedDepartements.Count; i++)
+                //Vérifie que l'article n'a pas été payé en CleanWay
+                if (!CommandeDAO.isPayedByCleanWay(art.fk_commande))
                 {
-                    if (listUsedDepartements[i].nom.Contains(art.type.departement.nom))
+                    ifExist = false;
+                    //Jusque là on a déroulé tout les articles
+                    //recherche de départements déja entrés
+                    for (int i = 0; i < listUsedDepartements.Count; i++)
                     {
-                        caTTCDep[i] = caTTCDep[i] + art.TTC;
-                        ifExist = true;
-                        break;
+                        if (listUsedDepartements[i].nom.Contains(art.type.departement.nom))
+                        {
+                            caTTCDep[i] = caTTCDep[i] + art.TTC;
+                            ifExist = true;
+                            break;
+                        }
                     }
-                }
 
-                if (!ifExist)
-                {
-                    listUsedDepartements.Add(art.type.departement);
-                    caTTCDep.Add(art.TTC);
+                    if (!ifExist)
+                    {
+                        listUsedDepartements.Add(art.type.departement);
+                        caTTCDep.Add(art.TTC);
+                    }
                 }
             }
         }

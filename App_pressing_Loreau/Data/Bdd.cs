@@ -90,6 +90,7 @@ namespace App_pressing_Loreau.Data
         public static String deleteClient = "DELETE FROM client WHERE clt_id=?";
         public static String lastClient = "SELECT MAX(clt_id) AS clt_id FROM client";
         public static String listClientAddToday = "SELECT clt_id, clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway, clt_contactmail, clt_contactsms, clt_type FROM client  WHERE clt_dateInscription BETWEEN ? AND ?";
+        public static String verificationNomEtPrenom = "SELECT clt_id, clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway, clt_contactmail, clt_contactsms, clt_type FROM client WHERE clt_nom=? AND clt_prenom=?";
 
         //Commande
         public static String insertCommande = "INSERT INTO commande(cmd_payee, cmd_remise, cmd_clt_id) VALUES (?,?,?)";
@@ -102,6 +103,7 @@ namespace App_pressing_Loreau.Data
         public static String totalTTCCommandeById = "SELECT SUM(art_TTC) AS total FROM article WHERE art_cmd_id=?";
         public static String totalPayedCommandeById = "SELECT SUM(pai_montant) AS total FROM paiement WHERE pai_cmd_id=?";
         public static String listCommandeRecuToday = "SELECT cmd_id, cmd_clt_id, cmd_date, cmd_payee, cmd_remise, cmd_date_rendu FROM commande WHERE cmd_date BETWEEN ? AND ?";
+        public static String isPayedByCleanWay = "SELECT C.cmd_id, P.pai_type FROM commande C, paiement P WHERE C.cmd_id=P.pai_cmd_id AND P.pai_type='CleanWay' AND C.cmd_id=?";
 
         //Commentaire
         public static String insertCommentaire = "INSERT INTO commentaire(com_com) VALUES (?)";
