@@ -136,7 +136,9 @@ namespace App_pressing_Loreau.ViewModel
                 if (fields.portable == null){fields.portable = "";}
 
                 List<Client> resultat = ClientDAO.seekClients(fields.nom, fields.prenom, fields.portable, fields.idCleanWay);
-                MessageBox.Show(resultat.Count() + " résultats");
+
+                
+
                 //On affiche le résultat dans le doc Panel
                 if (resultat != null)
                 {
@@ -144,10 +146,11 @@ namespace App_pressing_Loreau.ViewModel
                     {
                         ResultatRecherche_identificationClient.Add(new IdentificationClientData() { clt = c });
                     }
+                    MessageBox.Show(resultat.Count() + " résultats");
                 }
                 else
                 {
-                    //MessageBox.Show("recherche infructueuse");
+                    MessageBox.Show("Erreur : la recherche n'a renvoyée aucun résultat");
                 }
             }
         }
