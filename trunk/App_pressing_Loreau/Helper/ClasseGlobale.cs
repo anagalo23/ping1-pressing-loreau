@@ -71,11 +71,11 @@ namespace App_pressing_Loreau.Helper
 
         //*******************************************************************************GESTION DE LA LISTE DES EMPLOYES
 
-        public static List<Employe> listeEmployes { get; set; }
-        public static void getAllEmployee()
-        {
-            listeEmployes = (List<Employe>)EmployeDAO.selectEmployes();
-        }
+        public static Employe listeEmployes { get; set; }
+        //public static void getAllEmployee()
+        //{
+        //    listeEmployes = (List<Employe>)EmployeDAO.selectEmployes();
+        //}
 
 
         //*********************************************************************************GESTION DE LA LISTE DES PAIEMENTS DESIRES

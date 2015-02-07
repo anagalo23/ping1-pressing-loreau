@@ -15,7 +15,9 @@ namespace App_pressing_Loreau.Model
 {
     class RecuPaiement
     {
-        private static String printerName = "PrintTicketClient";
+        
+       private static String printerName;
+    //= "EPSON TM-U220 Receipt";
 
          //"EPSON TM-T20II Receipt5";
         public Commande commande { get; set; }
@@ -31,6 +33,20 @@ namespace App_pressing_Loreau.Model
         public RecuPaiement(Commande commande)
         {
             this.commande = commande;
+            for (int i = 0; i < PrinterSettings.InstalledPrinters.Count; i++)
+            {
+                if (PrinterSettings.InstalledPrinters[i].Contains("TM-T20"))
+                {
+                   printerName= PrinterSettings.InstalledPrinters[i];
+                }
+
+            }
+
+            if (printerName == null)
+            {
+                printerName = "";
+                MessageBox.Show("Imprimante non trouvée");
+            }
         }
 
         public void printRecu()

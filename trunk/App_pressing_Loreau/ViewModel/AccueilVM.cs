@@ -16,6 +16,7 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Media;
 using System.IO;
+using Microsoft.Practices.Prism.Commands;
 
 
 
@@ -43,16 +44,12 @@ namespace App_pressing_Loreau
         private Brush _btn_convoyeurColor;
 
 
-
-        private List<Employe> listeEmployer;
-
         #endregion
 
         #region Constructeur
         public AccueilVM()
         {
-            _listeUser = new List<CategoryItem>();
-
+           
             UtilisateurListe();
 
             Btn_receptionColor = Brushes.Teal;
@@ -63,10 +60,6 @@ namespace App_pressing_Loreau
             Btn_impressionColor = Brushes.Teal;
             Btn_administrateurColor = Brushes.Teal;
 
-
-
-
-
         }
 
         #endregion
@@ -74,8 +67,8 @@ namespace App_pressing_Loreau
         #region Propriétés et Commandes
 
 
-        #region Accesseur de classe
-        #endregion
+        //#region Accesseur de classe
+        //#endregion
         public IPageViewModel accessUserControl
         {
             get { return _accessUserControl; }
@@ -104,10 +97,10 @@ namespace App_pressing_Loreau
         {
             get
             {
-                foreach (CategoryItem utilisateur in _listeUser)
-                {
-                    utilisateur.ButtonUserBackground = Brushes.Teal;
-                }
+                //foreach (CategoryItem utilisateur in _listeUser)
+                //{
+                //    utilisateur.ButtonUserBackground = Brushes.Teal;
+                //}
 
                 return lesUtilisateurs ?? (lesUtilisateurs = new RelayCommand(ClickSurUtilisateur));
             }
@@ -236,14 +229,16 @@ namespace App_pressing_Loreau
         #endregion
 
         // Button permettant de revenir a la page preincipale 
-        public ICommand Btn_accueil_image
+        private DelegateCommand<AccueilVM> _btn_accueil_image;
+        public DelegateCommand<AccueilVM> Btn_accueil_image
         {
             get
             {
-                ClasseGlobale.SET_ALL_NULL();
-                return new RelayCommand(p => accueilVM());
+                return this._btn_accueil_image ?? (this._btn_accueil_image = new DelegateCommand<AccueilVM>(accueilVM,
+                    (arg) => true));
             }
         }
+     
 
         #endregion
 
@@ -263,9 +258,9 @@ namespace App_pressing_Loreau
             Btn_administrateurColor = Brushes.Teal;
 
             accessUserControl = new IdentificationClientVM();//Problème avec le datacontext... la vm est liée via data context => ajouter view à dockpanel
-            //new IdentificationClient();
+         
         }
-        //Methodes des redirection vers le ViewModel de l'restitution client
+        //Methodes des redirection vers le ViewModel de l restitution client
         public void restitutionArticleVM()
         {
             accessUserControl = new RestitutionArticlesVM();
@@ -362,28 +357,30 @@ namespace App_pressing_Loreau
         }
         public void UtilisateurListe()
         {
-            ClasseGlobale.listeEmployes = null;
-            ClasseGlobale.listeEmployes = (List<Employe>)EmployeDAO.selectEmployes();
-            if (ClasseGlobale.listeEmployes != null)
+    
+            ListeUser = new List<CategoryItem>();
+
+            List<Employe> emp = (List<Employe>)EmployeDAO.selectEmployes();
+            if (emp != null)
             {
-                foreach (Employe em in ClasseGlobale.listeEmployes)
+                foreach (Employe em in emp)
                 {
-                    _listeUser.Add(new CategoryItem() { ButtonUserContent = em.nom, ButtonUserTag = em.id, ButtonUserBackground = Brushes.Teal });
+                    ListeUser.Add(new CategoryItem() { ButtonUserContent = em.nom, ButtonUserTag = em.id, ButtonUserBackground = Brushes.Teal });
                 }
             }
             else
             {
-                _listeUser.Add(new CategoryItem() { ButtonUserContent = "David", ButtonUserBackground = Brushes.Teal });
+                ListeUser.Add(new CategoryItem() { ButtonUserContent = "David", ButtonUserBackground = Brushes.Teal });
             }
         }
 
 
         
 
-        public void accueilVM()
+        public void accueilVM(AccueilVM obj)
         {
-            
-            UtilisateurListe();
+
+            obj.UtilisateurListe();
 
             Btn_receptionColor = Brushes.Teal;
             Btn_renduColor = Brushes.Teal;
@@ -393,16 +390,10 @@ namespace App_pressing_Loreau
             Btn_impressionColor = Brushes.Teal;
             Btn_administrateurColor = Brushes.Teal;
 
-            //foreach (CategoryItem utilisateur in _listeUser)
-            //{
-            //    utilisateur.ButtonUserBackground = Brushes.Teal;
-            //}
-
-
             ClasseGlobale.SET_ALL_NULL();
 
 
-            accessUserControl = null;
+            obj.accessUserControl = null;
         }
         #endregion
 

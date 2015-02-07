@@ -73,8 +73,8 @@
                             </ItemsPanelTemplate>
                         </ListBox.ItemsPanel>
                     </ListBox>
-                    
-                    <Button x:Name="btn_accueil_image" BorderBrush="White" Background="White" Grid.Column="1"  Margin="5" Command="{Binding Btn_accueil_image}" Style="{StaticResource personalisationbuton}">
+
+                    <Button x:Name="btn_accueil_image" BorderBrush="White" Background="White" Grid.Column="1"  Margin="5" Command="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.Btn_accueil_image}" Style="{StaticResource personalisationbuton}" CommandParameter="{Binding }">
                         <Image Source="/Resources/pics/Accueil1/logo_home.png"/>
                     </Button>
                 </Grid>

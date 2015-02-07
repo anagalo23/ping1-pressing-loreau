@@ -351,7 +351,6 @@ namespace App_pressing_Loreau.ViewModel
                 {
 
                     MessageBox.Show("Modification " + TArtModif.nom + " reussie");
-
                     initializeFieldsModif();
                 }
             }
@@ -369,7 +368,6 @@ namespace App_pressing_Loreau.ViewModel
         }
         private void initializeFieldsDelete()
         {
-
             Selected_adminArt_ChoixDepartDetele = null;
             Selected_adminArt_ChoixArticlesDelete = null;
         }
