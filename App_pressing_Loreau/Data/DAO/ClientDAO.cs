@@ -75,19 +75,19 @@ namespace App_pressing_Loreau.Data.DAO
                 #region complete la requete en fonction de la recherche voulue
                 if (nom != null)
                 {
-                    sql = String.Format("{0}{1}{2}{3}", sql, " AND clt_nom LIKE '%", nom, "%'");
+                    sql += " AND clt_nom LIKE '%" + nom + "%'";
                 }
                 if (prenom != null)
                 {
-                    sql = String.Format("{0}{1}{2}{3}", sql, " AND clt_prenom LIKE '%", prenom, "%'");
+                    sql += " AND clt_prenom LIKE '%" + prenom + "%'";
                 }
                 if (tel != null)
                 {
-                    sql = String.Format("{0}{1}{2}{3}", sql, " AND (clt_fix LIKE '%", tel, "%' OR clt_mob LIKE '%", tel, "%')");
+                    sql += " AND (clt_fix LIKE '%" + tel + "%' OR clt_mob LIKE '%" + tel + "%')";
                 }
                 if (idcleanway != 0)
                 {
-                    sql = String.Format("{0}{1}{2}", sql, " AND clt_idCleanway=", idcleanway);
+                    sql += " AND clt_idCleanway=" + idcleanway;
                 }
                 #endregion
 
@@ -96,7 +96,7 @@ namespace App_pressing_Loreau.Data.DAO
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
-               
+
                 while (msdr.Read())
                 {
                     Client client;
@@ -139,7 +139,7 @@ namespace App_pressing_Loreau.Data.DAO
                 MessageBox.Show("ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données.");
                 return null;
             }
-            
+
         }
 
         //Selectionner l'ensemble des clients pro
@@ -180,7 +180,7 @@ namespace App_pressing_Loreau.Data.DAO
                         contactmail,
                         clt_contactsms,
                         clt_type);
-                    retour.Add(client);    
+                    retour.Add(client);
                 }
                 msdr.Dispose();
                 return retour;
@@ -278,7 +278,7 @@ namespace App_pressing_Loreau.Data.DAO
 
         }
 
-        //Give the amount command open today
+        //Give the amount of today opened commands 
         /* @Param plage date :
             * 1 : par jour
             * 2 : par semaine
@@ -355,7 +355,7 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                MessageBox.Show("ERREUR BDD : Impossible de selectionner une liste des clients ."); 
+                MessageBox.Show("ERREUR BDD : Impossible de selectionner une liste des clients .");
                 return null;
             }
         }

@@ -131,7 +131,11 @@ namespace App_pressing_Loreau.ViewModel
             {
 
                 ResultatRecherche_identificationClient = new List<IdentificationClientData>();
-                List<Client> resultat = ClientDAO.seekClients(fields.nom, fields.prenom, fields.portable, fields.idCleaWay);
+                if (fields.nom == null){fields.nom = "";}
+                if (fields.prenom == null){fields.prenom = "";}
+                if (fields.portable == null){fields.portable = "";}
+
+                List<Client> resultat = ClientDAO.seekClients(fields.nom, fields.prenom, fields.portable, fields.idCleanWay);
 
                 //On affiche le résultat dans le doc Panel
                 if (resultat != null)
@@ -187,7 +191,7 @@ namespace App_pressing_Loreau.ViewModel
         public String nom { get; set; }
         public String prenom { get; set; }
         public String portable { get; set; }
-        public int idCleaWay { get; set; }
+        public int idCleanWay { get; set; }
         public String adresse { get; set; }
         public String dateDeNaissance { get; set; }
     }

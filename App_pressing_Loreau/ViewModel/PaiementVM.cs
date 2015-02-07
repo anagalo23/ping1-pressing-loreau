@@ -389,7 +389,7 @@ namespace App_pressing_Loreau.ViewModel
                 {
 
                     Commande cmd = new Commande(DateTime.Now, true, Txb_paiement_montantRemise, client);
-                    int tain = CommandeDAO.insertCommande(cmd);
+                    CommandeDAO.insertCommande(cmd);
                     cmd = CommandeDAO.lastCommande();
 
                     //Enregistrement des articles
