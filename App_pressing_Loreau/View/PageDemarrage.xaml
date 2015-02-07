@@ -36,30 +36,29 @@
                             <RowDefinition Height="1*"/>
                             <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Background="Aqua">
-                        <Image Source="/Resources/pics/pagePrincipale/100euro.png"  Width="120" Height="60"/>
-                        </Label>
-                        <TextBox Grid.Row="0" Grid.Column="1"  Margin="10"/>
+                            <Image Source="/Resources/pics/pagePrincipale/100euro.png"  Grid.Row="0" Grid.Column="0"  Width="120" Height="60"/>
+                       
+                        <TextBox Grid.Row="0" Grid.Column="1"  Margin="10" Text="{Binding Billet100EURO, UpdateSourceTrigger=PropertyChanged}"/>
 
                         <Image Source="/Resources/pics/pagePrincipale/50euro.png" Grid.Row="1" Grid.Column="0" />
-                        <TextBox Grid.Row="1" Grid.Column="1" Margin="10"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Margin="10" Text="{Binding Billet50EURO, UpdateSourceTrigger=PropertyChanged}"/>
 
 
                         <Image Source="/Resources/pics/pagePrincipale/20euro.png" Grid.Row="2" Grid.Column="0" Width="120" Height="60"/>
-                        <TextBox Grid.Row="2" Grid.Column="1" Margin="10"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Margin="10" Text="{Binding Billet20EURO, UpdateSourceTrigger=PropertyChanged}"/>
 
 
                         <Image Source="/Resources/pics/pagePrincipale/10euro.png" Grid.Row="3" Grid.Column="0" Width="120" Height="60"/>
-                        <TextBox Grid.Row="3" Grid.Column="1" Margin="10"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Margin="10" Text="{Binding Billet10EURO, UpdateSourceTrigger=PropertyChanged}"/>
 
 
                         <Image Source="/Resources/pics/pagePrincipale/5euro.png" Grid.Row="4" Grid.Column="0" Width="120" Height="60"/>
-                        <TextBox Grid.Row="4" Grid.Column="1" Margin="10"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Margin="10" Text="{Binding Billet5EURO, UpdateSourceTrigger=PropertyChanged}"/>
 
                         <TextBlock Grid.Row="5" Grid.Column="0" >
                         <Image Source="/Resources/pics/pagePrincipale/2euro.png" Width="120" Height="60"/>
                         </TextBlock>
-                        <TextBox Grid.Row="5" Grid.Column="1" Margin="10"/>
+                        <TextBox Grid.Row="5" Grid.Column="1" Margin="10" Text="{Binding Piece2Euro, UpdateSourceTrigger=PropertyChanged}"/>
 
 
                     </Grid>
@@ -81,26 +80,26 @@
                         </Grid.RowDefinitions>
 
                         <Image Source="/Resources/pics/pagePrincipale/1euro.png" Grid.Row="0" Grid.Column="0" Width="120" Height="60"/>
-                        <TextBox Grid.Row="0" Grid.Column="1" Margin="10"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Margin="10" Text="{Binding Piece1Euro, UpdateSourceTrigger=PropertyChanged}"/>
 
 
                         <Image Source="/Resources/pics/pagePrincipale/50c.png" Grid.Row="1"  Grid.Column="0" Width="120" Height="60"/>
-                        <TextBox Grid.Row="1" Grid.Column="1" Margin="10"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Margin="10" Text="{Binding Piece50c, UpdateSourceTrigger=PropertyChanged}"/>
 
 
                         <Image Source="/Resources/pics/pagePrincipale/20c.png" Grid.Row="2" Grid.Column="0" Width="120" Height="60"/>
-                        <TextBox Grid.Row="2" Grid.Column="1" Margin="10"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Margin="10" Text="{Binding Piece20c, UpdateSourceTrigger=PropertyChanged}"/>
 
 
                         <Image Source="/Resources/pics/pagePrincipale/10c.png" Grid.Row="3" Grid.Column="0" Width="120" Height="60"/>
-                        <TextBox Grid.Row="3" Grid.Column="1" Margin="10"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Margin="10" Text="{Binding Piece10c, UpdateSourceTrigger=PropertyChanged}"/>
 
 
                         <Image Source="/Resources/pics/pagePrincipale/5C.png" Grid.Row="4" Grid.Column="0" Width="120" Height="60"/>
-                        <TextBox Grid.Row="4" Grid.Column="1" Margin="10"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Margin="10" Text="{Binding Piece5c, UpdateSourceTrigger=PropertyChanged}"/>
 
                         <Image Source="/Resources/pics/pagePrincipale/2c.png" Grid.Row="5" Grid.Column="0" Width="120" Height="60"/>
-                        <TextBox Grid.Row="5" Grid.Column="1" Margin="10"/>
+                        <TextBox Grid.Row="5" Grid.Column="1" Margin="10" Text="{Binding Piece2c, UpdateSourceTrigger=PropertyChanged}"/>
 
                     </Grid>
                 </Border>
@@ -110,11 +109,13 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
 
                         <Label Content="Total "  Style="{StaticResource vertilabel18}"/>
                         
                         <Label Grid.Column="1"/>
+                        <Button Content="Valider" Grid.Column="2" />
                     </Grid>
                 </Border>
                 

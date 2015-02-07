@@ -22,7 +22,7 @@ namespace App_pressing_Loreau.ViewModel
         private List<UnUtilisateurVM> _listeUtilisateurs;
         private String _txb_Utilisateur_Name;
 
-        private List<Employe> listeEmploye=null;
+       // private List<Employe> listeEmploye=null;
         //private Employe employee;
 
         private DelegateCommand<UnUtilisateurVM> _deleteUtilisateurs;
@@ -111,6 +111,7 @@ namespace App_pressing_Loreau.ViewModel
             if (employee != null)
             {
                 EmployeDAO.insertEmploye(employee);
+                Txb_Utilisateur_Name = null;
                 ListeEmployee();
             }
            
