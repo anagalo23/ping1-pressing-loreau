@@ -1,5 +1,6 @@
 ﻿using App_pressing_Loreau.Data.DAO;
 using App_pressing_Loreau.Helper;
+using App_pressing_Loreau.Model;
 using App_pressing_Loreau.Model.DTO;
 using Microsoft.Practices.Prism.Commands;
 using System;
@@ -31,8 +32,8 @@ namespace App_pressing_Loreau.ViewModel
         ComboTheme comboTheme = new ComboTheme();
         private String _txb_administrationClient_choix;
         private String _label_adminIdentClient_choix;
-        //Modifier client
 
+        //Modifier client
         private string _txb_adminClient_modifNumAdresse;
         private String _txb_adminClient_modifNameAdresse;
         private String _txb_adminClient_modifBP;
@@ -49,7 +50,6 @@ namespace App_pressing_Loreau.ViewModel
         {
             Cbb_AdministrationClient_choix_theme = comboTheme.ListeChamp();
             Txb_adminClient_modifTypeIdCleanway = new Int32();
-            //Txb_adminClient_modifNumAdresse = new Int32();
         }
         #endregion
 
@@ -222,39 +222,57 @@ namespace App_pressing_Loreau.ViewModel
         private void EnregistrerModifClient()
         {
 
-            //clientModif.id = this.choixClient.id;
             clientModif = ClientDAO.selectClientById(this.choixClient.id,false, false,false);
 
-            clientModif.adresse.numero = Txb_adminClient_modifNumAdresse;
-            clientModif.adresse.rue = Txb_adminClient_modifNameAdresse;
-            clientModif.adresse.codePostal = Txb_adminClient_modifBP;
-            clientModif.adresse.ville = _txb_adminClient_modifVille;
+            Adresse ad = new Adresse();
+            ad.codePostal = Txb_adminClient_modifBP;
+            ad.numero = Txb_adminClient_modifNumAdresse;
+            ad.rue = Txb_adminClient_modifNameAdresse;
+            ad.ville = Txb_adminClient_modifVille;
 
-            clientModif.telmob = _txb_adminClient_modifTypeTelephone;
+            clientModif.adresse = ad;
+            clientModif.telmob = Txb_adminClient_modifTypeTelephone;
             clientModif.idCleanWay = Txb_adminClient_modifTypeIdCleanway;
 
             int x = ClientDAO.updateClient(clientModif);
+            
+
             if (x != 0)
             {
-                MessageBox.Show("Modification de l'adresse \n de " + clientModif.nom + " " + clientModif.prenom + " effectué");
+                initFields();
+                MessageBox.Show("Modification du client \n de " + clientModif.nom + " " + clientModif.prenom + " effectué");
+                
             }
+           
         }
         private void ExecuteDeleteClient(AdministrationClientVM obj)
         {
             if (choixClient != null)
             {
-                int y = ClientDAO.deleteClient(obj.choixClient);
-                if (y != 0)
-                {
-                    MessageBox.Show("Client supprimé");
-                }
+                //int y = ClientDAO.deleteClient(obj.choixClient);
+                //if (y != 0)
+                //{
+                //    MessageBox.Show("Client supprimé");
+                //}
+
             }
         }
 
+
+        private void initFields()
+        {
+            Txb_adminClient_modifNumAdresse = null;
+            Txb_adminClient_modifNameAdresse = null;
+            Txb_adminClient_modifBP = null;
+            Txb_adminClient_modifVille = null;
+
+            Txb_adminClient_modifTypeTelephone = null;
+            Txb_adminClient_modifTypeIdCleanway = 0;
+
+        }
         private void ExecuteModifClient(AdministrationClientVM obj)
         {
-            if (obj.choixClient != null)
-            {
+           
                 Txb_adminClient_modifNumAdresse = obj.choixClient.adresse.numero;
                 Txb_adminClient_modifNameAdresse = obj.choixClient.adresse.rue;
                 Txb_adminClient_modifVille = obj.choixClient.adresse.ville;
@@ -262,7 +280,7 @@ namespace App_pressing_Loreau.ViewModel
 
                 Txb_adminClient_modifTypeTelephone = obj.choixClient.telmob;
                 Txb_adminClient_modifTypeIdCleanway = obj.choixClient.idCleanWay;
-            }
+         
 
         }
 
@@ -279,7 +297,6 @@ namespace App_pressing_Loreau.ViewModel
 
         public void getChoix()
         {
-            //MessageBox.Show(Txb_administrationClient_choix);
             ListeRechercheClient = new List<RechercheClient>();
             List<Client> resultat = null;
             if (Selected_administrationClient_choix_theme != null)
@@ -318,7 +335,6 @@ namespace App_pressing_Loreau.ViewModel
         }
         #endregion
     }
-
 
     #region Class
 
@@ -361,14 +377,6 @@ namespace App_pressing_Loreau.ViewModel
                 OnPropertyChanged("Label_administrationClient_PrenomClient");
             }
         }
-
-
-        //public Client getClient()
-        //{
-        //    //Client c = ClientDAO.seekClients(Label_administrationClient_NomClient, Label_administrationClient_PrenomClient, null, 0);
-      
-        //    return c;
-        //}
     }
     #endregion
 }

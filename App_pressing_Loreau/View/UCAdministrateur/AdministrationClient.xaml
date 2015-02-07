@@ -84,7 +84,7 @@
 
                                         <StackPanel Grid.Row="1" >
                                             <Label  Content="ID Cleanway" Style="{StaticResource vertilabel18}"/>
-                                            <TextBox  x:Name="txb_adminClient_modifTypeIdCleanway" Margin="20,2" Height="30" Text="{Binding Txb_adminClient_modifTypeIdCleanway,UpdateSourceTrigger=PropertyChanged}"/>
+                                            <TextBox  x:Name="txb_adminClient_modifTypeIdCleanway" Margin="20,2" Height="30" Text="{Binding Txb_adminClient_modifTypeIdCleanway, UpdateSourceTrigger=PropertyChanged}"/>
                                         </StackPanel>
                                     </Grid>
                                 </Border>
@@ -193,7 +193,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Button Content="mofifier" Grid.Column="0" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ModifierClient}" CommandParameter="{Binding }" Margin="10,8"/>
 
-                                    <Button Content="supprimer" Grid.Column="1" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.SupprimerClient}" CommandParameter="{Binding }" Margin="10,8"/>
+                                    <Button Content="supprimer (desactivé)" Grid.Column="1" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.SupprimerClient}" CommandParameter="{Binding }" Margin="10,8"/>
                                 </Grid>
                             </Border>
                         </Grid>
