@@ -66,7 +66,15 @@ namespace App_pressing_Loreau.Model
 
         public override String ToString()
         {
-            return numero+", "+rue+"\n"+codePostal+" "+ville;
+            String retour = "";
+            if (rue != "")
+            {
+                retour += numero + ", " + rue;
+            }
+            if(ville != ""){
+                retour += "\n" + codePostal + " " + ville;
+            }
+            return retour;
         }
     }
 }
