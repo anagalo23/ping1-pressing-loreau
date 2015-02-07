@@ -35,7 +35,6 @@ namespace App_pressing_Loreau.ViewModel
         private float _txb_paiement_montantParMoyenPaiement;
 
         //Prends en param : le moyen de paiement et le montant correspondant à ce moyen de paiement
-        //private Dictionary<string, float> _txb_paiement_montantParmoyenPaiement = new Dictionary<string, float>();
 
         private ListePaiement listeDeMontantParMoyenPaiement = new ListePaiement();
         private String _mode_de_paiement;
@@ -62,24 +61,14 @@ namespace App_pressing_Loreau.ViewModel
 
             _itemsMontantParMoyenPaiement = new List<GetPaiement>();
 
-
-            //Label_NouvelleCommande_prixTotal = 0;
-            //for (int i = 0; i < ContentDetailCommande.Count; i++)
-            //{
-            // Label_NouvelleCommande_prixTotal += (ContentDetailCommande[i].article.TTC);
-            //}
-
-
             //Txb_paiement_montantParMoyenPaiement = Label_NouvelleCommande_prixTotal;
             Txb_paiement_montantParMoyenPaiement = float.Parse(Label_paiement_montant.Split(' ')[0]);
             Reste_a_payer = Txb_paiement_montantParMoyenPaiement;
-            //Txb_paiement_montantParMoyenPaiement = float.Parse(Label_paiement_montant.Split(' ')[0]);
-            //float.Parse(_label_paiement_prixTTC);
+
             _mode_de_paiement = "";
             ClasseGlobale.initializeContenuListePaiement();
             checkRemise = new float[2] { 0F, 0F };
 
-            //erreurDeManip = false;
         }
 
         #endregion
@@ -226,8 +215,9 @@ namespace App_pressing_Loreau.ViewModel
             get
             {
                 return new RelayCommand(
-                p => enregistrerCommande(),
-                    p => ClasseGlobale.Client != null);
+                    p => enregistrerCommande(),
+                    p => ClasseGlobale.Client != null
+                    );
             }
         }
 
@@ -246,7 +236,6 @@ namespace App_pressing_Loreau.ViewModel
         {
             System.Windows.Controls.Button clickedbutton = button as System.Windows.Controls.Button;
             _mode_de_paiement = clickedbutton.Tag.ToString();
-            //System.Windows.Forms.MessageBox.Show(_mode_de_paiement);
         }
         #endregion
 
@@ -458,17 +447,17 @@ namespace App_pressing_Loreau.ViewModel
                     ClasseGlobale.INITIALIZE_ALL();
 
                     Commande cmdTota = CommandeDAO.selectCommandeById(cmd.id, true, true, true);
-                   
+
                     try
-                    { 
+                    {
                         RecuPaiement rp = new RecuPaiement(cmdTota);
                         rp.printRecu();
                     }
-                    catch (Exception )
+                    catch (Exception)
                     {
                         MessageBox.Show("Impression refusée");
                     }
-                    
+
 
                     //FactureExcel fe = new FactureExcel(CommandeDAO.selectCommandeById(cmd.id, true, true, true));
                     //fe.printFacture();
@@ -497,7 +486,7 @@ namespace App_pressing_Loreau.ViewModel
                     Commande cmdTota = CommandeDAO.selectCommandeById(comdRendu.id, true, true, true);
 
                     try
-                    { 
+                    {
                         RecuPaiement rp = new RecuPaiement(cmdTota);
                         rp.printRecu();
                     }
@@ -538,10 +527,9 @@ namespace App_pressing_Loreau.ViewModel
 
                             InitialiseLaListeDePaiement();
 
-
-
-                            //Je met dans le text box le nouveau reste à payer
-                            Txb_paiement_montantParMoyenPaiement = Reste_a_payer - Txb_paiement_montantParMoyenPaiement;
+                            //Je met dans le text box le nouveau reste à payer. Le mélange decimal float permet de ne pas avoir de plroblème de précision
+                            //comme 15.56668879 ou autre
+                            Txb_paiement_montantParMoyenPaiement = (float)((decimal)Reste_a_payer - (decimal)Txb_paiement_montantParMoyenPaiement);
 
                             //Redéfinition du reste à payer
                             Reste_a_payer = Txb_paiement_montantParMoyenPaiement;
@@ -572,9 +560,9 @@ namespace App_pressing_Loreau.ViewModel
             {
                 MessageBox.Show("Vous devez sélectionner un mode de paiement");
             }
-            
-            
-            
+
+
+
         }
 
         private void InitialiseLaListeDePaiement()
