@@ -397,8 +397,9 @@ namespace App_pressing_Loreau.ViewModel
             if (ClasseGlobale._contentDetailCommande.Contains(obj))
             {
                 ClasseGlobale._contentDetailCommande.Remove(obj);
-                Label_NouvelleCommande_prixTotal -= obj.typeArticle.TTC;
-                
+                decimal tamp = (decimal)Label_NouvelleCommande_prixTotal;
+                tamp -= (decimal)obj.typeArticle.TTC;
+                Label_NouvelleCommande_prixTotal = (float)tamp;
             }
         }
 
