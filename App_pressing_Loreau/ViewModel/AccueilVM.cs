@@ -24,6 +24,7 @@ namespace App_pressing_Loreau
 {
     /// <summary>
     /// ViewModel pour la classe Accueil.xaml
+    /// Quelque soit le bouton de l'accueil qui est cliqué (header) le set est appelé puis le getter deux fois
     /// </summary>
     public class AccueilVM : ObservableObject, IPageViewModel
     {
@@ -116,10 +117,16 @@ namespace App_pressing_Loreau
 
         public Brush Btn_receptionColor
         {
-            get { return _btn_receptionColor; }
+            get
+            {
+                //MessageBox.Show("get du bouton accueil");
+                return _btn_receptionColor;
+            }
             set
             {
                 _btn_receptionColor = value;
+                //MessageBox.Show("set du bouton accueil");
+                ClasseGlobale.SET_ALL_NULL();
                 RaisePropertyChanged("Btn_receptionColor");
 
             }
@@ -129,6 +136,7 @@ namespace App_pressing_Loreau
             get { return _btn_renduColor; }
             set
             {
+                ClasseGlobale.SET_ALL_NULL();
                 _btn_renduColor = value;
                 RaisePropertyChanged("Btn_renduColor");
             }
@@ -138,6 +146,7 @@ namespace App_pressing_Loreau
             get { return _btn_factureColor; }
             set
             {
+                ClasseGlobale.SET_ALL_NULL();
                 _btn_factureColor = value;
                 RaisePropertyChanged("Btn_factureColor");
             }
@@ -147,6 +156,7 @@ namespace App_pressing_Loreau
             get { return _btn_convoyeurColor; }
             set
             {
+                ClasseGlobale.SET_ALL_NULL();
                 _btn_convoyeurColor = value;
                 RaisePropertyChanged("Btn_convoyeurColor");
             }
@@ -156,6 +166,7 @@ namespace App_pressing_Loreau
             get { return _btn_clientProColor; }
             set
             {
+                ClasseGlobale.SET_ALL_NULL();
                 _btn_clientProColor = value;
                 RaisePropertyChanged("Btn_clientProColor");
             }
@@ -165,6 +176,7 @@ namespace App_pressing_Loreau
             get { return _btn_impressionColor; }
             set
             {
+                ClasseGlobale.SET_ALL_NULL();
                 _btn_impressionColor = value;
                 RaisePropertyChanged("Btn_impressionColor");
             }
@@ -174,6 +186,7 @@ namespace App_pressing_Loreau
             get { return _btn_administrateurColor; }
             set
             {
+                ClasseGlobale.SET_ALL_NULL();
                 _btn_administrateurColor = value;
                 RaisePropertyChanged("Btn_administrateurColor");
             }
