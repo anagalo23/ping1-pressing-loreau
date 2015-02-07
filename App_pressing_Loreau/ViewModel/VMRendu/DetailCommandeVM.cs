@@ -32,6 +32,7 @@ namespace App_pressing_Loreau.ViewModel
         public DetailCommandeVM()
         {
             LaCommande();
+            ClasseGlobale._rendreArticlesSelectionnes = new List<Article>();
             //ClasseGlobale._rendreArticlesSelectionnes = ArtSelec;
         }
 
