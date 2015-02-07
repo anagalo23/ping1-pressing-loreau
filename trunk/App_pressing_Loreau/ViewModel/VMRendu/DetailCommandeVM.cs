@@ -184,6 +184,18 @@ namespace App_pressing_Loreau.ViewModel
                 {
                     AfficheDetailCommande.Add(new ArticlesRestitutionVM() { ar = art, ArticlesNameRes = art.type.nom });
                 }
+
+
+                foreach (ArticlesRestitutionVM artRestVm in AfficheDetailCommande)
+                {
+                    if (artRestVm.IsSelectedArticle == true)
+                    {
+
+                    }
+                }
+
+
+
             }
             if (com.payee == false)
             {

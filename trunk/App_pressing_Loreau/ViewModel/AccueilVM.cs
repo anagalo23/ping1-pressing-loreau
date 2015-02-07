@@ -62,9 +62,10 @@ namespace App_pressing_Loreau
             Btn_impressionColor = Brushes.Teal;
             Btn_administrateurColor = Brushes.Teal;
 
-            ClasseGlobale.SET_ALL_NULL();
 
-            
+
+
+
         }
 
         #endregion
@@ -72,7 +73,7 @@ namespace App_pressing_Loreau
         #region Propriétés et Commandes
 
 
-        #region Accesseur de classe 
+        #region Accesseur de classe
         #endregion
         public IPageViewModel accessUserControl
         {
@@ -223,7 +224,13 @@ namespace App_pressing_Loreau
 
         // Button permettant de revenir a la page preincipale 
         public ICommand Btn_accueil_image
-        { get { return new RelayCommand(p => accueilVM()); } }
+        {
+            get
+            {
+                ClasseGlobale.SET_ALL_NULL();
+                return new RelayCommand(p => accueilVM());
+            }
+        }
 
         #endregion
 
@@ -382,7 +389,7 @@ namespace App_pressing_Loreau
 
             ClasseGlobale.SET_ALL_NULL();
 
-         
+
             accessUserControl = null;
         }
         #endregion

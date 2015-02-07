@@ -271,8 +271,13 @@ namespace App_pressing_Loreau.ViewModel
                 }
                 else
                 {
+                    //Récupération de la valeur saisie pour ce paiement
+                    float valeur_desiree = Txb_paiement_montantParMoyenPaiement;
                     //MessageBox.Show("Veuillez d'abord appliquer votre remise, puis le paiement.\nInfo : ");
                     applyRemise();
+
+                    Txb_paiement_montantParMoyenPaiement = valeur_desiree;
+
                     applyModeDePaiement();
 
                 }
@@ -371,7 +376,7 @@ namespace App_pressing_Loreau.ViewModel
         {
             //Récupération des articles de la commande, du client, et du paiement et enregistrement en bdd
 
-            int i = 0, j = 0, k = 0;
+            //int i = 0, j = 0, k = 0;
             Client client = ClasseGlobale.Client;
 
             //***Enregistrement en base de données***
@@ -483,21 +488,24 @@ namespace App_pressing_Loreau.ViewModel
         {
             //Ajout de mon montant et du mode de paiement dans le dico
             listeDeMontantParMoyenPaiement[Mode_de_paiement] = Txb_paiement_montantParMoyenPaiement;
+
             //On récupère tous les modes de paiements
             System.Collections.Generic.ICollection<String> liste_des_moyens_de_paiement = listeDeMontantParMoyenPaiement.dico.Keys;
-
             ObservableCollection<PaiementListeVM> contenuListePaiementTampon = new ObservableCollection<PaiementListeVM>();
+
             //initialisation de la liste de paiement en globale
             ClasseGlobale.initializeContenuListePaiement();
+
             //Reconstruction à partir du dico mis à jour
             foreach (String monMoyenDePaiement in liste_des_moyens_de_paiement)
             {
                 contenuListePaiementTampon.Add(new PaiementListeVM()
                 {
                     ModeDePaiement = monMoyenDePaiement,
-                    Montant = listeDeMontantParMoyenPaiement[monMoyenDePaiement].ToString(),
+                    Montant = listeDeMontantParMoyenPaiement[monMoyenDePaiement].ToString()
                 });
             }
+
             //On donne une nouvelle référence à notre liste globale de client checkRemise
             ContenuListePaiement = contenuListePaiementTampon;
 
@@ -506,6 +514,7 @@ namespace App_pressing_Loreau.ViewModel
 
             //Redéfinition du reste à payer
             Reste_a_payer = Txb_paiement_montantParMoyenPaiement;
+
             //MessageBox.Show("ma remise vaut : " + Txb_paiement_montantRemise + "\nprix du paiement : " + Txb_paiement_montantParMoyenPaiement + "\n Reste_a_payer : " + Reste_a_payer);
             Mode_de_paiement = "";
         }
