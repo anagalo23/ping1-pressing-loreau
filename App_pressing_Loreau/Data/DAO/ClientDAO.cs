@@ -210,7 +210,7 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("clt_id", client_id);
 
                 //Execute la commande
-                MySqlDataReader msdr = cmd.ExecuteReader();//Le msdr contient bien toutes les infos du client
+                MySqlDataReader msdr = cmd.ExecuteReader();
 
                 Client client = new Client();
 
@@ -221,7 +221,7 @@ namespace App_pressing_Loreau.Data.DAO
                 client.telfix = msdr["clt_fix"].ToString();
                 client.telmob = msdr["clt_mob"].ToString();
                 client.adresse = Adresse.Parse(msdr["clt_adresse"].ToString());
-                client.dateNaissance = DateTime.Parse(msdr["clt_dateNaissance"].ToString());//DateTime.Parse(
+                client.dateNaissance = DateTime.Parse(msdr["clt_dateNaissance"].ToString());
                 client.email = msdr["clt_email"].ToString();
                 client.dateInscription = DateTime.Parse(msdr["clt_dateInscription"].ToString());
                 client.idCleanWay = Int32.Parse(msdr["clt_idCleanway"].ToString());
