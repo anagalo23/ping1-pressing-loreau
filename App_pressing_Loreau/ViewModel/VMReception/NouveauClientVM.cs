@@ -274,6 +274,7 @@ namespace App_pressing_Loreau.ViewModel
                                 }
                                 catch (Exception e)
                                 {
+                                    check = true;
                                     if (dateDeNaissanceObligatoire == true)
                                     {
                                         MessageBox.Show("Vous devez enregistrer la date de naissance du client, un autre client portant le même nom et prénom " +
