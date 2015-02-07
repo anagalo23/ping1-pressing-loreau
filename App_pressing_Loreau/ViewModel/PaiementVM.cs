@@ -13,6 +13,7 @@ using System.Windows;
 using System.Windows.Controls;
 using App_pressing_Loreau.Model;
 using App_pressing_Loreau.View;
+using Microsoft.Practices.Prism.Commands;
 
 //using System.Windows.Controls.Button;
 //using System.Windows.Forms;
@@ -44,6 +45,9 @@ namespace App_pressing_Loreau.ViewModel
         //private ObservableCollection<PaiementListeVM> _contenuListePaiement;
 
         private float _reste_a_payer;
+
+
+        private DelegateCommand<PaiementListeVM> _deletePaiement;
 
         //private bool erreurDeManip;
         //Payement paiement;
@@ -289,6 +293,38 @@ namespace App_pressing_Loreau.ViewModel
 
         #endregion
 
+        #region
+        public DelegateCommand<PaiementListeVM> DeletePaiement
+        {
+            get
+            {
+                return this._deletePaiement ?? (this._deletePaiement = new DelegateCommand<PaiementListeVM>(
+                                                                       this.ExecuteDeletePaiement,
+                                                                       (arg) => true));
+            }
+        }
+
+        private void ExecuteDeletePaiement(PaiementListeVM obj)
+        {
+            //MessageBox.Show("mode de paiement : "+obj.ModeDePaiement+"\nMontant : "+obj.Montant);
+
+            //listeDeMontantParMoyenPaiement[Mode_de_paiement] = Txb_paiement_montantParMoyenPaiement;
+
+            //Actualisation des champs de texte
+            Reste_a_payer += float.Parse(obj.Montant);
+
+            //Suppression des champs de la liste
+            listeDeMontantParMoyenPaiement.dico.Remove(obj.ModeDePaiement);
+
+            //Attributio de la nouvelle valeur au champ de texte
+            Txb_paiement_montantParMoyenPaiement = Reste_a_payer;
+
+            //Initialisation -> Permet que la valeur bindée (en classe globale, soit modifiée aussi)
+            InitialiseLaListeDePaiement();
+        }
+
+        #endregion
+
 
         #region ObservableCollection
         public ObservableCollection<PaiementListeVM> ContenuListePaiement
@@ -490,48 +526,39 @@ namespace App_pressing_Loreau.ViewModel
             if (Mode_de_paiement != "")
             {
                 //On vérifie que le montant est positif
-                if (Txb_paiement_montantParMoyenPaiement > 0)
+                if (Txb_paiement_montantParMoyenPaiement >= 0)
                 {
-                    //On vérifie que le montant désiré est inférieur ou égal au reste à payer
-                    if (Txb_paiement_montantParMoyenPaiement <= Reste_a_payer)
+                    if (Txb_paiement_montantParMoyenPaiement != 0)
                     {
-                        //Ajout de mon montant et du mode de paiement dans le dico
-                        listeDeMontantParMoyenPaiement[Mode_de_paiement] = Txb_paiement_montantParMoyenPaiement;
-
-                        //On récupère tous les modes de paiements
-                        System.Collections.Generic.ICollection<String> liste_des_moyens_de_paiement = listeDeMontantParMoyenPaiement.dico.Keys;
-                        ObservableCollection<PaiementListeVM> contenuListePaiementTampon = new ObservableCollection<PaiementListeVM>();
-
-                        //initialisation de la liste de paiement en globale
-                        ClasseGlobale.initializeContenuListePaiement();
-
-                        //Reconstruction à partir du dico mis à jour
-                        foreach (String monMoyenDePaiement in liste_des_moyens_de_paiement)
+                        //On vérifie que le montant désiré est inférieur ou égal au reste à payer
+                        if (Txb_paiement_montantParMoyenPaiement <= Reste_a_payer)
                         {
-                            contenuListePaiementTampon.Add(new PaiementListeVM()
-                            {
-                                ModeDePaiement = monMoyenDePaiement,
-                                Montant = listeDeMontantParMoyenPaiement[monMoyenDePaiement].ToString()
-                            });
+                            //Ajout de mon montant et du mode de paiement dans le dico
+                            listeDeMontantParMoyenPaiement[Mode_de_paiement] = Txb_paiement_montantParMoyenPaiement;
+
+                            InitialiseLaListeDePaiement();
+
+
+
+                            //Je met dans le text box le nouveau reste à payer
+                            Txb_paiement_montantParMoyenPaiement = Reste_a_payer - Txb_paiement_montantParMoyenPaiement;
+
+                            //Redéfinition du reste à payer
+                            Reste_a_payer = Txb_paiement_montantParMoyenPaiement;
+
+                            //MessageBox.Show("ma remise vaut : " + Txb_paiement_montantRemise + "\nprix du paiement : " + Txb_paiement_montantParMoyenPaiement + "\n Reste_a_payer : " + Reste_a_payer);
+                            Mode_de_paiement = "";
                         }
-
-                        //On donne une nouvelle référence à notre liste globale de client checkRemise
-                        ContenuListePaiement = contenuListePaiementTampon;
-
-                        //Je met dans le text box le nouveau reste à payer
-                        Txb_paiement_montantParMoyenPaiement = Reste_a_payer - Txb_paiement_montantParMoyenPaiement;
-
-                        //Redéfinition du reste à payer
-                        Reste_a_payer = Txb_paiement_montantParMoyenPaiement;
-
-                        //MessageBox.Show("ma remise vaut : " + Txb_paiement_montantRemise + "\nprix du paiement : " + Txb_paiement_montantParMoyenPaiement + "\n Reste_a_payer : " + Reste_a_payer);
-                        Mode_de_paiement = "";
+                        else
+                        {
+                            //Redéfinition du contenu du text box
+                            Txb_paiement_montantParMoyenPaiement = Reste_a_payer;
+                            MessageBox.Show("Problème lors de la validation de ce paiement.\nLa somme désirée est supérieure à la somme due.");
+                        }
                     }
                     else
                     {
-                        //Redéfinition du contenu du text box
-                        Txb_paiement_montantParMoyenPaiement = Reste_a_payer;
-                        MessageBox.Show("Problème lors de la validation de ce paiement.\nLa somme désirée est supérieure à la somme due.");
+                        MessageBox.Show("Paiement de 0 € refusé. Veuillez renseigner la valeur désirée du paiement.");
                     }
                 }
                 else
@@ -548,6 +575,31 @@ namespace App_pressing_Loreau.ViewModel
             
             
             
+        }
+
+        private void InitialiseLaListeDePaiement()
+        {
+            //On récupère tous les modes de paiements
+            System.Collections.Generic.ICollection<String> liste_des_moyens_de_paiement = listeDeMontantParMoyenPaiement.dico.Keys;
+
+            //On crèe la liste que l'on référencera plus tard dans la classe globale
+            ObservableCollection<PaiementListeVM> contenuListePaiementTampon = new ObservableCollection<PaiementListeVM>();
+
+            //initialisation de la liste de paiement en globale
+            ClasseGlobale.initializeContenuListePaiement();
+
+            //Reconstruction à partir du dico mis à jour
+            foreach (String monMoyenDePaiement in liste_des_moyens_de_paiement)
+            {
+                contenuListePaiementTampon.Add(new PaiementListeVM()
+                {
+                    ModeDePaiement = monMoyenDePaiement,
+                    Montant = listeDeMontantParMoyenPaiement[monMoyenDePaiement].ToString()
+                });
+            }
+
+            //On donne une nouvelle référence à notre liste globale de client checkRemise
+            ContenuListePaiement = contenuListePaiementTampon;
         }
 
 
@@ -619,3 +671,8 @@ namespace App_pressing_Loreau.ViewModel
 
 
 }
+
+
+
+
+

@@ -30,7 +30,7 @@ namespace App_pressing_Loreau.ViewModel
 
         #region Attributs
 
-        public static int payeDifferer = 0;
+        public int payeDifferer = 0;
 
         private List<CategoryItem> _listeDepartement;
         private List<CategoryItem> _listeArticles;
@@ -188,7 +188,7 @@ namespace App_pressing_Loreau.ViewModel
         #region paiement differé
         public ICommand Btn_PaiementDiffere
         {
-            get {return new RelayCommand(p => paiementDifferer()); }
+            get {return new RelayCommand(p => paiementDiffere()); }
         }
         #endregion
         
@@ -197,8 +197,8 @@ namespace App_pressing_Loreau.ViewModel
 
         #region Méthodes
 
-        // Insersion de la commande et des articles concernants dans la bdd pour un paiment différé
-        private void paiementDifferer()
+        // Insertion de la commande et des articles concernants dans la bdd pour un paiment différé
+        private void paiementDiffere()
         {
             int insertArt = 0;
             if (ClasseGlobale._contentDetailCommande == null)
@@ -208,7 +208,7 @@ namespace App_pressing_Loreau.ViewModel
             else
             {
                 Commande cmd = new Commande(DateTime.Now,false, 0, ClasseGlobale.Client);
-                int inser= CommandeDAO.insertCommande(cmd);
+                int inser = CommandeDAO.insertCommande(cmd);
                 ObservableCollection<ArticlesVM> listeArticles = ClasseGlobale._contentDetailCommande;
                 if (inser != 0)
                 {
@@ -216,7 +216,7 @@ namespace App_pressing_Loreau.ViewModel
                     ObservableCollection<ArticlesVM> cmdDetail = ClasseGlobale._contentDetailCommande;
                     foreach (ArticlesVM artVM in cmdDetail)
                     {
-                        insertArt=ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
+                        insertArt = ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
                     }
                 }
                

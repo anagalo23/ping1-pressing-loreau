@@ -14,12 +14,12 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
+            
             <TextBlock Grid.Column="0" Text="{Binding ArticlesName}" Margin="5" Width="160" />
 
             <ComboBox Grid.Column="1" Margin="5" ItemsSource="{Binding Path=Cbb_Articles_Commentaire}" Width="70"  MinHeight="20" SelectedItem="{Binding Selected_Articles_Commentaire}" DisplayMemberPath="NameCbbArt"/>
