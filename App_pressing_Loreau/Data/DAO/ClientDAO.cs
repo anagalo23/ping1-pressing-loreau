@@ -21,26 +21,6 @@ namespace App_pressing_Loreau.Data.DAO
                 //connection à la base de données
                 MySqlCommand cmd = new MySqlCommand(Bdd.insertClient, Bdd.connexion());
 
-
-                //string dateNaissance=null;
-
-                ////ajout des parametres
-                //if (true)//client.dateNaissance != ""
-                //{
-                //    //string[] tab = (client.dateNaissance).Split('/');
-                //    String s = client.dateNaissance.ToString();
-                //    dateNaissance = "";
-                //    for (int i = 2; i >= 0; i--)
-                //    {
-                //        //dateNaissance += tab[i];
-                //        if (i != 0)
-                //        {
-                //            dateNaissance += "-";
-                //        }
-                //    }
-                //}
-                //DateTime myDate = Convert.ToDateTime(dateNaissance);
-
                 cmd.Parameters.AddWithValue("nom", client.nom);
                 cmd.Parameters.AddWithValue("prenom", client.prenom);
                 cmd.Parameters.AddWithValue("telfixe", client.telfix);
@@ -445,7 +425,35 @@ namespace App_pressing_Loreau.Data.DAO
 
         public static bool verificationNomEtPrenom(String nom, String prenom)
         {
-            return false;
+            try
+            {
+                Client client = null;
+
+                //connection à la base de données  
+                MySqlCommand cmd = new MySqlCommand(Bdd.verificationNomEtPrenom, Bdd.connexion());
+
+                //ajout des parametres
+
+                cmd.Parameters.AddWithValue("nom", nom);
+                cmd.Parameters.AddWithValue("prenom", prenom);
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+
+                while (msdr.Read())
+                {
+                    client = new Client();
+                    client.id = Int32.Parse(msdr["clt_id"].ToString());
+                }
+                msdr.Dispose();
+
+                return client!=null;
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("ERREUR BDD :Impossible de vérifier si le client existe.");
+                return true;
+            }
         }
     }
 }
