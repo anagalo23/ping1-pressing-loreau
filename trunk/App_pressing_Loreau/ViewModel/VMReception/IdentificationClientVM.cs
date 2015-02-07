@@ -136,7 +136,7 @@ namespace App_pressing_Loreau.ViewModel
                 if (fields.portable == null){fields.portable = "";}
 
                 List<Client> resultat = ClientDAO.seekClients(fields.nom, fields.prenom, fields.portable, fields.idCleanWay);
-
+                MessageBox.Show(resultat.Count() + " résultats");
                 //On affiche le résultat dans le doc Panel
                 if (resultat != null)
                 {
