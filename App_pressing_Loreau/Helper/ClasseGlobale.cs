@@ -164,7 +164,7 @@ namespace App_pressing_Loreau.Helper
 
 
         //Couleur des button Accueil
-        public static Brush Btn_receptionColor { get; set; }
+        //public static Brush Btn_receptionColor { get; set; }//oh mais oh mais tu fais quoi?!? Faut  pas faire ça ici, tu déconnes c'est pas l'endroit
        
     }
 }
