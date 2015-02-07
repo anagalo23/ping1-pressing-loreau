@@ -226,8 +226,8 @@ namespace App_pressing_Loreau.ViewModel
             {
                 try
                 {
-                    Commande m = CommandeDAO.lastCommande();
-                    Commande cmdTota = CommandeDAO.selectCommandeById(m.id,true,true,true);
+                    Commande cmdTota = CommandeDAO.lastCommande();
+                    cmdTota = CommandeDAO.selectCommandeById(cmdTota.id, true, true, true);
                     RecuPaiement rp = new RecuPaiement(cmdTota);
                     rp.printRecu();
                 }
