@@ -30,9 +30,6 @@ namespace App_pressing_Loreau.ViewModel
         #region Constructeur
         public NouveauClientVM()
         {
-            //ClasseGlobale.initializeClient();
-            //ClasseGlobale.client = ClasseGlobale.client;
-            //ClasseGlobale.Client.type = 0;//Client particulier
             Client = new Client();
             dateDeNaissanceObligatoire = false;
 
