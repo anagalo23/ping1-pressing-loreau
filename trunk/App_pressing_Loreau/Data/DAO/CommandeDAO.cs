@@ -450,5 +450,34 @@ namespace App_pressing_Loreau.Data.DAO
             }
         }
 
+        public static bool isPayedByCleanWay(int id_cmd)
+        {
+            try
+            {
+
+                int result = -1;
+                //connection à la base de données  
+                MySqlCommand cmd = new MySqlCommand(Bdd.isPayedByCleanWay, Bdd.connexion());
+
+                //ajout des parametres
+                cmd.Parameters.AddWithValue("id", id_cmd);
+
+                //Execute la commandekkke
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                
+                while (msdr.Read())
+                {
+                    result = Int32.Parse(msdr["cmd_id"].ToString());
+                }
+                msdr.Dispose();
+                return result != -1;
+            }
+            catch (Exception Ex)
+            {
+                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
+                return false;
+            }
+        }
+
     }
 }
