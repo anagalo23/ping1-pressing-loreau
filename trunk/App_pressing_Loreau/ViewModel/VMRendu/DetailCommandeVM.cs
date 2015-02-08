@@ -137,7 +137,7 @@ namespace App_pressing_Loreau.ViewModel
         {
             ArtSelec = new List<Article>();
 
-            //Ajout des articles sélectionnés dans une liste locale
+            //Ajout des articles sélectionnés dans une liste
             foreach (ArticlesRestitutionVM artVM in AfficheDetailCommande)
             {
                 if (artVM.IsSelectedArticle)
@@ -145,6 +145,7 @@ namespace App_pressing_Loreau.ViewModel
                     ArtSelec.Add(artVM.ar);
                 }
             }
+            ClasseGlobale._rendreArticlesSelectionnes = ArtSelec;
 
             Label_prixTTC = 0;
             //Si la commande séletionnée n'a pas encore été totalement payée
@@ -171,12 +172,16 @@ namespace App_pressing_Loreau.ViewModel
             }
 
 
-            ClasseGlobale._rendreArticlesSelectionnes = ArtSelec;
+            
             //MessageBox.Show(ClasseGlobale._rendreArticlesSelectionnes.Count +"");
 
         }
         #endregion
-        
+
+
+
+
+
         #endregion
 
 
