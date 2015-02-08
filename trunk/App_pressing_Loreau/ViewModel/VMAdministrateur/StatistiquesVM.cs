@@ -28,6 +28,10 @@ namespace App_pressing_Loreau.ViewModel
         private float _label_statistique_nbrCouettes;
         private float _label_statistique_nbrChemises;
 
+        //chiffre d'affaire par département
+        private List<Departement> listUsedDepartements = new List<Departement>();
+        private List<float> caTTCDep = new List<float>();
+
 
 
         //private DelegateCommand<StatistiquesVM> _btn_statistique_du_jour;
@@ -234,6 +238,41 @@ namespace App_pressing_Loreau.ViewModel
 
             Label_statistique_catotal = ChiffreAffaireDuJour;
         }
+        #endregion
+
+        #region methodes de calcul
+
+        public void DepartmentTTC(List<Article> articlesrendu)
+        {
+            Boolean ifExist;
+
+            foreach (Article art in articlesrendu)
+            {
+                //Vérifie que l'article n'a pas été payé en CleanWay
+                if (!CommandeDAO.isPayedByCleanWay(art.fk_commande))
+                {
+                    ifExist = false;
+                    //Jusque là on a déroulé tout les articles
+                    //recherche de départements déja entrés
+                    for (int i = 0; i < listUsedDepartements.Count; i++)
+                    {
+                        if (listUsedDepartements[i].nom.Contains(art.type.departement.nom))
+                        {
+                            caTTCDep[i] = caTTCDep[i] + art.TTC;
+                            ifExist = true;
+                            break;
+                        }
+                    }
+
+                    if (!ifExist)
+                    {
+                        listUsedDepartements.Add(art.type.departement);
+                        caTTCDep.Add(art.TTC);
+                    }
+                }
+            }
+        }
+       
         #endregion
     }
 }
