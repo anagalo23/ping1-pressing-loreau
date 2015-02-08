@@ -8,9 +8,7 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="740">
 
-    <!--<UserControl.DataContext>
-        <local:StatistiquesVM />
-    </UserControl.DataContext>-->
+
     <UserControl.Resources>
         <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
     </UserControl.Resources>
@@ -32,7 +30,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Button x:Name="btn_statistique_du_jour" Command="{Binding Btn_statistique_du_jour}" Content="Du jour"    Style="{StaticResource choixbouton30}"/>
-                
+
                 <Button x:Name="btn_statistique_de_la_semaine" Command="{Binding Btn_statistique_de_la_semaine}"  Content="De la semaine" Grid.Column="1" Style="{StaticResource choixbouton30}"/>
                 <Button x:Name="btn_statistique_du_mois" Command="{Binding Btn_statistique_du_mois}" Content="Du mois" Grid.Column="2" 
                         Style="{StaticResource choixbouton30}"/>
@@ -43,7 +41,7 @@
                 <Grid >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
 
                     <Border Grid.Column="0" BorderThickness="2" BorderBrush="AliceBlue" CornerRadius="10" Margin="5">
@@ -54,16 +52,48 @@
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="2*"/>
                                 <RowDefinition Height="1*"/>
                                 <RowDefinition Height="1*"/>
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <Label Content="chiffre d'affaire Total:"  Grid.Row="0" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
                             <Label x:Name="label_catotal" Content="{Binding Label_statistique_catotal, UpdateSourceTrigger=PropertyChanged , Mode=TwoWay}" Style="{StaticResource statistiqueLabel}" Grid.Row="0" Grid.Column="1"/>
+                            <Border Grid.Row="1" Grid.Column="0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
 
-                            <Label Content="chiffre d'affaire par département :" Grid.Row="1" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
-                            <Label Content="{Binding Label_statistique_cadep}"  Grid.Row="1" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+                                    <Label Content="chiffre d'affaire par  :"  Style="{StaticResource statistiqueLabel}"/>
+
+                                    <ComboBox  Grid.Column="1" Margin="5"  x:Name="cbb_stat_choixDepart" HorizontalContentAlignment="Center" FontWeight="SemiBold" VerticalContentAlignment="Center" ItemsSource="{Binding ListeDepartementStatChoix}" SelectedItem="{Binding Selected_stat_ChoixDepart}" Grid.Row="0"  DisplayMemberPath="NameDepartStat"/>
+                                </Grid>
+                            </Border >
+
+                            <Border Grid.Row="1" Grid.Column="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Button BorderThickness="0" Margin="5"  Content="Valider" Command="{Binding Btn_Statistique_validerDep}"/>
+
+
+                                    <Label Content="{Binding Label_statistique_cadep}" Grid.Column="1"  Style="{StaticResource statistiqueLabel}" />
+                                    
+                                </Grid>
+                            </Border>
 
                             <Label Content="Nombre de clients venus deposer des articles :"  Grid.Row="2" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
                             <Label Content="{Binding Label_statistique_nbrClientsDepoArt}"  Grid.Row="2" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
@@ -110,7 +140,7 @@
                 </Grid>
             </Border>
         </Grid>
-            
+
     </DockPanel>
 
 </UserControl>
