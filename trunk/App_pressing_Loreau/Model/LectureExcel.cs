@@ -36,7 +36,7 @@ namespace App_pressing_Loreau.Model
 
         //Excel Interop
         //public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\LecturePattern";
-        public static String pattern_path = "J:\\Resources\\PatternFile\\LecturePattern";
+        public static String pattern_path = "C:\\Programmes\\Application_Pressing\\Resources\\PatternFile\\LecturePattern";
         
         private Microsoft.Office.Interop.Excel.Application oXL;
         private Microsoft.Office.Interop.Excel.Workbook mWorkBook;

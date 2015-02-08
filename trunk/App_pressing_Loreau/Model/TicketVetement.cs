@@ -20,8 +20,8 @@ namespace App_pressing_Loreau.Model
         public Commande cmd { get; set; }
         //public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\TicketVetement";
         //public static String copy_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10)+"Resources\\Temp\\TicketVetement";
-        public static String pattern_path = "J:\\Resources\\PatternFile\\TicketVetement";
-        public static String copy_path = "J:\\Resources\\Temp\\TicketVetement";
+        public static String pattern_path = "C:\\Programmes\\Application_Pressing\\Resources\\PatternFile\\TicketVetement";
+        public static String copy_path = "C:\\Programmes\\Application_Pressing\\Resources\\Temp\\TicketVetement";
 
         
         
