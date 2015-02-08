@@ -60,7 +60,7 @@ namespace App_pressing_Loreau.Model
                 File.AppendAllText(copy_path + ".txt", " ~" + art.type.nom +Environment.NewLine);
 
                 PrintOff();
-                System.IO.File.Delete(copy_path + ".txt");
+                //System.IO.File.Delete(copy_path + ".txt");
             }
             catch (Exception e)
             {

@@ -13,6 +13,8 @@ namespace App_pressing_Loreau.Model
     {
 
         #region parametres
+        public static String printName = "Canon MG2400 series";
+        
         //autres paramètres
         int type; //0 : LectureX // 1 : LectureZ
 
@@ -47,6 +49,8 @@ namespace App_pressing_Loreau.Model
         public LectureExcel(int type)
         {
             this.type = type;
+
+            
 
             listUsedDepartements = new List<Departement>();
             caTTCDep = new List<float>();
@@ -154,7 +158,7 @@ namespace App_pressing_Loreau.Model
                  *@param Collate : True to collate multiple copies.
                  *@param PrToFileName : If PrintToFile is set to True, this argument specifies the name of the file you want to print to.
                  */
-                mWorkSheets.PrintOut(1, 1, 1, false, "Canon MG2400 series", false, false, misValue);
+                mWorkSheets.PrintOut(1, 1, 1, true, printName, false, false, misValue);
 
                 //close files
                 mWorkBook.Close(true, misValue, misValue);
