@@ -109,12 +109,12 @@ namespace App_pressing_Loreau.ViewModel
             comTest.addArticle(a3);
 
 
-            RecuPaiement rp = new RecuPaiement(comTest);
-            rp.printRecu();
+            //RecuPaiement rp = new RecuPaiement(comTest);
+            //rp.printRecu();
 
            // MessageBox.Show( + "");
-            //TicketVetement tv = new TicketVetement(comTest);
-            //tv.printRecu(a1, comTest.id, c);
+            TicketVetement tv = new TicketVetement(comTest);
+            tv.printTicketVetement(a1, comTest.id, c);
             //String s=null;
 
             //for (int i = 0; i < PrinterSettings.InstalledPrinters.Count; i++)
