@@ -49,10 +49,13 @@ namespace App_pressing_Loreau.View
 
         private void btn_nouvelleCommande_paiement_differe_Click_1(object sender, RoutedEventArgs e)
         {
-            if (0 != 0)//NouvelleCommandeVM.payeDifferer
-            {
-                dp.Children.Clear();
-            }
+            //MessageBox.Show("Salut");
+            //dp.Children.Clear();
+            //dp.Children.Add(new Accueil());
+            //if (0 != 0)//NouvelleCommandeVM.payeDifferer
+            //{
+            //    dp.Children.Clear();
+            //}
         }
 
     }
