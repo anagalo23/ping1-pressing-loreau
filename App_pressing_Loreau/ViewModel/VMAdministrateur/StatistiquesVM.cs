@@ -37,7 +37,6 @@ namespace App_pressing_Loreau.ViewModel
         //private DelegateCommand<StatistiquesVM> _btn_statistique_du_jour;
         #endregion
 
-
         #region Constructeur
         public StatistiquesVM()
         {
@@ -163,30 +162,31 @@ namespace App_pressing_Loreau.ViewModel
         {
             get
             {
-                return new RelayCommand(p => statisticsByDays());
+                return new RelayCommand(p => statisticsByDate(1));
             }
         }
 
         public ICommand Btn_statistique_de_la_semaine
         {
-            get { return new RelayCommand(p => statisticsByWeek()); }
+            get { return new RelayCommand(p => statisticsByDate(2)); }
         }
         public ICommand Btn_statistique_du_mois
         {
-            get { return new RelayCommand(p => statisticsByMonth()); }
+            get { return new RelayCommand(p => statisticsByDate(3)); }
         }
         public ICommand Btn_statistique_de_lannee
         {
-            get { return new RelayCommand(p => statisticsByYear()); }
+            get { return new RelayCommand(p => statisticsByDate(4)); }
         }
         #endregion
 
         #region methods
-        public void statisticsByDays()
+        public void statisticsByDate(int typeDate)
         {
             float ChiffreAffaireDuJour = 0;
+            DepartmentTTC(ArticleDAO.selectArticleRenduByDate(typeDate));
 
-            List<Payement> listePaiement = (List<Payement>)PayementDAO.listSommePaiementToday(1);
+            List<Payement> listePaiement = (List<Payement>)PayementDAO.listSommePaiementToday(typeDate);
             foreach (Payement paye in listePaiement)
             {
                 if (!paye.typePaiement.Equals("CleanWay"))
@@ -195,48 +195,6 @@ namespace App_pressing_Loreau.ViewModel
 
             Label_statistique_catotal = ChiffreAffaireDuJour;
             //MessageBox.Show("" + _label_statistique_catotal);
-        }
-
-        public void statisticsByWeek()
-        {
-            float ChiffreAffaireDuJour = 0;
-
-            List<Payement> listePaiement = (List<Payement>)PayementDAO.listSommePaiementToday(2);
-            foreach (Payement paye in listePaiement)
-            {
-                if (!paye.typePaiement.Equals("CleanWay"))
-                    ChiffreAffaireDuJour = (float)((decimal)ChiffreAffaireDuJour + (decimal)paye.montant);
-            }
-
-            Label_statistique_catotal = ChiffreAffaireDuJour;
-        }
-
-        public void statisticsByMonth()
-        {
-            float ChiffreAffaireDuJour = 0;
-
-            List<Payement> listePaiement = (List<Payement>)PayementDAO.listSommePaiementToday(3);
-            foreach (Payement paye in listePaiement)
-            {
-                if (!paye.typePaiement.Equals("CleanWay"))
-                    ChiffreAffaireDuJour = (float)((decimal)ChiffreAffaireDuJour + (decimal)paye.montant);
-            }
-
-            Label_statistique_catotal = ChiffreAffaireDuJour;
-        }
-
-        public void statisticsByYear()
-        {
-            float ChiffreAffaireDuJour = 0;
-
-            List<Payement> listePaiement = (List<Payement>)PayementDAO.listSommePaiementToday(4);
-            foreach (Payement paye in listePaiement)
-            {
-                if (!paye.typePaiement.Equals("CleanWay"))
-                    ChiffreAffaireDuJour = (float)((decimal)ChiffreAffaireDuJour + (decimal)paye.montant);
-            }
-
-            Label_statistique_catotal = ChiffreAffaireDuJour;
         }
         #endregion
 
