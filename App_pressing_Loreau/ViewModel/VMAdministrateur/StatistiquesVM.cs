@@ -28,6 +28,9 @@ namespace App_pressing_Loreau.ViewModel
         private float _label_statistique_nbrCouettes;
         private float _label_statistique_nbrChemises;
 
+        private ComboDepartStat _selected_stat_ChoixDepart;
+        ComboDepartStat comboDepartStat = new ComboDepartStat();
+
         //chiffre d'affaire par département
         private List<Departement> listUsedDepartements = new List<Departement>();
         private List<float> caTTCDep = new List<float>();
@@ -43,11 +46,26 @@ namespace App_pressing_Loreau.ViewModel
 
             Label_statistique_cadep = new float();
             Label_statistique_catotal = new float();
+            ListeDepartementStatChoix = comboDepartStat.ListeDep();
         }
 
         #endregion
 
         #region Properties and command
+
+        public List<ComboDepartStat> ListeDepartementStatChoix { get; set; }
+        public ComboDepartStat Selected_stat_ChoixDepart
+        {
+            get { return _selected_stat_ChoixDepart; }
+            set
+            {
+                if (value != _selected_stat_ChoixDepart)
+                {
+                    _selected_stat_ChoixDepart = value;
+                    OnPropertyChanged("Selected_stat_ChoixDepart");
+                }
+            }
+        }
         public float Label_statistique_catotal
         {
             get { return _label_statistique_catotal; }
@@ -178,9 +196,33 @@ namespace App_pressing_Loreau.ViewModel
         {
             get { return new RelayCommand(p => statisticsByDate(4)); }
         }
+
+
+        public ICommand Btn_Statistique_validerDep
+        {
+            get { return new RelayCommand(p => validerComboBox()); }
+        }
         #endregion
 
         #region methods
+
+        /// <summary>
+        /// Methodes Non complete. Aurelien, si tu peux faire kelk chose 
+        /// </summary>
+        public void validerComboBox()
+        {
+            if (Selected_stat_ChoixDepart != null)
+            {
+              Departement dep = DepartementDAO.selectDepartementById(Selected_stat_ChoixDepart.cbbDepId);
+              DepartmentTTC(ArticleDAO.selectArticleRenduByDate(2));
+                foreach(float f in caTTCDep){
+                    Label_statistique_cadep = (float)((Decimal)Label_statistique_cadep + (decimal)f);
+                }
+               
+            }
+            
+        }
+
         public void statisticsByDate(int typeDate)
         {
             float ChiffreAffaireDuJour = 0;
@@ -230,7 +272,30 @@ namespace App_pressing_Loreau.ViewModel
                 }
             }
         }
-       
+
         #endregion
     }
+
+
+    #region Class
+
+    public class ComboDepartStat
+    {
+        public String NameDepartStat { get; set; }
+        public int cbbDepId { get; set; }
+
+        List<Departement> depart = (List<Departement>)DepartementDAO.selectDepartements();
+        public List<ComboDepartStat> ListeDep()
+        {
+            List<ComboDepartStat> listDep = new List<ComboDepartStat>();
+
+            foreach (Departement cc in depart)
+            {
+                listDep.Add(new ComboDepartStat() { NameDepartStat = cc.nom, cbbDepId = cc.id });
+            }
+
+            return listDep;
+        }
+    }
+    #endregion
 }

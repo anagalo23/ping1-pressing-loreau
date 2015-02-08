@@ -200,8 +200,7 @@ namespace App_pressing_Loreau.ViewModel
             get { return new RelayCommand(p => modifArticle() 
                ); }
         }
-         //p=>Txb_adminArt_modifTypeNom!=null&
-                //Txb_adminArt_modifTypeTTC!=0 & Txb_adminArt_modifTypeTVA!=0
+
         public String Txb_adminArt_modifTypeNom
         {
             get { return _txb_adminArt_modifTypeNom; }
@@ -303,7 +302,6 @@ namespace App_pressing_Loreau.ViewModel
                     Txb_adminArt_modifTypeTVA = typeModif.TVA;
                     Txb_adminArt_modifTypeEncombrement = typeModif.encombrement;
 
-                    //initializeFieldsModif();
                 }
 
             }
@@ -325,7 +323,7 @@ namespace App_pressing_Loreau.ViewModel
         private void addArticles()
         {
             Departement dep = new Departement(Selected_adminArt_ChoixDepart.cbbDepId, Selected_adminArt_ChoixDepart.NameDepart);
-            TypeArticle TArt = new TypeArticle(typeArticle.nom, typeArticle.encombrement, typeArticle.TVA, typeArticle.TTC, dep);
+            TypeArticle TArt = new TypeArticle(typeArticle.nom, typeArticle.encombrement,typeArticle.TVA,typeArticle.TTC, dep);
             //MessageBox.Show(TArt.nom);
 
             int index = TypeArticleDAO.insertType(TArt);

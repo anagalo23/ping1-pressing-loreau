@@ -504,6 +504,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\bdd\bddping1.sql" />
+    <Content Include="Resources\pics\Paiements\virement.png" />
     <Resource Include="Resources\PatternFile\TicketVetement.txt" />
     <Content Include="Resources\pics\logo.png" />
     <Content Include="Resources\pics\pagePrincipale\100euro.png" />
