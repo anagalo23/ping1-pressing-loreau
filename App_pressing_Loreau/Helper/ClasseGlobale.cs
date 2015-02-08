@@ -85,6 +85,10 @@ namespace App_pressing_Loreau.Helper
             _contenuListePaiement = new ObservableCollection<PaiementListeVM>();
         }
 
+        public static ListePaiement listeDeMontantParMoyenPaiement{get; set;}
+        public static float reste_a_payer { get; set; }
+        public static float remise { get; set; }
+
         //*********************************************************************************GESTION DES RENDU COMMANDE
 
         public static Commande _renduCommande { get; set; }

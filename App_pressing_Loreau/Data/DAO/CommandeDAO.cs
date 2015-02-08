@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using App_pressing_Loreau.Model.DTO;
 using App_pressing_Loreau.Model;
 using MySql.Data.MySqlClient;
+using System.Windows;
+using App_pressing_Loreau.Helper;
 
 namespace App_pressing_Loreau.Data.DAO
 {
@@ -177,6 +179,11 @@ namespace App_pressing_Loreau.Data.DAO
          */
         public static Commande selectCommandeById(int id_cmd, Boolean addPaiement, Boolean addArticles, Boolean addClient)
         {
+            if (ClasseGlobale.Client.nom == "")
+            {
+                MessageBox.Show("CommandeDAO:184 : problème avec le client, il est null");
+            }
+
             try
             {
                 Commande retour = new Commande();
@@ -222,8 +229,15 @@ namespace App_pressing_Loreau.Data.DAO
                 #region ajout du client
                 if (addClient)
                 {
-                    if (id_clt >= 0)
+                    if (id_clt > 0)
+                    {
                         retour.client = ClientDAO.selectClientById(id_clt, false, false, false);
+                    }
+                    else if (id_clt == 0)
+                    {
+                        MessageBox.Show("Erreur (ComomandeDAO.cs:232) : impossible de rechercher un client dont l'id vaut 0");
+                    }
+                        
                 }
                 #endregion
 

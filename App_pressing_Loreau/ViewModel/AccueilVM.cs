@@ -370,7 +370,7 @@ namespace App_pressing_Loreau
             }
             else
             {
-                ListeUser.Add(new CategoryItem() { ButtonUserContent = "David", ButtonUserBackground = Brushes.Teal });
+                ListeUser.Add(new CategoryItem() { ButtonUserContent = "Erreur", ButtonUserBackground = Brushes.Teal });
             }
         }
 

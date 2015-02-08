@@ -64,7 +64,7 @@ namespace App_pressing_Loreau.ViewModel
             //Txb_paiement_montantParMoyenPaiement = Label_NouvelleCommande_prixTotal;
             Txb_paiement_montantParMoyenPaiement = float.Parse(Label_paiement_montant.Split(' ')[0]);
             Reste_a_payer = Txb_paiement_montantParMoyenPaiement;
-
+            ClasseGlobale.reste_a_payer = Reste_a_payer;
             _mode_de_paiement = "";
             ClasseGlobale.initializeContenuListePaiement();
             checkRemise = new float[2] { 0F, 0F };
@@ -210,16 +210,16 @@ namespace App_pressing_Loreau.ViewModel
         #region Commandes
 
         #region Bouton valider commande
-        public ICommand Btn_valider_paiement_commande
-        {
-            get
-            {
-                return new RelayCommand(
-                    p => enregistrerCommande(),
-                    p => ClasseGlobale.Client != null
-                    );
-            }
-        }
+        //public ICommand Btn_valider_paiement_commande
+        //{
+        //    get
+        //    {
+        //        return new RelayCommand(
+        //            p => enregistrerCommande(),
+        //            p => ClasseGlobale.Client != null
+        //            );
+        //    }
+        //}
 
 
         #endregion
@@ -396,118 +396,116 @@ namespace App_pressing_Loreau.ViewModel
 
         }
 
+        //private void enregistrerCommande()
+        //{
+        //    //Récupération des articles de la commande, du client, et du paiement et enregistrement en bdd
 
-        private void enregistrerCommande()
-        {
-            //Récupération des articles de la commande, du client, et du paiement et enregistrement en bdd
+        //    //int i = 0, j = 0, k = 0;
+        //    Client client = ClasseGlobale.Client;
 
-            //int i = 0, j = 0, k = 0;
-            Client client = ClasseGlobale.Client;
+        //    //***Enregistrement en base de données***
 
-            //***Enregistrement en base de données***
+        //    //Enregistrement de la commande
 
-            //Enregistrement de la commande
+        //    if (Reste_a_payer == 0)
+        //    {
 
-            if (Reste_a_payer == 0)
-            {
+        //        ObservableCollection<ArticlesVM> cmdDetail = ClasseGlobale._contentDetailCommande;
 
-                ObservableCollection<ArticlesVM> cmdDetail = ClasseGlobale._contentDetailCommande;
+        //        List<Article> ListeSelectArt = ClasseGlobale._rendreArticlesSelectionnes;
+        //        //Ajouter ??????????????????????????????????????????????????????????????????????????????????????????????????????????
+        //        if (cmdDetail != null)
+        //        {
 
-                List<Article> ListeSelectArt = ClasseGlobale._rendreArticlesSelectionnes;
-                //Ajouter ??????????????????????????????????????????????????????????????????????????????????????????????????????????
-                if (cmdDetail != null)
-                {
+        //            Commande cmd = new Commande(DateTime.Now, true, Txb_paiement_montantRemise, client);
+        //            CommandeDAO.insertCommande(cmd);
+        //            cmd = CommandeDAO.lastCommande();
 
-                    Commande cmd = new Commande(DateTime.Now, true, Txb_paiement_montantRemise, client);
-                    CommandeDAO.insertCommande(cmd);
-                    cmd = CommandeDAO.lastCommande();
+        //            //Enregistrement des articles
+        //            foreach (ArticlesVM artVM in cmdDetail)
+        //            {
+        //                ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
+        //            }
 
-                    //Enregistrement des articles
-                    foreach (ArticlesVM artVM in cmdDetail)
-                    {
-                        ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
-                    }
+        //            //Enregistrement du/des paiement(s)
+        //            Payement paiement;
+        //            ICollection<String> liste_des_moyens_de_paiement = listeDeMontantParMoyenPaiement.dico.Keys;
+        //            foreach (String monMoyenDePaiement in liste_des_moyens_de_paiement)
+        //            {
+        //                paiement = new Payement(DateTime.Now, listeDeMontantParMoyenPaiement[monMoyenDePaiement], monMoyenDePaiement, cmd.id);
+        //                PayementDAO.insertPaiement(paiement);
+        //            }
 
-                    //Enregistrement du/des paiement(s)
-                    Payement paiement;
-                    ICollection<String> liste_des_moyens_de_paiement = listeDeMontantParMoyenPaiement.dico.Keys;
-                    foreach (String monMoyenDePaiement in liste_des_moyens_de_paiement)
-                    {
-                        paiement = new Payement(DateTime.Now, listeDeMontantParMoyenPaiement[monMoyenDePaiement], monMoyenDePaiement, cmd.id);
-                        PayementDAO.insertPaiement(paiement);
-                    }
+        //            //Mise à jour de la table convoyeur
+        //            foreach (PlaceConvoyeur place in ClasseGlobale.PlacesLibres.getList())
+        //            {
+        //                PlaceConvoyeurDAO.updatePlaceConvoyeur(place);
+        //            }
 
-                    //Mise à jour de la table convoyeur
-                    foreach (PlaceConvoyeur place in ClasseGlobale.PlacesLibres.getList())
-                    {
-                        PlaceConvoyeurDAO.updatePlaceConvoyeur(place);
-                    }
+        //            //initialise tout
+        //            ClasseGlobale.INITIALIZE_ALL();
 
-                    //initialise tout
-                    ClasseGlobale.INITIALIZE_ALL();
+        //            Commande cmdTota = CommandeDAO.selectCommandeById(cmd.id, true, true, true);
 
-                    Commande cmdTota = CommandeDAO.selectCommandeById(cmd.id, true, true, true);
-
-                    try
-                    {
-                        RecuPaiement rp = new RecuPaiement(cmdTota);
-                        rp.printRecu();
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Impression refusée");
-                    }
-
-
-                    //FactureExcel fe = new FactureExcel(CommandeDAO.selectCommandeById(cmd.id, true, true, true));
-                    //fe.printFacture();
-                }
-                else if (ListeSelectArt != null)
-                {
-                    Commande comdRendu = ClasseGlobale._renduCommande;
-
-                    foreach (Article art in ListeSelectArt)
-                    {
-                        Article artAdd = new Article(art.id, art.photo, art.commentaire, true, art.TVA, art.TTC, art.type, null, comdRendu.id);
-                        artAdd.date_rendu = DateTime.Now;
-                        ArticleDAO.updateArticle(art);
-                    }
+        //            try
+        //            {
+        //                RecuPaiement rp = new RecuPaiement(cmdTota);
+        //                rp.printRecu();
+        //            }
+        //            catch (Exception)
+        //            {
+        //                MessageBox.Show("Impression refusée");
+        //            }
 
 
-                    //Enregistrement du/des paiement(s)
-                    Payement paiement;
-                    ICollection<String> liste_des_moyens_de_paiement = listeDeMontantParMoyenPaiement.dico.Keys;
-                    foreach (String monMoyenDePaiement in liste_des_moyens_de_paiement)
-                    {
-                        paiement = new Payement(DateTime.Now, listeDeMontantParMoyenPaiement[monMoyenDePaiement], monMoyenDePaiement, comdRendu.id);
-                        PayementDAO.insertPaiement(paiement);
-                    }
+        //            //FactureExcel fe = new FactureExcel(CommandeDAO.selectCommandeById(cmd.id, true, true, true));
+        //            //fe.printFacture();
+        //        }
+        //        else if (ListeSelectArt != null)
+        //        {
+        //            Commande comdRendu = ClasseGlobale._renduCommande;
 
-                    Commande cmdTota = CommandeDAO.selectCommandeById(comdRendu.id, true, true, true);
+        //            foreach (Article art in ListeSelectArt)
+        //            {
+        //                Article artAdd = new Article(art.id, art.photo, art.commentaire, true, art.TVA, art.TTC, art.type, null, comdRendu.id);
+        //                artAdd.date_rendu = DateTime.Now;
+        //                ArticleDAO.updateArticle(art);
+        //            }
 
-                    try
-                    {
-                        RecuPaiement rp = new RecuPaiement(cmdTota);
-                        rp.printRecu();
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Impression refusée");
-                    }
-                }
 
-                //Accueil page2Obj = new Accueil(); //Create object of Page2
-                //page2Obj.Show(); //Show page2
-                //this.Close();
+        //            //Enregistrement du/des paiement(s)
+        //            Payement paiement;
+        //            ICollection<String> liste_des_moyens_de_paiement = listeDeMontantParMoyenPaiement.dico.Keys;
+        //            foreach (String monMoyenDePaiement in liste_des_moyens_de_paiement)
+        //            {
+        //                paiement = new Payement(DateTime.Now, listeDeMontantParMoyenPaiement[monMoyenDePaiement], monMoyenDePaiement, comdRendu.id);
+        //                PayementDAO.insertPaiement(paiement);
+        //            }
 
-            }
-            else
-            {
-                MessageBox.Show("Toute la commande n'a pas été payée. Veuillez s'il vous plait compléter l'intégralité du paiement.");
-            }
+        //            Commande cmdTota = CommandeDAO.selectCommandeById(comdRendu.id, true, true, true);
 
-        }
+        //            try
+        //            {
+        //                RecuPaiement rp = new RecuPaiement(cmdTota);
+        //                rp.printRecu();
+        //            }
+        //            catch (Exception)
+        //            {
+        //                MessageBox.Show("Impression refusée");
+        //            }
+        //        }
 
+        //        //Accueil page2Obj = new Accueil(); //Create object of Page2
+        //        //page2Obj.Show(); //Show page2
+        //        //this.Close();
+
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Toute la commande n'a pas été payée. Veuillez s'il vous plait compléter l'intégralité du paiement.");
+        //    }
+
+        //}
 
         private void applyModeDePaiement()
         {
@@ -524,7 +522,7 @@ namespace App_pressing_Loreau.ViewModel
                         if (Txb_paiement_montantParMoyenPaiement <= Reste_a_payer)
                         {
                             //Vérifie s'il n'y a pas de problème de paiement cleanway
-                            //Lorsqu'une commande est payée en cleanway, elle n'eest payée qu'en cleanway
+                            //Lorsqu'une commande est payée en cleanway, elle n'est payée qu'en cleanway
                             if (CleanWayOK())
                             {
                                 //Ajout de mon montant et du mode de paiement dans le dico
@@ -538,7 +536,7 @@ namespace App_pressing_Loreau.ViewModel
 
                                 //Redéfinition du reste à payer
                                 Reste_a_payer = Txb_paiement_montantParMoyenPaiement;
-
+                                ClasseGlobale.reste_a_payer = Reste_a_payer;
                                 //MessageBox.Show("ma remise vaut : " + Txb_paiement_montantRemise + "\nprix du paiement : " + Txb_paiement_montantParMoyenPaiement + "\n Reste_a_payer : " + Reste_a_payer);
                                 Mode_de_paiement = "";
                             }
@@ -631,8 +629,8 @@ namespace App_pressing_Loreau.ViewModel
 
             //On donne une nouvelle référence à notre liste globale de client checkRemise
             ContenuListePaiement = contenuListePaiementTampon;
+            ClasseGlobale.listeDeMontantParMoyenPaiement = listeDeMontantParMoyenPaiement;
         }
-
 
         private void applyRemise()
         {
@@ -644,6 +642,7 @@ namespace App_pressing_Loreau.ViewModel
 
             //Réinitialise l'ancienne valeur
             checkRemise[1] = 0;
+            ClasseGlobale.remise = checkRemise[0];
         }
 
         #endregion

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace App_pressing_Loreau.Data
 {
@@ -23,10 +24,16 @@ namespace App_pressing_Loreau.Data
         {
             try
             {
+                
                 if (MSConnexion == null)
                 {
                     MSConnexion = new MySqlConnection("Server=localhost;Database=bddping1;Uid=root;Pwd=;");
                     MSConnexion.Open();
+                    MessageBox.Show("get conexion OK == ");
+                }
+                else
+                {
+                    MessageBox.Show("get conexion OK != ");
                 }
                 return MSConnexion;
 
@@ -40,28 +47,12 @@ namespace App_pressing_Loreau.Data
 
         }
 
-        public static void connecter()
-        {
-             if (MSConnexion == null)
-                {
-                    MSConnexion = new MySqlConnection("Server=localhost;Database=bddping1;Uid=root;Pwd=;");
-                 try
-                 {
-                     MSConnexion.Open();
-                 }
-                 catch (MySql.Data.MySqlClient.MySqlException e)
-                 {
-
-                 }
-                    
-                }
-
-        }
 
         public static void deconnexion()
         {
-
+            MessageBox.Show("attempting to close the conection");
             MSConnexion.Close();
+            MessageBox.Show("conection close and set to null");
             MSConnexion = null;
         }
         #endregion
