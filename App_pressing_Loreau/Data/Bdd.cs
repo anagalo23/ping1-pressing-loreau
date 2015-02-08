@@ -11,12 +11,7 @@ namespace App_pressing_Loreau.Data
     class Bdd
     {
         #region attributs
-        public static MySqlConnection MSConnexion
-        {
-            get;
-            set;
-        }
-        private static int ReturnCode = 0;
+        public static MySqlConnection MSConnexion { get; set; }
         #endregion
 
         #region Methodes
@@ -24,36 +19,29 @@ namespace App_pressing_Loreau.Data
         {
             try
             {
-                
                 if (MSConnexion == null)
                 {
                     MSConnexion = new MySqlConnection("Server=localhost;Database=bddping1;Uid=root;Pwd=;");
                     MSConnexion.Open();
-                    MessageBox.Show("get conexion OK == ");
-                }
-                else
-                {
-                    MessageBox.Show("get conexion OK != ");
                 }
                 return MSConnexion;
 
-               
+
             }
             catch (Exception Ex)
             {
-                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                MessageBox.Show("Erreur dans la connexion à la base de données");
                 return null;
             }
 
         }
 
-
         public static void deconnexion()
         {
-            MessageBox.Show("attempting to close the conection");
-            MSConnexion.Close();
-            MessageBox.Show("conection close and set to null");
-            MSConnexion = null;
+
+            try { MSConnexion.Close(); }
+            finally { MSConnexion = null; }
+
         }
         #endregion
 
