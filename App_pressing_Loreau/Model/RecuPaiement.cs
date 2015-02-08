@@ -25,8 +25,8 @@ namespace App_pressing_Loreau.Model
         /*public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\RecuPaiement";
         public static String copy_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10)+"Resources\\Temp\\RecuPaiement";
         */
-        public static String pattern_path = "C:\\Program Files\\Application_Pressing\\Resources\\PatternFile\\RecuPaiement";
-        public static String copy_path = "C:\\Program Files\\Application_Pressing\\Resources\\Temp\\RecuPaiement";
+        public static String pattern_path = "D:\\Application_Pressing\\Resources\\PatternFile\\RecuPaiement";
+        public static String copy_path = "D:\\Application_Pressing\\Resources\\Temp\\RecuPaiement";
         
         
         
