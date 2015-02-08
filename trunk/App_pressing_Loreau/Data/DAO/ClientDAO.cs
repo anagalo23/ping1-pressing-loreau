@@ -204,12 +204,6 @@ namespace App_pressing_Loreau.Data.DAO
             Client client = new Client();
             try
             {
-
-                if (ClasseGlobale.Client.nom == "")
-                {
-                    MessageBox.Show("ClientDAO:189 : problème avec le client, il est null");
-                }
-
                 //connection à la base de données  
                 MySqlCommand cmd = new MySqlCommand(Bdd.selectClientById, Bdd.connexion());
 
@@ -218,8 +212,6 @@ namespace App_pressing_Loreau.Data.DAO
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
-
-
 
                 msdr.Read();
                 client.id = Int32.Parse(msdr["clt_id"].ToString());
