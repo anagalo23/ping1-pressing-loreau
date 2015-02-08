@@ -16,10 +16,12 @@ namespace App_pressing_Loreau.Model
     class TicketVetement
     {
 
-        private static String printerName = "EPSON TM-T20II Receipt5";
+        private static String printName = "TM-T20";
         public Commande cmd { get; set; }
-        public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\TicketVetement";
-        public static String copy_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10)+"Resources\\Temp\\TicketVetement";
+        //public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\TicketVetement";
+        //public static String copy_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10)+"Resources\\Temp\\TicketVetement";
+        public static String pattern_path = "J:\\Resources\\PatternFile\\TicketVetement";
+        public static String copy_path = "J:\\Resources\\Temp\\TicketVetement";
 
         
         
@@ -29,17 +31,33 @@ namespace App_pressing_Loreau.Model
 
         public TicketVetement(Commande cmdWithClientArticles)
         {
+
             cmd = cmdWithClientArticles;
+
+            for (int i = 0; i < PrinterSettings.InstalledPrinters.Count; i++)
+            {
+                if (PrinterSettings.InstalledPrinters[i].Contains(printName))
+                {
+                    printName = PrinterSettings.InstalledPrinters[i];
+                }
+
+            }
+
+            if (printName == null)
+            {
+                printName = "";
+                MessageBox.Show("Imprimante non trouvée");
+            }
         }
 
         public void printAllArticleCmd()
         {
             foreach(Article art in cmd.listArticles)
             {
-                printRecu(art, cmd.id, cmd.client);
+                printTicketVetement(art, cmd.id, cmd.client);
             }
         }
-        public void printRecu(Article art, int cmd_id, Client clt)
+        public void printTicketVetement(Article art, int cmd_id, Client clt)
         {
             try
             {
@@ -83,7 +101,7 @@ namespace App_pressing_Loreau.Model
             //Add PrintPage event handler
             pd.PrintPage += new PrintPageEventHandler(this.PrintTextFileHandler);
             //Call Print Method
-            pd.PrinterSettings.PrinterName = printerName;
+            pd.PrinterSettings.PrinterName = printName;
             pd.Print();
             //Close the reader
             if (reader != null)
