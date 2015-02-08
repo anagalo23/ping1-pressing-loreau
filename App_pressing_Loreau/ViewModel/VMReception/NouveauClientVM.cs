@@ -314,7 +314,7 @@ namespace App_pressing_Loreau.ViewModel
                             if (ClientDAO.insertClient(Client) == 1)
                             {
                                 Client client = ClientDAO.lastClient();
-                                Bdd.deconnexion();
+                                
                                 if (client == null)
                                 {
                                     MessageBox.Show("Problème de récupération du dernier client en BDD");
