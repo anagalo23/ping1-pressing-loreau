@@ -21,6 +21,7 @@ namespace App_pressing_Loreau.Model
 
          //"EPSON TM-T20II Receipt5";
         public Commande commande { get; set; }
+        public static String printName = "TM-T20";
         public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\RecuPaiement";
         public static String copy_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10)+"Resources\\Temp\\RecuPaiement";
 
@@ -35,7 +36,7 @@ namespace App_pressing_Loreau.Model
             this.commande = commande;
             for (int i = 0; i < PrinterSettings.InstalledPrinters.Count; i++)
             {
-                if (PrinterSettings.InstalledPrinters[i].Contains("TM-T20"))
+                if (PrinterSettings.InstalledPrinters[i].Contains(printName))
                 {
                    printerName= PrinterSettings.InstalledPrinters[i];
                 }
@@ -97,7 +98,7 @@ namespace App_pressing_Loreau.Model
                 File.AppendAllText(copy_path + ".txt", Environment.NewLine);
 
                 PrintOff();
-                System.IO.File.Delete(copy_path + ".txt");
+                //System.IO.File.Delete(copy_path + ".txt");
             }
             catch (Exception e)
             {

@@ -15,6 +15,8 @@ namespace App_pressing_Loreau.Model
 
         public Commande commande;
 
+        public static String printName = "Canon MG2400 series";
+
         public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\FacturePattern.xlsx";
         private Microsoft.Office.Interop.Excel.Application oXL;
         private Microsoft.Office.Interop.Excel.Workbook mWorkBook;
@@ -87,10 +89,10 @@ namespace App_pressing_Loreau.Model
                  *@param Collate : True to collate multiple copies.
                  *@param PrToFileName : If PrintToFile is set to True, this argument specifies the name of the file you want to print to.
                  */
-                mWorkSheets.PrintOut(1, 1, 1, false, "Canon MG2400 series", false, false, misValue);
+                mWorkSheets.PrintOut(1, 1, 1, true, printName, false, false, misValue);
 
                 //close files
-                mWorkBook.Close(false, misValue, misValue);
+                mWorkBook.Close(true, misValue, misValue);
                 oXL.Quit();
 
                 //release file
