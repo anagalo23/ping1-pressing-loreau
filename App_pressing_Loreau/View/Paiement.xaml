@@ -75,13 +75,16 @@
                     </Grid.RowDefinitions>
 
                     <Label Content="Prix HT :" Style="{StaticResource vertilabel25}" Grid.Row="0" Grid.Column="0" />
-                    <Label Grid.Row="0" Grid.Column="1" Content="{Binding Label_paiement_prixHT}" Style="{StaticResource vertixy}"/> <!--x:Name="label_paiement_prix_ht"-->
+                    <Label Grid.Row="0" Grid.Column="1" Content="{Binding Label_paiement_prixHT}" Style="{StaticResource vertixy}"/>
+                    <!--x:Name="label_paiement_prix_ht"-->
 
                     <Label Content="Prix TTC :" Style="{StaticResource vertilabel25}" Grid.Row="1" Grid.Column="0"/>
-                    <Label Content="{Binding Label_paiement_prixTTC}" Grid.Row="1" Grid.Column="1" Style="{StaticResource vertixy}"/> <!--x:Name="label_paiement_prix_ttc"-->
+                    <Label Content="{Binding Label_paiement_prixTTC}" Grid.Row="1" Grid.Column="1" Style="{StaticResource vertixy}"/>
+                    <!--x:Name="label_paiement_prix_ttc"-->
 
                     <Label Content="Remise :" Style="{StaticResource vertilabel25}" Grid.Row="3" Grid.Column="0"/>
-                    <TextBox  Grid.Row="3" Text="{Binding Txb_paiement_montantRemise, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="10,4" Style="{StaticResource vertiTextBox}" /> <!--x:Name="txb_paiement_remise"-->
+                    <TextBox  Grid.Row="3" Text="{Binding Txb_paiement_montantRemise, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="10,4" Style="{StaticResource vertiTextBox}" />
+                    <!--x:Name="txb_paiement_remise"-->
                 </Grid>
 
             </DockPanel>
@@ -92,7 +95,7 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <Border  Grid.Row="0"  CornerRadius="7" Background="DarkKhaki">
+                <Border  Grid.Row="0"  CornerRadius="7" Background="BlanchedAlmond">
                     <Grid  Margin="1" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -100,21 +103,42 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button x:Name="btn_paiement_cartebleue" Tag="CarteBancaire" Command="{Binding Btn_paiement}" CommandParameter="{Binding ElementName=btn_paiement_cartebleue}" Margin="5" Background="Transparent"  BorderThickness="0" Grid.Column="0"  >
-                            <Image Source="/Resources/pics/paiements/carte_bleue.png" Width="80" Height="60"  />
-                        </Button>
-                        <Button x:Name="btn_paiement_especes" Tag="Espece"  Command="{Binding Btn_paiement}" CommandParameter="{Binding ElementName=btn_paiement_especes}" Background="Transparent"  BorderThickness="0" Grid.Column="1" Margin="5">
-                            <Image Source="/Resources/pics/paiements/paiement_especes.png"  Width="80" Height="60"  />
-                        </Button>
-                        <Button x:Name="btn_paiement_cheques" Tag="Cheque"  Command="{Binding Btn_paiement}" CommandParameter="{Binding ElementName=btn_paiement_cheques}" Background="Transparent"  BorderThickness="0" Grid.Column="2" >
-                            <Image Source="/Resources/pics/paiements/Paiement_cheques.png"  Width="80" Height="60"  />
-                        </Button>
-                        <Button x:Name="btn_paiement_americanExpress" Tag="AmericanExpress"  Command="{Binding Btn_paiement}" CommandParameter="{Binding ElementName=btn_paiement_americanExpress}" Background="Transparent"  BorderThickness="0" Grid.Column="3" >
-                            <Image Source="/Resources/pics/paiements/AmericanExpress.png"  Width="80" Height="60"  />
-                        </Button>
-                        <Button x:Name="btn_paiement_cleanway" Content="CleanWay" Tag="CleanWay"  Command="{Binding Btn_paiement}" CommandParameter="{Binding ElementName=btn_paiement_cleanway}"  BorderThickness="0" Grid.Column="4" Margin="5"  />
+                        <Border Margin="7,4" BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="7" Grid.Column="0">
+                            <Button x:Name="btn_paiement_cartebleue" Tag="CarteBancaire" Command="{Binding Btn_paiement}" CommandParameter="{Binding ElementName=btn_paiement_cartebleue}" Margin="2" Background="Transparent"  BorderThickness="0"   >
+                                <Image Source="/Resources/pics/paiements/carte_bleue.png" Width="80" Height="60"  />
+                            </Button>
+                        </Border>
+
+                        <Border Margin="7,4" BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="7" Grid.Column="1">
+                            <Button x:Name="btn_paiement_especes" Tag="Espece"  Command="{Binding Btn_paiement}" CommandParameter="{Binding ElementName=btn_paiement_especes}" Background="Transparent"  BorderThickness="0"  Margin="2">
+                                <Image Source="/Resources/pics/paiements/paiement_especes.png"  Width="80" Height="60"  />
+                            </Button>
+                        </Border>
+
+                        <Border Margin="7,4" BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="7" Grid.Column="2">
+                            <Button x:Name="btn_paiement_cheques" Tag="Cheque"  Command="{Binding Btn_paiement}" CommandParameter="{Binding ElementName=btn_paiement_cheques}" Background="Transparent"  BorderThickness="0"  Margin="2">
+                                <Image Source="/Resources/pics/paiements/Paiement_cheques.png"  Width="80" Height="60"  />
+                            </Button>
+                        </Border>
+
+                        <Border Margin="7,4" BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="7" Grid.Column="3">
+                            <Button x:Name="btn_paiement_americanExpress" Tag="AmericanExpress"  Command="{Binding Btn_paiement}" CommandParameter="{Binding ElementName=btn_paiement_americanExpress}" Background="Transparent"  BorderThickness="0" Margin="2" >
+                                <Image Source="/Resources/pics/paiements/AmericanExpress.png"  Width="80" Height="60"  />
+                            </Button>
+                        </Border>
+
+                        <Border Margin="7,4" BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="7" Grid.Column="4">
+                            <Button x:Name="btn_paiement_cleanway" Content="CleanWay" Tag="CleanWay"  Command="{Binding Btn_paiement}" CommandParameter="{Binding ElementName=btn_paiement_cleanway}"  BorderThickness="0"  Margin="2"/>
+                        </Border>
+
+                        <Border Margin="7,4" BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="7" Grid.Column="5">
+                            <Button x:Name="btn_paiement_virement"  Tag="VirementBancaire"  Command="{Binding Btn_paiement}" Background="Transparent" CommandParameter="{Binding ElementName=btn_paiement_virement}"  BorderThickness="0" Margin="2" >
+                                <Image Source="/Resources/pics/paiements/virement.png"  Width="80" Height="60"  />
+                            </Button>
+                        </Border>
 
                     </Grid>
                 </Border>
@@ -154,8 +178,14 @@
                     </Grid>
                 </Border>
                 <Border  Grid.Row="3"  Margin="20,5">
-                    <Button x:Name="btn_paiment_valider" Content="Valider" Margin="100,10"
-                        FontFamily="Arial" FontSize="30" FontWeight="SemiBold" Command="{Binding Btn_valider_paiement_commande}" Click="btn_paiment_valider_Click"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btn_paiment_valider" Content="Valider" Margin="10" Style="{StaticResource butonpageadministration}"
+                        Command="{Binding Btn_valider_paiement_commande}" Click="btn_paiment_valider_Click" Grid.Column="1"/>
+                    </Grid>
                 </Border>
             </Grid>
 
