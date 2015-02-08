@@ -38,7 +38,7 @@ namespace App_pressing_Loreau.ViewModel
         private String _label_commandeSelectionner;
         #endregion
 
-        #region Accesseurs et mutateurs
+        #region Accesseurs et mutateurs des attributs qui ne sont pas propriétés
         public List<CommandeConcernantRA_DATA> ContentCommandeConcernant
         {
             get { return _contentCommandeConcernant; }
