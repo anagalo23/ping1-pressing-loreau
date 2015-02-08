@@ -133,18 +133,51 @@ namespace App_pressing_Loreau.Data.DAO
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
 
+                int art_id;
+                String art_photo;
+                String art_commentaire;
+                bool art_rendu;
+                float art_TVA;
+                float art_TTC;
+                TypeArticle typeArticle;
+                PlaceConvoyeur placeConv;
+                int art_cmd_id;
+
+                int conv_id;
+
                 while (msdr.Read())
                 {
+                    art_id = Int32.Parse(msdr["art_id"].ToString());
+                    art_photo = msdr["art_photo"].ToString();
+                    art_commentaire = msdr["art_commentaire"].ToString();
+                    art_rendu = bool.Parse(msdr["art_rendu"].ToString());
+                    art_TVA = float.Parse(msdr["art_TVA"].ToString());
+                    art_TTC = float.Parse(msdr["art_TTC"].ToString());
+                    typeArticle = new TypeArticle(Int32.Parse(msdr["art_typ_id"].ToString()), null, 0, 0, 0, null);
+
+                    //conv_id = Int32.Parse(msdr["art_conv_id"].ToString());
+                    String test = msdr["art_conv_id"].ToString();
+                    if (test == null || test == ""){
+                        conv_id = 0;
+                    }
+                    else
+                    {
+                        conv_id = Int32.Parse(msdr["art_conv_id"].ToString());
+                    }
+                    placeConv = new PlaceConvoyeur(conv_id, 0, 0);
+                    art_cmd_id = Int32.Parse(msdr["art_cmd_id"].ToString());
+
                     Article article = new Article(
-                        Int32.Parse(msdr["art_id"].ToString()),
-                        msdr["art_photo"].ToString(),
-                        msdr["art_commentaire"].ToString(),
-                        bool.Parse(msdr["art_rendu"].ToString()),
-                        float.Parse(msdr["art_TVA"].ToString()),
-                        float.Parse(msdr["art_TTC"].ToString()),
-                        new TypeArticle(Int32.Parse(msdr["art_typ_id"].ToString()), null, 0, 0, 0, null),
-                        new PlaceConvoyeur(Int32.Parse(msdr["art_conv_id"].ToString()), 0, 0),
-                        Int32.Parse(msdr["art_cmd_id"].ToString()));
+                        art_id,
+                        art_photo,
+                        art_commentaire,
+                        art_rendu,
+                        art_TVA,
+                        art_TTC,
+                        typeArticle,
+                        placeConv,
+                        art_cmd_id);
+
                     if (msdr["art_date_rendu"].ToString().Equals(null))
                         article.date_rendu = DateTime.Parse(msdr["art_date_rendu"].ToString());
 

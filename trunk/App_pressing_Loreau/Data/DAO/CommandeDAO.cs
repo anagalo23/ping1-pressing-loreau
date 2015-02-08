@@ -191,10 +191,6 @@ namespace App_pressing_Loreau.Data.DAO
          */
         public static Commande selectCommandeById(int id_cmd, Boolean addPaiement, Boolean addArticles, Boolean addClient)
         {
-            if (ClasseGlobale.Client.nom == "")
-            {
-                MessageBox.Show("CommandeDAO:184 : problème avec le client, il est null");
-            }
 
             try
             {
