@@ -185,7 +185,8 @@ namespace App_pressing_Loreau.ViewModel
             List<Payement> listePaiement = (List<Payement>)PayementDAO.listSommePaiementToday(1);
             foreach (Payement paye in listePaiement)
             {
-                ChiffreAffaireDuJour += paye.montant;
+                if (!paye.typePaiement.Equals("CleanWay"))
+                    ChiffreAffaireDuJour = (float)((decimal)ChiffreAffaireDuJour + (decimal)paye.montant);
             }
 
             Label_statistique_catotal = ChiffreAffaireDuJour;
@@ -199,7 +200,8 @@ namespace App_pressing_Loreau.ViewModel
             List<Payement> listePaiement = (List<Payement>)PayementDAO.listSommePaiementToday(2);
             foreach (Payement paye in listePaiement)
             {
-                ChiffreAffaireDuJour += paye.montant;
+                if (!paye.typePaiement.Equals("CleanWay"))
+                    ChiffreAffaireDuJour = (float)((decimal)ChiffreAffaireDuJour + (decimal)paye.montant);
             }
 
             Label_statistique_catotal = ChiffreAffaireDuJour;
@@ -212,7 +214,8 @@ namespace App_pressing_Loreau.ViewModel
             List<Payement> listePaiement = (List<Payement>)PayementDAO.listSommePaiementToday(3);
             foreach (Payement paye in listePaiement)
             {
-                ChiffreAffaireDuJour += paye.montant;
+                if (!paye.typePaiement.Equals("CleanWay"))
+                    ChiffreAffaireDuJour = (float)((decimal)ChiffreAffaireDuJour + (decimal)paye.montant);
             }
 
             Label_statistique_catotal = ChiffreAffaireDuJour;
@@ -225,7 +228,8 @@ namespace App_pressing_Loreau.ViewModel
             List<Payement> listePaiement = (List<Payement>)PayementDAO.listSommePaiementToday(4);
             foreach (Payement paye in listePaiement)
             {
-                ChiffreAffaireDuJour += paye.montant;
+                if (!paye.typePaiement.Equals("CleanWay"))
+                    ChiffreAffaireDuJour = (float)((decimal)ChiffreAffaireDuJour + (decimal)paye.montant);
             }
 
             Label_statistique_catotal = ChiffreAffaireDuJour;
