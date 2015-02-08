@@ -129,7 +129,7 @@ namespace App_pressing_Loreau.ViewModel
             {
                 if (value != Client.adresse.numero)
                 {
-                    Client.adresse.numero=value;
+                    Client.adresse.numero = value;
                     OnPropertyChanged("Txb_nouveauClient_numero");
                 }
             }
@@ -246,110 +246,113 @@ namespace App_pressing_Loreau.ViewModel
 
         public void enregisterClient()
         {
-            bool check = false;
-            if (Client != null)
+            //Si le client n'à déjà été enregistré en bdd
+            if (ClasseGlobale.Client.nom != Txb_nouveauClient_nom &&
+                ClasseGlobale.Client.prenom != Txb_nouveauClient_prenom)
             {
-                if (Client.nom!="" && Client.prenom!="")
+                bool check = false;
+                if (Client != null)
                 {
-                    //Conversion du champ de texte date de naissance en datetime
-                    if (_txb_nouveauClient_date_naissance != null || dateDeNaissanceObligatoire == true)
+                    if (Client.nom != "" && Client.prenom != "")
                     {
-                        //Vérification du format de la date
-                        try
+                        //Conversion du champ de texte date de naissance en datetime
+                        if (_txb_nouveauClient_date_naissance != null || dateDeNaissanceObligatoire == true)
                         {
-                            if (_txb_nouveauClient_date_naissance.Split('/').Length != 3)
+                            //Vérification du format de la date
+                            try
+                            {
+                                if (_txb_nouveauClient_date_naissance.Split('/').Length != 3)
+                                {
+                                    check = true;
+                                    MessageBox.Show("La date que vous avez saisie n'est pas du bon format.\n" +
+                                        "\nAssurez-vous que la date saisie respecte le format suivant : jour/mois/année");
+                                }
+                                else//Si le format de la date est le bon
+                                {
+                                    try
+                                    {
+                                        Client.dateNaissance = DateTime.Parse(_txb_nouveauClient_date_naissance);
+                                    }
+                                    catch (Exception e)
+                                    {
+                                        check = true;
+
+                                        MessageBox.Show("Problème de parse de la date de naissance.\n" + e.ToString());
+                                    }
+                                }
+                            }
+                            catch (Exception e)
                             {
                                 check = true;
                                 MessageBox.Show("La date que vous avez saisie n'est pas du bon format.\n" +
-                                    "\nAssurez-vous que la date saisie respecte le format suivant : jour/mois/année");
+                                        "\nAssurez-vous que la date saisie respecte le format suivant : jour/mois/année");
                             }
-                            else//Si le format de la date est le bon
+
+
+                        }
+
+                        //Vérification de l'existence du nom et du prénom en base de données
+                        if (ClientDAO.verificationNomEtPrenom(Client.nom, Client.prenom) && dateDeNaissanceObligatoire == false && check == false)
+                        {
+                            dateDeNaissanceObligatoire = true;
+                            MessageBox.Show("Un client portant le même nom et prénom existe déjà en BDD.\n" +
+                                "Vous devez renseigner la date de naissance");
+                        }
+                        else
+                        {
+                            if (check == false)//Si je n'ai pas rencontré de problème au niveau de la date de naissance
                             {
-                                try
+                                //Formatage des champs => évite les problèmes de comparaison de chaines
+                                Client.adresse = Client.adresse.ToLower();
+                                Client.prenom = Client.prenom.Substring(0, 1).ToUpper() + Client.prenom.Substring(1, Client.prenom.Length - 1).ToLower();
+                                Client.nom = Client.nom.ToUpper();
+
+                                if (ClientDAO.insertClient(Client) == 1)
                                 {
-                                    Client.dateNaissance = DateTime.Parse(_txb_nouveauClient_date_naissance);
-                                }
-                                catch (Exception e)
-                                {
-                                    check = true;
-                                    if (dateDeNaissanceObligatoire == true)
+                                    Client client = ClientDAO.lastClient();
+
+                                    if (client == null)
                                     {
-                                        MessageBox.Show("Vous devez enregistrer la date de naissance du client, un autre client portant le même nom et prénom " +
-                                            "existe déjà en base de données");
+                                        MessageBox.Show("Problème de récupération du dernier client en BDD");
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Problème de parse de la date de naissance.\n" + e.ToString());
+                                        ClasseGlobale.Client = client;
+                                        MessageBox.Show("Nouveau client enregistré avec succès.\nCliquez sur Nouvelle commande pour accéder à l'écran suivant");
                                     }
-
-                                }
-                            }
-                        }
-                        catch (Exception e)
-                        {
-                            check = true;
-                            MessageBox.Show("La date que vous avez saisie n'est pas du bon format.\n" +
-                                    "\nAssurez-vous que la date saisie respecte le format suivant : jour/mois/année");
-                        }
-
-                        
-                    }
-
-                    //Vérification de l'existence du nom et du prénom en base de données
-                    if (ClientDAO.verificationNomEtPrenom(Client.nom, Client.prenom) && dateDeNaissanceObligatoire == false && check == false)
-                    {
-                        dateDeNaissanceObligatoire = true;
-                        MessageBox.Show("Un client portant le même nom et prénom existe déjà en BDD.\n"+
-                            "Vous devez renseigner la date de naissance");
-                    }
-                    else
-                    {
-                        if (check == false)//Si je n'ai pas rencontré de problème au niveau de la date de naissance
-                        {
-                            //Formatage des champs => évite les problèmes de comparaison de chaines
-                            Client.adresse = Client.adresse.ToLower();
-                            Client.prenom = Client.prenom.Substring(0, 1).ToUpper() + Client.prenom.Substring(1, Client.prenom.Length-1).ToLower();
-                            Client.nom = Client.nom.ToUpper();
-
-                            if (ClientDAO.insertClient(Client) == 1)
-                            {
-                                Client client = ClientDAO.lastClient();
-                                
-                                if (client == null)
-                                {
-                                    MessageBox.Show("Problème de récupération du dernier client en BDD");
                                 }
                                 else
                                 {
-                                    ClasseGlobale.Client = client;
-                                    MessageBox.Show("Nouveau client enregistré avec succès.\nCliquez sur Nouvelle commande pour accéder à l'écran suivant");
+                                    MessageBox.Show("Problème d'enregistrement du client dans la base de données");
                                 }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Problème d'enregistrement du client dans la base de données");
                             }
                         }
                     }
+                    else
+                    {
+                        String message = "Assurez-vous d'avoir bien renseigné : ";
+                        if (Client.nom == "")
+                        {
+                            message += "\n\t-\tle nom;";
+                        }
+                        if (Client.prenom == "")
+                        {
+                            message += "\n\t-\tle prenom;";
+                        }
+                        MessageBox.Show(message);
+                    }
+
                 }
                 else
                 {
-                    String message = "Assurez-vous d'avoir bien renseigné : ";
-                    if (Client.nom == "")
-                    {
-                        message += "\n\t-\tle nom;";
-                    }
-                    if (Client.prenom == "")
-                    {
-                        message += "\n\t-\tle prenom;";
-                    }
-                    MessageBox.Show(message);
+                    MessageBox.Show("Le client n'a pas été initialisée, cette erreur logiciel n'est pas censée arriver. Cf code NouveauClientVM.cs l~341");
                 }
-
             }
             else
             {
-                MessageBox.Show("Le client n'a pas été initialisée, cette erreur logiciel n'est pas censée arriver. Cf code NouveauClientVM.cs l~341");
+                MessageBox.Show("Le client a déjà été enregistré : \n" +
+                    "soit, cliquez sur nouvelle commande\n" +
+                    "soit, renseignez de nouveau les champs pour enregistrer un nouveau client");
             }
 
         }
