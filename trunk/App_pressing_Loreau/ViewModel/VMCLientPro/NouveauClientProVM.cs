@@ -185,7 +185,7 @@ namespace App_pressing_Loreau.ViewModel
 
             index = 0;
             index = ClientDAO.insertClient(client);
-            Bdd.deconnexion();
+            
             if (index != 0)
             {
                 MessageBox.Show("Client pro enregistré");

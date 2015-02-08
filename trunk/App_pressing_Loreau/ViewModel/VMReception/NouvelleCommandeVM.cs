@@ -387,7 +387,7 @@ namespace App_pressing_Loreau.ViewModel
                     tampon += (decimal)(artVm.typeArticle.TTC);
                 }
                 //MessageBox.Show(tampon.ToString());
-                Label_NouvelleCommande_prixTotal = (float)tampon;
+                Label_NouvelleCommande_prixTotal = (float)tampon;//(float)Math.Round(tampon, 2, MidpointRounding.AwayFromZero);// 
             }
         }
 
