@@ -5,12 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace App_pressing_Loreau.Data.DAO
 {
     class CommentaireDAO
     {
-        //Inserer un commentaire dans la base de données
+        /* Inserer un commentaire dans la base de données
+         * @param commentaire : commentaire à insérer
+         */
         public static int insertCommentaire(Commentaire commentaire)
         {
             try
@@ -29,13 +32,15 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un article dans la base de données."));
+                MessageBox.Show("ERREUR BDD : insertCommentaire");
                 Bdd.deconnexion();
                 return 0;
             }
         }
 
-        //Selectionner l'ensemble des commentaires de la base de données
+
+        /* Selectionner l'ensemble des commentaires de la base de données
+         */
         public static List<Commentaire> selectCommentaire()
         {
             try
@@ -61,7 +66,7 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                MessageBox.Show("ERREUR BDD : selectCommentaire");
                 Bdd.deconnexion();
                 return null;
             }
@@ -69,7 +74,10 @@ namespace App_pressing_Loreau.Data.DAO
 
         }
 
-        //Selectionner un commentaire de la base de données à partir de son id
+
+        /* Selectionner un commentaire de la base de données à partir de son id
+         * @param id : id du commentaire à selectionner
+         */
         public static Commentaire selectCommentaireById(int id)
         {
             try
@@ -96,7 +104,7 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un département dans la base de données."));
+                MessageBox.Show("ERREUR BDD : selectCommentaireById");
                 Bdd.deconnexion();
                 return null;
             }
@@ -104,7 +112,10 @@ namespace App_pressing_Loreau.Data.DAO
 
         }
 
-        //Update un commentaire
+
+        /* Update un commentaire
+         * @param commentaire : commentaire à update
+         */
         public static int updateCommentaire(Commentaire commentaire)
         {
             try
@@ -124,13 +135,16 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
+                MessageBox.Show("ERREUR BDD : updateCommentaire");
                 Bdd.deconnexion();
                 return 0;
             }
         }
 
-        //Delete un commentaire
+
+        /* Delete un commentaire
+         * @param commentaire : commentaire à delete
+         */
         public static int deleteCommentaire(Commentaire commentaire)
         {
             try
@@ -149,8 +163,7 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
-                Bdd.deconnexion();
+                MessageBox.Show("ERREUR BDD : deleteCommentaire");
                 return 0;
             }
         }
