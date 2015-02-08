@@ -28,6 +28,7 @@ namespace App_pressing_Loreau.ViewModel
         private String _label_EtatPaiementCommande;
         #endregion
 
+
         #region Constructeur
         public DetailCommandeVM()
         {
@@ -38,8 +39,10 @@ namespace App_pressing_Loreau.ViewModel
 
         #endregion
 
-        #region properties and Commands
 
+        #region Propriétés
+
+        
         public float Label_prixTTC
         {
             get { return _label_prixTTC; }
@@ -65,25 +68,6 @@ namespace App_pressing_Loreau.ViewModel
                 }
             }
         }
-        public DelegateCommand<ArticlesRestitutionVM> Btn_detailCommande_selectionner_tout
-        {
-            get
-            {
-                return this._btn_detailCommande_deselectionner_tout ?? (this._btn_detailCommande_deselectionner_tout = new DelegateCommand<ArticlesRestitutionVM>(
-                                                                     this.ExecuteSelectAllArticles,
-                                                                     (arg) => true));
-            }
-        }
-
-        public DelegateCommand<ArticlesRestitutionVM> Btn_detailCommande_deselectionner_tout
-        {
-            get
-            {
-                return this._btn_detailCommande_selectionner_tout ?? (this._btn_detailCommande_selectionner_tout = new DelegateCommand<ArticlesRestitutionVM>(
-                                                                     this.ExecuteDeselectAllArticles,
-                                                                     (arg) => true));
-            }
-        }
         public List<ArticlesRestitutionVM> AfficheDetailCommande
         {
             get { return _afficheDetailCommande; }
@@ -96,69 +80,43 @@ namespace App_pressing_Loreau.ViewModel
                 }
             }
         }
-
-        public ICommand Btn_ValiderSelect
-        {
-            get { return new RelayCommand(p => ValiderSelection()); }
-        } 
         #endregion
 
-        #region Methods
 
-        private void ValiderSelection()
+        #region Commandes
+
+        #region Séletionner tout
+
+        public DelegateCommand<ArticlesRestitutionVM> Btn_detailCommande_selectionner_tout
         {
-            ArtSelec = new List<Article>();
-
-            foreach (ArticlesRestitutionVM artVM in AfficheDetailCommande)
+            get
             {
-               
-                if (artVM.IsSelectedArticle)
-                {
-     
-                    ArtSelec.Add(artVM.ar);
-                }
-               
+                return this._btn_detailCommande_deselectionner_tout ?? (this._btn_detailCommande_deselectionner_tout = new DelegateCommand<ArticlesRestitutionVM>(
+                                                                     this.ExecuteSelectAllArticles,
+                                                                     (arg) => true));
             }
-
-
-            if (ClasseGlobale._renduCommande.payee == false)
-            {
-
-
-                if (ArtSelec.Count != 0)
-                {
-                    Label_prixTTC = 0;
-                    foreach (Article arti in ArtSelec)
-                    {
-                        Label_prixTTC += (arti.TTC);
-                    }
-                }
-                else
-                {
-                    Label_prixTTC = 0;
-                }
-
-                //Label_prixTTC = prixTotal;
-            }
-            else
-            {
-                Label_prixTTC = 0;
-            }
-
-
-            ClasseGlobale._rendreArticlesSelectionnes = ArtSelec;
-            //MessageBox.Show(ClasseGlobale._rendreArticlesSelectionnes.Count +"");
-            
         }
         private void ExecuteSelectAllArticles(ArticlesRestitutionVM obj)
         {
+            
             foreach (ArticlesRestitutionVM art in AfficheDetailCommande)
             {
                 art.IsSelectedArticle = true;
                 //ArtSelec.Add(art.ar);
             }
         }
+        #endregion
 
+        #region Désélectionner tout
+        public DelegateCommand<ArticlesRestitutionVM> Btn_detailCommande_deselectionner_tout
+        {
+            get
+            {
+                return this._btn_detailCommande_selectionner_tout ?? (this._btn_detailCommande_selectionner_tout = new DelegateCommand<ArticlesRestitutionVM>(
+                                                                     this.ExecuteDeselectAllArticles,
+                                                                     (arg) => true));
+            }
+        }
         private void ExecuteDeselectAllArticles(ArticlesRestitutionVM obj)
         {
             foreach (ArticlesRestitutionVM art in AfficheDetailCommande)
@@ -168,7 +126,61 @@ namespace App_pressing_Loreau.ViewModel
 
             }
         }
+        #endregion
 
+        #region Valider la sélection
+        public ICommand Btn_ValiderSelect
+        {
+            get { return new RelayCommand(p => ValiderSelection()); }
+        }
+        private void ValiderSelection()
+        {
+            ArtSelec = new List<Article>();
+
+            //Ajout des articles sélectionnés dans une liste locale
+            foreach (ArticlesRestitutionVM artVM in AfficheDetailCommande)
+            {
+                if (artVM.IsSelectedArticle)
+                {
+                    ArtSelec.Add(artVM.ar);
+                }
+            }
+
+            Label_prixTTC = 0;
+            //Si la commande séletionnée n'a pas encore été totalement payée
+            if (ClasseGlobale._renduCommande.payee == false)
+            {
+                //Les articles rendus sont payés
+                //Pacours de la liste des articles et on fait la somme des prix => prix mini de la restitution
+                if (ArtSelec.Count != 0)
+                {
+                    foreach (Article arti in ArtSelec)
+                    {
+                        Label_prixTTC += (arti.TTC);
+                    }
+                }
+
+                //Je calcule le reste à payer de cette commande
+                //Je vais chercher tous les articles et je calcule le prix
+                //Je vais chercher tous les paiements effectués pour cette commande
+                //Reste à payer = totalarticle - totalPaiements
+            }
+            else
+            {
+                MessageBox.Show("La commande a déjà été réglée");
+            }
+
+
+            ClasseGlobale._rendreArticlesSelectionnes = ArtSelec;
+            //MessageBox.Show(ClasseGlobale._rendreArticlesSelectionnes.Count +"");
+
+        }
+        #endregion
+        
+        #endregion
+
+
+        #region Methodes
         
         private void LaCommande()
         {
@@ -230,6 +242,7 @@ namespace App_pressing_Loreau.ViewModel
 
 
         }
+        
         #endregion
 
     }
