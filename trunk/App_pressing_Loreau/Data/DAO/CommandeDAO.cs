@@ -13,7 +13,9 @@ namespace App_pressing_Loreau.Data.DAO
 {
     class CommandeDAO
     {
-        //Inserer une commande dans la base de données
+        /* Inserer une commande dans la base de données
+         * @param commande : commande à inserer
+         */
         public static int insertCommande(Commande commande)
         {
             try
@@ -34,11 +36,12 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'une commande dans la base de données."));
+                MessageBox.Show("ERREUR BDD : insertCommande");
                 Bdd.deconnexion();
                 return 0;
             }
         }
+
 
         /*Selectionner l'ensemble des commandes de la base de données
          * @param addPaiement : True pour insérer les paiements dans l'object commande
@@ -98,16 +101,16 @@ namespace App_pressing_Loreau.Data.DAO
                 }
                 #endregion
 
-
                 return retour;
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                MessageBox.Show("ERREUR BDD : selectCommandes");
                 Bdd.deconnexion();
                 return null;
             }
         }
+
 
         /*Selectionner l'ensemble des commandes de la base de données à partir de son id
          * @param addPaiement : True pour insérer les paiements dans l'object commande
@@ -175,11 +178,12 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                MessageBox.Show("ERREUR BDD : selectCommandesByClient");
                 Bdd.deconnexion();
                 return null;
             }
         }
+
 
         /*Selectionner une commande à partir de son id
          * @param addPaiement : True pour insérer les paiements dans l'object commande
@@ -255,13 +259,16 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                MessageBox.Show("ERREUR BDD : selectCommandeById");
                 Bdd.deconnexion();
                 return null;
             }
         }
 
-        //Give the total price of the command
+
+        /* Give the total price of the command
+         * @param id_cmd : id de la commande à calculer
+         */
         public static float totalTTCCommandeById(int id_cmd)
         {
             try
@@ -286,13 +293,16 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                MessageBox.Show("ERREUR BDD : totalTTCCommandeById");
                 Bdd.deconnexion();
                 return -2;
             }
         }
 
-        //Give the total payed of the command
+
+        /* Give the total payed of the command
+         * @param id_cmd : id de la commande à calculer
+         */
         public static float totalPayedCommandeById(int id_cmd)
         {
             try
@@ -317,18 +327,19 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                MessageBox.Show("ERREUR BDD : totalPayedCommandeById");
                 Bdd.deconnexion();
                 return -2;
             }
         }
 
-        //Give the amount command open today
-        /* @Param plage date :
-            * 1 : par jour
-            * 2 : par semaine
-            * 3 : par mois
-            * 4 : par année
+
+        /*Give the amount command open today
+         * @Param plage date :
+         *      1 : par jour
+         *      2 : par semaine
+         *      3 : par mois
+         *      4 : par année
          */
         public static List<Commande> listCommandeRecuToday(int plageDate)
         {
@@ -403,14 +414,16 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                MessageBox.Show("ERREUR BDD : listCommandeRecuToday");
                 Bdd.deconnexion();
                 return null;
             }
         }
 
 
-        //Inserer une commande dans la base de données
+        /* Inserer une commande dans la base de données
+         * @pram commande : commande à update
+         */
         public static int updateCommande(Commande commande)
         {
             try
@@ -436,13 +449,16 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'une commande dans la base de données."));
+                MessageBox.Show("ERREUR BDD : updateCommande");
                 Bdd.deconnexion();
                 return 0;
             }
         }
 
-        //Delete une commande dans la base de données
+
+        /* Delete une commande dans la base de données
+         * @pram commande : commande à delete
+         */
         public static int deleteCommande(Commande commande)
         {
             try
@@ -460,12 +476,15 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'une commande dans la base de données."));
+                MessageBox.Show("ERREUR BDD : deleteCommande");
                 Bdd.deconnexion();
                 return 0;
             }
         }
 
+
+        /* Last Commande Inserted
+         */
         public static Commande lastCommande()
         {
             int cmd_id = 0;
@@ -486,12 +505,19 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
+                MessageBox.Show("ERREUR BDD : lastCommande");
                 Bdd.deconnexion();
                 return null;
             }
         }
 
+
+        /* Vérifie qu'un commande à été payé par cleanway
+         * @param id_cmd : id de la commande à étudier
+         * @return bool
+         *      false : la commande n'a pas été payée par cleanway
+         *      true : la commande à été payée par cleanway
+         */
         public static bool isPayedByCleanWay(int id_cmd)
         {
             try
@@ -517,7 +543,7 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
+                MessageBox.Show("ERREUR BDD : isPayedByCleanWay");
                 Bdd.deconnexion();
                 return false;
             }
