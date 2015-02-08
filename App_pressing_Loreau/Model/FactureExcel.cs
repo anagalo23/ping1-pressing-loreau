@@ -17,7 +17,8 @@ namespace App_pressing_Loreau.Model
 
         public static String printName = "Canon MG2400 series";
 
-        public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\FacturePattern.xlsx";
+        //public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\FacturePattern.xlsx";
+        public static String pattern_path = "C:\\Programmes\\Application_Pressing\\Resources\\PatternFile\\FacturePattern.xlsx";
         private Microsoft.Office.Interop.Excel.Application oXL;
         private Microsoft.Office.Interop.Excel.Workbook mWorkBook;
         private Microsoft.Office.Interop.Excel.Worksheet mWorkSheets;
