@@ -30,7 +30,7 @@ namespace App_pressing_Loreau.ViewModel
 
         #region Attributs
 
-        public int payeDifferer = 0;
+        //public int payeDifferer = 0;
 
         private List<CategoryItem> _listeDepartement;
         private List<CategoryItem> _listeArticles;
@@ -190,6 +190,59 @@ namespace App_pressing_Loreau.ViewModel
         {
             get {return new RelayCommand(p => paiementDiffere()); }
         }
+
+        // Insertion de la commande et des articles concernants dans la bdd pour un paiment différé
+        private void paiementDiffere()
+        {
+            if (ClasseGlobale.Client.nom != "")
+            {
+                if (ClasseGlobale._contentDetailCommande == null)
+                {
+                    MessageBox.Show("Ajoutez des articles");
+                }
+                else
+                {
+                    Commande cmd = new Commande(DateTime.Now, false, 0, ClasseGlobale.Client);
+
+                    //ObservableCollection<ArticlesVM> listeArticles = ClasseGlobale._contentDetailCommande;
+                    if (CommandeDAO.insertCommande(cmd) == 1)
+                    {
+                        cmd = CommandeDAO.lastCommande();
+                        foreach (ArticlesVM artVM in ClasseGlobale._contentDetailCommande)
+                        {
+                            ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
+                        }
+                        MessageBox.Show("La commande à été enregistrée avec succès");
+                        try
+                        {
+                            cmd = CommandeDAO.selectCommandeById(cmd.id, true, true, true);
+                            RecuPaiement rp = new RecuPaiement(cmd);
+                            rp.printRecu();
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Impression refusée");
+                        }
+                        finally
+                        {
+                            ClasseGlobale.INITIALIZE_ALL();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erreur lors de la création de la commande. Enregistrement de la commande annulé");
+                    }
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("La comande a déjà été enregistrée. Veuillez ");
+            }
+
+        }
+
+
         #endregion
         
         #endregion
@@ -197,54 +250,7 @@ namespace App_pressing_Loreau.ViewModel
 
         #region Méthodes
 
-        // Insertion de la commande et des articles concernants dans la bdd pour un paiment différé
-        private void paiementDiffere()
-        {
-            int insertArt = 0;
-            if (ClasseGlobale._contentDetailCommande == null)
-            {
-                MessageBox.Show("Ajoutez des articles");
-            }
-            else
-            {
-                Commande cmd = new Commande(DateTime.Now,false, 0, ClasseGlobale.Client);
-                int inser = CommandeDAO.insertCommande(cmd);
-                ObservableCollection<ArticlesVM> listeArticles = ClasseGlobale._contentDetailCommande;
-                if (inser != 0)
-                {
-                    cmd = CommandeDAO.lastCommande();
-                    ObservableCollection<ArticlesVM> cmdDetail = ClasseGlobale._contentDetailCommande;
-                    foreach (ArticlesVM artVM in cmdDetail)
-                    {
-                        insertArt = ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
-                    }
-                }
-               
-            }
-
-            if (insertArt != 0)
-            {
-                try
-                {
-                    Commande cmdTota = CommandeDAO.lastCommande();
-                    cmdTota = CommandeDAO.selectCommandeById(cmdTota.id, true, true, true);
-                    RecuPaiement rp = new RecuPaiement(cmdTota);
-                    rp.printRecu();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Impression refusée");
-                }
-                MessageBox.Show("Commande enregistrée \n paiement differé");
-
-              
-                    
-                payeDifferer = 1;
-
-            }
-           
-        }
-
+        
         /**
          * Permet le défilement des départements 
          **/
