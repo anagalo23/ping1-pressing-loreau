@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using App_pressing_Loreau.Model.DTO;
 using App_pressing_Loreau.Model;
 using System.Windows;
+using App_pressing_Loreau.Helper;
 
 namespace App_pressing_Loreau.Data.DAO
 {
@@ -179,9 +180,15 @@ namespace App_pressing_Loreau.Data.DAO
          */
         public static Client selectClientById(int client_id, Boolean addCommandes, Boolean cmd_addPaiement, Boolean cmd_addArticles)
         {
+            Client retour = new Client();
+            Client client = new Client();
             try
             {
-                Client retour = new Client();
+
+                if (ClasseGlobale.Client.nom == "")
+                {
+                    MessageBox.Show("ClientDAO:189 : problème avec le client, il est null");
+                }
 
                 //connection à la base de données  
                 MySqlCommand cmd = new MySqlCommand(Bdd.selectClientById, Bdd.connexion());
@@ -192,7 +199,7 @@ namespace App_pressing_Loreau.Data.DAO
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
 
-                Client client = new Client();
+                
 
                 msdr.Read();
                 client.id = Int32.Parse(msdr["clt_id"].ToString());
@@ -252,7 +259,7 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                MessageBox.Show("ERREUR BDD : Impossible de selectionner un client à l'aide de son ID.");
+                MessageBox.Show("ERREUR BDD (ClientDAO.cs:257): Impossible de selectionner un client à l'aide de son ID. \nnom : " + client.nom +"\nid : "+client.id);
                 return null;
             }
 
