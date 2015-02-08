@@ -14,7 +14,9 @@ namespace App_pressing_Loreau.Data.DAO
 {
     class ClientDAO
     {
-        //Inserer un client dans la base de données
+        /*Inserer un client dans la base de données
+         * @param client : client à insérer
+         */
         public static int insertClient(Client client)
         {
             try
@@ -40,19 +42,23 @@ namespace App_pressing_Loreau.Data.DAO
                 retour = cmd.ExecuteNonQuery();
 
                 Bdd.deconnexion();
-
                 return retour;
             }
             catch (Exception Ex)
             {
-                MessageBox.Show("ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données.");
+                MessageBox.Show("ERREUR BDD : insertClient");
                 Bdd.deconnexion();
                 return 0;
             }
         }
 
 
-        //Selectionner l'ensemble des clients de la base de données a partir du nom, du prenom et/ou du numéro de telephone
+        /* Selectionner l'ensemble des clients de la base de données a partir du nom, du prenom et/ou du numéro de telephone
+         * @param nom : partie du nom du client
+         * @param prenom : partie du prenom du client
+         * @param tel : telephone
+         * @param idcleanway : idcleanway du client
+         */
         public static List<Client> seekClients(String nom, String prenom, String tel, int idcleanway)
         {
             List<Client> retour = new List<Client>();
@@ -125,31 +131,33 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                MessageBox.Show("ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données.");
+                MessageBox.Show("ERREUR BDD : seekClients");
                 Bdd.deconnexion();
                 return null;
             }
 
         }
 
-        //Selectionner l'ensemble des clients pro
+
+        /* Selectionner l'ensemble des clients pro
+         */
         public static List<Client> selectProClient()
         {
             try
             {
-
                 List<Client> retour = new List<Client>();
+
+                //paramètres utilisés
+                Client client;
+                bool contactmail = false;
+                bool clt_contactsms;
+                int clt_type;
 
                 //connection à la base de données  
                 MySqlCommand cmd = new MySqlCommand(Bdd.selectProClient, Bdd.connexion());
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
-                Client client;
-                bool contactmail = false;
-                bool clt_contactsms;
-                int clt_type;
-
                 while (msdr.Read())
                 {
                     contactmail = ((msdr["clt_contactmail"].ToString()).Equals("False")) ? false : true;
@@ -178,14 +186,15 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                MessageBox.Show("ERREUR BDD : Impossible de selectionner une liste de clients pro dans la base de données.");
+                MessageBox.Show("ERREUR BDD : selectProClient");
                 Bdd.deconnexion();
                 return null;
             }
         }
 
+
         /* Selectionner un client à l'aide de l'id
-         * @param addCommande : truepour ajouter les commandes dans l'objet client
+         * @param addCommande : true pour ajouter les commandes dans l'objet client
          * @param cmd_addPaiement : Completer les commandes avec les paiements
          * @param cmd_addArticles : Completer les commandes avec les articles
          */
@@ -245,8 +254,6 @@ namespace App_pressing_Loreau.Data.DAO
                     client.contactSms = true;
                 }
 
-
-                //client.type = Int32.Parse(msdr["clt_type"].ToString());
                 if (msdr["clt_type"].ToString() == "False")
                 {
                     client.type = 0;
@@ -257,7 +264,6 @@ namespace App_pressing_Loreau.Data.DAO
                 }
 
                 msdr.Dispose();
-
                 Bdd.deconnexion();
 
                 #region ajout des commandes
@@ -272,26 +278,31 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                MessageBox.Show("ERREUR BDD (ClientDAO.cs:257): Impossible de selectionner un client à l'aide de son ID. \nnom : " + client.nom + "\nid : " + client.id);
+                MessageBox.Show("ERREUR BDD : selectClientById");
                 Bdd.deconnexion();
                 return null;
             }
 
         }
 
-        //Give the amount of today opened commands 
-        /* @Param plage date :
-            * 1 : par jour
-            * 2 : par semaine
-            * 3 : par mois
-            * 4 : par année
+        /* Give the amount of today opened commands 
+         * @Param plage date :
+         * 1 : par jour
+         * 2 : par semaine
+         * 3 : par mois
+         * 4 : par année
          */
         public static List<Client> listClientAddToday(int plageDate)
         {
             try
             {
+                //paramètres
                 List<Client> retour = new List<Client>();
                 List<int> cltList = new List<int>();
+                Client client;
+                bool contactmail = false;
+                bool clt_contactsms;
+                int clt_type;
 
                 //connection à la base de données  
                 MySqlCommand cmd = new MySqlCommand(Bdd.listClientAddToday, Bdd.connexion());
@@ -323,11 +334,6 @@ namespace App_pressing_Loreau.Data.DAO
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
-                Client client;
-                bool contactmail = false;
-                bool clt_contactsms;
-                int clt_type;
-
                 while (msdr.Read())
                 {
                     contactmail = ((msdr["clt_contactmail"].ToString()).Equals("False")) ? false : true;
@@ -352,18 +358,22 @@ namespace App_pressing_Loreau.Data.DAO
                     retour.Add(client);
                 }
                 msdr.Dispose();
+
                 Bdd.deconnexion();
                 return retour;
             }
             catch (Exception Ex)
             {
-                MessageBox.Show("ERREUR BDD : Impossible de selectionner une liste des clients .");
+                MessageBox.Show("ERREUR BDD : listClientAddToday");
                 Bdd.deconnexion();
                 return null;
             }
         }
 
-        //Update un client
+
+        /* Update un client
+         * @param client : client à update
+         */
         public static int updateClient(Client client)
         {
             try
@@ -396,13 +406,16 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
+                MessageBox.Show("ERREUR BDD : updateClient");
                 Bdd.deconnexion();
                 return 0;
             }
         }
 
-        //Delete un client
+
+        /* Delete un client
+         * @param client : client à delete
+         */
         public static int deleteClient(Client client)
         {
             try
@@ -421,13 +434,15 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
+                MessageBox.Show("ERREUR BDD : deleteClient");
                 Bdd.deconnexion();
                 return 0;
             }
         }
 
-        //Last Client Inserted
+
+        /* Last Client Inserted
+         */
         public static Client lastClient()
         {
             try
@@ -446,16 +461,25 @@ namespace App_pressing_Loreau.Data.DAO
                 msdr.Dispose();
                 Bdd.deconnexion();
 
+                //retourne un client sans commandes
                 return ClientDAO.selectClientById(clt_id, false, false, false); ;
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
+                MessageBox.Show("ERREUR BDD : lastClient");
                 Bdd.deconnexion();
                 return null;
             }
         }
 
+
+        /* Vérifie si le client existe déja en BDD
+         * @param nom : nom du client
+         * @param prenom : prenom du client
+         * @return bool
+         *      false : le client n'existe pas en Bdd
+         *      true : le client existe en Bdd
+         */
         public static bool verificationNomEtPrenom(String nom, String prenom)
         {
             try
@@ -484,7 +508,7 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                MessageBox.Show("ERREUR BDD :Impossible de vérifier si le client existe.");
+                MessageBox.Show("ERREUR BDD : verificationNomEtPrenom");
                 Bdd.deconnexion();
                 return true;
             }
