@@ -8,17 +8,20 @@ using MySql.Data.MySqlClient;
 using App_pressing_Loreau.Model.DTO;
 using App_pressing_Loreau.Data;
 using App_pressing_Loreau.Model;
+using System.Windows;
 
 namespace App_pressing_Loreau.Data.DAO
 {
     class ArticleDAO
     {
-        //Inserer un article dans la base de données
+        /* Inserer un article dans la base de données
+         * @param article : article à insérer
+         */
         public static int insertArticle(Article article)
         {
             try
             {
-                int retour = -1;
+                int retour = 0;
                 //connection à la base de données
                 MySqlCommand cmd = new MySqlCommand(Bdd.insertArticle, Bdd.connexion());
 
@@ -46,13 +49,16 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un article dans la base de données."));
+                MessageBox.Show("ERREUR BDD : InsertArticle");
                 Bdd.deconnexion();
                 return 0;
             }
         }
 
-        //Selectionner un article à partir de son id
+
+        /* Selectionner un article à partir de son id
+         * @param art_id : id de l'article à selectionner
+         */
         public static Article selectArticleById(int art_id)
         {
             try
@@ -102,13 +108,16 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un article dans la base de données."));
+                MessageBox.Show("ERREUR BDD : SelectArticleById");
                 Bdd.deconnexion();
                 return null;
             }
         }
 
-        //Selectionner l'ensemble des articles d'une commande dans la base de données
+
+        /* Selectionner l'ensemble des articles d'une commande dans la base de données
+         * @param cmd_id : id d'une commande
+         */
         public static List<Article> selectArticleByIdCmd(int cmd_id)
         {
             try
@@ -157,14 +166,14 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un article dans la base de données."));
+                MessageBox.Show("ERREUR BDD : SelectArticleByIdCmd");
                 Bdd.deconnexion();
                 return null;
             }
         }
 
-        /*
-         * Selectionner les articles rendu en fonction de la date
+
+        /* Selectionner les articles rendu en fonction de la date
          * @Param plage date :
          * 1 : par jour
          * 2 : par semaine
@@ -180,7 +189,7 @@ namespace App_pressing_Loreau.Data.DAO
                 //connection à la base de données
                 MySqlCommand cmd = new MySqlCommand(Bdd.selectArticleRenduByDate, Bdd.connexion());
 
-                //ajout des parametres
+                #region ajout des parametres
                 switch (plageDate)
                 {
                     //par jour
@@ -204,6 +213,7 @@ namespace App_pressing_Loreau.Data.DAO
                         cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
                         break;
                 }
+                #endregion
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
@@ -223,8 +233,8 @@ namespace App_pressing_Loreau.Data.DAO
 
                     retour.Add(article);
                 }
-                msdr.Dispose();
 
+                msdr.Dispose();
                 Bdd.deconnexion();
 
                 #region ajout des types, des departements et des places convoyeurs
@@ -239,13 +249,16 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un article dans la base de données."));
+                MessageBox.Show("ERREUR BDD : SelectArticleRenduByDate");
                 Bdd.deconnexion();
                 return null;
             }
         }
 
-        //Update un article dans la base de données
+
+        /* Update un article dans la base de données
+         * @param article : article à update
+         */
         public static int updateArticle(Article article)
         {
             try
@@ -254,7 +267,7 @@ namespace App_pressing_Loreau.Data.DAO
                 //connection à la base de données
                 MySqlCommand cmd = new MySqlCommand(Bdd.updateArticle, Bdd.connexion());
 
-                //ajout des parametres
+                #region ajout des parametres
                 if (article.photo.Equals(""))
                     cmd.Parameters.AddWithValue("photo", null);
                 else
@@ -271,28 +284,33 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("conv_id", article.convoyeur.id);
                 cmd.Parameters.AddWithValue("cmd_id", article.fk_commande);
                 cmd.Parameters.AddWithValue("typ_id", article.type.id);
+
                 if (article.date_rendu.Equals(DateTime.MinValue))
                     cmd.Parameters.AddWithValue("date_rendu", null);
                 else
                     cmd.Parameters.AddWithValue("date_rendu", article.date_rendu);
-                cmd.Parameters.AddWithValue("id", article.id);
 
-                retour = cmd.ExecuteNonQuery();
-                Bdd.deconnexion();
+                cmd.Parameters.AddWithValue("id", article.id);
+                #endregion
 
                 //Execute la commande
+                retour = cmd.ExecuteNonQuery();
+                Bdd.deconnexion();
 
                 return retour;
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un article dans la base de données."));
+                MessageBox.Show("ERREUR BDD : UpdateArticle");
                 Bdd.deconnexion();
                 return 0;
             }
         }
 
-        //Delete un article dans la base de données
+
+        /* Delete un article dans la base de données
+         * @param article : article à supprimer
+         */
         public static int deleteArticle(Article article)
         {
             try
@@ -311,13 +329,16 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un article dans la base de données."));
+                MessageBox.Show("ERREUR BDD : DeleteArticle");
                 Bdd.deconnexion();
                 return 0;
             }
         }
 
-        //Last Article Inserted
+
+        /* Last Article Inserted
+         * 
+         */
         public static Article lastArticle()
         {
             int art_id = 0;
@@ -326,7 +347,7 @@ namespace App_pressing_Loreau.Data.DAO
                 //connection à la base de données  
                 MySqlCommand cmd = new MySqlCommand(Bdd.lastArticle, Bdd.connexion());
 
-                //Execute la commandekkke
+                //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
                 while (msdr.Read())
                 {
@@ -338,7 +359,7 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
+                MessageBox.Show("ERREUR BDD : LastArticle");
                 Bdd.deconnexion();
                 return null;
             }
