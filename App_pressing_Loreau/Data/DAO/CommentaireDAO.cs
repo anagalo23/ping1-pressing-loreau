@@ -15,6 +15,7 @@ namespace App_pressing_Loreau.Data.DAO
         {
             try
             {
+                int retour = 0;
                 //connection à la base de données
                 MySqlCommand cmd = new MySqlCommand(Bdd.insertCommentaire, Bdd.connexion());
 
@@ -22,11 +23,14 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("photo", commentaire.com);
 
                 //Execute la commande
-                return cmd.ExecuteNonQuery();
+                retour = cmd.ExecuteNonQuery();
+                Bdd.deconnexion();
+                return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un article dans la base de données."));
+                Bdd.deconnexion();
                 return 0;
             }
         }
@@ -52,11 +56,13 @@ namespace App_pressing_Loreau.Data.DAO
                     retour.Add(commentaire);
                 }
                 msdr.Dispose();
+                Bdd.deconnexion();
                 return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                Bdd.deconnexion();
                 return null;
             }
 
@@ -85,11 +91,13 @@ namespace App_pressing_Loreau.Data.DAO
                         msdr["com_com"].ToString());
                 }
                 msdr.Dispose();
+                Bdd.deconnexion();
                 return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un département dans la base de données."));
+                Bdd.deconnexion();
                 return null;
             }
 
@@ -101,6 +109,7 @@ namespace App_pressing_Loreau.Data.DAO
         {
             try
             {
+                int retour = 0;
                 //connection à la base de données
                 MySqlCommand cmd = new MySqlCommand(Bdd.updateCommentaire, Bdd.connexion());
 
@@ -109,11 +118,14 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("nom", commentaire.com);
 
                 //Execute la commande
-                return cmd.ExecuteNonQuery();
+                retour = cmd.ExecuteNonQuery();
+                Bdd.deconnexion();
+                return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
+                Bdd.deconnexion();
                 return 0;
             }
         }
@@ -123,6 +135,7 @@ namespace App_pressing_Loreau.Data.DAO
         {
             try
             {
+                int retour = 0;
                 //connection à la base de données
                 MySqlCommand cmd = new MySqlCommand(Bdd.deleteCommentaire, Bdd.connexion());
 
@@ -130,11 +143,14 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("id", commentaire.id);
 
                 //Execute la commande
-                return cmd.ExecuteNonQuery();
+                retour = cmd.ExecuteNonQuery();
+                Bdd.deconnexion();
+                return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
+                Bdd.deconnexion();
                 return 0;
             }
         }

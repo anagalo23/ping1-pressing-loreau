@@ -23,11 +23,14 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("encombrement", convoyeur.encombrement);
 
                 //Execute la commande
-               return cmd.ExecuteNonQuery();
+                int retour = cmd.ExecuteNonQuery();
+                Bdd.deconnexion();
+                return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un convoyeur dans la base de données."));
+                Bdd.deconnexion();
                 return 0;
             }
         }
@@ -38,10 +41,10 @@ namespace App_pressing_Loreau.Data.DAO
             try
             {
                 List<PlaceConvoyeur> retour = new List<PlaceConvoyeur>();
-                
+
                 //connection à la base de données  
                 MySqlCommand cmd = new MySqlCommand(Bdd.selectConvoyeurs, Bdd.connexion());
-                
+
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
                 PlaceConvoyeur convoyeur;
@@ -54,11 +57,13 @@ namespace App_pressing_Loreau.Data.DAO
                     retour.Add(convoyeur);
                 }
                 msdr.Dispose();
+                Bdd.deconnexion();
                 return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de convoyeurs dans la base de données."));
+                Bdd.deconnexion();
                 return null;
             }
         }
@@ -69,7 +74,7 @@ namespace App_pressing_Loreau.Data.DAO
             try
             {
                 PlaceConvoyeur retour = new PlaceConvoyeur();
-                
+
                 //connection à la base de données
                 MySqlCommand cmd = new MySqlCommand(Bdd.selectConvoyeurById, Bdd.connexion());
 
@@ -86,11 +91,13 @@ namespace App_pressing_Loreau.Data.DAO
                         float.Parse(msdr["conv_encombrement"].ToString()));
                 }
                 msdr.Dispose();
+                Bdd.deconnexion();
                 return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un convoyeur dans la base de données."));
+                Bdd.deconnexion();
                 return null;
             }
         }
@@ -117,11 +124,13 @@ namespace App_pressing_Loreau.Data.DAO
                     retour.Add(convoyeur);
                 }
                 msdr.Dispose();
+                Bdd.deconnexion();
                 return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de convoyeurs dans la base de données."));
+                Bdd.deconnexion();
                 return null;
             }
         }
@@ -141,11 +150,14 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("id2", conv.id);
 
                 //Execute la commande
-                return cmd.ExecuteNonQuery();
+                int retour = cmd.ExecuteNonQuery();
+                Bdd.deconnexion();
+                return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
+                Bdd.deconnexion();
                 return 0;
             }
         }
@@ -162,11 +174,14 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("id", conv.id);
 
                 //Execute la commande
-                return cmd.ExecuteNonQuery();
+                int retour = cmd.ExecuteNonQuery();
+                Bdd.deconnexion();
+                return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
+                Bdd.deconnexion();
                 return 0;
             }
         }

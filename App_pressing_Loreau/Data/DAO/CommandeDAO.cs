@@ -18,6 +18,7 @@ namespace App_pressing_Loreau.Data.DAO
         {
             try
             {
+                int retour = 0;
                 //connection à la base de données
                 MySqlCommand cmd = new MySqlCommand(Bdd.insertCommande, Bdd.connexion());
 
@@ -27,11 +28,14 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("remise", commande.remise);
                 cmd.Parameters.AddWithValue("clt_id", commande.client.id);
 
-                return cmd.ExecuteNonQuery();
+                retour = cmd.ExecuteNonQuery();
+                Bdd.deconnexion();
+                return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'une commande dans la base de données."));
+                Bdd.deconnexion();
                 return 0;
             }
         }
@@ -66,6 +70,7 @@ namespace App_pressing_Loreau.Data.DAO
                     retour.Add(commande);
                 }
                 msdr.Dispose();
+                Bdd.deconnexion();
 
                 #region ajout paiement
                 if (addPaiement)
@@ -99,6 +104,7 @@ namespace App_pressing_Loreau.Data.DAO
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                Bdd.deconnexion();
                 return null;
             }
         }
@@ -136,6 +142,7 @@ namespace App_pressing_Loreau.Data.DAO
                     retour.Add(commande);
                 }
                 msdr.Dispose();
+                Bdd.deconnexion();
 
                 #region ajout paiement
                 if (addPaiement)
@@ -169,6 +176,7 @@ namespace App_pressing_Loreau.Data.DAO
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                Bdd.deconnexion();
                 return null;
             }
         }
@@ -211,6 +219,7 @@ namespace App_pressing_Loreau.Data.DAO
                     id_clt = Int32.Parse(msdr["cmd_clt_id"].ToString());
                 }
                 msdr.Dispose();
+                Bdd.deconnexion();
 
                 #region ajout paiement
                 if (addPaiement)
@@ -237,7 +246,7 @@ namespace App_pressing_Loreau.Data.DAO
                     {
                         MessageBox.Show("Erreur (ComomandeDAO.cs:232) : impossible de rechercher un client dont l'id vaut 0");
                     }
-                        
+
                 }
                 #endregion
 
@@ -247,6 +256,7 @@ namespace App_pressing_Loreau.Data.DAO
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                Bdd.deconnexion();
                 return null;
             }
         }
@@ -270,11 +280,14 @@ namespace App_pressing_Loreau.Data.DAO
                 {
                     retour = float.Parse(msdr["total"].ToString());
                 }
+                msdr.Dispose();
+                Bdd.deconnexion();
                 return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                Bdd.deconnexion();
                 return -2;
             }
         }
@@ -298,11 +311,14 @@ namespace App_pressing_Loreau.Data.DAO
                 {
                     retour = float.Parse(msdr["total"].ToString());
                 }
+                msdr.Dispose();
+                Bdd.deconnexion();
                 return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                Bdd.deconnexion();
                 return -2;
             }
         }
@@ -316,79 +332,81 @@ namespace App_pressing_Loreau.Data.DAO
          */
         public static List<Commande> listCommandeRecuToday(int plageDate)
         {
-            /*try
-            {*/
-            List<Commande> retour = new List<Commande>();
-            List<int> cltList = new List<int>();
-
-            //connection à la base de données  
-            MySqlCommand cmd = new MySqlCommand(Bdd.listCommandeRecuToday, Bdd.connexion());
-
-            //ajout des parametres
-            switch (plageDate)
+            try
             {
-                //par jour
-                case 1:
-                    cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0));
-                    cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
-                    break;
-                //par semaine
-                case 2:
-                    cmd.Parameters.AddWithValue("startTime", new DateTime(SecondaryDateTime.GetMonday(DateTime.Now).Year, SecondaryDateTime.GetMonday(DateTime.Now).Month, SecondaryDateTime.GetMonday(DateTime.Now).Day, 0, 0, 0));
-                    cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
-                    break;
-                //par mois
-                case 3:
-                    cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0));
-                    cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
-                    break;
-                //par année
-                case 4:
-                    cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0));
-                    cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
-                    break;
+                List<Commande> retour = new List<Commande>();
+                List<int> cltList = new List<int>();
+
+                //connection à la base de données  
+                MySqlCommand cmd = new MySqlCommand(Bdd.listCommandeRecuToday, Bdd.connexion());
+
+                //ajout des parametres
+                switch (plageDate)
+                {
+                    //par jour
+                    case 1:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par semaine
+                    case 2:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(SecondaryDateTime.GetMonday(DateTime.Now).Year, SecondaryDateTime.GetMonday(DateTime.Now).Month, SecondaryDateTime.GetMonday(DateTime.Now).Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par mois
+                    case 3:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par année
+                    case 4:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                }
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                Commande commande;
+                int id_clt;
+                while (msdr.Read())
+                {
+                    commande = new Commande(
+                        Int32.Parse(msdr["cmd_id"].ToString()),
+                        DateTime.Parse(msdr["cmd_date"].ToString()),
+                        Boolean.Parse(msdr["cmd_payee"].ToString()),
+                        float.Parse(msdr["cmd_remise"].ToString()));
+                    if (!msdr["cmd_date_rendu"].ToString().Equals(""))
+                        commande.date_rendu = DateTime.Parse(msdr["cmd_date_rendu"].ToString());
+                    id_clt = Int32.Parse(msdr["cmd_clt_id"].ToString());
+                    retour.Add(commande);
+                    cltList.Add(id_clt);
+                }
+                msdr.Dispose();
+                Bdd.deconnexion();
+                #region ajout article
+
+                foreach (Commande comm in retour)
+                    comm.listArticles = ArticleDAO.selectArticleByIdCmd(comm.id);
+
+                #endregion
+
+                #region ajout client
+                for (int i = 0; i < retour.Count; i++)
+                {
+                    //parametres en false afin de ne pas boucler
+                    retour[i].client = ClientDAO.selectClientById(cltList[i], false, false, false);
+                }
+                #endregion
+
+                return retour;
             }
-
-            //Execute la commande
-            MySqlDataReader msdr = cmd.ExecuteReader();
-            Commande commande;
-            int id_clt;
-            while (msdr.Read())
-            {
-                commande = new Commande(
-                    Int32.Parse(msdr["cmd_id"].ToString()),
-                    DateTime.Parse(msdr["cmd_date"].ToString()),
-                    Boolean.Parse(msdr["cmd_payee"].ToString()),
-                    float.Parse(msdr["cmd_remise"].ToString()));
-                if (!msdr["cmd_date_rendu"].ToString().Equals(""))
-                    commande.date_rendu = DateTime.Parse(msdr["cmd_date_rendu"].ToString());
-                id_clt = Int32.Parse(msdr["cmd_clt_id"].ToString());
-                retour.Add(commande);
-                cltList.Add(id_clt);
-            }
-            msdr.Dispose();
-            #region ajout article
-
-            foreach (Commande comm in retour)
-                comm.listArticles = ArticleDAO.selectArticleByIdCmd(comm.id);
-
-            #endregion
-
-            #region ajout client
-            for (int i = 0; i < retour.Count; i++)
-            {
-                //parametres en false afin de ne pas boucler
-                retour[i].client = ClientDAO.selectClientById(cltList[i], false, false, false);
-            }
-            #endregion
-
-            return retour;
-            /*}
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                Bdd.deconnexion();
                 return null;
-            }*/
+            }
         }
 
 
@@ -397,6 +415,7 @@ namespace App_pressing_Loreau.Data.DAO
         {
             try
             {
+                int retour = 0;
                 //connection à la base de données
                 MySqlCommand cmd = new MySqlCommand(Bdd.updateCommande, Bdd.connexion());
 
@@ -411,11 +430,14 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("date_rendu", commande.date_rendu);
 
 
-                return cmd.ExecuteNonQuery();
+                retour = cmd.ExecuteNonQuery();
+                Bdd.deconnexion();
+                return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'une commande dans la base de données."));
+                Bdd.deconnexion();
                 return 0;
             }
         }
@@ -425,17 +447,21 @@ namespace App_pressing_Loreau.Data.DAO
         {
             try
             {
+                int retour = 0;
                 //connection à la base de données
                 MySqlCommand cmd = new MySqlCommand(Bdd.deleteCommande, Bdd.connexion());
 
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("id", commande.id);
 
-                return cmd.ExecuteNonQuery();
+                retour = cmd.ExecuteNonQuery();
+                Bdd.deconnexion();
+                return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'une commande dans la base de données."));
+                Bdd.deconnexion();
                 return 0;
             }
         }
@@ -455,11 +481,13 @@ namespace App_pressing_Loreau.Data.DAO
                     cmd_id = Int32.Parse(msdr["cmd_id"].ToString());
                 }
                 msdr.Dispose();
+                Bdd.deconnexion();
                 return CommandeDAO.selectCommandeById(cmd_id, false, false, false);
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
+                Bdd.deconnexion();
                 return null;
             }
         }
@@ -478,17 +506,19 @@ namespace App_pressing_Loreau.Data.DAO
 
                 //Execute la commandekkke
                 MySqlDataReader msdr = cmd.ExecuteReader();
-                
+
                 while (msdr.Read())
                 {
                     result = Int32.Parse(msdr["cmd_id"].ToString());
                 }
                 msdr.Dispose();
+                Bdd.deconnexion();
                 return result != -1;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
+                Bdd.deconnexion();
                 return false;
             }
         }

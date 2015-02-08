@@ -11,10 +11,11 @@ namespace App_pressing_Loreau.Data.DAO
     class EmployeDAO
     {
         //Inserer un département dans la base de données
-        public static void insertEmploye(Employe employee)
+        public static int insertEmploye(Employe employee)
         {
             try
             {
+                int retour = 0;
                 //connection à la base de données
                 MySqlCommand cmd = new MySqlCommand(Bdd.insertEmploye, Bdd.connexion());
 
@@ -23,11 +24,15 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("prenom", employee.prenom);
 
                 //Execute la commande
-                int retour = cmd.ExecuteNonQuery();
+                retour = cmd.ExecuteNonQuery();
+                Bdd.deconnexion();
+                return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un departement dans la base de données."));
+                Bdd.deconnexion();
+                return 0;
             }
         }
 
@@ -53,11 +58,13 @@ namespace App_pressing_Loreau.Data.DAO
                     retour.Add(employee);
                 }
                 msdr.Dispose();
+                Bdd.deconnexion();
                 return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de département dans la base de données."));
+                Bdd.deconnexion();
                 return null;
             }
         }
@@ -85,11 +92,13 @@ namespace App_pressing_Loreau.Data.DAO
                         msdr["emp_prenom"].ToString());
                 }
                 msdr.Dispose();
+                Bdd.deconnexion();
                 return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un département dans la base de données."));
+                Bdd.deconnexion();
                 return null;
             }
 
@@ -101,6 +110,7 @@ namespace App_pressing_Loreau.Data.DAO
         {
             try
             {
+                int retour = 0;
                 //connection à la base de données
                 MySqlCommand cmd = new MySqlCommand(Bdd.updateEmploye, Bdd.connexion());
 
@@ -111,11 +121,14 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("id", employee.id);
 
                 //Execute la commande
-                return cmd.ExecuteNonQuery();
+                retour = cmd.ExecuteNonQuery();
+                Bdd.deconnexion();
+                return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un departement dans la base de données."));
+                Bdd.deconnexion();
                 return 0;
             }
         }
@@ -125,6 +138,7 @@ namespace App_pressing_Loreau.Data.DAO
         {
             try
             {
+                int retour = 0;
                 //connection à la base de données
                 MySqlCommand cmd = new MySqlCommand(Bdd.deleteEmploye, Bdd.connexion());
 
@@ -132,11 +146,14 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("id", employee.id);
 
                 //Execute la commande
-                return cmd.ExecuteNonQuery();
+                retour = cmd.ExecuteNonQuery();
+                Bdd.deconnexion();
+                return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un departement dans la base de données."));
+                Bdd.deconnexion();
                 return 0;
             }
         }

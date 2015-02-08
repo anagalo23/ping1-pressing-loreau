@@ -19,6 +19,8 @@ namespace App_pressing_Loreau.Data.DAO
         {
             try
             {
+                int retour = 0;
+
                 //connection à la base de données
                 MySqlCommand cmd = new MySqlCommand(Bdd.insertClient, Bdd.connexion());
 
@@ -35,11 +37,16 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("type", client.type);
 
                 //Execute la commande
-                return cmd.ExecuteNonQuery();
+                retour = cmd.ExecuteNonQuery();
+
+                Bdd.deconnexion();
+
+                return retour;
             }
             catch (Exception Ex)
             {
                 MessageBox.Show("ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données.");
+                Bdd.deconnexion();
                 return 0;
             }
         }
@@ -113,11 +120,13 @@ namespace App_pressing_Loreau.Data.DAO
                     retour.Add(client);
                 }
                 msdr.Dispose();
+                Bdd.deconnexion();
                 return retour;
             }
             catch (Exception Ex)
             {
                 MessageBox.Show("ERREUR BDD : Impossible de selectionner une liste de clients dans la base de données.");
+                Bdd.deconnexion();
                 return null;
             }
 
@@ -164,11 +173,13 @@ namespace App_pressing_Loreau.Data.DAO
                     retour.Add(client);
                 }
                 msdr.Dispose();
+                Bdd.deconnexion();
                 return retour;
             }
             catch (Exception Ex)
             {
                 MessageBox.Show("ERREUR BDD : Impossible de selectionner une liste de clients pro dans la base de données.");
+                Bdd.deconnexion();
                 return null;
             }
         }
@@ -199,7 +210,7 @@ namespace App_pressing_Loreau.Data.DAO
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
 
-                
+
 
                 msdr.Read();
                 client.id = Int32.Parse(msdr["clt_id"].ToString());
@@ -247,6 +258,8 @@ namespace App_pressing_Loreau.Data.DAO
 
                 msdr.Dispose();
 
+                Bdd.deconnexion();
+
                 #region ajout des commandes
                 if (addCommandes)
                 {
@@ -259,7 +272,8 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                MessageBox.Show("ERREUR BDD (ClientDAO.cs:257): Impossible de selectionner un client à l'aide de son ID. \nnom : " + client.nom +"\nid : "+client.id);
+                MessageBox.Show("ERREUR BDD (ClientDAO.cs:257): Impossible de selectionner un client à l'aide de son ID. \nnom : " + client.nom + "\nid : " + client.id);
+                Bdd.deconnexion();
                 return null;
             }
 
@@ -338,11 +352,13 @@ namespace App_pressing_Loreau.Data.DAO
                     retour.Add(client);
                 }
                 msdr.Dispose();
+                Bdd.deconnexion();
                 return retour;
             }
             catch (Exception Ex)
             {
                 MessageBox.Show("ERREUR BDD : Impossible de selectionner une liste des clients .");
+                Bdd.deconnexion();
                 return null;
             }
         }
@@ -352,6 +368,8 @@ namespace App_pressing_Loreau.Data.DAO
         {
             try
             {
+                int retour = 0;
+
                 //connection à la base de données
                 MySqlCommand cmd = new MySqlCommand(Bdd.updateClient, Bdd.connexion());
 
@@ -372,11 +390,14 @@ namespace App_pressing_Loreau.Data.DAO
 
 
                 //Execute la commande
-                return cmd.ExecuteNonQuery();
+                retour = cmd.ExecuteNonQuery();
+                Bdd.deconnexion();
+                return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
+                Bdd.deconnexion();
                 return 0;
             }
         }
@@ -386,6 +407,7 @@ namespace App_pressing_Loreau.Data.DAO
         {
             try
             {
+                int retour = 0;
                 //connection à la base de données
                 MySqlCommand cmd = new MySqlCommand(Bdd.deleteClient, Bdd.connexion());
 
@@ -393,11 +415,14 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("id", client.id);
 
                 //Execute la commande
-                return cmd.ExecuteNonQuery();
+                retour = cmd.ExecuteNonQuery();
+                Bdd.deconnexion();
+                return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
+                Bdd.deconnexion();
                 return 0;
             }
         }
@@ -419,13 +444,14 @@ namespace App_pressing_Loreau.Data.DAO
                     clt_id = Int32.Parse(msdr["clt_id"].ToString());
                 }
                 msdr.Dispose();
-                Client client = new Client();
-                client = ClientDAO.selectClientById(clt_id, false, false, false);
-                return client;
+                Bdd.deconnexion();
+
+                return ClientDAO.selectClientById(clt_id, false, false, false); ;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un client dans la base de données."));
+                Bdd.deconnexion();
                 return null;
             }
         }
@@ -453,12 +479,13 @@ namespace App_pressing_Loreau.Data.DAO
                     client.id = Int32.Parse(msdr["clt_id"].ToString());
                 }
                 msdr.Dispose();
-
-                return client!=null;
+                Bdd.deconnexion();
+                return client != null;
             }
             catch (Exception Ex)
             {
                 MessageBox.Show("ERREUR BDD :Impossible de vérifier si le client existe.");
+                Bdd.deconnexion();
                 return true;
             }
         }

@@ -38,7 +38,6 @@ namespace App_pressing_Loreau.Data
 
         public static void deconnexion()
         {
-
             try { MSConnexion.Close(); }
             finally { MSConnexion = null; }
 
