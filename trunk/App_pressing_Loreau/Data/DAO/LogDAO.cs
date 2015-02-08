@@ -24,10 +24,12 @@ namespace App_pressing_Loreau.Data.DAO
 
                 //Execute la commande
                 int retour = cmd.ExecuteNonQuery();
+                Bdd.deconnexion();
                 return retour;
             }
             catch (Exception Ex)
             {
+                Bdd.deconnexion();
                 return 0;
             }
         }

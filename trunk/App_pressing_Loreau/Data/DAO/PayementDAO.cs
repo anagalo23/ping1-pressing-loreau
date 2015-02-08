@@ -25,7 +25,9 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("commande_id", paiement.fk_cmd_id);
 
                 //Execute la commande
-                return cmd.ExecuteNonQuery();
+                int retour = cmd.ExecuteNonQuery();
+                Bdd.deconnexion();
+                return retour;
             }
             catch (Exception Ex)
             {
@@ -58,14 +60,16 @@ namespace App_pressing_Loreau.Data.DAO
                         float.Parse(msdr["pai_montant"].ToString()),
                         msdr["pai_name"].ToString(),
                         Int32.Parse(msdr["pai_cmd_id"].ToString()));
-                        retour.Add(payement);
+                    retour.Add(payement);
                 }
                 msdr.Dispose();
+                Bdd.deconnexion();
                 return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de types dans la base de données."));
+                Bdd.deconnexion();
                 return null;
             }
         }
@@ -94,14 +98,16 @@ namespace App_pressing_Loreau.Data.DAO
                         float.Parse(msdr["pai_montant"].ToString()),
                         msdr["pai_type"].ToString(),
                         Int32.Parse(msdr["pai_cmd_id"].ToString()));
-                        retour.Add(payement);
+                    retour.Add(payement);
                 }
                 msdr.Dispose();
+                Bdd.deconnexion();
                 return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de types dans la base de données."));
+                Bdd.deconnexion();
                 return null;
             }
         }
@@ -123,11 +129,14 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("id", paiement.id);
 
                 //Execute la commande
-                return cmd.ExecuteNonQuery();
+                int retour = cmd.ExecuteNonQuery();
+                Bdd.deconnexion();
+                return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
+                Bdd.deconnexion();
                 return 0;
             }
         }
@@ -144,11 +153,14 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("id", paiement.id);
 
                 //Execute la commande
-                return cmd.ExecuteNonQuery();
+                int retour = cmd.ExecuteNonQuery();
+                Bdd.deconnexion();
+                return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
+                Bdd.deconnexion();
                 return 0;
             }
         }
@@ -197,11 +209,13 @@ namespace App_pressing_Loreau.Data.DAO
                     retour.Add(payement);
                 }
                 msdr.Dispose();
+                Bdd.deconnexion();
                 return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de types dans la base de données."));
+                Bdd.deconnexion();
                 return null;
             }
         }

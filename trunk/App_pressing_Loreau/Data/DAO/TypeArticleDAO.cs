@@ -14,7 +14,7 @@ namespace App_pressing_Loreau.Data.DAO
         public static int insertType(TypeArticle type)
         {
             try
-            {                
+            {
                 //connection à la base de données
                 MySqlCommand cmd = new MySqlCommand(Bdd.insertType, Bdd.connexion());
 
@@ -26,11 +26,14 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("id_dep", type.departement.id);
 
                 //Execute la commande
-                return cmd.ExecuteNonQuery();
+                int retour = cmd.ExecuteNonQuery();
+                Bdd.deconnexion();
+                return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
+                Bdd.deconnexion();
                 return 0;
             }
         }
@@ -41,7 +44,7 @@ namespace App_pressing_Loreau.Data.DAO
             try
             {
                 List<TypeArticle> retour = new List<TypeArticle>();
-                
+
                 //connection à la base de données  
                 MySqlCommand cmd = new MySqlCommand(Bdd.selectTypes, Bdd.connexion());
 
@@ -60,6 +63,7 @@ namespace App_pressing_Loreau.Data.DAO
                     retour.Add(type);
                 }
                 msdr.Dispose();
+                Bdd.deconnexion();
 
                 #region ajout des départements
 
@@ -73,6 +77,7 @@ namespace App_pressing_Loreau.Data.DAO
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de types dans la base de données."));
+                Bdd.deconnexion();
                 return null;
             }
         }
@@ -103,9 +108,9 @@ namespace App_pressing_Loreau.Data.DAO
                         new Departement(Int32.Parse(msdr["typ_dep_id"].ToString()), null));
                 }
                 msdr.Dispose();
-
+                Bdd.deconnexion();
                 #region ajout des départements
-                    retour.departement = DepartementDAO.selectDepartementById(retour.departement.id);
+                retour.departement = DepartementDAO.selectDepartementById(retour.departement.id);
                 #endregion
 
                 return retour;
@@ -113,6 +118,7 @@ namespace App_pressing_Loreau.Data.DAO
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'une liste de types dans la base de données."));
+                Bdd.deconnexion();
                 return null;
             }
         }
@@ -123,7 +129,7 @@ namespace App_pressing_Loreau.Data.DAO
             try
             {
                 List<TypeArticle> retour = new List<TypeArticle>();
-                
+
                 //connection à la base de données
                 MySqlCommand cmd = new MySqlCommand(Bdd.selectTypeByDepId, Bdd.connexion());
 
@@ -145,7 +151,7 @@ namespace App_pressing_Loreau.Data.DAO
                     retour.Add(type);
                 }
                 msdr.Dispose();
-
+                Bdd.deconnexion();
                 #region ajout des départements
 
                 foreach (TypeArticle typ in retour)
@@ -158,6 +164,7 @@ namespace App_pressing_Loreau.Data.DAO
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans la selection d'un département dans la base de données."));
+                Bdd.deconnexion();
                 return null;
             }
         }
@@ -180,11 +187,14 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("idT", type.id);
 
                 //Execute la commande
-                return cmd.ExecuteNonQuery();
+                int retour = cmd.ExecuteNonQuery();
+                Bdd.deconnexion();
+                return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
+                Bdd.deconnexion();
                 return 0;
             }
         }
@@ -201,11 +211,14 @@ namespace App_pressing_Loreau.Data.DAO
                 cmd.Parameters.AddWithValue("id", type.id);
 
                 //Execute la commande
-                return cmd.ExecuteNonQuery();
+                int retour = cmd.ExecuteNonQuery();
+                Bdd.deconnexion();
+                return retour;
             }
             catch (Exception Ex)
             {
                 //LogDAO.insertLog(new Log(DateTime.Now, "ERREUR BDD : Erreur dans l'insertion d'un type dans la base de données."));
+                Bdd.deconnexion();
                 return 0;
             }
         }
