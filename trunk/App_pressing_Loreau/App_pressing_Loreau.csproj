@@ -137,6 +137,7 @@
     <Compile Include="Helper\ClasseGlobale.cs" />
     <Compile Include="Helper\IPageViewModel.cs" />
     <Compile Include="Model\DTO\Commentaire.cs" />
+    <Compile Include="Model\CashProperties.cs" />
     <Compile Include="Model\FactureExcel.cs" />
     <Compile Include="Model\LectureExcel.cs" />
     <Compile Include="Model\LogExcel.cs" />
@@ -461,6 +462,7 @@
     <None Include="Resources\PatternFile\FacturePattern.xlsx" />
     <None Include="Resources\PatternFile\LecturePattern.xlsx" />
     <None Include="Resources\PatternFile\LogPattern.xlsx" />
+    <None Include="Resources\properties.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
