@@ -37,11 +37,39 @@ namespace App_pressing_Loreau.ViewModel
 
         private String _label_commandeSelectionner;
         #endregion
+
+        #region Accesseurs et mutateurs
+        public List<CommandeConcernantRA_DATA> ContentCommandeConcernant
+        {
+            get { return _contentCommandeConcernant; }
+            set
+            {
+                if (value != _contentCommandeConcernant)
+                {
+                    _contentCommandeConcernant = value;
+                    OnPropertyChanged("ContentCommandeConcernant");
+                }
+            }
+
+        }
+
+        public List<CommandeConcernantRA_DATA> ListeRechercheClient
+        {
+            get { return _listeRechercheClient; }
+            set
+            {
+                _listeRechercheClient = value;
+                OnPropertyChanged("ListeRechercheClient");
+            }
+        }
+        #endregion
+
         public String Name
         {
             get { return ""; }
 
         }
+
         #region Constructeur
         public RestitutionArticlesVM()
         {
@@ -58,7 +86,7 @@ namespace App_pressing_Loreau.ViewModel
         #endregion
 
 
-        #region Propriétés et commandes
+        #region Propriétés
         public int Txb_restitutionArticles_idFactures
         {
             get { return _txb_restitutionArticles_idFactures; }
@@ -106,6 +134,13 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
+        #endregion
+
+
+        #region Commandes
+
+        #region Champ de recherche par id de commande
+
         public ICommand Btn_restitutionArticles_ok
         {
             get
@@ -116,115 +151,14 @@ namespace App_pressing_Loreau.ViewModel
             }
 
         }
-
-        public ICommand Btn_restitutionArticles_valider
-        {
-            get
-            {
-                return new RelayCommand(
-                    p => ContenuDeLaRecherche(),
-                    p => Txb_restitutionArticles_choix != null);
-            }
-        }
-
-        public List<CommandeConcernantRA_DATA> ContentCommandeConcernant
-        {
-            get { return _contentCommandeConcernant; }
-            set
-            {
-                if (value != _contentCommandeConcernant)
-                {
-                    _contentCommandeConcernant = value;
-                    OnPropertyChanged("ContentCommandeConcernant");
-                }
-            }
-
-        }
-
-        public List<CommandeConcernantRA_DATA> ListeRechercheClient
-        {
-            get { return _listeRechercheClient; }
-            set
-            {
-                _listeRechercheClient = value;
-                OnPropertyChanged("ListeRechercheClient");
-            }
-        }
-
-        public DelegateCommand<CommandeConcernantRA_DATA> GetButtonRecherche
-        {
-            get
-            {
-                return this._getButtonRecherche ?? (this._getButtonRecherche = new DelegateCommand<CommandeConcernantRA_DATA>(
-                                                                       this.ExecuteResultatRechercheClient,
-                                                                       (arg) => true));
-            }
-        }
-
-        public DelegateCommand<CommandeConcernantRA_DATA> CommandeParIdFacture
-        {
-            get
-            {
-                return this.commandeParIdFacture ?? (this.commandeParIdFacture = new DelegateCommand<CommandeConcernantRA_DATA>(
-                   this.ValiderCetteCommande,
-                   (arg) => true));
-            }
-        }
-        #endregion
-
-        #region Méthodes
-        private void ExecuteResultatRechercheClient(CommandeConcernantRA_DATA obj)
-        {
-            //MessageBox.Show("resultat: " + obj.clt.nom + " et Id = " + obj.clt.id);
-
-            ContentCommandeConcernant = new List<CommandeConcernantRA_DATA>();
-
-            if (obj.clt.type == 0)
-            {
-                List<Commande> listeCommande = (List<Commande>)CommandeDAO.selectCommandesByClient(obj.clt.id, false, true, true);
-                if (listeCommande != null)
-                {
-                    foreach (Commande com in listeCommande)
-                    {
-                        ContentCommandeConcernant.Add(new CommandeConcernantRA_DATA()
-                        {
-                            Label_restitutionArticles_Reference = com.id,
-                            Label_restitutionArticles_DateCommande = com.date.ToString(),
-                            commande = com,
-                            Label_restitutionArticles_nomDuClient = com.client.nom + "  " + com.client.prenom
-                        });
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Ce client n'a pas de commande");
-                }
-            }
-            
-
-
-        }
-        private void ValiderCetteCommande(CommandeConcernantRA_DATA obj)
-        {
-            //MessageBox.Show(obj.commande.id +"");
-            ClasseGlobale._renduCommande = obj.commande;
-            ClasseGlobale.Client = obj.clt;
-            Label_CommandeSelectionner = ClasseGlobale._renduCommande.id.ToString();
-            //MessageBox.Show();
-        }
         public void ContenuDeLaCommande()
         {
-            if (Txb_restitutionArticles_idFactures > 0 & Txb_restitutionArticles_idFactures <= CommandeDAO.lastCommande().id)
+            if (Txb_restitutionArticles_idFactures > 0)
             {
-
-
-                ContentCommandeConcernant = new List<CommandeConcernantRA_DATA>();
-
                 Commande commandeRendre = (Commande)CommandeDAO.selectCommandeById(Txb_restitutionArticles_idFactures, false, true, true);
-
-                if (commandeRendre != null & commandeRendre.client.type==0)
+                if (commandeRendre.id != 0)
                 {
-                   
+                    ContentCommandeConcernant = new List<CommandeConcernantRA_DATA>();
                     ContentCommandeConcernant.Add(new CommandeConcernantRA_DATA()
                     {
                         Label_restitutionArticles_Reference = commandeRendre.id,
@@ -232,12 +166,30 @@ namespace App_pressing_Loreau.ViewModel
                         commande = commandeRendre,
                         Label_restitutionArticles_nomDuClient = commandeRendre.client.nom + "  " + commandeRendre.client.prenom
                     });
-
+                }
+                else
+                {
+                    MessageBox.Show("Cette Commande n'existe pas");
                 }
             }
             else
             {
-                MessageBox.Show("Cette Commande n existe pas ");
+                MessageBox.Show("Un id de commande ne peut pas être négatif ou nul");
+            }
+        }
+
+        #endregion
+
+        #region Recherche par nom ou prénom pour afficher une liste de clients
+
+        
+        public ICommand Btn_restitutionArticles_valider
+        {
+            get
+            {
+                return new RelayCommand(
+                    p => ContenuDeLaRecherche(),
+                    p => Txb_restitutionArticles_choix != null);
             }
         }
         public void ContenuDeLaRecherche()
@@ -277,11 +229,76 @@ namespace App_pressing_Loreau.ViewModel
             {
                 MessageBox.Show("Choisissez un élement ");
             }
-
-
         }
 
         #endregion
+
+
+
+        #region Recherche des commandes en cours d'un client
+        public DelegateCommand<CommandeConcernantRA_DATA> GetButtonRecherche
+        {
+            get
+            {
+                return this._getButtonRecherche ?? (this._getButtonRecherche = new DelegateCommand<CommandeConcernantRA_DATA>(
+                                                                       this.ExecuteResultatRechercheClient,
+                                                                       (arg) => true));
+            }
+        }
+        private void ExecuteResultatRechercheClient(CommandeConcernantRA_DATA obj)
+        {
+            //MessageBox.Show("resultat: " + obj.clt.nom + " et Id = " + obj.clt.id);
+
+            ContentCommandeConcernant = new List<CommandeConcernantRA_DATA>();
+
+            if (obj.clt.type == 0)
+            {
+                List<Commande> listeCommande = (List<Commande>)CommandeDAO.selectCommandesByClient(obj.clt.id, false, true, true);
+                if (listeCommande != null)
+                {
+                    foreach (Commande com in listeCommande)
+                    {
+                        ContentCommandeConcernant.Add(new CommandeConcernantRA_DATA()
+                        {
+                            Label_restitutionArticles_Reference = com.id,
+                            Label_restitutionArticles_DateCommande = com.date.ToString(),
+                            commande = com,
+                            Label_restitutionArticles_nomDuClient = com.client.nom + "  " + com.client.prenom
+                        });
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ce client n'a pas de commande");
+                }
+            }
+
+        }
+        #endregion
+
+
+        #region Sélection d'une commande
+        public DelegateCommand<CommandeConcernantRA_DATA> CommandeParIdFacture
+        {
+            get
+            {
+                return this.commandeParIdFacture ?? (this.commandeParIdFacture = new DelegateCommand<CommandeConcernantRA_DATA>(
+                   this.ValiderCetteCommande,
+                   (arg) => true));
+            }
+        }
+        private void ValiderCetteCommande(CommandeConcernantRA_DATA obj)
+        {
+            //MessageBox.Show(obj.commande.id +"");
+            ClasseGlobale._renduCommande = obj.commande;
+            ClasseGlobale.Client = obj.clt;
+            Label_CommandeSelectionner = ClasseGlobale._renduCommande.id.ToString();
+            //MessageBox.Show();
+        }
+        #endregion
+
+        #endregion
+
 
 
         #region Classe
