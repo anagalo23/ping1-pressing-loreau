@@ -14,11 +14,12 @@ namespace App_pressing_Loreau.ViewModel
         #region Attributes
 
         private string _articlesNameRes;
-       // private string _txb_ArticlesRes_CommentaireArticles;
-       // private string _txb_ArticlesRes_photo;
         private string _txb_ArticlesRes_etat;
 
         private bool _isSelectedArticle;
+        private bool _isEnabledArticles;
+
+        
         public Article ar;
         #endregion
 
@@ -118,6 +119,19 @@ namespace App_pressing_Loreau.ViewModel
                 }
             }
 
+        }
+
+        public bool IsEnabledArticles
+        {
+            get { return _isEnabledArticles; }
+            set
+            {
+                if (value != _isEnabledArticles)
+                {
+                    _isEnabledArticles = value;
+                    OnPropertyChanged("IsEnabledArticles");
+                }
+            }
         }
         #endregion
     }

@@ -158,12 +158,21 @@ namespace App_pressing_Loreau.ViewModel
                 Commande commandeRendre = (Commande)CommandeDAO.selectCommandeById(Txb_restitutionArticles_idFactures, false, true, true);
                 if (commandeRendre.id != 0)
                 {
+                    String etat = null;
+                    if (commandeRendre.payee == true)
+                    {
+                        etat = "Commande payée";
+                    }
+                    else
+                    {
+                        etat = "Commande non payée";
+                    }
                     ContentCommandeConcernant = new List<CommandeConcernantRA_DATA>();
                     ContentCommandeConcernant.Add(new CommandeConcernantRA_DATA()
                     {
                         Label_restitutionArticles_Reference = commandeRendre.id,
                         Label_restitutionArticles_DateCommande = commandeRendre.date.ToString(),
-                        commande = commandeRendre,
+                        commande = commandeRendre,Label_restitutionArticles_Etat=etat,
                         Label_restitutionArticles_nomDuClient = commandeRendre.client.nom + "  " + commandeRendre.client.prenom
                     });
                 }
@@ -258,11 +267,21 @@ namespace App_pressing_Loreau.ViewModel
                 {
                     foreach (Commande com in listeCommande)
                     {
+                        String etat = null;
+                        if (com.payee == true)
+                        {
+                            etat = "Commande payée";
+                        }
+                        else
+                        {
+                            etat = "Commande non payée";
+                        }
+
                         ContentCommandeConcernant.Add(new CommandeConcernantRA_DATA()
                         {
                             Label_restitutionArticles_Reference = com.id,
                             Label_restitutionArticles_DateCommande = com.date.ToString(),
-                            commande = com,
+                            commande = com,Label_restitutionArticles_Etat=etat,
                             Label_restitutionArticles_nomDuClient = com.client.nom + "  " + com.client.prenom
                         });
                     }

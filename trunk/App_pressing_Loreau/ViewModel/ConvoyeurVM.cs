@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows;
 
 using App_pressing_Loreau.Helper;
 using App_pressing_Loreau.Data.DAO;
@@ -17,7 +18,6 @@ namespace App_pressing_Loreau.ViewModel
 
 
         #region Attributes
-
         private int _label_Convoyeur_nbPlace;
         private int _label_convoyeur_diponibles;
         private int _txb_Convoyeur_idCommande;
@@ -122,28 +122,43 @@ namespace App_pressing_Loreau.ViewModel
 
         public void convoyeurContenu()
         {
-
-            ContenuConvoyeur = new List<ItemEmplacement>();
-            if (Txb_Convoyeur_idCommande != 0)
+            try
             {
-                Commande commande = CommandeDAO.selectCommandeById(Txb_Convoyeur_idCommande, false, true, false);
-
-                foreach (Article art in commande.listArticles)
+                ContenuConvoyeur = new List<ItemEmplacement>();
+                if (Txb_Convoyeur_idCommande != 0)
                 {
-                    ContenuConvoyeur.Add(new ItemEmplacement() { Label_Convoyeur_NomArticle = art.type.nom, Label_Convoyeur_Emplacement = art.convoyeur.emplacement });
+                    Commande commande = CommandeDAO.selectCommandeById(Txb_Convoyeur_idCommande, false, true, false);
+
+                    foreach (Article art in commande.listArticles)
+                    {
+                        ContenuConvoyeur.Add(new ItemEmplacement() { Label_Convoyeur_NomArticle = art.type.nom, 
+                            Label_Convoyeur_referenceCommande = "Ref Commmande:   " + art.fk_commande, 
+                            Label_Convoyeur_Emplacement = art.convoyeur.emplacement });
+                    }
+
                 }
+                else
+                {
+
+
+
+                    Commande com = CommandeDAO.lastCommande();
+
+                    com = CommandeDAO.selectCommandeById(com.id, false, true, false);
+                    foreach (Article art in com.listArticles)
+                    {
+                        ContenuConvoyeur.Add(new ItemEmplacement() { Label_Convoyeur_NomArticle = art.type.nom, 
+                            Label_Convoyeur_referenceCommande = "Ref Commmande:   " + art.fk_commande, 
+                            Label_Convoyeur_Emplacement = art.convoyeur.emplacement });
+                    }
+
+                }
+                Txb_Convoyeur_idCommande = 0;
 
             }
-            else
+            catch (Exception e)
             {
-                Commande com = CommandeDAO.lastCommande();
-
-                Commande commande = CommandeDAO.selectCommandeById(com.id, false, true, false);
-                foreach (Article art in commande.listArticles)
-                {
-                    ContenuConvoyeur.Add(new ItemEmplacement() { Label_Convoyeur_NomArticle = art.type.nom, Label_Convoyeur_Emplacement = art.convoyeur.emplacement });
-                }
-
+                MessageBox.Show("" + e);
             }
 
         }
@@ -156,6 +171,7 @@ namespace App_pressing_Loreau.ViewModel
     {
         public String Label_Convoyeur_NomArticle { get; set; }
         public int Label_Convoyeur_Emplacement { get; set; }
+        public String Label_Convoyeur_referenceCommande { get; set; }
 
     }
     #endregion

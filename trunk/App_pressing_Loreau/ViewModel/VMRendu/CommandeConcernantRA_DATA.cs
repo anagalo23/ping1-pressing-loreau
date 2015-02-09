@@ -22,7 +22,7 @@ namespace App_pressing_Loreau.ViewModel
         private int _label_restitutionArticles_Reference;
         private String _label_restitutionArticles_Name;
         private String _label_restitutionArticles_DateCommande;
-
+        private String _label_restitutionArticles_Etat;
 
 
         #endregion
@@ -73,7 +73,7 @@ namespace App_pressing_Loreau.ViewModel
         #region Contenu Commande du client
 
         public Commande commande;
-        private String nom;
+        //private String nom;
         public int Label_restitutionArticles_Reference
         {
             get { return _label_restitutionArticles_Reference; }
@@ -87,6 +87,18 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
+        public String Label_restitutionArticles_Etat
+        {
+            get { return _label_restitutionArticles_Etat; }
+            set
+            {
+                if (!String.IsNullOrEmpty(value))
+                {
+                    _label_restitutionArticles_Etat = value;
+                    OnPropertyChanged("Label_restitutionArticles_Etat");
+                }
+            }
+        }
 
         public String Label_restitutionArticles_nomDuClient
         {
