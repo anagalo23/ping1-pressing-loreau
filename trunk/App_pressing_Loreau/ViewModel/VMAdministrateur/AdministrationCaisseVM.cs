@@ -8,6 +8,7 @@ using App_pressing_Loreau.Helper;
 using App_pressing_Loreau.Data.DAO;
 using App_pressing_Loreau.Model.DTO;
 using System.Windows.Input;
+using App_pressing_Loreau.Model;
 
 namespace App_pressing_Loreau.ViewModel
 {
@@ -27,8 +28,10 @@ namespace App_pressing_Loreau.ViewModel
         {
             Label_administrationCaisse_fonCaisse = new float();
            
-            ClasseGlobale.fondCaisse = new float();
-            ClasseGlobale.fondCaisse = 150;
+            //ClasseGlobale.fondCaisse = new float();
+            //ClasseGlobale.fondCaisse = 150;
+
+            Label_administrationCaisse_fonCaisse = CashProperties.fondCaisse;
         }
         #endregion
 
@@ -36,12 +39,12 @@ namespace App_pressing_Loreau.ViewModel
 
         public float Label_administrationCaisse_fonCaisse
         {
-            get { return ClasseGlobale.fondCaisse; }
+            get { return CashProperties.fondCaisse; }
             set
             {
-                if (value != ClasseGlobale.fondCaisse)
+                if (value != CashProperties.fondCaisse)
                 {
-                    ClasseGlobale.fondCaisse = value;
+                    CashProperties.fondCaisse = value;
                     OnPropertyChanged("Label_administrationCaisse_fonCaisse");
                 }
             }
@@ -70,8 +73,9 @@ namespace App_pressing_Loreau.ViewModel
 
         private void ValiderFOndCaisse()
         {
-            ClasseGlobale.fondCaisse = Txb_AdminCaisse_modifFOndCaisse;
+            CashProperties.fondCaisse = Txb_AdminCaisse_modifFOndCaisse;
             Label_administrationCaisse_fonCaisse = Txb_AdminCaisse_modifFOndCaisse;
+
             Txb_AdminCaisse_modifFOndCaisse = 0;
         }
         #endregion

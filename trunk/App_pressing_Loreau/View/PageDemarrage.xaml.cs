@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App_pressing_Loreau.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace App_pressing_Loreau.View
         public PageDemarrage()
         {
             InitializeComponent();
+            //DataContext = new PageDemarrageVM();
         }
 
         private void btn_accessApplication_Click(object sender, RoutedEventArgs e)
