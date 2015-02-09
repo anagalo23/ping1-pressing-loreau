@@ -133,7 +133,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Data\DAO\CommentaireDAO.cs" />
-    <Compile Include="Helper\ButtonNames.cs" />
     <Compile Include="Helper\ClasseGlobale.cs" />
     <Compile Include="Helper\IPageViewModel.cs" />
     <Compile Include="Model\DTO\Commentaire.cs" />
@@ -169,12 +168,14 @@
     <Compile Include="Data\DAO\TypeArticleDAO.cs" />
     <Compile Include="Data\DAO\TypePayementDAO.cs" />
     <Compile Include="ViewModel\AccueilVM.cs" />
+    <Compile Include="ViewModel\PageDemarrageVM.cs" />
     <Compile Include="ViewModel\PaiementVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\AdministrationClientVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\AdministrateurConnexionVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\AdministrationArticlesDepartementsVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\AdministrationCaisseVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\AdministrationClientProVM.cs" />
+    <Compile Include="ViewModel\VMAdministrateur\AdministrationConvoyeurVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\GestionUtilisateursVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\NouvelleCommandeClientProVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\PageAdministrateurVM.cs" />

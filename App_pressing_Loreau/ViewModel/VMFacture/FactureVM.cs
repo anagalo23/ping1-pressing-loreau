@@ -22,10 +22,7 @@ namespace App_pressing_Loreau.ViewModel
         }
 
         #region Attributes
-        private int _txb_factures_idCommande;
-
-       
-        
+        private int _txb_factures_idCommande;        
         private FactureFinaleVM _apercu_facture;
 
         Commande commande;

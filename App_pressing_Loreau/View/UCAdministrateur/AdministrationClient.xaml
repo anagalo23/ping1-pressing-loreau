@@ -55,16 +55,16 @@
                                             </Grid.RowDefinitions>
 
                                             <Label  Content="Numero rue/voie" />
-                                            <TextBox  x:Name="txb_adminClient_modifNumAdresse" Grid.Row="0" Grid.Column="1" Margin="10,5" Text="{Binding Txb_adminClient_modifNumAdresse, UpdateSourceTrigger=PropertyChanged}"/>
+                                            <TextBox  x:Name="txb_adminClient_modifNumAdresse" Grid.Row="0" Grid.Column="1" Margin="10,5" Text="{Binding Txb_adminClient_modifNumAdresse, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
                                             <Label  Content="Nom rue/voie" Grid.Row="1" Grid.Column="0" />
-                                            <TextBox  x:Name="txb_adminClient_modifNameAdresse" Grid.Row="1" Grid.Column="1" Margin="10,5" Text="{Binding Txb_adminClient_modifNameAdresse, UpdateSourceTrigger=PropertyChanged}"/>
+                                            <TextBox  x:Name="txb_adminClient_modifNameAdresse" Grid.Row="1" Grid.Column="1" Margin="10,5" Text="{Binding Txb_adminClient_modifNameAdresse, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
                                             <Label  Content="BP" Grid.Row="2" Grid.Column="0" />
-                                            <TextBox  x:Name="txb_adminClient_modifBP" Grid.Row="2" Grid.Column="1" Margin="10,5" Text="{Binding Txb_adminClient_modifBP, UpdateSourceTrigger=PropertyChanged}"/>
+                                            <TextBox  x:Name="txb_adminClient_modifBP" Grid.Row="2" Grid.Column="1" Margin="10,10,10,0" Text="{Binding Txb_adminClient_modifBP, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
                                             <Label  Content="Ville" Grid.Row="3" Grid.Column="0" />
-                                            <TextBox  x:Name="txb_adminClient_modifVille" Grid.Row="3" Grid.Column="1" Margin="10,5" Text="{Binding Txb_adminClient_modifVille, UpdateSourceTrigger=PropertyChanged}"/>
+                                            <TextBox  x:Name="txb_adminClient_modifVille" Grid.Row="3" Grid.Column="1" Margin="10,5" Text="{Binding Txb_adminClient_modifVille, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                                         </Grid>
 
 
@@ -79,18 +79,18 @@
                                         </Grid.RowDefinitions>
                                         <StackPanel Grid.Row="0">
                                             <Label  Content="N° téléphone" Style="{StaticResource vertilabel18}"/>
-                                            <TextBox  x:Name="txb_adminClient_modifTypeTelephone" Margin="20,2" Height="30"  Text="{Binding Txb_adminClient_modifTypeTelephone,UpdateSourceTrigger=PropertyChanged}"/>
+                                            <TextBox  x:Name="txb_adminClient_modifTypeTelephone" Margin="20,2" Height="30"  Text="{Binding Txb_adminClient_modifTypeTelephone,UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                                         </StackPanel>
 
                                         <StackPanel Grid.Row="1" >
                                             <Label  Content="ID Cleanway" Style="{StaticResource vertilabel18}"/>
-                                            <TextBox  x:Name="txb_adminClient_modifTypeIdCleanway" Margin="20,2" Height="30" Text="{Binding Txb_adminClient_modifTypeIdCleanway, UpdateSourceTrigger=PropertyChanged}"/>
+                                            <TextBox  x:Name="txb_adminClient_modifTypeIdCleanway" Margin="20,2" Height="30" Text="{Binding Txb_adminClient_modifTypeIdCleanway, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                                         </StackPanel>
                                     </Grid>
                                 </Border>
 
 
-                                <Button  Grid.Row="1" Grid.Column="3" Margin="20,5" Content="Enregistrer" Command="{Binding Btn_adminArt_ModifTypeArt}"/>
+                                <Button  Grid.Row="1" Grid.Column="3" Margin="20,10" Content="Enregistrer" Command="{Binding Btn_adminArt_ModifTypeArt}" BorderThickness="0"/>
 
                             </Grid>
                         </Border>
@@ -102,7 +102,7 @@
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            <Button Grid.Column="1" Content="Retour" x:Name="btn_retour" Margin="10,5" Click="btn_retour_Click" />
+                            <Button Grid.Column="1" Content="Retour" x:Name="btn_retour" Margin="10,5" Click="btn_retour_Click" Style="{StaticResource ButtonSansBck}" />
 
                         </Grid>
                     </Border>
@@ -142,7 +142,7 @@
                             <TextBox x:Name="txb_administrationClient_choix" Margin="10,20" Grid.Row="1" Grid.Column="1" Style="{StaticResource vertiTextBox}" Text="{Binding Txb_administrationClient_choix, UpdateSourceTrigger=PropertyChanged }"  KeyDown="txb_administrationClient_choix_KeyDown"/>
 
 
-                            <Button x:Name="btn_administrationClient_valider" Content="valider" Grid.Column="1" Grid.Row="3" Command="{Binding Btn_administrationClient_valider}" Margin="10,8"/>
+                            <Button x:Name="btn_administrationClient_valider" BorderThickness="0" Content="valider" Grid.Column="1" Grid.Row="3" Command="{Binding Btn_administrationClient_valider}" Margin="10,8"/>
 
                         </Grid>
                     </Border>
@@ -191,9 +191,9 @@
                                         <ColumnDefinition />
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
-                                    <Button Content="mofifier" Grid.Column="0" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ModifierClient}" CommandParameter="{Binding }" Margin="10,8"/>
+                                    <Button Content="mofifier" BorderThickness="0" Grid.Column="1" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ModifierClient}" CommandParameter="{Binding }" Margin="10,8"/>
 
-                                    <Button Content="supprimer (desactivé)" Grid.Column="1" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.SupprimerClient}" CommandParameter="{Binding }" Margin="10,8"/>
+                                    <!--<Button Content="supprimer (desactivé)" Grid.Column="1" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.SupprimerClient}" CommandParameter="{Binding }" Margin="10,8"/>-->
                                 </Grid>
                             </Border>
                         </Grid>

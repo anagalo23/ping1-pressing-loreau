@@ -37,28 +37,28 @@
                             <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
                             <Image Source="/Resources/pics/pagePrincipale/100euro.png"  Grid.Row="0" Grid.Column="0"  Width="120" Height="60"/>
-                       
-                        <TextBox Grid.Row="0" Grid.Column="1"  Margin="10" Text="{Binding Billet100EURO, UpdateSourceTrigger=PropertyChanged}"/>
+
+                        <TextBox Grid.Row="0" Grid.Column="1"  Margin="10" Text="{Binding Billet100EURO, UpdateSourceTrigger=PropertyChanged}"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
                         <Image Source="/Resources/pics/pagePrincipale/50euro.png" Grid.Row="1" Grid.Column="0" />
-                        <TextBox Grid.Row="1" Grid.Column="1" Margin="10" Text="{Binding Billet50EURO, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Margin="10" Text="{Binding Billet50EURO, UpdateSourceTrigger=PropertyChanged}"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
 
                         <Image Source="/Resources/pics/pagePrincipale/20euro.png" Grid.Row="2" Grid.Column="0" Width="120" Height="60"/>
-                        <TextBox Grid.Row="2" Grid.Column="1" Margin="10" Text="{Binding Billet20EURO, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Margin="10" Text="{Binding Billet20EURO, UpdateSourceTrigger=PropertyChanged}"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
 
                         <Image Source="/Resources/pics/pagePrincipale/10euro.png" Grid.Row="3" Grid.Column="0" Width="120" Height="60"/>
-                        <TextBox Grid.Row="3" Grid.Column="1" Margin="10" Text="{Binding Billet10EURO, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Margin="10" Text="{Binding Billet10EURO, UpdateSourceTrigger=PropertyChanged}"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
 
                         <Image Source="/Resources/pics/pagePrincipale/5euro.png" Grid.Row="4" Grid.Column="0" Width="120" Height="60"/>
-                        <TextBox Grid.Row="4" Grid.Column="1" Margin="10" Text="{Binding Billet5EURO, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Margin="10" Text="{Binding Billet5EURO, UpdateSourceTrigger=PropertyChanged}"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
                         <TextBlock Grid.Row="5" Grid.Column="0" >
                         <Image Source="/Resources/pics/pagePrincipale/2euro.png" Width="120" Height="60"/>
                         </TextBlock>
-                        <TextBox Grid.Row="5" Grid.Column="1" Margin="10" Text="{Binding Piece2Euro, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="5" Grid.Column="1" Margin="10" Text="{Binding Piece2Euro, UpdateSourceTrigger=PropertyChanged}"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
 
                     </Grid>
@@ -80,26 +80,26 @@
                         </Grid.RowDefinitions>
 
                         <Image Source="/Resources/pics/pagePrincipale/1euro.png" Grid.Row="0" Grid.Column="0" Width="120" Height="60"/>
-                        <TextBox Grid.Row="0" Grid.Column="1" Margin="10" Text="{Binding Piece1Euro, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Margin="10" Text="{Binding Piece1Euro, UpdateSourceTrigger=PropertyChanged}"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
 
                         <Image Source="/Resources/pics/pagePrincipale/50c.png" Grid.Row="1"  Grid.Column="0" Width="120" Height="60"/>
-                        <TextBox Grid.Row="1" Grid.Column="1" Margin="10" Text="{Binding Piece50c, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Margin="10" Text="{Binding Piece50c, UpdateSourceTrigger=PropertyChanged}"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
 
                         <Image Source="/Resources/pics/pagePrincipale/20c.png" Grid.Row="2" Grid.Column="0" Width="120" Height="60"/>
-                        <TextBox Grid.Row="2" Grid.Column="1" Margin="10" Text="{Binding Piece20c, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Margin="10" Text="{Binding Piece20c, UpdateSourceTrigger=PropertyChanged}"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
 
                         <Image Source="/Resources/pics/pagePrincipale/10c.png" Grid.Row="3" Grid.Column="0" Width="120" Height="60"/>
-                        <TextBox Grid.Row="3" Grid.Column="1" Margin="10" Text="{Binding Piece10c, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Margin="10" Text="{Binding Piece10c, UpdateSourceTrigger=PropertyChanged}"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
 
                         <Image Source="/Resources/pics/pagePrincipale/5C.png" Grid.Row="4" Grid.Column="0" Width="120" Height="60"/>
-                        <TextBox Grid.Row="4" Grid.Column="1" Margin="10" Text="{Binding Piece5c, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Margin="10" Text="{Binding Piece5c, UpdateSourceTrigger=PropertyChanged}"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
                         <Image Source="/Resources/pics/pagePrincipale/2c.png" Grid.Row="5" Grid.Column="0" Width="120" Height="60"/>
-                        <TextBox Grid.Row="5" Grid.Column="1" Margin="10" Text="{Binding Piece2c, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBox Grid.Row="5" Grid.Column="1" Margin="10" Text="{Binding Piece2c, UpdateSourceTrigger=PropertyChanged}"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
                     </Grid>
                 </Border>
@@ -113,13 +113,13 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Content="Total "  Style="{StaticResource vertilabel18}"/>
-                        
-                        <Label Grid.Column="1"/>
-                        <Button Content="Valider" Grid.Column="2" />
+
+                        <Label Grid.Column="1" Content="{Binding Label_pageDemmarrage_total}"  Margin="10,5" Style="{StaticResource vertilabel18}"/>
+                        <Button Content="Valider" Grid.Column="2" BorderThickness="0" Margin="10,5" Command="{Binding Btn_pageDemarrage_valider}"/>
                     </Grid>
                 </Border>
                 
-                <Button x:Name="btn_accessApplication"  Content="Acceder à l'application" Grid.Row="1" Grid.Column="1" Margin="10,3" Click="btn_accessApplication_Click"/>
+                <Button x:Name="btn_accessApplication"  Content="Acceder à l'application" Grid.Row="1" Grid.Column="1" Margin="10,3" Click="btn_accessApplication_Click" Style="{StaticResource ButtonSansBck}"/>
 
             </Grid>
         </Border>

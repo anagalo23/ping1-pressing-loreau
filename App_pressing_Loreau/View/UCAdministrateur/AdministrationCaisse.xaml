@@ -75,8 +75,7 @@
                     <ColumnDefinition Width="597*"/>
                     <ColumnDefinition Width="143*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="btn_admin_caisse_retour" Content="Retour" Grid.Column="1" Click="btn_admin_caisse_retour_Click" Margin="25,7" 
-                       Style="{StaticResource choixbouton30}"/>
+                <Button x:Name="btn_admin_caisse_retour" Content="Retour" Grid.Column="1" Click="btn_admin_caisse_retour_Click" Margin="25,7" Style="{StaticResource ButtonSansBck}"/>
                 <!--<Grid Grid.Column="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>

@@ -72,10 +72,7 @@ namespace App_pressing_Loreau.Helper
         //*******************************************************************************GESTION DE LA LISTE DES EMPLOYES
 
         public static Employe listeEmployes { get; set; }
-        //public static void getAllEmployee()
-        //{
-        //    listeEmployes = (List<Employe>)EmployeDAO.selectEmployes();
-        //}
+    
 
 
         //*********************************************************************************GESTION DE LA LISTE DES PAIEMENTS DESIRES
@@ -105,10 +102,7 @@ namespace App_pressing_Loreau.Helper
         private static ConvoyeurPlacesLibres _placesLibres;
 
 
-        //*************************************************************************Administartion fond de caisse 
-
-        public static float fondCaisse { get; set; }
-/////////////////////////
+        
         public static ConvoyeurPlacesLibres PlacesLibres
         {
             get

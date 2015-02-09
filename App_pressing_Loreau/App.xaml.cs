@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using App_pressing_Loreau;
 using App_pressing_Loreau.View;
+using App_pressing_Loreau.ViewModel;
 
 namespace App_pressing_Loreau
 {
@@ -24,13 +25,19 @@ namespace App_pressing_Loreau
            
             base.OnStartup(e);
             // chargement de la page accueil
-            //PageDemarrage acc = new PageDemarrage();
+
             Accueil acc = new Accueil();
             // liaison avec la page AccueilVM
             AccueilVM context = new AccueilVM();
             // Permet de traiter les données dans AccueilVM
             acc.DataContext = context;
             acc.Show();
+
+            //PageDemarrage acc = new PageDemarrage();
+
+            //PageDemarrageVM pVM = new PageDemarrageVM();
+            //acc.DataContext = pVM;
+            //acc.Show();
         }
         
     }

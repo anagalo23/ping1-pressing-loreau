@@ -15,8 +15,8 @@ namespace App_pressing_Loreau.ViewModel
     class ConvoyeurVM : ObservableObject, IPageViewModel
     {
 
-        
-        #region Attributes 
+
+        #region Attributes
 
         private int _label_Convoyeur_nbPlace;
         private int _label_convoyeur_diponibles;
@@ -25,29 +25,31 @@ namespace App_pressing_Loreau.ViewModel
         private List<ItemEmplacement> _contenuConvoyeur;
 
         List<PlaceConvoyeur> listePlace = null;
-
-        
-        PlaceConvoyeur place = null;
-
         #endregion
         public String Name
         {
             get { return ""; }
         }
 
+        #region Constructeur
         public ConvoyeurVM()
         {
-            listePlace=(List<PlaceConvoyeur>)PlaceConvoyeurDAO.selectConvoyeurs();
+            try
+            {
+                listePlace = (List<PlaceConvoyeur>)PlaceConvoyeurDAO.selectConvoyeurs();
 
-            List<PlaceConvoyeur> comptePlaceLibre = (List<PlaceConvoyeur>)PlaceConvoyeurDAO.selectConvoyeursEmpty();
+                List<PlaceConvoyeur> comptePlaceLibre = (List<PlaceConvoyeur>)PlaceConvoyeurDAO.selectConvoyeursEmpty();
 
-            Label_convoyeur_diponibles = comptePlaceLibre.Count;
-            Label_Convoyeur_nbPlace = listePlace.Count;
+                Label_convoyeur_diponibles = comptePlaceLibre.Count;
+                Label_Convoyeur_nbPlace = listePlace.Count;
+            }
+            catch (Exception e)
+            {
 
-     
-        
-           
+            }
         }
+        #endregion
+
 
         #region Properties and commands
 
@@ -105,8 +107,10 @@ namespace App_pressing_Loreau.ViewModel
 
         public ICommand Btn_Convoyeur_ok
         {
-            get { return new RelayCommand(
-                p=>convoyeurContenu());
+            get
+            {
+                return new RelayCommand(
+                    p => convoyeurContenu());
             }
         }
 
@@ -141,7 +145,7 @@ namespace App_pressing_Loreau.ViewModel
                 }
 
             }
-            
+
         }
         #endregion
     }

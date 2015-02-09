@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App_pressing_Loreau.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,11 +24,9 @@ namespace App_pressing_Loreau.View
         public AdministrationConvoyeur()
         {
             InitializeComponent();
+            DataContext = new AdministrationConvoyeurVM();
         }
-        public void btn_admin_commandes_editer_Click(Object sender, RoutedEventArgs e)
-        {
-
-        }
+    
 
         private void btn_admin_convoyeur_retour_Click(object sender, RoutedEventArgs e)
         {
