@@ -34,6 +34,7 @@ namespace App_pressing_Loreau.ViewModel
         {
             LaCommande();
             ClasseGlobale._rendreArticlesSelectionnes = new List<Article>();
+            //ClasseGlobale._rendreArticlesSelectionnes = ArtSelec;
         }
 
         #endregion
@@ -101,7 +102,7 @@ namespace App_pressing_Loreau.ViewModel
             foreach (ArticlesRestitutionVM art in AfficheDetailCommande)
             {
                 art.IsSelectedArticle = true;
-                
+                //ArtSelec.Add(art.ar);
             }
         }
         #endregion
@@ -121,6 +122,7 @@ namespace App_pressing_Loreau.ViewModel
             foreach (ArticlesRestitutionVM art in AfficheDetailCommande)
             {
                 art.IsSelectedArticle = false;
+                //ArtSelec.Remove(art.ar);
 
             }
         }
@@ -150,7 +152,7 @@ namespace App_pressing_Loreau.ViewModel
             if (ClasseGlobale._renduCommande.payee == false)
             {
                 //Les articles rendus sont payés
-                //Parcours de la liste des articles et on fait la somme des prix => prix mini de la restitution
+                //Pacours de la liste des articles et on fait la somme des prix => prix mini de la restitution
                 if (ArtSelec.Count != 0)
                 {
                     foreach (Article arti in ArtSelec)
@@ -166,14 +168,41 @@ namespace App_pressing_Loreau.ViewModel
             }
             else
             {
-                MessageBox.Show("La commande a déjà été réglée");
+                //MessageBox.Show("La commande a déjà été réglée");
             }
 
+
+            
+            //MessageBox.Show(ClasseGlobale._rendreArticlesSelectionnes.Count +"");
 
         }
         #endregion
 
+        #region Rendre les articles sélectionnés
+        //public ICommand Btn_rendre
+        //{
+        //    get
+        //    {
+        //        return new RelayCommand(
+        //            p => rendreLesArticles() );
+        //    }
+        //}
 
+        //private void rendreLesArticles()
+        //{
+        //    //Si la commande
+        //    //Si la commande a déjà été payée je ne passe pas par la page de paiement
+        //    if (ClasseGlobale._renduCommande.payee == false)
+        //    {
+                
+        //    }
+        //    else
+        //    {
+                
+        //    }
+        //}
+
+        #endregion
 
 
 
@@ -189,6 +218,7 @@ namespace App_pressing_Loreau.ViewModel
             Commande com = ClasseGlobale._renduCommande;
 
             //Commande comdSelec = ClasseGlobale._rendreArticlesSelectionnes;
+            //foreach(Article art in com.)
             Commande comPaye = (Commande)CommandeDAO.selectCommandeById(com.id, true, false, false);
             if (com != null)
             {
@@ -198,21 +228,14 @@ namespace App_pressing_Loreau.ViewModel
                 }
 
 
-                foreach (ArticlesRestitutionVM artRestVm in AfficheDetailCommande)
-                {
-                    if (artRestVm.IsSelectedArticle == true)
-                    {
-                        ClasseGlobale._rendreArticlesSelectionnes.Add(artRestVm.ar);
-                    }
-                    if (artRestVm.ar.ifRendu = true)
-                    {
-                        artRestVm.IsEnabledArticles = false;
-                    }
-                    else
-                    {
-                        artRestVm.IsEnabledArticles = true;
-                    }
-                }
+                //INUTILE : _rendreArticlesSelectionnes est initilisé juste après !!
+                //foreach (ArticlesRestitutionVM artRestVm in AfficheDetailCommande)
+                //{
+                //    if (artRestVm.IsSelectedArticle == true)
+                //    {
+                //        ClasseGlobale._rendreArticlesSelectionnes.Add(artRestVm.ar);
+                //    }
+                //}
 
 
 
@@ -220,22 +243,30 @@ namespace App_pressing_Loreau.ViewModel
             if (com.payee == false)
             {
                 Label_EtatPaiementCommande = "Commande non réglée";
+                //Label_prixTTC = 0;
+                //float prixTotal = 0;
 
-                //Activé le check box
-                foreach (ArticlesRestitutionVM art in AfficheDetailCommande)
-                {
-                    art.IsEnabledArticles = true;
-                }
+                ////float prixPaye = 0;
+                //if (ArtSelec.Count != 0)
+                //{
+                //    foreach (Article arti in ArtSelec)
+                //    {
+                //        prixTotal += (arti.TTC);
+                //    }
+                //}
+               
+
+                ////foreach (Payement p in comPaye.listPayements)
+                ////{
+                ////    prixPaye += p.montant;
+                ////}
+
+                //Label_prixTTC = prixTotal;
             }
             else
             {
                 Label_EtatPaiementCommande = "Commande  réglée";
-                //Desactivé le check box
-                foreach (ArticlesRestitutionVM art in AfficheDetailCommande)
-                {
-                    art.IsEnabledArticles = false;
-                }
-
+              
 
             }
 

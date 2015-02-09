@@ -42,9 +42,9 @@
                             <Label Content="{Binding Label_prixTTC}" Grid.Column="1" Style="{StaticResource vertilabel18}"/>
                         </Grid>
                     </Border>
-                    
-                    
-                    <Button x:Name="btn_detailCommande_rendre_articles_selectionnes" Grid.Row="4" Margin="20,4" Content="Rendre les articles sélectionnés" Style="{StaticResource ButtonSansBck}" Click="btn_detailCommande_rendre_articles_selectionnes_Click" />
+
+
+                    <Button x:Name="btn_detailCommande_rendre_articles_selectionnes" Grid.Row="4" Margin="20,4" Content="Rendre les articles sélectionnés" Style="{StaticResource ButtonSansBck}" Command="{Binding Btn_rendre}" CommandParameter="{Binding }" Click="btn_detailCommande_rendre_articles_selectionnes_Click"/>
                 </Grid>
                 <Border Margin="10" BorderBrush="AliceBlue" BorderThickness="2" Grid.Column="0">
                     <Grid>

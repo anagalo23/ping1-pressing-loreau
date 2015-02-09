@@ -212,7 +212,14 @@ namespace App_pressing_Loreau.ViewModel
                         {
                             ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
                         }
-                        MessageBox.Show("La commande à été enregistrée avec succès");
+
+                        //Mise à jour de la table convoyeur
+                        foreach (PlaceConvoyeur place in ClasseGlobale.PlacesLibres.getList())
+                        {
+                            PlaceConvoyeurDAO.updatePlaceConvoyeur(place);
+                        }
+
+                        MessageBox.Show("La commande " + cmd.id + " à été enregistrée avec succès");
                         try
                         {
                             cmd = CommandeDAO.selectCommandeById(cmd.id, true, true, true);
@@ -237,7 +244,7 @@ namespace App_pressing_Loreau.ViewModel
             }
             else
             {
-                MessageBox.Show("La comande a déjà été enregistrée. Veuillez ");
+                MessageBox.Show("La comande a déjà été enregistrée. Veuillez cliquer sur HOME");
             }
 
         }

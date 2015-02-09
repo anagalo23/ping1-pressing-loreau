@@ -28,7 +28,7 @@ namespace App_pressing_Loreau.Data.DAO
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("art_photo", article.photo);
                 cmd.Parameters.AddWithValue("art_commentaire", article.commentaire);
-                cmd.Parameters.AddWithValue("art_rendu", article.ifRendu);
+                cmd.Parameters.AddWithValue("art_rendu", article.ifRendu ? 1 : 0);
                 cmd.Parameters.AddWithValue("art_TVA", article.TVA);
                 cmd.Parameters.AddWithValue("art_TTC", article.TTC);
                 if (article.convoyeur != null)
@@ -301,6 +301,8 @@ namespace App_pressing_Loreau.Data.DAO
                 MySqlCommand cmd = new MySqlCommand(Bdd.updateArticle, Bdd.connexion());
 
                 #region ajout des parametres
+                cmd.Parameters.AddWithValue("id", article.id);
+
                 if (article.photo.Equals(""))
                     cmd.Parameters.AddWithValue("photo", null);
                 else
@@ -311,10 +313,18 @@ namespace App_pressing_Loreau.Data.DAO
                 else
                     cmd.Parameters.AddWithValue("commentaire", article.commentaire);
 
-                cmd.Parameters.AddWithValue("rendu", article.ifRendu);
+                cmd.Parameters.AddWithValue("rendu", article.ifRendu == true ? 1 : 0);
                 cmd.Parameters.AddWithValue("TVA", article.TVA);
                 cmd.Parameters.AddWithValue("TTC", article.TTC);
-                cmd.Parameters.AddWithValue("conv_id", article.convoyeur.id);
+                if (article.convoyeur != null)
+                {
+                    cmd.Parameters.AddWithValue("conv_id", article.convoyeur.id);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("conv_id", null);
+                }
+                
                 cmd.Parameters.AddWithValue("cmd_id", article.fk_commande);
                 cmd.Parameters.AddWithValue("typ_id", article.type.id);
 
@@ -323,7 +333,7 @@ namespace App_pressing_Loreau.Data.DAO
                 else
                     cmd.Parameters.AddWithValue("date_rendu", article.date_rendu);
 
-                cmd.Parameters.AddWithValue("id", article.id);
+                cmd.Parameters.AddWithValue("id2", article.id);
                 #endregion
 
                 //Execute la commande
@@ -334,7 +344,7 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                MessageBox.Show("ERREUR BDD : UpdateArticle");
+                MessageBox.Show("ERREUR BDD : UpdateArticle\n" + article.ToString());
                 Bdd.deconnexion();
                 return 0;
             }

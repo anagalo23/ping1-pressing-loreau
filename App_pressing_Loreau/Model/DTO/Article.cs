@@ -10,7 +10,7 @@ namespace App_pressing_Loreau.Model.DTO
     class Article
     {
         #region attributs
-        public int id {get; set;}
+        public int id { get; set; }
         public string photo { get; set; }
         public string commentaire { get; set; }
         public bool ifRendu { get; set; }
@@ -75,8 +75,27 @@ namespace App_pressing_Loreau.Model.DTO
             this.type = type;
             this.fk_commande = cmd_id;
             this.ifRendu = false;
-            this.convoyeur = new PlaceConvoyeur();//OUT of range !!!!    new PlaceConvoyeur() ne fonctionne pas non plus
+            this.convoyeur = new PlaceConvoyeur();
         }
         #endregion
+
+        public override string ToString()
+        {
+            String retour = "";
+            retour += base.ToString();
+            retour += "type : " + type;
+            retour += "commentaire : " + commentaire;
+            retour += "photo : " + photo;
+            retour += "TVA : " + TVA;
+            retour += "TTC : " + TTC;
+            retour += "fk_commande : " + fk_commande;
+            retour += "ifRendu : " + ifRendu;
+            if (convoyeur != null)
+            {
+                retour += "convoyeur : " + convoyeur.id;
+            }
+
+            return retour;
+        }
     }
 }
