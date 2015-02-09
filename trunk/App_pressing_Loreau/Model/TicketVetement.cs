@@ -82,7 +82,7 @@ namespace App_pressing_Loreau.Model
             }
             catch (Exception e)
             {
-
+                MessageBox.Show("Impossible de trouver le fichier TicketVetement.txt.");
             }
 
         }
@@ -91,21 +91,28 @@ namespace App_pressing_Loreau.Model
         //source : http://www.c-sharpcorner.com/UploadFile/mahesh/printfile06062007133250PM/printfile.aspx
         public void PrintOff()
         {
-            string filename = copy_path + ".txt";
-            //Create a StreamReader object
-            reader = new StreamReader(filename);
-            //Create a Verdana font with size 10
-            verdana10Font = new Font("Verdana", 10);
-            //Create a PrintDocument object
-            PrintDocument pd = new PrintDocument();
-            //Add PrintPage event handler
-            pd.PrintPage += new PrintPageEventHandler(this.PrintTextFileHandler);
-            //Call Print Method
-            pd.PrinterSettings.PrinterName = printName;
-            pd.Print();
-            //Close the reader
-            if (reader != null)
-                reader.Close();
+            try
+            {
+                string filename = copy_path + ".txt";
+                //Create a StreamReader object
+                reader = new StreamReader(filename);
+                //Create a Verdana font with size 10
+                verdana10Font = new Font("Verdana", 10);
+                //Create a PrintDocument object
+                PrintDocument pd = new PrintDocument();
+                //Add PrintPage event handler
+                pd.PrintPage += new PrintPageEventHandler(this.PrintTextFileHandler);
+                //Call Print Method
+                pd.PrinterSettings.PrinterName = printName;
+                pd.Print();
+                //Close the reader
+                if (reader != null)
+                    reader.Close();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Erreur dans l'impression du ticket vetement.");
+            }
         }
 
         private void PrintTextFileHandler(object sender, PrintPageEventArgs ppeArgs)
