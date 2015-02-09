@@ -5,60 +5,74 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="740">
+
     <DockPanel x:Name="dp">
-        <Grid Margin="0,0,1,0">
+        <Grid Margin="3">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="369*"/>
-                <ColumnDefinition Width="370*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0" BorderBrush="Aqua">
+
+            <Border Grid.Column="0" BorderBrush="AliceBlue" BorderThickness="2">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="40*"/>
-                        <RowDefinition Height="241*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="12*"/>
                     </Grid.RowDefinitions>
                     <Label Style="{StaticResource Titre}" Content="Commandes en cours" Grid.Row="0" />
-                    <Border Grid.Row="1"   >
 
+                    <Border Grid.Row="1" BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="10" Margin="5">
+
+                        <ListBox Background="Transparent" ItemsSource="{Binding ListeCommandeEnCours}" BorderThickness="0">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderThickness="1" BorderBrush="AliceBlue" CornerRadius="7" Margin="2">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition MinWidth="100" />
+                                                <ColumnDefinition MinWidth="250" />
+                                                <ColumnDefinition  MinWidth="200" />
+                                                <ColumnDefinition MinWidth="150" />
+                                                <ColumnDefinition  MinWidth="150" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Content="{Binding Label_AdminCom_ref}" Grid.Column="0" Style="{StaticResource vertilabel18}" />
+
+                                            <Label Content="{Binding Label_AdminCom_EtatPaiement}" Grid.Column="1" Style="{StaticResource vertilabel18}" />
+
+                                            <Label Content="{Binding Label_AdminCom_DateEnregistrement}" Grid.Column="2" Style="{StaticResource vertilabel18}" />
+
+                                            <Label Content="{Binding Label_AdminCom_PrixRestant}" Grid.Column="3" Style="{StaticResource vertilabel18}" />
+
+                                            <Label Content="{Binding Label_AdminCom_Client}" Grid.Column="4" Style="{StaticResource vertilabel18}" />
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </Border>
                 </Grid>
             </Border>
-            <Border Grid.Column="1" BorderBrush="Aqua" BorderThickness="2" >
+
+
+
+            <Border Grid.Column="1"  >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
-                        </Grid.ColumnDefinitions>
-                        <Label Style="{StaticResource vertilabel25}" Content="Dernières commandes     :" Grid.Column="0"/>
-                        <Canvas Grid.Column="1" Margin="10,60,20,42" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <Label Background="Bisque"  Height="46" Width="60" Canvas.Left="-25" Canvas.Top="-30"/>
-                        </Canvas>
-                        <Label Style="{StaticResource vertilabel25}" Content="commande(s)"  Grid.Column="2" />
-                    </Grid>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
-                        </Grid.ColumnDefinitions>
-                        <Button x:Name="btn_admin_commandes_supprimer" Style="{StaticResource choixbouton20}" Content="Supprimer la commande" 
-                                Grid.Column="0" Margin="20,10" Click="btn_admin_commandes_supprimer_Click" />
-                    </Grid>
+
+
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30*"/>
-                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="btn_admin_commandes_modifier" Style="{StaticResource choixbouton20}" Content="Modifier la commande" 
-                                Grid.Column="0" Margin="20,10" Click="btn_admin_commandes_modifier_Click"/>
-                        <Button x:Name="btn_admin_commandes_retour" Style="{StaticResource choixbouton20}" Grid.Column="2"  
-                                Content="Retour" Margin="20,10" Click="btn_admin_commandes_retour_Click_1"/>
+
+                        <Button x:Name="btn_admin_commandes_retour"  Grid.Column="2"  
+                                Content="Retour" Margin="20,10" Click="btn_admin_commandes_retour_Click_1" Style="{StaticResource ButtonSansBck}"/>
                     </Grid>
                 </Grid>
             </Border>
