@@ -4,40 +4,11 @@
                     xmlns:vm="clr-namespace:App_pressing_Loreau.ViewModel"
                     xmlns:local="clr-namespace:App_pressing_Loreau">
 
-
- 
-
      <!--Déclarations des données pour la reception client--> 
     <DataTemplate DataType="{x:Type vm:IdentificationClientVM}">
         <view:IdentificationClient/>
     </DataTemplate>
-                    <!--binding contenu recherche client--> 
-    <!--<DataTemplate DataType="{x:Type vm:IdentificationClientData}">
-        <Border>
-
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-
-                <TextBlock Grid.Column="0" Grid.Row="0"  Text="ID" VerticalAlignment="Center" Margin="5" />
-                <TextBox Grid.Row="0" Grid.Column="1"  Text="{Binding txb_identificationClient_nom}" Margin="5" Width="150" />
-
-                <TextBlock Grid.Column="0" Grid.Row="1"  Text="Name" VerticalAlignment="Center" Margin="5" />
-                <TextBox Grid.Row="1" Grid.Column="1"  Text="{Binding ProductName}" Margin="5" Width="150" />
-
-                <TextBlock Grid.Column="0" Grid.Row="2"  Text="Unit Price" VerticalAlignment="Center" Margin="5" />
-                <TextBox Grid.Row="2" Grid.Column="1"  Text="{Binding UnitPrice}" Margin="5" Width="150" />
-
-            </Grid>
-        </Border>
-    </DataTemplate>-->
+                   
     
     
     <DataTemplate DataType="{x:Type vm:NouveauClientVM}">
@@ -143,20 +114,30 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
 
-                        <StackPanel Orientation="Vertical" Grid.Column="0" MinWidth="160" Margin="2">
-                            <Label Content="Reference de la commande :" FontWeight="Bold" FontSize="11pt" Foreground="Black"  />
+                        <StackPanel Orientation="Vertical" Grid.Column="0" MinWidth="100" Margin="2">
+                            <Label  FontWeight="Bold" FontSize="9pt" Foreground="Black">
+                                <TextBlock>Reference de  la commande</TextBlock>
+                            </Label>
                             <Label Content="{Binding Label_restitutionArticles_Reference}" FontSize="9pt" Padding="10,0,0,3" Foreground="#FF525252" />
                         </StackPanel>
 
-                        <StackPanel Orientation="Vertical" Grid.Column="1" MinWidth="160" Margin="2">
-                            <Label Content="Nom du client:" FontWeight="Bold" FontSize="11pt" Foreground="Black"  />
+                        <StackPanel Orientation="Vertical" Grid.Column="1" MinWidth="100" Margin="2">
+                            <Label  FontWeight="Bold" FontSize="9pt" Foreground="Black">
+                                <TextBlock>Etat de la commande</TextBlock>
+                            </Label>
+                            <Label Content="{Binding Label_restitutionArticles_Etat}" FontSize="9pt" Padding="10,0,0,0" Foreground="#FF525252" />
+                        </StackPanel>
+                        
+                        <StackPanel Orientation="Vertical" Grid.Column="2" MinWidth="100" Margin="2">
+                            <Label Content="Nom du client:" FontWeight="Bold" FontSize="9pt" Foreground="Black"  />
                             <Label Content="{Binding Label_restitutionArticles_nomDuClient}" FontSize="9pt" Padding="10,0,0,3" Foreground="#FF525252" />
                         </StackPanel>
 
-                        <StackPanel Orientation="Vertical" Grid.Column="2" MinWidth="160" Margin="2">
-                            <Label Content="Date de la commande:" FontWeight="Bold" FontSize="11pt" Foreground="Black"  />
+                        <StackPanel Orientation="Vertical" Grid.Column="3" MinWidth="100" Margin="2">
+                            <Label Content="Date de la commande:" FontWeight="Bold" FontSize="9pt" Foreground="Black"  />
                             <Label Content="{Binding Label_restitutionArticles_DateCommande}" FontSize="9pt" Padding="10,0,0,3" Foreground="#FF525252" />
                         </StackPanel>
                     
@@ -165,20 +146,11 @@
                     </Grid>
                 </Button>
 
-                <!--<Border>
-                    <ListBox Background="Transparent" BorderThickness="0" Margin="5" ItemsSource="{Binding ListeArticlesRestitution}"  />
-                </Border>-->
+            
             </DockPanel>
         </Border>
     </DataTemplate>
 
-
-    <!--<DataTemplate x:Key="detailArticles" DataType="{x:Type vm:DetailCommandeVM}">
-
-        <ListBox Background="Bisque" Margin="5" ItemsSource="{Binding AfficheDetailCommande}"  />
-
-    </DataTemplate>-->
-    
     
 
     <DataTemplate x:Key="Utilisateurs" DataType="{x:Type local:AccueilVM}">

@@ -66,11 +66,13 @@
                                 <Border BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="10">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition  MinWidth="200"/>
-                                            <ColumnDefinition  MinWidth="100"/>
+                                            <ColumnDefinition MinWidth="200" />
+                                            <ColumnDefinition MinWidth="170"/>
+                                            <ColumnDefinition MinWidth="100"/>
                                         </Grid.ColumnDefinitions>
-                                        <Label Content="{Binding Label_Convoyeur_NomArticle}" Grid.Column="0" Style="{StaticResource vertilabel18}" />
-                                        <Label Content="{Binding Label_Convoyeur_Emplacement}" Grid.Column="1" Style="{StaticResource vertilabel18}" />
+                                        <Label Content="{Binding Label_Convoyeur_referenceCommande}" Grid.Column="0" Style="{StaticResource vertilabel18}" />
+                                        <Label Content="{Binding Label_Convoyeur_NomArticle}" Grid.Column="1" Style="{StaticResource vertilabel18}" />
+                                        <Label Content="{Binding Label_Convoyeur_Emplacement}" Grid.Column="2" Style="{StaticResource vertilabel18}" />
                                     </Grid>
                                 </Border>
                             </DataTemplate>

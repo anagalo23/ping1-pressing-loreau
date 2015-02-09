@@ -108,25 +108,25 @@
 
                         <Border Margin="7,4" BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="7" Grid.Column="0">
                             <Button x:Name="btn_paiement_cartebleue" Tag="CarteBancaire" Command="{Binding Btn_paiement}" CommandParameter="{Binding ElementName=btn_paiement_cartebleue}" Margin="2" Background="Transparent"  BorderThickness="0"   >
-                                <Image Source="/Resources/pics/paiements/carte_bleue.png" Width="80" Height="60"  />
+                                <Image Source="/Resources/pics/paiements/carte_bleue.png" Width="54" Height="60"  />
                             </Button>
                         </Border>
 
                         <Border Margin="7,4" BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="7" Grid.Column="1">
                             <Button x:Name="btn_paiement_especes" Tag="Espece"  Command="{Binding Btn_paiement}" CommandParameter="{Binding ElementName=btn_paiement_especes}" Background="Transparent"  BorderThickness="0"  Margin="2">
-                                <Image Source="/Resources/pics/paiements/paiement_especes.png"  Width="80" Height="60"  />
+                                <Image Source="/Resources/pics/paiements/paiement_especes.png"  Width="54" Height="60"  />
                             </Button>
                         </Border>
 
                         <Border Margin="7,4" BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="7" Grid.Column="2">
                             <Button x:Name="btn_paiement_cheques" Tag="Cheque"  Command="{Binding Btn_paiement}" CommandParameter="{Binding ElementName=btn_paiement_cheques}" Background="Transparent"  BorderThickness="0"  Margin="2">
-                                <Image Source="/Resources/pics/paiements/Paiement_cheques.png"  Width="80" Height="60"  />
+                                <Image Source="/Resources/pics/paiements/Paiement_cheques.png"  Width="54" Height="60"  />
                             </Button>
                         </Border>
 
                         <Border Margin="7,4" BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="7" Grid.Column="3">
                             <Button x:Name="btn_paiement_americanExpress" Tag="AmericanExpress"  Command="{Binding Btn_paiement}" CommandParameter="{Binding ElementName=btn_paiement_americanExpress}" Background="Transparent"  BorderThickness="0" Margin="2" >
-                                <Image Source="/Resources/pics/paiements/AmericanExpress.png"  Width="80" Height="60"  />
+                                <Image Source="/Resources/pics/paiements/AmericanExpress.png"  Width="54" Height="60"  />
                             </Button>
                         </Border>
 
@@ -136,7 +136,7 @@
 
                         <Border Margin="7,4" BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="7" Grid.Column="5">
                             <Button x:Name="btn_paiement_virement"  Tag="VirementBancaire"  Command="{Binding Btn_paiement}" Background="Transparent" CommandParameter="{Binding ElementName=btn_paiement_virement}"  BorderThickness="0" Margin="2" >
-                                <Image Source="/Resources/pics/paiements/virement.png"  Width="80" Height="60"  />
+                                <Image Source="/Resources/pics/paiements/virement.png"  Width="55" Height="60"  />
                             </Button>
                         </Border>
 
