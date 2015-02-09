@@ -29,8 +29,16 @@ namespace App_pressing_Loreau.View
         {
             if (ClasseGlobale._renduCommande != null)
             {
-                dp.Children.Clear();
-                dp.Children.Add(new DetailCommande());
+                if (ClasseGlobale._renduCommande.payee == false)
+                {
+                    dp.Children.Clear();
+                    dp.Children.Add(new DetailCommande());
+                }
+                else
+                {
+                    MessageBox.Show("Les articles de cette commande ont déjà tous été payés et rendus");
+                }
+                
             }
             else
             {
