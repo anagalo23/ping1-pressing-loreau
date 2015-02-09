@@ -175,6 +175,7 @@
     <Compile Include="ViewModel\VMAdministrateur\AdministrationArticlesDepartementsVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\AdministrationCaisseVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\AdministrationClientProVM.cs" />
+    <Compile Include="ViewModel\VMAdministrateur\AdministrationCommandesVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\AdministrationConvoyeurVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\GestionUtilisateursVM.cs" />
     <Compile Include="ViewModel\VMAdministrateur\NouvelleCommandeClientProVM.cs" />

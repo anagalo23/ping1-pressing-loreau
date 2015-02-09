@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App_pressing_Loreau.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace App_pressing_Loreau.View
         public AdministrationCommandes()
         {
             InitializeComponent();
+            DataContext = new AdministrationCommandesVM();
         }
 
         private void btn_admin_commandes_modifier_Click(object sender, RoutedEventArgs e)
