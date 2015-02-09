@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace App_pressing_Loreau.Model
 {
+    /// <summary>
+    /// Commentaire de classe
+    /// </summary>
     class LectureExcel
     {
 
@@ -46,7 +49,7 @@ namespace App_pressing_Loreau.Model
         #endregion
 
         #region methodes
-        //type = 0 : Lescture X
+        //type = 0 : Lecture X
         //type = 1 : lecture Z
         public LectureExcel(int type)
         {

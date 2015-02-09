@@ -67,16 +67,13 @@ namespace App_pressing_Loreau
 
             ColorUserConnect = Brushes.Red;
 
-            Label_Accueil_NomUser = null;
+            Label_Accueil_NomUser = "Choisissez un employé";
         }
 
         #endregion
 
         #region Propriétés et Commandes
 
-
-        //#region Accesseur de classe
-        //#endregion
 
         public String Label_Accueil_NomUser
         {
@@ -120,7 +117,6 @@ namespace App_pressing_Loreau
             }
 
         }
-
 
         public Brush Btn_receptionColor
         {
@@ -274,7 +270,7 @@ namespace App_pressing_Loreau
             get
             {
                 return new RelayCommand(p => administateurVM(),
-                    p => ClasseGlobale.employeeEnCours != null);
+                    p => ClasseGlobale.employeeEnCours != null );
             }
         }
 
@@ -508,7 +504,7 @@ namespace App_pressing_Loreau
 
             obj.accessUserControl = null;
             ClasseGlobale.employeeEnCours = null;
-            Label_Accueil_NomUser = null;
+            Label_Accueil_NomUser = "Choisissez un employé";
             ColorUserConnect = Brushes.Red;
         }
         #endregion

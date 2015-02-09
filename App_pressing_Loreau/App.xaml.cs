@@ -26,18 +26,18 @@ namespace App_pressing_Loreau
             base.OnStartup(e);
             // chargement de la page accueil
 
-            Accueil acc = new Accueil();
-            // liaison avec la page AccueilVM
-            AccueilVM context = new AccueilVM();
-            // Permet de traiter les données dans AccueilVM
-            acc.DataContext = context;
-            acc.Show();
-
-            //PageDemarrage acc = new PageDemarrage();
-
-            //PageDemarrageVM pVM = new PageDemarrageVM();
-            //acc.DataContext = pVM;
+            //Accueil acc = new Accueil();
+            //// liaison avec la page AccueilVM
+            //AccueilVM context = new AccueilVM();
+            //// Permet de traiter les données dans AccueilVM
+            //acc.DataContext = context;
             //acc.Show();
+
+            PageDemarrage acc = new PageDemarrage();
+
+            PageDemarrageVM pVM = new PageDemarrageVM();
+            acc.DataContext = pVM;
+            acc.Show();
         }
         
     }

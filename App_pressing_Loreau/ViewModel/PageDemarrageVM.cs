@@ -51,7 +51,7 @@ namespace App_pressing_Loreau.ViewModel
                 if (value != _billet100EURO)
                 {
                     _billet100EURO = value;
-                    Somme += value*100;
+                    //Somme += value*100;
                     OnPropertyChanged("Billet100EURO");
                 }
             }
@@ -65,7 +65,7 @@ namespace App_pressing_Loreau.ViewModel
                 if (value != _billet50EURO)
                 {
                     _billet50EURO = value;
-                    Somme += value*50;
+                    //Somme += value*50;
                     OnPropertyChanged("Billet50EURO");
                 }
             }
@@ -79,7 +79,7 @@ namespace App_pressing_Loreau.ViewModel
                 if (value != _billet20EURO)
                 {
                     _billet20EURO = value;
-                    Somme += value*20;
+                    //Somme += value*20;
                     OnPropertyChanged("Billet20EURO");
                 }
             }
@@ -93,7 +93,7 @@ namespace App_pressing_Loreau.ViewModel
                 if (value != _billet10EURO)
                 {
                     _billet10EURO = value;
-                    Somme += value*10;
+                    //Somme += value*10;
                     OnPropertyChanged("Billet10EURO");
                 }
             }
@@ -107,7 +107,7 @@ namespace App_pressing_Loreau.ViewModel
                 if (value != _billet5EURO)
                 {
                     _billet5EURO = value;
-                    Somme += value*5;
+                    //Somme += value*5;
                     OnPropertyChanged("Billet5EURO");
                 }
             }
@@ -121,7 +121,7 @@ namespace App_pressing_Loreau.ViewModel
                 if (value != _piece2Euro)
                 {
                     _piece2Euro = value;
-                    Somme += value*2;
+                    //Somme += value*2;
                     OnPropertyChanged("Piece2Euro");
                 }
             }
@@ -135,7 +135,7 @@ namespace App_pressing_Loreau.ViewModel
                 if (value != _piece1Euro)
                 {
                     _piece1Euro = value;
-                    Somme += value*1;
+                    //Somme += value*1;
                     OnPropertyChanged("Piece1Euro");
                 }
             }
@@ -149,7 +149,7 @@ namespace App_pressing_Loreau.ViewModel
                 if (value != _piece50c)
                 {
                     _piece50c = value;
-                    Somme += value* 0.5;
+                    //Somme += value* 0.5;
                     OnPropertyChanged("Piece50c");
                 }
             }
@@ -163,7 +163,7 @@ namespace App_pressing_Loreau.ViewModel
                 if (value != _piece20c)
                 {
                     _piece20c = value;
-                    Somme += value*0.2;
+                    //Somme += value*0.2;
                     OnPropertyChanged("Piece20c");
                 }
             }
@@ -177,7 +177,7 @@ namespace App_pressing_Loreau.ViewModel
                 if (value != _piece10c)
                 {
                     _piece10c = value;
-                    Somme += value*0.1;
+                    //Somme += value*0.1;
                     OnPropertyChanged("Piece10c");
                 }
             }
@@ -191,7 +191,7 @@ namespace App_pressing_Loreau.ViewModel
                 if (value != _piece5c)
                 {
                     _piece5c = value;
-                    Somme += value*0.05;
+                    //Somme += value*0.05;
                     OnPropertyChanged("Piece5c");
                 }
             }
@@ -205,7 +205,7 @@ namespace App_pressing_Loreau.ViewModel
                 if (value != _piece2c)
                 {
                     _piece2c = value;
-                    Somme += value*0.02;
+                    //Somme += value*0.02;
                     OnPropertyChanged("Piece2c");
                 }
             }
@@ -234,8 +234,14 @@ namespace App_pressing_Loreau.ViewModel
         #region Methods
         public void totalFondCaisse()
         {
+
+            Somme = (double)((decimal)(Billet100EURO * 100) + (decimal)(Billet50EURO * 50) + (decimal)(Billet20EURO *20) +
+                (decimal)(Billet10EURO * 10) + (decimal)(Billet5EURO * 5) + (decimal)(Piece2Euro * 2) + (decimal)(Piece1Euro) +
+                (decimal)(Piece50c * 0.5) + (decimal)(Piece20c * 0.2) + (decimal)(Piece10c * 0.1) + (decimal)(Piece2c * 0.02) +
+                (decimal)(Piece5c * 0.05));
+
             Label_pageDemmarrage_total = Somme;
-            Somme = 0;
+            Somme=0;
         }
         #endregion
     }
