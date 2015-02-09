@@ -135,9 +135,8 @@ namespace App_pressing_Loreau.ViewModel
         }
         private void ValiderSelection()
         {
+            //Ajout des articles sélectionnés dans une liste globale
             ArtSelec = new List<Article>();
-
-            //Ajout des articles sélectionnés dans une liste
             foreach (ArticlesRestitutionVM artVM in AfficheDetailCommande)
             {
                 if (artVM.IsSelectedArticle)
@@ -224,7 +223,15 @@ namespace App_pressing_Loreau.ViewModel
             {
                 foreach (Article art in com.listArticles)
                 {
-                    AfficheDetailCommande.Add(new ArticlesRestitutionVM() { ar = art, ArticlesNameRes = art.type.nom });
+                    if (art.ifRendu == false)
+                    {
+                        AfficheDetailCommande.Add(new ArticlesRestitutionVM() { ar = art, ArticlesNameRes = art.type.nom });
+                    }
+                    else
+                    {
+                        MessageBox.Show("Article déjà rendu\n" + art.ToString());
+                    }
+                    
                 }
 
 
