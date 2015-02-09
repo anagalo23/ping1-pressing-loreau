@@ -35,7 +35,9 @@ namespace App_pressing_Loreau.Model
 
         public void createFacture()
         {
-            //Ouvre le fichier excel
+            try
+            {
+                            //Ouvre le fichier excel
             oXL = new Microsoft.Office.Interop.Excel.Application();
             mWorkBook = oXL.Workbooks.Open(pattern_path, 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
             mWorkSheets = (Worksheet)mWorkBook.Worksheets.get_Item(1);
@@ -52,14 +54,14 @@ namespace App_pressing_Loreau.Model
 
             //ajout des articles
             int index = 19;
-            float total = 0;
-            float tva = 0;
+            decimal total = 0;
+            decimal tva = 0;
             foreach (Article art in commande.listArticles)
             {
                 mWorkSheets.Cells[index, 2] = art.type.nom;
-                mWorkSheets.Cells[index, 9] = art.TTC * (1 - art.TVA / 100);
-                total = total + art.TTC * (1 - art.TVA / 100);
-                tva = tva + art.TTC * (art.TVA / 100);
+                mWorkSheets.Cells[index, 9] = (decimal)art.TTC * (1 - (decimal)art.TVA / 100);
+                total = (decimal)total + (decimal)art.TTC * (1 - (decimal)art.TVA / 100);
+                tva = tva + (decimal)art.TTC * ((decimal)art.TVA / 100);
 
                 index++;
             }
@@ -71,7 +73,13 @@ namespace App_pressing_Loreau.Model
             mWorkSheets.Cells[index + 1, 7] = "Remise :";
             mWorkSheets.Cells[index + 1, 9] = commande.remise;
             mWorkSheets.Cells[index + 2, 7] = "Total :";
-            mWorkSheets.Cells[index + 2, 9] = total + tva - commande.remise;
+            mWorkSheets.Cells[index + 2, 9] = total + tva - (decimal)commande.remise;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Impossible d'ouvrir le fichier FacturePattern.xlsx");
+            }
+
 
         }
 

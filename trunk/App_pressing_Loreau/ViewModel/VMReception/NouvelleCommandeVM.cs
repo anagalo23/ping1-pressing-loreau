@@ -225,6 +225,14 @@ namespace App_pressing_Loreau.ViewModel
                             cmd = CommandeDAO.selectCommandeById(cmd.id, true, true, true);
                             RecuPaiement rp = new RecuPaiement(cmd);
                             rp.printRecu();
+                            //impression des tickets vetements
+                            if (cmd.listArticles != null)
+                            {
+                                TicketVetement ticketVetement = new TicketVetement(cmd);
+                                ticketVetement.printAllArticleCmd();
+                            }
+                            else
+                                MessageBox.Show("La commande ne contient pas d'articles");
                         }
                         catch (Exception)
                         {
