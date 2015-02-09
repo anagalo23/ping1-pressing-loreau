@@ -1,4 +1,6 @@
-﻿using App_pressing_Loreau.ViewModel;
+﻿using App_pressing_Loreau.Helper;
+using App_pressing_Loreau.Model;
+using App_pressing_Loreau.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,8 +30,10 @@ namespace App_pressing_Loreau.View
 
         private void btn_accessApplication_Click(object sender, RoutedEventArgs e)
         {
-            dpDemarrage.Children.Clear();
-            dpDemarrage.Children.Add(new Accueil());
+            //dpDemarrage.Children.Clear();
+            //dpDemarrage.Children.Add(new Accueil());
+
+            MessageBox.Show(CashProperties.fondCaisse +"");
         }
     }
 }
