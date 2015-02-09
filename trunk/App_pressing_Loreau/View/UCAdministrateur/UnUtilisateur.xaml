@@ -9,11 +9,12 @@
         <Border BorderBrush="White" BorderThickness="1" CornerRadius="10">
             <Grid Height="30" Width="500">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="{Binding NameUtilisateur}" Margin="1" Grid.Column="0"  Style="{StaticResource Utilisateur}"/>
+                <Label Content="{Binding PrenomUtilisateur}" Margin="1" Grid.Column="1"  Style="{StaticResource Utilisateur}"/>
 
                 <Button x:Name="btn_gest_utilisateur_supprimer" BorderBrush="White" Background="Transparent" Grid.Column="2" Margin="2,1,0,1" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path= DataContext.DeleteUtilisateurs}" CommandParameter="{Binding}">
                     <Image Source="/Resources/pics/Admin1/logo_exit.png"/>

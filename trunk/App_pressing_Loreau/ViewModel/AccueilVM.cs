@@ -17,6 +17,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.IO;
 using Microsoft.Practices.Prism.Commands;
+using System.Windows.Media.Animation;
 
 
 
@@ -27,13 +28,13 @@ namespace App_pressing_Loreau
     /// ViewModel pour la classe Accueil.xaml
     /// Quelque soit le bouton de l'accueil qui est cliqué (header) le set est appelé puis le getter deux fois
     /// </summary>
-    public class AccueilVM : ObservableObject, IPageViewModel
+    public class AccueilVM : ObservableObject
     {
         #region Attributs
 
         private IPageViewModel _accessUserControl;
         private List<CategoryItem> _listeUser;
-
+        private String _label_Accueil_NomUser;
 
         private Brush _btn_receptionColor;
         private Brush _btn_renduColor;
@@ -43,13 +44,17 @@ namespace App_pressing_Loreau
         private Brush _btn_administrateurColor;
         private Brush _btn_convoyeurColor;
 
+        private Brush _colorUserConnect;
+
+        ICommand lesUtilisateurs;
+        private DelegateCommand<AccueilVM> _btn_accueil_image;
 
         #endregion
 
         #region Constructeur
         public AccueilVM()
         {
-           
+
             UtilisateurListe();
 
             Btn_receptionColor = Brushes.Teal;
@@ -60,6 +65,9 @@ namespace App_pressing_Loreau
             Btn_impressionColor = Brushes.Teal;
             Btn_administrateurColor = Brushes.Teal;
 
+            ColorUserConnect = Brushes.Red;
+
+            Label_Accueil_NomUser = null;
         }
 
         #endregion
@@ -69,6 +77,18 @@ namespace App_pressing_Loreau
 
         //#region Accesseur de classe
         //#endregion
+
+        public String Label_Accueil_NomUser
+        {
+            get { return _label_Accueil_NomUser; }
+            set
+            {
+
+                _label_Accueil_NomUser = value;
+                OnPropertyChanged("Label_Accueil_NomUser");
+
+            }
+        }
         public IPageViewModel accessUserControl
         {
             get { return _accessUserControl; }
@@ -92,16 +112,10 @@ namespace App_pressing_Loreau
             }
         }
 
-        ICommand lesUtilisateurs;
         public ICommand LesUtilisateurs
         {
             get
             {
-                //foreach (CategoryItem utilisateur in _listeUser)
-                //{
-                //    utilisateur.ButtonUserBackground = Brushes.Teal;
-                //}
-
                 return lesUtilisateurs ?? (lesUtilisateurs = new RelayCommand(ClickSurUtilisateur));
             }
 
@@ -112,13 +126,11 @@ namespace App_pressing_Loreau
         {
             get
             {
-                //MessageBox.Show("get du bouton accueil");
                 return _btn_receptionColor;
             }
             set
             {
                 _btn_receptionColor = value;
-                //MessageBox.Show("set du bouton accueil");
                 ClasseGlobale.SET_ALL_NULL();
                 RaisePropertyChanged("Btn_receptionColor");
 
@@ -185,6 +197,15 @@ namespace App_pressing_Loreau
             }
         }
 
+        public Brush ColorUserConnect
+        {
+            get { return _colorUserConnect; }
+            set
+            {
+                _colorUserConnect = value;
+                OnPropertyChanged("ColorUserConnect");
+            }
+        }
 
 
 
@@ -192,44 +213,85 @@ namespace App_pressing_Loreau
         #region Command bouton menu
         // Button permettant la redirection vers la page Identification Client 
         public ICommand Btn_accueil_receptionClient
-        { get { return new RelayCommand(p => identificationClientVM()); } }
+        {
+            get
+            {
+                return new RelayCommand(p => identificationClientVM(),
+                    p => ClasseGlobale.employeeEnCours != null);
+            }
+        }
 
         // Button permettant la redirection vers la page Restitution client 
         public ICommand Btn_accueil_renduArticles
-        { get { return new RelayCommand(p => restitutionArticleVM()); } }
+        {
+            get
+            {
+                return new RelayCommand(p => restitutionArticleVM(),
+                    p => ClasseGlobale.employeeEnCours != null);
+            }
+        }
 
 
 
         // Button permettant la redirection vers la page facture
         public ICommand Btn_accueil_facture
-        { get { return new RelayCommand(p => factureVM()); } }
+        {
+            get
+            {
+                return new RelayCommand(p => factureVM(),
+                    p => ClasseGlobale.employeeEnCours != null);
+            }
+        }
 
 
         // Button permettant la redirection vers la page client pro
         public ICommand Btn_accueil_client_pro
-        { get { return new RelayCommand(p => clientproVM()); } }
+        {
+            get
+            {
+                return new RelayCommand(p => clientproVM(),
+                    p => ClasseGlobale.employeeEnCours != null);
+            }
+        }
 
 
 
         // Button permettant la redirection vers la page impression 
         public ICommand Btn_accueil_impression
-        { get { return new RelayCommand(p => impressionVM()); } }
+        {
+            get
+            {
+                return new RelayCommand(p => impressionVM(),
+                    p => ClasseGlobale.employeeEnCours != null);
+            }
+        }
 
 
 
         // Button permettant la redirection vers la page Connexion administateur
         public ICommand Btn_accueil_administrateur
-        { get { return new RelayCommand(p => administateurVM()); } }
+        {
+            get
+            {
+                return new RelayCommand(p => administateurVM(),
+                    p => ClasseGlobale.employeeEnCours != null);
+            }
+        }
 
 
         // Button permettant la redirection vers la page convoyeur
         public ICommand Btn_accueil_convoyeur
-        { get { return new RelayCommand(p => convoyeurVM()); } }
+        {
+            get
+            {
+                return new RelayCommand(p => convoyeurVM(),
+                    p => ClasseGlobale.employeeEnCours != null);
+            }
+        }
 
         #endregion
 
         // Button permettant de revenir a la page preincipale 
-        private DelegateCommand<AccueilVM> _btn_accueil_image;
         public DelegateCommand<AccueilVM> Btn_accueil_image
         {
             get
@@ -238,7 +300,7 @@ namespace App_pressing_Loreau
                     (arg) => true));
             }
         }
-     
+
 
         #endregion
 
@@ -258,7 +320,7 @@ namespace App_pressing_Loreau
             Btn_administrateurColor = Brushes.Teal;
 
             accessUserControl = new IdentificationClientVM();//Problème avec le datacontext... la vm est liée via data context => ajouter view à dockpanel
-         
+
         }
         //Methodes des redirection vers le ViewModel de l restitution client
         public void restitutionArticleVM()
@@ -346,18 +408,64 @@ namespace App_pressing_Loreau
 
         #endregion
 
-
+        // Action sur button utilisateur
         public void ClickSurUtilisateur(object User)
         {
             Button clickedbutton = User as Button;
+
+            //Action qui suit si le button utilisateur est actionné
             if (clickedbutton != null)
             {
-                clickedbutton.Background = Brushes.Red;
+                //Si un utilisateur est en cours 
+                if (ClasseGlobale.employeeEnCours != null)
+                {
+                    ColorUserConnect = Brushes.Orange;
+
+                    //Un processus est en cours 
+                    if (accessUserControl != null)
+                    {
+                        
+                        MessageBox.Show("Un utilisateur est en cours d'utilisation \n Un processus est en cours");
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Un utilisateur est en cours d'utilisation");
+
+                    }
+                }
+                else if (accessUserControl != null)
+                {
+                    MessageBox.Show("Un processus est en cours");
+
+                }
+                    //Changement d utilisateur
+                else
+                {
+                    try
+                    {
+                        ClasseGlobale.employeeEnCours = EmployeDAO.selectEmployeById(Int32.Parse(clickedbutton.Tag.ToString()));
+                        Label_Accueil_NomUser = "Utilisateur : " + ClasseGlobale.employeeEnCours.nom + " " + ClasseGlobale.employeeEnCours.prenom;
+                        ColorUserConnect = Brushes.Green;
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("" + e);
+
+                    }
+                    
+
+                }
+
             }
         }
         public void UtilisateurListe()
         {
-    
+            try
+            {
+
+          
+
             ListeUser = new List<CategoryItem>();
 
             List<Employe> emp = (List<Employe>)EmployeDAO.selectEmployes();
@@ -365,17 +473,22 @@ namespace App_pressing_Loreau
             {
                 foreach (Employe em in emp)
                 {
-                    ListeUser.Add(new CategoryItem() { ButtonUserContent = em.nom, ButtonUserTag = em.id, ButtonUserBackground = Brushes.Teal });
+                    ListeUser.Add(new CategoryItem() { ButtonUserContent = em.prenom, ButtonUserTag = em.id, ButtonUserBackground = Brushes.Teal });
                 }
             }
             else
             {
                 ListeUser.Add(new CategoryItem() { ButtonUserContent = "Erreur", ButtonUserBackground = Brushes.Teal });
             }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erreur chargement utilisateur" + e);
+            }
         }
 
 
-        
+
 
         public void accueilVM(AccueilVM obj)
         {
@@ -394,25 +507,22 @@ namespace App_pressing_Loreau
 
 
             obj.accessUserControl = null;
+            ClasseGlobale.employeeEnCours = null;
+            Label_Accueil_NomUser = null;
+            ColorUserConnect = Brushes.Red;
         }
         #endregion
-
-        #region Class
-        public class CategoryItem
-        {
-            public string ButtonUserContent { get; set; }
-
-            public int ButtonUserTag { get; set; }
-
-            public Brush ButtonUserBackground { get; set; }
-
-        }
-        #endregion
-
-
-        public string Name
-        {
-            get { return ""; }
-        }
     }
+    #region Class
+    public class CategoryItem
+    {
+        public string ButtonUserContent { get; set; }
+
+        public int ButtonUserTag { get; set; }
+
+        public Brush ButtonUserBackground { get; set; }
+
+    }
+    #endregion
+
 }

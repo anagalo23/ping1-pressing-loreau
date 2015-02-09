@@ -28,7 +28,7 @@ namespace App_pressing_Loreau
             }
             else
             {
-                dp.Children.Add(new Accueil());
+                //dp.Children.Add(new Accueil());
             }
             
         }

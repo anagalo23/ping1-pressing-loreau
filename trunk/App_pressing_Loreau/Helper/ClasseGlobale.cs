@@ -71,7 +71,7 @@ namespace App_pressing_Loreau.Helper
 
         //*******************************************************************************GESTION DE LA LISTE DES EMPLOYES
 
-        public static Employe listeEmployes { get; set; }
+        public static Employe employeeEnCours { get; set; }
     
 
 
