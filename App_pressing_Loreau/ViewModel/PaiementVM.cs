@@ -215,7 +215,7 @@ namespace App_pressing_Loreau.ViewModel
             get
             {
                 return new RelayCommand(
-                    p => enregistrerCommande(),
+                    p => ValidationPaiement(),
                     p => ClasseGlobale.Client != null
                     );
             }
@@ -399,7 +399,7 @@ namespace App_pressing_Loreau.ViewModel
 
         }
 
-        private void enregistrerCommande()
+        private void ValidationPaiement()
         {
             if (ClasseGlobale.Client.nom != "")
             {
@@ -407,7 +407,7 @@ namespace App_pressing_Loreau.ViewModel
 
                 Client client = ClasseGlobale.Client;
 
-                //Enregistrement de la commande
+                //Validation du paiement
 
                 if (Reste_a_payer == 0)
                 {
