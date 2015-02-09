@@ -9,17 +9,13 @@ using App_pressing_Loreau.Model.DTO;
 
 namespace App_pressing_Loreau.ViewModel
 {
-    class UnUtilisateurVM : ObservableObject, IPageViewModel
+    class UnUtilisateurVM : ObservableObject
     {
 
         private String _nameUtilisateur;
-
+        private String _prenomUtilisateur;
         public int idEmployee { get; set; }
-        public string Name
-        {
-            get { return ""; }
-        }
-
+      
 
         public String NameUtilisateur
         {
@@ -30,6 +26,19 @@ namespace App_pressing_Loreau.ViewModel
                 {
                     _nameUtilisateur = value;
                     OnPropertyChanged("NameUtilisateur");
+                }
+            }
+        }
+
+        public String PrenomUtilisateur
+        {
+            get { return _prenomUtilisateur; }
+            set
+            {
+                if (value != _prenomUtilisateur)
+                {
+                    _prenomUtilisateur = value;
+                    OnPropertyChanged("PrenomUtilisateur");
                 }
             }
         }

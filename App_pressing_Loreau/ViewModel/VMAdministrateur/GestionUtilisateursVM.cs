@@ -18,13 +18,11 @@ namespace App_pressing_Loreau.ViewModel
     {
         #region attributs
 
-        //List<Employe> listEmploye = null;
         private List<UnUtilisateurVM> _listeUtilisateurs;
         private String _txb_Utilisateur_Name;
+        private String _txb_Utilisateur_Prenom;
 
-       // private List<Employe> listeEmploye=null;
-        //private Employe employee;
-
+ 
         private DelegateCommand<UnUtilisateurVM> _deleteUtilisateurs;
         #endregion
         public String Name
@@ -35,7 +33,6 @@ namespace App_pressing_Loreau.ViewModel
         public GestionnUtilisateursVM()
         {
            
-            //ajouterUser();
             ListeEmployee();
    
         }
@@ -55,6 +52,18 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
+        public String Txb_Utilisateur_Prenom
+        {
+            get { return _txb_Utilisateur_Prenom; }
+            set
+            {
+                if (value != _txb_Utilisateur_Prenom)
+                {
+                    _txb_Utilisateur_Prenom = value;
+                    OnPropertyChanged("Txb_Utilisateur_Prenom");
+                }
+            }
+        }
 
         public List<UnUtilisateurVM> ListeUtilisateurs
         {
@@ -100,14 +109,14 @@ namespace App_pressing_Loreau.ViewModel
             List<Employe> employees = (List<Employe>)EmployeDAO.selectEmployes();
             foreach (Employe em in employees)
             {
-                ListeUtilisateurs.Add(new UnUtilisateurVM() { NameUtilisateur = em.nom, idEmployee = em.id });
+                ListeUtilisateurs.Add(new UnUtilisateurVM() { NameUtilisateur = em.nom, PrenomUtilisateur=em.prenom, idEmployee = em.id });
             }
 
         }
         public void ajouterUser(GestionnUtilisateursVM  obj)
         {
             //listeEmploye = (List<Employe>)EmployeDAO.selectEmployes();
-            Employe employee = new Employe(obj._txb_Utilisateur_Name, obj._txb_Utilisateur_Name);
+            Employe employee = new Employe(obj._txb_Utilisateur_Name, obj._txb_Utilisateur_Prenom);
             if (employee != null)
             {
                 EmployeDAO.insertEmploye(employee);
