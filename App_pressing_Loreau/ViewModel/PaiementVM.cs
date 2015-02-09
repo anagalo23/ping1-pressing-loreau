@@ -421,7 +421,7 @@ namespace App_pressing_Loreau.ViewModel
 
                         Commande cmd = new Commande(DateTime.Now, true, Txb_paiement_montantRemise, client);
                         CommandeDAO.insertCommande(cmd);
-                        cmd = CommandeDAO.lastCommande();
+                        cmd = CommandeDAO.selectCommandeById(CommandeDAO.lastCommande().id,false, true,false);
 
                         //Enregistrement des articles
                         foreach (ArticlesVM artVM in cmdDetail)
@@ -452,6 +452,14 @@ namespace App_pressing_Loreau.ViewModel
                         {
                             RecuPaiement rp = new RecuPaiement(cmdTota);
                             rp.printRecu();
+                            if(cmd.listArticles != null)
+                            {
+                                TicketVetement ticketVetement = new TicketVetement(cmd);
+                                ticketVetement.printAllArticleCmd();
+                            }
+                            else
+                                MessageBox.Show("La commande ne contient pas d'articles");
+
                         }
                         catch (Exception)
                         {

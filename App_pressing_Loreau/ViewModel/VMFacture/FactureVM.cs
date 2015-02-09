@@ -11,6 +11,7 @@ using App_pressing_Loreau.View;
 using App_pressing_Loreau.Data.DAO;
 using App_pressing_Loreau.Model.DTO;
 using App_pressing_Loreau.Model;
+using System.Windows;
 
 namespace App_pressing_Loreau.ViewModel
 {
@@ -22,7 +23,7 @@ namespace App_pressing_Loreau.ViewModel
         }
 
         #region Attributes
-        private int _txb_factures_idCommande;        
+        private int _txb_factures_idCommande;
         private FactureFinaleVM _apercu_facture;
 
         Commande commande;
@@ -31,7 +32,7 @@ namespace App_pressing_Loreau.ViewModel
 
         public FactureVM()
         {
-            
+
         }
 
 
@@ -74,8 +75,8 @@ namespace App_pressing_Loreau.ViewModel
             get
             {
                 return new RelayCommand(
-                    p => FactureApercu(), 
-                    p=>Txb_factures_idCommande>0);
+                    p => FactureApercu(),
+                    p => Txb_factures_idCommande > 0);
             }
         }
 
@@ -89,19 +90,19 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
         #endregion
-        
-        
-        
-        #region methods 
+
+
+
+        #region methods
 
         public void FactureApercu()
         {
             FactureFinaleVM ffVM = new FactureFinaleVM();
             float prixTTCTotal = 0;
             float prixHTTotal = 0;
-            
 
-            commande = (Commande)CommandeDAO.selectCommandeById(Txb_factures_idCommande,false, true, true);
+
+            commande = (Commande)CommandeDAO.selectCommandeById(Txb_factures_idCommande, false, true, true);
             if (commande != null)
             {
                 decimal tamponTTC = 0;
@@ -129,27 +130,22 @@ namespace App_pressing_Loreau.ViewModel
 
             }
 
-            
+
             ApercuFacture = ffVM;
 
         }
 
         public void impression()
         {
-            //PrintDialog dialog = new PrintDialog();
-            //FactureFinale fenetreFacture = new FactureFinale();
-            //if (dialog.ShowDialog() == true)
-            //{
-            //    dialog.PrintVisual(fenetreFacture, "fenetreFacture");
-            //}
             if (commande != null)
             {
                 FactureExcel fe = new FactureExcel(commande);
-
                 fe.printFacture();
             }
+            else
+                MessageBox.Show("La commande est null");
         }
-        
+
         #endregion
 
 
