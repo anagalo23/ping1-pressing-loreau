@@ -310,7 +310,7 @@ namespace App_pressing_Loreau.ViewModel
         {
             //MessageBox.Show(obj.commande.id +"");
             ClasseGlobale._renduCommande = obj.commande;
-            ClasseGlobale.Client = obj.clt;
+            ClasseGlobale.Client = obj.commande.client;
             Label_CommandeSelectionner = ClasseGlobale._renduCommande.id.ToString();
             //MessageBox.Show();
         }

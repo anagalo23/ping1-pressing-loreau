@@ -431,12 +431,12 @@ namespace App_pressing_Loreau.Data.DAO
                 //ajout des parametres
                 cmd.Parameters.AddWithValue("id", commande.id);
                 cmd.Parameters.AddWithValue("date", commande.date);
-                int payee = (commande.payee) ? 1 : 0;
-                cmd.Parameters.AddWithValue("payee", payee);
+                cmd.Parameters.AddWithValue("payee", (commande.payee) ? 1 : 0);
                 cmd.Parameters.AddWithValue("clt_id", commande.client.id);
                 cmd.Parameters.AddWithValue("remise", commande.remise);
-                cmd.Parameters.AddWithValue("id", commande.id);
                 cmd.Parameters.AddWithValue("date_rendu", commande.date_rendu);
+                cmd.Parameters.AddWithValue("id2", commande.id);
+                
 
 
                 retour = cmd.ExecuteNonQuery();

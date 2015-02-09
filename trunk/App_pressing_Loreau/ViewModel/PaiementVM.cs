@@ -405,20 +405,17 @@ namespace App_pressing_Loreau.ViewModel
             {
                 //Récupération des articles de la commande, du client, et du paiement et enregistrement en bdd
 
-                //int i = 0, j = 0, k = 0;
                 Client client = ClasseGlobale.Client;
-
-                //***Enregistrement en base de données***
 
                 //Enregistrement de la commande
 
                 if (Reste_a_payer == 0)
                 {
-
+                    //Récupère la liste des articles, il y'en a qu'une seule qui soit initialisée. L'autre est nulle
                     ObservableCollection<ArticlesVM> cmdDetail = ClasseGlobale._contentDetailCommande;
-
                     List<Article> ListeSelectArt = ClasseGlobale._rendreArticlesSelectionnes;
-                    //Ajouter ??????????????????????????????????????????????????????????????????????????????????????????????????????????
+
+                    //Si je viens de l'écran de paiement
                     if (cmdDetail != null)
                     {
 
@@ -470,15 +467,26 @@ namespace App_pressing_Loreau.ViewModel
                         //FactureExcel fe = new FactureExcel(CommandeDAO.selectCommandeById(cmd.id, true, true, true));
                         //fe.printFacture();
                     }
+                    //Si je viens de l'écran de rendu des articles
                     else if (ListeSelectArt != null)
                     {
                         Commande comdRendu = ClasseGlobale._renduCommande;
 
                         foreach (Article art in ListeSelectArt)
                         {
+                            //Mise à jour de la place convoyeur
+                            //1 - dans la table convoyeur : on soustrait l'encombrement
+                            //2 - dans la table article : id convoyeur devient nul
+
+                            art.convoyeur.encombrement = (float)((decimal)art.convoyeur.encombrement - (decimal)art.type.encombrement);
+                            
+
                             Article artAdd = new Article(art.id, art.photo, art.commentaire, true, art.TVA, art.TTC, art.type, null, comdRendu.id);
                             artAdd.date_rendu = DateTime.Now;
-                            ArticleDAO.updateArticle(art);
+
+                            ArticleDAO.updateArticle(artAdd);
+
+                            PlaceConvoyeurDAO.updatePlaceConvoyeur(art.convoyeur);
                         }
 
 
@@ -490,6 +498,45 @@ namespace App_pressing_Loreau.ViewModel
                             paiement = new Payement(DateTime.Now, listeDeMontantParMoyenPaiement[monMoyenDePaiement], monMoyenDePaiement, comdRendu.id);
                             PayementDAO.insertPaiement(paiement);
                         }
+
+
+
+                        //Mise à jour de la commande
+                        comdRendu = CommandeDAO.selectCommandeById(comdRendu.id, true, true, true);
+
+                        //Vérification du paiement
+                        //1 - Je calcule le montant total de la commande
+                        //2 - Je calcule le montant payé total
+                        decimal prixTotalDeLaCommande = 0;
+                        foreach (Article article in comdRendu.listArticles)
+                        {
+                            prixTotalDeLaCommande += (decimal)article.TTC;
+                        }
+
+
+                        decimal prixPayeTotal = 0;
+                        if (comdRendu.listPayements.Count > 0)
+                        {
+                            foreach (Payement paiementEffectue in comdRendu.listPayements)
+                            {
+                                prixPayeTotal += (decimal)paiementEffectue.montant;
+                            }
+                        }
+
+
+                        decimal resteAPayer = prixTotalDeLaCommande - prixPayeTotal;
+                        if (resteAPayer == 0)
+                        {
+                            //Mise à jour de la commande, le champ cmd_payee passe à 1
+                            comdRendu.payee = true;
+                            comdRendu.date_rendu = DateTime.Now;
+                            CommandeDAO.updateCommande(comdRendu);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Un reste à payer de " + resteAPayer );
+                        }
+
 
                         Commande cmdTota = CommandeDAO.selectCommandeById(comdRendu.id, true, true, true);
 
@@ -620,9 +667,9 @@ namespace App_pressing_Loreau.ViewModel
                     return true;
                 }
 
-                
+
             }
-            
+
         }
 
         private void InitialiseLaListeDePaiement()

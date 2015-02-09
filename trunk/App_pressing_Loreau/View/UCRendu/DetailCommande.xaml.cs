@@ -21,15 +21,18 @@ namespace App_pressing_Loreau
         private void btn_detailCommande_rendre_articles_selectionnes_Click(object sender, RoutedEventArgs e)
         {
             dp.Children.Clear();
-            //Si la commande a déjà été payée je ne pase pas par la page de paiement
-            if (ClasseGlobale._renduCommande.payee == false)
-            {
-                dp.Children.Add(new Paiement());
-            }
-            else
-            {
-                //dp.Children.Add(new Accueil());
-            }
+            //dp.Children.Add(new Accueil());
+            dp.Children.Add(new Paiement());
+            //dp.Children.Clear();
+            ////Si la commande a déjà été payée je ne pase pas par la page de paiement
+            //if (ClasseGlobale._renduCommande.payee == false)
+            //{
+            //    dp.Children.Add(new Paiement());
+            //}
+            //else
+            //{
+            //    dp.Children.Add(new Accueil());
+            //}
             
         }
     }
