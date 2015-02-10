@@ -135,6 +135,39 @@ namespace App_pressing_Loreau.Data.DAO
             }
         }
 
+        //Selectionner l'ensemble des places convoyeurs de la base de données ou encombrement=0
+        public static List<PlaceConvoyeur> selectConvoyeursNotEmpty()
+        {
+            try
+            {
+                List<PlaceConvoyeur> retour = new List<PlaceConvoyeur>();
+
+                //connection à la base de données  
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectConvoyeursNotEmpty, Bdd.connexion());
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                PlaceConvoyeur convoyeur;
+                while (msdr.Read())
+                {
+                    convoyeur = new PlaceConvoyeur(
+                        Int32.Parse(msdr["conv_id"].ToString()),
+                        Int32.Parse(msdr["conv_emplacement"].ToString()),
+                        float.Parse(msdr["conv_encombrement"].ToString()));
+                    retour.Add(convoyeur);
+                }
+                msdr.Dispose();
+                Bdd.deconnexion();
+                return retour;
+            }
+            catch (Exception Ex)
+            {
+                
+                Bdd.deconnexion();
+                return null;
+            }
+        }
+
         //Update une place convoyeur
         public static int updatePlaceConvoyeur(PlaceConvoyeur conv)
         {
