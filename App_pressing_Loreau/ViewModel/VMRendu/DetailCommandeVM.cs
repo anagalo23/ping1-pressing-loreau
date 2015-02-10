@@ -148,8 +148,8 @@ namespace App_pressing_Loreau.ViewModel
 
             Label_prixTTC = 0;
             //Si la commande séletionnée n'a pas encore été totalement payée
-            if (ClasseGlobale._renduCommande.payee == false)
-            {
+            //if (ClasseGlobale._renduCommande.payee == false)
+            //{
                 //Les articles rendus sont payés
                 //Pacours de la liste des articles et on fait la somme des prix => prix mini de la restitution
                 if (ArtSelec.Count != 0)
@@ -164,11 +164,11 @@ namespace App_pressing_Loreau.ViewModel
                 //Je vais chercher tous les articles et je calcule le prix
                 //Je vais chercher tous les paiements effectués pour cette commande
                 //Reste à payer = totalarticle - totalPaiements
-            }
-            else
-            {
-                //MessageBox.Show("La commande a déjà été réglée");
-            }
+            //}
+            //else
+            //{
+            //    //MessageBox.Show("La commande a déjà été réglée");
+            //}
 
 
             
