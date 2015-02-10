@@ -32,7 +32,7 @@ namespace App_pressing_Loreau.View
         {
             //dpDemarrage.Children.Clear();
             //dpDemarrage.Children.Add(new Accueil());
-
+            CashProperties.openProperties();
             MessageBox.Show(CashProperties.fondCaisse +"");
         }
     }

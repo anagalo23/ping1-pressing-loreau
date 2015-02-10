@@ -1,25 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
-using App_pressing_Loreau;
-using App_pressing_Loreau.View;
+﻿using App_pressing_Loreau.View;
 using App_pressing_Loreau.ViewModel;
+using System.Windows;
 
 namespace App_pressing_Loreau
 {
     /// <summary>
     /// Logique d'interaction pour App.xaml
+    /// Lancement de l'application avec le chargement du VM
     /// </summary>
     public partial class App : Application
     {
+
         public App()
         {
             InitializeComponent();
         }
+        
         protected override void OnStartup(StartupEventArgs e)
         {
            

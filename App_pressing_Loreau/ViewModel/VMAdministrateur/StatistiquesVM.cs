@@ -14,6 +14,20 @@ using Microsoft.Practices.Prism.Commands;
 
 namespace App_pressing_Loreau.ViewModel
 {
+
+    /// <summary>  Classe Statistique
+    /// Classe statistique
+    /// *Chiffre d affaires total par jour, semaine , mois et année
+    /// *Chiffre d'affaires par departement et par jour, semaine , mois et année
+    /// *Nombre de clients ayant deposé des articles par jour, semaine , mois et année
+    /// *Nombre de clients ayant recupéré des articles par  jour, semaine , mois et année
+    /// *Nombre de clients ayant payé immediatement par jour, semaine , mois et année
+    /// *Nombre de client ayant payé en differé par jour, semaine , mois et année
+    /// *Nombre d'articles dans le pressing par jour, semaine , mois et année
+    /// *Nombre d'articles dans la blanchisserie par jour, semaine , mois et année
+    /// *Nombre de couettes par jour, semaine , mois et année
+    /// *Nombre de chemises par jour, semaine , mois et année
+    /// </summary>
     class StatistiquesVM : ObservableObject
     {
         #region Attributs
@@ -24,7 +38,8 @@ namespace App_pressing_Loreau.ViewModel
         private float _label_statistique_nbrClientspayeimediatement;
 
         private float _label_statistique_nbrClientspayediffere;
-        private float _label_statistique_nbrArticlesPressBlanchi;
+        private float _label_statistique_nbrArticlesPressing;
+        private float _label_statistique_nbrArticlesBlanchisserie;
         private float _label_statistique_nbrCouettes;
         private float _label_statistique_nbrChemises;
 
@@ -46,6 +61,13 @@ namespace App_pressing_Loreau.ViewModel
 
             Label_statistique_cadep = new float();
             Label_statistique_catotal = new float();
+            Label_statistique_nbrArticlesBlanchisserie = new float();
+            Label_statistique_nbrArticlesPressing = new float();
+            Label_statistique_nbrChemises = new float();
+            Label_statistique_nbrCouettes = new float();
+            Label_statistique_nbrClientsDepoArt = new float();
+            Label_statistique_nbrClientsRecupArt = new float();
+
             ListeDepartementStatChoix = comboDepartStat.ListeDep();
         }
 
@@ -90,6 +112,8 @@ namespace App_pressing_Loreau.ViewModel
                 }
             }
         }
+
+
         public float Label_statistique_nbrClientsDepoArt
         {
             get { return _label_statistique_nbrClientsDepoArt; }
@@ -138,15 +162,29 @@ namespace App_pressing_Loreau.ViewModel
                 }
             }
         }
-        public float Label_statistique_nbrArticlesPressBlanchi
+        public float Label_statistique_nbrArticlesPressing
         {
-            get { return _label_statistique_nbrArticlesPressBlanchi; }
+            get { return _label_statistique_nbrArticlesPressing; }
             set
             {
-                if (value != _label_statistique_nbrArticlesPressBlanchi)
+                if (value != _label_statistique_nbrArticlesPressing)
                 {
-                    _label_statistique_nbrArticlesPressBlanchi = value;
-                    RaisePropertyChanged("Label_statistique_nbrArticlesPressBlanchi");
+                    _label_statistique_nbrArticlesPressing = value;
+                    RaisePropertyChanged("Label_statistique_nbrArticlesPressing");
+                }
+            }
+        }
+
+
+        public float Label_statistique_nbrArticlesBlanchisserie
+        {
+            get { return _label_statistique_nbrArticlesBlanchisserie; }
+            set
+            {
+                if (value != _label_statistique_nbrArticlesBlanchisserie)
+                {
+                    _label_statistique_nbrArticlesBlanchisserie = value;
+                    RaisePropertyChanged("Label_statistique_nbrArticlesBlanchisserie");
                 }
             }
         }
@@ -174,8 +212,6 @@ namespace App_pressing_Loreau.ViewModel
                 }
             }
         }
-
-
         public ICommand Btn_statistique_du_jour
         {
             get
@@ -183,7 +219,6 @@ namespace App_pressing_Loreau.ViewModel
                 return new RelayCommand(p => statisticsByDate(1));
             }
         }
-
         public ICommand Btn_statistique_de_la_semaine
         {
             get { return new RelayCommand(p => statisticsByDate(2)); }
@@ -213,30 +248,49 @@ namespace App_pressing_Loreau.ViewModel
         {
             if (Selected_stat_ChoixDepart != null)
             {
-              Departement dep = DepartementDAO.selectDepartementById(Selected_stat_ChoixDepart.cbbDepId);
-              DepartmentTTC(ArticleDAO.selectArticleRenduByDate(2));
-                foreach(float f in caTTCDep){
+                Departement dep = DepartementDAO.selectDepartementById(Selected_stat_ChoixDepart.cbbDepId);
+                DepartmentTTC(ArticleDAO.selectArticleRenduByDate(2));
+                foreach (float f in caTTCDep)
+                {
                     Label_statistique_cadep = (float)((Decimal)Label_statistique_cadep + (decimal)f);
                 }
-               
+
             }
-            
+
         }
 
         public void statisticsByDate(int typeDate)
         {
-            float ChiffreAffaireDuJour = 0;
-            DepartmentTTC(ArticleDAO.selectArticleRenduByDate(typeDate));
-
-            List<Payement> listePaiement = (List<Payement>)PayementDAO.listSommePaiementToday(typeDate);
-            foreach (Payement paye in listePaiement)
+            try
             {
-                if (!paye.typePaiement.Equals("CleanWay"))
-                    ChiffreAffaireDuJour = (float)((decimal)ChiffreAffaireDuJour + (decimal)paye.montant);
-            }
+                float ChiffreAffaireDuJour = 0;
+                //DepartmentTTC(ArticleDAO.selectArticleRenduByDate(typeDate));
 
-            Label_statistique_catotal = ChiffreAffaireDuJour;
-            //MessageBox.Show("" + _label_statistique_catotal);
+                List<Payement> listePaiement = (List<Payement>)PayementDAO.listSommePaiementToday(typeDate);
+                foreach (Payement paye in listePaiement)
+                {
+                    if (!paye.typePaiement.Equals("CleanWay"))
+                        ChiffreAffaireDuJour = (float)((decimal)ChiffreAffaireDuJour + (decimal)paye.montant);
+                }
+                //Chiffre d affaire total
+                Label_statistique_catotal = ChiffreAffaireDuJour;
+                //Nombre d articles dans la blanchisserie 
+                Label_statistique_nbrArticlesBlanchisserie = (float)ArticleDAO.articlesInBlanchisserieByDate(typeDate);
+                //Nombre d articles dans le pressing
+                Label_statistique_nbrArticlesPressing = (float)ArticleDAO.articlesByDate(typeDate);
+                //Nombre de chemises 
+                Label_statistique_nbrChemises = (float)ArticleDAO.chemisesByDate(typeDate);
+                //Nombre de couette
+                Label_statistique_nbrCouettes = (float)ArticleDAO.couetteByDate(typeDate);
+                //Nombre de clients ayant deposés des articles
+                Label_statistique_nbrClientsDepoArt = (float)ClientDAO.nbClientDepot(typeDate);
+                //Nombre de clients ayant recuperés des artilces
+                Label_statistique_nbrClientsRecupArt = (float)ClientDAO.nbClientRecup(typeDate);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erreur :" + e);
+            }
         }
         #endregion
 
@@ -246,30 +300,39 @@ namespace App_pressing_Loreau.ViewModel
         {
             Boolean ifExist;
 
-            foreach (Article art in articlesrendu)
+            try
             {
-                //Vérifie que l'article n'a pas été payé en CleanWay
-                if (!CommandeDAO.isPayedByCleanWay(art.fk_commande))
+
+
+                foreach (Article art in articlesrendu)
                 {
-                    ifExist = false;
-                    //Jusque là on a déroulé tout les articles
-                    //recherche de départements déja entrés
-                    for (int i = 0; i < listUsedDepartements.Count; i++)
+                    //Vérifie que l'article n'a pas été payé en CleanWay
+                    if (!CommandeDAO.isPayedByCleanWay(art.fk_commande))
                     {
-                        if (listUsedDepartements[i].nom.Contains(art.type.departement.nom))
+                        ifExist = false;
+                        //Jusque là on a déroulé tout les articles
+                        //recherche de départements déja entrés
+                        for (int i = 0; i < listUsedDepartements.Count; i++)
                         {
-                            caTTCDep[i] = caTTCDep[i] + art.TTC;
-                            ifExist = true;
-                            break;
+                            if (listUsedDepartements[i].nom.Contains(art.type.departement.nom))
+                            {
+                                caTTCDep[i] = caTTCDep[i] + art.TTC;
+                                ifExist = true;
+                                break;
+                            }
+                        }
+
+                        if (!ifExist)
+                        {
+                            listUsedDepartements.Add(art.type.departement);
+                            caTTCDep.Add(art.TTC);
                         }
                     }
-
-                    if (!ifExist)
-                    {
-                        listUsedDepartements.Add(art.type.departement);
-                        caTTCDep.Add(art.TTC);
-                    }
                 }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error: " + e);
             }
         }
 

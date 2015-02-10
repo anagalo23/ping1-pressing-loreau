@@ -51,7 +51,7 @@
                         <TextBox x:Name="txb_nouveauClient_prenom" Grid.Row="1" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}"
 Text="{Binding Path=Txb_nouveauClient_prenom, UpdateSourceTrigger=PropertyChanged}"/>
 
-                        <Label Content="Date de naissance :" Grid.Row="2" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
+                        <Label Content="Date de naissance : (jour/mois/année)" Grid.Row="2" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                         <TextBox x:Name="txb_nouveauClient_date_naissance" Grid.Row="2" Grid.Column="1" Margin="10" Style="{StaticResource vertiTextBox}"
 Text="{Binding Path=Txb_nouveauClient_date_naissance, UpdateSourceTrigger=PropertyChanged}" />
                         <Label Content="ID Cleanway :" Grid.Row="3" Grid.Column="0" Style="{StaticResource vertilabel25}"/>

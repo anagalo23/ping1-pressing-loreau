@@ -11,7 +11,8 @@ namespace App_pressing_Loreau.Model
     {
         #region parametres Excel
 
-        //public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\properties.xlsx";
+        ////public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\properties.xlsx";
+        //public static String pattern_path ="D:\\matlab\\3ème année\\Ping1_2\\ProjetPing\\ProjetIngenieur\\App_pressing_Loreau\\Resources\\properties.xlsx";
         public static String pattern_path = "J:\\Resources\\properties.xlsx";
         private static Microsoft.Office.Interop.Excel.Application oXL;
         private static Microsoft.Office.Interop.Excel.Workbook mWorkBook;

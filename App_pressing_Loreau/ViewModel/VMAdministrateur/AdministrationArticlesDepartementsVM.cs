@@ -200,7 +200,6 @@ namespace App_pressing_Loreau.ViewModel
             get { return new RelayCommand(p => modifArticle() 
                ); }
         }
-
         public String Txb_adminArt_modifTypeNom
         {
             get { return _txb_adminArt_modifTypeNom; }
@@ -213,7 +212,6 @@ namespace App_pressing_Loreau.ViewModel
                 }
             }
         }
-
         public float Txb_adminArt_modifTypeTTC
         {
             get { return _txb_adminArt_modifTypeTTC; }
@@ -255,15 +253,11 @@ namespace App_pressing_Loreau.ViewModel
         }
 
         #endregion
-
-
+        #endregion
         #endregion
 
-
-        #endregion
 
         #region Methods
-
         private void ExecuteDeleteArticles(AdministrationArticlesDepartementsVM obj)
         {
             if (obj.Selected_adminArt_ChoixArticlesDelete != null &
@@ -288,7 +282,6 @@ namespace App_pressing_Loreau.ViewModel
             }
 
         }
-
         private void ExecuteModifArticle(AdministrationArticlesDepartementsVM obj)
         {
             if (obj.Selected_adminArt_ChoixArticlesDelete != null &
