@@ -32,8 +32,10 @@
                 <Button x:Name="btn_statistique_du_jour" Command="{Binding Btn_statistique_du_jour}" Content="Du jour"    Style="{StaticResource choixbouton30}"/>
 
                 <Button x:Name="btn_statistique_de_la_semaine" Command="{Binding Btn_statistique_de_la_semaine}"  Content="De la semaine" Grid.Column="1" Style="{StaticResource choixbouton30}"/>
+                
                 <Button x:Name="btn_statistique_du_mois" Command="{Binding Btn_statistique_du_mois}" Content="Du mois" Grid.Column="2" 
                         Style="{StaticResource choixbouton30}"/>
+                
                 <Button x:Name="btn_statistique_annee" Command="{Binding Btn_statistique_de_lannee}" Content="De l' annnée" Grid.Column="3" Style="{StaticResource choixbouton30}" />
 
             </Grid>
@@ -119,21 +121,25 @@
                                 <RowDefinition Height="1*"/>
                                 <RowDefinition Height="1*"/>
                                 <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <Label Content="Nombre de clients qui ont payé en différé:"  Grid.Row="0" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
                             <Label Content="{Binding Label_statistique_nbrClientspayediffere}" Grid.Row="0" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
 
-                            <Label Content="Nombre d'articles pressing et blanchisserie :"  Grid.Row="1" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
-                            <Label Content="{Binding Label_statistique_nbrArticlesPressBlanchi}" Grid.Row="1" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="Nombre d'articles pressing  :"  Grid.Row="1" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="{Binding Label_statistique_nbrArticlesPressing}" Grid.Row="1" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
 
-                            <Label Content="Nombre  de couettes :"  Grid.Row="2" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
-                            <Label Content="{Binding Label_statistique_nbrCouettes}" Grid.Row="2" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="Nombre d'articles dans la blanchisserie  :"  Grid.Row="2" Grid.Column="0" Style="{StaticResource statistiqueLabel}" />
+                            <Label Content="{Binding Label_statistique_nbrArticlesBlanchisserie}" Grid.Row="2" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
 
-                            <Label Content="Nombre de chemises :"  Grid.Row="3" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
-                            <Label Content="{Binding Label_statistique_nbrChemises}" Grid.Row="3" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="Nombre  de couettes :"  Grid.Row="3" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="{Binding Label_statistique_nbrCouettes}" Grid.Row="3" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+
+                            <Label Content="Nombre de chemises :"  Grid.Row="4" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="{Binding Label_statistique_nbrChemises}" Grid.Row="4" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
 
 
-                            <Button  x:Name="btn_statistiques_retour" Content="Retour" Margin="15,10" Style="{StaticResource personalisationbuton1}" Grid.Row="4" Grid.Column="1" Click="btn_statistiques_retour_Click"/>
+                            <Button  x:Name="btn_statistiques_retour" Content="Retour" Margin="15,10" Style="{StaticResource personalisationbuton1}" Grid.Row="5" Grid.Column="1" Click="btn_statistiques_retour_Click"/>
 
                         </Grid>
                     </Border>

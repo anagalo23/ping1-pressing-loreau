@@ -9,6 +9,7 @@ using App_pressing_Loreau.Data.DAO;
 using App_pressing_Loreau.Model.DTO;
 using System.Windows.Input;
 using App_pressing_Loreau.Model;
+using System.Windows;
 
 namespace App_pressing_Loreau.ViewModel
 {
@@ -26,12 +27,23 @@ namespace App_pressing_Loreau.ViewModel
 
         public AdministrationCaisseVM()
         {
-            Label_administrationCaisse_fonCaisse = new float();
-           
-            //ClasseGlobale.fondCaisse = new float();
-            //ClasseGlobale.fondCaisse = 150;
+            try
+            {
+                Label_administrationCaisse_fonCaisse = new float();
 
-            Label_administrationCaisse_fonCaisse = CashProperties.fondCaisse;
+                CashProperties.openProperties();
+
+                //ClasseGlobale.fondCaisse = new float();
+                //ClasseGlobale.fondCaisse = 150;
+
+                Label_administrationCaisse_fonCaisse = CashProperties.fondCaisse;
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("error:  " + e);
+            }
+           
         }
         #endregion
 
