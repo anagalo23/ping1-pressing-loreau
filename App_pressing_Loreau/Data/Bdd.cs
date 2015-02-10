@@ -58,10 +58,10 @@ namespace App_pressing_Loreau.Data
         public static String deleteArticle = "DELETE FROM article WHERE art_id=?";
         public static String lastArticle = "SELECT MAX(art_id) AS art_id FROM article";
         public static String selectArticleRenduByDate = "SELECT art_id, art_photo, art_commentaire, art_rendu, art_TVA, art_TTC, art_conv_id, art_typ_id, art_cmd_id FROM article WHERE art_date_rendu BETWEEN ? AND ?";
-        public static String articlesInBlanchisserie = "SELECT COUNT(A.art_typ_id) AS nbBlanchisserie, D.dep_nom FROM article A, type T, departement D WHERE A.art_typ_id=T.typ_id AND T.typ_dep_id=dep_id AND D.dep_nom='Blanchisserie' AND A.art_rendu=0 GROUP BY D.dep_nom";
-        public static String articlesNonRendu = "SELECT COUNT(art_typ_id) AS nbArticles FROM article WHERE art_rendu=0";
-        public static String chemisesNonRendu = "SELECT COUNT(A.art_typ_id) AS nbArticles FROM article A, type T WHERE A.art_typ_id=T.typ_id AND T.typ_nom='Chemise' AND A.art_rendu=0";
-        public static String couetteNonRendu = "SELECT COUNT(A.art_typ_id) AS nbArticles FROM article A, type T WHERE A.art_typ_id=T.typ_id AND T.typ_nom LIKE '%Couette%' AND A.art_rendu=0";
+        public static String articlesInBlanchisserieByDate = "SELECT COUNT(A.art_typ_id) AS nbBlanchisserie, D.dep_nom FROM commande C, article A, type T, departement D WHERE A.art_typ_id=T.typ_id AND T.typ_dep_id=dep_id AND D.dep_nom='Blanchisserie' AND A.art_cmd_id=C.cmd_id AND (C.cmd_date BETWEEN ? AND ?) GROUP BY D.dep_nom";
+        public static String articlesByDate = "SELECT COUNT(A.art_typ_id) AS nbArticles FROM article A, commande C WHERE A.art_cmd_id=C.cmd_id AND (C.cmd_date BETWEEN ? AND ?)";
+        public static String chemisesByDate = "SELECT COUNT(A.art_typ_id) AS nbArticles FROM article A, type T, commande C WHERE A.art_typ_id=T.typ_id AND T.typ_nom='Chemise' AND A.art_cmd_id=C.cmd_id AND (C.cmd_date BETWEEN ? AND ?)";
+        public static String couetteByDate = "SELECT COUNT(A.art_typ_id) AS nbArticles FROM article A, type T, commande C WHERE A.art_typ_id=T.typ_id AND T.typ_nom LIKE '%couette%' AND A.art_cmd_id=C.cmd_id AND (C.cmd_date BETWEEN ? AND ?)";
 
         //Client
         public static String insertClient = "INSERT INTO client(clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_idCleanway, clt_contactmail, clt_contactsms, clt_type) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
