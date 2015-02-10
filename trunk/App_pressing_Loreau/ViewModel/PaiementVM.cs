@@ -563,18 +563,27 @@ namespace App_pressing_Loreau.ViewModel
                         }
 
 
-                        decimal resteAPayer = prixTotalDeLaCommande - prixPayeTotal;
+                        decimal resteAPayer = prixTotalDeLaCommande - prixPayeTotal - (decimal)Txb_paiement_montantRemise;
                         if (resteAPayer == 0)
                         {
                             //Mise à jour de la commande, le champ cmd_payee passe à 1
                             comdRendu.payee = true;
                             comdRendu.date_rendu = DateTime.Now;
-                            CommandeDAO.updateCommande(comdRendu);
+                            
                         }
                         else
                         {
                             MessageBox.Show("Un reste à payer de " + resteAPayer );
                         }
+                        if (Txb_paiement_montantRemise != 0)
+                        {
+                            comdRendu.remise = Txb_paiement_montantRemise;
+                        }
+                        if (Txb_paiement_montantRemise != 0 || resteAPayer == 0)
+                        {
+                            CommandeDAO.updateCommande(comdRendu);
+                        }
+                        
 
 
                         Commande cmdTota = CommandeDAO.selectCommandeById(comdRendu.id, true, true, true);
