@@ -32,8 +32,8 @@
                                                 <ColumnDefinition MinWidth="100" />
                                                 <ColumnDefinition MinWidth="250" />
                                                 <ColumnDefinition  MinWidth="200" />
-                                                <ColumnDefinition MinWidth="150" />
-                                                <ColumnDefinition  MinWidth="150" />
+                                                <ColumnDefinition MinWidth="200" />
+                                                <ColumnDefinition  MinWidth="200" />
                                             </Grid.ColumnDefinitions>
 
                                             <Label Content="{Binding Label_AdminCom_ref}" Grid.Column="0" Style="{StaticResource vertilabel18}" />
@@ -71,8 +71,7 @@
                             <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button x:Name="btn_admin_commandes_retour"  Grid.Column="2"  
-                                Content="Retour" Margin="20,10" Click="btn_admin_commandes_retour_Click_1" Style="{StaticResource ButtonSansBck}"/>
+                        <Button x:Name="btn_admin_commandes_retour"  Grid.Column="2" Content="Retour" Margin="20,10" Click="btn_admin_commandes_retour_Click_1" Style="{StaticResource choixbouton30}"/>
                     </Grid>
                 </Grid>
             </Border>

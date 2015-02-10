@@ -18,28 +18,34 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
                 <RowDefinition Height="17*"/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100*"/>
-                    <ColumnDefinition Width="100*"/>
-                    <ColumnDefinition Width="100*"/>
-                    <ColumnDefinition Width="100*"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <Button x:Name="btn_statistique_du_jour" Command="{Binding Btn_statistique_du_jour}" Content="Du jour"    Style="{StaticResource choixbouton30}"/>
+                <Button x:Name="btn_statistique_du_jour" Command="{Binding Btn_statistique_du_jour}" Content="Du jour"    Style="{StaticResource ButtonSansBck}"/>
 
-                <Button x:Name="btn_statistique_de_la_semaine" Command="{Binding Btn_statistique_de_la_semaine}"  Content="De la semaine" Grid.Column="1" Style="{StaticResource choixbouton30}"/>
+                <Button x:Name="btn_statistique_de_la_semaine" Command="{Binding Btn_statistique_de_la_semaine}"  Content="De la semaine" Grid.Column="1" Style="{StaticResource ButtonSansBck}"/>
                 
-                <Button x:Name="btn_statistique_du_mois" Command="{Binding Btn_statistique_du_mois}" Content="Du mois" Grid.Column="2" 
-                        Style="{StaticResource choixbouton30}"/>
-                
-                <Button x:Name="btn_statistique_annee" Command="{Binding Btn_statistique_de_lannee}" Content="De l' annnée" Grid.Column="3" Style="{StaticResource choixbouton30}" />
+                <Button x:Name="btn_statistique_du_mois" Command="{Binding Btn_statistique_du_mois}" Content="Du mois" Grid.Column="2" Style="{StaticResource ButtonSansBck}"/>
+
+                <Button x:Name="btn_statistique_annee" Command="{Binding Btn_statistique_de_lannee}" Content="De l' annnée" Grid.Column="3" Style="{StaticResource ButtonSansBck}" />
 
             </Grid>
-            <Border Grid.Row="1" Margin="5">
+            
+            
+            <Border Grid.Row="1" BorderBrush="AliceBlue" BorderThickness="2" Margin="20,2" CornerRadius="10" Background="CadetBlue">
+                <Label  Content="{Binding Label_Stat_Temps}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Style="{StaticResource vertilabel18}"/>
+            </Border>
+            
+            <Border Grid.Row="2" Margin="5">
                 <Grid >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
@@ -64,7 +70,7 @@
                             <Border Grid.Row="1" Grid.Column="0">
                                 <Grid>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="2*"/>
                                         <RowDefinition Height="1*"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
@@ -81,7 +87,7 @@
                             <Border Grid.Row="1" Grid.Column="1">
                                 <Grid>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="2*"/>
                                         <RowDefinition Height="1*"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
@@ -139,7 +145,7 @@
                             <Label Content="{Binding Label_statistique_nbrChemises}" Grid.Row="4" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
 
 
-                            <Button  x:Name="btn_statistiques_retour" Content="Retour" Margin="15,10" Style="{StaticResource personalisationbuton1}" Grid.Row="5" Grid.Column="1" Click="btn_statistiques_retour_Click"/>
+                            <Button  x:Name="btn_statistiques_retour" Content="Retour" Margin="5,10" Style="{StaticResource choixbouton30}" Grid.Row="5" Grid.Column="1" Click="btn_statistiques_retour_Click"/>
 
                         </Grid>
                     </Border>

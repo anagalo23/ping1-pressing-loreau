@@ -129,10 +129,9 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
 
-
-                        <Button x:Name="btn_nouvelleCommandeClientPro_EnregistrerCommande" Content="Enregistrer Commande" Grid.Column="0"
-                                Margin="5"  Style="{StaticResource personalisationbuton1}" Command="{Binding Btn_nouvelleCommandeClientPro_EnregistrerCommande}"/>
-                        <Button x:Name="btn_nouvelleCommandeClientPro_Retour" Background="Beige" Content="Retour"  Grid.Column="1" Margin="5"  Style="{StaticResource personalisationbuton1}" Click="btn_nouvelleCommandeClientPro_Retour_Click" />
+                        <Button x:Name="btn_nouvelleCommandeClientPro_EnregistrerCommande" Content="Enregistrer Commande" Grid.Column="0" Margin="5"  Style="{StaticResource personalisationbuton1}" Command="{Binding Btn_nouvelleCommandeClientPro_EnregistrerCommande}"/>
+                        
+                        <Button x:Name="btn_nouvelleCommandeClientPro_Retour" Content="Retour"  Grid.Column="1" Margin="5"  Style="{StaticResource choixbouton30}" Click="btn_nouvelleCommandeClientPro_Retour_Click" />
 
                     </Grid>
 

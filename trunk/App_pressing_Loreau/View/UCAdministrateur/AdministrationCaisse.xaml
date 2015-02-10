@@ -75,7 +75,7 @@
                     <ColumnDefinition Width="597*"/>
                     <ColumnDefinition Width="143*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="btn_admin_caisse_retour" Content="Retour" Grid.Column="1" Click="btn_admin_caisse_retour_Click" Margin="25,7" Style="{StaticResource ButtonSansBck}"/>
+                <Button x:Name="btn_admin_caisse_retour" Content="Retour" Grid.Column="1" Click="btn_admin_caisse_retour_Click" Margin="25,7" Style="{StaticResource choixbouton30}"/>
                 <!--<Grid Grid.Column="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
@@ -105,11 +105,7 @@
                     <!--<Button x:Name="btn_admin_caisse_editer" Grid.Column="2"  Margin="43, 15"  BorderBrush="Bisque" Background="Bisque" Command="{Binding Btn_AdministrateurCaisse_recherche}"  >
                             <Image Source="/Resources/pics/Admin1/logo_edit.png"/>
                         </Button>-->
-
-
-
                 </Grid>
-
 
                 <Border Grid.Column="1">
                     <Grid>

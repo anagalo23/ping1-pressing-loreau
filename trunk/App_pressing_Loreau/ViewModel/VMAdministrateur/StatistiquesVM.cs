@@ -43,6 +43,8 @@ namespace App_pressing_Loreau.ViewModel
         private float _label_statistique_nbrCouettes;
         private float _label_statistique_nbrChemises;
 
+        private String _label_Stat_Temps;
+
         private ComboDepartStat _selected_stat_ChoixDepart;
         ComboDepartStat comboDepartStat = new ComboDepartStat();
 
@@ -69,6 +71,9 @@ namespace App_pressing_Loreau.ViewModel
             Label_statistique_nbrClientsRecupArt = new float();
 
             ListeDepartementStatChoix = comboDepartStat.ListeDep();
+
+            Label_Stat_Temps = "";
+
         }
 
         #endregion
@@ -85,6 +90,19 @@ namespace App_pressing_Loreau.ViewModel
                 {
                     _selected_stat_ChoixDepart = value;
                     OnPropertyChanged("Selected_stat_ChoixDepart");
+                }
+            }
+        }
+
+        public string Label_Stat_Temps
+        {
+            get { return _label_Stat_Temps; }
+            set
+            {
+                if (value != _label_Stat_Temps)
+                {
+                    _label_Stat_Temps = value;
+                    OnPropertyChanged("Label_Stat_Temps");
                 }
             }
         }
@@ -112,8 +130,6 @@ namespace App_pressing_Loreau.ViewModel
                 }
             }
         }
-
-
         public float Label_statistique_nbrClientsDepoArt
         {
             get { return _label_statistique_nbrClientsDepoArt; }
@@ -174,8 +190,6 @@ namespace App_pressing_Loreau.ViewModel
                 }
             }
         }
-
-
         public float Label_statistique_nbrArticlesBlanchisserie
         {
             get { return _label_statistique_nbrArticlesBlanchisserie; }
@@ -221,17 +235,25 @@ namespace App_pressing_Loreau.ViewModel
         }
         public ICommand Btn_statistique_de_la_semaine
         {
-            get { return new RelayCommand(p => statisticsByDate(2)); }
+            get
+            {
+                return new RelayCommand(p => statisticsByDate(2));
+            }
         }
         public ICommand Btn_statistique_du_mois
         {
-            get { return new RelayCommand(p => statisticsByDate(3)); }
+            get
+            {
+                return new RelayCommand(p => statisticsByDate(3));
+            }
         }
         public ICommand Btn_statistique_de_lannee
         {
-            get { return new RelayCommand(p => statisticsByDate(4)); }
+            get
+            {
+                return new RelayCommand(p => statisticsByDate(4));
+            }
         }
-
 
         public ICommand Btn_Statistique_validerDep
         {
@@ -263,6 +285,21 @@ namespace App_pressing_Loreau.ViewModel
         {
             try
             {
+                switch (typeDate)
+                {
+                    case 1: Label_Stat_Temps = "Statistique du jour";
+                        break;
+                    case 2: Label_Stat_Temps = "Statistique de la semaine";
+                        break;
+                    case 3: Label_Stat_Temps = "Statistique du mois";
+                        break;
+                    case 4: Label_Stat_Temps = "Statistique de l'année";
+                        break;
+
+                   // default : Label_Stat_Temps = "Error";
+
+                }
+
                 float ChiffreAffaireDuJour = 0;
                 //DepartmentTTC(ArticleDAO.selectArticleRenduByDate(typeDate));
 

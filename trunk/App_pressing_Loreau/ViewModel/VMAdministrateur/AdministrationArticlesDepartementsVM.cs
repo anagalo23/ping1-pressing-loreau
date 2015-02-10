@@ -12,6 +12,9 @@ using System.Windows.Input;
 
 namespace App_pressing_Loreau.ViewModel
 {
+    /// <summary> Classe Edite Articles
+    /// Cette classe perme de modifier, de supprimer et d ajouter un type d'article dans un departement
+    /// </summary>
     class AdministrationArticlesDepartementsVM : ObservableObject
     {
         #region Attributs
@@ -27,17 +30,15 @@ namespace App_pressing_Loreau.ViewModel
 
         ComboDepart comboDepart = new ComboDepart();
         ComboArticles comboArt = new ComboArticles();
-
         public TypeArticle typeArticle;
 
-
         //Modifier articles
-
         private String _txb_adminArt_modifTypeNom;
         private float _txb_adminArt_modifTypeTTC;
         private float _txb_adminArt_modifTypeTVA;
         private float _txb_adminArt_modifTypeEncombrement;
         private TypeArticle typeModif = new TypeArticle();
+
         #endregion
 
         #region Constructeur
@@ -53,7 +54,7 @@ namespace App_pressing_Loreau.ViewModel
             Txb_adminArt_modifTypeTTC = new float();
         }
 
-        
+
         #endregion
 
         #region Properties and commands
@@ -122,9 +123,11 @@ namespace App_pressing_Loreau.ViewModel
 
         public ICommand Btn_adminArt_AjoutArticle
         {
-            get { return new RelayCommand(p => addArticles(),
-                p => Selected_adminArt_ChoixDepart != null & Txt_adminArt_TypeArt!=null
-                & Txt_adminArt_PrixTTC != 0 & Txt_adminArt_TauxTVA!=0);
+            get
+            {
+                return new RelayCommand(p => addArticles(),
+                    p => Selected_adminArt_ChoixDepart != null & Txt_adminArt_TypeArt != null
+                    & Txt_adminArt_PrixTTC != 0 & Txt_adminArt_TauxTVA != 0);
             }
         }
         #endregion
@@ -197,8 +200,11 @@ namespace App_pressing_Loreau.ViewModel
 
         public ICommand Btn_adminArt_ModifTypeArt
         {
-            get { return new RelayCommand(p => modifArticle() 
-               ); }
+            get
+            {
+                return new RelayCommand(p => modifArticle()
+                    );
+            }
         }
         public String Txb_adminArt_modifTypeNom
         {
@@ -256,12 +262,11 @@ namespace App_pressing_Loreau.ViewModel
         #endregion
         #endregion
 
-
         #region Methods
         private void ExecuteDeleteArticles(AdministrationArticlesDepartementsVM obj)
         {
             if (obj.Selected_adminArt_ChoixArticlesDelete != null &
-                obj.Selected_adminArt_ChoixArticlesDelete.cbbDepId==obj.Selected_adminArt_ChoixDepartDetele.cbbDepId)
+                obj.Selected_adminArt_ChoixArticlesDelete.cbbDepId == obj.Selected_adminArt_ChoixDepartDetele.cbbDepId)
             {
                 //MessageBox.Show(obj.Selected_adminArt_ChoixArticlesDelete.NameArticles);
                 TypeArticle artType = TypeArticleDAO.selectTypesById(obj.Selected_adminArt_ChoixArticlesDelete.cbbArtId);
@@ -302,7 +307,7 @@ namespace App_pressing_Loreau.ViewModel
             {
                 MessageBox.Show("Choissez un departement ou un article de ce departement");
             }
-           
+
         }
         private void getListeArticles()
         {
@@ -316,14 +321,14 @@ namespace App_pressing_Loreau.ViewModel
         private void addArticles()
         {
             Departement dep = new Departement(Selected_adminArt_ChoixDepart.cbbDepId, Selected_adminArt_ChoixDepart.NameDepart);
-            TypeArticle TArt = new TypeArticle(typeArticle.nom, typeArticle.encombrement,typeArticle.TVA,typeArticle.TTC, dep);
+            TypeArticle TArt = new TypeArticle(typeArticle.nom, typeArticle.encombrement, typeArticle.TVA, typeArticle.TTC, dep);
             //MessageBox.Show(TArt.nom);
 
             int index = TypeArticleDAO.insertType(TArt);
             if (index != 0)
             {
 
-                MessageBox.Show("Enregistrement "+TArt.nom+" reussi");
+                MessageBox.Show("Enregistrement " + TArt.nom + " reussi");
 
                 initializeFieldsAdd();
             }
@@ -334,9 +339,7 @@ namespace App_pressing_Loreau.ViewModel
             //Departement dep = new Departement(S.cbbDepId, Selected_adminArt_ChoixDepart.NameDepart);
             if (typeModif != null)
             {
-                TypeArticle TArtModif = new TypeArticle(typeModif.id, Txb_adminArt_modifTypeNom, Txb_adminArt_modifTypeEncombrement, _txb_adminArt_modifTypeTTC, Txb_adminArt_modifTypeTVA, typeModif.departement);
-                //MessageBox.Show(TArt.nom);
-
+                TypeArticle TArtModif = new TypeArticle(typeModif.id, Txb_adminArt_modifTypeNom, Txb_adminArt_modifTypeEncombrement, Txb_adminArt_modifTypeTVA, Txb_adminArt_modifTypeTTC, typeModif.departement);
                 int index = TypeArticleDAO.updateType(TArtModif);
                 if (index != 0)
                 {
@@ -345,10 +348,10 @@ namespace App_pressing_Loreau.ViewModel
                     initializeFieldsModif();
                 }
             }
-           
+
         }
 
-     
+
         private void initializeFieldsAdd()
         {
             Selected_adminArt_ChoixDepart = null;
@@ -371,11 +374,9 @@ namespace App_pressing_Loreau.ViewModel
             Txb_adminArt_modifTypeEncombrement = 0;
             typeModif = null;
         }
-         
+
         #endregion
-
-
-
+    }
         #region Class
 
         public class ComboDepart
@@ -422,7 +423,5 @@ namespace App_pressing_Loreau.ViewModel
 
         }
 
-
-        #endregion
-    }
+        #endregion    
 }

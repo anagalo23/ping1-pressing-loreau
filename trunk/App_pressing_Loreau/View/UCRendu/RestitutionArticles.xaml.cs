@@ -38,29 +38,18 @@ namespace App_pressing_Loreau.View
                 {
                     MessageBox.Show("Les articles de cette commande ont déjà tous été payés et rendus");
                 }
-                
+
             }
             else
             {
                 MessageBox.Show("Selectionner une commande");
             }
-          
-        }
-
-        private void btn_restitutionArticles_ok_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
         }
 
 
         private void txb_restitutionArticles_idFactures_KeyDown(object sender, KeyEventArgs e)
         {
-
             if (e.Key >= Key.D0 && e.Key <= Key.D9) ; // it`s number
             else if (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) ; // it`s number
             //else if (e.Key == Key.Escape || e.Key == Key.Tab || e.Key == Key.CapsLock || e.Key == Key.LeftShift || e.Key == Key.LeftCtrl ||
@@ -70,17 +59,6 @@ namespace App_pressing_Loreau.View
             else
                 e.Handled = true; // the key will sappressed
         }
-
-        private void txb_restitutionArticles_choix_KeyDown(object sender, KeyEventArgs e)
-        {
-
-            //if (cbb_restitutionClient_choix_theme.SelectedItem.ToString() != "nom")
-            //{
-
-        }
-
-
-
 
     }
 }

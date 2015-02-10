@@ -22,8 +22,8 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
             
             <Border Grid.Column="0" >
@@ -40,41 +40,33 @@
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
-
                     <ColumnDefinition Width="7*"/>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="Ajouter des utilisateurs" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
             
-                <Border Margin="2,0" Grid.Column="1" BorderBrush="AliceBlue"  BorderThickness="2" CornerRadius="10"  >
-
-
+                <Border Margin="2,0" Grid.Column="1" BorderBrush="AliceBlue"  BorderThickness="2" CornerRadius="10">
 
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Column="0" Content="Saisir Nom et prenom :" Style="{StaticResource vertilabel25}" />
-                        <TextBox Grid.Column="1" Margin="5" Style="{StaticResource vertiTextBox}" Text="{Binding Path=Txb_Utilisateur_Name, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox Grid.Column="1" Margin="5" Style="{StaticResource vertiTextBox}" Text="{Binding Path=Txb_Utilisateur_Name, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  />
 
-                        <TextBox Grid.Column="2" Margin="5" Style="{StaticResource vertiTextBox}" Text="{Binding Path=Txb_Utilisateur_Prenom, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox Grid.Column="2" Margin="5" Style="{StaticResource vertiTextBox}" Text="{Binding Path=Txb_Utilisateur_Prenom, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
                         
-                        <Button  Margin="5" Grid.Column="3" Content="Valider" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.AjouterUnUtilisateur}" CommandParameter="{Binding}"/>
-
+                        <Button  Margin="5" Grid.Column="3" Content="Valider" BorderThickness="0" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.AjouterUnUtilisateur}" CommandParameter="{Binding}"/>
                     </Grid>
-
-
                 </Border>
-
-
+                
                 <Button x:Name="btn_gest_utilisateur_retour" Content="Retour" Grid.Column="3" Margin="2"
                     Click="btn_gest_utilisateur_retour_Click" Style="{StaticResource choixbouton30}"/>
-
             </Grid>
         </Grid>
 
