@@ -58,6 +58,10 @@ namespace App_pressing_Loreau.Data
         public static String deleteArticle = "DELETE FROM article WHERE art_id=?";
         public static String lastArticle = "SELECT MAX(art_id) AS art_id FROM article";
         public static String selectArticleRenduByDate = "SELECT art_id, art_photo, art_commentaire, art_rendu, art_TVA, art_TTC, art_conv_id, art_typ_id, art_cmd_id FROM article WHERE art_date_rendu BETWEEN ? AND ?";
+        public static String articlesInBlanchisserie = "SELECT COUNT(A.art_typ_id) AS nbBlanchisserie, D.dep_nom FROM article A, type T, departement D WHERE A.art_typ_id=T.typ_id AND T.typ_dep_id=dep_id AND D.dep_nom='Blanchisserie' AND A.art_rendu=0 GROUP BY D.dep_nom";
+        public static String articlesNonRendu = "SELECT COUNT(art_typ_id) AS nbArticles FROM article WHERE art_rendu=0";
+        public static String chemisesNonRendu = "SELECT COUNT(A.art_typ_id) AS nbArticles FROM article A, type T WHERE A.art_typ_id=T.typ_id AND T.typ_nom='Chemise' AND A.art_rendu=0";
+        public static String couetteNonRendu = "SELECT COUNT(A.art_typ_id) AS nbArticles FROM article A, type T WHERE A.art_typ_id=T.typ_id AND T.typ_nom LIKE '%Couette%' AND A.art_rendu=0";
 
         //Client
         public static String insertClient = "INSERT INTO client(clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_idCleanway, clt_contactmail, clt_contactsms, clt_type) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
@@ -69,6 +73,8 @@ namespace App_pressing_Loreau.Data
         public static String lastClient = "SELECT MAX(clt_id) AS clt_id FROM client";
         public static String listClientAddToday = "SELECT clt_id, clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway, clt_contactmail, clt_contactsms, clt_type FROM client  WHERE clt_dateInscription BETWEEN ? AND ?";
         public static String verificationNomEtPrenom = "SELECT clt_id, clt_nom, clt_prenom, clt_fix, clt_mob, clt_adresse, clt_dateNaissance, clt_email, clt_dateInscription, clt_idCleanway, clt_contactmail, clt_contactsms, clt_type FROM client WHERE clt_nom=? AND clt_prenom=?";
+        public static String nbClientDepot = "SELECT COUNT(cmd_id) AS nbCommandes , cmd_clt_id FROM commande WHERE cmd_date BETWEEN ? AND ? GROUP BY cmd_clt_id";
+        public static String nbClientRecup = "SELECT COUNT(C.cmd_id) AS nbCommandes, C.cmd_clt_id FROM (SELECT COUNT(art_id) AS nbArticles , art_cmd_id FROM article A WHERE art_date_rendu BETWEEN ? AND ? GROUP BY art_cmd_id) R, commande C WHERE R.art_cmd_id = C.cmd_id GROUP BY cmd_clt_id";
 
         //Commande
         public static String insertCommande = "INSERT INTO commande(cmd_payee, cmd_remise, cmd_clt_id) VALUES (?,?,?)";

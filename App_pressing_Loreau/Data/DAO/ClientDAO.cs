@@ -505,6 +505,142 @@ namespace App_pressing_Loreau.Data.DAO
                 return true;
             }
         }
+
+
+        /* Nombre de clients ayants déposés un ou plusieurs articles selon la plage de dates
+         * @Param plageDate :
+         * 1 : par jour
+         * 2 : par semaine
+         * 3 : par mois
+         * 4 : par année
+         */
+        public static int nbClientDepot(int plageDate)
+        {
+            try
+            {
+                Client client = null;
+
+                //connection à la base de données  
+                MySqlCommand cmd = new MySqlCommand(Bdd.nbClientDepot, Bdd.connexion());
+
+                //ajout des parametres
+                switch (plageDate)
+                {
+                    //par jour
+                    case 1:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par semaine
+                    case 2:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(SecondaryDateTime.GetMonday(DateTime.Now).Year, SecondaryDateTime.GetMonday(DateTime.Now).Month, SecondaryDateTime.GetMonday(DateTime.Now).Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par mois
+                    case 3:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par année
+                    case 4:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                }
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                int totalClients=0;
+                int nBCommandes;
+                while (msdr.Read())
+                {
+                    client = new Client();
+                    client.id = Int32.Parse(msdr["cmd_clt_id"].ToString());
+                    nBCommandes = Int32.Parse(msdr["nbCommandes"].ToString());
+                    if (client.id != 0 && nBCommandes != 0)
+                    {
+                        totalClients++;
+                    }
+                }
+                msdr.Dispose();
+                Bdd.deconnexion();
+                return totalClients;
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("ERREUR BDD : Impossible de déterminer le nombre de clients ayant déposé des articles");
+                Bdd.deconnexion();
+                return 0;
+            }
+        }
+
+
+        /* Nombre de clients ayants repris un ou plusieurs articles selon la plage de dates
+         * @Param plageDate :
+         * 1 : par jour
+         * 2 : par semaine
+         * 3 : par mois
+         * 4 : par année
+         */
+        public static int nbClientRecup(int plageDate)
+        {
+            try
+            {
+                Client client = null;
+
+                //connection à la base de données  
+                MySqlCommand cmd = new MySqlCommand(Bdd.nbClientRecup, Bdd.connexion());
+
+                //ajout des parametres
+                switch (plageDate)
+                {
+                    //par jour
+                    case 1:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par semaine
+                    case 2:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(SecondaryDateTime.GetMonday(DateTime.Now).Year, SecondaryDateTime.GetMonday(DateTime.Now).Month, SecondaryDateTime.GetMonday(DateTime.Now).Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par mois
+                    case 3:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par année
+                    case 4:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                }
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                int totalClients = 0;
+                int nBCommandes;
+                while (msdr.Read())
+                {
+                    client = new Client();
+                    client.id = Int32.Parse(msdr["cmd_clt_id"].ToString());
+                    nBCommandes = Int32.Parse(msdr["nbCommandes"].ToString());
+                    if (client.id != 0 && nBCommandes != 0)
+                    {
+                        totalClients++;
+                    }
+                }
+                msdr.Dispose();
+                Bdd.deconnexion();
+                return totalClients;
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("ERREUR BDD : Impossible de déterminer le nombre de clients ayant récupéré des articles");
+                Bdd.deconnexion();
+                return 0;
+            }
+        }
     }
 }
 
