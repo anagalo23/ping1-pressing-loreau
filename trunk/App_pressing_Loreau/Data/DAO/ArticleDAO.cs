@@ -409,15 +409,46 @@ namespace App_pressing_Loreau.Data.DAO
         }
 
         /* Nombre d'articles étant actuellement en blanchisserie
-        */
-        public static int articlesInBlanchisserie()
+         * @Param plage date :
+         * 1 : par jour
+         * 2 : par semaine
+         * 3 : par mois
+         * 4 : par année
+         */
+        public static int articlesInBlanchisserieByDate(int plageDate)
         {
             try
             {
                 int retour = 0;
 
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(Bdd.articlesInBlanchisserie, Bdd.connexion());
+                MySqlCommand cmd = new MySqlCommand(Bdd.articlesInBlanchisserieByDate, Bdd.connexion());
+
+                #region ajout des parametres
+                switch (plageDate)
+                {
+                    //par jour
+                    case 1:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par semaine
+                    case 2:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(SecondaryDateTime.GetMonday(DateTime.Now).Year, SecondaryDateTime.GetMonday(DateTime.Now).Month, SecondaryDateTime.GetMonday(DateTime.Now).Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par mois
+                    case 3:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par année
+                    case 4:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                }
+                #endregion
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
@@ -439,15 +470,46 @@ namespace App_pressing_Loreau.Data.DAO
         }
 
         /* Nombre d'articles étant actuellement dans le pressing
-        */
-        public static int articlesNonRendu()
+         * @Param plage date :
+         * 1 : par jour
+         * 2 : par semaine
+         * 3 : par mois
+         * 4 : par année
+         */
+        public static int articlesByDate(int plageDate)
         {
             try
             {
                 int retour = 0;
 
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(Bdd.articlesNonRendu, Bdd.connexion());
+                MySqlCommand cmd = new MySqlCommand(Bdd.articlesByDate, Bdd.connexion());
+
+                #region ajout des parametres
+                switch (plageDate)
+                {
+                    //par jour
+                    case 1:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par semaine
+                    case 2:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(SecondaryDateTime.GetMonday(DateTime.Now).Year, SecondaryDateTime.GetMonday(DateTime.Now).Month, SecondaryDateTime.GetMonday(DateTime.Now).Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par mois
+                    case 3:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par année
+                    case 4:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                }
+                #endregion
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
@@ -470,15 +532,46 @@ namespace App_pressing_Loreau.Data.DAO
 
 
         /* Nombre de chemises étant actuellement dans le pressing
-        */
-        public static int chemisesNonRendu()
+         * @Param plage date :
+         * 1 : par jour
+         * 2 : par semaine
+         * 3 : par mois
+         * 4 : par année
+         */
+        public static int chemisesByDate(int plageDate)
         {
             try
             {
                 int retour = 0;
 
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(Bdd.chemisesNonRendu, Bdd.connexion());
+                MySqlCommand cmd = new MySqlCommand(Bdd.chemisesByDate, Bdd.connexion());
+
+                #region ajout des parametres
+                switch (plageDate)
+                {
+                    //par jour
+                    case 1:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par semaine
+                    case 2:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(SecondaryDateTime.GetMonday(DateTime.Now).Year, SecondaryDateTime.GetMonday(DateTime.Now).Month, SecondaryDateTime.GetMonday(DateTime.Now).Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par mois
+                    case 3:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par année
+                    case 4:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                }
+                #endregion
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
@@ -501,15 +594,46 @@ namespace App_pressing_Loreau.Data.DAO
 
 
         /* Nombre de couettes étant actuellement dans le pressing
-        */
-        public static int couetteNonRendu()
+         * @Param plage date :
+         * 1 : par jour
+         * 2 : par semaine
+         * 3 : par mois
+         * 4 : par année
+         */
+        public static int couetteByDate(int plageDate)
         {
             try
             {
                 int retour = 0;
 
                 //connection à la base de données
-                MySqlCommand cmd = new MySqlCommand(Bdd.couetteNonRendu, Bdd.connexion());
+                MySqlCommand cmd = new MySqlCommand(Bdd.couetteByDate, Bdd.connexion());
+
+                #region ajout des parametres
+                switch (plageDate)
+                {
+                    //par jour
+                    case 1:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par semaine
+                    case 2:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(SecondaryDateTime.GetMonday(DateTime.Now).Year, SecondaryDateTime.GetMonday(DateTime.Now).Month, SecondaryDateTime.GetMonday(DateTime.Now).Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par mois
+                    case 3:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par année
+                    case 4:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                }
+                #endregion
 
                 //Execute la commande
                 MySqlDataReader msdr = cmd.ExecuteReader();
