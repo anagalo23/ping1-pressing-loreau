@@ -24,8 +24,8 @@
                     </Border>
                     <Grid >
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
@@ -111,29 +111,29 @@
                                 </Grid.RowDefinitions>
                                 <StackPanel Grid.Row="0" Grid.Column="0" MinWidth="100">
                                     <Label  Content="Type" Width="50"/>
-                                    <TextBox  x:Name="txb_adminArt_modifTypeNom" Margin="20,0" Text="{Binding Txb_adminArt_modifTypeNom, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <TextBox  x:Name="txb_adminArt_modifTypeNom" Margin="20,0" Height="35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Text="{Binding Txb_adminArt_modifTypeNom, UpdateSourceTrigger=PropertyChanged}"/>
                                 </StackPanel>
 
                                 <StackPanel Grid.Row="0" Grid.Column="1" MinWidth="100">
                                     <Label  Content="Prix TTC" Width="50"/>
-                                    <TextBox  x:Name="txb_adminArt_modifTypeTTC" Margin="20,0" Text="{Binding Txb_adminArt_modifTypeTTC, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <TextBox  x:Name="txb_adminArt_modifTypeTTC" Margin="20,0" Height="35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Text="{Binding Txb_adminArt_modifTypeTTC, UpdateSourceTrigger=PropertyChanged}"/>
                                 </StackPanel>
 
                                 <StackPanel Grid.Row="0" Grid.Column="2" MinWidth="100">
                                     <Label  Content="Taux TVA" Width="60"/>
-                                    <TextBox  x:Name="txb_adminArt_modifTypeTVA" Margin="20,0" Text="{Binding Txb_adminArt_modifTypeTVA, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <TextBox  x:Name="txb_adminArt_modifTypeTVA" Margin="20,0" Height="35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Text="{Binding Txb_adminArt_modifTypeTVA, UpdateSourceTrigger=PropertyChanged}"/>
                                 </StackPanel>
 
                                 <StackPanel Grid.Row="1" Grid.Column="0" MinWidth="100">
                                     <Label  Content="Encombrement" Width="90"/>
-                                    <TextBox  x:Name="txb_adminArt_modifTypeEncombrement" Margin="20,0" Text="{Binding Txb_adminArt_modifTypeEncombrement,UpdateSourceTrigger=PropertyChanged}"/>
+                                    <TextBox  x:Name="txb_adminArt_modifTypeEncombrement" Margin="20,0" Height="35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Txb_adminArt_modifTypeEncombrement,UpdateSourceTrigger=PropertyChanged}"/>
                                 </StackPanel>
 
                                 <Button  Grid.Row="1" Grid.Column="3" Margin="20,7" Content="Enregistrer" Command="{Binding Btn_adminArt_ModifTypeArt}" BorderThickness="0"/>
                             </Grid>
                         </Border>
                     </DockPanel>
-                    <Button x:Name="btn_adminArt_retour" Content="Retour" Style="{StaticResource ButtonSansBck}" Grid.Row="3" Margin="70,2" Click="btn_adminArt_retour_Click"/>
+                    <Button x:Name="btn_adminArt_retour" Content="Retour" Style="{StaticResource choixbouton30}" Grid.Row="3" Margin="70,2" Click="btn_adminArt_retour_Click"/>
                 </Grid>
             </Border>
         </Grid>

@@ -9,16 +9,16 @@
     
     
     <DockPanel x:Name="dp">
-        <Grid Margin="10" >
+        <Grid Margin="15" >
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
             
             <Button x:Name="btn_pageAdministrateur_administration_caisse" Grid.Column="0" Grid.Row="0" Style="{StaticResource butonpageadministration}" Click="btn_pageAdministrateur_administration_caisse_Click">

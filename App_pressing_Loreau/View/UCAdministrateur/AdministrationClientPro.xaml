@@ -65,7 +65,7 @@
                 </Border>
                 <Button x:Name="btn_administrationClientPro_nouvelleCommande" Content="Nouvelle Commande" Grid.Row="3" Margin="100,1" Style="{StaticResource personalisationbuton1}" Click="btn_administrationClientPro_nouvelleCommande_Click"/>
 
-                <Button x:Name="btn_administrationClientPro_retour" Content="Retour" Grid.Row="4" Margin="100,1" Style="{StaticResource personalisationbuton1}" Click="btn_administrationClientPro_retour_Click"  />
+                <Button x:Name="btn_administrationClientPro_retour" Content="Retour" Grid.Row="4" Margin="100,1" Style="{StaticResource choixbouton30}" Click="btn_administrationClientPro_retour_Click"  />
 
             </Grid>
         </Grid>

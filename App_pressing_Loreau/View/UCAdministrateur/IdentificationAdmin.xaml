@@ -36,11 +36,12 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Label  Content="Identifiant" Grid.Row="0" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
-                        <TextBox x:Name="txb_identificationAdmin_identifiant" Grid.Row="0" Grid.Column="1" Margin="5,15" Style="{StaticResource vertiTextBox}" />
-                        <Label Content="Mot de passe" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel25}" />
+                        <Label  Content="Identifiant" FontSize="20" Grid.Row="0" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
+                        <TextBox x:Name="txb_identificationAdmin_identifiant" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="0" Grid.Column="1" Margin="5,15" Style="{StaticResource vertiTextBox}" />
+                        
+                        <Label Content="Mot de passe" FontSize="20" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel25}" />
 
-                        <PasswordBox x:Name="pwb_identificationAdmin_mdp" Grid.Row="1" Grid.Column="1" Margin="5,15" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" />
+                        <PasswordBox x:Name="pwb_identificationAdmin_mdp"  Grid.Row="1" Grid.Column="1" Margin="5,15" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
                     </Grid>
 
                     <Grid Grid.Row="2" >

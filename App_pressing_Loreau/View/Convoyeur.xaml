@@ -38,7 +38,7 @@
 
                     <Label Content="Numéro de la commande" Grid.Column="0" VerticalContentAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontWeight="SemiBold" Grid.Row="1"/>
                     
-                    <TextBox Grid.Column="1" Grid.Row="1" Margin="5,3" x:Name="txb_Convoyeur_idCommande" Style="{StaticResource vertiTextBox}" Text="{Binding Txb_Convoyeur_idCommande, UpdateSourceTrigger=PropertyChanged}" KeyDown="txb_Convoyeur_idCommande_KeyDown" 
+                    <TextBox Grid.Column="1" Grid.Row="1" Margin="5,3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" x:Name="txb_Convoyeur_idCommande" Style="{StaticResource vertiTextBox}" Text="{Binding Txb_Convoyeur_idCommande, UpdateSourceTrigger=PropertyChanged}" KeyDown="txb_Convoyeur_idCommande_KeyDown" 
                                   />
                     <Button x:Name="btn_Convoyeur_ok" Content="OK" BorderThickness="0" Grid.Column="2" Margin="27,5" Command="{Binding Btn_Convoyeur_ok}" Style="{StaticResource choixbouton20}" Grid.Row="1" />
 
