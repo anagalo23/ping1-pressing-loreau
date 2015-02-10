@@ -229,7 +229,7 @@ namespace App_pressing_Loreau.ViewModel
                     }
                     else
                     {
-                        MessageBox.Show("Article déjà rendu\n" + art.ToString());
+                        //MessageBox.Show("Article déjà rendu\n" + art.ToString());
                     }
                     
                 }
