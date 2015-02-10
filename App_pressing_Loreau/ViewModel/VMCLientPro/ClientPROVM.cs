@@ -24,17 +24,21 @@ namespace App_pressing_Loreau.ViewModel
 
         private List<UnClientPROVM> _listeClientPro;
         private List<UnClientPROVM> _detailCommandeClientPro;
-       
+
+        private String _label_CommandeSelectionner;
+        private float _label_ClientProUC_TotalAPayer;
+
+        float prixApayer = 0;
         #endregion
 
         #region constructeur
         public ClientPROVM()
         {
-            //clientsPro();
-            ClasseGlobale.Client = null;
-            ClasseGlobale._renduCommandeClientPro = null;
-            ClasseGlobale._renduCommande = null;
-            ClasseGlobale._renduCommandeClientPro = null;
+            clientsPro();
+            Label_CommandeSelectionner = "";
+            Label_ClientProUC_TotalAPayer = new float();
+
+            ClasseGlobale.SET_ALL_NULL();
         }
         #endregion
 
@@ -80,7 +84,24 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-
+        public String Label_CommandeSelectionner
+        {
+            get { return _label_CommandeSelectionner; }
+            set
+            {
+                _label_CommandeSelectionner = value;
+                OnPropertyChanged("Label_CommandeSelectionner");
+            }
+        }
+        public float Label_ClientProUC_TotalAPayer
+        {
+            get { return _label_ClientProUC_TotalAPayer; }
+            set
+            {
+                _label_ClientProUC_TotalAPayer = value;
+                OnPropertyChanged("Label_ClientProUC_TotalAPayer");
+            }
+        }
         public ICommand TestImprimante
         {
             get { return new RelayCommand(p => testPrint()); }
@@ -89,7 +110,6 @@ namespace App_pressing_Loreau.ViewModel
 
         #region Methods
 
-        //public  PrinterSettings.StringCollection inPrint { get; }
 
         private void testPrint()
         {
@@ -112,7 +132,7 @@ namespace App_pressing_Loreau.ViewModel
             //RecuPaiement rp = new RecuPaiement(comTest);
             //rp.printRecu();
 
-           // MessageBox.Show( + "");
+            // MessageBox.Show( + "");
             TicketVetement tv = new TicketVetement(comTest);
             tv.printTicketVetement(a1, comTest.id, c);
             //String s=null;
@@ -120,7 +140,7 @@ namespace App_pressing_Loreau.ViewModel
             //for (int i = 0; i < PrinterSettings.InstalledPrinters.Count; i++)
             //{
             //    s += PrinterSettings.InstalledPrinters[i] + "\n";
-               
+
             //}
 
             //MessageBox.Show(s);
@@ -128,48 +148,77 @@ namespace App_pressing_Loreau.ViewModel
 
         private void ExecuteCommandeClientPro(UnClientPROVM obj)
         {
-            //MessageBox.Show(obj.commande.date.ToString());
-            ClasseGlobale._renduCommandeClientPro = obj.commande;
-            ClasseGlobale.Client = obj.clt;
+            try
+            {
+                ClasseGlobale._renduCommandeClientPro = obj.commande;
+                ClasseGlobale.Client = obj.commande.client;
+                Label_CommandeSelectionner = "Client PRO: " + ClasseGlobale.Client.nom + ",     N° Commande : " + ClasseGlobale._renduCommandeClientPro.id;
+             
+                Label_ClientProUC_TotalAPayer = obj.Label_Detail_prixAPayer;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex);
+            }
+        
         }
         private void ExecuteClientProCommandeCourante(UnClientPROVM obj)
         {
             DetailCommandeClientPro = new List<UnClientPROVM>();
+            
 
             if (obj.clt.type == 1)
             {
-                List<Commande> listeCommandeClientPro = (List<Commande>)CommandeDAO.selectCommandesByClient(obj.clt.id, false, true, true);
+                List<Commande> listeCommandeClientPro = (List<Commande>)CommandeDAO.selectCommandesByClient(obj.clt.id, true, true, true);
 
                 foreach (Commande com in listeCommandeClientPro)
                 {
-                    DetailCommandeClientPro.Add(new UnClientPROVM() { commande = com });
-                }
+                    prixApayer = 0;
+                    foreach (Article ar in com.listArticles)
+                    {
+                        prixApayer = (float)((decimal)prixApayer + (decimal)ar.TTC);
+                    }
+                    foreach (Payement pa in com.listPayements)
+                    {
+                        prixApayer = (float)((decimal)prixApayer - (decimal)pa.montant);
+                    }
 
+                    DetailCommandeClientPro.Add(new UnClientPROVM()
+                    {
+                        commande = com,
+                        Label_Detail_NombresArt = com.listArticles.Count,
+                        Label_Detail_prixAPayer = prixApayer
+                    });
+                }
             }
-            //MessageBox.Show(obj.clt.id + " " + obj.clt.nom);
         }
 
 
         public void clientsPro()
         {
             ListeClientPro = new List<UnClientPROVM>();
-            List<Client> listedesclientproDTO = (List<Client>)ClientDAO.selectProClient();
-
-            if (listedesclientproDTO != null)
+            try
             {
-                foreach (Client cl in listedesclientproDTO)
+
+                List<Client> listedesclientproDTO = (List<Client>)ClientDAO.selectProClient();
+
+                if (listedesclientproDTO != null)
                 {
-                    ListeClientPro.Add(new UnClientPROVM() { clt = cl, NombreCommande_clientPro = 10 + "" });
-                }
+                    foreach (Client cl in listedesclientproDTO)
+                    {
+                        ListeClientPro.Add(new UnClientPROVM() { clt = cl });
+                    }
 
+                }
             }
-            else
+            catch (Exception ex)
             {
-                //ListeClientPro.Add(new UnClientPROVM() { NomSociete_clientPro = "Esigelec", NombreCommande_clientPro = 10 + "" });
-                //ListeClientPro.Add(new UnClientPROVM() { NomSociete_clientPro = "SNCF", NombreCommande_clientPro = 10 + "" });
+                MessageBox.Show("Error: " + ex);
+                ListeClientPro.Add(new UnClientPROVM() { NomSociete_clientPro = "Error" });
 
             }
         }
+
         #endregion
         public String Name
         {

@@ -349,7 +349,7 @@ namespace App_pressing_Loreau.ViewModel
             //On récupère la classe globale contenant les articles et on calcul le prix
             ObservableCollection<ArticlesVM> cmdDetail = ClasseGlobale._contentDetailCommande;
 
-            Commande CommandeRendue = ClasseGlobale._renduCommande;
+       
             float prixHT = 0;
             float prixTTC = 0;
             float prixTTCrendu = 0;
@@ -382,6 +382,24 @@ namespace App_pressing_Loreau.ViewModel
                 try
                 {
                     foreach (Article artic in ClasseGlobale._rendreArticlesSelectionnes)
+                    {
+                        prixTTCrendu = (float)((decimal)prixTTCrendu + (decimal)artic.TTC);
+                        prixHTrendu = (float)((decimal)prixHTrendu + (decimal)artic.TTC * (1 - (decimal)artic.TVA / 100));
+                    }
+                    Label_paiement_prixHT = prixHTrendu - prixHT + " €";
+                    Label_paiement_prixTTC = prixTTCrendu - prixTTC + " €";
+                    Label_paiement_montant = prixTTCrendu - prixTTC - Txb_paiement_montantRemise + " €";
+                }
+                catch (Exception e)
+                {
+                    //Inscription en log
+                }
+            }
+            else if (ClasseGlobale._renduCommandeClientPro != null)
+            {
+                try
+                {
+                    foreach (Article artic in ClasseGlobale._renduCommandeClientPro.listArticles)
                     {
                         prixTTCrendu = (float)((decimal)prixTTCrendu + (decimal)artic.TTC);
                         prixHTrendu = (float)((decimal)prixHTrendu + (decimal)artic.TTC * (1 - (decimal)artic.TVA / 100));
@@ -576,6 +594,9 @@ namespace App_pressing_Loreau.ViewModel
                             ClasseGlobale.SET_ALL_NULL();
                         }
                     }
+                    //Si je viens de l'écran de règlement Client PRO
+
+                    else if(true);
 
                     //Accueil page2Obj = new Accueil(); //Create object of Page2
                     //page2Obj.Show(); //Show page2
@@ -739,7 +760,9 @@ namespace App_pressing_Loreau.ViewModel
     #region classes internes
     public class GetPaiement
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
         public String Label_nomModePaiement { get; set; }
 
         public float Label_MontantPayerParMode { get; set; }
