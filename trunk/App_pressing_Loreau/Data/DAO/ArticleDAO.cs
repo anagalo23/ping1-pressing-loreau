@@ -407,5 +407,125 @@ namespace App_pressing_Loreau.Data.DAO
                 return null;
             }
         }
+
+        /* Nombre d'articles étant actuellement en blanchisserie
+        */
+        public static int articlesInBlanchisserie()
+        {
+            try
+            {
+                int retour = 0;
+
+                //connection à la base de données
+                MySqlCommand cmd = new MySqlCommand(Bdd.articlesInBlanchisserie, Bdd.connexion());
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+
+                while (msdr.Read())
+                {
+                    retour = Int32.Parse(msdr["nbBlanchisserie"].ToString());
+                }
+                msdr.Dispose();
+                Bdd.deconnexion();
+                return retour;
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("ERREUR BDD : Impossible de récupérer le nombre d'articles en blanchisserie");
+                Bdd.deconnexion();
+                return 0;
+            }
+        }
+
+        /* Nombre d'articles étant actuellement dans le pressing
+        */
+        public static int articlesNonRendu()
+        {
+            try
+            {
+                int retour = 0;
+
+                //connection à la base de données
+                MySqlCommand cmd = new MySqlCommand(Bdd.articlesNonRendu, Bdd.connexion());
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+
+                while (msdr.Read())
+                {
+                    retour = Int32.Parse(msdr["nbArticles"].ToString());
+                }
+                msdr.Dispose();
+                Bdd.deconnexion();
+                return retour;
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("ERREUR BDD : Impossible de récupérer le nombre d'articles non rendu");
+                Bdd.deconnexion();
+                return 0;
+            }
+        }
+
+        /* Nombre de chemises étant actuellement dans le pressing
+        */
+        public static int chemisesNonRendu()
+        {
+            try
+            {
+                int retour = 0;
+
+                //connection à la base de données
+                MySqlCommand cmd = new MySqlCommand(Bdd.chemisesNonRendu, Bdd.connexion());
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+
+                while (msdr.Read())
+                {
+                    retour = Int32.Parse(msdr["nbArticles"].ToString());
+                }
+                msdr.Dispose();
+                Bdd.deconnexion();
+                return retour;
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("ERREUR BDD : Impossible de récupérer le nombre d'articles non rendu");
+                Bdd.deconnexion();
+                return 0;
+            }
+        }
+
+        /* Nombre de couettes étant actuellement dans le pressing
+        */
+        public static int couetteNonRendu()
+        {
+            try
+            {
+                int retour = 0;
+
+                //connection à la base de données
+                MySqlCommand cmd = new MySqlCommand(Bdd.couetteNonRendu, Bdd.connexion());
+
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+
+                while (msdr.Read())
+                {
+                    retour = Int32.Parse(msdr["nbArticles"].ToString());
+                }
+                msdr.Dispose();
+                Bdd.deconnexion();
+                return retour;
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("ERREUR BDD : Impossible de récupérer le nombre d'articles non rendu");
+                Bdd.deconnexion();
+                return 0;
+            }
+        }
     }
 }
