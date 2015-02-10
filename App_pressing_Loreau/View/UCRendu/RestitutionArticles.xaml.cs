@@ -29,14 +29,16 @@ namespace App_pressing_Loreau.View
         {
             if (ClasseGlobale._renduCommande != null)
             {
-                if (ClasseGlobale._renduCommande.payee == false)
+
+
+                if (DesArticlesSontIlsEncoreARendre())
                 {
                     dp.Children.Clear();
                     dp.Children.Add(new DetailCommande());
                 }
                 else
                 {
-                    MessageBox.Show("Les articles de cette commande ont déjà tous été payés et rendus");
+                    MessageBox.Show("Les articles de cette commande ont déjà tous été rendus");
                 }
 
             }
@@ -47,6 +49,18 @@ namespace App_pressing_Loreau.View
 
         }
 
+        private bool DesArticlesSontIlsEncoreARendre()
+        {
+            
+            foreach (Article art in ClasseGlobale._renduCommande.listArticles)
+            {
+                if (art.ifRendu == false)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         private void txb_restitutionArticles_idFactures_KeyDown(object sender, KeyEventArgs e)
         {
