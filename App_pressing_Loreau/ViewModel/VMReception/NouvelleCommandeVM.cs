@@ -77,6 +77,21 @@ namespace App_pressing_Loreau.ViewModel
 
         //gestion du choix des articles
 
+        #region Commandes
+        //Ajouter un article a la commande 
+        ICommand listesArticlesCommandes;
+        public ICommand ListesArticlesCommandes
+        {
+            get
+            {
+                if (ClasseGlobale._contentDetailCommande != null) 
+                    return listesArticlesCommandes ?? (listesArticlesCommandes = new RelayCommand(AjouterArticles));
+                else return null;
+            }
+
+        }
+        #endregion
+
         #region Bouton departement
         //Permet de faire réagir le bouton
         ICommand onButtonClickCommand;
@@ -159,7 +174,7 @@ namespace App_pressing_Loreau.ViewModel
                     ClasseGlobale.initializeContentDetailCommande();
                 }
                 return ClasseGlobale._contentDetailCommande;
-               
+
             }
             set
             {
@@ -181,14 +196,14 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-      
+
         #endregion
 
 
         #region paiement differé
         public ICommand Btn_PaiementDiffere
         {
-            get {return new RelayCommand(p => paiementDiffere()); }
+            get { return new RelayCommand(p => paiementDiffere()); }
         }
 
         // Insertion de la commande et des articles concernants dans la bdd pour un paiment différé
@@ -220,6 +235,10 @@ namespace App_pressing_Loreau.ViewModel
                         }
 
                         MessageBox.Show("La commande " + cmd.id + " à été enregistrée avec succès");
+
+                        //Clear l'écran et bloque l'utilisation des touches
+
+
                         try
                         {
                             cmd = CommandeDAO.selectCommandeById(cmd.id, true, true, true);
@@ -240,7 +259,7 @@ namespace App_pressing_Loreau.ViewModel
                         }
                         finally
                         {
-                            ClasseGlobale.INITIALIZE_ALL();
+                            ClasseGlobale.SET_ALL_NULL();
                         }
                     }
                     else
@@ -259,13 +278,13 @@ namespace App_pressing_Loreau.ViewModel
 
 
         #endregion
-        
+
         #endregion
 
 
         #region Méthodes
 
-        
+
         /**
          * Permet le défilement des départements 
          **/
@@ -283,7 +302,7 @@ namespace App_pressing_Loreau.ViewModel
             }
 
         }
-       
+
         public void defileDepartementSuivante()
         {
             ListeDepartements = new List<CategoryItem>();
@@ -306,13 +325,13 @@ namespace App_pressing_Loreau.ViewModel
             List<CategoryItem> listedesArticles = new List<CategoryItem>();
             articlesByDep = new List<TypeArticle>();
             articlesByDep = (List<TypeArticle>)TypeArticleDAO.selectTypeByDepId(Int32.Parse(clickedbutton.Tag.ToString()));
-            
+
             if (articlesByDep.Count > 0)
             {
                 if (clickedbutton != null)
                 {
                     int x = 15, y = 5;
-                  
+
                     foreach (TypeArticle type in articlesByDep)
                     {
                         listedesArticles.Add(new CategoryItem() { ButtonArticlesContent = type.nom, ButtonArticlesTag = type.id, X = x, Y = y });
@@ -338,13 +357,7 @@ namespace App_pressing_Loreau.ViewModel
 
 
 
-        //Ajouter un article a la commande 
-        ICommand listesArticlesCommandes;
-        public ICommand ListesArticlesCommandes
-        {
-            get { return listesArticlesCommandes ?? (listesArticlesCommandes = new RelayCommand(AjouterArticles)); }
 
-        }
 
 
         public void AjouterArticles(object button)
@@ -380,9 +393,9 @@ namespace App_pressing_Loreau.ViewModel
                             place = ClasseGlobale.PlacesLibres.getList()[i];
                             break;
                         }
-                        if (i == finDeListe -1 )
+                        if (i == finDeListe - 1)
                         {
-                            MessageBox.Show("Cet article ne trouve pas sa place dans le convoyeur.\n"+
+                            MessageBox.Show("Cet article ne trouve pas sa place dans le convoyeur.\n" +
                             "Peut-être n'y a t-il plus de place ou cet article est trop volumineux pour les emplacements restants.");
                         }
                     }
@@ -401,7 +414,7 @@ namespace App_pressing_Loreau.ViewModel
 
                 Label_NouvelleCommande_prixTotal = 0;
                 decimal tampon = 0;
-                foreach (ArticlesVM artVm in  ClasseGlobale._contentDetailCommande)
+                foreach (ArticlesVM artVm in ClasseGlobale._contentDetailCommande)
                 {
                     //MessageBox.Show("ajout de " + artVm.typeArticle.TTC);
                     //Label_NouvelleCommande_prixTotal += (artVm.typeArticle.TTC);
@@ -424,7 +437,7 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-       
+
         #endregion
 
 

@@ -31,13 +31,24 @@ namespace App_pressing_Loreau.View
 
         private void btn_nouvelleCommande_paiement_immediat_Click(object sender, RoutedEventArgs e)
         {
-            if (ClasseGlobale._contentDetailCommande.Count != 0)
+            if (ClasseGlobale._contentDetailCommande != null)
             {
-                dp.Children.Clear();
-                dp.Children.Add(new Paiement());
+                if (ClasseGlobale._contentDetailCommande.Count != 0)
+                {
+                    dp.Children.Clear();
+                    dp.Children.Add(new Paiement());
+                }
+                else
+                {
+                    MessageBox.Show("Veuillez ajouter des articles");
+                }
+
             }
-            else { MessageBox.Show("Ajoutez des articles"); }
-            
+            else
+            {
+                MessageBox.Show("Aucune commande n'est en cours. \nVeuillez retourner à l'acccueil");
+            }
+
         }
 
         private void btn_nouvelleCommande_paiement_differe_Click(object sender, RoutedEventArgs e)

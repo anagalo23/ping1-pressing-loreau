@@ -401,7 +401,7 @@ namespace App_pressing_Loreau.ViewModel
 
         private void ValidationPaiement()
         {
-            if (ClasseGlobale.Client.nom != "")
+            if (ClasseGlobale.Client != null)
             {
                 //Récupération des articles de la commande, du client, et du paiement et enregistrement en bdd
 
@@ -468,7 +468,7 @@ namespace App_pressing_Loreau.ViewModel
                         finally
                         {
                             //initialise tout
-                            ClasseGlobale.INITIALIZE_ALL();
+                            ClasseGlobale.SET_ALL_NULL();
                         }
 
 
@@ -572,7 +572,7 @@ namespace App_pressing_Loreau.ViewModel
                         finally
                         {
                             //initialise tout
-                            ClasseGlobale.INITIALIZE_ALL();
+                            ClasseGlobale.SET_ALL_NULL();
                         }
                     }
 
