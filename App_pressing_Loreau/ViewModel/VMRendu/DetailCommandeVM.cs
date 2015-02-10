@@ -156,7 +156,7 @@ namespace App_pressing_Loreau.ViewModel
                 {
                     foreach (Article arti in ArtSelec)
                     {
-                        Label_prixTTC += (arti.TTC);
+                        Label_prixTTC = (float)((decimal)Label_prixTTC + (decimal)(arti.TTC));
                     }
                 }
 
