@@ -586,7 +586,7 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                MessageBox.Show("ERREUR BDD : Impossible de récupérer le nombre d'articles non rendu");
+                MessageBox.Show("ERREUR BDD : Impossible de récupérer le nombre de chemises");
                 Bdd.deconnexion();
                 return 0;
             }
@@ -648,7 +648,7 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                MessageBox.Show("ERREUR BDD : Impossible de récupérer le nombre d'articles non rendu");
+                MessageBox.Show("ERREUR BDD : Impossible de récupérer le nombre de couettes");
                 Bdd.deconnexion();
                 return 0;
             }
