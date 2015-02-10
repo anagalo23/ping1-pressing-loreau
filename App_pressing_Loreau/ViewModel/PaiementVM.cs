@@ -448,6 +448,7 @@ namespace App_pressing_Loreau.ViewModel
 
                         Commande cmdTota = CommandeDAO.selectCommandeById(cmd.id, true, true, true);
 
+                        MessageBox.Show("La commande " + cmdTota.id + " à été enregistrée avec succès");
                         try
                         {
                             RecuPaiement rp = new RecuPaiement(cmdTota);
