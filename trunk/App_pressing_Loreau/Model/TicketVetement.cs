@@ -23,8 +23,8 @@ namespace App_pressing_Loreau.Model
         public static String pattern_path = "D:\\Application_Pressing\\Resources\\PatternFile\\TicketVetement";
         public static String copy_path = "D:\\Application_Pressing\\Resources\\Temp\\TicketVetement";
 
-        
-        
+
+
 
         private static Font verdana10Font;
         private static StreamReader reader;
@@ -52,39 +52,39 @@ namespace App_pressing_Loreau.Model
 
         public void printAllArticleCmd()
         {
-            foreach(Article art in cmd.listArticles)
-            {
-                printTicketVetement(art, cmd.id, cmd.client);
-            }
-        }
-        public void printTicketVetement(Article art, int cmd_id, Client clt)
-        {
             try
             {
-                //creation du fichier temporaire dans resource/temp
-                if (System.IO.File.Exists(copy_path + ".txt"))
-                    System.IO.File.Delete(copy_path + ".txt");
-                System.IO.File.Copy(pattern_path + ".txt", copy_path + ".txt");
-
-                //Ajout du contenue du ticket
-                File.AppendAllText(copy_path + ".txt", clt.nom + " " + clt.prenom + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", DateTime.Now.ToString() + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "Commande " + cmd_id + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "N° article : " + art.id + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "Département " + art.type.departement.nom + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", " ~" + art.type.nom +Environment.NewLine);
-
-                PrintOff();
-                //System.IO.File.Delete(copy_path + ".txt");
+                foreach (Article art in cmd.listArticles)
+                {
+                    printTicketVetement(art, cmd.id, cmd.client);
+                }
             }
             catch (Exception e)
             {
                 MessageBox.Show("Impossible de trouver le fichier TicketVetement.txt.");
             }
+        }
+        public void printTicketVetement(Article art, int cmd_id, Client clt)
+        {
 
+            //creation du fichier temporaire dans resource/temp
+            if (System.IO.File.Exists(copy_path + ".txt"))
+                System.IO.File.Delete(copy_path + ".txt");
+            System.IO.File.Copy(pattern_path + ".txt", copy_path + ".txt");
+
+            //Ajout du contenue du ticket
+            File.AppendAllText(copy_path + ".txt", clt.nom + " " + clt.prenom + Environment.NewLine);
+            File.AppendAllText(copy_path + ".txt", DateTime.Now.ToString() + Environment.NewLine);
+            File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
+            File.AppendAllText(copy_path + ".txt", "Commande " + cmd_id + Environment.NewLine);
+            File.AppendAllText(copy_path + ".txt", "N° article : " + art.id + Environment.NewLine);
+            File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
+            File.AppendAllText(copy_path + ".txt", "Département " + art.type.departement.nom + Environment.NewLine);
+            File.AppendAllText(copy_path + ".txt", Environment.NewLine);
+            File.AppendAllText(copy_path + ".txt", " ~" + art.type.nom + Environment.NewLine);
+
+            PrintOff();
+            //System.IO.File.Delete(copy_path + ".txt");
         }
 
         //Print the document
@@ -109,7 +109,7 @@ namespace App_pressing_Loreau.Model
                 if (reader != null)
                     reader.Close();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show("Erreur dans l'impression du ticket vetement.");
             }
