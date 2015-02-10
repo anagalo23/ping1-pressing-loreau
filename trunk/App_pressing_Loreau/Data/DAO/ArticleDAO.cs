@@ -468,6 +468,7 @@ namespace App_pressing_Loreau.Data.DAO
             }
         }
 
+
         /* Nombre de chemises étant actuellement dans le pressing
         */
         public static int chemisesNonRendu()
@@ -497,6 +498,7 @@ namespace App_pressing_Loreau.Data.DAO
                 return 0;
             }
         }
+
 
         /* Nombre de couettes étant actuellement dans le pressing
         */
