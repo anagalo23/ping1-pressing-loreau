@@ -158,23 +158,36 @@ namespace App_pressing_Loreau.ViewModel
                 Commande commandeRendre = (Commande)CommandeDAO.selectCommandeById(Txb_restitutionArticles_idFactures, false, true, true);
                 if (commandeRendre.id != 0)
                 {
-                    String etat = null;
-                    if (commandeRendre.payee == true)
-                    {
-                        etat = "Commande payée";
-                    }
-                    else
-                    {
-                        etat = "Commande non payée";
-                    }
+
                     ContentCommandeConcernant = new List<CommandeConcernantRA_DATA>();
-                    ContentCommandeConcernant.Add(new CommandeConcernantRA_DATA()
+
+                    foreach (Article art in commandeRendre.listArticles)
                     {
-                        Label_restitutionArticles_Reference = commandeRendre.id,
-                        Label_restitutionArticles_DateCommande = commandeRendre.date.ToString(),
-                        commande = commandeRendre,Label_restitutionArticles_Etat=etat,
-                        Label_restitutionArticles_nomDuClient = commandeRendre.client.nom + "  " + commandeRendre.client.prenom
-                    });
+                        //Si l'un des articles n'est pas rendu, j'ajoute la commande à la liste
+                        if (art.ifRendu == false)
+                        {
+                            String etat = null;
+                            if (commandeRendre.payee == true)
+                            {
+                                etat = "Commande payée";
+                            }
+                            else
+                            {
+                                etat = "Commande non payée";
+                            }
+                            ContentCommandeConcernant.Add(new CommandeConcernantRA_DATA()
+                            {
+                                Label_restitutionArticles_Reference = commandeRendre.id,
+                                Label_restitutionArticles_DateCommande = commandeRendre.date.ToString(),
+                                commande = commandeRendre,
+                                Label_restitutionArticles_Etat = etat,
+                                Label_restitutionArticles_nomDuClient = commandeRendre.client.nom + "  " + commandeRendre.client.prenom
+                            });
+                        }
+                        break;
+                    }
+
+
                 }
                 else
                 {
@@ -191,7 +204,7 @@ namespace App_pressing_Loreau.ViewModel
 
         #region Recherche par nom ou prénom pour afficher une liste de clients
 
-        
+
         public ICommand Btn_restitutionArticles_valider
         {
             get
@@ -267,23 +280,35 @@ namespace App_pressing_Loreau.ViewModel
                 {
                     foreach (Commande com in listeCommande)
                     {
-                        String etat = null;
-                        if (com.payee == true)
+
+
+
+                        foreach (Article art in com.listArticles)
                         {
-                            etat = "Commande payée";
-                        }
-                        else
-                        {
-                            etat = "Commande non payée";
+                            //Si l'un des articles n'est pas rendu, j'ajoute la commande à la liste
+                            if (art.ifRendu == false)
+                            {
+                                String etat = null;
+                                if (com.payee == true)
+                                {
+                                    etat = "Commande payée";
+                                }
+                                else
+                                {
+                                    etat = "Commande non payée";
+                                }
+                                ContentCommandeConcernant.Add(new CommandeConcernantRA_DATA()
+                                {
+                                    Label_restitutionArticles_Reference = com.id,
+                                    Label_restitutionArticles_DateCommande = com.date.ToString(),
+                                    commande = com,
+                                    Label_restitutionArticles_Etat = etat,
+                                    Label_restitutionArticles_nomDuClient = com.client.nom + "  " + com.client.prenom
+                                });
+                            }
+                            break;
                         }
 
-                        ContentCommandeConcernant.Add(new CommandeConcernantRA_DATA()
-                        {
-                            Label_restitutionArticles_Reference = com.id,
-                            Label_restitutionArticles_DateCommande = com.date.ToString(),
-                            commande = com,Label_restitutionArticles_Etat=etat,
-                            Label_restitutionArticles_nomDuClient = com.client.nom + "  " + com.client.prenom
-                        });
                     }
                 }
                 else
