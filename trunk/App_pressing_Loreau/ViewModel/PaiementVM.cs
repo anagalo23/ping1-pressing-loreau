@@ -349,7 +349,7 @@ namespace App_pressing_Loreau.ViewModel
             //On récupère la classe globale contenant les articles et on calcul le prix
             ObservableCollection<ArticlesVM> cmdDetail = ClasseGlobale._contentDetailCommande;
 
-       
+
             float prixHT = 0;
             float prixTTC = 0;
             float prixTTCrendu = 0;
@@ -439,7 +439,7 @@ namespace App_pressing_Loreau.ViewModel
 
                         Commande cmd = new Commande(DateTime.Now, true, Txb_paiement_montantRemise, client);
                         CommandeDAO.insertCommande(cmd);
-                        cmd = CommandeDAO.selectCommandeById(CommandeDAO.lastCommande().id,false, true,false);
+                        cmd = CommandeDAO.selectCommandeById(CommandeDAO.lastCommande().id, false, true, false);
 
                         //Enregistrement des articles
                         foreach (ArticlesVM artVM in cmdDetail)
@@ -471,7 +471,7 @@ namespace App_pressing_Loreau.ViewModel
                         {
                             RecuPaiement rp = new RecuPaiement(cmdTota);
                             rp.printRecu();
-                            if(cmd.listArticles != null)
+                            if (cmd.listArticles != null)
                             {
                                 TicketVetement ticketVetement = new TicketVetement(cmd);
                                 ticketVetement.printAllArticleCmd();
@@ -498,7 +498,7 @@ namespace App_pressing_Loreau.ViewModel
                     else if (ListeSelectArt != null)
                     {
                         Commande comdRendu = ClasseGlobale._renduCommande;
-                        
+
                         foreach (Article art in ListeSelectArt)
                         {
                             //Mise à jour de la place convoyeur
@@ -517,7 +517,7 @@ namespace App_pressing_Loreau.ViewModel
                                     art2.convoyeur.encombrement = art.convoyeur.encombrement;
                                 }
                             }
-                            
+
                             PlaceConvoyeurDAO.updatePlaceConvoyeur(art.convoyeur);
 
                             Article artAdd = new Article(art.id, art.photo, art.commentaire, true, art.TVA, art.TTC, art.type, null, comdRendu.id);
@@ -525,7 +525,7 @@ namespace App_pressing_Loreau.ViewModel
 
                             ArticleDAO.updateArticle(artAdd);
 
-                            
+
                         }
 
 
@@ -569,11 +569,11 @@ namespace App_pressing_Loreau.ViewModel
                             //Mise à jour de la commande, le champ cmd_payee passe à 1
                             comdRendu.payee = true;
                             comdRendu.date_rendu = DateTime.Now;
-                            
+
                         }
                         else
                         {
-                            MessageBox.Show("Un reste à payer de " + resteAPayer );
+                            MessageBox.Show("Un reste à payer de " + resteAPayer);
                         }
                         if (Txb_paiement_montantRemise != 0)
                         {
@@ -583,7 +583,7 @@ namespace App_pressing_Loreau.ViewModel
                         {
                             CommandeDAO.updateCommande(comdRendu);
                         }
-                        
+
 
 
                         Commande cmdTota = CommandeDAO.selectCommandeById(comdRendu.id, true, true, true);
@@ -603,10 +603,13 @@ namespace App_pressing_Loreau.ViewModel
                             ClasseGlobale.SET_ALL_NULL();
                         }
                     }
-                    //Si je viens de l'écran de règlement Client PRO
+                    //Si je ne  viens pas des pages précedentes
+                    //Mes liste sont vides => paiement déjà effectué
 
-                    else if(true);
-
+                    else
+                    {
+                        MessageBox.Show("La commande à été correctement enregistrée, cliquez sur le bouton home pour retourner à l'accueil");
+                    }
                     //Accueil page2Obj = new Accueil(); //Create object of Page2
                     //page2Obj.Show(); //Show page2
                     //this.Close();
@@ -622,6 +625,7 @@ namespace App_pressing_Loreau.ViewModel
             {
                 MessageBox.Show("La commande à été correctement enregistrée, cliquez sur le bouton home pour retourner à l'accueil");
             }
+
         }
 
         private void applyModeDePaiement()
