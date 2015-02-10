@@ -19,6 +19,10 @@ namespace App_pressing_Loreau.ViewModel
 
         public Client clt;
         public Commande commande;
+
+        private int _label_Detail_NombresArt;
+        private float _label_Detail_prixAPayer;
+
         #endregion
 
         #region Constructeurs
@@ -74,7 +78,27 @@ namespace App_pressing_Loreau.ViewModel
                 }
             }
         }
+        
+        public int Label_Detail_NombresArt
+        {
+            get { return _label_Detail_NombresArt; }
+            set
+            {
+                _label_Detail_NombresArt = value;
+                OnPropertyChanged("Label_Detail_NombresArt");
+            }
+        }
 
+        public float Label_Detail_prixAPayer
+        {
+            get { return _label_Detail_prixAPayer; }
+            set
+            {
+                _label_Detail_prixAPayer = value;
+                OnPropertyChanged("Label_Detail_prixAPayer");
+            }
+        }
+        
 
         public String Label_Detail_dateReception
         {

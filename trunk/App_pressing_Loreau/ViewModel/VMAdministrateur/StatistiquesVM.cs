@@ -270,21 +270,27 @@ namespace App_pressing_Loreau.ViewModel
         {
             if (Selected_stat_ChoixDepart != null)
             {
-                Departement dep = DepartementDAO.selectDepartementById(Selected_stat_ChoixDepart.cbbDepId);
-                DepartmentTTC(ArticleDAO.selectArticleRenduByDate(2));
-                foreach (float f in caTTCDep)
-                {
-                    Label_statistique_cadep = (float)((Decimal)Label_statistique_cadep + (decimal)f);
-                }
+                //Departement dep = DepartementDAO.selectDepartementById(Selected_stat_ChoixDepart.cbbDepId);
+                //DepartmentTTC(ArticleDAO.selectArticleRenduByDate(2));
+                //foreach (float f in caTTCDep)
+                //{
+                //    Label_statistique_cadep = (float)((Decimal)Label_statistique_cadep + (decimal)f);
+                //}
 
             }
 
         }
 
+        public IDictionary<Departement, float> ChiffreDaffaireByDep = new Dictionary<Departement, float>();
+
         public void statisticsByDate(int typeDate)
         {
+
             try
             {
+
+                
+
                 switch (typeDate)
                 {
                     case 1: Label_Stat_Temps = "Statistique du jour";
@@ -296,12 +302,11 @@ namespace App_pressing_Loreau.ViewModel
                     case 4: Label_Stat_Temps = "Statistique de l'année";
                         break;
 
-                   // default : Label_Stat_Temps = "Error";
 
                 }
 
                 float ChiffreAffaireDuJour = 0;
-                //DepartmentTTC(ArticleDAO.selectArticleRenduByDate(typeDate));
+                DepartmentTTC(ArticleDAO.selectArticleRenduByDate(typeDate));
 
                 List<Payement> listePaiement = (List<Payement>)PayementDAO.listSommePaiementToday(typeDate);
                 foreach (Payement paye in listePaiement)
@@ -323,6 +328,9 @@ namespace App_pressing_Loreau.ViewModel
                 Label_statistique_nbrClientsDepoArt = (float)ClientDAO.nbClientDepot(typeDate);
                 //Nombre de clients ayant recuperés des artilces
                 Label_statistique_nbrClientsRecupArt = (float)ClientDAO.nbClientRecup(typeDate);
+                //Nombre de clients ayant payé immédiatement
+
+                //Nombre de clients ayant payé en différé
             }
             catch (Exception e)
             {

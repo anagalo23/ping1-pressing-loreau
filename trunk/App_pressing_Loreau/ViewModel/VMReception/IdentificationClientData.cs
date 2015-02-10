@@ -11,6 +11,9 @@ using App_pressing_Loreau.Model;
 
 namespace App_pressing_Loreau.ViewModel
 {
+    /// <summary>
+    /// Classe permettant de remplir les informations (nom, prénom, adresse, id cleanway) d'un client recherché 
+    /// </summary>
     class IdentificationClientData : ObservableObject
     {
         #region Variables

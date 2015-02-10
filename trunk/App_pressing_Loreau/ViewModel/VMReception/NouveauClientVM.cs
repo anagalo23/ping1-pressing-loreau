@@ -14,6 +14,9 @@ using App_pressing_Loreau.Data;
 
 namespace App_pressing_Loreau.ViewModel
 {
+    /// <summary>
+    /// Classe permettant d'enregistrer unn nouveau client et de collecter les informations le concernant
+    /// </summary>
     class NouveauClientVM : ObservableObject, IPageViewModel
     {
         private string _txb_nouveauClient_date_naissance;

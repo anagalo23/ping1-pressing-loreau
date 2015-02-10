@@ -8,18 +8,18 @@
              d:DesignHeight="300" d:DesignWidth="740">
 
 
- 
+
     <UserControl.Resources>
         <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
     </UserControl.Resources>
-    
+
     <DockPanel x:Name="dp">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            
+
             <Grid Margin="10" Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -29,7 +29,7 @@
                 <Label Content="Liste des clients Pro" Style="{StaticResource Titre}" Grid.Column="0" Grid.Row="0"/>
                 <DockPanel Grid.Row="1">
                     <Border BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="10" Margin="3">
-                    <ListBox Background="Transparent" Margin="5" ItemsSource="{Binding ListeClientPro}" BorderThickness="0" />
+                        <ListBox Background="Transparent" Margin="5" ItemsSource="{Binding ListeClientPro}" BorderThickness="0" />
                     </Border>
                 </DockPanel>
                 <Button  x:Name="btn_clientProUC_nouveau_clientPro" Grid.Row="2" Margin="5" Content="Nouveu client pro"  Style="{StaticResource personalisationbuton1}" Click="btn_clientProUC_nouveau_clientPro_Click" />
@@ -39,29 +39,41 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="5*"/>
                     <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <Label  Content="Détail des commandes par client" Style="{StaticResource Titre}" Grid.Row="0"/>
+                
                 <DockPanel Grid.Row="1" Margin="3">
                     <Border BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="10">
 
                         <ListBox Background="Transparent" BorderThickness="0"  Margin="5" ItemsSource="{Binding DetailCommandeClientPro}">
-                            
+
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Button Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path= DataContext.DetailButtonCommandeClientPro}" CommandParameter="{Binding }" Background="Transparent" BorderThickness="0">
                                         <Border BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="10">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition MinWidth="70" />
-                                                    <ColumnDefinition  MinWidth="40"/>
+                                                    <ColumnDefinition MinWidth="100" />
+                                                    <ColumnDefinition  />
                                                     <ColumnDefinition />
                                                     <ColumnDefinition />
                                                 </Grid.ColumnDefinitions>
                                                 <Label Content="{Binding Label_datail_nomSociete}" Style="{StaticResource vertilabel18}" Grid.Column="0" />
 
+                                                <StackPanel Orientation="Vertical" Grid.Column="1" MinWidth="160" Margin="2">
+                                                    <Label Content="Nombre d'articles" HorizontalContentAlignment="Center"  FontWeight="Bold" FontSize="9pt" Foreground="Black"  />
+                                                    <Label Content="{Binding Label_Detail_NombresArt}" FontSize="13pt" HorizontalContentAlignment="Center" Padding="0,0,0,3" Foreground="#525252" />
+                                                </StackPanel>
+
                                                 <StackPanel Orientation="Vertical" Grid.Column="2" MinWidth="160" Margin="2">
-                                                    <TextBlock Text="Date de reception" FontWeight="Bold" FontSize="9pt" Foreground="Black"  />
-                                                    <TextBlock Text="{Binding Label_Detail_dateReception}" FontSize="13pt" Padding="0,0,0,3" Foreground="#525252" />
+                                                    <Label Content="Prix à payer" FontWeight="Bold" HorizontalContentAlignment="Center"  FontSize="9pt" Foreground="Black"/>
+                                                    <Label Content="{Binding Label_Detail_prixAPayer}"  FontSize="13pt" Padding="0,0,0,3" HorizontalContentAlignment="Center"  Foreground="#525252" />
+                                                </StackPanel>
+
+                                                <StackPanel Orientation="Vertical" Grid.Column="3" MinWidth="160" Margin="2">
+                                                    <Label Content="Date de reception" HorizontalContentAlignment="Center"  FontWeight="Bold" FontSize="9pt" Foreground="Black"  />
+                                                    <Label Content="{Binding Label_Detail_dateReception}" FontSize="13pt" Padding="0,0,0,3" Foreground="#525252" HorizontalContentAlignment="Center"  />
                                                 </StackPanel>
                                             </Grid>
                                         </Border>
@@ -71,15 +83,21 @@
                         </ListBox>
                     </Border>
                 </DockPanel>
-                <Grid Grid.Row="2">
+                
+                <Border Grid.Row="2" BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="10" Margin="10,2">
+                    <Label Content="{Binding Label_CommandeSelectionner}" Background="WhiteSmoke" Style="{StaticResource vertilabel18}"/>
+                </Border>
+                <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="53*"/>
-                        <ColumnDefinition Width="80*"/>
-                        <ColumnDefinition Width="55*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Label Content="Total à payer" Style="{StaticResource vertilabel25}" Grid.Column="0" />
-                    <Label Grid.Column="1" Content="{Binding Label_ClientProUC_TotalAPayer}" />
-                    <Button Content="Teste Imprimante" Command="{Binding TestImprimante}" Style="{StaticResource ButtonSansBck}" Grid.Column="2" Margin="10"/>
+                    
+                    <Label Grid.Column="1" Content="{Binding Label_ClientProUC_TotalAPayer}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="16"/>
+                    
+                    <Button Content="Régler une commande" x:Name="btn_regleClientPro" Style="{StaticResource personalisationbuton1}" Grid.Column="2" Margin="10" Click="btn_regleClientPro_Click"/>
                 </Grid>
 
             </Grid>

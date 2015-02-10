@@ -23,6 +23,9 @@ namespace App_pressing_Loreau.ViewModel
 {
     /// <summary>
     /// ViewModel pour la vue NouvelleCommande.xaml
+    /// Classe permettant l'enregistrement d'une nouvelle commande,
+    /// l'affichage les articles par département
+    /// la possibilité de supprimer un article sélectionné
     /// </summary>
     class NouvelleCommandeVM : ObservableObject
     {

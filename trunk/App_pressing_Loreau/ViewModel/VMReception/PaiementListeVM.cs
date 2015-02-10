@@ -6,6 +6,16 @@ using System.Threading.Tasks;
 
 namespace App_pressing_Loreau.ViewModel
 {
+    /// <summary>
+    /// Classe permettant de payer une commande avec les différents modes de paiement suivant :
+    /// espèces
+    /// carte bancaire
+    /// id cleanway
+    /// virement
+    /// american express
+    /// chèque
+    /// Traitement des remises également
+    /// </summary>
     class PaiementListeVM : ObservableObject
     {
         #region Attributes

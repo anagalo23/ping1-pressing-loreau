@@ -19,6 +19,9 @@ using App_pressing_Loreau.Data.DAO;
 
 namespace App_pressing_Loreau.ViewModel
 {
+    /// <summary>
+    /// Classe permettant de récupérer le/les article(s) sélectionné(s) et de les lister pour former la commande
+    /// </summary>
     class ArticlesVM : ObservableObject
     {
         #region Attributes 
