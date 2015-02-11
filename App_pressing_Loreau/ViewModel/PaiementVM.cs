@@ -449,7 +449,9 @@ namespace App_pressing_Loreau.ViewModel
                         //Enregistrement des articles
                         foreach (ArticlesVM artVM in cmdDetail)
                         {
-                            ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
+                            Article art = artVM.getArticle(cmd.id);
+                            art.date_payee = DateTime.Now;
+                            ArticleDAO.insertArticle(art);
                         }
 
                         //Enregistrement du/des paiement(s)
@@ -480,13 +482,6 @@ namespace App_pressing_Loreau.ViewModel
                             {
                                 TicketVetement ticketVetement = new TicketVetement(cmdTota);
                                 ticketVetement.printAllArticleCmd();
-
-                                //update de la date de paiement des articles
-                                foreach(Article art in  cmdTota.listArticles)
-                                {
-                                    art.date_payee = DateTime.Now;
-                                    ArticleDAO.updateArticle(art);
-                                }
                             }
                             else
                                 MessageBox.Show("La commande ne contient pas d'articles");
