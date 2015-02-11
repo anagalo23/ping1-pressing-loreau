@@ -149,7 +149,6 @@ namespace App_pressing_Loreau.ViewModel
                     p => ContenuDeLaCommande(),
                     p => Txb_restitutionArticles_idFactures > 0);
             }
-
         }
         public void ContenuDeLaCommande()
         {
@@ -158,7 +157,6 @@ namespace App_pressing_Loreau.ViewModel
                 Commande commandeRendre = (Commande)CommandeDAO.selectCommandeById(Txb_restitutionArticles_idFactures, false, true, true);
                 if (commandeRendre.id != 0)
                 {
-
                     ContentCommandeConcernant = new List<CommandeConcernantRA_DATA>();
 
                     foreach (Article art in commandeRendre.listArticles)
@@ -185,10 +183,7 @@ namespace App_pressing_Loreau.ViewModel
                             });
                             break;
                         }
-
                     }
-
-
                 }
                 else
                 {
@@ -270,8 +265,6 @@ namespace App_pressing_Loreau.ViewModel
         }
         private void ExecuteResultatRechercheClient(CommandeConcernantRA_DATA obj)
         {
-            //MessageBox.Show("resultat: " + obj.clt.nom + " et Id = " + obj.clt.id);
-
             ContentCommandeConcernant = new List<CommandeConcernantRA_DATA>();
 
             if (obj.clt.type == 0)
@@ -281,9 +274,6 @@ namespace App_pressing_Loreau.ViewModel
                 {
                     foreach (Commande com in listeCommande)
                     {
-
-
-
                         foreach (Article art in com.listArticles)
                         {
                             //Si l'un des articles n'est pas rendu, j'ajoute la commande à la liste
@@ -308,9 +298,7 @@ namespace App_pressing_Loreau.ViewModel
                                 });
                                 break;
                             }
-                            
                         }
-
                     }
                 }
                 else
@@ -318,7 +306,6 @@ namespace App_pressing_Loreau.ViewModel
                     MessageBox.Show("Ce client n'a pas de commande");
                 }
             }
-
         }
         #endregion
 
