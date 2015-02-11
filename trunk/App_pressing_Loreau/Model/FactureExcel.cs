@@ -85,8 +85,8 @@ namespace App_pressing_Loreau.Model
 
         public void printFacture()
         {
-            try
-            {
+            /*try
+            {*/
                 createFacture();
                 /*
                  *@param From : The number of the page at which to start printing. If this argument is omitted, printing starts at the beginning.
@@ -98,19 +98,19 @@ namespace App_pressing_Loreau.Model
                  *@param Collate : True to collate multiple copies.
                  *@param PrToFileName : If PrintToFile is set to True, this argument specifies the name of the file you want to print to.
                  */
-                mWorkSheets.PrintOut(1, 1, 1, true, printName, false, false, misValue);
+                mWorkSheets.PrintOut(1, 1, 1, false, printName, false, false, misValue);
 
                 //close files
-                mWorkBook.Close(true, misValue, misValue);
+                mWorkBook.Close(false, misValue, misValue);
                 oXL.Quit();
 
                 //release file
                 releaseObject(mWorkSheets);
                 releaseObject(mWorkBook);
                 releaseObject(oXL);
-            }
+           /* }
             catch (Exception e)
-            { }
+            { }*/
 
         }
 
