@@ -157,7 +157,8 @@ namespace App_pressing_Loreau.Data.DAO
 
                     //conv_id = Int32.Parse(msdr["art_conv_id"].ToString());
                     String test = msdr["art_conv_id"].ToString();
-                    if (test == null || test == ""){
+                    if (test == null || test == "")
+                    {
                         conv_id = 0;
                     }
                     else
@@ -253,22 +254,29 @@ namespace App_pressing_Loreau.Data.DAO
                 //Article article;
                 while (msdr.Read())
                 {
-                    
-                        Article article = new Article(
-                        Int32.Parse(msdr["art_id"].ToString()),
-                        msdr["art_photo"].ToString(),
-                        msdr["art_commentaire"].ToString(),
-                        bool.Parse(msdr["art_rendu"].ToString()),
-                        float.Parse(msdr["art_TVA"].ToString()),
-                        float.Parse(msdr["art_TTC"].ToString()),
-                        new TypeArticle(Int32.Parse(msdr["art_typ_id"].ToString()), null, 0, 0, 0, null),
-                        new PlaceConvoyeur(Int32.Parse(msdr["art_conv_id"].ToString()), 0, 0),
-                        Int32.Parse(msdr["art_cmd_id"].ToString()));
+                    //SELECT art_id, art_photo, art_commentaire, art_rendu, art_TVA, art_TTC, art_conv_id, art_typ_id, art_cmd_id FROM article WHERE art_date_rendu BETWEEN ? AND ?
 
-                        retour.Add(article);
-                    
+                    Article article = new Article();
+                    article.id = Int32.Parse(msdr["art_id"].ToString());
+                    article.photo = msdr["art_photo"].ToString();
+                    article.commentaire = msdr["art_commentaire"].ToString();
+                    article.ifRendu = bool.Parse(msdr["art_rendu"].ToString());
+                    article.TVA = float.Parse(msdr["art_TVA"].ToString());
+                    article.TTC = float.Parse(msdr["art_TTC"].ToString());
+                    article.type = new TypeArticle(Int32.Parse(msdr["art_typ_id"].ToString()), null, 0, 0, 0, null);
 
-                   
+                    if (msdr["art_conv_id"].ToString().Equals("") || msdr["art_conv_id"].ToString() == null)
+                        article.convoyeur = new PlaceConvoyeur(0, 0, 0);
+                    else
+                        article.convoyeur = new PlaceConvoyeur(Int32.Parse(msdr["art_conv_id"].ToString()), 0, 0);
+
+                    article.fk_commande = Int32.Parse(msdr["art_cmd_id"].ToString());
+
+
+                    retour.Add(article);
+
+
+
                 }
 
                 msdr.Dispose();
@@ -286,7 +294,7 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                MessageBox.Show("ERREUR BDD : SelectArticleRenduByDate");
+                MessageBox.Show("ERREUR BDD : SelectArticleRenduByDate : " + Ex);
                 Bdd.deconnexion();
                 return null;
             }
@@ -328,7 +336,7 @@ namespace App_pressing_Loreau.Data.DAO
                 {
                     cmd.Parameters.AddWithValue("conv_id", null);
                 }
-                
+
                 cmd.Parameters.AddWithValue("cmd_id", article.fk_commande);
                 cmd.Parameters.AddWithValue("typ_id", article.type.id);
 
