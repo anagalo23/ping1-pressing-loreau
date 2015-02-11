@@ -27,7 +27,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="6*"/>
-                    <RowDefinition Height="1*"/>
+
                 </Grid.RowDefinitions>
                 <Label x:Name="Factures_choixcommande"  Content="Choix des commandes" Grid.Row="0" Style="{StaticResource Titre}" />
 
@@ -61,7 +61,7 @@
                         </Grid.ColumnDefinitions>
 
 
-                        <Button x:Name="Factures_editerfacture" Content="Imprimer la facture"  Style="{StaticResource personalisationbuton1}" Margin="10,5" BorderBrush="White"  Command="{Binding Btn_factures_imprimer_facture}" Grid.Column="1"/>
+
                     </Grid>
                 </Border>
             </Grid>
@@ -70,14 +70,14 @@
 
         <Grid Margin="10" Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="7*"/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
-            <Label Content="Aperçu de la facture " Style="{StaticResource Titre}" Grid.Column="0"/>
-            <DockPanel Grid.Row="1">
-                <Border Margin="3" BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="10">
-                    <ContentControl Content="{Binding Path=ApercuFacture}" Margin="5"/>
-                </Border>
+
+            <DockPanel  Grid.Row="2">
+                <Button x:Name="Factures_editerfacture" Content="Imprimer la facture"  Style="{StaticResource personalisationbuton1}" Margin="10,5" BorderBrush="White"  Command="{Binding Btn_factures_imprimer_facture}" />
             </DockPanel>
 
         </Grid>

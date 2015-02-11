@@ -58,7 +58,6 @@ namespace App_pressing_Loreau.ViewModel
             lArticles = new List<Article>();
 
             defileDepartementPrecedente();
-            //deselectButtons();
             prixTotal = 0;
             if (ContentDetailCommande != null)
             {
@@ -72,6 +71,7 @@ namespace App_pressing_Loreau.ViewModel
             //Initialisation de la liste d'emplacements vides
             ClasseGlobale.PlacesLibres.setList(PlaceConvoyeurDAO.selectConvoyeursEmpty());
             commandePayeeEnDiffere = false;
+            ClasseGlobale._contentDetailCommande = null;
         }
 
         #endregion
@@ -88,7 +88,7 @@ namespace App_pressing_Loreau.ViewModel
         {
             get
             {
-                if (ClasseGlobale._contentDetailCommande != null) 
+                if (ClasseGlobale._contentDetailCommande != null)
                     return listesArticlesCommandes ?? (listesArticlesCommandes = new RelayCommand(AjouterArticles));
                 else return null;
             }
@@ -99,7 +99,7 @@ namespace App_pressing_Loreau.ViewModel
         #region Bouton departement
         //Permet de faire réagir le bouton
         ICommand onButtonClickCommand;
-        
+
         public ICommand OnButtonClickCommand
         {
             get { return onButtonClickCommand ?? (onButtonClickCommand = new RelayCommand(Contenudepartement)); }
@@ -181,7 +181,7 @@ namespace App_pressing_Loreau.ViewModel
                         ClasseGlobale.initializeContentDetailCommande();
                     }
                 }
-                
+
                 return ClasseGlobale._contentDetailCommande;
 
             }
@@ -232,58 +232,61 @@ namespace App_pressing_Loreau.ViewModel
                 }
                 else
                 {
-                    Commande cmd = new Commande(DateTime.Now, false, 0, ClasseGlobale.Client);
 
-                    //ObservableCollection<ArticlesVM> listeArticles = ClasseGlobale._contentDetailCommande;
-                    if (CommandeDAO.insertCommande(cmd) == 1)
-                    {
-                        cmd = CommandeDAO.lastCommande();
-                        foreach (ArticlesVM artVM in ClasseGlobale._contentDetailCommande)
+                        Commande cmd = new Commande(DateTime.Now, false, 0, ClasseGlobale.Client);
+
+                        //ObservableCollection<ArticlesVM> listeArticles = ClasseGlobale._contentDetailCommande;
+                        if (CommandeDAO.insertCommande(cmd) == 1)
                         {
-                            ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
-                        }
-
-                        //Mise à jour de la table convoyeur
-                        foreach (PlaceConvoyeur place in ClasseGlobale.PlacesLibres.getList())
-                        {
-                            PlaceConvoyeurDAO.updatePlaceConvoyeur(place);
-                        }
-
-                        MessageBox.Show("La commande " + cmd.id + " à été enregistrée avec succès");
-
-                        //Clear l'écran et bloque l'utilisation des touches
-
-
-                        try
-                        {
-                            cmd = CommandeDAO.selectCommandeById(cmd.id, true, true, true);
-                            RecuPaiement rp = new RecuPaiement(cmd);
-                            rp.printRecu();
-                            //impression des tickets vetements
-                            if (cmd.listArticles != null)
+                            cmd = CommandeDAO.lastCommande();
+                            foreach (ArticlesVM artVM in ClasseGlobale._contentDetailCommande)
                             {
-                                TicketVetement ticketVetement = new TicketVetement(cmd);
-                                ticketVetement.printAllArticleCmd();
+                                ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
                             }
-                            else
-                                MessageBox.Show("La commande ne contient pas d'articles");
+
+                            //Mise à jour de la table convoyeur
+                            foreach (PlaceConvoyeur place in ClasseGlobale.PlacesLibres.getList())
+                            {
+                                PlaceConvoyeurDAO.updatePlaceConvoyeur(place);
+                            }
+
+                            MessageBox.Show("La commande " + cmd.id + " à été enregistrée avec succès");
+
+                            //Clear l'écran et bloque l'utilisation des touches
+
+
+                            try
+                            {
+                                cmd = CommandeDAO.selectCommandeById(cmd.id, true, true, true);
+                                RecuPaiement rp = new RecuPaiement(cmd);
+                                rp.printRecu();
+                                //impression des tickets vetements
+                                if (cmd.listArticles != null)
+                                {
+                                    TicketVetement ticketVetement = new TicketVetement(cmd);
+                                    ticketVetement.printAllArticleCmd();
+                                }
+                                else
+                                    MessageBox.Show("La commande ne contient pas d'articles");
+                            }
+                            catch (Exception)
+                            {
+                                MessageBox.Show("Impression refusée");
+                            }
+                            finally
+                            {
+                                ClasseGlobale.SET_ALL_NULL();
+                                commandePayeeEnDiffere = true;
+                            }
                         }
-                        catch (Exception)
+                        else
                         {
-                            MessageBox.Show("Impression refusée");
+                            MessageBox.Show("Erreur lors de la création de la commande. Enregistrement de la commande annulé");
                         }
-                        finally
-                        {
-                            ClasseGlobale.SET_ALL_NULL();
-                            commandePayeeEnDiffere = true;
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Erreur lors de la création de la commande. Enregistrement de la commande annulé");
+
                     }
 
-                }
+                
             }
             else
             {

@@ -31,6 +31,10 @@ namespace App_pressing_Loreau.View
 
         private void btn_nouvelleCommande_paiement_immediat_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+
+           
             if (ClasseGlobale._contentDetailCommande != null)
             {
                 if (ClasseGlobale._contentDetailCommande.Count != 0)
@@ -49,6 +53,11 @@ namespace App_pressing_Loreau.View
                 MessageBox.Show("Aucune commande n'est en cours. \nVeuillez retourner à l'acccueil");
             }
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex);
+            }
         }
 
         private void btn_nouvelleCommande_paiement_differe_Click(object sender, RoutedEventArgs e)

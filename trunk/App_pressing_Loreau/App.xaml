@@ -258,7 +258,7 @@
         <!--personnalisation des interfaces contenant des labels de type semiBold et de taille 25-->
 
         <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}" x:Key="vertilabel25">
-            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontSize" Value="15"/>
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
