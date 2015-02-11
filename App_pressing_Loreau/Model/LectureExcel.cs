@@ -194,7 +194,7 @@ namespace App_pressing_Loreau.Model
                     mWorkSheets.PrintOut(1, nbpage, 1, false, printName, false, false, misValue);
 
                     //close files
-                    mWorkBook.Close(true, misValue, misValue);
+                    mWorkBook.Close(false, misValue, misValue);
                     oXL.Quit();
 
                     //release file
