@@ -36,6 +36,7 @@ namespace App_pressing_Loreau.ViewModel
 
         private DelegateCommand<ArticlesVM> _deleteArticles;
         private List<Article> lArticles;
+        private bool commandePayeeEnDiffere;
 
         #endregion
 
@@ -43,7 +44,7 @@ namespace App_pressing_Loreau.ViewModel
         #region Constructeur
         public NouvelleCommandeClientProVM()
         {
-
+            commandePayeeEnDiffere = false;
             lArticles = new List<Article>();
 
             defileDepartementPrecedente();
@@ -57,7 +58,7 @@ namespace App_pressing_Loreau.ViewModel
                 }
 
             }
-
+            ClasseGlobale.PlacesLibres.setList(PlaceConvoyeurDAO.selectConvoyeursEmpty());
         }
 
         #endregion
@@ -192,8 +193,7 @@ namespace App_pressing_Loreau.ViewModel
 
         private void EnregistrerCommandeClientPro()
         {
-            int insertArt = 0;
-            try
+            if (ClasseGlobale.Client.nom != "")
             {
                 if (ClasseGlobale._contentDetailCommande == null)
                 {
@@ -201,53 +201,63 @@ namespace App_pressing_Loreau.ViewModel
                 }
                 else
                 {
+
                     Commande cmd = new Commande(DateTime.Now, false, 0, ClasseGlobale.Client);
-                    int inser = CommandeDAO.insertCommande(cmd);
 
-                    ObservableCollection<ArticlesVM> listeArticles = ClasseGlobale._contentDetailCommande;
-
-                    if (inser != 0)
+                    //ObservableCollection<ArticlesVM> listeArticles = ClasseGlobale._contentDetailCommande;
+                    if (CommandeDAO.insertCommande(cmd) == 1)
                     {
                         cmd = CommandeDAO.lastCommande();
-                        cmd = CommandeDAO.selectCommandeById(cmd.id, true, true, true);
-
-
-                        //Impression du recu
-                        RecuPaiement rp = new RecuPaiement(cmd);
-                        rp.printRecu();
-                        //impression des tickets vetements
-                        if (cmd.listArticles != null)
+                        foreach (ArticlesVM artVM in ClasseGlobale._contentDetailCommande)
                         {
-                            TicketVetement ticketVetement = new TicketVetement(cmd);
-                            ticketVetement.printAllArticleCmd();
-                        }
-                        else
-                            MessageBox.Show("La commande ne contient pas d'articles");
-
-                        ObservableCollection<ArticlesVM> cmdDetail = ClasseGlobale._contentDetailCommande;
-                        foreach (ArticlesVM artVM in cmdDetail)
-                        {
-                            insertArt = ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
+                            ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
                         }
 
+                        //Mise à jour de la table convoyeur
+                        foreach (PlaceConvoyeur place in ClasseGlobale.PlacesLibres.getList())
+                        {
+                            PlaceConvoyeurDAO.updatePlaceConvoyeur(place);
+                        }
+
+                        MessageBox.Show("La commande " + cmd.id + " à été enregistrée avec succès");
+
+                        //Clear l'écran et bloque l'utilisation des touches
+
+
+                        try
+                        {
+                            cmd = CommandeDAO.selectCommandeById(cmd.id, true, true, true);
+                            //RecuPaiement rp = new RecuPaiement(cmd);
+                            //rp.printRecu();
+                            //impression des tickets vetements
+                            if (cmd.listArticles != null)
+                            {
+                                TicketVetement ticketVetement = new TicketVetement(cmd);
+                                ticketVetement.printAllArticleCmd();
+                            }
+                            else
+                                MessageBox.Show("La commande ne contient pas d'articles");
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Impression refusée");
+                        }
+                        finally
+                        {
+                            ClasseGlobale.SET_ALL_NULL();
+                            commandePayeeEnDiffere = true;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erreur lors de la création de la commande. Enregistrement de la commande annulé");
                     }
 
                 }
-
-                if (insertArt != 0)
-                {
-                    MessageBox.Show("Commande enregistrée \n paiement differé");
-                }
-
             }
-            catch (Exception)
+            else
             {
-                MessageBox.Show("Impression refusée");
-            }
-            finally
-            {
-                ClasseGlobale.SET_ALL_NULL();
-
+                MessageBox.Show("La comande a déjà été enregistrée. Veuillez cliquer sur HOME");
             }
         }
 
@@ -327,33 +337,81 @@ namespace App_pressing_Loreau.ViewModel
         ICommand listesArticlesCommandes;
         public ICommand ListesArticlesCommandes
         {
-            get { return listesArticlesCommandes ?? (listesArticlesCommandes = new RelayCommand(AjouterArticles)); }
+            get
+            {
+                if (ClasseGlobale._contentDetailCommande != null)
+                    return listesArticlesCommandes ?? (listesArticlesCommandes = new RelayCommand(AjouterArticles));
+                else return null;
+            }
 
         }
 
 
         public void AjouterArticles(object button)
         {
-            Button clickedbutton = button as Button;
-
-
-            if (clickedbutton != null)
+            if (ClasseGlobale._contentDetailCommande != null)
             {
-                typeArticleDTO = (TypeArticle)TypeArticleDAO.selectTypesById(Int32.Parse(clickedbutton.Tag.ToString()));
-                ClasseGlobale._contentDetailCommande.Add(new ArticlesVM()
+                Button clickedbutton = button as Button;
+                if (clickedbutton != null)
                 {
-                    typeArticle = typeArticleDTO,
-                    ArticlesName = typeArticleDTO.nom
+                    typeArticleDTO = (TypeArticle)TypeArticleDAO.selectTypesById(Int32.Parse(clickedbutton.Tag.ToString()));
 
-                });
+                    PlaceConvoyeur place = new PlaceConvoyeur();
+                    place = null;
+                    if (typeArticleDTO.encombrement == 0 || typeArticleDTO.encombrement > 3)
+                    {
+                        //Cet article ne va pas dans le convoyeur
+                        //MessageBox.Show("Cet article ne va pas dans le convoyeur.");
+                    }
+                    else
+                    {
+                        //Je parcours la liste pour trouver une place convoyeur pouvant accueillir l'article
+                        int finDeListe = ClasseGlobale.PlacesLibres.getList().Count();
+                        float encombrement_occupe_pour_cette_place;
+                        float encombrement_maximum = 3 - typeArticleDTO.encombrement;
+                        for (int i = 0; i < finDeListe; i++)
+                        {
+                            //si l'encombrement du convoyeur est permet de recevoir l'article
+                            encombrement_occupe_pour_cette_place = ClasseGlobale.PlacesLibres.getList()[i].encombrement;
 
-                Label_NouvelleCommande_prixTotal = 0;
-                foreach (ArticlesVM artVm in ClasseGlobale._contentDetailCommande)
-                {
-                    Label_NouvelleCommande_prixTotal += (artVm.typeArticle.TTC);
+                            if (encombrement_occupe_pour_cette_place <= encombrement_maximum)
+                            {
+                                //Je modifie l'encombrement de la place convoyeur
+                                ClasseGlobale.PlacesLibres[i].encombrement += typeArticleDTO.encombrement;
+                                //Je récupère la place convoyeur concernée
+                                place = ClasseGlobale.PlacesLibres.getList()[i];
+                                break;
+                            }
+                            if (i == finDeListe - 1)
+                            {
+                                MessageBox.Show("Cet article ne trouve pas sa place dans le convoyeur.\n" +
+                                "Peut-être n'y a t-il plus de place ou cet article est trop volumineux pour les emplacements restants.");
+                            }
+                        }
+                    }
+
+
+                    //On construit un nouvel ArticlesVM
+                    ArticlesVM articleVmAAjouter = new ArticlesVM()
+                    {
+                        typeArticle = typeArticleDTO,
+                        ArticlesName = typeArticleDTO.nom,
+                        PlaceConvoyeur = place
+                    };
+                    ClasseGlobale._contentDetailCommande.Add(articleVmAAjouter);
+
+
+                    Label_NouvelleCommande_prixTotal = 0;
+                    decimal tampon = 0;
+                    foreach (ArticlesVM artVm in ClasseGlobale._contentDetailCommande)
+                    {
+                        //MessageBox.Show("ajout de " + artVm.typeArticle.TTC);
+                        //Label_NouvelleCommande_prixTotal += (artVm.typeArticle.TTC);
+                        tampon += (decimal)(artVm.typeArticle.TTC);
+                    }
+                    //MessageBox.Show(tampon.ToString());
+                    Label_NouvelleCommande_prixTotal = (float)tampon;//(float)Math.Round(tampon, 2, MidpointRounding.AwayFromZero);// 
                 }
-
-
             }
 
 
@@ -362,11 +420,17 @@ namespace App_pressing_Loreau.ViewModel
 
         private void ExecuteDeleteArticles(ArticlesVM obj)
         {
-            if (ClasseGlobale._contentDetailCommande.Contains(obj))
+            if (ClasseGlobale._contentDetailCommande != null)
             {
-                ClasseGlobale._contentDetailCommande.Remove(obj);
-                Label_NouvelleCommande_prixTotal -= obj.typeArticle.TTC;
+                if (ClasseGlobale._contentDetailCommande.Contains(obj))
+                {
+                    ClasseGlobale._contentDetailCommande.Remove(obj);
+                    decimal tamp = (decimal)Label_NouvelleCommande_prixTotal;
+                    tamp -= (decimal)obj.typeArticle.TTC;
+                    Label_NouvelleCommande_prixTotal = (float)tamp;
+                }
             }
+
         }
 
 
