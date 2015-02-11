@@ -16,10 +16,12 @@ namespace App_pressing_Loreau.ViewModel
         private string _articlesNameRes;
         private string _txb_ArticlesRes_etat;
 
+        private string _txb_Emplacement_conv;
+
         private bool _isSelectedArticle;
         private bool _isEnabledArticles;
 
-        
+
         public Article ar;
         #endregion
 
@@ -103,6 +105,31 @@ namespace App_pressing_Loreau.ViewModel
                     OnPropertyChanged("Txb_ArticlesRes_etat");
                 }
             }
+
+        }
+
+        public string Txb_Emplacement_conv
+        {
+            get
+            {
+                //return this._txb_Emplacement_conv.ToString();
+                _txb_Emplacement_conv = ar.convoyeur.emplacement.ToString();
+                if (_txb_Emplacement_conv.Equals("0"))
+                {
+                    return "HC";
+                }
+                else
+                {
+                    return _txb_Emplacement_conv;
+                }
+                
+            }
+
+            //set
+            //{
+            //    this._txb_Emplacement_conv = float.Parse(value);
+            //    OnPropertyChanged("Txb_Emplacement_conv");
+            //}
 
         }
 
