@@ -301,6 +301,123 @@ namespace App_pressing_Loreau.Data.DAO
         }
 
 
+        /* Selectionner les articles rendu en fonction de la date
+         * @Param plage date :
+         * 1 : par jour
+         * 2 : par semaine
+         * 3 : par mois
+         * 4 : par année
+         */
+        public static List<Article> selectArticlePayeeByDate(int plageDate)
+        {
+            try
+            {
+                List<Article> requestResult = new List<Article>();
+                List<Article> retour = new List<Article>();
+                List<int> ifpayee = new List<int>();
+
+                //connection à la base de données
+                MySqlCommand cmd = new MySqlCommand(Bdd.selectArticlePayeeByDate, Bdd.connexion());
+
+                #region ajout des parametres
+                switch (plageDate)
+                {
+                    //par jour
+                    case 1:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par semaine
+                    case 2:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(SecondaryDateTime.GetMonday(DateTime.Now).Year, SecondaryDateTime.GetMonday(DateTime.Now).Month, SecondaryDateTime.GetMonday(DateTime.Now).Day, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par mois
+                    case 3:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                    //par année
+                    case 4:
+                        cmd.Parameters.AddWithValue("startTime", new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0));
+                        cmd.Parameters.AddWithValue("endTime", new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59));
+                        break;
+                }
+                #endregion
+
+                #region récupération depuis la BDD des articles
+                //Execute la commande
+                MySqlDataReader msdr = cmd.ExecuteReader();
+                //Article article;
+                while (msdr.Read())
+                {
+                    Article article = new Article();
+                    article.id = Int32.Parse(msdr["art_id"].ToString());
+                    article.photo = msdr["art_photo"].ToString();
+                    article.commentaire = msdr["art_commentaire"].ToString();
+                    article.ifRendu = bool.Parse(msdr["art_rendu"].ToString());
+                    article.TVA = float.Parse(msdr["art_TVA"].ToString());
+                    article.TTC = float.Parse(msdr["art_TTC"].ToString());
+                    article.type = new TypeArticle(Int32.Parse(msdr["art_typ_id"].ToString()), null, 0, 0, 0, null);
+
+                    if (msdr["art_conv_id"].ToString().Equals("") || msdr["art_conv_id"].ToString() == null)
+                        article.convoyeur = new PlaceConvoyeur(0, 0, 0);
+                    else
+                        article.convoyeur = new PlaceConvoyeur(Int32.Parse(msdr["art_conv_id"].ToString()), 0, 0);
+
+                    article.fk_commande = Int32.Parse(msdr["art_cmd_id"].ToString());
+
+                    ifpayee.Add(Int32.Parse(msdr["cmd_payee"].ToString()));
+
+                    requestResult.Add(article);
+                }
+                msdr.Dispose();
+                #endregion
+
+                Commande commande;
+                for (int i = 0; i < requestResult.Count(); i++)
+                {
+                    //si la commande est en payée
+                    if (ifpayee[i] == 1)
+                    {
+                        commande = CommandeDAO.selectCommandeById(requestResult[i].fk_commande, true, false, false);
+                        //Si ce n'est pas payee par cleanway
+                        if (!commande.listPayements[0].typePaiement.Equals("CleanWay"))
+                            retour.Add(requestResult[i]);
+                    }
+                    else
+                        //si la commande n'est pas payée (ce n'est forcement pas du cleanway)
+                        //si l'article est rendu, il est forcement payée
+                        if (requestResult[i].ifRendu == true)
+                        {
+                            retour.Add(requestResult[i]);
+                        }
+                }
+
+
+
+
+                Bdd.deconnexion();
+
+                #region ajout des types, des departements et des places convoyeurs
+                foreach (Article art in retour)
+                {
+                    art.type = TypeArticleDAO.selectTypesById(art.type.id);
+                    art.convoyeur = PlaceConvoyeurDAO.selectConvoyeurById(art.convoyeur.id);
+                }
+                #endregion
+
+                return retour;
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("ERREUR BDD : SelectArticleRenduByDate : " + Ex);
+                Bdd.deconnexion();
+                return null;
+            }
+        }
+
+
         /* Update un article dans la base de données
          * @param article : article à update
          */
@@ -344,6 +461,8 @@ namespace App_pressing_Loreau.Data.DAO
                     cmd.Parameters.AddWithValue("date_rendu", null);
                 else
                     cmd.Parameters.AddWithValue("date_rendu", article.date_rendu);
+
+                cmd.Parameters.AddWithValue("typ_date_payee", article.date_payee);
 
                 cmd.Parameters.AddWithValue("id2", article.id);
                 #endregion
@@ -480,6 +599,7 @@ namespace App_pressing_Loreau.Data.DAO
                 return 0;
             }
         }
+
 
         /* Nombre d'articles étant actuellement dans le pressing
          * @Param plage date :

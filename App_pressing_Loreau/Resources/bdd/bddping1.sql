@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `article` (
   `art_conv_id` int(11) DEFAULT NULL,
   `art_cmd_id` int(11) NOT NULL,
   `art_typ_id` int(11) NOT NULL,
+  `art_date_payee` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`art_id`),
   KEY `fk_article_convoyeur1_idx` (`art_conv_id`),
   KEY `fk_article_commande1_idx` (`art_cmd_id`),
