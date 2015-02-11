@@ -156,6 +156,7 @@
         <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="departementsStyles">
             <Setter Property="Background" Value="Beige"/>
             <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Template" >
                 <Setter.Value>
@@ -249,7 +250,7 @@
         <!--personnalisation des interfaces contenant des labels de type normal et de taille 14-->
 
         <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}" x:Key="vertiTextBox">
-            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontSize" Value="18"/>
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="FontWeight" Value="Normal"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -259,7 +260,7 @@
         <!--personnalisation des interfaces contenant des labels de type semiBold et de taille 25-->
 
         <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}" x:Key="vertilabel25">
-            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>

@@ -42,7 +42,7 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Content="Numéro du ticket" Grid.Column="0" VerticalContentAlignment="Center" FontFamily="Arial" FontWeight="SemiBold" Grid.Row="1"/>
+                        <Label Content="Numéro du ticket" Grid.Column="0" VerticalContentAlignment="Center" FontFamily="Arial" FontWeight="SemiBold" Grid.Row="1" Style="{StaticResource vertilabel25}" />
                         <TextBox Grid.Column="1" Grid.Row="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" x:Name="txb_restitutionArticles_idFactures" Style="{StaticResource vertiTextBox}" Text="{Binding Txb_restitutionArticles_idFactures, UpdateSourceTrigger=PropertyChanged}" KeyDown="txb_restitutionArticles_idFactures_KeyDown"
                                   />
 
@@ -85,7 +85,7 @@
                                     <RowDefinition Height="1*"/>
                                     <RowDefinition Height="8*"/>
                                 </Grid.RowDefinitions>
-                                <Label Background="AliceBlue" Content="Résultat de la recherche" Style="{StaticResource vertilabel25}"/>
+                                <Label Background="AliceBlue" Margin="10,2" Content="Résultat de la recherche" Style="{StaticResource vertilabel25}"/>
                                 <Border Grid.Row="1" Margin="2" BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="10">
                                     <ListBox Margin="2" Background="Transparent" BorderThickness="0"  ItemsSource="{Binding Path=ListeRechercheClient}">
                                         <ListBox.ItemTemplate>
@@ -135,7 +135,7 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Content="Commandes selectionner" Style="{StaticResource vertilabel18}" />
+                        <Label Content="Commandes selectionner" Style="{StaticResource vertilabel25}" />
                         <Label Content="{Binding Label_CommandeSelectionner}" Style="{StaticResource vertilabel18}" Grid.Column="1" />
                     </Grid>
                     <Grid Grid.Row="3">
