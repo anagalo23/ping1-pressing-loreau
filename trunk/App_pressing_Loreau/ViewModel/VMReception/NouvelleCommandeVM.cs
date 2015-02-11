@@ -371,11 +371,6 @@ namespace App_pressing_Loreau.ViewModel
 
         }
 
-
-
-
-
-
         public void AjouterArticles(object button)
         {
 
@@ -444,8 +439,6 @@ namespace App_pressing_Loreau.ViewModel
                 }
             }
         }
-
-
         private void ExecuteDeleteArticles(ArticlesVM obj)
         {
             if (ClasseGlobale._contentDetailCommande != null)
@@ -461,26 +454,23 @@ namespace App_pressing_Loreau.ViewModel
 
         }
 
-
-        #endregion
-
-
-        #region Class
-        public class CategoryItem
-        {
-            public string ButtonContent { get; set; }
-            public string ButtonArticlesContent { get; set; }
-
-            public Brush ButtonDepBackground { get; set; }
-            public int ButtonTag { get; set; }
-            public int ButtonArticlesTag { get; set; }
-
-            public int X { get; set; }
-            public int Y { get; set; }
-
-
-        }
-
         #endregion
     }
+
+    #region Class
+    public class CategoryItem
+    {
+        public string ButtonContent { get; set; }
+        public string ButtonArticlesContent { get; set; }
+
+        public Brush ButtonDepBackground { get; set; }
+        public int ButtonTag { get; set; }
+        public int ButtonArticlesTag { get; set; }
+
+        public int X { get; set; }
+        public int Y { get; set; }
+
+    }
+
+    #endregion
 }

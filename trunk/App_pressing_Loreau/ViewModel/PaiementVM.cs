@@ -821,11 +821,4 @@ namespace App_pressing_Loreau.ViewModel
     }
 
     #endregion
-
-
 }
-
-
-
-
-

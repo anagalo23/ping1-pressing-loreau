@@ -29,14 +29,10 @@ namespace App_pressing_Loreau.View
 
         private void btn_nouvelleCommandeClientPro_Retour_Click(object sender, RoutedEventArgs e)
         {
-            if (NouvelleCommandeClientProVM.payeDifferer != 0)
-            {
-                dp.Children.Clear();
-                dp.Children.Add(new AdministrationClientPro());
-            }
-            else
-                MessageBox.Show("Commande non enregistrée");
-           
+
+            dp.Children.Clear();
+            dp.Children.Add(new AdministrationClientPro());
+
         }
     }
 }
