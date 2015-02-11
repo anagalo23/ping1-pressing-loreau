@@ -276,7 +276,13 @@ namespace App_pressing_Loreau.ViewModel
                 //{
                 //    Label_statistique_cadep = (float)((Decimal)Label_statistique_cadep + (decimal)f);
                 //}
-
+                for (int i = 0; i < listUsedDepartements.Count;i++ )
+                {
+                    if (Selected_stat_ChoixDepart.cbbDepId == listUsedDepartements[i].id)
+                    {
+                        Label_statistique_cadep = caTTCDep[i];
+                    }
+                }
             }
 
         }
@@ -306,7 +312,7 @@ namespace App_pressing_Loreau.ViewModel
                 }
 
                 float ChiffreAffaireDuJour = 0;
-                DepartmentTTC(ArticleDAO.selectArticleRenduByDate(typeDate));
+                DepartmentTTC(ArticleDAO.selectArticlePayeeByDateNoCleanWay(typeDate));
 
                 List<Payement> listePaiement = (List<Payement>)PayementDAO.listSommePaiementToday(typeDate);
                 foreach (Payement paye in listePaiement)
