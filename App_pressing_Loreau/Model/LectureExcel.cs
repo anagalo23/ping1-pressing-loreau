@@ -40,8 +40,8 @@ namespace App_pressing_Loreau.Model
         int nbNewClient;
 
         //Excel Interop
-        //public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\LecturePattern";
-        public static String pattern_path = "D:\\Application_Pressing\\Resources\\PatternFile\\LecturePattern";
+        //public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\LecturePattern.xlsx";
+        public static String pattern_path = "D:\\Application_Pressing\\Resources\\PatternFile\\LecturePattern.xlsx";
 
         private Microsoft.Office.Interop.Excel.Application oXL;
         private Microsoft.Office.Interop.Excel.Workbook mWorkBook;
@@ -91,7 +91,7 @@ namespace App_pressing_Loreau.Model
 
                     //ouverture de l'excel
                     oXL = new Microsoft.Office.Interop.Excel.Application();
-                    mWorkBook = oXL.Workbooks.Open(pattern_path + ".xlsx", 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+                    mWorkBook = oXL.Workbooks.Open(pattern_path, 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
                     mWorkSheets = (Worksheet)mWorkBook.Worksheets.get_Item(1);
 
                     #region Inscription sur le fichier Excel
@@ -105,7 +105,7 @@ namespace App_pressing_Loreau.Model
                     //Inscription des TTC par département
                     index = 10;
                     float totalDep = 0;
-                    for (int i = 0; i < listUsedTypePaiement.Count; i++)
+                    for (int i = 0; i < listUsedDepartements.Count; i++)
                     {
                         mWorkSheets.Cells[index, 1] = listUsedDepartements[i].nom;
                         mWorkSheets.Cells[index, 5] = caTTCDep[i];
@@ -186,10 +186,10 @@ namespace App_pressing_Loreau.Model
                      *@param Collate : True to collate multiple copies.
                      *@param PrToFileName : If PrintToFile is set to True, this argument specifies the name of the file you want to print to.
                      */
-                    mWorkSheets.PrintOut(1, 1, 1, true, printName, false, false, misValue);
+                    mWorkSheets.PrintOut(1, 1, 1, false, printName, false, false, misValue);
 
                     //close files
-                    mWorkBook.Close(true, misValue, misValue);
+                    mWorkBook.Close(false, misValue, misValue);
                     oXL.Quit();
 
                     //release file
