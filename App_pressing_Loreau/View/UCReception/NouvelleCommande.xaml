@@ -30,7 +30,7 @@
                         <ColumnDefinition Width="10*"/>
                     </Grid.ColumnDefinitions>
                     <!-- Bouton precedent-->
-                    <Button  Background="Beige" Command="{Binding  CommandePrecedente }" BorderThickness="0" CommandParameter=" ">
+                    <Button  Background="Bisque" Command="{Binding  CommandePrecedente }" BorderThickness="0" CommandParameter=" ">
                         <Image Source="/Resources/pics/precedent.png" Height="25"/>
                     </Button>
 
@@ -79,7 +79,7 @@
                         </DockPanel>
 
                     </Border>
-                    <Button Grid.Column="2"  Background="Beige" BorderThickness="0" Command="{Binding  CommandeSuivante }"  CommandParameter="">
+                    <Button Grid.Column="2"  Background="Bisque" BorderThickness="0" Command="{Binding  CommandeSuivante }"  CommandParameter="">
                         <Image Source="/Resources/pics/suivant.png"/>
                     </Button>
 
@@ -135,7 +135,7 @@
 
                         <Button x:Name="btn_nouvelleCommande_paiement_immediat" Content="Paiement immédiat" Grid.Column="0"
                                 Margin="5" Click="btn_nouvelleCommande_paiement_immediat_Click" Style="{StaticResource personalisationbuton1}"/>
-                        <Button x:Name="btn_nouvelleCommande_paiement_differe" Background="Beige" Content="Paiement différé"  Grid.Column="1" Margin="5"  Style="{StaticResource personalisationbuton1}" Command="{Binding Btn_PaiementDiffere}" Click="btn_nouvelleCommande_paiement_differe_Click_1"/>
+                        <Button x:Name="btn_nouvelleCommande_paiement_differe" Content="Paiement différé"  Grid.Column="1" Margin="5"  Style="{StaticResource personalisationbuton1}" Command="{Binding Btn_PaiementDiffere}" Click="btn_nouvelleCommande_paiement_differe_Click_1"/>
 
                     </Grid>
 

@@ -471,9 +471,9 @@ namespace App_pressing_Loreau.ViewModel
                         {
                             RecuPaiement rp = new RecuPaiement(cmdTota);
                             rp.printRecu();
-                            if (cmd.listArticles != null)
+                            if (cmdTota.listArticles != null)
                             {
-                                TicketVetement ticketVetement = new TicketVetement(cmd);
+                                TicketVetement ticketVetement = new TicketVetement(cmdTota);
                                 ticketVetement.printAllArticleCmd();
                             }
                             else

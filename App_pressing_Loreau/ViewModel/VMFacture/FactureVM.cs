@@ -12,6 +12,7 @@ using App_pressing_Loreau.Data.DAO;
 using App_pressing_Loreau.Model.DTO;
 using App_pressing_Loreau.Model;
 using System.Windows;
+using System.Windows.Forms;
 
 namespace App_pressing_Loreau.ViewModel
 {
@@ -105,29 +106,36 @@ namespace App_pressing_Loreau.ViewModel
             commande = (Commande)CommandeDAO.selectCommandeById(Txb_factures_idCommande, false, true, true);
             if (commande != null)
             {
-                decimal tamponTTC = 0;
-                decimal tamponHT = 0;
-                foreach (Article art in commande.listArticles)
-                {
-                    //prixTTCTotal += art.TTC;
-                    tamponTTC += (decimal)art.TTC;
-                    tamponHT = tamponTTC * ((decimal)(1 - art.TVA / 100));
-                }
-                prixTTCTotal = (float)tamponTTC;
-                prixHTTotal = (float)tamponHT;
-                //prixHTTotal = prixTTCTotal * (1 - commande.listArticles[0].TVA / 100);
+                //decimal tamponTTC = 0;
+                //decimal tamponHT = 0;
+                //foreach (Article art in commande.listArticles)
+                //{
+                //    //prixTTCTotal += art.TTC;
+                //    tamponTTC += (decimal)art.TTC;
+                //    tamponHT = tamponTTC * ((decimal)(1 - art.TVA / 100));
+                //}
+                //prixTTCTotal = (float)tamponTTC;
+                //prixHTTotal = (float)tamponHT;
+                ////prixHTTotal = prixTTCTotal * (1 - commande.listArticles[0].TVA / 100);
 
-                //Arrondi
-                prixHTTotal = (float)Math.Round(prixHTTotal, 2, MidpointRounding.AwayFromZero);
-                prixTTCTotal = (float)Math.Round(prixTTCTotal, 2, MidpointRounding.AwayFromZero);
-                prixHTTotal = (float)Math.Round(prixHTTotal, 2, MidpointRounding.AwayFromZero);
+                ////Arrondi
+                //prixHTTotal = (float)Math.Round(prixHTTotal, 2, MidpointRounding.AwayFromZero);
+                //prixTTCTotal = (float)Math.Round(prixTTCTotal, 2, MidpointRounding.AwayFromZero);
+                //prixHTTotal = (float)Math.Round(prixHTTotal, 2, MidpointRounding.AwayFromZero);
 
-                ffVM.commande = commande;
-                ffVM.LabelDetailPrixTotalTTC = prixTTCTotal;
-                ffVM.LabelDetailMontantHT = prixHTTotal;
-                ffVM.LabelDetailMontantTVA = (float)((decimal)prixTTCTotal - (decimal)prixHTTotal);
-                ffVM.RemplirArticles(commande);
+                //ffVM.commande = commande;
+                //ffVM.LabelDetailPrixTotalTTC = prixTTCTotal;
+                //ffVM.LabelDetailMontantHT = prixHTTotal;
+                //ffVM.LabelDetailMontantTVA = (float)((decimal)prixTTCTotal - (decimal)prixHTTotal);
+                //ffVM.RemplirArticles(commande);
 
+                System.Windows.MessageBox.Show("Ref :" + commande.id +"\n Date recu :" + commande.date + "\n Nombre d'articles :" + 
+                    commande.listArticles.Count);
+
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Commande non trouvée");
             }
 
 
@@ -139,11 +147,21 @@ namespace App_pressing_Loreau.ViewModel
         {
             if (commande != null)
             {
-                FactureExcel fe = new FactureExcel(commande);
-                fe.printFacture();
+                DialogResult dialogResult = System.Windows.Forms.MessageBox.Show("Voulez vous imprimer cette facture?", "Impression", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    //Imprimer
+                    FactureExcel fe = new FactureExcel(commande);
+                    fe.printFacture();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //Ne rien faire
+                }
+                
             }
             else
-                MessageBox.Show("La commande est null");
+                System.Windows.MessageBox.Show("La commande est null");
         }
 
         #endregion

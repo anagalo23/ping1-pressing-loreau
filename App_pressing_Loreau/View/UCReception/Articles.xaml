@@ -22,13 +22,13 @@
             
             <TextBlock Grid.Column="0" Text="{Binding ArticlesName}" Margin="5" Width="160" />
 
-            <ComboBox Grid.Column="1" Margin="5" ItemsSource="{Binding Path=Cbb_Articles_Commentaire}" Width="70"  MinHeight="20" SelectedItem="{Binding Selected_Articles_Commentaire}" DisplayMemberPath="NameCbbArt"/>
+            <ComboBox Grid.Column="1" Margin="5" ItemsSource="{Binding Path=Cbb_Articles_Commentaire}" Width="100"  MinHeight="20" SelectedItem="{Binding Selected_Articles_Commentaire}" DisplayMemberPath="NameCbbArt"/>
             
-            <TextBlock Grid.Column="2" Text="{Binding SelectedPhoto,Mode=TwoWay}" Margin="5" Width="50"  MinHeight="20"/>
+            <Label Grid.Column="2" Content="{Binding SelectedPhoto,Mode=TwoWay}" Margin="5" Width="100"  MinHeight="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
 
-            <Button Content="Charger la photo" Grid.Column="3" Command="{Binding Btn_Articles_ChargerPhoto}" Margin="5"  Width="70" />
+            <Button Content="Charger la photo" Grid.Column="3" Command="{Binding Btn_Articles_ChargerPhoto}" Margin="5"  Width="100" />
 
-            <TextBox Grid.Column="4" Width="50" Margin="5"  Text="{Binding Btn_Articles_PrixArticles, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Grid.Column="4" Width="50" Margin="5"  Text="{Binding Btn_Articles_PrixArticles, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
             
             <Button  Margin="5" Grid.Column="5" BorderThickness="0" Background="Transparent"  Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path= DataContext.DeleteArticles}" CommandParameter="{Binding}">
                 <Image Source="/Resources/pics/Admin1/logo_exit.png"/>
