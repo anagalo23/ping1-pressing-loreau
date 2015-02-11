@@ -73,15 +73,8 @@ namespace App_pressing_Loreau.Model
             System.IO.File.Copy(pattern_path + ".txt", copy_path + ".txt");
 
             //Ajout du contenue du ticket
-            File.AppendAllText(copy_path + ".txt", clt.nom + " " + clt.prenom + Environment.NewLine);
-            File.AppendAllText(copy_path + ".txt", DateTime.Now.ToString() + Environment.NewLine);
-            File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
             File.AppendAllText(copy_path + ".txt", "Commande " + cmd_id + Environment.NewLine);
-            File.AppendAllText(copy_path + ".txt", "N° article : " + art.id + Environment.NewLine);
             File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
-            File.AppendAllText(copy_path + ".txt", "Département " + art.type.departement.nom + Environment.NewLine);
-            File.AppendAllText(copy_path + ".txt", Environment.NewLine);
-            File.AppendAllText(copy_path + ".txt", " ~" + art.type.nom + Environment.NewLine);
 
             PrintOff();
             System.IO.File.Delete(copy_path + ".txt");
@@ -97,13 +90,13 @@ namespace App_pressing_Loreau.Model
                 //Create a StreamReader object
                 reader = new StreamReader(filename);
                 //Create a Verdana font with size 10
-                verdana10Font = new Font("Verdana", 10);
+                verdana10Font = new Font("Verdana", 25);
                 //Create a PrintDocument object
                 PrintDocument pd = new PrintDocument();
                 //gestion des marges
                 pd.OriginAtMargins = true;
                 pd.DefaultPageSettings.Margins.Top = 0;
-                pd.DefaultPageSettings.Margins.Left = 0;
+                pd.DefaultPageSettings.Margins.Left = 5;
                 pd.DefaultPageSettings.Margins.Right = 0;
                 pd.DefaultPageSettings.Margins.Bottom = 0;
 
