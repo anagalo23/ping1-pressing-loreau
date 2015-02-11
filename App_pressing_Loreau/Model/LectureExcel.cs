@@ -113,7 +113,7 @@ namespace App_pressing_Loreau.Model
                         index++;
                     }
                     index = 22;
-                    mWorkSheets.Cells[index, 12] = totalDep;
+                    mWorkSheets.Cells[index, 5] = totalDep;
 
                     //Inscription des Types de payements
                     index = 10;
