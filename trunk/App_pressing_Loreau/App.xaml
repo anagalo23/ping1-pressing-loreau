@@ -6,7 +6,7 @@
         <!--personnalisation des interfaces contenant des boutons arrondi et de background de type vert-->
 
         <Style  TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="personalisationbuton">
-            <Setter Property="Background" Value="Teal"/>
+            <Setter Property="Background" Value="Crimson"/>
             <Setter Property="Foreground" Value="Azure"/>
             <Setter Property="Focusable" Value="True"/>
             <Setter Property="FontFamily" Value=" Arial"/>
@@ -156,6 +156,7 @@
         <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}" x:Key="departementsStyles">
             <Setter Property="Background" Value="Beige"/>
             <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="18"/>
             <Setter Property="Template" >
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">

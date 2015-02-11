@@ -53,7 +53,7 @@
 
 
 
-                        <Button  Content="Ajouter l'article" Grid.Row="5" Grid.Column="1" Command="{Binding Btn_adminArt_AjoutArticle}" Margin="5" Style="{StaticResource choixbouton30}"/>
+                        <Button  Content="Ajouter l'article" Grid.Row="5" Grid.Column="1" Command="{Binding Btn_adminArt_AjoutArticle}" Margin="5" Style="{StaticResource personalisationbuton}" />
 
                     </Grid>
                 </DockPanel>
@@ -133,7 +133,7 @@
                             </Grid>
                         </Border>
                     </DockPanel>
-                    <Button x:Name="btn_adminArt_retour" Content="Retour" Style="{StaticResource choixbouton30}" Grid.Row="3" Margin="70,2" Click="btn_adminArt_retour_Click"/>
+                    <Button x:Name="btn_adminArt_retour" Content="Retour" Style="{StaticResource personalisationbuton}" Grid.Row="3" Margin="70,2" Click="btn_adminArt_retour_Click"/>
                 </Grid>
             </Border>
         </Grid>

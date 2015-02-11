@@ -23,7 +23,7 @@
             <Grid Margin="10" Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
-                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="6*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <Label Content="Liste des clients Pro" Style="{StaticResource Titre}" Grid.Column="0" Grid.Row="0"/>
@@ -32,7 +32,7 @@
                         <ListBox Background="Transparent" Margin="5" ItemsSource="{Binding ListeClientPro}" BorderThickness="0" />
                     </Border>
                 </DockPanel>
-                <Button  x:Name="btn_clientProUC_nouveau_clientPro" Grid.Row="2" Margin="5" Content="Nouveu client pro"  Style="{StaticResource personalisationbuton1}" Click="btn_clientProUC_nouveau_clientPro_Click" />
+                <Button  x:Name="btn_clientProUC_nouveau_clientPro" Grid.Row="2" Margin="5" Content="Nouveu client pro"  Style="{StaticResource personalisationbuton}" Click="btn_clientProUC_nouveau_clientPro_Click" />
             </Grid>
             <Grid Margin="10" Grid.Column="1">
                 <Grid.RowDefinitions>
@@ -84,8 +84,8 @@
                     </Border>
                 </DockPanel>
                 
-                <Border Grid.Row="2" BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="10" Margin="10,2">
-                    <Label Content="{Binding Label_CommandeSelectionner}" Background="WhiteSmoke" Style="{StaticResource vertilabel18}"/>
+                <Border Grid.Row="2" BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="10" Margin="3,2">
+                    <Label Content="{Binding Label_CommandeSelectionner}" Background="WhiteSmoke" Margin="5,2" Style="{StaticResource vertilabel18}"/>
                 </Border>
                 <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
@@ -97,7 +97,7 @@
                     
                     <Label Grid.Column="1" Content="{Binding Label_ClientProUC_TotalAPayer}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="16"/>
                     
-                    <Button Content="Régler une commande" x:Name="btn_regleClientPro" Style="{StaticResource personalisationbuton1}" Grid.Column="2" Margin="10" Click="btn_regleClientPro_Click"/>
+                    <Button Content="Régler une commande" x:Name="btn_regleClientPro" Style="{StaticResource personalisationbuton}" Grid.Column="2" Margin="10,1" Click="btn_regleClientPro_Click"/>
                 </Grid>
 
             </Grid>

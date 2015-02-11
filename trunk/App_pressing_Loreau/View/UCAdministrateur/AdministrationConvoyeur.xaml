@@ -88,7 +88,7 @@
                             <ColumnDefinition Width="10*"/>
                         </Grid.ColumnDefinitions>
                         <Button x:Name="btn_admin_convoyeur_retour"  Content="Retour" Grid.Column="1" Click="btn_admin_convoyeur_retour_Click"
-                                Style="{StaticResource choixbouton30}" FontSize="30" Margin="10"/>
+                                Style="{StaticResource personalisationbuton}" FontSize="30" Margin="10"/>
                     </Grid>
 
                 </Grid>

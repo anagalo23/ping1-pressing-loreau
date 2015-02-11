@@ -183,7 +183,7 @@
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="btn_paiment_valider" Content="Valider" Margin="10" Style="{StaticResource butonpageadministration}"
+                        <Button x:Name="btn_paiment_valider" Content="Valider" Margin="10" Style="{StaticResource personalisationbuton}"
                         Command="{Binding Btn_valider_paiement_commande}" Click="btn_paiment_valider_Click" Grid.Column="1"/>
                     </Grid>
                 </Border>

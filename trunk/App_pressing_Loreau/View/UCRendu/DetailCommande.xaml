@@ -6,13 +6,13 @@
              xmlns:vm="clr-namespace:App_pressing_Loreau.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="740">
-    
+
     <!-- les données à affichier dans la liste de commande-->
- 
+
     <UserControl.Resources>
         <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
     </UserControl.Resources>
-    
+
     <DockPanel x:Name="dp">
         <Border>
             <Grid>
@@ -44,7 +44,7 @@
                     </Border>
 
 
-                    <Button x:Name="btn_detailCommande_rendre_articles_selectionnes" Grid.Row="4" Margin="20,4" Content="Rendre les articles sélectionnés" Style="{StaticResource ButtonSansBck}" Command="{Binding Btn_rendre}" CommandParameter="{Binding }" Click="btn_detailCommande_rendre_articles_selectionnes_Click"/>
+                    <Button x:Name="btn_detailCommande_rendre_articles_selectionnes" Grid.Row="4" Margin="20,5" Content="Rendre les articles sélectionnés" Style="{StaticResource  personalisationbuton}" Command="{Binding Btn_rendre}" CommandParameter="{Binding }" Click="btn_detailCommande_rendre_articles_selectionnes_Click"/>
                 </Grid>
                 <Border Margin="10" BorderBrush="AliceBlue" BorderThickness="2" Grid.Column="0">
                     <Grid>
@@ -58,9 +58,9 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <Button x:Name="btn_detailCommande_selectionner_tout" Content="Sélectionner tout" Margin="10" BorderThickness="0" Style="{StaticResource choixbouton20}" Command="{Binding Btn_detailCommande_selectionner_tout}"/>
-                                
-                                <Button x:Name="btn_detailCommande_deselectionner_tout"  Content="Désélectionner tout" Grid.Column="1" Margin="10" BorderThickness="0" Style="{StaticResource choixbouton20}" Command="{Binding Btn_detailCommande_deselectionner_tout}"/>
+                                <Button x:Name="btn_detailCommande_selectionner_tout" Content="Sélectionner tout" Margin="10" BorderThickness="0" Style="{StaticResource ButtonSansBck}" Command="{Binding Btn_detailCommande_selectionner_tout}"/>
+
+                                <Button x:Name="btn_detailCommande_deselectionner_tout"  Content="Désélectionner tout" Grid.Column="1" Margin="10" BorderThickness="0" Style="{StaticResource ButtonSansBck}" Command="{Binding Btn_detailCommande_deselectionner_tout}"/>
                             </Grid>
 
                         </Border>
@@ -76,9 +76,9 @@
                                 <Border  BorderBrush="AliceBlue" Margin="5" BorderThickness="2" CornerRadius="10">
 
                                     <ListBox Background="Transparent" Margin="3" BorderThickness="0" ItemsSource="{Binding AfficheDetailCommande}"/>
-                                      
+
                                 </Border>
-                      
+
                             </DockPanel>
 
                             <Border Grid.Row="2">
@@ -87,7 +87,7 @@
                                         <ColumnDefinition Width="1*"/>
                                         <ColumnDefinition Width="1*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Button Content="Valider selection" Grid.Column="1" Margin="15,4" Command="{Binding Btn_ValiderSelect}" />
+                                    <Button Content="Valider selection" Grid.Column="1" Margin="15,1" Command="{Binding Btn_ValiderSelect}"  Style="{StaticResource  personalisationbuton}"/>
 
                                 </Grid>
                             </Border>

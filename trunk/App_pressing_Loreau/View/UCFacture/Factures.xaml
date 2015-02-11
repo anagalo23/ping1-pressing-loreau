@@ -77,7 +77,7 @@
             </Grid.RowDefinitions>
 
             <DockPanel  Grid.Row="2">
-                <Button x:Name="Factures_editerfacture" Content="Imprimer la facture"  Style="{StaticResource personalisationbuton1}" Margin="10,5" BorderBrush="White"  Command="{Binding Btn_factures_imprimer_facture}" />
+                <Button x:Name="Factures_editerfacture" Content="Imprimer la facture"  Style="{StaticResource personalisationbuton}" Margin="10,5" BorderBrush="White"  Command="{Binding Btn_factures_imprimer_facture}" />
             </DockPanel>
 
         </Grid>

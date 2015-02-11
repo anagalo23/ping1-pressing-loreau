@@ -27,7 +27,8 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <!-- Bouton precedent-->
-                    <Button  Background="Beige" Command="{Binding  CommandePrecedente }" BorderThickness="0" CommandParameter=" ">
+                    <Button  Background="Crimson" Command="{Binding  CommandePrecedente }" BorderThickness="0" 
+                             CommandParameter=" ">
                         <Image Source="/Resources/pics/precedent.png" Height="25"/>
                     </Button>
 
@@ -76,7 +77,7 @@
                         </DockPanel>
 
                     </Border>
-                    <Button Grid.Column="2"  Background="Beige" BorderThickness="0" Command="{Binding  CommandeSuivante }"  CommandParameter="">
+                    <Button Grid.Column="2"  Background="Crimson" BorderThickness="0" Command="{Binding  CommandeSuivante }"  CommandParameter="" >
                         <Image Source="/Resources/pics/suivant.png"/>
                     </Button>
 
@@ -129,9 +130,9 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button x:Name="btn_nouvelleCommandeClientPro_EnregistrerCommande" Content="Enregistrer Commande" Grid.Column="0" Margin="5"  Style="{StaticResource personalisationbuton1}" Command="{Binding Btn_nouvelleCommandeClientPro_EnregistrerCommande}"/>
-                        
-                        <Button x:Name="btn_nouvelleCommandeClientPro_Retour" Content="Retour"  Grid.Column="1" Margin="5"  Style="{StaticResource choixbouton30}" Click="btn_nouvelleCommandeClientPro_Retour_Click" />
+                        <Button x:Name="btn_nouvelleCommandeClientPro_EnregistrerCommande" Content="Enregistrer Commande" Grid.Column="0" Margin="5"  Style="{StaticResource personalisationbuton}" Command="{Binding Btn_nouvelleCommandeClientPro_EnregistrerCommande}"/>
+
+                        <Button x:Name="btn_nouvelleCommandeClientPro_Retour" Content="Retour"  Grid.Column="1" Margin="5"   Style="{StaticResource personalisationbuton}" Click="btn_nouvelleCommandeClientPro_Retour_Click" />
 
                     </Grid>
 

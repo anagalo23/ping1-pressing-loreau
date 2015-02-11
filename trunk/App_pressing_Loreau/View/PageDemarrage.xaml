@@ -119,7 +119,7 @@
                     </Grid>
                 </Border>
                 
-                <Button x:Name="btn_accessApplication"  Content="Acceder à l'application" Grid.Row="1" Grid.Column="1" Margin="10,3" Click="btn_accessApplication_Click" Style="{StaticResource ButtonSansBck}"/>
+                <Button x:Name="btn_accessApplication"  Content="Accéder à l'application" Grid.Row="1" Grid.Column="1" Margin="10,3" Click="btn_accessApplication_Click" Style="{StaticResource personalisationbuton}"/>
 
             </Grid>
         </Border>
