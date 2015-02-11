@@ -718,15 +718,12 @@ namespace App_pressing_Loreau.ViewModel
             {
                 if (ClasseGlobale._renduCommande != null)
                 {
-                    if (ClasseGlobale._renduCommande.listArticles.Count == ListeSelectArt.Count)
+                    if (ClasseGlobale._renduCommande.listArticles.Count == ListeSelectArt.Count || Mode_de_paiement != "CleanWay")
                     {
                         //Si tous les articles sont sélectionnés je vérifie la possibilité cleanway
                         return checkUnicitePaiementCleanway();
                     }
-                    else if (Mode_de_paiement != "CleanWay")
-                    {
-                        return checkUnicitePaiementCleanway();
-                    }
+
                     //Sinon le paiemnt par cleanway n'est pas possible
                     MessageBox.Show("Possibilité de payer par cleanway annulée, il faut sélectionner tous les articles de la commande");
                     return false;
