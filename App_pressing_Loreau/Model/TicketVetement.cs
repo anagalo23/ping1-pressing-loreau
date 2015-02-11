@@ -84,7 +84,7 @@ namespace App_pressing_Loreau.Model
             File.AppendAllText(copy_path + ".txt", " ~" + art.type.nom + Environment.NewLine);
 
             PrintOff();
-            //System.IO.File.Delete(copy_path + ".txt");
+            System.IO.File.Delete(copy_path + ".txt");
         }
 
         //Print the document
@@ -100,6 +100,13 @@ namespace App_pressing_Loreau.Model
                 verdana10Font = new Font("Verdana", 10);
                 //Create a PrintDocument object
                 PrintDocument pd = new PrintDocument();
+                //gestion des marges
+                pd.OriginAtMargins = true;
+                pd.DefaultPageSettings.Margins.Top = 0;
+                pd.DefaultPageSettings.Margins.Left = 0;
+                pd.DefaultPageSettings.Margins.Right = 0;
+                pd.DefaultPageSettings.Margins.Bottom = 0;
+
                 //Add PrintPage event handler
                 pd.PrintPage += new PrintPageEventHandler(this.PrintTextFileHandler);
                 //Call Print Method
