@@ -46,8 +46,8 @@
                     <Label x:Name="L_nbreplace" Content="Nombre de place total :" Grid.Row="3" Style="{StaticResource vertilabel25}" Grid.Column="0" />
                     <Label Background="White"  Content="{Binding Label_Convoyeur_nbPlace, UpdateSourceTrigger=PropertyChanged}" Margin="20,15" Grid.Row="3"  Grid.Column="1" Style="{StaticResource vertilabel18}"/>
                     
-                    <Label Content=" Nombre de places disponibles   :" Style="{StaticResource vertilabel25}" Grid.Column="0" Grid.Row="4"  />
-                    <Label Background="White"   Margin="20,15" Grid.Column="1"   Content="{Binding Label_convoyeur_diponibles}" Grid.Row="4" Style="{StaticResource vertilabel18}" />
+                    <Label Content=" Nombre d'emplacements utilisés :" Style="{StaticResource vertilabel25}" Grid.Column="0" Grid.Row="4"  />
+                    <Label Background="White"   Margin="20,15" Grid.Column="1"   Content="{Binding Label_convoyeur_occupees}" Grid.Row="4" Style="{StaticResource vertilabel18}" />
 
                     
                        

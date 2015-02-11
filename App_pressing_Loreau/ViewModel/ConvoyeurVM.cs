@@ -19,7 +19,7 @@ namespace App_pressing_Loreau.ViewModel
 
         #region Attributes
         private int _label_Convoyeur_nbPlace;
-        private int _label_convoyeur_diponibles;
+        private int _label_convoyeur_occupees;
         private int _txb_Convoyeur_idCommande;
 
         private List<ItemEmplacement> _contenuConvoyeur;
@@ -38,9 +38,9 @@ namespace App_pressing_Loreau.ViewModel
             {
                 listePlace = (List<PlaceConvoyeur>)PlaceConvoyeurDAO.selectConvoyeurs();
 
-                List<PlaceConvoyeur> comptePlaceLibre = (List<PlaceConvoyeur>)PlaceConvoyeurDAO.selectConvoyeursEmpty();
+                List<PlaceConvoyeur> comptePlaceLibre = (List<PlaceConvoyeur>)PlaceConvoyeurDAO.selectConvoyeursNotEmpty();
 
-                Label_convoyeur_diponibles = comptePlaceLibre.Count;
+                Label_convoyeur_occupees = comptePlaceLibre.Count;
                 Label_Convoyeur_nbPlace = listePlace.Count;
             }
             catch (Exception e)
@@ -81,14 +81,14 @@ namespace App_pressing_Loreau.ViewModel
         }
 
 
-        public int Label_convoyeur_diponibles
+        public int Label_convoyeur_occupees
         {
-            get { return _label_convoyeur_diponibles; }
+            get { return _label_convoyeur_occupees; }
             set
             {
-                if (value != _label_convoyeur_diponibles)
+                if (value != _label_convoyeur_occupees)
                 {
-                    _label_convoyeur_diponibles = value;
+                    _label_convoyeur_occupees = value;
                     OnPropertyChanged("Label_convoyeur_diponibles");
                 }
             }
