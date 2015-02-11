@@ -20,6 +20,7 @@ namespace App_pressing_Loreau.Model.DTO
         public int fk_commande { get; set; }
         public TypeArticle type { get; set; }
         public PlaceConvoyeur convoyeur { get; set; }
+        public DateTime date_payee { get; set; }
         #endregion
 
         #region classes
@@ -36,6 +37,7 @@ namespace App_pressing_Loreau.Model.DTO
             this.type = type;
             this.convoyeur = convoyeur;
             this.fk_commande = fk_commande;
+            date_payee = DateTime.MinValue;
         }
 
         //Attention! Constructeur à n'utiliser que pour la creation d'un article non selectionné. (TVA & TTC différent apres insertion.
