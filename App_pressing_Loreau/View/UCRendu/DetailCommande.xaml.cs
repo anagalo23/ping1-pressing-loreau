@@ -22,13 +22,13 @@ namespace App_pressing_Loreau
         {
             dp.Children.Clear();
             //dp.Children.Add(new Accueil());
-            dp.Children.Add(new Paiement());
+            //dp.Children.Add(new Paiement());
             //dp.Children.Clear();
             ////Si la commande a déjà été payée je ne pase pas par la page de paiement
-            //if (ClasseGlobale._renduCommande.payee == false)
-            //{
-            //    dp.Children.Add(new Paiement());
-            //}
+            if (ClasseGlobale._renduCommande.payee == false)
+            {
+                dp.Children.Add(new Paiement());
+            }
             //else
             //{
             //    dp.Children.Add(new Accueil());
