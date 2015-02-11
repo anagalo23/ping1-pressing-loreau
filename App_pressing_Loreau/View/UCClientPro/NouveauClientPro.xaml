@@ -152,7 +152,7 @@
                             <RowDefinition Height="1*"/>
                             <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
-                        <Button Content="Enregistrer " Margin="10,40" Grid.Column="1" Command="{Binding Btn_nouveauClientPro_enregistrer}" />
+                        <Button Content="Enregistrer " Margin="10,40" Grid.Column="1" Command="{Binding Btn_nouveauClientPro_enregistrer}" Style="{StaticResource personalisationbuton}"  />
 
                         <Button x:Name="btn_nouveauClientPro_retour" Content="Retour" Grid.Row="1" Margin="10,40" Grid.Column="1"  Style="{StaticResource personalisationbuton}" Click="btn_nouveauClientPro_retour_Click"/>
                     </Grid>

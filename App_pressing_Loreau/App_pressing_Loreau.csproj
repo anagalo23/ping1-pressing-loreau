@@ -27,7 +27,7 @@
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
-    <ApplicationRevision>48</ApplicationRevision>
+    <ApplicationRevision>51</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -500,6 +500,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\bdd\bddping1.sql" />
+    <Resource Include="Resources\pics\Factures\478720045.jpg" />
     <Content Include="Resources\pics\Paiements\virement.png" />
     <Resource Include="Resources\PatternFile\TicketVetement.txt" />
     <Content Include="Resources\pics\logo.png" />

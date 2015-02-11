@@ -145,7 +145,7 @@
                             <Label Content="{Binding Label_statistique_nbrChemises}" Grid.Row="4" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
 
 
-                            <Button  x:Name="btn_statistiques_retour" Content="Retour" Margin="5,10" Style="{StaticResource choixbouton30}" Grid.Row="5" Grid.Column="1" Click="btn_statistiques_retour_Click"/>
+                            <Button  x:Name="btn_statistiques_retour" Content="Retour" Margin="5,10"  Style="{StaticResource personalisationbuton1}" Grid.Row="5" Grid.Column="1" Click="btn_statistiques_retour_Click"/>
 
                         </Grid>
                     </Border>

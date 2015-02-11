@@ -144,7 +144,7 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
                         <Button x:Name="btn_restitutionArticles_suivant" Content="Suivant" Grid.Column="1"
-Click="btn_restitutionArticles_suivant_Click" Style="{StaticResource choixbouton30}" Margin="45,5,2,2"/>
+Click="btn_restitutionArticles_suivant_Click" Style="{StaticResource personalisationbuton}" Margin="20,1"/>
                     </Grid>
                 </Grid>
 

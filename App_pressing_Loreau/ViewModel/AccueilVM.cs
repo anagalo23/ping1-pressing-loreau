@@ -307,7 +307,7 @@ namespace App_pressing_Loreau
         //Methodes des redirection vers le ViewModel de l'Identification client
         public void identificationClientVM()
         {
-            Btn_receptionColor = Brushes.IndianRed;
+            Btn_receptionColor = Brushes.Crimson;
             Btn_renduColor = Brushes.Teal;
             Btn_factureColor = Brushes.Teal;
             Btn_clientProColor = Brushes.Teal;
@@ -324,7 +324,7 @@ namespace App_pressing_Loreau
             accessUserControl = new RestitutionArticlesVM();
 
             Btn_receptionColor = Brushes.Teal;
-            Btn_renduColor = Brushes.IndianRed;
+            Btn_renduColor = Brushes.Crimson;
             Btn_factureColor = Brushes.Teal;
             Btn_clientProColor = Brushes.Teal;
             Btn_convoyeurColor = Brushes.Teal;
@@ -339,7 +339,7 @@ namespace App_pressing_Loreau
 
             Btn_receptionColor = Brushes.Teal;
             Btn_renduColor = Brushes.Teal;
-            Btn_factureColor = Brushes.IndianRed;
+            Btn_factureColor = Brushes.Crimson;
             Btn_clientProColor = Brushes.Teal;
             Btn_convoyeurColor = Brushes.Teal;
             Btn_impressionColor = Brushes.Teal;
@@ -354,7 +354,7 @@ namespace App_pressing_Loreau
             Btn_receptionColor = Brushes.Teal;
             Btn_renduColor = Brushes.Teal;
             Btn_factureColor = Brushes.Teal;
-            Btn_clientProColor = Brushes.IndianRed;
+            Btn_clientProColor = Brushes.Crimson;
             Btn_convoyeurColor = Brushes.Teal;
             Btn_impressionColor = Brushes.Teal;
             Btn_administrateurColor = Brushes.Teal;
@@ -369,7 +369,7 @@ namespace App_pressing_Loreau
             Btn_factureColor = Brushes.Teal;
             Btn_clientProColor = Brushes.Teal;
             Btn_convoyeurColor = Brushes.Teal;
-            Btn_impressionColor = Brushes.IndianRed;
+            Btn_impressionColor = Brushes.Crimson;
             Btn_administrateurColor = Brushes.Teal;
 
         }
@@ -384,7 +384,7 @@ namespace App_pressing_Loreau
             Btn_clientProColor = Brushes.Teal;
             Btn_convoyeurColor = Brushes.Teal;
             Btn_impressionColor = Brushes.Teal;
-            Btn_administrateurColor = Brushes.IndianRed;
+            Btn_administrateurColor = Brushes.Crimson;
 
         }
 
@@ -396,7 +396,7 @@ namespace App_pressing_Loreau
             Btn_renduColor = Brushes.Teal;
             Btn_factureColor = Brushes.Teal;
             Btn_clientProColor = Brushes.Teal;
-            Btn_convoyeurColor = Brushes.IndianRed;
+            Btn_convoyeurColor = Brushes.Crimson;
             Btn_impressionColor = Brushes.Teal;
             Btn_administrateurColor = Brushes.Teal;
 
@@ -469,7 +469,7 @@ namespace App_pressing_Loreau
             {
                 foreach (Employe em in emp)
                 {
-                    ListeUser.Add(new CategoryItem() { ButtonUserContent = em.prenom, ButtonUserTag = em.id, ButtonUserBackground = Brushes.Teal });
+                    ListeUser.Add(new CategoryItem() { ButtonUserContent = em.prenom, ButtonUserTag = em.id, ButtonUserBackground = Brushes.Teal});
                 }
             }
             else

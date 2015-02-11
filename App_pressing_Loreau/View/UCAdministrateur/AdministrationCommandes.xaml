@@ -71,7 +71,7 @@
                             <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Button x:Name="btn_admin_commandes_retour"  Grid.Column="2" Content="Retour" Margin="20,10" Click="btn_admin_commandes_retour_Click_1" Style="{StaticResource choixbouton30}"/>
+                        <Button x:Name="btn_admin_commandes_retour"  Grid.Column="2" Content="Retour" Margin="20,10" Click="btn_admin_commandes_retour_Click_1" Style="{StaticResource personalisationbuton}"/>
                     </Grid>
                 </Grid>
             </Border>
