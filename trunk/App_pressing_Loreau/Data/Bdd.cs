@@ -51,13 +51,14 @@ namespace App_pressing_Loreau.Data
          */
 
         //Article
-        public static String insertArticle = "INSERT INTO article(art_photo, art_commentaire, art_rendu, art_TVA, art_TTC, art_conv_id, art_typ_id, art_cmd_id) VALUES (?,?,?,?,?,?,?,?)";
+        public static String insertArticle = "INSERT INTO article(art_photo, art_commentaire, art_rendu, art_TVA, art_TTC, art_conv_id, art_typ_id, art_cmd_id, art_date_payee) VALUES (?,?,?,?,?,?,?,?,?)";
         public static String selectArticleById = "SELECT art_id, art_photo, art_commentaire, art_rendu, art_TVA, art_TTC, art_conv_id, art_typ_id, art_cmd_id, art_date_rendu FROM article WHERE art_id=?";
         public static String selectArticleByIdCmd = "SELECT art_id, art_photo, art_commentaire, art_rendu, art_TVA, art_TTC, art_conv_id, art_typ_id, art_cmd_id, art_date_rendu FROM article WHERE art_cmd_id=?";
-        public static String updateArticle = "UPDATE article SET art_id=?,art_photo=?,art_commentaire=?,art_rendu=?,art_TVA=?,art_TTC=?,art_conv_id=?,art_cmd_id=?,art_typ_id=?, art_date_rendu=? WHERE art_id=?";
+        public static String updateArticle = "UPDATE article SET art_id=?,art_photo=?,art_commentaire=?,art_rendu=?,art_TVA=?,art_TTC=?,art_conv_id=?,art_cmd_id=?,art_typ_id=?, art_date_rendu=?, art_date_payee=? WHERE art_id=?";
         public static String deleteArticle = "DELETE FROM article WHERE art_id=?";
         public static String lastArticle = "SELECT MAX(art_id) AS art_id FROM article";
         public static String selectArticleRenduByDate = "SELECT art_id, art_photo, art_commentaire, art_rendu, art_TVA, art_TTC, art_conv_id, art_typ_id, art_cmd_id FROM article WHERE art_date_rendu BETWEEN ? AND ?";
+        public static String selectArticlePayeeByDate = "SELECT art_id, art_photo, art_commentaire, art_rendu, art_date_rendu, art_TVA, art_TTC, art_conv_id, art_cmd_id, art_typ_id, art_date_payee FROM article WHERE art_date_payee BETWEEN ? AND ?";
         public static String articlesInBlanchisserieByDate = "SELECT COUNT(A.art_typ_id) AS nbBlanchisserie, D.dep_nom FROM commande C, article A, type T, departement D WHERE A.art_typ_id=T.typ_id AND T.typ_dep_id=dep_id AND D.dep_nom='Blanchisserie' AND A.art_cmd_id=C.cmd_id AND (C.cmd_date BETWEEN ? AND ?) GROUP BY D.dep_nom";
         public static String articlesByDate = "SELECT COUNT(A.art_typ_id) AS nbArticles FROM article A, commande C WHERE A.art_cmd_id=C.cmd_id AND (C.cmd_date BETWEEN ? AND ?)";
         public static String chemisesByDate = "SELECT COUNT(A.art_typ_id) AS nbArticles FROM article A, type T, commande C WHERE A.art_typ_id=T.typ_id AND T.typ_nom='Chemise' AND A.art_cmd_id=C.cmd_id AND (C.cmd_date BETWEEN ? AND ?)";
