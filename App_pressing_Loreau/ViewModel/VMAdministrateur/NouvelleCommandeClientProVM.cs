@@ -22,10 +22,8 @@ namespace App_pressing_Loreau.ViewModel
 {
     class NouvelleCommandeClientProVM : ObservableObject
     {
-        
-        #region Attributs
 
-        public static int payeDifferer = 0;
+        #region Attributs
 
         private List<CategoryItem> _listeDepartement;
         private List<CategoryItem> _listeArticles;
@@ -59,7 +57,7 @@ namespace App_pressing_Loreau.ViewModel
                 }
 
             }
-            
+
         }
 
         #endregion
@@ -153,7 +151,7 @@ namespace App_pressing_Loreau.ViewModel
                     ClasseGlobale.initializeContentDetailCommande();
                 }
                 return ClasseGlobale._contentDetailCommande;
-               
+
             }
 
             set
@@ -176,7 +174,7 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-      
+
         #endregion
 
 
@@ -195,33 +193,62 @@ namespace App_pressing_Loreau.ViewModel
         private void EnregistrerCommandeClientPro()
         {
             int insertArt = 0;
-            if (ClasseGlobale._contentDetailCommande == null)
+            try
             {
-                MessageBox.Show("Ajoutez des articles");
-            }
-            else
-            {
-                Commande cmd = new Commande(DateTime.Now,false, 0, ClasseGlobale.Client);
-                int inser= CommandeDAO.insertCommande(cmd);
-                ObservableCollection<ArticlesVM> listeArticles = ClasseGlobale._contentDetailCommande;
-                if (inser != 0)
+                if (ClasseGlobale._contentDetailCommande == null)
                 {
-                    cmd = CommandeDAO.lastCommande();
-                    ObservableCollection<ArticlesVM> cmdDetail = ClasseGlobale._contentDetailCommande;
-                    foreach (ArticlesVM artVM in cmdDetail)
-                    {
-                        insertArt=ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
-                    }
+                    MessageBox.Show("Ajoutez des articles");
                 }
-               
-            }
+                else
+                {
+                    Commande cmd = new Commande(DateTime.Now, false, 0, ClasseGlobale.Client);
+                    int inser = CommandeDAO.insertCommande(cmd);
 
-            if (insertArt != 0)
-            {
-                MessageBox.Show("Commande enregistrée \n paiement differé");
-                payeDifferer = 1;
+                    ObservableCollection<ArticlesVM> listeArticles = ClasseGlobale._contentDetailCommande;
+
+                    if (inser != 0)
+                    {
+                        cmd = CommandeDAO.lastCommande();
+                        cmd = CommandeDAO.selectCommandeById(cmd.id, true, true, true);
+
+
+                        //Impression du recu
+                        RecuPaiement rp = new RecuPaiement(cmd);
+                        rp.printRecu();
+                        //impression des tickets vetements
+                        if (cmd.listArticles != null)
+                        {
+                            TicketVetement ticketVetement = new TicketVetement(cmd);
+                            ticketVetement.printAllArticleCmd();
+                        }
+                        else
+                            MessageBox.Show("La commande ne contient pas d'articles");
+
+                        ObservableCollection<ArticlesVM> cmdDetail = ClasseGlobale._contentDetailCommande;
+                        foreach (ArticlesVM artVM in cmdDetail)
+                        {
+                            insertArt = ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
+                        }
+
+                    }
+
+                }
+
+                if (insertArt != 0)
+                {
+                    MessageBox.Show("Commande enregistrée \n paiement differé");
+                }
+
             }
-           
+            catch (Exception)
+            {
+                MessageBox.Show("Impression refusée");
+            }
+            finally
+            {
+                ClasseGlobale.SET_ALL_NULL();
+
+            }
         }
 
         /**
@@ -241,7 +268,7 @@ namespace App_pressing_Loreau.ViewModel
             }
 
         }
-       
+
         public void defileDepartementSuivante()
         {
             ListeDepartements = new List<CategoryItem>();
@@ -264,13 +291,13 @@ namespace App_pressing_Loreau.ViewModel
             List<CategoryItem> listedesArticles = new List<CategoryItem>();
             articlesByDep = new List<TypeArticle>();
             articlesByDep = (List<TypeArticle>)TypeArticleDAO.selectTypeByDepId(Int32.Parse(clickedbutton.Tag.ToString()));
-            
+
             if (articlesByDep.Count > 0)
             {
                 if (clickedbutton != null)
                 {
                     int x = 15, y = 5;
-                  
+
                     foreach (TypeArticle type in articlesByDep)
                     {
                         listedesArticles.Add(new CategoryItem() { ButtonArticlesContent = type.nom, ButtonArticlesTag = type.id, X = x, Y = y });
@@ -287,8 +314,8 @@ namespace App_pressing_Loreau.ViewModel
             }
             else
             {
-                clickedbutton.Background = Brushes.Blue;
-                string msg = string.Format("You Pressed : {0} button", clickedbutton.Tag);
+
+                string msg = string.Format("You Pressed : {0} button", clickedbutton.Content);
                 MessageBox.Show(msg);
             }
 
@@ -308,7 +335,7 @@ namespace App_pressing_Loreau.ViewModel
         public void AjouterArticles(object button)
         {
             Button clickedbutton = button as Button;
-           
+
 
             if (clickedbutton != null)
             {
@@ -321,7 +348,7 @@ namespace App_pressing_Loreau.ViewModel
                 });
 
                 Label_NouvelleCommande_prixTotal = 0;
-                foreach (ArticlesVM artVm in  ClasseGlobale._contentDetailCommande)
+                foreach (ArticlesVM artVm in ClasseGlobale._contentDetailCommande)
                 {
                     Label_NouvelleCommande_prixTotal += (artVm.typeArticle.TTC);
                 }
@@ -342,11 +369,11 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-       
+
         #endregion
 
 
-         #region Class
+        #region Class
         public class CategoryItem
         {
             public string ButtonContent { get; set; }
