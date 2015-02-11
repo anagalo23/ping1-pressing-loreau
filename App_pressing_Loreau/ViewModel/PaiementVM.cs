@@ -230,7 +230,12 @@ namespace App_pressing_Loreau.ViewModel
         ICommand btn_paiement;
         public ICommand Btn_paiement
         {
-            get { return btn_paiement ?? (btn_paiement = new RelayCommand(getModeDePaiement)); }
+            get
+            {
+                if(ClasseGlobale.Client.type == 1)
+                return btn_paiement ?? (btn_paiement = new RelayCommand(getModeDePaiement));
+                return null;
+            }
         }
         private void getModeDePaiement(object button)
         {
