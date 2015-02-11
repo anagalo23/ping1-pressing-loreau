@@ -232,9 +232,9 @@ namespace App_pressing_Loreau.ViewModel
         {
             get
             {
-                if(ClasseGlobale.Client.type == 1)
-                return btn_paiement ?? (btn_paiement = new RelayCommand(getModeDePaiement));
-                return null;
+                //if (ClasseGlobale.Client.type == 1)
+                    return btn_paiement ?? (btn_paiement = new RelayCommand(getModeDePaiement));
+                //return null;
             }
         }
         private void getModeDePaiement(object button)
@@ -700,6 +700,39 @@ namespace App_pressing_Loreau.ViewModel
 
         private bool CleanWayOK()
         {
+            //Si je viens 
+            //de l'écran rendu et que 
+            //tout les articles sont sélectionnés alors je peux payer en clean way
+            List<Article> ListeSelectArt = ClasseGlobale._rendreArticlesSelectionnes;
+
+            if (ListeSelectArt != null)//Je viens de l'écran de rendu donc toute la commande doit être sélectionnée
+            {
+                if (ClasseGlobale._renduCommande != null)
+                {
+                    if (ClasseGlobale._renduCommande.listArticles.Count == ListeSelectArt.Count)
+                    {
+                        //Si tous les articles sont sélectionnés je vérifie la possibilité cleanway
+                        return checkUnicitePaiementCleanway();
+                    }
+                    //Sinon le paiemnt par cleanway n'est pas possible
+                    MessageBox.Show("Possibilité de payer par cleanway annulée, il faut sélectionner tous les articles de la commande");
+                    return false;
+                }
+                else
+                {
+                    MessageBox.Show("La commande à rendre n'est pas retrouvée.\n Problème logiciel grave, contactez l'administrateur");
+                    return false;
+                }
+
+            }
+            return checkUnicitePaiementCleanway();
+
+
+
+        }
+
+        private bool checkUnicitePaiementCleanway()
+        {
             //Si je désire payer en CleanWay, je vérifie que ma liste de paiement ne contient pas de paiement autre que cleanway
             //Sinon, on vérifie qu'aucun paiement cleanway n'a été effectué
             if (Mode_de_paiement == "CleanWay")
@@ -732,7 +765,6 @@ namespace App_pressing_Loreau.ViewModel
 
 
             }
-
         }
 
         private void InitialiseLaListeDePaiement()
