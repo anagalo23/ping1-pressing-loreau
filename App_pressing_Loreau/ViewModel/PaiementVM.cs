@@ -233,14 +233,23 @@ namespace App_pressing_Loreau.ViewModel
             get
             {
                 //if (ClasseGlobale.Client.type == 1)
-                    return btn_paiement ?? (btn_paiement = new RelayCommand(getModeDePaiement));
+                return btn_paiement ?? (btn_paiement = new RelayCommand(getModeDePaiement));
                 //return null;
             }
         }
         private void getModeDePaiement(object button)
         {
             System.Windows.Controls.Button clickedbutton = button as System.Windows.Controls.Button;
-            _mode_de_paiement = clickedbutton.Tag.ToString();
+            //Si je ne suis pas un client pro je ne peux pas cliquer sur virement
+            if (ClasseGlobale.Client.type == 0 && clickedbutton.Tag.ToString() == "VirementBancaire")
+            {
+                MessageBox.Show("Les virements bancaires sont résevés aux clients professionnels");
+            }
+            else
+            {
+                _mode_de_paiement = clickedbutton.Tag.ToString();
+            }
+            
         }
         #endregion
 
