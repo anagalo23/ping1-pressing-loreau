@@ -40,8 +40,8 @@ namespace App_pressing_Loreau.Model
         int nbNewClient;
 
         //Excel Interop
-        //public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\LecturePattern.xlsx";
-        public static String pattern_path = "D:\\Application_Pressing\\Resources\\PatternFile\\LecturePattern.xlsx";
+        public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\LecturePattern.xlsx";
+        //public static String pattern_path = "D:\\Application_Pressing\\Resources\\PatternFile\\LecturePattern.xlsx";
 
         private Microsoft.Office.Interop.Excel.Application oXL;
         private Microsoft.Office.Interop.Excel.Workbook mWorkBook;
@@ -63,7 +63,7 @@ namespace App_pressing_Loreau.Model
                 listUsedDepartements = new List<Departement>();
                 caTTCDep = new List<float>();
                 listUsedTypePaiement = PayementDAO.listSommePaiementToday(1);
-                DepartmentTTC(ArticleDAO.selectArticleRenduByDate(1));
+                DepartmentTTC(ArticleDAO.selectArticlePayeeByDateNoCleanWay(1));
 
                 List<Commande> listCommandeRecuToday = CommandeDAO.listCommandeRecuToday(1);
                 listUsedTypeArticle = new List<string>();
@@ -121,7 +121,7 @@ namespace App_pressing_Loreau.Model
                     foreach (Payement paie in listUsedTypePaiement)
                     {
 
-                        if (!paie.typePaiement.Equals("CleanWay"))
+                        if (!paie.typePaiement.Contains("Clean"))
                         {
                             mWorkSheets.Cells[index, 8] = paie.typePaiement;
                             mWorkSheets.Cells[index, 12] = paie.montant;
@@ -129,12 +129,12 @@ namespace App_pressing_Loreau.Model
                             index++;
                         }
                         //cas du payement cleanway
-                        else
+                        if (paie.typePaiement.Contains("Clean"))
                         {
-                            mWorkSheets.Cells[index, 12] = paie.montant;
+                            mWorkSheets.Cells[20, 12] = paie.montant;
                         }
                     }
-                    index = 22;
+                    index = 19;
                     mWorkSheets.Cells[index, 12] = total_payements;
 
                     //Ajout des données des articles
@@ -189,7 +189,7 @@ namespace App_pressing_Loreau.Model
                     mWorkSheets.PrintOut(1, 1, 1, false, printName, false, false, misValue);
 
                     //close files
-                    mWorkBook.Close(false, misValue, misValue);
+                    mWorkBook.Close(true, misValue, misValue);
                     oXL.Quit();
 
                     //release file

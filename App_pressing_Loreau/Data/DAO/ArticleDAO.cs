@@ -41,6 +41,7 @@ namespace App_pressing_Loreau.Data.DAO
                 }
                 cmd.Parameters.AddWithValue("art_typ_id", article.type.id);
                 cmd.Parameters.AddWithValue("art_cmd_id", article.fk_commande);
+                cmd.Parameters.AddWithValue("art_date_payee", article.date_payee);
 
                 //Execute la commande
                 retour = cmd.ExecuteNonQuery();
@@ -90,6 +91,7 @@ namespace App_pressing_Loreau.Data.DAO
                         Int32.Parse(msdr["art_cmd_id"].ToString()));
                     if (!msdr["art_date_rendu"].ToString().Equals(""))
                         retour.date_rendu = DateTime.Parse(msdr["art_date_rendu"].ToString());
+
                 }
                 msdr.Dispose();
 
@@ -308,7 +310,7 @@ namespace App_pressing_Loreau.Data.DAO
          * 3 : par mois
          * 4 : par année
          */
-        public static List<Article> selectArticlePayeeByDate(int plageDate)
+        public static List<Article> selectArticlePayeeByDateNoCleanWay(int plageDate)
         {
             try
             {
@@ -366,38 +368,30 @@ namespace App_pressing_Loreau.Data.DAO
                         article.convoyeur = new PlaceConvoyeur(Int32.Parse(msdr["art_conv_id"].ToString()), 0, 0);
 
                     article.fk_commande = Int32.Parse(msdr["art_cmd_id"].ToString());
-
-                    ifpayee.Add(Int32.Parse(msdr["cmd_payee"].ToString()));
-
+                    if (!msdr["art_date_payee"].ToString().Equals(""))
+                        article.date_payee = DateTime.Parse(msdr["art_date_payee"].ToString());
                     requestResult.Add(article);
                 }
                 msdr.Dispose();
+                Bdd.deconnexion();
                 #endregion
 
                 Commande commande;
-                for (int i = 0; i < requestResult.Count(); i++)
+                foreach (Article art in requestResult)
                 {
-                    //si la commande est en payée
-                    if (ifpayee[i] == 1)
-                    {
-                        commande = CommandeDAO.selectCommandeById(requestResult[i].fk_commande, true, false, false);
-                        //Si ce n'est pas payee par cleanway
-                        if (!commande.listPayements[0].typePaiement.Equals("CleanWay"))
-                            retour.Add(requestResult[i]);
-                    }
-                    else
-                        //si la commande n'est pas payée (ce n'est forcement pas du cleanway)
-                        //si l'article est rendu, il est forcement payée
-                        if (requestResult[i].ifRendu == true)
+                    commande = CommandeDAO.selectCommandeById(art.fk_commande, true, false, false);
+                    if (commande.listPayements[0] != null)
+                        //si l'article n'a pas été payée par cleanWay
+                        if (!(commande.listPayements[0].typePaiement.Equals("CleanWay")))
                         {
-                            retour.Add(requestResult[i]);
+                            retour.Add(art);
                         }
                 }
 
 
 
 
-                Bdd.deconnexion();
+                
 
                 #region ajout des types, des departements et des places convoyeurs
                 foreach (Article art in retour)
@@ -411,7 +405,7 @@ namespace App_pressing_Loreau.Data.DAO
             }
             catch (Exception Ex)
             {
-                MessageBox.Show("ERREUR BDD : SelectArticleRenduByDate : " + Ex);
+                MessageBox.Show("ERREUR BDD : selectArticlePayeeByDateNoCleanWay : " + Ex);
                 Bdd.deconnexion();
                 return null;
             }
