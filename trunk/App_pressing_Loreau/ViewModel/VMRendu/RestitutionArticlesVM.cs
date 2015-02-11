@@ -183,8 +183,9 @@ namespace App_pressing_Loreau.ViewModel
                                 Label_restitutionArticles_Etat = etat,
                                 Label_restitutionArticles_nomDuClient = commandeRendre.client.nom + "  " + commandeRendre.client.prenom
                             });
+                            break;
                         }
-                        break;
+
                     }
 
 
@@ -305,8 +306,9 @@ namespace App_pressing_Loreau.ViewModel
                                     Label_restitutionArticles_Etat = etat,
                                     Label_restitutionArticles_nomDuClient = com.client.nom + "  " + com.client.prenom
                                 });
+                                break;
                             }
-                            break;
+                            
                         }
 
                     }
