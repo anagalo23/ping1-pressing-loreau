@@ -74,6 +74,15 @@ namespace App_pressing_Loreau.Model
                 mWorkSheets.Cells[index + 1, 9] = commande.remise;
                 mWorkSheets.Cells[index + 2, 7] = "Total :";
                 mWorkSheets.Cells[index + 2, 9] = total + tva - (decimal)commande.remise;
+
+                //Ajout des paiements
+                index += 2;
+                foreach (Payement paie in commande.listPayements)
+                {
+                    mWorkSheets.Cells[index, 2] = paie.typePaiement;
+                    mWorkSheets.Cells[index, 9] = (decimal)paie.montant;
+                }
+
             }
             catch (Exception e)
             {
