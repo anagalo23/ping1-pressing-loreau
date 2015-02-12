@@ -126,10 +126,14 @@ namespace App_pressing_Loreau.Model
                         conv = "HC";
 
                     //test la taille du nom de l'article
-                    if(arti.type.nom.Length<18)
-                    File.AppendAllText(copy_path + ".txt", String.Format("{0,20} | {1,15} | {2,15}", arti.type.nom, String.Format("{0}€", (decimal)arti.TTC), conv) + Environment.NewLine);
+                    int nbespaces = 25 - arti.type.nom.Length;
+                    if (arti.type.nom.Length < 18)
+                    {
+
+                        File.AppendAllText(copy_path + ".txt", String.Format("{0}{1}{2}", arti.type.nom.PadRight(20), String.Format("{0}€", (decimal)arti.TTC).PadRight(6), String.Format("{0}",conv)) + Environment.NewLine);
+                    }
                     else
-                        File.AppendAllText(copy_path + ".txt", String.Format("{0} {1} {2,20} | {3,15} | {4,15}", arti.type.nom, Environment.NewLine, " ", String.Format("{0}€", (decimal)arti.TTC), conv) + Environment.NewLine);
+                        File.AppendAllText(copy_path + ".txt", String.Format("{0}{1}{2}{3}{4}", arti.type.nom.PadRight(20),Environment.NewLine, String.Format("{0}€", (decimal)arti.TTC).PadRight(6), String.Format("{0}", conv)) + Environment.NewLine);
 
                     //si commentaire
                     if (arti.commentaire != null)
