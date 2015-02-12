@@ -127,7 +127,7 @@ namespace App_pressing_Loreau.Model
                     else
                         conv = "HC";
 
-                    File.AppendAllText(copy_path + ".txt", String.Format("{0,-10}   {1,-10}€   {2,5}", arti.type.nom, (decimal)arti.TTC, conv));
+                    File.AppendAllText(copy_path + ".txt", String.Format("{0,-10}   {1,-10}€   {2,-7}", arti.type.nom, (decimal)arti.TTC, conv));
                    
                     //si commentaire
                     if (arti.commentaire != null)
