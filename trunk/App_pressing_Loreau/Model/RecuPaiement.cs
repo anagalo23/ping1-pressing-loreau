@@ -23,11 +23,11 @@ namespace App_pressing_Loreau.Model
         //"EPSON TM-T20II Receipt5";
         public Commande commande { get; set; }
         public static String printName = "TM-T20";
-        //public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\RecuPaiement";
-        //public static String copy_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10)+"Resources\\Temp\\RecuPaiement";
+        public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\RecuPaiement";
+        public static String copy_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10)+"Resources\\Temp\\RecuPaiement";
 
-        public static String pattern_path = "D:\\Application_Pressing\\Resources\\PatternFile\\RecuPaiement";
-        public static String copy_path = "D:\\Application_Pressing\\Resources\\Temp\\RecuPaiement";
+        //public static String pattern_path = "D:\\Application_Pressing\\Resources\\PatternFile\\RecuPaiement";
+        //public static String copy_path = "D:\\Application_Pressing\\Resources\\Temp\\RecuPaiement";
 
 
 
@@ -83,7 +83,6 @@ namespace App_pressing_Loreau.Model
                 File.AppendAllText(copy_path + ".txt", Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "N° de commande : " + commande.id + Environment.NewLine);
 
-                DateTime dateRendu;
                 double tempsTraitement = 3;
                 foreach (Article art in commande.listArticles)
                 {
@@ -95,7 +94,7 @@ namespace App_pressing_Loreau.Model
                 }
 
                 File.AppendAllText(copy_path + ".txt", "Remise prévue le " + commande.date.AddDays(tempsTraitement).ToString("dd/MM/yyyy") + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "Employé : " + ClasseGlobale.employeeEnCours.nom + " " + ClasseGlobale.employeeEnCours.prenom + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "Réceptionniste : " + ClasseGlobale.employeeEnCours.nom + " " + ClasseGlobale.employeeEnCours.prenom + Environment.NewLine);
                 if (commande.payee)
                     File.AppendAllText(copy_path + ".txt", "Commande payée" + Environment.NewLine);
                 else
@@ -113,8 +112,6 @@ namespace App_pressing_Loreau.Model
                 foreach (Article arti in commande.listArticles)
                 {
                     //ajout du nom de l'article avec son nombre d'espaces
-                    int nbespace = 22;
-
                     if (arti.ifRendu)
                         File.AppendAllText(copy_path + ".txt", "r " + arti.type.nom);
                     else
@@ -139,17 +136,16 @@ namespace App_pressing_Loreau.Model
                 }
                 //ajout des totals
                 totalTVA = totalTTC - totalHT;
-                File.AppendAllText(copy_path + ".txt", "           ______________" + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "             ______________" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "TTC                    " + (decimal)totalTTC + "€" + Environment.NewLine);
                 if (commande.remise != 0)
                     File.AppendAllText(copy_path + ".txt", "Remise                 " + (decimal)commande.remise + "€" + Environment.NewLine);
 
-                decimal TVARemise = (decimal)commande.remise /(1+ (decimal)(TypeArticleDAO.selectTypesById(2).TVA / 100));
-                decimal truc_bizarre = Math.Round((decimal)totalTVA - TVARemise, 2, MidpointRounding.AwayFromZero);
+                decimal TVATotale = Math.Round((decimal)commande.remise / (1 + (decimal)(TypeArticleDAO.selectTypesById(2).TVA / 100)), 2, MidpointRounding.AwayFromZero); 
                 File.AppendAllText(copy_path + ".txt", "Total TTC              " + ((decimal)totalTTC - (decimal)commande.remise) + "€" + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "Dont TVA               " + truc_bizarre + "€" + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "Dont TVA               " + TVATotale + "€" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "Réceptionniste :          " + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", " " + Environment.NewLine);
 
                 //ajout des paiements
                 foreach (Payement paie in commande.listPayements)
@@ -164,7 +160,7 @@ namespace App_pressing_Loreau.Model
                 File.AppendAllText(copy_path + ".txt", Environment.NewLine);
 
                 PrintOff();
-                System.IO.File.Delete(copy_path + ".txt");
+                //System.IO.File.Delete(copy_path + ".txt");
             }
             catch (Exception e)
             {
