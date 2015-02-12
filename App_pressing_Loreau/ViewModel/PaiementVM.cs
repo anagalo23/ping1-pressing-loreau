@@ -387,7 +387,7 @@ namespace App_pressing_Loreau.ViewModel
                     Label_paiement_prixTTC = prixTTC + " €";
                     Label_paiement_montant = prixTTC - Txb_paiement_montantRemise + " €";
                 }
-                catch (Exception e)
+                catch (Exception )
                 {
                     //Inscription en log
                 }
@@ -483,11 +483,13 @@ namespace App_pressing_Loreau.ViewModel
 
                         Commande cmdTota = CommandeDAO.selectCommandeById(cmd.id, true, true, true);
 
-                        MessageBox.Show("La commande " + cmdTota.id + " à été enregistrée avec succès");
+                        //MessageBox.Show("La commande " + cmdTota.id + " à été enregistrée avec succès");
                         try
                         {
                             RecuPaiement rp = new RecuPaiement(cmdTota);
+                            rp.printRecu(); 
                             rp.printRecu();
+
                             if (cmdTota.listArticles != null)
                             {
                                 TicketVetement ticketVetement = new TicketVetement(cmdTota);
@@ -610,6 +612,8 @@ namespace App_pressing_Loreau.ViewModel
                         {
                             RecuPaiement rp = new RecuPaiement(cmdTota);
                             rp.printRecu();
+                            rp.printRecu();
+
                         }
                         catch (Exception)
                         {

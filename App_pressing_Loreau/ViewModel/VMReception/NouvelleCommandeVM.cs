@@ -260,6 +260,7 @@ namespace App_pressing_Loreau.ViewModel
                             cmd = CommandeDAO.selectCommandeById(cmd.id, true, true, true);
                             RecuPaiement rp = new RecuPaiement(cmd);
                             rp.printRecu();
+                            rp.printRecu();
                             //impression des tickets vetements
                             if (cmd.listArticles != null)
                             {

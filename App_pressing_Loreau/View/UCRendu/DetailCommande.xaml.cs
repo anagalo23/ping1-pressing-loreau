@@ -1,5 +1,6 @@
 ﻿using App_pressing_Loreau.Data.DAO;
 using App_pressing_Loreau.Helper;
+using App_pressing_Loreau.Model;
 using App_pressing_Loreau.Model.DTO;
 using App_pressing_Loreau.View;
 using App_pressing_Loreau.ViewModel;
@@ -87,7 +88,31 @@ namespace App_pressing_Loreau
                     CommandeDAO.updateCommande(comdRendu);
                 }
 
-                ClasseGlobale.SET_ALL_NULL();
+
+                comdRendu = CommandeDAO.selectCommandeById(comdRendu.id, true, true, true);
+                try
+                {
+                    RecuPaiement rp = new RecuPaiement(comdRendu);
+                    rp.printRecu();
+                    rp.printRecu();
+                    //if (comdRendu.listArticles != null)
+                    //{
+                    //    TicketVetement ticketVetement = new TicketVetement(comdRendu);
+                    //    ticketVetement.printAllArticleCmd();
+                    //}
+                    //else
+                    //    MessageBox.Show("La commande ne contient pas d'articles");
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Impression refusée");
+                }
+                finally
+                {
+                    //initialise tout
+                    ClasseGlobale.SET_ALL_NULL();
+                }
 
             }
 

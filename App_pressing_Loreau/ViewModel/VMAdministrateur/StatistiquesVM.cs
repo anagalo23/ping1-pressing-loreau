@@ -270,12 +270,7 @@ namespace App_pressing_Loreau.ViewModel
         {
             if (Selected_stat_ChoixDepart != null)
             {
-                //Departement dep = DepartementDAO.selectDepartementById(Selected_stat_ChoixDepart.cbbDepId);
-                //DepartmentTTC(ArticleDAO.selectArticleRenduByDate(2));
-                //foreach (float f in caTTCDep)
-                //{
-                //    Label_statistique_cadep = (float)((Decimal)Label_statistique_cadep + (decimal)f);
-                //}
+              
                 for (int i = 0; i < listUsedDepartements.Count;i++ )
                 {
                     if (Selected_stat_ChoixDepart.cbbDepId == listUsedDepartements[i].id)
@@ -367,7 +362,7 @@ namespace App_pressing_Loreau.ViewModel
                         {
                             if (listUsedDepartements[i].nom.Contains(art.type.departement.nom))
                             {
-                                caTTCDep[i] = caTTCDep[i] + art.TTC;
+                                caTTCDep[i] =  (float)((decimal)caTTCDep[i] + (decimal) art.TTC);
                                 ifExist = true;
                                 break;
                             }

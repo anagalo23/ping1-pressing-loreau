@@ -102,7 +102,6 @@ namespace App_pressing_Loreau.ViewModel
             foreach (ArticlesRestitutionVM art in AfficheDetailCommande)
             {
                 art.IsSelectedArticle = true;
-                //ArtSelec.Add(art.ar);
             }
         }
         #endregion
@@ -122,7 +121,6 @@ namespace App_pressing_Loreau.ViewModel
             foreach (ArticlesRestitutionVM art in AfficheDetailCommande)
             {
                 art.IsSelectedArticle = false;
-                //ArtSelec.Remove(art.ar);
 
             }
         }
