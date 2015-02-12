@@ -22,7 +22,7 @@ namespace App_pressing_Loreau.Model
         #endregion
 
         #region parametres preperties
-        public static float fondCaisse { get; set; }
+        public static decimal fondCaisse { get; set; }
         
         #endregion
 
@@ -42,7 +42,7 @@ namespace App_pressing_Loreau.Model
 
             //récupération du fond de caisse
             if (mWorkSheets.Cells[2, 3].Value != null)
-                fondCaisse = mWorkSheets.Cells[2, 3].Value;
+                fondCaisse = (decimal)mWorkSheets.Cells[2, 3].Value;
 
             closeProperties();
         }
