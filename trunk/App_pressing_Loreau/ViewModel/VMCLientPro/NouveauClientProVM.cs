@@ -13,7 +13,7 @@ using System.Windows;
 
 namespace App_pressing_Loreau.ViewModel
 {
-    class NouveauClientProVM:ObservableObject
+    class NouveauClientProVM : ObservableObject
     {
         #region Variables locales
 
@@ -25,7 +25,7 @@ namespace App_pressing_Loreau.ViewModel
         //private String _txb_nouveauClientPro_rue_voie;
         //private String _txb_nouveauClientPro_bp;
         //private String _txb_nouveauClientPro_ville;
-       
+
         //private String _txb_nouveauClientPro_numeroFixe;
         //private String _txb_nouveauClientPro_numeroPortable;
         //private String _txb_nouveauClientPro_email;
@@ -53,7 +53,8 @@ namespace App_pressing_Loreau.ViewModel
 
         public int Txb_nouveauClientPro_numeroAdresse
         {
-            get {
+            get
+            {
                 try
                 {
                     return Int32.Parse(client.adresse.numero);
@@ -65,11 +66,19 @@ namespace App_pressing_Loreau.ViewModel
             }
             set
             {
-                if (value != Int32.Parse(client.adresse.numero))
-                {
-                    client.adresse.numero = String.Format("{0}", value);
-                    OnPropertyChanged("Txb_nouveauClientPro_numeroAdresse");
-                }
+                //if (client.adresse.numero != "")
+                //{
+                //    if (value != Int32.Parse(client.adresse.numero))
+                //    {
+                        client.adresse.numero = String.Format("{0}", value);
+                        OnPropertyChanged("Txb_nouveauClientPro_numeroAdresse");
+                //    }
+                //}
+                //else
+                //{
+
+                //}
+
             }
         }
 
@@ -160,7 +169,7 @@ namespace App_pressing_Loreau.ViewModel
             {
                 return new RelayCommand(
                     p => enregisterClient(),
-                    p => Txb_nouveauClientPro_nomSociete != null );
+                    p => Txb_nouveauClientPro_nomSociete != null);
             }
         }
         #endregion
@@ -179,13 +188,13 @@ namespace App_pressing_Loreau.ViewModel
             //client.adresse.codePostal = Txb_nouveauClientPro_bp;
             //client.adresse.ville = Txb_nouveauClientPro_ville;
 
-           // client.telfix = Txb_nouveauClientPro_numeroFixe;
+            // client.telfix = Txb_nouveauClientPro_numeroFixe;
             //client.telmob = Txb_nouveauClientPro_numeroPortable;
             //client.email = Txb_nouveauClientPro_email;
 
             index = 0;
             index = ClientDAO.insertClient(client);
-            
+
             if (index != 0)
             {
                 MessageBox.Show("Client pro enregistré");

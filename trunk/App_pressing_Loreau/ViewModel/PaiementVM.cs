@@ -411,24 +411,24 @@ namespace App_pressing_Loreau.ViewModel
                     //Inscription en log
                 }
             }
-            else if (ClasseGlobale._renduCommandeClientPro != null)
-            {
-                try
-                {
-                    foreach (Article artic in ClasseGlobale._renduCommandeClientPro.listArticles)
-                    {
-                        prixTTCrendu = (float)((decimal)prixTTCrendu + (decimal)artic.TTC);
-                        prixHTrendu = (float)((decimal)prixHTrendu + (decimal)artic.TTC * (1 - (decimal)artic.TVA / 100));
-                    }
-                    Label_paiement_prixHT = prixHTrendu - prixHT + " €";
-                    Label_paiement_prixTTC = prixTTCrendu - prixTTC + " €";
-                    Label_paiement_montant = prixTTCrendu - prixTTC - Txb_paiement_montantRemise + " €";
-                }
-                catch (Exception e)
-                {
-                    //Inscription en log
-                }
-            }
+            //else if (ClasseGlobale._renduCommandeClientPro != null)
+            //{
+            //    try
+            //    {
+            //        foreach (Article artic in ClasseGlobale._renduCommandeClientPro.listArticles)
+            //        {
+            //            prixTTCrendu = (float)((decimal)prixTTCrendu + (decimal)artic.TTC);
+            //            prixHTrendu = (float)((decimal)prixHTrendu + (decimal)artic.TTC * (1 - (decimal)artic.TVA / 100));
+            //        }
+            //        Label_paiement_prixHT = prixHTrendu - prixHT + " €";
+            //        Label_paiement_prixTTC = prixTTCrendu - prixTTC + " €";
+            //        Label_paiement_montant = prixTTCrendu - prixTTC - Txb_paiement_montantRemise + " €";
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        //Inscription en log
+            //    }
+            //}
 
 
         }
@@ -449,10 +449,9 @@ namespace App_pressing_Loreau.ViewModel
                     ObservableCollection<ArticlesVM> cmdDetail = ClasseGlobale._contentDetailCommande;
                     List<Article> ListeSelectArt = ClasseGlobale._rendreArticlesSelectionnes;
 
-                    //Si je viens de l'écran de paiement
+                    //Si je viens de l'écran de nouvelle commande
                     if (cmdDetail != null)
                     {
-
                         Commande cmd = new Commande(DateTime.Now, true, Txb_paiement_montantRemise, client);
                         CommandeDAO.insertCommande(cmd);
                         cmd = CommandeDAO.selectCommandeById(CommandeDAO.lastCommande().id, false, true, false);
