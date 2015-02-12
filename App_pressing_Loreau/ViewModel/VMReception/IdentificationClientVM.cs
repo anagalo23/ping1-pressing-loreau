@@ -32,6 +32,9 @@ namespace App_pressing_Loreau.ViewModel
         private String _label_identClient_choix;
         private DelegateCommand<IdentificationClientData> _resultatRechercheClient;
 
+
+        Fields fieldsRecherche = AutoComplete.getFields();
+
         #endregion
 
         public string Name
@@ -99,6 +102,58 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
+
+        //Champs recherche
+
+        public string Txb_identificationClient_nom
+        {
+            get { return fieldsRecherche.nom; }
+            set
+            {
+
+                fieldsRecherche.nom = value;
+                OnPropertyChanged("Txb_identificationClient_nom");
+
+            }
+        }
+        public string Txb_identificationClient_prenom
+        {
+            get { return fieldsRecherche.prenom; }
+            set
+            {
+
+                fieldsRecherche.prenom = value;
+                OnPropertyChanged("Txb_identificationClient_prenom");
+
+            }
+        }
+
+
+
+        public string Txb_identificationClient_portable
+        {
+            get { return fieldsRecherche.portable; }
+            set
+            {
+
+                fieldsRecherche.portable = value;
+                OnPropertyChanged("Txb_identificationClient_portable");
+
+            }
+        }
+
+        public int Txb_identificationClient_id_cleanWay
+        {
+            get { return fieldsRecherche.idCleanWay; }
+            set
+            {
+                if (value != fieldsRecherche.idCleanWay)
+                {
+                    fieldsRecherche.idCleanWay = value;
+                    OnPropertyChanged("Txb_identificationClient_id_cleanWay");
+                }
+            }
+        }
         #endregion
 
 
@@ -120,11 +175,16 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
-
+        private void InitFields()
+        {
+            Txb_identificationClient_nom = null;
+            Txb_identificationClient_prenom = null;
+            Txb_identificationClient_portable = null;
+            Txb_identificationClient_id_cleanWay = 0;
+        }
         public void rechercheBDD()
         {
             //On recherche dans la bdd en fonction des champs que l'utilisateur a entrés
-            //List<Client> resultat = null;
             Fields fields = AutoComplete.getFields();
 
             if (fields != null)
@@ -157,7 +217,10 @@ namespace App_pressing_Loreau.ViewModel
                 {
                     MessageBox.Show("Erreir de recherche :" + ex);
                 }
-
+                finally
+                {
+                    InitFields();
+                }
             }
         }
         #endregion
