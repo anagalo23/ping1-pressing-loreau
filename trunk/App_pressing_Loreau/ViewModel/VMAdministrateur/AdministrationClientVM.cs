@@ -41,7 +41,6 @@ namespace App_pressing_Loreau.ViewModel
         private String _txb_adminClient_modifTypeTelephone;
         private int _txb_adminClient_modifTypeIdCleanway;
 
-
         #endregion
 
         #region constructeur
@@ -207,6 +206,7 @@ namespace App_pressing_Loreau.ViewModel
         }
         #endregion
 
+       
         #region methods
 
         private void EnregistrerModifClient()

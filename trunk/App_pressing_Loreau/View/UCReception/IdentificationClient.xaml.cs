@@ -45,46 +45,64 @@ namespace App_pressing_Loreau.View
 
         }
 
-        private void txb_identificationClient_nom_TextChanged(object sender, TextChangedEventArgs e)
-        {
+        //private void txb_identificationClient_nom_TextChanged(object sender, TextChangedEventArgs e)
+        //{
 
-            Fields fields = AutoComplete.getFields();
-            fields.nom = txb_identificationClient_nom.Text;
+        //    Fields fields = AutoComplete.getFields();
+        //    fields.nom = txb_identificationClient_nom.Text;
 
-        }
-
-
-        private void txb_identificationClient_prenom_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            Fields fields = AutoComplete.getFields();
-            fields.prenom = txb_identificationClient_prenom.Text;
+        //}
 
 
-        }
-
-        private void txb_identificationClient_portable_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            Fields fields = AutoComplete.getFields();
-            fields.portable = txb_identificationClient_portable.Text;
-
-        }
+        //private void txb_identificationClient_prenom_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    Fields fields = AutoComplete.getFields();
+        //    fields.prenom = txb_identificationClient_prenom.Text;
 
 
-        private void txb_identificationClient_id_cleanway_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            try
-            {
-                Fields fields = AutoComplete.getFields();
-                fields.idCleanWay = Int32.Parse(txb_identificationClient_id_cleanway.Text);
+        //}
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex);
-            }
+        //private void txb_identificationClient_portable_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    Fields fields = AutoComplete.getFields();
+        //    fields.portable = txb_identificationClient_portable.Text;
+
+        //}
+
+
+        //private void txb_identificationClient_id_cleanway_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        Fields fields = AutoComplete.getFields();
+        //        if (txb_identificationClient_id_cleanway != null)
+        //        {
+        //            if (txb_identificationClient_id_cleanway.Text != "" && txb_identificationClient_id_cleanway.Text != null)
+        //            {
+        //                fields.idCleanWay = Int32.Parse(txb_identificationClient_id_cleanway.Text);
+        //            }
+        //            else
+        //            {
+        //                //txb_identificationClient_id_cleanway.Text = "";
+        //                //MessageBox.Show("txb_identificationClient_id_cleanway.Text contient rien ou null");
+        //            }
+        //        }
+        //        else
+        //        {
+        //            //txb_identificationClient_id_cleanway.Text = "";
+        //            //MessageBox.Show("txb_identificationClient_id_cleanway est null");
+        //        }
+                
+                
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //MessageBox.Show("Error: " + ex);
+        //    }
            
 
-        }
+        //}
         private void txb_identificationClient_id_cleanway_KeyDown(object sender, KeyEventArgs e)
         {
 
