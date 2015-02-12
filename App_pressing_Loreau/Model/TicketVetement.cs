@@ -56,6 +56,8 @@ namespace App_pressing_Loreau.Model
             {
                 foreach (Article art in cmd.listArticles)
                 {
+                    if (art.type.nom.Contains("2 pièces"))
+                        printTicketVetement(art, cmd.id, cmd.client);
                     printTicketVetement(art, cmd.id, cmd.client);
                 }
             }
@@ -96,7 +98,7 @@ namespace App_pressing_Loreau.Model
                 PrintDocument pd = new PrintDocument();
                 //gestion des marges
                 pd.OriginAtMargins = true;
-                pd.DefaultPageSettings.Margins.Top =-5;
+                pd.DefaultPageSettings.Margins.Top = -5;
                 pd.DefaultPageSettings.Margins.Left = 18;
                 pd.DefaultPageSettings.Margins.Right = 0;
                 pd.DefaultPageSettings.Margins.Bottom = 0;
