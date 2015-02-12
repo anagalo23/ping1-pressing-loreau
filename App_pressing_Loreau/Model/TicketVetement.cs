@@ -97,7 +97,7 @@ namespace App_pressing_Loreau.Model
                 //gestion des marges
                 pd.OriginAtMargins = true;
                 pd.DefaultPageSettings.Margins.Top = 0;
-                pd.DefaultPageSettings.Margins.Left = 5;
+                pd.DefaultPageSettings.Margins.Left = 10;
                 pd.DefaultPageSettings.Margins.Right = 0;
                 pd.DefaultPageSettings.Margins.Bottom = 0;
 
