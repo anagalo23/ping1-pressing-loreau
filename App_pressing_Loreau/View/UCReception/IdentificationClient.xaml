@@ -12,7 +12,7 @@
     <UserControl.Resources>
         <ResourceDictionary Source="/Resources/AccueilResources.xaml"/>
     </UserControl.Resources>
-    
+
     <UserControl.DataContext>
         <vm:IdentificationClientVM/>
     </UserControl.DataContext>
@@ -51,21 +51,21 @@
                             <TextBox x:Name="txb_identificationClient_nom" Grid.Row="0" Grid.Column="1" Margin="10,4,13,4" 
                                      Text="{Binding Path=Txb_identificationClient_nom, UpdateSourceTrigger=PropertyChanged}"
                                Style="{StaticResource vertiTextBox}" TextChanged="txb_identificationClient_nom_TextChanged"/>
-                            
+
                             <Label  Content="Prenom" Grid.Row="1" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
                             <TextBox x:Name="txb_identificationClient_prenom" Grid.Row="1" Grid.Column="1" Margin="10,4,13,4" 
                                      Text="{Binding Path=Txb_identificationClient_prenom, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}" TextChanged="txb_identificationClient_prenom_TextChanged"/>
-                            
+
                             <Label  Content="Telephone" Grid.Row="2" Grid.Column="0"  Style="{StaticResource vertilabel25}"/>
                             <TextBox x:Name="txb_identificationClient_portable" Grid.Row="2" Grid.Column="1" Margin="10,4,13,4" 
                                      Text="{Binding Path=Txb_identificationClient_portable, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource vertiTextBox}" TextChanged="txb_identificationClient_portable_TextChanged"/>
-                            
-                    
+
+
                             <Label Content="Id cleanway" Grid.Row="3" Grid.Column="0" Style="{StaticResource vertilabel25}"/>
-                            
+
                             <TextBox x:Name="txb_identificationClient_id_cleanway" Grid.Row="3" Grid.Column="1" 
                                      Text="{Binding Path=Txb_identificationClient_date_naissance, UpdateSourceTrigger=PropertyChanged}" Margin="10,4,13,4" Style="{StaticResource vertiTextBox}" TextChanged="txb_identificationClient_id_cleanway_TextChanged" KeyDown="txb_identificationClient_id_cleanway_KeyDown"/>
-                            
+
                             <Button  Grid.Row="4" Grid.Column="1" Margin="50,2" BorderThickness="0" Background="Transparent" Command="{Binding Btn_idenClient_recherche}">
                                 <Image Source="/Resources/pics/Factures/loupederecherche.png"/>
                             </Button>
@@ -90,31 +90,40 @@
                         </Grid.RowDefinitions>
 
                         <Label Content="Résultat de la recherche" Style="{StaticResource  Titre}" Grid.Row="0" />
-                        
+
                         <Border  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="10" Grid.Row="1">
                             <ListBox x:Name="searchResultPanel" ItemsSource="{Binding ResultatRecherche_identificationClient}" 
                                      Background="Transparent" BorderThickness="0" >
                                 <ListBox.ItemTemplate>
                                     <DataTemplate DataType="{x:Type vm:IdentificationClientVM}">
                                         <Button BorderThickness="0" Background="Transparent" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ResultatRechercheClient}"   CommandParameter="{Binding }" Tag="{Binding ButtonClientTag}">
-                                            
+
                                             <Border BorderBrush="White" BorderThickness="1" CornerRadius="10">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="2*"/>
-                                                    <ColumnDefinition Width="1*"/>
-                                                    <ColumnDefinition Width="2*"/>
-                                                </Grid.ColumnDefinitions>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="2*"/>
+                                                        <ColumnDefinition Width="1*"/>
+                                                        <ColumnDefinition Width="2*"/>
+                                                        <ColumnDefinition Width="2*"/>
+                                                    </Grid.ColumnDefinitions>
                                                     <StackPanel Orientation="Vertical" Grid.Column="0" MinWidth="160" Margin="2">
                                                         <TextBlock Text="{Binding Label_idenClient_nom}" FontWeight="Bold" FontSize="13pt" Foreground="Black"  />
                                                         <TextBlock Text="{Binding Label_idenClient_prenom}" FontSize="11pt" Padding="10,0,0,3" Foreground="#FF525252" />
                                                     </StackPanel>
+
                                                     <StackPanel Orientation="Vertical" Grid.Column="1" MinWidth="100">
                                                         <TextBlock Text="Id CleanWay" FontWeight="Bold" FontSize="8pt" Foreground="SteelBlue" />
                                                         <TextBlock Text="{Binding Label_identCleint_idCleanway}" FontSize="12pt" Padding="10,0,0,3" Foreground="#FF525252" />
                                                     </StackPanel>
-                                                  
-                                                <Label Content="{Binding Label_identCleint_Adresse}" Grid.Column="2" FontSize="12pt" />
+
+
+                                                    <StackPanel Orientation="Vertical" Grid.Column="2" MinWidth="100">
+                                                        <TextBlock Text="Date de naissance" FontWeight="Bold" FontSize="8pt" Foreground="SteelBlue" />
+                                                        <TextBlock Text="{Binding Label_identCleint_DateNaissance}" FontSize="12pt" Padding="10,0,0,3" Foreground="#FF525252" />
+                                                    </StackPanel>
+
+
+                                                    <Label Content="{Binding Label_identCleint_Adresse}" Grid.Column="3" FontSize="12pt" />
                                                 </Grid>
                                             </Border>
                                         </Button>
@@ -123,7 +132,7 @@
                             </ListBox>
                         </Border>
                         <Label  Content="{Binding Label_identClient_choix,Mode=TwoWay}" Grid.Row="2" Style="{StaticResource vertilabel25}"/>
-                        
+
                         <Button x:Name="btn_identClient_nouvelle_commande" Content="Nouvelle commande" Grid.Row="3" Margin="40,5" 
                             Command="{Binding OnCollectionChangeCommand }" CommandParameter="btnIdentifiantNouveauClient" Style="{StaticResource personalisationbuton}" Click="btn_identClient_nouvelle_commande_Click" />
 

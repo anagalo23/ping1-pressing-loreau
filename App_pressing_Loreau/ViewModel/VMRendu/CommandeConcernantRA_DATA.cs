@@ -68,6 +68,16 @@ namespace App_pressing_Loreau.ViewModel
                 }
             }
         }
+
+        public DateTime Label_restitutionArticles_DateNaissance
+        {
+            get { return this.clt.dateNaissance; }
+            set
+            {
+                this.clt.dateNaissance = value;
+                OnPropertyChanged("Label_restitutionArticles_DateNaissance");
+            }
+        }
         #endregion
 
         #region Contenu Commande du client

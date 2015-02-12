@@ -88,7 +88,10 @@ namespace App_pressing_Loreau.Model
                 foreach (Article art in commande.listArticles)
                 {
                     if (art.type.departement.id == 14)
+                    {
                         tempsTraitement = 7;
+                        break;
+                    }
                 }
 
                 File.AppendAllText(copy_path + ".txt", "Remise prévue le " + commande.date.AddDays(tempsTraitement).ToString("dd/MM/yyyy") + Environment.NewLine);
