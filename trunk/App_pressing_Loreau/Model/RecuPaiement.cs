@@ -100,7 +100,8 @@ namespace App_pressing_Loreau.Model
                     File.AppendAllText(copy_path + ".txt", "~ " + arti.type.nom);
                     for (int i = 0; i < (nbespace - arti.type.nom.Length); i++)
                         File.AppendAllText(copy_path + ".txt", "-");
-                    File.AppendAllText(copy_path + ".txt", (decimal)arti.TTC + "€" + Environment.NewLine);
+                    File.AppendAllText(copy_path + ".txt", (decimal)arti.TTC + "€ ---- " + arti.convoyeur.emplacement + Environment.NewLine);
+
                     totalTTC = totalTTC + (decimal)arti.TTC;
                     totalTVA = totalTVA + (decimal)(arti.TTC * (arti.TVA / 100));
                 }
