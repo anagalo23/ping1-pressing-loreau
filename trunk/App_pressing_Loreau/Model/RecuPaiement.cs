@@ -119,17 +119,16 @@ namespace App_pressing_Loreau.Model
                         File.AppendAllText(copy_path + ".txt", "r " + arti.type.nom);
                     else
                         File.AppendAllText(copy_path + ".txt", "~ " + arti.type.nom);
-
-
-                    for (int i = 0; i < (nbespace - arti.type.nom.Length); i++)
-                        File.AppendAllText(copy_path + ".txt", "-");
-                    File.AppendAllText(copy_path + ".txt", (decimal)arti.TTC + "€ ---- ");
+                    
                     //dans ou hors convoyeur
+                    String conv = "";
                     if (arti.convoyeur != null && arti.convoyeur.emplacement != 0)
-                        File.AppendAllText(copy_path + ".txt", arti.convoyeur.emplacement + Environment.NewLine);
+                        conv = "" + arti.convoyeur.emplacement;
                     else
-                        File.AppendAllText(copy_path + ".txt", "HC" + Environment.NewLine);
+                        conv = "HC";
 
+                    File.AppendAllText(copy_path + ".txt", String.Format("{0,-10}   {1,-10}€   {2,5}", arti.type.nom, (decimal)arti.TTC, conv));
+                   
                     //si commentaire
                     if (arti.commentaire != null)
                         if (!arti.commentaire.Equals(""))
