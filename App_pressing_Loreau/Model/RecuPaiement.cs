@@ -115,10 +115,10 @@ namespace App_pressing_Loreau.Model
                 if (commande.remise != 0)
                     File.AppendAllText(copy_path + ".txt", "Remise                 " + (decimal)commande.remise + "€" + Environment.NewLine);
 
-                decimal TVARemise = (decimal)commande.remise * (decimal)TypeArticleDAO.selectTypesById(2).TVA;
+                decimal TVARemise = (decimal)commande.remise * (decimal)(TypeArticleDAO.selectTypesById(2).TVA/100);
 
                 File.AppendAllText(copy_path + ".txt", "Total TTC              " + ((decimal)totalTTC-(decimal)commande.remise) + "€" + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "Dont TVA               " + ((decimal)totalTVA - TVARemise) + "€" + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "Dont TVA               " + (decimal)((decimal)totalTVA - TVARemise) + "€" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "Paiements par :          " + Environment.NewLine);
 
