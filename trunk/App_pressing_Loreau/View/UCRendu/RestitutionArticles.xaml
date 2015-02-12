@@ -96,6 +96,7 @@
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition/>
                                                             <ColumnDefinition/>
+                                                            <ColumnDefinition/>
                                                         </Grid.ColumnDefinitions>
                                                   
                                                     <StackPanel Orientation="Vertical" MinWidth="140" Margin="2" Grid.Column="0">
@@ -104,6 +105,11 @@
                                                         <StackPanel Orientation="Vertical" MinWidth="140" Margin="2" Grid.Column="1">
                                                             <TextBlock Text="{Binding Label_restitutionArticles_PrenomClient}" FontSize="11pt" Foreground="#FF525252" />
                                                     </StackPanel>
+
+                                                        <StackPanel Orientation="Vertical" MinWidth="140" Margin="2" Grid.Column="2">
+                                                            <TextBlock Text="{Binding Label_restitutionArticles_DateNaissance}" FontSize="11pt" Foreground="#FF525252" />
+                                                        </StackPanel>
+
                                                     </Grid>
                                                 </Button>
                                             </DataTemplate>

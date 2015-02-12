@@ -20,7 +20,6 @@ namespace App_pressing_Loreau.ViewModel
 
         private ComboTheme _selected_administrationClient_choix_theme;
 
-        private DelegateCommand<AdministrationClientVM> _supprimerClient;
         private DelegateCommand<AdministrationClientVM> _modifierClient;
 
         public List<RechercheClient> _listeRechercheClient;
@@ -197,15 +196,6 @@ namespace App_pressing_Loreau.ViewModel
                 (arg)=>true)); }
         }
 
-        //private DelegateCommand<AdministrationClientVM> _supprimerClient;
-        public DelegateCommand<AdministrationClientVM> SupprimerClient
-        {
-            get { return this._supprimerClient ?? (this._supprimerClient = new DelegateCommand<AdministrationClientVM>(
-                this.ExecuteDeleteClient,
-                (arg)=>true));
-            }
-        }
-
         public DelegateCommand<AdministrationClientVM> ModifierClient
         {
             get
@@ -245,18 +235,7 @@ namespace App_pressing_Loreau.ViewModel
             }
            
         }
-        private void ExecuteDeleteClient(AdministrationClientVM obj)
-        {
-            if (choixClient != null)
-            {
-                //int y = ClientDAO.deleteClient(obj.choixClient);
-                //if (y != 0)
-                //{
-                //    MessageBox.Show("Client supprimé");
-                //}
 
-            }
-        }
 
 
         private void initFields()

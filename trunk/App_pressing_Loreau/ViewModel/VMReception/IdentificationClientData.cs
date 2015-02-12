@@ -66,6 +66,15 @@ namespace App_pressing_Loreau.ViewModel
             }
         }
 
+        public DateTime Label_identCleint_DateNaissance
+        {
+            get { return this.clt.dateNaissance; }
+            set
+            {
+                this.clt.dateNaissance = value;
+                OnPropertyChanged("Label_identCleint_DateNaissance");
+            }
+        }
         public String Label_identCleint_Adresse
         {
             get { return this.clt.adresse.ToString(); }
