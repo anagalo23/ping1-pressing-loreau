@@ -106,9 +106,9 @@ namespace App_pressing_Loreau.Model
                 File.AppendAllText(copy_path + ".txt", Environment.NewLine);
 
                 //ajout des articles
-                decimal totalTVA = 0;
-                decimal totalTTC = 0;
-                decimal totalHT = 0;
+                float totalTVA = 0;
+                float totalTTC = 0;
+                float totalHT = 0;
 
                 foreach (Article arti in commande.listArticles)
                 {
@@ -125,26 +125,26 @@ namespace App_pressing_Loreau.Model
                     else
                         conv = "HC";
 
-                    File.AppendAllText(copy_path + ".txt", String.Format("{0,-10}   {1,-10}   {2,-7}", arti.type.nom, String.Format("{0}€", (decimal)arti.TTC), conv) + Environment.NewLine);
+                    File.AppendAllText(copy_path + ".txt", String.Format("{0,-10}   {1,10}   {2}", arti.type.nom, String.Format("{0}€", (decimal)arti.TTC), conv) + Environment.NewLine);
 
                     //si commentaire
                     if (arti.commentaire != null)
                         if (!arti.commentaire.Equals(""))
                             File.AppendAllText(copy_path + ".txt", "    + " + arti.commentaire + Environment.NewLine);
 
-                    totalTTC = totalTTC + (decimal)arti.TTC;
-                    totalHT = totalHT + (decimal)(arti.TTC / (1 + arti.TVA / 100));
+                    totalTTC = totalTTC + arti.TTC;
+                    totalHT = totalHT + (arti.TTC / (1 + arti.TVA / 100));
                 }
                 //ajout des totals
                 totalTVA = totalTTC - totalHT;
                 File.AppendAllText(copy_path + ".txt", "             ______________" + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "TTC                    " + (decimal)totalTTC + "€" + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "TTC                     " + (decimal)totalTTC + "€" + Environment.NewLine);
                 if (commande.remise != 0)
                     File.AppendAllText(copy_path + ".txt", "Remise                 " + (decimal)commande.remise + "€" + Environment.NewLine);
 
-                decimal TVATotale = Math.Round(((decimal)totalTTC - (decimal)commande.remise) / (1 + (decimal)(TypeArticleDAO.selectTypesById(2).TVA / 100)), 2, MidpointRounding.AwayFromZero);
+                double TVATotale = Math.Round((totalTTC - commande.remise) / (100 + (TypeArticleDAO.selectTypesById(2).TVA)), 2, MidpointRounding.AwayFromZero);
                 File.AppendAllText(copy_path + ".txt", "Total TTC              " + ((decimal)totalTTC - (decimal)commande.remise) + "€" + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "Dont TVA               " + TVATotale + "€" + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "Dont TVA               " + (decimal)TVATotale + "€" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", " " + Environment.NewLine);
 
