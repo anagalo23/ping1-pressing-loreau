@@ -130,10 +130,13 @@ namespace App_pressing_Loreau.Model
                     if (arti.type.nom.Length < 18)
                     {
 
-                        File.AppendAllText(copy_path + ".txt", String.Format("{0}{1}{2}", arti.type.nom.PadRight(20), String.Format("{0}€", (decimal)arti.TTC).PadRight(6), String.Format("{0}",conv)) + Environment.NewLine);
+                        File.AppendAllText(copy_path + ".txt", String.Format("{0}{1}{2}", arti.type.nom.PadRight(nbespaces), String.Format("{0}€", (decimal)arti.TTC).PadRight(6), String.Format("{0}", conv)) + Environment.NewLine);
                     }
                     else
-                        File.AppendAllText(copy_path + ".txt", String.Format("{0}{1}{2}{3}{4}", arti.type.nom.PadRight(20),Environment.NewLine, String.Format("{0}€", (decimal)arti.TTC).PadRight(6), String.Format("{0}", conv)) + Environment.NewLine);
+                    {
+                        File.AppendAllText(copy_path + ".txt", arti.type.nom.PadRight(20) + Environment.NewLine);
+                        File.AppendAllText(copy_path + ".txt", "".PadRight(nbespaces) + (((decimal)arti.TTC) + "€").PadRight(6) + "" + conv + Environment.NewLine);
+                    }
 
                     //si commentaire
                     if (arti.commentaire != null)
