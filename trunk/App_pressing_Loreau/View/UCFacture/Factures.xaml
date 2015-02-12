@@ -69,6 +69,10 @@
 
 
         <Grid Margin="10" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
@@ -76,7 +80,7 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <DockPanel  Grid.Row="2">
+            <DockPanel  Grid.Row="2" Grid.Column="1">
                 <Button x:Name="Factures_editerfacture" Content="Imprimer la facture"  Style="{StaticResource personalisationbuton}" Margin="10,5" BorderBrush="White"  Command="{Binding Btn_factures_imprimer_facture}" />
             </DockPanel>
 

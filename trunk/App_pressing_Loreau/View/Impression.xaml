@@ -12,27 +12,26 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="27*"/>
-            <ColumnDefinition Width="47*"/>
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <Grid Margin="10" Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
-                <RowDefinition Height="3*"/>
+                <RowDefinition Height="5*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
 
-            <Label  HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontFamily="Arial" FontSize="16"
-                   FontWeight="Normal" Margin="10,10,10,78" Grid.Row="1">
-                <TextBlock Grid.Row="1" Height="44"> La fin de journée clôture les tâches disponibles <LineBreak/> jusqu'aux  nouveaux jours ouvrés</TextBlock>
+            <Label  HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontFamily="Arial" FontSize="30" FontWeight="ExtraBlack" Margin="10" Grid.Row="1">
+                <TextBlock Grid.Row="1" > La fin de journée clôture les tâches<LineBreak/>  disponibles  jusqu'aux  nouveaux <LineBreak/>jours ouvrés</TextBlock>
             </Label>
            
         </Grid>
         <Grid Margin="10" Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="41*"/>
-                <RowDefinition Height="239*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="9*"/>
             </Grid.RowDefinitions>
             <Label Content="Impression Tickets X et Z" Style="{StaticResource Titre}"/>
             <DockPanel Grid.Row="1" Margin="5">
@@ -49,9 +48,9 @@
                             <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
 
-                        <Button Content="Imprimer ticket X" Margin="10" Grid.Row="1" Grid.Column="1" Style="{StaticResource personalisationbuton}" Command="{Binding Btn_impression_imprimerTicketX}"/>
+                        <Button Content="Imprimer ticket X" Margin="10,4" Grid.Row="1" Grid.Column="1" Style="{StaticResource personalisationbuton}" Command="{Binding Btn_impression_imprimerTicketX}"/>
 
-                        <Button Content="Imprimer Ticket Z" Style="{StaticResource personalisationbuton}" Grid.Row="2" Grid.Column="1"  Margin="10" Command="{Binding Btn_impression_imprimerTicketZ}"/>
+                        <Button Content="Imprimer Ticket Z" Style="{StaticResource personalisationbuton}" Grid.Row="3" Grid.Column="1"  Margin="10,4" Command="{Binding Btn_impression_imprimerTicketZ}"/>
                     </Grid>
                 </Border>
             </DockPanel>

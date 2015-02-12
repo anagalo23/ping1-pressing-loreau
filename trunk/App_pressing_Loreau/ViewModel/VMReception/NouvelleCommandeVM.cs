@@ -368,9 +368,7 @@ namespace App_pressing_Loreau.ViewModel
             }
             else
             {
-                clickedbutton.Background = Brushes.Blue;
-                string msg = string.Format("You Pressed : {0} button", clickedbutton.Tag);
-                MessageBox.Show(msg);
+                MessageBox.Show("Departement vide");
             }
 
         }
@@ -390,7 +388,6 @@ namespace App_pressing_Loreau.ViewModel
                     if (typeArticleDTO.encombrement == 0 || typeArticleDTO.encombrement > 3)
                     {
                         //Cet article ne va pas dans le convoyeur
-                        //MessageBox.Show("Cet article ne va pas dans le convoyeur.");
                     }
                     else
                     {
@@ -434,11 +431,8 @@ namespace App_pressing_Loreau.ViewModel
                     decimal tampon = 0;
                     foreach (ArticlesVM artVm in ClasseGlobale._contentDetailCommande)
                     {
-                        //MessageBox.Show("ajout de " + artVm.typeArticle.TTC);
-                        //Label_NouvelleCommande_prixTotal += (artVm.typeArticle.TTC);
                         tampon += (decimal)(artVm.typeArticle.TTC);
                     }
-                    //MessageBox.Show(tampon.ToString());
                     Label_NouvelleCommande_prixTotal = (float)tampon;//(float)Math.Round(tampon, 2, MidpointRounding.AwayFromZero);// 
                 }
             }

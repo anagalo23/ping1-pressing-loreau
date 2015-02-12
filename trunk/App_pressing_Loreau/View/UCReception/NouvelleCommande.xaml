@@ -49,7 +49,7 @@
                                 </ListBox>
                             </Border>
                             <!-- <ContentControl  Content="{Binding ContentCommande}"/>-->
-                            <ItemsControl x:Name="Collection" ItemsSource="{Binding  ListeArticles}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2,10,2,2">
+                            <ItemsControl x:Name="Collection" ItemsSource="{Binding  ListeArticles}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2,3">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
@@ -61,7 +61,7 @@
 
                                             <Border Canvas.Left="{Binding X}" Canvas.Top="{Binding Y}">
                                                 <Grid>
-                                                    <Button x:Name="button1"  Width="160" Height="62" Margin="2"         
+                                                    <Button x:Name="button1" FontSize="16"  Width="160" Height="62" Margin="2"         
                                                             Content="{Binding ButtonArticlesContent}"
                                                             Tag="{Binding ButtonArticlesTag}"
                                                             Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.ListesArticlesCommandes}"
