@@ -149,7 +149,7 @@ namespace App_pressing_Loreau.Model
                 File.AppendAllText(copy_path + ".txt", "Total TTC              " + ((decimal)totalTTC - (decimal)commande.remise) + "€" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "Dont TVA               " + truc_bizarre + "€" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "Paiements par :          " + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "Réceptionniste :          " + Environment.NewLine);
 
                 //ajout des paiements
                 foreach (Payement paie in commande.listPayements)
