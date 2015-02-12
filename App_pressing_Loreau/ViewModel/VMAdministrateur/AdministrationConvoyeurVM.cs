@@ -29,11 +29,13 @@ namespace App_pressing_Loreau.ViewModel
             try
             {
                 listePlace = (List<PlaceConvoyeur>)PlaceConvoyeurDAO.selectConvoyeurs();
+                Label_AdminConv_NbrePlace = listePlace.Count;
+             
+                
 
-                List<PlaceConvoyeur> comptePlaceLibre = (List<PlaceConvoyeur>)PlaceConvoyeurDAO.selectConvoyeursEmpty();
+                List<PlaceConvoyeur> comptePlaceLibre = (List<PlaceConvoyeur>)PlaceConvoyeurDAO.selectConvoyeursNotEmpty();
 
                 Label_AdminConv_Disponibles = comptePlaceLibre.Count;
-                Label_AdminConv_NbrePlace = listePlace.Count;
             }
             catch (Exception e)
             {
