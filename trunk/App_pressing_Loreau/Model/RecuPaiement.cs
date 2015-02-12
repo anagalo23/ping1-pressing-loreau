@@ -100,20 +100,15 @@ namespace App_pressing_Loreau.Model
                         File.AppendAllText(copy_path + ".txt", "-");
                     File.AppendAllText(copy_path + ".txt", (decimal)arti.TTC + "€" + Environment.NewLine);
                     totalTTC = totalTTC + (decimal)arti.TTC;
-                    totalTVA = totalTVA + (decimal)(arti.TTC*arti.TVA); 
+                    totalTVA = totalTVA + (decimal)(arti.TTC*(arti.TVA/100)); 
                 }
                 //ajout des totals
                 File.AppendAllText(copy_path + ".txt", "           ______________" + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "TVA           " + totalTVA + "€" + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "HT            " + (totalTTC - totalTVA) + "€" + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "TTC           " + totalTTC + "€" + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "           ______________" + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "TVA                    " + totalTVA + "€" + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "HT                     " + (totalTTC - totalTVA) + "€" + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "TTC                    " + totalTTC + "€" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "           ______________" + Environment.NewLine);
 
-                //fin du ticket
-                File.AppendAllText(copy_path + ".txt", Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "Total TTC : " + total_TTC + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "Total payé : " + total_payee + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", Environment.NewLine);
 
