@@ -18,15 +18,15 @@ namespace App_pressing_Loreau.View
 
         private void btn_identificationAdmin_connecte_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            //if (txb_identificationAdmin_identifiant.Text == "David" & pwb_identificationAdmin_mdp.Password == "Lefevre")
-            //{
+            if (txb_identificationAdmin_identifiant.Text == "David" & pwb_identificationAdmin_mdp.Password == "Lefevre")
+            {
                 dp.Children.Clear();
                 dp.Children.Add(new PageAdministrateur());
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Mot de passe oublié ?");
-            //}
+            }
+            else
+            {
+                MessageBox.Show("Mot de passe oublié ?");
+            }
             
         }
 
