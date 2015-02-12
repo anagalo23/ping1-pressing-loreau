@@ -110,8 +110,10 @@
 
                             <Label Content="{Binding Label_statistique_nbrClientsRecupArt}"  Grid.Row="3" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
 
-                            <Label Content="Nombre de clients qui ont payé immédiatement :"  Grid.Row="4" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
-                            <Label Content="{Binding Label_statistique_nbrClientspayeimediatement}" Grid.Row="4" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="Nombre d'articles pressing  :"  Grid.Row="4" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="{Binding Label_statistique_nbrArticlesPressing}" Grid.Row="4" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+                            <!--<Label Content="Nombre de clients qui ont payé immédiatement :"  Grid.Row="4" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="{Binding Label_statistique_nbrClientspayeimediatement}" Grid.Row="4" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>-->
                         </Grid>
 
                     </Border>
@@ -129,20 +131,19 @@
                                 <RowDefinition Height="1*"/>
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
-                            <Label Content="Nombre de clients qui ont payé en différé:"  Grid.Row="0" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
-                            <Label Content="{Binding Label_statistique_nbrClientspayediffere}" Grid.Row="0" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+                            <!--<Label Content="Nombre de clients qui ont payé en différé:"  Grid.Row="0" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="{Binding Label_statistique_nbrClientspayediffere}" Grid.Row="0" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>-->
 
-                            <Label Content="Nombre d'articles pressing  :"  Grid.Row="1" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
-                            <Label Content="{Binding Label_statistique_nbrArticlesPressing}" Grid.Row="1" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+                           
 
-                            <Label Content="Nombre d'articles dans la blanchisserie  :"  Grid.Row="2" Grid.Column="0" Style="{StaticResource statistiqueLabel}" />
-                            <Label Content="{Binding Label_statistique_nbrArticlesBlanchisserie}" Grid.Row="2" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="Nombre d'articles dans la blanchisserie  :"  Grid.Row="0" Grid.Column="0" Style="{StaticResource statistiqueLabel}" />
+                            <Label Content="{Binding Label_statistique_nbrArticlesBlanchisserie}" Grid.Row="0" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
 
-                            <Label Content="Nombre  de couettes :"  Grid.Row="3" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
-                            <Label Content="{Binding Label_statistique_nbrCouettes}" Grid.Row="3" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="Nombre  de couettes :"  Grid.Row="1" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="{Binding Label_statistique_nbrCouettes}" Grid.Row="1" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
 
-                            <Label Content="Nombre de chemises :"  Grid.Row="4" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
-                            <Label Content="{Binding Label_statistique_nbrChemises}" Grid.Row="4" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="Nombre de chemises :"  Grid.Row="2" Grid.Column="0" Style="{StaticResource statistiqueLabel}"/>
+                            <Label Content="{Binding Label_statistique_nbrChemises}" Grid.Row="2" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
 
 
                             <Button  x:Name="btn_statistiques_retour" Content="Retour" Margin="5,10"  Style="{StaticResource personalisationbuton1}" Grid.Row="5" Grid.Column="1" Click="btn_statistiques_retour_Click"/>
