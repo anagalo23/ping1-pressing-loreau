@@ -82,7 +82,7 @@ namespace App_pressing_Loreau.Model
                 File.AppendAllText(copy_path + ".txt", DateTime.Now.ToString() + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "N° de commande : " + commande.id + Environment.NewLine);
-                
+
                 DateTime dateRendu;
                 double tempsTraitement = 3;
                 foreach (Article art in commande.listArticles)
@@ -111,10 +111,26 @@ namespace App_pressing_Loreau.Model
                 {
                     //ajout du nom de l'article avec son nombre d'espaces
                     int nbespace = 22;
-                    File.AppendAllText(copy_path + ".txt", "~ " + arti.type.nom);
+
+                    if (arti.ifRendu)
+                        File.AppendAllText(copy_path + ".txt", "r " + arti.type.nom);
+                    else
+                        File.AppendAllText(copy_path + ".txt", "~ " + arti.type.nom);
+
+
                     for (int i = 0; i < (nbespace - arti.type.nom.Length); i++)
                         File.AppendAllText(copy_path + ".txt", "-");
-                    File.AppendAllText(copy_path + ".txt", (decimal)arti.TTC + "€ ---- " + arti.convoyeur.emplacement + Environment.NewLine);
+                    File.AppendAllText(copy_path + ".txt", (decimal)arti.TTC + "€ ---- ");
+                    //dans ou hors convoyeur
+                    if (arti.convoyeur != null && arti.convoyeur.emplacement != 0)
+                        File.AppendAllText(copy_path + ".txt", arti.convoyeur.emplacement + Environment.NewLine);
+                    else
+                        File.AppendAllText(copy_path + ".txt", "HC" + Environment.NewLine);
+
+                    //si commentaire
+                    if (arti.commentaire != null)
+                        if (!arti.commentaire.Equals(""))
+                            File.AppendAllText(copy_path + ".txt", "     " + arti.commentaire + Environment.NewLine);
 
                     totalTTC = totalTTC + (decimal)arti.TTC;
                     totalHT = totalHT + (decimal)(arti.TTC / (1 + arti.TVA / 100));
@@ -126,15 +142,15 @@ namespace App_pressing_Loreau.Model
                 if (commande.remise != 0)
                     File.AppendAllText(copy_path + ".txt", "Remise                 " + (decimal)commande.remise + "€" + Environment.NewLine);
 
-                decimal TVARemise = (decimal)commande.remise * (decimal)(TypeArticleDAO.selectTypesById(2).TVA/100);
+                decimal TVARemise = (decimal)commande.remise * (decimal)(TypeArticleDAO.selectTypesById(2).TVA / 100);
 
-                File.AppendAllText(copy_path + ".txt", "Total TTC              " + ((decimal)totalTTC-(decimal)commande.remise) + "€" + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "Total TTC              " + ((decimal)totalTTC - (decimal)commande.remise) + "€" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "Dont TVA               " + (decimal)((decimal)totalTVA - TVARemise) + "€" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "Paiements par :          " + Environment.NewLine);
 
                 //ajout des paiements
-                foreach(Payement paie in commande.listPayements)
+                foreach (Payement paie in commande.listPayements)
                 {
                     int nbespace = 18;
                     File.AppendAllText(copy_path + ".txt", "    " + paie.typePaiement);
