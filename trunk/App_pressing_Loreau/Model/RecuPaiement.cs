@@ -125,7 +125,7 @@ namespace App_pressing_Loreau.Model
                     else
                         conv = "HC";
 
-                    File.AppendAllText(copy_path + ".txt", String.Format("{0,-10}   {1,10}   {2}", arti.type.nom, String.Format("{0}€", (decimal)arti.TTC), conv) + Environment.NewLine);
+                    File.AppendAllText(copy_path + ".txt", String.Format("{0,-15}   {1,-15}   {2,5}", arti.type.nom, String.Format("{0}€", (decimal)arti.TTC), conv) + Environment.NewLine);
 
                     //si commentaire
                     if (arti.commentaire != null)
@@ -142,7 +142,7 @@ namespace App_pressing_Loreau.Model
                 if (commande.remise != 0)
                     File.AppendAllText(copy_path + ".txt", "Remise                 " + (decimal)commande.remise + "€" + Environment.NewLine);
 
-                double TVATotale = Math.Round((totalTTC - commande.remise) / (100 + (TypeArticleDAO.selectTypesById(2).TVA)), 2, MidpointRounding.AwayFromZero);
+                double TVATotale = Math.Round((totalTTC - commande.remise) - (totalTTC - commande.remise) / ((100 + (TypeArticleDAO.selectTypesById(2).TVA)) / 100), 2, MidpointRounding.AwayFromZero);
                 File.AppendAllText(copy_path + ".txt", "Total TTC              " + ((decimal)totalTTC - (decimal)commande.remise) + "€" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "Dont TVA               " + (decimal)TVATotale + "€" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
