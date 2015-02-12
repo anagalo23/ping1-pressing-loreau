@@ -74,7 +74,7 @@ namespace App_pressing_Loreau.Model
 
             //Ajout du contenue du ticket
             File.AppendAllText(copy_path + ".txt", "Cmd " + cmd_id + "     Conv "+ art.convoyeur.id + Environment.NewLine);
-            File.AppendAllText(copy_path + ".txt", "Date Depot : " + cmd.date.ToString("dd/MM/yyyy") + Environment.NewLine);
+            File.AppendAllText(copy_path + ".txt", "Depot : " + cmd.date.ToString("dd/MM/yyyy") + Environment.NewLine);
             File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
 
             PrintOff();
@@ -91,7 +91,7 @@ namespace App_pressing_Loreau.Model
                 //Create a StreamReader object
                 reader = new StreamReader(filename);
                 //Create a Verdana font with size 10
-                verdana10Font = new Font("Verdana", 20);
+                verdana10Font = new Font("Verdana", 12);
                 //Create a PrintDocument object
                 PrintDocument pd = new PrintDocument();
                 //gestion des marges

@@ -94,10 +94,10 @@ namespace App_pressing_Loreau.Model
                 foreach (Article arti in commande.listArticles)
                 {
                     //ajout du nom de l'article avec son nombre d'espaces
-                    int nbespace = 10;
+                    int nbespace = 22;
                     File.AppendAllText(copy_path + ".txt", "~ " + arti.type.nom);
                     for (int i = 0; i < (nbespace - arti.type.nom.Length); i++ )
-                        File.AppendAllText(copy_path + ".txt", " ");
+                        File.AppendAllText(copy_path + ".txt", "-");
                     File.AppendAllText(copy_path + ".txt", (decimal)arti.TTC + "€" + Environment.NewLine);
                     totalTTC = totalTTC + (decimal)arti.TTC;
                     totalTVA = totalTVA + (decimal)(arti.TTC*arti.TVA); 
