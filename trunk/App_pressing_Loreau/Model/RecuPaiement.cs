@@ -133,7 +133,7 @@ namespace App_pressing_Loreau.Model
                     //si commentaire
                     if (arti.commentaire != null)
                         if (!arti.commentaire.Equals(""))
-                            File.AppendAllText(copy_path + ".txt", "     " + arti.commentaire + Environment.NewLine);
+                            File.AppendAllText(copy_path + ".txt", "    + " + arti.commentaire + Environment.NewLine);
 
                     totalTTC = totalTTC + (decimal)arti.TTC;
                     totalHT = totalHT + (decimal)(arti.TTC / (1 + arti.TVA / 100));
@@ -146,9 +146,9 @@ namespace App_pressing_Loreau.Model
                     File.AppendAllText(copy_path + ".txt", "Remise                 " + (decimal)commande.remise + "€" + Environment.NewLine);
 
                 decimal TVARemise = (decimal)commande.remise * (decimal)(TypeArticleDAO.selectTypesById(2).TVA / 100);
-
+                decimal truc_bizarre = Math.Round(((decimal)totalTVA - TVARemise), 2, MidpointRounding.AwayFromZero);
                 File.AppendAllText(copy_path + ".txt", "Total TTC              " + ((decimal)totalTTC - (decimal)commande.remise) + "€" + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "Dont TVA               " + (decimal)((decimal)totalTVA - TVARemise) + "€" + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "Dont TVA               " + truc_bizarre + "€" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "Paiements par :          " + Environment.NewLine);
 
