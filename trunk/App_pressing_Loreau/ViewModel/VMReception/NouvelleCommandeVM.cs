@@ -233,60 +233,60 @@ namespace App_pressing_Loreau.ViewModel
                 else
                 {
 
-                        Commande cmd = new Commande(DateTime.Now, false, 0, ClasseGlobale.Client);
+                    Commande cmd = new Commande(DateTime.Now, false, 0, ClasseGlobale.Client);
 
-                        //ObservableCollection<ArticlesVM> listeArticles = ClasseGlobale._contentDetailCommande;
-                        if (CommandeDAO.insertCommande(cmd) == 1)
+                    //ObservableCollection<ArticlesVM> listeArticles = ClasseGlobale._contentDetailCommande;
+                    if (CommandeDAO.insertCommande(cmd) == 1)
+                    {
+                        cmd = CommandeDAO.lastCommande();
+                        foreach (ArticlesVM artVM in ClasseGlobale._contentDetailCommande)
                         {
-                            cmd = CommandeDAO.lastCommande();
-                            foreach (ArticlesVM artVM in ClasseGlobale._contentDetailCommande)
-                            {
-                                ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
-                            }
-
-                            //Mise à jour de la table convoyeur
-                            foreach (PlaceConvoyeur place in ClasseGlobale.PlacesLibres.getList())
-                            {
-                                PlaceConvoyeurDAO.updatePlaceConvoyeur(place);
-                            }
-
-                            MessageBox.Show("La commande " + cmd.id + " à été enregistrée avec succès");
-
-                            //Clear l'écran et bloque l'utilisation des touches
-
-
-                            try
-                            {
-                                cmd = CommandeDAO.selectCommandeById(cmd.id, true, true, true);
-                                RecuPaiement rp = new RecuPaiement(cmd);
-                                rp.printRecu();
-                                //impression des tickets vetements
-                                if (cmd.listArticles != null)
-                                {
-                                    TicketVetement ticketVetement = new TicketVetement(cmd);
-                                    ticketVetement.printAllArticleCmd();
-                                }
-                                else
-                                    MessageBox.Show("La commande ne contient pas d'articles");
-                            }
-                            catch (Exception)
-                            {
-                                MessageBox.Show("Impression refusée");
-                            }
-                            finally
-                            {
-                                ClasseGlobale.SET_ALL_NULL();
-                                commandePayeeEnDiffere = true;
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Erreur lors de la création de la commande. Enregistrement de la commande annulé");
+                            ArticleDAO.insertArticle(artVM.getArticle(cmd.id));
                         }
 
+                        //Mise à jour de la table convoyeur
+                        foreach (PlaceConvoyeur place in ClasseGlobale.PlacesLibres.getList())
+                        {
+                            PlaceConvoyeurDAO.updatePlaceConvoyeur(place);
+                        }
+
+                        MessageBox.Show("La commande " + cmd.id + " à été enregistrée avec succès");
+
+                        //Clear l'écran et bloque l'utilisation des touches
+
+
+                        try
+                        {
+                            cmd = CommandeDAO.selectCommandeById(cmd.id, true, true, true);
+                            RecuPaiement rp = new RecuPaiement(cmd);
+                            rp.printRecu();
+                            //impression des tickets vetements
+                            if (cmd.listArticles != null)
+                            {
+                                TicketVetement ticketVetement = new TicketVetement(cmd);
+                                ticketVetement.printAllArticleCmd();
+                            }
+                            else
+                                MessageBox.Show("La commande ne contient pas d'articles");
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Impression refusée");
+                        }
+                        finally
+                        {
+                            ClasseGlobale.SET_ALL_NULL();
+                            commandePayeeEnDiffere = true;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erreur lors de la création de la commande. Enregistrement de la commande annulé");
                     }
 
-                
+                }
+
+
             }
             else
             {
@@ -442,16 +442,40 @@ namespace App_pressing_Loreau.ViewModel
                 }
             }
         }
-        private void ExecuteDeleteArticles(ArticlesVM obj)
+        private void ExecuteDeleteArticles(ArticlesVM artVM)
         {
             if (ClasseGlobale._contentDetailCommande != null)
             {
-                if (ClasseGlobale._contentDetailCommande.Contains(obj))
+                if (ClasseGlobale._contentDetailCommande.Contains(artVM))
                 {
-                    ClasseGlobale._contentDetailCommande.Remove(obj);
+                    //Modif de la liste place convoyeur
+                    //mettre à jour la  liste convoyeur
+                    //J'ai l'id de l'article => je récupe l'id conv => je met à jour l'encombrement
+
+                    //Je parcours la  liste de place libre pour trouver l'id conv qui convient
+                    int finDeListe = ClasseGlobale.PlacesLibres.getList().Count();
+
+                    if (artVM.PlaceConvoyeur != null)//Si égal à null cela veut dire qu'aucun emplacement convoyeur n'a été atribué
+                    {
+                        for (int i = 0; i < finDeListe; i++)
+                        {
+                            //si l'encombrement du convoyeur est permet de recevoir l'article
+                            if (ClasseGlobale.PlacesLibres.getList()[i].id == artVM.PlaceConvoyeur.id)
+                            {
+                                //Je modifie l'encombrement de la liste des places libres
+                                ClasseGlobale.PlacesLibres[i].encombrement -= typeArticleDTO.encombrement;
+                                break;
+                            }
+                        }
+                    }
+
+                    //Modif du prix total
+                    ClasseGlobale._contentDetailCommande.Remove(artVM);
                     decimal tamp = (decimal)Label_NouvelleCommande_prixTotal;
-                    tamp -= (decimal)obj.typeArticle.TTC;
+                    tamp -= (decimal)artVM.typeArticle.TTC;
                     Label_NouvelleCommande_prixTotal = (float)tamp;
+
+
                 }
             }
 
