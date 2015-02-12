@@ -23,11 +23,12 @@ namespace App_pressing_Loreau.Model
         //"EPSON TM-T20II Receipt5";
         public Commande commande { get; set; }
         public static String printName = "TM-T20";
-        public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\RecuPaiement";
-        public static String copy_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10)+"Resources\\Temp\\RecuPaiement";
+        
+        //public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\RecuPaiement";
+        //public static String copy_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10)+"Resources\\Temp\\RecuPaiement";
 
-        //public static String pattern_path = "D:\\Application_Pressing\\Resources\\PatternFile\\RecuPaiement";
-        //public static String copy_path = "D:\\Application_Pressing\\Resources\\Temp\\RecuPaiement";
+        public static String pattern_path = "D:\\Application_Pressing\\Resources\\PatternFile\\RecuPaiement";
+        public static String copy_path = "D:\\Application_Pressing\\Resources\\Temp\\RecuPaiement";
 
 
 
@@ -124,7 +125,7 @@ namespace App_pressing_Loreau.Model
                     else
                         conv = "HC";
 
-                    File.AppendAllText(copy_path + ".txt", String.Format("{0,-10}   {1,-10}€   {2,-7}", arti.type.nom, (decimal)arti.TTC, conv));
+                    File.AppendAllText(copy_path + ".txt", String.Format("{0,-10}   {1,-10}€   {2,-7}", arti.type.nom, (decimal)arti.TTC, conv) + Environment.NewLine);
                    
                     //si commentaire
                     if (arti.commentaire != null)
@@ -141,7 +142,7 @@ namespace App_pressing_Loreau.Model
                 if (commande.remise != 0)
                     File.AppendAllText(copy_path + ".txt", "Remise                 " + (decimal)commande.remise + "€" + Environment.NewLine);
 
-                decimal TVATotale = Math.Round((decimal)commande.remise / (1 + (decimal)(TypeArticleDAO.selectTypesById(2).TVA / 100)), 2, MidpointRounding.AwayFromZero); 
+                decimal TVATotale = Math.Round(((decimal)totalTTC - (decimal)commande.remise) / (1 + (decimal)(TypeArticleDAO.selectTypesById(2).TVA / 100)), 2, MidpointRounding.AwayFromZero); 
                 File.AppendAllText(copy_path + ".txt", "Total TTC              " + ((decimal)totalTTC - (decimal)commande.remise) + "€" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "Dont TVA               " + TVATotale + "€" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
