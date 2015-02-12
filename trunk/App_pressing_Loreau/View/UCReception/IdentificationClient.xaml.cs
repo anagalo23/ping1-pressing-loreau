@@ -70,18 +70,6 @@ namespace App_pressing_Loreau.View
         }
 
 
-
-        //private void message()
-        //{
-        //    Fields fields = AutoComplete.getFields();
-        //    MessageBox.Show("Champs de recherche désirés :\nnom : " + fields.nom +
-        //        "\nprenom : " + fields.prenom +
-        //        "\nportable : " + fields.portable +
-        //        "\nadresse : " + fields.adresse +
-        //        "\ndateDeNaissance : " + fields.dateDeNaissance);
-        //}
-
-
         private void txb_identificationClient_id_cleanway_TextChanged(object sender, TextChangedEventArgs e)
         {
             Fields fields = AutoComplete.getFields();

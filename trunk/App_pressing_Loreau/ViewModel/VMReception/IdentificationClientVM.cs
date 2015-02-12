@@ -131,27 +131,33 @@ namespace App_pressing_Loreau.ViewModel
             {
 
                 ResultatRecherche_identificationClient = new List<IdentificationClientData>();
-                if (fields.nom == null){fields.nom = "";}
-                if (fields.prenom == null){fields.prenom = "";}
-                if (fields.portable == null){fields.portable = "";}
-
-                List<Client> resultat = ClientDAO.seekClients(fields.nom, fields.prenom, fields.portable, fields.idCleanWay);
-
-                
-
-                //On affiche le résultat dans le doc Panel
-                if (resultat != null)
+                if (fields.nom == null) { fields.nom = ""; }
+                if (fields.prenom == null) { fields.prenom = ""; }
+                if (fields.portable == null) { fields.portable = ""; }
+                try
                 {
-                    foreach (Client c in resultat)
+
+                    List<Client> resultat = ClientDAO.seekClients(fields.nom, fields.prenom, fields.portable, fields.idCleanWay);
+
+                    //On affiche le résultat dans le doc Panel
+                    if (resultat != null)
                     {
-                        ResultatRecherche_identificationClient.Add(new IdentificationClientData() { clt = c });
+                        foreach (Client c in resultat)
+                        {
+                            ResultatRecherche_identificationClient.Add(new IdentificationClientData() { clt = c });
+                        }
                     }
-                    //MessageBox.Show(ResultatRecherche_identificationClient.Count() + " résultats");
+                    else
+                    {
+                        MessageBox.Show("Erreur : la recherche n'a renvoyée aucun résultat");
+                    }
+
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Erreur : la recherche n'a renvoyée aucun résultat");
+                    MessageBox.Show("Erreir de recherche :" + ex);
                 }
+
             }
         }
         #endregion

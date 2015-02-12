@@ -72,7 +72,7 @@ namespace App_pressing_Loreau.ViewModel
                     {
                         Label_AdminCom_Client = com.client.prenom,
                         Label_AdminCom_ref = "Ref:   " + com.id,
-                        Label_AdminCom_DateEnregistrement = "Date recu:  " + com.date_rendu,
+                        Label_AdminCom_DateEnregistrement = "Date recu:  " + com.date,
                         Label_AdminCom_EtatPaiement = "Etat paiement: " + etat,
                         Label_AdminCom_PrixRestant = "Prix à payer: " + (float)((decimal)prixA - (decimal)prixP)
                     });
