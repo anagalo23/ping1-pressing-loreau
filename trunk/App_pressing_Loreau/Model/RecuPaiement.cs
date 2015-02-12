@@ -106,11 +106,23 @@ namespace App_pressing_Loreau.Model
                 }
                 //ajout des totals
                 File.AppendAllText(copy_path + ".txt", "           ______________" + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "TVA                    " + (decimal)totalTVA + "€" + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "HT                     " + (decimal)(totalTTC - totalTVA) + "€" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "TTC                    " + (decimal)totalTTC + "€" + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "           ______________" + Environment.NewLine);
+                if (commande.remise != 0)
+                    File.AppendAllText(copy_path + ".txt", "Remise                 " + (decimal)commande.remise + "€" + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "Total                  " + ((decimal)totalTTC+(decimal)commande.remise) + "€" + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "Dont TVA               " + (decimal)totalTVA + "€" + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "Paiements par :          " + Environment.NewLine);
 
+                //ajout des paiements
+                foreach(Payement paie in commande.listPayements)
+                {
+                    int nbespace = 18;
+                    File.AppendAllText(copy_path + ".txt", "    " + paie.typePaiement);
+                    for (int i = 0; i < (nbespace - paie.typePaiement.Length); i++)
+                        File.AppendAllText(copy_path + ".txt", "-");
+                    File.AppendAllText(copy_path + ".txt", (decimal)paie.montant + "€" + Environment.NewLine);
+                }
                 File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", Environment.NewLine);
 
