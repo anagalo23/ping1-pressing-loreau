@@ -75,9 +75,9 @@ namespace App_pressing_Loreau.Model
             System.IO.File.Copy(pattern_path + ".txt", copy_path + ".txt");
 
             //Ajout du contenue du ticket
+
             File.AppendAllText(copy_path + ".txt", "Cmd " + cmd_id + "     Conv " + art.convoyeur.emplacement + Environment.NewLine);
-            File.AppendAllText(copy_path + ".txt", "Depot : " + cmd.date.ToString("dd/MM/yyyy") + Environment.NewLine);
-            File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
+            File.AppendAllText(copy_path + ".txt", art.type.nom + "  " + clt.nom + Environment.NewLine);
 
             PrintOff();
             System.IO.File.Delete(copy_path + ".txt");
