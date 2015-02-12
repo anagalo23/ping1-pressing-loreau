@@ -54,26 +54,30 @@ namespace App_pressing_Loreau.Model
 
                 //ajout des articles
                 int index = 19;
-                decimal total = 0;
-                decimal tva = 0;
+                decimal totalTTC = 0;
+                decimal totalTVA = 0;
+                decimal totalHT = 0;
                 foreach (Article art in commande.listArticles)
                 {
                     mWorkSheets.Cells[index, 2] = art.type.nom;
-                    mWorkSheets.Cells[index, 9] = (decimal)art.TTC * (1 - (decimal)art.TVA / 100);
-                    total = (decimal)total + (decimal)art.TTC * (1 - (decimal)art.TVA / 100);
-                    tva = tva + (decimal)art.TTC * ((decimal)art.TVA / 100);
-
+                    decimal articleHT = (decimal)(art.TTC / (1 + art.TVA / 100));
+                    mWorkSheets.Cells[index, 9] = articleHT;
+                    totalTTC = totalTTC + (decimal)art.TTC;
+                    totalHT = totalHT + (decimal)(art.TTC / (1 + art.TVA / 100));
+                    totalTVA = totalTVA + (totalTTC - totalHT);
                     index++;
                 }
 
                 //ajout du total
                 index += 2;
-                mWorkSheets.Cells[index, 7] = "TVA :";
-                mWorkSheets.Cells[index, 9] = tva;
+                mWorkSheets.Cells[index, 7] = "TTC :";
+                mWorkSheets.Cells[index, 9] = totalTTC;
                 mWorkSheets.Cells[index + 1, 7] = "Remise :";
                 mWorkSheets.Cells[index + 1, 9] = commande.remise;
                 mWorkSheets.Cells[index + 2, 7] = "Total :";
-                mWorkSheets.Cells[index + 2, 9] = total + tva - (decimal)commande.remise;
+                mWorkSheets.Cells[index + 2, 9] = totalTTC - (decimal)commande.remise;
+                mWorkSheets.Cells[index + 3, 7] = "Dont TVA :";
+                mWorkSheets.Cells[index + 3, 9] = totalTVA;
 
                 //Ajout des paiements
                 index += 2;
