@@ -82,10 +82,21 @@ namespace App_pressing_Loreau.Model
                 File.AppendAllText(copy_path + ".txt", DateTime.Now.ToString() + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "N° de commande : " + commande.id + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "Déposée le : " + commande.date.ToString("dd/MM/yyyy") + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "Employé : " + ClasseGlobale.employeeEnCours.nom + "" + ClasseGlobale.employeeEnCours.prenom + Environment.NewLine);
+                
+                DateTime dateRendu;
+                double tempsTraitement = 3;
+                foreach (Article art in commande.listArticles)
+                {
+                    if (art.type.departement.id == 14)
+                        tempsTraitement = 7;
+                }
+
+                File.AppendAllText(copy_path + ".txt", "Remise prévue le " + commande.date.AddDays(tempsTraitement).ToString("dd/MM/yyyy") + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "Employé : " + ClasseGlobale.employeeEnCours.nom + " " + ClasseGlobale.employeeEnCours.prenom + Environment.NewLine);
                 if (commande.payee)
                     File.AppendAllText(copy_path + ".txt", "Commande payée" + Environment.NewLine);
+                else
+                    File.AppendAllText(copy_path + ".txt", "NON PAYEE" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "Commande : " + commande.listArticles.Count + " articles" + Environment.NewLine);
