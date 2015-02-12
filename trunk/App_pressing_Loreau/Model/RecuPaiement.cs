@@ -15,21 +15,21 @@ namespace App_pressing_Loreau.Model
 {
     class RecuPaiement
     {
-        
-       private static String printerName;
-    //= "EPSON TM-U220 Receipt";
 
-         //"EPSON TM-T20II Receipt5";
+        private static String printerName;
+        //= "EPSON TM-U220 Receipt";
+
+        //"EPSON TM-T20II Receipt5";
         public Commande commande { get; set; }
         public static String printName = "TM-T20";
         //public static String pattern_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10) + "Resources\\PatternFile\\RecuPaiement";
         //public static String copy_path = AppDomain.CurrentDomain.BaseDirectory.Substring(0, AppDomain.CurrentDomain.BaseDirectory.Length - 10)+"Resources\\Temp\\RecuPaiement";
-        
+
         public static String pattern_path = "D:\\Application_Pressing\\Resources\\PatternFile\\RecuPaiement";
         public static String copy_path = "D:\\Application_Pressing\\Resources\\Temp\\RecuPaiement";
-        
-        
-        
+
+
+
 
         Font verdana10Font;
         StreamReader reader;
@@ -41,7 +41,7 @@ namespace App_pressing_Loreau.Model
             {
                 if (PrinterSettings.InstalledPrinters[i].Contains(printName))
                 {
-                   printerName= PrinterSettings.InstalledPrinters[i];
+                    printerName = PrinterSettings.InstalledPrinters[i];
                 }
 
             }
@@ -82,6 +82,8 @@ namespace App_pressing_Loreau.Model
                 File.AppendAllText(copy_path + ".txt", Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "N° de commande : " + commande.id + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "Déposée le : " + commande.date.ToString("dd/MM/yyyy") + Environment.NewLine);
+                if (commande.payee)
+                    File.AppendAllText(copy_path + ".txt", "Commande payée" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "Commande : " + commande.listArticles.Count + " articles" + Environment.NewLine);
@@ -96,17 +98,17 @@ namespace App_pressing_Loreau.Model
                     //ajout du nom de l'article avec son nombre d'espaces
                     int nbespace = 22;
                     File.AppendAllText(copy_path + ".txt", "~ " + arti.type.nom);
-                    for (int i = 0; i < (nbespace - arti.type.nom.Length); i++ )
+                    for (int i = 0; i < (nbespace - arti.type.nom.Length); i++)
                         File.AppendAllText(copy_path + ".txt", "-");
                     File.AppendAllText(copy_path + ".txt", (decimal)arti.TTC + "€" + Environment.NewLine);
                     totalTTC = totalTTC + (decimal)arti.TTC;
-                    totalTVA = totalTVA + (decimal)(arti.TTC*(arti.TVA/100)); 
+                    totalTVA = totalTVA + (decimal)(arti.TTC * (arti.TVA / 100));
                 }
                 //ajout des totals
                 File.AppendAllText(copy_path + ".txt", "           ______________" + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "TVA                    " + totalTVA + "€" + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "HT                     " + (totalTTC - totalTVA) + "€" + Environment.NewLine);
-                File.AppendAllText(copy_path + ".txt", "TTC                    " + totalTTC + "€" + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "TVA                    " + (decimal)totalTVA + "€" + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "HT                     " + (decimal)(totalTTC - totalTVA) + "€" + Environment.NewLine);
+                File.AppendAllText(copy_path + ".txt", "TTC                    " + (decimal)totalTTC + "€" + Environment.NewLine);
                 File.AppendAllText(copy_path + ".txt", "           ______________" + Environment.NewLine);
 
                 File.AppendAllText(copy_path + ".txt", "_________________________" + Environment.NewLine);
