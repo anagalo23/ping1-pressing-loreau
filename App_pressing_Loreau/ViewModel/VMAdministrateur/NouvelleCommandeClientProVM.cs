@@ -219,7 +219,7 @@ namespace App_pressing_Loreau.ViewModel
                             PlaceConvoyeurDAO.updatePlaceConvoyeur(place);
                         }
 
-                        MessageBox.Show("La commande " + cmd.id + " à été enregistrée avec succès");
+                        //MessageBox.Show("La commande " + cmd.id + " à été enregistrée avec succès");
 
                         //Clear l'écran et bloque l'utilisation des touches
 

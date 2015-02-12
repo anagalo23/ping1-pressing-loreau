@@ -42,7 +42,7 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <Label  Content="Détail des commandes par client" Style="{StaticResource Titre}" Grid.Row="0"/>
-                
+
                 <DockPanel Grid.Row="1" Margin="3">
                     <Border BorderBrush="AliceBlue" BorderThickness="2" CornerRadius="10">
 
@@ -83,7 +83,7 @@
                         </ListBox>
                     </Border>
                 </DockPanel>
-                
+
                 <Border Grid.Row="2" BorderBrush="AliceBlue" BorderThickness="1" CornerRadius="10" Margin="3,2">
                     <Label Content="{Binding Label_CommandeSelectionner}" Background="WhiteSmoke" Margin="5,2" Style="{StaticResource vertilabel18}"/>
                 </Border>
@@ -91,13 +91,10 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="Total à payer" Style="{StaticResource vertilabel25}" Grid.Column="0" />
-                    
-                    <Label Grid.Column="1" Content="{Binding Label_ClientProUC_TotalAPayer}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="16"/>
-                    
-                    <Button Content="Régler une commande" x:Name="btn_regleClientPro" Style="{StaticResource personalisationbuton}" Grid.Column="2" Margin="10,1" Click="btn_regleClientPro_Click"/>
+                    <Button Content="Rendre la commande" x:Name="btn_rendreClientPro" Style="{StaticResource personalisationbuton}" Grid.Column="0" Margin="10,1" Command="{Binding Rendre_commande_pro}" CommandParameter="{Binding }"/>
+                    <Button Content="Régler la commande" x:Name="btn_regleClientPro" Style="{StaticResource personalisationbuton}" Grid.Column="1" Margin="10,1" Command="{Binding Regler_commande_pro}" CommandParameter="{Binding }"/>
+                    <!--Click="btn_regleClientPro_Click"-->
                 </Grid>
 
             </Grid>
