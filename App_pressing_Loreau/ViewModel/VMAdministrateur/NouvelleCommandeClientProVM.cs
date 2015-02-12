@@ -77,9 +77,7 @@ namespace App_pressing_Loreau.ViewModel
         {
             get { return onButtonClickCommand ?? (onButtonClickCommand = new RelayCommand(Contenudepartement)); }
         }
-
-
-
+    
 
         public ICommand CommandeSuivante
         {
@@ -95,7 +93,7 @@ namespace App_pressing_Loreau.ViewModel
             get
             {
                 return new RelayCommand(p => defileDepartementPrecedente(),
-                    p => ListeDepartements.Count != 5);
+                    p => ListeDepartements.Count != 6);
             }
         }
 
@@ -219,7 +217,6 @@ namespace App_pressing_Loreau.ViewModel
                             PlaceConvoyeurDAO.updatePlaceConvoyeur(place);
                         }
 
-                        //MessageBox.Show("La commande " + cmd.id + " à été enregistrée avec succès");
 
                         //Clear l'écran et bloque l'utilisation des touches
 
@@ -229,14 +226,7 @@ namespace App_pressing_Loreau.ViewModel
                             cmd = CommandeDAO.selectCommandeById(cmd.id, true, true, true);
                             RecuPaiement rp = new RecuPaiement(cmd);
                             rp.printRecu();
-                            //impression des tickets vetements
-                            //if (cmd.listArticles != null)
-                            //{
-                            //    TicketVetement ticketVetement = new TicketVetement(cmd);
-                            //    ticketVetement.printAllArticleCmd();
-                            //}
-                            //else
-                            //    MessageBox.Show("La commande ne contient pas d'articles");
+                           
                         }
                         catch (Exception)
                         {
@@ -270,10 +260,9 @@ namespace App_pressing_Loreau.ViewModel
             ListeDepartements = new List<CategoryItem>();
             listeDepartementDTO = (List<Departement>)DepartementDAO.selectDepartements();
 
-
             if (listeDepartementDTO != null)
             {
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 6; i++)
                     ListeDepartements.Add(new CategoryItem() { ButtonContent = listeDepartementDTO[i].nom, ButtonTag = listeDepartementDTO[i].id });
             }
 
@@ -285,8 +274,7 @@ namespace App_pressing_Loreau.ViewModel
 
             if (listeDepartementDTO != null)
             {
-
-                for (int i = 5; i < listeDepartementDTO.Count; i++)
+                for (int i = 6; i < listeDepartementDTO.Count; i++)
                     ListeDepartements.Add(new CategoryItem() { ButtonContent = listeDepartementDTO[i].nom, ButtonTag = listeDepartementDTO[i].id });
             }
 
@@ -325,8 +313,8 @@ namespace App_pressing_Loreau.ViewModel
             else
             {
 
-                string msg = string.Format("You Pressed : {0} button", clickedbutton.Content);
-                MessageBox.Show(msg);
+                //string msg = string.Format("You Pressed : {0} button", clickedbutton.Content);
+                MessageBox.Show("Departement vide");
             }
 
         }
