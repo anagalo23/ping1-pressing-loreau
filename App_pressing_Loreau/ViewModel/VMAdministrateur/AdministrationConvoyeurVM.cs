@@ -108,18 +108,14 @@ namespace App_pressing_Loreau.ViewModel
                         PlaceConvoyeurDAO.insertConvoyeur(p);
                     }
                 }
-                else if (Txb_AdminConv_ModifPlace < nbrPlace)
+                else 
                 {
 
-                    for (int j = Txb_AdminConv_ModifPlace; j <= nbrPlace; j++)
-                    {
-                        PlaceConvoyeur p = new PlaceConvoyeur(j,j,0);
-                        PlaceConvoyeurDAO.deletePlaceConvoyeur(p);
-                    }
+                    MessageBox.Show("Impossible de diminuer le nombre d'emplacement dans le convoyeur");
                 }
 
                 Label_AdminConv_NbrePlace = PlaceConvoyeurDAO.selectConvoyeurs().Count;
-                Label_AdminConv_Disponibles = PlaceConvoyeurDAO.selectConvoyeursEmpty().Count;
+                Label_AdminConv_Disponibles = PlaceConvoyeurDAO.selectConvoyeursNotEmpty().Count;
 
                 Txb_AdminConv_ModifPlace = 0;
             }
