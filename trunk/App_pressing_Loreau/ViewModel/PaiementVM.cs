@@ -380,6 +380,8 @@ namespace App_pressing_Loreau.ViewModel
 
                         prixTTC = (float)((decimal)prixTTC + (decimal)art.typeArticle.TTC);
                         prixHT = (float)((decimal)prixHT + (decimal)art.typeArticle.TTC * (1 - (decimal)art.typeArticle.TVA / 100));
+                        prixHT = (float)Math.Round((decimal)prixHT + (decimal)art.typeArticle.TTC * (1 - (decimal)art.typeArticle.TVA / 100), 2, MidpointRounding.AwayFromZero);
+                        
                     }
                     Label_paiement_prixHT = prixHT + " €";
                     Label_paiement_prixTTC = prixTTC + " €";
