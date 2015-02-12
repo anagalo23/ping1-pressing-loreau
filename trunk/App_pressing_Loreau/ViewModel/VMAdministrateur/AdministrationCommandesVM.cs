@@ -43,6 +43,7 @@ namespace App_pressing_Loreau.ViewModel
         {
             ListeCommandeEnCours = new List<ItemCommand>();
             List<Commande> listeCommande = CommandeDAO.selectCommandes(true, true, true);
+            //bool commandeContientEncoreDesArticlesARendre = false;
 
             foreach (Commande com in listeCommande)
             {
@@ -68,14 +69,28 @@ namespace App_pressing_Loreau.ViewModel
                         prixA = (float)((decimal)prixA + (decimal)art.TTC);
 
                     }
-                    ListeCommandeEnCours.Add(new ItemCommand()
+
+                    foreach (Article art in com.listArticles)
                     {
-                        Label_AdminCom_Client = com.client.prenom,
-                        Label_AdminCom_ref = "Ref:   " + com.id,
-                        Label_AdminCom_DateEnregistrement = "Date recu:  " + com.date,
-                        Label_AdminCom_EtatPaiement = "Etat paiement: " + etat,
-                        Label_AdminCom_PrixRestant = "Prix à payer: " + (float)((decimal)prixA - (decimal)prixP)
-                    });
+                        //Dès lors qu'un article est à rendre => j'ajoute à la liste
+                        if (art.ifRendu == false)
+                        {
+                            //commandeContientEncoreDesArticlesARendre = true;
+
+                            ListeCommandeEnCours.Add(new ItemCommand()
+                            {
+                                Label_AdminCom_Client = com.client.prenom,
+                                Label_AdminCom_ref = "Ref:   " + com.id,
+                                Label_AdminCom_DateEnregistrement = "Date recu:  " + com.date,
+                                Label_AdminCom_EtatPaiement = "Etat paiement: " + etat,
+                                Label_AdminCom_PrixRestant = "Prix à payer: " + (float)((decimal)prixA - (decimal)prixP)
+                            });
+
+
+                            break;
+                        }
+                    }
+                    
                 }
             }
         }
