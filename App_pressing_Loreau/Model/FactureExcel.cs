@@ -1,4 +1,5 @@
-﻿using App_pressing_Loreau.Model.DTO;
+﻿using App_pressing_Loreau.Data.DAO;
+using App_pressing_Loreau.Model.DTO;
 using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
@@ -55,7 +56,6 @@ namespace App_pressing_Loreau.Model
                 //ajout des articles
                 int index = 19;
                 decimal totalTTC = 0;
-                decimal totalTVA = 0;
                 decimal totalHT = 0;
                 foreach (Article art in commande.listArticles)
                 {
@@ -64,11 +64,13 @@ namespace App_pressing_Loreau.Model
                     mWorkSheets.Cells[index, 9] = articleHT;
                     totalTTC = totalTTC + (decimal)art.TTC;
                     totalHT = totalHT + (decimal)(art.TTC / (1 + art.TVA / 100));
-                    totalTVA = totalTVA + (totalTTC - totalHT);
                     index++;
                 }
 
                 //ajout du total
+                float total = (float)totalTTC - commande.remise;
+                float totalTVA = (float)Math.Round((total - commande.remise) - (total - commande.remise) / ((100 + (TypeArticleDAO.selectTypesById(2).TVA)) / 100), 2, MidpointRounding.AwayFromZero);
+
                 index += 2;
                 mWorkSheets.Cells[index, 7] = "TTC :";
                 mWorkSheets.Cells[index, 9] = totalTTC;
@@ -77,7 +79,7 @@ namespace App_pressing_Loreau.Model
                 mWorkSheets.Cells[index + 2, 7] = "Total :";
                 mWorkSheets.Cells[index + 2, 9] = totalTTC - (decimal)commande.remise;
                 mWorkSheets.Cells[index + 3, 7] = "Dont TVA :";
-                mWorkSheets.Cells[index + 3, 9] = totalTVA;
+                mWorkSheets.Cells[index + 3, 9] = (decimal)totalTVA;
 
                 //Ajout des paiements
                 index += 2;
