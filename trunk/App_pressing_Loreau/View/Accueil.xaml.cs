@@ -27,7 +27,7 @@ namespace App_pressing_Loreau
         public Accueil()
         {    
             InitializeComponent();
-            //DataContext = new AccueilVM();
+
         }
 
     }

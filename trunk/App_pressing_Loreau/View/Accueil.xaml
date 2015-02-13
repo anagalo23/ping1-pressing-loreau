@@ -5,9 +5,9 @@
         xmlns:dz="http://schemas.devzest.com/presentation/docking"
         WindowState="Maximized"
         WindowStyle="ToolWindow"
-        ShowInTaskbar="False"    >
+        ShowInTaskbar="False" >
 
-    <!--Icon="/Resources/pics/logo.png"-->
+    <!--Icon="/Resources/pics/logo.png" -->
 
     <!--ResizeMode="NoResize"-->
     <Window.Resources>

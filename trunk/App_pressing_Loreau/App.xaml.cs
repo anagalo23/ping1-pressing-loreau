@@ -14,6 +14,7 @@ namespace App_pressing_Loreau
         public App()
         {
             InitializeComponent();
+
         }
         
         protected override void OnStartup(StartupEventArgs e)

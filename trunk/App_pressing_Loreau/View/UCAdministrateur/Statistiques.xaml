@@ -74,11 +74,11 @@
                                         <RowDefinition Height="1*"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="2*"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <Label Content="chiffre d'affaire par  :"  Style="{StaticResource statistiqueLabel}"/>
+                                    <Label Content="chiffre d'affaire pour le departement :"  Style="{StaticResource statistiqueLabel}"/>
 
                                     <ComboBox  Grid.Column="1" Margin="5"  x:Name="cbb_stat_choixDepart" HorizontalContentAlignment="Center" FontWeight="SemiBold" VerticalContentAlignment="Center" ItemsSource="{Binding ListeDepartementStatChoix}" SelectedItem="{Binding Selected_stat_ChoixDepart}" Grid.Row="0"  DisplayMemberPath="NameDepartStat"/>
                                 </Grid>
@@ -120,8 +120,8 @@
                     <Border Grid.Column="1" Margin="5" BorderThickness="2" BorderBrush="AliceBlue" CornerRadius="10">
                         <Grid>
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*"/>
@@ -146,7 +146,7 @@
                             <Label Content="{Binding Label_statistique_nbrChemises}" Grid.Row="2" Grid.Column="1" Style="{StaticResource statistiqueLabel}"/>
 
 
-                            <Button  x:Name="btn_statistiques_retour" Content="Retour" Margin="5,10"  Style="{StaticResource personalisationbuton1}" Grid.Row="5" Grid.Column="1" Click="btn_statistiques_retour_Click"/>
+                            <Button  x:Name="btn_statistiques_retour" Content="Retour" Margin="5,10"  Style="{StaticResource personalisationbuton}" Grid.Row="5" Grid.Column="1" Click="btn_statistiques_retour_Click"/>
 
                         </Grid>
                     </Border>
