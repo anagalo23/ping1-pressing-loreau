@@ -26,14 +26,15 @@
                         <ListBox Background="Transparent" ItemsSource="{Binding ListeCommandeEnCours}" BorderThickness="0">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <Border BorderThickness="1" BorderBrush="AliceBlue" CornerRadius="7" Margin="2">
+                                    <Border BorderThickness="1" BorderBrush="AliceBlue" Background="{Binding ColorCommande}" CornerRadius="7" Margin="2">
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition MinWidth="100" />
-                                                <ColumnDefinition MinWidth="250" />
+                                                <ColumnDefinition MinWidth="200" />
                                                 <ColumnDefinition  MinWidth="200" />
                                                 <ColumnDefinition MinWidth="200" />
                                                 <ColumnDefinition  MinWidth="200" />
+                                                <ColumnDefinition  MinWidth="60" />
                                             </Grid.ColumnDefinitions>
 
                                             <Label Content="{Binding Label_AdminCom_ref}" Grid.Column="0" Style="{StaticResource vertilabel18}" />
@@ -45,6 +46,9 @@
                                             <Label Content="{Binding Label_AdminCom_PrixRestant}" Grid.Column="3" Style="{StaticResource vertilabel18}" />
 
                                             <Label Content="{Binding Label_AdminCom_Client}" Grid.Column="4" Style="{StaticResource vertilabel18}" />
+                                            
+                                            
+                                            <Label Content="{Binding Label_AdminCom_Duree}" Margin="2" Background="{Binding colorDuree}" Grid.Column="5" Style="{StaticResource vertilabel18}" />
                                         </Grid>
                                     </Border>
                                 </DataTemplate>
