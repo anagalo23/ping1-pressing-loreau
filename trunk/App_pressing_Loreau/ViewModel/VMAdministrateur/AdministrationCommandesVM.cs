@@ -62,8 +62,7 @@ namespace App_pressing_Loreau.ViewModel
 
             foreach (Commande com in listeCommande)
             {
-                if (com.date_rendu != null)
-                {
+               
                     String etat = null;
                     if (com.payee == true)
                     {
@@ -111,34 +110,6 @@ namespace App_pressing_Loreau.ViewModel
 
                             break;
                         }
-
-
-                        if (duree >= 3)
-                        {
-                            //Mise à jour de la place convoyeur
-                            //1 - dans la table convoyeur : on soustrait l'encombrement
-                            //2 - dans la table article : id convoyeur devient nul
-
-                            art.convoyeur.encombrement = (float)((decimal)art.convoyeur.encombrement - (decimal)art.type.encombrement);
-                            //Si un article est à la même place, il faut modifier sa place convoyeur pour qu'elle corresponde au changement appliqué
-                            //Permet la mise à jour correcte de la table convoyeur
-                            foreach (Article art2 in com.listArticles)
-                            {
-                                //Si j'ai un autre article au même emplacement convoyeur
-                                if (art2.convoyeur.id == art.convoyeur.id && art2.id != art.id)
-                                {
-                                    //Je lui attribut le bon encombrement
-                                    art2.convoyeur.encombrement = art.convoyeur.encombrement;
-                                }
-                            }
-                            PlaceConvoyeurDAO.updatePlaceConvoyeur(art.convoyeur);
-
-                            Article artAdd = new Article(art.id, art.photo, art.commentaire,false, art.TVA, art.TTC, art.type,null, com.id);
-                         
-
-                            ArticleDAO.updateArticle(artAdd);
-                        }
-                    }
 
                 }
             }
