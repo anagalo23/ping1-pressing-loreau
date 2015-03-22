@@ -312,6 +312,7 @@ namespace App_pressing_Loreau.Data.DAO
          */
         public static List<Article> selectArticlePayeeByDateNoCleanWay(int plageDate)
         {
+            int test = 0;
             try
             {
                 List<Article> requestResult = new List<Article>();
@@ -379,19 +380,22 @@ namespace App_pressing_Loreau.Data.DAO
                 Commande commande;
                 foreach (Article art in requestResult)
                 {
+                    if (art.id == 564)
+                        test = art.id;
                     commande = CommandeDAO.selectCommandeById(art.fk_commande, true, false, false);
-                    if (commande.listPayements[0] != null)
-                        //si l'article n'a pas été payée par cleanWay
-                        if (!(commande.listPayements[0].typePaiement.Equals("CleanWay")))
-                        {
-                            retour.Add(art);
-                        }
+                    if (commande.listPayements.Count != 0)
+                        if (commande.listPayements[0] != null)
+                            //si l'article n'a pas été payée par cleanWay
+                            if (!(commande.listPayements[0].typePaiement.Equals("CleanWay")))
+                            {
+                                retour.Add(art);
+                            }
                 }
 
 
 
 
-                
+
 
                 #region ajout des types, des departements et des places convoyeurs
                 foreach (Article art in retour)
